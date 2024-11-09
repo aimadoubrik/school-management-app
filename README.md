@@ -1,8 +1,41 @@
-# React + Vite
+# school-management-app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project was created with the Enhanced React Project Setup tool.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Framework: React with react
+- CSS Framework: tailwind
+- routing: React Router
+- state: Redux Toolkit
+- data: Axios
+- icons: Lucide Icons
+
+## Project Structure
+
+```
+src/
+├── assets/        # Static assets
+├── components/    # Reusable components
+├── hooks/         # Custom hooks
+├── pages/         # Page components
+├── styles/        # Global styles
+└── utils/         # Utility functions
+```
+
+## Available Scripts
+
+- `npm run dev`: Start the development server
+- `npm run build`: Build for production
+- `npm run preview`: Preview production build
+
+- `npm run lint`: Lint code
+- `npm run format`: Format code
+
+## Learn More
+
+To learn more about the tools used in this project:
+
+- [Vite](https://vitejs.dev/)
+- [React](https://react.dev/)
+- [tailwind](https://tailwind.com)

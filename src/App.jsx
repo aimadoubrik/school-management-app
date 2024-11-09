@@ -1,16 +1,16 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
     <div className="app">
-      
       <Router>
         <Routes>
-          <Route path="/" element={<h1>Enhanced React App</h1>} />
+          <Route path="/" element={<Dashboard />} />
         </Routes>
       </Router>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
