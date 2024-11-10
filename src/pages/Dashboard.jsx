@@ -1,11 +1,7 @@
-import DashboardLayout from "../layouts/DashboardLayout";
+import DashboardLayout from '../layouts/Layout';
 
 function Dashboard() {
-    return (
-        <DashboardLayout>
-            <h1>Dashboard</h1>
-        </DashboardLayout>
-    );
+  return <DashboardLayout />;
 }
 
-export default Dashboard
+export default Dashboard;
