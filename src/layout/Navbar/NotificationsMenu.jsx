@@ -1,11 +1,11 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { markAllAsRead } from '../../features/notifications/notificationsSlice';
 import { Bell } from 'lucide-react';
 
 const NotificationsMenu = () => {
-  const notifications = [
-    { id: 1, title: 'New course available', time: '5m ago', isUnread: true },
-    { id: 2, title: 'Assignment due', time: '1h ago', isUnread: true },
-    { id: 3, title: 'System update', time: '2h ago', isUnread: false },
-  ];
+
+  const notifications = useSelector((state) => state.notifications.notifications);
+  const dispatch = useDispatch();
 
   return (
     <div className="dropdown dropdown-bottom dropdown-end indicator">
@@ -21,7 +21,12 @@ const NotificationsMenu = () => {
         <div className="card-body">
           <div className="flex items-center justify-between">
             <h3 className="font-bold text-lg">Notifications</h3>
-            <button className="btn btn-ghost btn-xs">Mark all as read</button>
+            <button
+              className="btn btn-ghost btn-xs"
+              onClick={() => dispatch(markAllAsRead())}
+            >
+              Mark all as read
+            </button>
           </div>
           <div className="divider my-1"></div>
           <ul className="space-y-2">

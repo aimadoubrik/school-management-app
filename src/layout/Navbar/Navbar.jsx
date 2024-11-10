@@ -1,6 +1,6 @@
 import NotificationsMenu from './NotificationsMenu';
 import UserMenu from './UserMenu';
-import ThemeSelector from './ThemeSelector';
+import ThemeToggle from './ThemeToggle';
 import SearchBar from './SearchBar';
 import { Menu, X, GraduationCap } from 'lucide-react';
 import PropTypes from 'prop-types';
@@ -38,7 +38,7 @@ const Navbar = ({ isSidebarOpen, toggleSidebar, isMobile }) => {
             {/* Right Section */}
             <div className="flex items-center gap-2">
               <NotificationsMenu />
-              <ThemeSelector />
+              <ThemeToggle />
               <UserMenu />
             </div>
           </div>

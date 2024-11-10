@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Navbar from '../components/Navbar/Navbar';
-import Sidebar from '../components/Sidebar/Sidebar';
+import Navbar from './Navbar/Navbar';
+import Sidebar from './Sidebar/Sidebar';
 
 // Layout wrapper component
 const Layout = ({ children }) => {
@@ -30,8 +30,9 @@ const Layout = ({ children }) => {
       />
       <Sidebar isOpen={isSidebarOpen} isMobile={isMobile} onClose={() => setIsSidebarOpen(false)} />
       <main
-        className={`transition-all duration-300 pt-16
-        ${isSidebarOpen ? 'lg:pl-64' : 'lg:pl-0'}`}
+        className={`fixed top-20 right-2 p-2 bg-base-100 rounded-lg
+        ${isMobile ? 'w-[calc(100vw-1rem)]' : 'w-[calc(100vw-17.5rem)]'}`
+      }
       >
         <div className="p-6">{children}</div>
       </main>
