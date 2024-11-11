@@ -3,7 +3,6 @@ import { markAllAsRead } from '../../features/notifications/notificationsSlice';
 import { Bell } from 'lucide-react';
 
 const NotificationsMenu = () => {
-
   const notifications = useSelector((state) => state.notifications.notifications);
   const dispatch = useDispatch();
 
@@ -21,10 +20,7 @@ const NotificationsMenu = () => {
         <div className="card-body">
           <div className="flex items-center justify-between">
             <h3 className="font-bold text-lg">Notifications</h3>
-            <button
-              className="btn btn-ghost btn-xs"
-              onClick={() => dispatch(markAllAsRead())}
-            >
+            <button className="btn btn-ghost btn-xs" onClick={() => dispatch(markAllAsRead())}>
               Mark all as read
             </button>
           </div>

@@ -1,14 +1,19 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleSidebar } from '../../features/sidebar/sidebarSlice';
 import NotificationsMenu from './NotificationsMenu';
 import UserMenu from './UserMenu';
 import ThemeToggle from './ThemeToggle';
 import SearchBar from './SearchBar';
 import { Menu, X, GraduationCap } from 'lucide-react';
-import PropTypes from 'prop-types';
 
-const Navbar = ({ isSidebarOpen, toggleSidebar, isMobile }) => {
+const Navbar = () => {
+  const isSidebarOpen = useSelector((state) => state.sidebar.isOpen);
+  const { isMobile } = useSelector((state) => state.ui);
+  const dispatch = useDispatch();
+
   return (
     <header className="fixed top-0 left-0 right-0 z-30 p-2">
-      <nav className="bg-base-100 border-b border-base-200 h-16 rounded-lg">
+      <nav className="bg-base-100 border-b border-base-200 h-16 rounded-lg transition-all duration-300">
         <div className="max-w-[2000px] mx-auto px-4 h-full">
           <div className="flex items-center justify-between h-full gap-4">
             {/* Left Section */}
@@ -16,7 +21,7 @@ const Navbar = ({ isSidebarOpen, toggleSidebar, isMobile }) => {
               {/* Sidebar Toggle Button */}
               {isMobile && (
                 <button
-                  onClick={toggleSidebar}
+                  onClick={() => dispatch(toggleSidebar())}
                   className="btn btn-ghost btn-square"
                   aria-label={isSidebarOpen ? 'Close sidebar' : 'Open sidebar'}
                   aria-expanded={isSidebarOpen}
@@ -46,12 +51,6 @@ const Navbar = ({ isSidebarOpen, toggleSidebar, isMobile }) => {
       </nav>
     </header>
   );
-};
-
-Navbar.propTypes = {
-  isSidebarOpen: PropTypes.bool.isRequired,
-  toggleSidebar: PropTypes.func.isRequired,
-  isMobile: PropTypes.bool.isRequired,
 };
 
 export default Navbar;

@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import Dashboard from './pages/Dashboard';
-import { use } from 'framer-motion/client';
-
+import Layout from './layout/Layout';
+import Home from './pages/Home';
+import Courses from './pages/Courses';
+import NotFound from './pages/NotFound';
 
 function App() {
-
   const theme = useSelector((state) => state.theme);
 
   useEffect(() => {
@@ -14,13 +14,16 @@ function App() {
   }, [theme]);
 
   return (
-    <div className="app">
-      <Router>
+    <Router>
+      <Layout>
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
-      </Router>
-    </div>
+      </Layout>
+    </Router>
   );
 }
 

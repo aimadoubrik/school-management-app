@@ -1,43 +1,42 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeSidebar } from '../features/sidebar/sidebarSlice';
+import { toggleMobile } from '../features/ui/uiSlice';
 import PropTypes from 'prop-types';
 import Navbar from './Navbar/Navbar';
 import Sidebar from './Sidebar/Sidebar';
 
 // Layout wrapper component
 const Layout = ({ children }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
+  const isSidebarOpen = useSelector((state) => state.sidebar.isOpen);
+  const { isMobile } = useSelector((state) => state.ui);
+  const dispatch = useDispatch();
 
   // Handle screen resize
   useEffect(() => {
     const handleResize = () => {
       const mobile = window.innerWidth < 1024;
-      setIsMobile(mobile);
-      if (mobile) setIsSidebarOpen(false);
+      dispatch(toggleMobile(mobile));
+      if (mobile) dispatch(closeSidebar());
     };
 
     handleResize(); // Initial check
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="min-h-screen bg-base-200">
-      <Navbar
-        isSidebarOpen={isSidebarOpen}
-        toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
-        isMobile={isMobile}
-      />
-      <Sidebar isOpen={isSidebarOpen} isMobile={isMobile} onClose={() => setIsSidebarOpen(false)} />
+      <Navbar />
+      <Sidebar />
       <main
-        className={`fixed top-20 right-2 p-2 bg-base-100 rounded-lg
-        ${isMobile ? 'w-[calc(100vw-1rem)]' : 'w-[calc(100vw-17.5rem)]'}`
-      }
+        className={`fixed top-20 right-2 p-2 bg-base-100 rounded-lg transition-all duration-300
+        ${isMobile ? 'w-[calc(100vw-1rem)]' : 'w-[calc(100vw-17.5rem)]'}`}
       >
         <div className="p-6">{children}</div>
       </main>
       {isMobile && isSidebarOpen && (
-        <div className="fixed inset-0 bg-black/50 z-20" onClick={() => setIsSidebarOpen(false)} />
+        <div className="fixed inset-0 bg-black/50 z-20" onClick={() => dispatch(closeSidebar)} />
       )}
     </div>
   );
