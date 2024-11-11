@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = {
+  isMobile: false,
+};
+
 const uiSlice = createSlice({
   name: 'ui',
-  initialState: {
-    isMobile: false,
-  },
+  initialState,
   reducers: {
     toggleMobile: (state, action) => {
       state.isMobile = action.payload;

@@ -8,16 +8,16 @@ import Sidebar from './Sidebar/Sidebar';
 
 // Layout wrapper component
 const Layout = ({ children }) => {
-  const isSidebarOpen = useSelector((state) => state.sidebar.isOpen);
+  const { isOpen: isSidebarOpen } = useSelector((state) => state.sidebar);
   const { isMobile } = useSelector((state) => state.ui);
   const dispatch = useDispatch();
 
   // Handle screen resize
   useEffect(() => {
     const handleResize = () => {
-      const mobile = window.innerWidth < 1024;
-      dispatch(toggleMobile(mobile));
-      if (mobile) dispatch(closeSidebar());
+      const isMobileDevice = window.innerWidth < 1024;
+      dispatch(toggleMobile(isMobileDevice));
+      if (isMobileDevice) dispatch(closeSidebar());
     };
 
     handleResize(); // Initial check
@@ -30,13 +30,14 @@ const Layout = ({ children }) => {
       <Navbar />
       <Sidebar />
       <main
-        className={`fixed top-20 right-2 p-2 bg-base-100 rounded-lg transition-all duration-300
-        ${isMobile ? 'w-[calc(100vw-1rem)]' : 'w-[calc(100vw-17.5rem)]'}`}
+        className={`fixed h-[calc(100vh-5.5rem)] top-20 right-2 p-2 bg-base-100 rounded-lg transition-all duration-300 ${
+          isMobile ? 'w-[calc(100vw-1rem)]' : 'w-[calc(100vw-17.5rem)]'
+        }`}
       >
         <div className="p-6">{children}</div>
       </main>
       {isMobile && isSidebarOpen && (
-        <div className="fixed inset-0 bg-black/50 z-20" onClick={() => dispatch(closeSidebar)} />
+        <div className="fixed inset-0 bg-black/50 z-20" onClick={() => dispatch(closeSidebar())} />
       )}
     </div>
   );

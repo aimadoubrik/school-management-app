@@ -28,13 +28,13 @@ const SearchBar = () => {
   }, [searchFocused]);
 
   return (
-    <div className="flex-1 max-w-xl relative">
+    <div className="flex-1 w-full max-w-xl relative">
       <div className="relative">
         <input
           id="search-input"
           type="search"
           placeholder="Search..."
-          className="input input-bordered w-full pl-10 pr-16 "
+          className="input input-bordered w-full pl-10 pr-16 py-3 sm:py-2 text-base sm:text-sm"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onFocus={() => setSearchFocused(true)}
@@ -64,13 +64,11 @@ const SearchBar = () => {
 
       {/* Search Results Dropdown */}
       {searchFocused && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-base-100 rounded-xl shadow-lg border border-base-200 overflow-hidden">
-          <div className="p-2">
+        <div className="absolute top-full inset-x-0 mt-2 bg-base-100 rounded-xl shadow-lg border border-base-200 overflow-hidden min-w-[300px]">
+          <div className="p-4 max-h-[300px] overflow-y-auto">
             {searchQuery ? (
               <div className="space-y-2">
-                <div className="text-sm font-medium text-base-content/60 px-2 py-1">
-                  Search Results
-                </div>
+                <div className="text-sm font-medium text-base-content/60">Search Results</div>
                 <button className="flex items-center gap-2 w-full p-2 hover:bg-base-200 rounded-lg">
                   <Search className="w-4 h-4" />
                   <span>Results for `&quot;${searchQuery}&quot;`</span>
@@ -78,9 +76,7 @@ const SearchBar = () => {
               </div>
             ) : (
               <div className="space-y-2">
-                <div className="text-sm font-medium text-base-content/60 px-2 py-1">
-                  Recent Searches
-                </div>
+                <div className="text-sm font-medium text-base-content/60">Recent Searches</div>
                 {recentSearches.map((search, index) => (
                   <button
                     key={index}
