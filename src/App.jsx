@@ -1,4 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Dashboard from './pages/Dashboard';
+import QuizList from './components/Quiz/QuizList';
+import QuizPage from './components/Quiz/QuizPage';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Layout from './layout/Layout';
@@ -15,6 +18,8 @@ function App() {
     <Router>
       <Layout>
         <Routes>
+          <Route path="/quizlist" element={<QuizList />} />
+          <Route path="/quiz/:id" element={<QuizPage />} />
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/courses" element={<Courses />} />
