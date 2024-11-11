@@ -36,6 +36,12 @@ const sidebarSlice = createSlice({
         href: '/reports',
         count: 4,
       },
+      {
+        label: 'Specialisations',
+        icon: 'BookMarked',
+        href: '/spicialisations',
+        count: 4,
+      },
       { type: 'divider' },
       {
         label: 'Documents',

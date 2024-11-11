@@ -1,7 +1,16 @@
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { activateItem } from '../../features/sidebar/sidebarSlice';
-import { Home, BookOpen, Users, Calendar, BarChart, FileText, Settings } from 'lucide-react';
+import {
+  Home,
+  BookOpen,
+  Users,
+  Calendar,
+  BarChart,
+  FileText,
+  Settings,
+  BookMarked,
+} from 'lucide-react';
 import PropTypes from 'prop-types';
 
 const MenuItem = ({ item }) => {
@@ -15,6 +24,7 @@ const MenuItem = ({ item }) => {
     BarChart,
     FileText,
     Settings,
+    BookMarked,
   };
 
   const IconComponent = icons[item.icon] || Home; // Default to Home if icon not found
