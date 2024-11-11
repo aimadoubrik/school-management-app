@@ -30,11 +30,11 @@ const Layout = ({ children }) => {
       <Navbar />
       <Sidebar />
       <main
-        className={`fixed h-[calc(100vh-5.5rem)] top-20 right-2 p-2 bg-base-100 rounded-lg transition-all duration-300 ${
+        className={`fixed overflow-auto h-[calc(100vh-5.5rem)] top-20 right-2 p-2 bg-base-100 rounded-lg transition-all duration-300 ${
           isMobile ? 'w-[calc(100vw-1rem)]' : 'w-[calc(100vw-17.5rem)]'
         }`}
       >
-        <div className="p-6">{children}</div>
+        <div className="p-2">{children}</div>
       </main>
       {isMobile && isSidebarOpen && (
         <div className="fixed inset-0 bg-black/50 z-20" onClick={() => dispatch(closeSidebar())} />

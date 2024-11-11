@@ -2,15 +2,13 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Layout from './layout/Layout';
-import Home from './pages/Home';
-import Courses from './pages/Courses';
-import NotFound from './pages/NotFound';
+import { Home, NotFound, Courses } from './pages';
 
 function App() {
-  const theme = useSelector((state) => state.theme);
+  const { theme } = useSelector((state) => state.theme);
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme.theme);
+    document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
   return (

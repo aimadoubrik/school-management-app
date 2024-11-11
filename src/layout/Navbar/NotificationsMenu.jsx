@@ -13,7 +13,7 @@ const NotificationsMenu = () => {
           {notifications.filter((n) => n.isUnread).length}
         </span>
       )}
-      <button className="btn btn-ghost btn-circle">
+      <button className="btn btn-ghost">
         <Bell className="w-5 h-5" />
       </button>
       <div className="dropdown-content card card-compact w-80 shadow-lg bg-base-100">

@@ -48,7 +48,7 @@ const Sidebar = memo(() => {
     if (isMobile && isOpen) {
       dispatch(closeSidebar());
     }
-  }, [location.pathname, isMobile, dispatch]);
+  }, [location, isMobile, dispatch]);
 
   // Update isMobile state on window resize
   useEffect(() => {
@@ -104,5 +104,7 @@ const Sidebar = memo(() => {
     </>
   );
 });
+
+Sidebar.displayName = 'Sidebar';
 
 export default Sidebar;

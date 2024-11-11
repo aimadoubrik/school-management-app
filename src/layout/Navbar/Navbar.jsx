@@ -19,7 +19,9 @@ const Navbar = () => {
               {/* Logo */}
               <a href="/" className="flex items-center gap-1">
                 <WebsiteLogo className="w-14 h-14 text-primary" />
-                <span className="font-semibold text-xl tracking-tight sm:text-2xl hidden sm:inline-block">OFPPT</span>
+                <span className="font-semibold text-xl tracking-tight sm:text-2xl hidden sm:inline-block">
+                  OFPPT
+                </span>
               </a>
             </div>
 
