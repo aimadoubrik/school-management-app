@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchQuizzes } from "../../features/Quiz/quizzesSlice";
-import QuizCard from "./QuizCard"; // Import the QuizCard component
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchQuizzes } from '../../features/quizzes/quizzesSlice';
+import QuizCard from './QuizCard';
+import { AlertCircle } from 'lucide-react';
 
 const QuizList = () => {
   const dispatch = useDispatch();
@@ -11,37 +12,25 @@ const QuizList = () => {
 
   // Fetch quizzes on component mount
   useEffect(() => {
-    if (status === "idle") {
+    if (status === 'idle') {
       dispatch(fetchQuizzes());
     }
   }, [dispatch, status]);
 
   let content;
 
-  if (status === "loading") {
+  if (status === 'loading') {
     content = <span className="loading loading-infinity loading-lg"></span>;
-  } else if (status === "failed") {
+  } else if (status === 'failed') {
     content = (
       <div role="alert" className="alert alert-error ">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 shrink-0 stroke-current"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
+        <AlertCircle className="w-6 h-6" />
         <span>Error! {error}.</span>
       </div>
     );
-  } else if (status === "succeeded") {
+  } else if (status === 'succeeded') {
     content = (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {quizdata.map((quiz) => (
           <QuizCard key={quiz.quizID} quiz={quiz} />
         ))}

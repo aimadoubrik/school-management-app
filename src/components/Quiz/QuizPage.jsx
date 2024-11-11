@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Clock, CheckCircle, ArrowRight } from "lucide-react";
-import { useSpring, animated } from "@react-spring/web";
-import Confetti from "react-confetti";
-import { useSelector } from "react-redux";
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { Clock, CheckCircle, ArrowRight } from 'lucide-react';
+import { useSpring, animated } from '@react-spring/web';
+import Confetti from 'react-confetti';
+import { useSelector } from 'react-redux';
 
 const QuizPage = () => {
   const { id } = useParams(); // Get the quiz ID from the URL
@@ -39,7 +39,7 @@ const QuizPage = () => {
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
-    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   };
 
   // Handle selecting an answer
@@ -103,7 +103,9 @@ const QuizPage = () => {
           <div className="card-body">
             <h1 className="text-3xl font-semibold text-gradient mb-2">{quizData.courseName}</h1>
             <p className="text-lg mb-2">Quiz ID: {quizData.quizID}</p>
-            <p className="text-sm text-gray-400">Deadline: {new Date(quizData.Deadline).toLocaleString()}</p>
+            <p className="text-sm text-gray-400">
+              Deadline: {new Date(quizData.Deadline).toLocaleString()}
+            </p>
           </div>
         </div>
 
@@ -144,8 +146,8 @@ const QuizPage = () => {
                   onClick={() => handleAnswerChange(option)}
                   className={`w-full py-3 text-lg rounded-lg font-semibold focus:outline-none transition duration-300 ease-in-out transform ${
                     selectedAnswers[currentQuestionIndex] === option
-                      ? "bg-gradient-to-r from-teal-600 to-cyan-500 text-white"
-                      : "bg-gradient-to-r from-gray-800 to-gray-700 text-gray-200 hover:bg-gradient-to-r hover:from-teal-600 hover:to-cyan-600 hover:text-white"
+                      ? 'bg-gradient-to-r from-teal-600 to-cyan-500 text-white'
+                      : 'bg-gradient-to-r from-gray-800 to-gray-700 text-gray-200 hover:bg-gradient-to-r hover:from-teal-600 hover:to-cyan-600 hover:text-white'
                   }`}
                 >
                   {option}
@@ -162,7 +164,7 @@ const QuizPage = () => {
               <button
                 onClick={goToNextQuestion}
                 disabled={!selectedAnswers[currentQuestionIndex]} // Disable next button if no answer is selected
-                className={`btn btn-primary w-full text-white bg-gradient-to-r from-cyan-600 to-teal-600 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-teal-500 transition duration-200 ${!selectedAnswers[currentQuestionIndex] ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`btn btn-primary w-full text-white bg-gradient-to-r from-cyan-600 to-teal-600 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-teal-500 transition duration-200 ${!selectedAnswers[currentQuestionIndex] ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 <ArrowRight size={18} className="mr-2 inline-block" />
                 Next Question
@@ -184,7 +186,9 @@ const QuizPage = () => {
           <div className="bg-gradient-to-r from-gray-700 to-gray-600 p-6 rounded-lg shadow-lg">
             <div className="text-center text-lg text-gray-200">
               <h2 className="text-2xl font-semibold text-gradient">Quiz Finished!</h2>
-              <span className="badge badge-neutral text-lg">Score : {calculateScore()}/{quizData.questions.length}</span>
+              <span className="badge badge-neutral text-lg">
+                Score : {calculateScore()}/{quizData.questions.length}
+              </span>
               <p className="mt-4">Thank you for completing the quiz. Here are your results:</p>
 
               {/* Display answers */}
@@ -194,20 +198,19 @@ const QuizPage = () => {
                     <span className="text-gradient">{question.question}</span>
                   </p>
                   <p>
-                    Your answer:{" "}
+                    Your answer:{' '}
                     <span
                       className={
                         selectedAnswers[index] === question.correctAnswer
-                          ? "text-green-500"
-                          : "text-red-500"
+                          ? 'text-green-500'
+                          : 'text-red-500'
                       }
                     >
-                      {selectedAnswers[index] || "Not Answered"}
+                      {selectedAnswers[index] || 'Not Answered'}
                     </span>
                   </p>
                   <p>
-                    Correct answer:{" "}
-                    <span className="text-green-500">{question.correctAnswer}</span>
+                    Correct answer: <span className="text-green-500">{question.correctAnswer}</span>
                   </p>
                 </div>
               ))}

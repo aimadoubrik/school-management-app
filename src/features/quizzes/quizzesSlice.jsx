@@ -8,16 +8,13 @@ const initialState = {
 };
 
 // Create an async thunk to fetch quizzes
-export const fetchQuizzes = createAsyncThunk(
-  'quizzes/fetchQuizzes',
-  async () => {
-    const response = await fetch('http://localhost:3000/quizzes');
-    if (!response.ok) {
-      throw new Error('Failed to fetch quizzes');
-    }
-    return response.json();
+export const fetchQuizzes = createAsyncThunk('quizzes/fetchQuizzes', async () => {
+  const response = await fetch('http://localhost:3000/quizzes');
+  if (!response.ok) {
+    throw new Error('Failed to fetch quizzes');
   }
-);
+  return response.json();
+});
 
 // Create the quizzes slice
 const quizzesSlice = createSlice({
@@ -39,7 +36,6 @@ const quizzesSlice = createSlice({
       });
   },
 });
-
 
 // Export the reducer to be added to the store
 export default quizzesSlice.reducer;

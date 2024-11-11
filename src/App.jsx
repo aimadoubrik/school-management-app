@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Dashboard from './pages/Dashboard';
 import QuizList from './components/Quiz/QuizList';
 import QuizPage from './components/Quiz/QuizPage';
 import { useSelector } from 'react-redux';
@@ -18,11 +17,11 @@ function App() {
     <Router>
       <Layout>
         <Routes>
-          <Route path="/quizlist" element={<QuizList />} />
-          <Route path="/quiz/:id" element={<QuizPage />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/courses" element={<Courses />} />
+          <Route path="/school-management-app/quizlist" element={<QuizList />} />
+          <Route path="/school-management-app/quiz/:id" element={<QuizPage />} />
+          <Route path="/school-management-app/" element={<Home />} />
+          <Route path="/school-management-app/home" element={<Home />} />
+          <Route path="/school-management-app/courses" element={<Courses />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>

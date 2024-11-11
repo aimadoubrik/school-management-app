@@ -14,7 +14,7 @@ const Navbar = () => {
               <SidebarToggle />
 
               {/* Logo */}
-              <Link to="/" className="flex items-center gap-1">
+              <Link to="/school-management-app/" className="flex items-center gap-1">
                 <Logo className="w-14 h-14 text-primary" />
                 <span className="font-semibold text-xl tracking-tight sm:text-2xl hidden sm:inline-block">
                   OFPPT
