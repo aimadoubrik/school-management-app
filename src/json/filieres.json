@@ -2,7 +2,7 @@
   "filieres": [
     {
       "ordre": 4,
-      "code_filiere": "F04",
+      "code_filiere": "F02",
       "intitule_filiere": "Informatique",
       "secteur": "Technologie",
       "groupes": [
@@ -91,12 +91,14 @@
       "id": "df6b"
     },
     {
-      "id": "4b4a",
-      "code_filiere": "F14",
-      "intitule_filiere": "skfjkslk",
-      "secteur": "lksdflsk",
+      "id": "f977",
+      "code_filiere": "F01",
+      "intitule_filiere": "Something",
+      "secteur": "Something else else",
       "groupes": [
-        "lksdfj"
+        "1",
+        "2",
+        "3"
       ]
     }
   ]

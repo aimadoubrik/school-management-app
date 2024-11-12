@@ -5,7 +5,7 @@ import { useSpring, animated } from '@react-spring/web';
 import Confetti from 'react-confetti';
 import { useSelector } from 'react-redux';
 
-const QuizPage = () => {
+const Quiz = () => {
   const { id } = useParams();
   const quizData = useSelector((state) => state.quizzes.quizzes.find((quiz) => quiz.id === id));
 
@@ -172,4 +172,4 @@ const QuizPage = () => {
   );
 };
 
-export default QuizPage;
+export default Quiz;

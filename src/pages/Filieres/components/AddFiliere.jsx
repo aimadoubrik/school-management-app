@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { addFiliere, editFiliere } from '../features/filieres/filieresSlice';
+import { addFiliere, editFiliere } from '../../../features/filieres/filieresSlice';
 import { Code, BookOpen, Building2, Users, Save, Plus } from 'lucide-react';
 
 const AddFiliere = ({ closeModal, selectedFiliere, onSave }) => {
@@ -83,7 +83,7 @@ const AddFiliere = ({ closeModal, selectedFiliere, onSave }) => {
       }
       closeModal();
     } catch (error) {
-      console.error('Error saving filière:', error);
+      console.error('Error saving filière:', error.message);
     }
   };
 

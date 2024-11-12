@@ -15,7 +15,7 @@ const Navbar = () => {
 
               {/* Logo */}
               <Link to="/school-management-app/" className="flex items-center gap-1">
-                <Logo className="w-14 h-14 text-primary" />
+                <Logo className="w-12 h-12 text-primary" />
                 <span className="font-semibold text-xl tracking-tight sm:text-2xl hidden sm:inline-block">
                   OFPPT
                 </span>

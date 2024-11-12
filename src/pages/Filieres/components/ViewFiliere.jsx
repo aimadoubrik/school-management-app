@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteFiliere } from '../features/filieres/filieresSlice';
+import { deleteFiliere } from '../../../features/filieres/filieresSlice';
 import { X, Trash2, BookOpen, Code, Building2, Users } from 'lucide-react';
 
 const ViewFiliere = ({ filiere, closeModal }) => {

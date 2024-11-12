@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchfilieres, deleteFiliere, editFiliere } from '../features/filieres/filieresSlice';
-import AddFiliere from './addFiliere';
-import ViewFiliere from './ViewFiliersDetails';
+import { fetchFilieres, deleteFiliere, editFiliere } from '../../features/filieres/filieresSlice';
+import AddFiliere from './components/AddFiliere';
+import ViewFiliere from './components/ViewFiliere';
 import { Link } from 'react-router-dom';
 import { Edit, Eye, Trash2, Download, Plus, X, AlertCircle, Users } from 'lucide-react';
 
@@ -14,7 +14,7 @@ const Filieres = () => {
   const [selectedFiliere, setSelectedFiliere] = useState(null);
 
   useEffect(() => {
-    dispatch(fetchfilieres());
+    dispatch(fetchFilieres());
   }, [dispatch]);
 
   const openModal = (filiere, mode) => {

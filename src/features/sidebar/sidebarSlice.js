@@ -18,7 +18,7 @@ const initialState = {
     {
       label: 'Quizzes',
       icon: 'BookOpen',
-      href: '/school-management-app/quizlist',
+      href: '/school-management-app/quizzes',
       count: 24,
       badge: 'New',
     },

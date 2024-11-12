@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const fetchfilieres = createAsyncThunk('filieres/fetchfilieres', async () => {
+export const fetchFilieres = createAsyncThunk('filieres/fetchFilieres', async () => {
   const response = await axios.get('http://localhost:3001/filieres');
   return response.data;
 });
@@ -13,9 +13,8 @@ export const addFiliere = createAsyncThunk('filieres/addFiliere', async (filiere
 });
 
 // Edit a filiere
-export const editFiliere = createAsyncThunk('filieres/updateFiliere', async (filiere) => {
+export const editFiliere = createAsyncThunk('filieres/editFiliere', async (filiere) => {
   const response = await axios.put(`http://localhost:3001/filieres/${filiere.id}`, filiere);
-
   return response.data;
 });
 
@@ -42,15 +41,15 @@ const FilieresSlice = createSlice({
   extraReducers: (builder) => {
     builder
       // Fetch filieres
-      .addCase(fetchfilieres.pending, (state) => {
+      .addCase(fetchFilieres.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchfilieres.fulfilled, (state, action) => {
+      .addCase(fetchFilieres.fulfilled, (state, action) => {
         state.loading = false;
         state.filieres = action.payload;
       })
-      .addCase(fetchfilieres.rejected, (state, action) => {
+      .addCase(fetchFilieres.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
@@ -61,7 +60,6 @@ const FilieresSlice = createSlice({
       })
       .addCase(addFiliere.fulfilled, (state, action) => {
         state.loading = false;
-        // Add the newly created filiere to the state
         state.filieres.push(action.payload);
       })
       .addCase(addFiliere.rejected, (state, action) => {
@@ -74,9 +72,9 @@ const FilieresSlice = createSlice({
         state.loading = true;
       })
       .addCase(editFiliere.fulfilled, (state, action) => {
+        state.loading = false;
         const index = state.filieres.findIndex((f) => f.id === action.payload.id);
         if (index !== -1) {
-          console.log(index);
           state.filieres[index] = action.payload;
         }
       })
@@ -91,13 +89,14 @@ const FilieresSlice = createSlice({
       })
       .addCase(deleteFiliere.fulfilled, (state, action) => {
         state.loading = false;
-        // Remove the deleted filiere from the state using the ID
         state.filieres = state.filieres.filter((filiere) => filiere.id !== action.payload);
       })
       .addCase(deleteFiliere.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
+
+      // Fetch a filiere by ID
       .addCase(fetchFiliereById.pending, (state) => {
         state.loading = true;
         state.error = null;
