@@ -1,6 +1,6 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Clock, PlayCircle, User, BookOpen } from 'lucide-react';
+import PropTypes from 'prop-types';
 
 const getTimeStatus = (deadline) => {
   try {
@@ -50,6 +50,7 @@ const getTimeStatus = (deadline) => {
       urgency: 'critical',
     };
   } catch (error) {
+    console.error('Error calculating time status:', error.message);
     return {
       text: 'Invalid deadline',
       color: 'badge-error',
@@ -174,6 +175,13 @@ const QuizCard = ({ quiz, onQuizStart, className = '', loading = false }) => {
       </div>
     </div>
   );
+};
+
+QuizCard.propTypes = {
+  quiz: PropTypes.object,
+  onQuizStart: PropTypes.func,
+  className: PropTypes.string,
+  loading: PropTypes.bool,
 };
 
 export default QuizCard;

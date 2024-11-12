@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addFiliere, editFiliere } from '../../../features/filieres/filieresSlice';
 import { Code, BookOpen, Building2, Users, Save, Plus } from 'lucide-react';
+import PropTypes from 'prop-types';
 
 const AddFiliere = ({ closeModal, selectedFiliere, onSave }) => {
   const dispatch = useDispatch();
@@ -160,6 +161,12 @@ const AddFiliere = ({ closeModal, selectedFiliere, onSave }) => {
       </form>
     </div>
   );
+};
+
+AddFiliere.propTypes = {
+  onSave: PropTypes.func,
+  closeModal: PropTypes.func,
+  selectedFiliere: PropTypes.object,
 };
 
 export default AddFiliere;

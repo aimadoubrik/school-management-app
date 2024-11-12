@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchFilieres, deleteFiliere, editFiliere } from '../../features/filieres/filieresSlice';
 import AddFiliere from './components/AddFiliere';

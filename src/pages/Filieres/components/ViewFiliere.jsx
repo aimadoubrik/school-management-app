@@ -1,7 +1,7 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteFiliere } from '../../../features/filieres/filieresSlice';
 import { X, Trash2, BookOpen, Code, Building2, Users } from 'lucide-react';
+import PropTypes from 'prop-types';
 
 const ViewFiliere = ({ filiere, closeModal }) => {
   const dispatch = useDispatch();
@@ -68,6 +68,11 @@ const ViewFiliere = ({ filiere, closeModal }) => {
       </div>
     </div>
   );
+};
+
+ViewFiliere.propTypes = {
+  filiere: PropTypes.object.isRequired,
+  closeModal: PropTypes.func.isRequired,
 };
 
 export default ViewFiliere;
