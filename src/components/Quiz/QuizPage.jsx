@@ -6,218 +6,168 @@ import Confetti from 'react-confetti';
 import { useSelector } from 'react-redux';
 
 const QuizPage = () => {
-  const { id } = useParams(); // Get the quiz ID from the URL
-
-  // Fetch quiz data from the Redux store using useSelector
+  const { id } = useParams();
   const quizData = useSelector((state) => state.quizzes.quizzes.find((quiz) => quiz.id === id));
 
-  const [timeLeft, setTimeLeft] = useState(300); // Default time: 5 minutes
+  const [timeLeft, setTimeLeft] = useState(300);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [quizFinished, setQuizFinished] = useState(false);
-  const [confettiActive, setConfettiActive] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
 
-  // Handle the progress bar animation
   const progressAnimation = useSpring({
     width: `${((300 - timeLeft) / 300) * 100}%`,
     config: { tension: 200, friction: 30 },
   });
 
-  // Countdown Timer
   useEffect(() => {
-    if (timeLeft === 0) {
-      setQuizFinished(true);
-      return;
+    if (timeLeft <= 0) {
+      finishQuiz();
+    } else {
+      const timer = setInterval(() => setTimeLeft((prev) => prev - 1), 1000);
+      return () => clearInterval(timer);
     }
-    const interval = setInterval(() => {
-      setTimeLeft((prevTime) => prevTime - 1);
-    }, 1000);
-    return () => clearInterval(interval);
   }, [timeLeft]);
 
-  // Format Time Left
-  const formatTime = (time) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
-    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  const finishQuiz = () => {
+    setQuizFinished(true);
+    setShowConfetti(true);
+    setTimeout(() => setShowConfetti(false), 7000);
   };
 
-  // Handle selecting an answer
   const handleAnswerChange = (answer) => {
     const updatedAnswers = [...selectedAnswers];
     updatedAnswers[currentQuestionIndex] = answer;
     setSelectedAnswers(updatedAnswers);
   };
 
-  // Handle quiz submission
-  const handleSubmitQuiz = () => {
-    setQuizFinished(true);
-    setConfettiActive(true); // Activate confetti on quiz completion
-    setTimeout(() => setConfettiActive(false), 7000); // Stop confetti after 7 seconds
-  };
-
-  // Move to the next question
-  const goToNextQuestion = () => {
+  const nextQuestion = () => {
     if (currentQuestionIndex < quizData.questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      setQuizFinished(true);
+      finishQuiz();
     }
   };
 
-  // Calculate total score
   const calculateScore = () => {
-    let score = 0;
-    quizData.questions.forEach((question, index) => {
-      if (selectedAnswers[index] === question.correctAnswer) {
-        score++;
-      }
-    });
-    return score;
+    return quizData.questions.reduce(
+      (score, question, index) =>
+        score + (selectedAnswers[index] === question.correctAnswer ? 1 : 0),
+      0
+    );
   };
 
-  useEffect(() => {
-    // Apply this only when the component is mounted
-    document.body.style.overflowX = 'hidden';
-    return () => {
-      // Clean up overflowX style when component unmounts
-      document.body.style.overflowX = 'auto';
-    };
-  }, []);
-
-  // If quiz data is not yet loaded, display a loading message
-  if (!quizData) {
-    return <div>Loading...</div>;
-  }
+  if (!quizData) return <div>Loading...</div>;
 
   const currentQuestion = quizData.questions[currentQuestionIndex];
 
   return (
-    <div className="min-h-screen bg-[#eae7e7] text-white p-6 lg:p-12">
-      <div className="max-w-4xl mx-auto bg-[#1E1E1E] p-8 rounded-lg shadow-xl space-y-6">
-        {/* Confetti animation when quiz is finished */}
-        {confettiActive && <Confetti />}
+    <div className="flex flex-col max-w-[1000px] mx-auto justify-center gap-4 text-base-content">
+      {showConfetti && <Confetti />}
 
-        {/* Quiz Header */}
-        <div className="card bg-[#2A2A2A] text-white shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out">
-          <div className="card-body">
-            <h1 className="text-3xl font-semibold text-gradient mb-2">{quizData.courseName}</h1>
-            <p className="text-lg mb-2">Quiz ID: {quizData.quizID}</p>
-            <p className="text-sm text-gray-400">
-              Deadline: {new Date(quizData.Deadline).toLocaleString()}
-            </p>
+      {/* Quiz Header */}
+      <div className="bg-primary text-primary-content p-4 rounded-lg shadow-md">
+        <h1 className="text-2xl lg:text-3xl font-semibold mb-2">{quizData.courseName}</h1>
+        <p className="text-lg">Quiz ID: {quizData.quizID}</p>
+        <p className="text-sm mt-2">Deadline: {new Date(quizData.Deadline).toLocaleString()}</p>
+      </div>
+
+      {/* Countdown Timer */}
+      {!quizFinished && (
+        <div className="flex justify-between items-center">
+          <div className="flex items-center space-x-2">
+            <Clock size={20} />
+            <span className="text-lg font-semibold">{`${Math.floor(timeLeft / 60)}:${
+              timeLeft % 60 < 10 ? '0' : ''
+            }${timeLeft % 60}`}</span>
+          </div>
+          <div>Time Left</div>
+        </div>
+      )}
+
+      {/* Progress Bar */}
+      {!quizFinished && (
+        <div className="mb-4">
+          <div className="w-full bg-neutral-focus rounded-full h-2">
+            <animated.div className="bg-secondary h-2 rounded-full" style={progressAnimation} />
           </div>
         </div>
+      )}
 
-        {/* Countdown Timer */}
-        {!quizFinished && (
-          <div className="flex justify-between items-center mb-8">
-            <div className="text-lg text-gray-300 flex items-center space-x-2">
-              <Clock size={18} />
-              <span>{formatTime(timeLeft)}</span>
-            </div>
-            <div>
-              <span className="text-sm text-gray-500">Time Left</span>
-            </div>
-          </div>
-        )}
+      {/* Question and Answer Options */}
+      {!quizFinished && (
+        <div className="bg-neutral p-4 rounded-lg shadow-md">
+          <h2 className="text-xl text-neutral-content font-semibold">{currentQuestion.question}</h2>
+          {currentQuestion.answers.map((option) => (
+            <button
+              key={option}
+              onClick={() => handleAnswerChange(option)}
+              className={`w-full py-3 text-lg rounded-lg font-semibold transition ${
+                selectedAnswers[currentQuestionIndex] === option
+                  ? 'bg-secondary text-secondary-content'
+                  : 'bg-neutral-focus text-neutral-content hover:bg-secondary hover:text-secondary-content'
+              }`}
+            >
+              {option}
+            </button>
+          ))}
+        </div>
+      )}
 
-        {/* Progress Bar */}
-        {!quizFinished && (
-          <div className="mb-6">
-            <div className="w-full bg-gray-700 rounded-full h-2.5">
-              <animated.div
-                className="bg-gradient-to-r from-teal-400 to-cyan-500 h-2.5 rounded-full"
-                style={progressAnimation}
-              />
-            </div>
-          </div>
-        )}
+      {/* Next/Submit Button */}
+      {!quizFinished && (
+        <button
+          onClick={currentQuestionIndex < quizData.questions.length - 1 ? nextQuestion : finishQuiz}
+          disabled={!selectedAnswers[currentQuestionIndex]}
+          className={`btn btn-primary w-full text-lg font-semibold ${
+            !selectedAnswers[currentQuestionIndex] ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
+        >
+          {currentQuestionIndex < quizData.questions.length - 1 ? (
+            <>
+              <ArrowRight size={18} className="mr-2 inline-block" />
+              Next Question
+            </>
+          ) : (
+            <>
+              <CheckCircle size={18} className="mr-2 inline-block" />
+              Submit Quiz
+            </>
+          )}
+        </button>
+      )}
 
-        {/* Current Question */}
-        {!quizFinished && (
-          <div className="bg-gradient-to-r from-gray-700 to-gray-600 p-6 rounded-lg shadow-lg">
-            <h2 className="text-xl font-semibold">{currentQuestion.question}</h2>
+      {/* Quiz Results */}
+      {quizFinished && (
+        <div className="bg-neutral text-neutral-content p-4 rounded-lg shadow-md">
+          <h2 className="text-2xl font-semibold mb-4">Quiz Finished!</h2>
+          <span className="badge badge-accent text-lg">
+            Score: {calculateScore()}/{quizData.questions.length}
+          </span>
+          <p className="mt-4">Thank you for completing the quiz. Here are your results:</p>
 
-            <div className="space-y-4 mt-4">
-              {currentQuestion.answers.map((option) => (
-                <button
-                  key={option}
-                  onClick={() => handleAnswerChange(option)}
-                  className={`w-full py-3 text-lg rounded-lg font-semibold focus:outline-none transition duration-300 ease-in-out transform ${
-                    selectedAnswers[currentQuestionIndex] === option
-                      ? 'bg-gradient-to-r from-teal-600 to-cyan-500 text-white'
-                      : 'bg-gradient-to-r from-gray-800 to-gray-700 text-gray-200 hover:bg-gradient-to-r hover:from-teal-600 hover:to-cyan-600 hover:text-white'
-                  }`}
+          {quizData.questions.map((question, index) => (
+            <div key={index} className="mt-4 text-lg font-semibold">
+              <p>{question.question}</p>
+              <p>
+                Your answer:{' '}
+                <span
+                  className={
+                    selectedAnswers[index] === question.correctAnswer
+                      ? 'text-success'
+                      : 'text-error'
+                  }
                 >
-                  {option}
-                </button>
-              ))}
+                  {selectedAnswers[index] || 'Not Answered'}
+                </span>
+              </p>
+              <p>
+                Correct answer: <span className="text-success">{question.correctAnswer}</span>
+              </p>
             </div>
-          </div>
-        )}
-
-        {/* Next Button / Submit Button */}
-        {!quizFinished && (
-          <div className="mt-8 flex justify-between items-center">
-            {currentQuestionIndex < quizData.questions.length - 1 ? (
-              <button
-                onClick={goToNextQuestion}
-                disabled={!selectedAnswers[currentQuestionIndex]} // Disable next button if no answer is selected
-                className={`btn btn-primary w-full text-white bg-gradient-to-r from-cyan-600 to-teal-600 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-teal-500 transition duration-200 ${!selectedAnswers[currentQuestionIndex] ? 'opacity-50 cursor-not-allowed' : ''}`}
-              >
-                <ArrowRight size={18} className="mr-2 inline-block" />
-                Next Question
-              </button>
-            ) : (
-              <button
-                onClick={handleSubmitQuiz}
-                className="btn btn-primary w-full text-white bg-gradient-to-r from-cyan-600 to-teal-600 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-teal-500 transition duration-200"
-              >
-                <CheckCircle size={18} className="mr-2 inline-block" />
-                Submit Quiz
-              </button>
-            )}
-          </div>
-        )}
-
-        {/* Quiz Finished */}
-        {quizFinished && (
-          <div className="bg-gradient-to-r from-gray-700 to-gray-600 p-6 rounded-lg shadow-lg">
-            <div className="text-center text-lg text-gray-200">
-              <h2 className="text-2xl font-semibold text-gradient">Quiz Finished!</h2>
-              <span className="badge badge-neutral text-lg">
-                Score : {calculateScore()}/{quizData.questions.length}
-              </span>
-              <p className="mt-4">Thank you for completing the quiz. Here are your results:</p>
-
-              {/* Display answers */}
-              {quizData.questions.map((question, index) => (
-                <div key={index} className="mt-4 text-xl font-semibold text-gray-300">
-                  <p>
-                    <span className="text-gradient">{question.question}</span>
-                  </p>
-                  <p>
-                    Your answer:{' '}
-                    <span
-                      className={
-                        selectedAnswers[index] === question.correctAnswer
-                          ? 'text-green-500'
-                          : 'text-red-500'
-                      }
-                    >
-                      {selectedAnswers[index] || 'Not Answered'}
-                    </span>
-                  </p>
-                  <p>
-                    Correct answer: <span className="text-green-500">{question.correctAnswer}</span>
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

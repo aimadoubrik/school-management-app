@@ -106,7 +106,7 @@ const QuizCard = ({ quiz, onQuizStart, className = '', loading = false }) => {
   return (
     <div
       className={`
-      card bg-base-100 shadow-lg
+      card bg-base-200 shadow-lg
       transition-all duration-300 hover:shadow-xl
       h-[280px] w-full
       ${disabled ? 'opacity-60' : 'hover:-translate-y-1'}
