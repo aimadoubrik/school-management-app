@@ -48,7 +48,7 @@ const initialState = {
     },
     { type: 'divider' },
     {
-      label: 'Documents',
+      label: 'Document',
       icon: 'FileText',
       href: '/school-management-app/documents',
     },
