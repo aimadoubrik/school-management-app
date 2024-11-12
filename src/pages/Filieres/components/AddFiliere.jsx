@@ -9,6 +9,7 @@ const AddFiliere = ({ closeModal, selectedFiliere, onSave }) => {
   const isEditMode = Boolean(selectedFiliere);
 
   const [formData, setFormData] = useState({
+    id: '',
     codeFiliere: '',
     intituleFiliere: '',
     secteur: '',
@@ -77,6 +78,7 @@ const AddFiliere = ({ closeModal, selectedFiliere, onSave }) => {
 
     try {
       if (isEditMode) {
+        filiereData.id = selectedFiliere.id;
         await dispatch(editFiliere({ ...selectedFiliere, ...filiereData }));
         onSave?.(filiereData);
       } else {

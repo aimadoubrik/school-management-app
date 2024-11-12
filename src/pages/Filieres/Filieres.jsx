@@ -44,6 +44,7 @@ const Filieres = () => {
   const exportFilieres = () => {
     const headers = ['ID', 'Code Filiere', 'Intitule Filiere', 'Secteur'];
     const rows = filieres.map((filiere) => [
+      filiere.id,
       filiere.code_filiere,
       filiere.intitule_filiere,
       filiere.secteur,
