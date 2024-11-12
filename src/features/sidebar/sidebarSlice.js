@@ -43,7 +43,7 @@ const initialState = {
     {
       label: 'Specialisations',
       icon: 'BookMarked',
-      href: '/spicialisations',
+      href: '/school-management-app/spicialisations',
       count: 4,
     },
     { type: 'divider' },

@@ -1,104 +1,162 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addFiliere, editFiliere } from '../features/filieres/filieresSlice';
+import { Code, BookOpen, Building2, Users, Save, Plus } from 'lucide-react';
 
 const AddFiliere = ({ closeModal, selectedFiliere, onSave }) => {
   const dispatch = useDispatch();
+  const isEditMode = Boolean(selectedFiliere);
 
-  const [codeFiliere, setCodeFiliere] = useState('');
-  const [intituleFiliere, setIntituleFiliere] = useState('');
-  const [secteur, setSecteur] = useState('');
-  const [groupes, setGroupes] = useState('');
+  const [formData, setFormData] = useState({
+    codeFiliere: '',
+    intituleFiliere: '',
+    secteur: '',
+    groupes: '',
+  });
+
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     if (selectedFiliere) {
-      setCodeFiliere(selectedFiliere.code_filiere || '');
-      setIntituleFiliere(selectedFiliere.intitule_filiere || '');
-      setSecteur(selectedFiliere.secteur || '');
-      setGroupes(selectedFiliere.groupes.join(', ') || '');
+      setFormData({
+        codeFiliere: selectedFiliere.code_filiere || '',
+        intituleFiliere: selectedFiliere.intitule_filiere || '',
+        secteur: selectedFiliere.secteur || '',
+        groupes: selectedFiliere.groupes?.join(', ') || '',
+      });
     }
   }, [selectedFiliere]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const filiereData = {
-      code_filiere: codeFiliere,
-      intitule_filiere: intituleFiliere,
-      secteur: secteur,
-      groupes: groupes.split(',').map((groupe) => groupe.trim()),
-    };
-
-    if (selectedFiliere) {
-      dispatch(editFiliere({ ...selectedFiliere, ...filiereData })).then(() => onSave(filiereData));
-    } else {
-      dispatch(addFiliere(filiereData));
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: '',
+      }));
     }
-
-    setCodeFiliere('');
-    setIntituleFiliere('');
-    setSecteur('');
-    setGroupes('');
-
-    closeModal();
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.codeFiliere.trim()) {
+      newErrors.codeFiliere = 'Code Filière is required';
+    }
+    if (!formData.intituleFiliere.trim()) {
+      newErrors.intituleFiliere = 'Intitulé Filière is required';
+    }
+    if (!formData.secteur.trim()) {
+      newErrors.secteur = 'Secteur is required';
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
+    const filiereData = {
+      code_filiere: formData.codeFiliere,
+      intitule_filiere: formData.intituleFiliere,
+      secteur: formData.secteur,
+      groupes: formData.groupes
+        .split(',')
+        .map((groupe) => groupe.trim())
+        .filter(Boolean),
+    };
+
+    try {
+      if (isEditMode) {
+        await dispatch(editFiliere({ ...selectedFiliere, ...filiereData }));
+        onSave?.(filiereData);
+      } else {
+        await dispatch(addFiliere(filiereData));
+      }
+      closeModal();
+    } catch (error) {
+      console.error('Error saving filière:', error);
+    }
+  };
+
+  const formFields = [
+    {
+      id: 'codeFiliere',
+      label: 'Code Filière',
+      icon: <Code className="w-4 h-4" />,
+      placeholder: 'Enter code filière',
+    },
+    {
+      id: 'intituleFiliere',
+      label: 'Intitulé Filière',
+      icon: <BookOpen className="w-4 h-4" />,
+      placeholder: 'Enter intitulé filière',
+    },
+    {
+      id: 'secteur',
+      label: 'Secteur',
+      icon: <Building2 className="w-4 h-4" />,
+      placeholder: 'Enter secteur',
+    },
+    {
+      id: 'groupes',
+      label: 'Groupes',
+      icon: <Users className="w-4 h-4" />,
+      placeholder: 'Enter groupes (comma-separated)',
+    },
+  ];
+
   return (
-    <div>
-      <h2 className="text-2xl font-semibold mb-4">
-        {selectedFiliere ? 'Edit Filière' : 'Add Filière'}
+    <div className="p-4">
+      <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+        {isEditMode ? <Save className="w-6 h-6" /> : <Plus className="w-6 h-6" />}
+        {isEditMode ? 'Edit Filière' : 'Add Filière'}
       </h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Code Filière</label>
-          <input
-            type="text"
-            value={codeFiliere}
-            onChange={(e) => setCodeFiliere(e.target.value)}
-            required
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-          />
-        </div>
 
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Intitulé Filière</label>
-          <input
-            type="text"
-            value={intituleFiliere}
-            onChange={(e) => setIntituleFiliere(e.target.value)}
-            required
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-          />
-        </div>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        {formFields.map((field) => (
+          <div key={field.id} className="form-control">
+            <label className="label">
+              <span className="label-text flex items-center gap-2">
+                {field.icon}
+                {field.label}
+              </span>
+            </label>
+            <div className="relative">
+              <input
+                type="text"
+                name={field.id}
+                value={formData[field.id]}
+                onChange={handleChange}
+                placeholder={field.placeholder}
+                className={`input input-bordered w-full ${errors[field.id] ? 'input-error' : ''}`}
+              />
+            </div>
+            {errors[field.id] && (
+              <label className="label">
+                <span className="label-text-alt text-error">{errors[field.id]}</span>
+              </label>
+            )}
+          </div>
+        ))}
 
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Secteur</label>
-          <input
-            type="text"
-            value={secteur}
-            onChange={(e) => setSecteur(e.target.value)}
-            required
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-          />
+        <div className="modal-action">
+          <button type="button" onClick={closeModal} className="btn btn-ghost">
+            Cancel
+          </button>
+          <button type="submit" className="btn btn-primary gap-2">
+            {isEditMode ? <Save className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+            {isEditMode ? 'Update Filière' : 'Add Filière'}
+          </button>
         </div>
-
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Groupes</label>
-          <input
-            type="text"
-            value={groupes}
-            onChange={(e) => setGroupes(e.target.value)}
-            required
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-        >
-          {selectedFiliere ? 'Update Filière' : 'Add Filière'}
-        </button>
       </form>
     </div>
   );

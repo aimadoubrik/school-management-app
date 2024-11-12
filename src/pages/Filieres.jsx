@@ -4,12 +4,11 @@ import { fetchfilieres, deleteFiliere, editFiliere } from '../features/filieres/
 import AddFiliere from './addFiliere';
 import ViewFiliere from './ViewFiliersDetails';
 import { Link } from 'react-router-dom';
-import { Edit, Eye, Trash2 } from 'lucide-react';
+import { Edit, Eye, Trash2, Download, Plus, X, AlertCircle, Users } from 'lucide-react';
 
 const Filieres = () => {
   const dispatch = useDispatch();
   const { filieres, loading, error } = useSelector((state) => state.filieres);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [viewMode, setViewMode] = useState(false);
   const [selectedFiliere, setSelectedFiliere] = useState(null);
@@ -30,15 +29,16 @@ const Filieres = () => {
     setViewMode(false);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this filiere?')) {
-      dispatch(deleteFiliere(id));
+      await dispatch(deleteFiliere(id));
       closeModal();
     }
   };
 
-  const handleSaveEdit = (updatedFiliere) => {
-    dispatch(editFiliere(updatedFiliere)).then(() => closeModal());
+  const handleSaveEdit = async (updatedFiliere) => {
+    await dispatch(editFiliere(updatedFiliere));
+    closeModal();
   };
 
   const exportFilieres = () => {
@@ -50,52 +50,55 @@ const Filieres = () => {
     ]);
 
     const csvContent = [headers.join(','), ...rows.map((row) => row.join(','))].join('\n');
-
     const link = document.createElement('a');
     link.href = `data:text/csv;charset=utf-8,${encodeURIComponent(csvContent)}`;
     link.download = 'filieres.csv';
     link.click();
   };
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <span className="loading loading-spinner loading-lg text-primary"></span>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="alert alert-error">
+        <AlertCircle className="h-6 w-6" />
+        <span>{error}</span>
+      </div>
+    );
+  }
+
   return (
     <div className="container mx-auto p-6">
+      {/* Header Actions */}
       <div className="flex justify-between items-center mb-6">
-        <button
-          onClick={exportFilieres}
-          className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
+        <button onClick={exportFilieres} className="btn btn-primary gap-2">
+          <Download className="w-5 h-5" />
           Export Filieres (CSV)
         </button>
-        <button
-          onClick={() => openModal(null, 'edit')}
-          className="px-6 py-3 bg-green-500 text-white font-semibold rounded-md shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
-        >
+        <button onClick={() => openModal(null, 'edit')} className="btn btn-accent gap-2">
+          <Plus className="w-5 h-5" />
           Ajouter une Filière
         </button>
       </div>
 
+      {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full relative">
-            <button
-              onClick={closeModal}
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="w-6 h-6"
+        <dialog open className="modal modal-open">
+          <div className="modal-box">
+            <form method="dialog">
+              <button
+                onClick={closeModal}
+                className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
+                <X className="w-4 h-4" />
+              </button>
+            </form>
             {viewMode ? (
               <ViewFiliere filiere={selectedFiliere} closeModal={closeModal} />
             ) : (
@@ -106,48 +109,60 @@ const Filieres = () => {
               />
             )}
           </div>
-        </div>
+          <form method="dialog" className="modal-backdrop">
+            <button onClick={closeModal}>close</button>
+          </form>
+        </dialog>
       )}
 
-      <div className="overflow-x-auto bg-white shadow-lg rounded-lg">
-        <table className="min-w-full bg-white table-auto border-collapse">
-          <thead className="bg-blue-500 text-white">
+      {/* Table */}
+      <div className="overflow-x-auto">
+        <table className="table table-zebra">
+          <thead>
             <tr>
-              <th className="px-6 py-3 text-left text-sm font-medium">#</th>
-              <th className="px-6 py-3 text-left text-sm font-medium">Intitule Filiere</th>
-              <th className="px-6 py-3 text-left text-sm font-medium">Secteur</th>
-              <th className="px-6 py-3 text-left text-sm font-medium">Groupes</th>
-              <th className="px-6 py-3 text-left text-sm font-medium">Actions</th>
+              <th>#</th>
+              <th>Intitule Filiere</th>
+              <th>Secteur</th>
+              <th>Groupes</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {filieres.map((filiere) => (
-              <tr key={filiere.id} className="hover:bg-gray-100">
-                <td className="px-6 py-4">{filiere.code_filiere}</td>
-                <td className="px-6 py-4">{filiere.intitule_filiere}</td>
-                <td className="px-6 py-4">{filiere.secteur}</td>
-                <td className="px-6 py-4">
-                  <Link to={`/filieres/groupes/${filiere.code_filiere}`}>groupes</Link>
+              <tr key={filiere.id}>
+                <td>{filiere.code_filiere}</td>
+                <td>{filiere.intitule_filiere}</td>
+                <td>{filiere.secteur}</td>
+                <td>
+                  <Link
+                    to={`/filieres/groupes/${filiere.code_filiere}`}
+                    className="link link-primary flex items-center gap-2"
+                  >
+                    <Users className="w-4 h-4" />
+                    groupes
+                  </Link>
                 </td>
-                <td className="px-6 py-4 flex space-x-3">
-                  <button
-                    onClick={() => openModal(filiere, 'view')}
-                    className="px-3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-                  >
-                    <Eye className="w-5 h-5" />
-                  </button>
-                  <button
-                    onClick={() => openModal(filiere, 'edit')}
-                    className="px-3 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
-                  >
-                    <Edit className="w-5 h-5" />
-                  </button>
-                  <button
-                    onClick={() => handleDelete(filiere.id)}
-                    className="px-3 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
-                  >
-                    <Trash2 className="w-5 h-5" />
-                  </button>
+                <td>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => openModal(filiere, 'view')}
+                      className="btn btn-info btn-sm"
+                    >
+                      <Eye className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => openModal(filiere, 'edit')}
+                      className="btn btn-success btn-sm"
+                    >
+                      <Edit className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(filiere.id)}
+                      className="btn btn-error btn-sm"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
