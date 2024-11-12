@@ -40,6 +40,12 @@ const initialState = {
       href: '/school-management-app/reports',
       count: 4,
     },
+    {
+      label: 'Specialisations',
+      icon: 'BookMarked',
+      href: '/spicialisations',
+      count: 4,
+    },
     { type: 'divider' },
     {
       label: 'Documents',

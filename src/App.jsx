@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Layout from './layout/Layout';
 import { Home, NotFound, Courses } from './pages';
+import Filieres from './pages/Filieres';
 
 function App() {
   const { theme } = useSelector((state) => state.theme);
@@ -22,6 +23,7 @@ function App() {
           <Route path="/school-management-app/" element={<Home />} />
           <Route path="/school-management-app/home" element={<Home />} />
           <Route path="/school-management-app/courses" element={<Courses />} />
+          <Route path="/school-management-app/spicialisations" element={<Filieres />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
