@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function Attendance() {
+function AttendancePage() {
   const [data, setData] = useState(null);
   const [secteurs, setSecteurs] = useState([]);
   const [filieres, setFilieres] = useState([]);
@@ -239,4 +239,4 @@ function Attendance() {
   );
 }
 
-export default Attendance;
+export default AttendancePage;

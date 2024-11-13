@@ -4,7 +4,7 @@ import { fetchQuizzes } from '../../features/quizzes/quizzesSlice';
 import QuizCard from './QuizCard';
 import { Search, AlertCircle } from 'lucide-react';
 
-const QuizList = () => {
+const QuizzesPage = () => {
   const dispatch = useDispatch();
   const quizData = useSelector((state) => state.quizzes.quizzes) || [];
   const status = useSelector((state) => state.quizzes.status);
@@ -140,4 +140,4 @@ const QuizList = () => {
   );
 };
 
-export default QuizList;
+export default QuizzesPage;

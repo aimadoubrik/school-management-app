@@ -6,7 +6,7 @@ import ViewFiliere from './components/ViewFiliere';
 import { Link } from 'react-router-dom';
 import { Edit, Eye, Trash2, Download, Plus, X, AlertCircle, Users } from 'lucide-react';
 
-const Filieres = () => {
+const FilieresPage = () => {
   const dispatch = useDispatch();
   const { filieres, loading, error } = useSelector((state) => state.filieres);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -174,4 +174,4 @@ const Filieres = () => {
   );
 };
 
-export default Filieres;
+export default FilieresPage;

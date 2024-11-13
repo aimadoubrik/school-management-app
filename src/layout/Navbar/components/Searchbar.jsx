@@ -14,7 +14,7 @@ const SearchBar = () => {
   // Handle keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
         document.getElementById('search-input')?.focus();
       }
@@ -71,7 +71,7 @@ const SearchBar = () => {
                 <div className="text-sm font-medium text-base-content/60">Search Results</div>
                 <button className="flex items-center gap-2 w-full p-2 hover:bg-base-200 rounded-lg">
                   <Search className="w-4 h-4" />
-                  <span>Results for `&quot;${searchQuery}&quot;`</span>
+                  <span>Results for "{searchQuery}"</span>
                 </button>
               </div>
             ) : (
