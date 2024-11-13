@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Document = () => {
+const Documents = () => {
     const documentList = [
         {
             id: 1,
@@ -200,4 +200,4 @@ const Document = () => {
     )
 }
 
-export default Document;
+export default Documents;
