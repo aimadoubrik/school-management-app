@@ -5,3 +5,4 @@ export { default as Courses } from './Courses/Courses';
 export { default as Filieres } from './Filieres/Filieres';
 export { default as Quizzes } from './Quizzes/Quizzes';
 export { default as Quiz } from './Quizzes/Quiz';
+export { default as Attendance } from './Attendance/Attendance';

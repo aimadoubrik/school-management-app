@@ -1,0 +1,25 @@
+{
+  "secteur": {
+    "secteur": "Science",
+    "filiere": "Physics",
+    "groupe": "Group 1",
+    "students": [
+      {
+        "id": "1",
+        "cef": "10001",
+        "fullname": "John Smith",
+        "dateNaissance": "2000-03-01",
+        "cin": "CS1001",
+        "selected": false
+      },
+      {
+        "id": "2",
+        "cef": "10002",
+        "fullname": "Alice Brown",
+        "dateNaissance": "2000-04-15",
+        "cin": "CS1002",
+        "selected": true
+      }
+    ]
+  }
+}

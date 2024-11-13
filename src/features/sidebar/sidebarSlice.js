@@ -29,6 +29,12 @@ const initialState = {
       count: 892,
     },
     {
+      label: 'Attendance',
+      icon: 'Calendar',
+      href: '/school-management-app/attendance',
+      count: 12,
+    },
+    {
       label: 'Schedule',
       icon: 'Calendar',
       href: '/school-management-app/schedule',
