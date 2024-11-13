@@ -6,7 +6,7 @@
       "intitule_filiere": "Informatique",
       "secteur": "Technologie",
       "groupes": [
-        "[object Object]"
+        "i"
       ],
       "id": "611e"
     },
@@ -14,9 +14,9 @@
       "ordre": 5,
       "code_filiere": "F05",
       "intitule_filiere": "Réseaux et Télécommu",
-      "secteur": "Technologie",
+      "secteur": "Technologi",
       "groupes": [
-        "[object Object]"
+        "4"
       ],
       "id": "dcb8"
     },
@@ -26,9 +26,7 @@
       "intitule_filiere": "Management",
       "secteur": "Business",
       "groupes": [
-        {
-          "groupe_id": 1
-        }
+        "groupe_id"
       ],
       "id": "ff07"
     },
@@ -84,22 +82,19 @@
       "intitule_filiere": "Biotechnologie",
       "secteur": "Sciences",
       "groupes": [
-        {
-          "groupe_id": 1
-        }
+        "4"
       ],
       "id": "df6b"
     },
     {
-      "id": "94fe",
-      "code_filiere": "F01",
-      "intitule_filiere": "Something",
-      "secteur": "Something else else",
+      "code_filiere": "F14",
+      "intitule_filiere": "Informatique",
+      "secteur": "secteur2",
       "groupes": [
         "1",
-        "2",
         "3"
-      ]
+      ],
+      "id": "4901"
     }
   ]
 }
