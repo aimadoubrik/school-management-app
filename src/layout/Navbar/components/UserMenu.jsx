@@ -1,5 +1,6 @@
-import { ChevronDown, LogOut, MessageSquare, Settings } from 'lucide-react';
+import { ChevronDown, LogOut, MessageSquare, UserCircle2 } from 'lucide-react';
 import { Avatar } from '../../../assets';
+import { Link } from 'react-router-dom';
 
 const UserMenu = () => (
   <div className="dropdown dropdown-bottom dropdown-end">
@@ -14,19 +15,19 @@ const UserMenu = () => (
     </button>
     <ul className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
       <li>
-        <a href="/messages">
+        <Link to="/school-management-app/messages">
           <MessageSquare className="w-4 h-4" /> Messages
-        </a>
+        </Link>
       </li>
       <li>
-        <a href="/settings">
-          <Settings className="w-4 h-4" /> Settings
-        </a>
+        <Link to="/school-management-app/user-profile">
+          <UserCircle2 className="w-4 h-4" /> Profile
+        </Link>
       </li>
       <li>
-        <a href="/logout" className="text-error">
+        <Link to="/school-management-app/logout" className="text-error">
           <LogOut className="w-4 h-4" /> Logout
-        </a>
+        </Link>
       </li>
     </ul>
   </div>

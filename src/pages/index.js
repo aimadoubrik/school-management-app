@@ -7,3 +7,5 @@ export { default as Quizzes } from './Quizzes/Quizzes';
 export { default as Quiz } from './Quizzes/Quiz';
 export { default as Attendance } from './Attendance/Attendance';
 export { default as Documents } from './Documents/Documents'
+export { default as UserProfile } from './UserProfile/UserProfile';
+export { default as Settings } from './Settings/Settings';
