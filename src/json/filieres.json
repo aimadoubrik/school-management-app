@@ -2,7 +2,7 @@
   "filieres": [
     {
       "ordre": 4,
-      "code_filiere": "F02",
+      "code_filiere": "F01",
       "intitule_filiere": "Informatique",
       "secteur": "Technologie",
       "groupes": [
@@ -13,7 +13,7 @@
     {
       "ordre": 5,
       "code_filiere": "F05",
-      "intitule_filiere": "Réseaux et Télécommu",
+      "intitule_filiere": "Réseaux",
       "secteur": "Technologie",
       "groupes": [
         "[object Object]"
@@ -89,17 +89,6 @@
         }
       ],
       "id": "df6b"
-    },
-    {
-      "id": "94fe",
-      "code_filiere": "F01",
-      "intitule_filiere": "Something",
-      "secteur": "Something else else",
-      "groupes": [
-        "1",
-        "2",
-        "3"
-      ]
     }
   ]
 }
