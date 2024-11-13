@@ -70,6 +70,7 @@ const FilieresSlice = createSlice({
       // Edit a filiere
       .addCase(editFiliere.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(editFiliere.fulfilled, (state, action) => {
         state.loading = false;
@@ -77,6 +78,8 @@ const FilieresSlice = createSlice({
         if (index !== -1) {
           state.filieres[index] = action.payload;
         }
+        state.loading = false;
+        state.error = null;
       })
       .addCase(editFiliere.rejected, (state, action) => {
         state.loading = false;
