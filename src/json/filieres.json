@@ -85,17 +85,6 @@
         "4"
       ],
       "id": "df6b"
-    },
-    {
-      "id": "94fe",
-      "code_filiere": "F01",
-      "intitule_filiere": "Something",
-      "secteur": "Something else else",
-      "groupes": [
-        "1",
-        "2",
-        "3"
-      ]
     }
   ]
 }
