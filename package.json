@@ -9,8 +9,9 @@
     "lint": "eslint src",
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md}\"",
-    "json-server": "json-server --watch src/json/quizzes.json --port 3000",
-    "json-server2": "json-server --watch src/json/filieres.json --port 3001"
+    "json-server-quizzes": "json-server --watch src/json/quizzes.json --port 3000",
+    "json-server-filieres": "json-server --watch src/json/filieres.json --port 3001",
+    "json-server-attendance": "json-server --watch src/json/attendance.json --port 3002"
   },
   "dependencies": {
     "@react-spring/web": "^9.7.5",

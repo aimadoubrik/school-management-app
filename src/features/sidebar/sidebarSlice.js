@@ -17,7 +17,7 @@ const initialState = {
     },
     {
       label: 'Quizzes',
-      icon: 'BookOpen',
+      icon: 'MessageCircleQuestion',
       href: '/school-management-app/quizzes',
       count: 24,
       badge: 'New',
@@ -27,6 +27,12 @@ const initialState = {
       icon: 'Users',
       href: '/school-management-app/students',
       count: 892,
+    },
+    {
+      label: 'Attendance',
+      icon: 'Calendar',
+      href: '/school-management-app/attendance',
+      count: 12,
     },
     {
       label: 'Schedule',

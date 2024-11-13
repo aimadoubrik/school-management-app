@@ -8,12 +8,14 @@ import {
   FileText,
   Settings,
   BookMarked,
+  MessageCircleQuestion,
 } from 'lucide-react';
 import PropTypes from 'prop-types';
 
 const ICONS = {
   Home,
   BookOpen,
+  MessageCircleQuestion,
   Users,
   Calendar,
   BarChart,
