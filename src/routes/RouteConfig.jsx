@@ -17,6 +17,8 @@ import {
   UserProfilePage,
   SettingsPage,
   UnauthorizedPage,
+  SchedulePage,
+  TraineesPage,
 } from '../pages';
 
 const RouteConfig = () => {
@@ -95,6 +97,22 @@ const RouteConfig = () => {
           element={
             <ProtectedRoute allowedRoles={['trainer', 'admin']}>
               <DocumentsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/schedule"
+          element={
+            <ProtectedRoute>
+              <SchedulePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/trainees"
+          element={
+            <ProtectedRoute allowedRoles={['trainer', 'admin']}>
+              <TraineesPage />
             </ProtectedRoute>
           }
         />

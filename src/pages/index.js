@@ -10,3 +10,5 @@ export { default as DocumentsPage } from './Documents/DocumentsPage';
 export { default as UserProfilePage } from './UserProfile/UserProfilePage';
 export { default as SettingsPage } from './Settings/SettingsPage';
 export { default as UnauthorizedPage } from './Unauthorized/UnauthorizedPage';
+export { default as SchedulePage } from './Schedule/SchedulePage';
+export { default as TraineesPage } from './Trainees/TraineesPage';

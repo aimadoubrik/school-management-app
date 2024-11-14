@@ -1,76 +1,115 @@
+// src/features/filieres/filieresSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import filiereService from './filiereService';
+import { handleApiError } from '../../api/config';
 
-export const fetchFilieres = createAsyncThunk('filieres/fetchFilieres', async () => {
-  const response = await axios.get('http://localhost:3001/filieres');
-  return response.data;
-});
+// Fetch all filieres
+export const fetchFilieres = createAsyncThunk(
+  'filieres/fetchFilieres',
+  async (_, { rejectWithValue }) => {
+    try {
+      return await filiereService.getFilieres();
+    } catch (error) {
+      return rejectWithValue(handleApiError(error));
+    }
+  }
+);
 
 // Add new filiere
-export const addFiliere = createAsyncThunk('filieres/addFiliere', async (filiereData) => {
-  const response = await axios.post('http://localhost:3001/filieres', filiereData);
-  return response.data;
-});
+export const addFiliere = createAsyncThunk(
+  'filieres/addFiliere',
+  async (filiereData, { rejectWithValue }) => {
+    try {
+      return await filiereService.addFiliere(filiereData);
+    } catch (error) {
+      return rejectWithValue(handleApiError(error));
+    }
+  }
+);
 
-// Edit a filiere
-export const editFiliere = createAsyncThunk('filieres/editFiliere', async (filiere) => {
-  const response = await axios.put(`http://localhost:3001/filieres/${filiere.id}`, filiere);
-  return response.data;
-});
+// Edit filiere
+export const editFiliere = createAsyncThunk(
+  'filieres/editFiliere',
+  async (filiere, { rejectWithValue }) => {
+    try {
+      return await filiereService.updateFiliere(filiere);
+    } catch (error) {
+      return rejectWithValue(handleApiError(error));
+    }
+  }
+);
 
-// Delete a filiere
-export const deleteFiliere = createAsyncThunk('filieres/deleteFiliere', async (id) => {
-  await axios.delete(`http://localhost:3001/filieres/${id}`);
-  return id;
-});
+// Delete filiere
+export const deleteFiliere = createAsyncThunk(
+  'filieres/deleteFiliere',
+  async (id, { rejectWithValue }) => {
+    try {
+      return await filiereService.deleteFiliere(id);
+    } catch (error) {
+      return rejectWithValue(handleApiError(error));
+    }
+  }
+);
 
-export const fetchFiliereById = createAsyncThunk('filieres/fetchFiliereById', async (id) => {
-  const response = await axios.get(`http://localhost:3001/filieres/${id}`);
-  return response.data;
-});
+const initialState = {
+  filieres: [],
+  loading: false,
+  error: null,
+  currentOperation: null,
+};
 
-const FilieresSlice = createSlice({
+const filieresSlice = createSlice({
   name: 'filieres',
-  initialState: {
-    filieres: [],
-    selectedFiliere: null,
-    loading: false,
-    error: null,
+  initialState,
+  reducers: {
+    clearError: (state) => {
+      state.error = null;
+    },
+    setCurrentOperation: (state, action) => {
+      state.currentOperation = action.payload;
+    },
   },
-  reducers: {},
   extraReducers: (builder) => {
     builder
       // Fetch filieres
       .addCase(fetchFilieres.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.currentOperation = 'fetch';
       })
       .addCase(fetchFilieres.fulfilled, (state, action) => {
         state.loading = false;
         state.filieres = action.payload;
+        state.currentOperation = null;
       })
       .addCase(fetchFilieres.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload?.message || action.error.message;
+        state.currentOperation = null;
       })
 
-      // Add new filiere
+      // Add filiere
       .addCase(addFiliere.pending, (state) => {
         state.loading = true;
+        state.error = null;
+        state.currentOperation = 'add';
       })
       .addCase(addFiliere.fulfilled, (state, action) => {
         state.loading = false;
         state.filieres.push(action.payload);
+        state.currentOperation = null;
       })
       .addCase(addFiliere.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload?.message || action.error.message;
+        state.currentOperation = null;
       })
 
-      // Edit a filiere
+      // Edit filiere
       .addCase(editFiliere.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.currentOperation = 'edit';
       })
       .addCase(editFiliere.fulfilled, (state, action) => {
         state.loading = false;
@@ -78,41 +117,32 @@ const FilieresSlice = createSlice({
         if (index !== -1) {
           state.filieres[index] = action.payload;
         }
-        state.loading = false;
-        state.error = null;
+        state.currentOperation = null;
       })
       .addCase(editFiliere.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload?.message || action.error.message;
+        state.currentOperation = null;
       })
 
-      // Delete a filiere
+      // Delete filiere
       .addCase(deleteFiliere.pending, (state) => {
         state.loading = true;
+        state.error = null;
+        state.currentOperation = 'delete';
       })
       .addCase(deleteFiliere.fulfilled, (state, action) => {
         state.loading = false;
         state.filieres = state.filieres.filter((filiere) => filiere.id !== action.payload);
+        state.currentOperation = null;
       })
       .addCase(deleteFiliere.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
-      })
-
-      // Fetch a filiere by ID
-      .addCase(fetchFiliereById.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(fetchFiliereById.fulfilled, (state, action) => {
-        state.loading = false;
-        state.selectedFiliere = action.payload;
-      })
-      .addCase(fetchFiliereById.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload?.message || action.error.message;
+        state.currentOperation = null;
       });
   },
 });
 
-export default FilieresSlice.reducer;
+export const { clearError, setCurrentOperation } = filieresSlice.actions;
+export default filieresSlice.reducer;

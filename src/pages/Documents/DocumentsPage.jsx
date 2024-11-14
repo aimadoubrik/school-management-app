@@ -1,225 +1,290 @@
 import { useState } from 'react';
+import { AlertCircle, FileText, Upload, Clock, CheckCircle, XCircle } from 'lucide-react';
 
 const DocumentsPage = () => {
   const documentList = [
     {
       id: 1,
       name: 'Attestation de présence',
+      description: 'Document confirmant votre présence aux cours',
       documentattachment: ["Carte d'identité", 'Lettre de demande de document'],
+      processingTime: '2-3 jours',
     },
     {
       id: 2,
       name: 'Attestation de fin de formation',
+      description: 'Certificat officiel de fin de formation',
       documentattachment: [
         "Carte d'identité",
         'Lettre de demande de document',
         'Certificat de stage',
       ],
+      processingTime: '3-5 jours',
     },
     {
       id: 3,
       name: 'Relevé de notes',
+      description: 'Document détaillant vos résultats académiques',
       documentattachment: [
         "Carte d'identité",
         'Lettre de demande de document',
         'Attestation de présence',
       ],
+      processingTime: '2-3 jours',
     },
     {
       id: 4,
       name: 'Certificat de stage',
+      description: 'Attestation officielle de stage',
       documentattachment: ["Carte d'identité", 'Lettre de demande de stage en entreprise'],
+      processingTime: '3-4 jours',
     },
     {
       id: 5,
       name: 'Demande de stage',
+      description: 'Formulaire de demande de stage',
       documentattachment: ['Lettre de motivation', 'CV'],
-    },
-    {
-      id: 6,
-      name: 'Convention de stage',
-      documentattachment: [
-        "Carte d'identité",
-        'Lettre de demande de stage',
-        'Attestation de présence',
-      ],
-    },
-    {
-      id: 7,
-      name: 'Demande de remboursement',
-      documentattachment: [
-        "Carte d'identité",
-        'Justificatif de paiement',
-        'Attestation de présence',
-      ],
-    },
-    {
-      id: 8,
-      name: 'Carte d’étudiant ou de stagiaire',
-      documentattachment: ["Photo d'identité", "Carte d'identité", "Attestation d'inscription"],
-    },
-    {
-      id: 9,
-      name: 'Demande de diplôme ou de certificat',
-      documentattachment: [
-        "Carte d'identité",
-        'Relevé de notes',
-        'Attestation de fin de formation',
-      ],
-    },
-    {
-      id: 10,
-      name: 'Attestation de stage de fin d’études',
-      documentattachment: [
-        "Carte d'identité",
-        'Rapport de stage',
-        'Attestation de fin de formation',
-      ],
+      processingTime: '5-7 jours',
     },
   ];
 
   const statusList = [
-    { id: 1, name: 'En cours', color: 'yellow' },
-    { id: 2, name: 'En attente', color: 'blue' },
-    { id: 3, name: 'Valide', color: 'green' },
-    { id: 4, name: 'Refus', color: 'red' },
+    { id: 1, name: 'En cours', color: 'warning', icon: Clock },
+    { id: 2, name: 'En attente', color: 'info', icon: Clock },
+    { id: 3, name: 'Validé', color: 'success', icon: CheckCircle },
+    { id: 4, name: 'Refusé', color: 'error', icon: XCircle },
   ];
 
   const [selectedDocument, setSelectedDocument] = useState(null);
-  const [time, setTime] = useState('');
-  const [file, setFile] = useState(null);
-  const [showDetails, setShowDetails] = useState(false);
-  const [status, setStatus] = useState(1);
-  const [demandes, setDemandes] = useState([]);
+  const [requestDate, setRequestDate] = useState('');
+  const [files, setFiles] = useState([]);
+  const [requests, setRequests] = useState([]);
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
-  const handleDocumentChange = (event) => {
-    const selectedDocumentId = Number(event.target.value);
-    const selectedDocument = documentList.find((document) => document.id === selectedDocumentId);
-    setSelectedDocument(selectedDocument);
-  };
-
-  const handleTimeChange = (event) => {
-    setTime(event.target.value);
+  const handleDocumentSelect = (doc) => {
+    setSelectedDocument(doc);
+    setFiles([]); // Reset files when changing document
   };
 
   const handleFileChange = (event) => {
-    setFile(event.target.files);
+    const fileList = Array.from(event.target.files);
+    setFiles(fileList);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const demande = {
-      id: demandes.length + 1,
+
+    const newRequest = {
+      id: requests.length + 1,
       document: selectedDocument.name,
-      time: time,
-      file: file,
-      status: status,
+      description: selectedDocument.description,
+      requestDate,
+      submissionDate: new Date().toISOString().split('T')[0],
+      status: 1, // En cours
+      files: files.map((f) => f.name),
+      processingTime: selectedDocument.processingTime,
     };
-    setDemandes([...demandes, demande]);
-    setShowDetails(true);
+
+    setRequests([newRequest, ...requests]);
+    setShowSuccessAlert(true);
+
+    // Reset form
+    setSelectedDocument(null);
+    setRequestDate('');
+    setFiles([]);
+
+    setTimeout(() => setShowSuccessAlert(false), 5000);
   };
 
-  const isDisabled = selectedDocument === null || time === '' || file === null;
+  const isFormValid =
+    selectedDocument && requestDate && files.length >= selectedDocument?.documentattachment.length;
 
-  const getStatusColor = (statusId) => {
+  const renderStatusBadge = (statusId) => {
     const status = statusList.find((s) => s.id === statusId);
-    return status ? status.color : 'gray';
+    const StatusIcon = status.icon;
+
+    return (
+      <div className={`badge badge-${status.color} gap-2`}>
+        <StatusIcon className="w-4 h-4" />
+        {status.name}
+      </div>
+    );
   };
 
   return (
-    <div className="mb-10">
-      <h1>Demande de document</h1>
-      <hr className="my-4" />
-      <form className="w-full" onSubmit={handleSubmit}>
-        <div className="flex gap-4">
-          <div className="flex-1">
-            <label htmlFor="document" className="block text-sm font-medium">
-              Document
-            </label>
-            <select
-              onChange={handleDocumentChange}
-              className="w-full px-4 py-2 mt-2 text-base transition duration-150 ease-in-out bg-transparent border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            >
-              <option value="" disabled selected>
-                Select a document
-              </option>
-              {documentList.map((document) => (
-                <option key={document.id} value={document.id}>
-                  {document.name}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="flex-1">
-            <label htmlFor="time" className="block text-sm font-medium">
-              Date de demande
-            </label>
-            <input
-              type="date"
-              value={time}
-              onChange={handleTimeChange}
-              className="w-full px-4 py-2 mt-2 text-base transition duration-150 ease-in-out bg-transparent border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
+    <div className="container mx-auto p-4 max-w-5xl">
+      <div className="text-center mb-8">
+        <h1 className="text-3xl font-bold mb-2">Demande de Documents</h1>
+        <p className="text-gray-600">Portail de demande de documents administratifs</p>
+      </div>
+
+      {showSuccessAlert && (
+        <div className="alert alert-success mb-6">
+          <CheckCircle className="w-5 h-5" />
+          <span>
+            Votre demande a été soumise avec succès. Vous pouvez suivre son état ci-dessous.
+          </span>
+        </div>
+      )}
+
+      <div className="grid md:grid-cols-5 gap-6">
+        {/* Left side - Document Selection */}
+        <div className="md:col-span-2 space-y-4">
+          <h2 className="text-xl font-semibold mb-4">Documents Disponibles</h2>
+          <div className="space-y-2">
+            {documentList.map((doc) => (
+              <button
+                key={doc.id}
+                onClick={() => handleDocumentSelect(doc)}
+                className={`w-full p-4 rounded-lg border transition-all ${
+                  selectedDocument?.id === doc.id
+                    ? 'border-primary bg-primary/5'
+                    : 'border-gray-200 hover:border-primary/50'
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <FileText
+                    className={`w-5 h-5 ${
+                      selectedDocument?.id === doc.id ? 'text-primary' : 'text-gray-500'
+                    }`}
+                  />
+                  <div className="text-left">
+                    <h3 className="font-medium">{doc.name}</h3>
+                    <p className="text-sm text-gray-600">{doc.processingTime}</p>
+                  </div>
+                </div>
+              </button>
+            ))}
           </div>
         </div>
-        {selectedDocument && (
-          <>
-            <div className="mt-2 border border-gray-300 rounded-md p-4">
-              <p className="mb-2 text-sm text-red-500">
-                S'il vous plait ajouter des fichiers suivants :
-              </p>
-              <hr className="my-2" />
-              <ul className="list-inside list-none">
-                {selectedDocument.documentattachment.map((documentattachment) => (
-                  <li className="list-inside" key={documentattachment}>
-                    {documentattachment}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <input
-              type="file"
-              multiple
-              onChange={handleFileChange}
-              accept=".pdf"
-              className="w-full px-4 py-2 mt-2 text-base transition duration-150 ease-in-out bg-transparent border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            />
-          </>
-        )}
-        {file && file.length > 0 && (
-          <p className="mt-2 text-sm ">{file.length} fichier(s) importé(s)</p>
-        )}
-        <button
-          type="submit"
-          disabled={isDisabled}
-          className="w-full flex justify-center py-2 px-4 mt-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-success hover:bg-success-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-success focus:ring-offset-white disabled:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
-          Envoyer
-        </button>
-      </form>
 
-      {showDetails && (
-        <ul className="list-inside list-none mt-2 flex flex-wrap">
-          {demandes.map((demande) => (
-            <li
-              className="mt-4 mx-3 border border-gray-300 rounded-md p-4 flex flex-col justify-between"
-              key={demande.id}
-            >
-              <div>
-                <h2 className="text-lg font-medium">Détails de la Demande</h2>
-                <hr className="my-2" />
-                <p>Document: {demande.document}</p>
-                <p>Date de demande: {demande.time}</p>
+        {/* Right side - Form */}
+        <div className="md:col-span-3">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="card bg-base-100 shadow">
+              <div className="card-body">
+                {selectedDocument ? (
+                  <>
+                    <h2 className="card-title flex gap-2">
+                      <FileText className="w-5 h-5" />
+                      {selectedDocument.name}
+                    </h2>
+                    <p className="text-gray-600">{selectedDocument.description}</p>
+
+                    <div className="form-control w-full">
+                      <label className="label">
+                        <span className="label-text">Date souhaitée de réception</span>
+                      </label>
+                      <input
+                        type="date"
+                        value={requestDate}
+                        onChange={(e) => setRequestDate(e.target.value)}
+                        className="input input-bordered w-full"
+                        min={new Date().toISOString().split('T')[0]}
+                      />
+                    </div>
+
+                    <div className="alert alert-info mt-4">
+                      <AlertCircle className="w-5 h-5" />
+                      <span>Documents requis :</span>
+                    </div>
+
+                    <ul className="list-disc list-inside space-y-1 ml-4">
+                      {selectedDocument.documentattachment.map((doc, index) => (
+                        <li key={index} className="text-gray-600">
+                          {doc}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="form-control w-full">
+                      <label className="label">
+                        <span className="label-text">Téléverser les documents</span>
+                      </label>
+                      <input
+                        type="file"
+                        multiple
+                        onChange={handleFileChange}
+                        accept=".pdf,.jpg,.jpeg,.png"
+                        className="file-input file-input-bordered w-full"
+                      />
+                      {files.length > 0 && (
+                        <label className="label">
+                          <span className="label-text-alt text-success">
+                            {files.length} fichier(s) sélectionné(s)
+                          </span>
+                        </label>
+                      )}
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={!isFormValid}
+                      className="btn btn-primary w-full mt-4"
+                    >
+                      <Upload className="w-4 h-4 mr-2" />
+                      Soumettre la demande
+                    </button>
+                  </>
+                ) : (
+                  <div className="text-center py-6 text-gray-500">
+                    Veuillez sélectionner un document à gauche pour commencer
+                  </div>
+                )}
               </div>
-              <p
-                className="text-lg font-medium mt-2"
-                style={{ color: getStatusColor(demande.status) }}
-              >
-                {statusList.find((s) => s.id === demande.status).name}
-              </p>
-            </li>
-          ))}
-        </ul>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      {/* Requests List */}
+      {requests.length > 0 && (
+        <div className="mt-12">
+          <h2 className="text-xl font-semibold mb-6">Mes demandes</h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            {requests.map((request) => (
+              <div key={request.id} className="card bg-base-100 shadow">
+                <div className="card-body">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h3 className="font-semibold">{request.document}</h3>
+                      <p className="text-sm text-gray-600">{request.description}</p>
+                    </div>
+                    {renderStatusBadge(request.status)}
+                  </div>
+
+                  <div className="divider my-2"></div>
+
+                  <div className="text-sm space-y-1">
+                    <p>
+                      <span className="text-gray-600">Date de demande:</span>{' '}
+                      {request.submissionDate}
+                    </p>
+                    <p>
+                      <span className="text-gray-600">Date souhaitée:</span> {request.requestDate}
+                    </p>
+                    <p>
+                      <span className="text-gray-600">Délai de traitement:</span>{' '}
+                      {request.processingTime}
+                    </p>
+                  </div>
+
+                  {/* File list */}
+                  <div className="mt-4">
+                    <h4 className="text-sm font-medium mb-2">Documents joints:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {request.files.map((file, index) => (
+                        <span key={index} className="badge badge-ghost">
+                          {file}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       )}
     </div>
   );

@@ -24,7 +24,7 @@ export const menuItems = [
   {
     label: 'Trainees',
     icon: 'Users',
-    href: '/students',
+    href: '/trainees',
     count: 892,
   },
   {
@@ -38,12 +38,6 @@ export const menuItems = [
     icon: 'Calendar',
     href: '/schedule',
     count: 12,
-  },
-  {
-    label: 'Reports',
-    icon: 'BarChart',
-    href: '/reports',
-    count: 4,
   },
   {
     label: 'Specializations',
