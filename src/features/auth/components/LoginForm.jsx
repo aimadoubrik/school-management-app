@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Mail, Lock, AlertCircle, Loader2, Globe } from 'lucide-react';
-import { login, googleAuth, clearError } from '../../auth/slices/authSlice';
+import { Mail, Lock, AlertCircle, Loader2 } from 'lucide-react';
+import { login, clearError } from '../../auth/slices/authSlice';
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ const LoginForm = () => {
   // Redirect if already authenticated
   useEffect(() => {
     if (isAuthenticated) {
-      navigate(location.state?.from || '/dashboard');
+      navigate(location.state?.from || '/home');
     }
   }, [isAuthenticated, navigate, location.state]);
 
@@ -38,22 +38,7 @@ const LoginForm = () => {
     const resultAction = await dispatch(login(formData));
 
     if (login.fulfilled.match(resultAction)) {
-      navigate(location.state?.from || '/dashboard');
-    }
-  };
-
-  const handleGoogleLogin = async () => {
-    // In a real implementation, you would integrate with Google OAuth
-    // This is a placeholder for the Google OAuth flow
-    try {
-      const googleToken = await window.google.auth(); // Placeholder
-      const resultAction = await dispatch(googleAuth(googleToken));
-
-      if (googleAuth.fulfilled.match(resultAction)) {
-        navigate(location.state?.from || '/dashboard');
-      }
-    } catch (err) {
-      console.error('Google authentication failed:', err);
+      navigate(location.state?.from || '/home');
     }
   };
 
@@ -132,17 +117,6 @@ const LoginForm = () => {
               )}
             </button>
           </form>
-
-          <div className="divider">OR</div>
-
-          <button
-            className="btn btn-outline w-full gap-2"
-            onClick={handleGoogleLogin}
-            disabled={isLoading}
-          >
-            <Globe className="h-5 w-5" />
-            Continue with Google
-          </button>
 
           <p className="text-center mt-6">
             Don't have an account?{' '}

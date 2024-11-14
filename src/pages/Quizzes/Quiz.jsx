@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Clock, CheckCircle, ArrowRight, ThumbsUp, ThumbsDown } from 'lucide-react';
+import { Clock, CheckCircle, ArrowRight } from 'lucide-react';
 import { useSpring, animated } from '@react-spring/web';
 import Confetti from 'react-confetti';
 import { useSelector } from 'react-redux';

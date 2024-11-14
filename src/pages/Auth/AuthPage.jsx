@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import LoginForm from '../../features/auth/components/LoginForm';
 import SignupForm from '../../features/auth/components/SignupForm';

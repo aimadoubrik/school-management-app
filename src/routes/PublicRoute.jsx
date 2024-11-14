@@ -1,3 +1,5 @@
+// This component acts as a wrapper for public routes
+
 import { Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';

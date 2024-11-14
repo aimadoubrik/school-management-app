@@ -5,7 +5,6 @@ import authService from '../services/authService';
 export const login = createAsyncThunk('auth/login', async (credentials, { rejectWithValue }) => {
   try {
     const response = await authService.login(credentials);
-    console.log(response.data);
     return response.data;
   } catch (error) {
     return rejectWithValue(error.message);
@@ -21,19 +20,6 @@ export const signup = createAsyncThunk('auth/signup', async (userData, { rejectW
     return rejectWithValue(error.message);
   }
 });
-
-// Thunk for Google authentication
-export const googleAuth = createAsyncThunk(
-  'auth/googleAuth',
-  async (googleToken, { rejectWithValue }) => {
-    try {
-      const response = await authService.googleAuth(googleToken);
-      return response;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
 
 // Initial state with persisted token check
 const initialState = {
@@ -94,21 +80,6 @@ const authSlice = createSlice({
         state.isAuthenticated = true;
       })
       .addCase(signup.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.payload;
-      })
-      // Handle Google auth
-      .addCase(googleAuth.pending, (state) => {
-        state.status = 'loading';
-        state.error = null;
-      })
-      .addCase(googleAuth.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isAuthenticated = true;
-      })
-      .addCase(googleAuth.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload;
       });

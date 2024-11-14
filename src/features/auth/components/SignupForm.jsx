@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Mail, Lock, User, AlertCircle, Loader2, Globe, GraduationCap } from 'lucide-react';
-import { signup, googleAuth, clearError } from '../../auth/slices/authSlice';
+import { Mail, Lock, User, AlertCircle, Loader2, GraduationCap } from 'lucide-react';
+import { signup, clearError } from '../../auth/slices/authSlice';
 
 // Password validation helper that matches the backend requirements
 const validatePassword = (password) => {
@@ -120,19 +120,6 @@ const SignupForm = () => {
     }
   };
 
-  const handleGoogleSignup = async () => {
-    try {
-      const googleToken = await window.google.auth(); // Placeholder for Google OAuth
-      const resultAction = await dispatch(googleAuth(googleToken));
-
-      if (googleAuth.fulfilled.match(resultAction)) {
-        navigate('/home');
-      }
-    } catch (err) {
-      console.error('Google authentication failed:', err);
-    }
-  };
-
   // Combine local validation errors with backend errors
   const displayErrors = [...localErrors, reduxError].filter(Boolean);
 
@@ -201,8 +188,9 @@ const SignupForm = () => {
                   value={formData.role}
                   onChange={(e) => setFormData({ ...formData, role: e.target.value })}
                 >
-                  <option value="student">Student</option>
-                  <option value="teacher">Teacher</option>
+                  <option value="trainee">Trainee</option>
+                  <option value="trainer">Trainer</option>
+                  <option value="admin">Admin</option>
                 </select>
                 <GraduationCap className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-base-content/40" />
               </div>
@@ -293,17 +281,6 @@ const SignupForm = () => {
               )}
             </button>
           </form>
-
-          <div className="divider">OR</div>
-
-          <button
-            className="btn btn-outline w-full gap-2"
-            onClick={handleGoogleSignup}
-            disabled={isLoading}
-          >
-            <Globe className="h-5 w-5" />
-            Sign up with Google
-          </button>
 
           <p className="text-center mt-6">
             Already have an account?{' '}

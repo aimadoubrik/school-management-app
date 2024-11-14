@@ -58,9 +58,11 @@ class AuthService {
       if (credentials.rememberMe) {
         localStorage.setItem('token', token);
         localStorage.setItem('refreshToken', refreshToken);
+        localStorage.setItem('user', JSON.stringify(user));
       } else {
         sessionStorage.setItem('token', token);
         sessionStorage.setItem('refreshToken', refreshToken);
+        sessionStorage.setItem('user', JSON.stringify(user));
       }
 
       // Clear login attempts on successful login
@@ -119,6 +121,7 @@ class AuthService {
 
       localStorage.setItem('token', token);
       localStorage.setItem('refreshToken', refreshToken);
+      localStorage.setItem('user', JSON.stringify(response.data));
 
       return {
         success: true,
@@ -162,8 +165,10 @@ class AuthService {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('refreshToken');
+    localStorage.removeItem('user');
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('refreshToken');
+    sessionStorage.removeItem('user');
   }
 
   getToken() {

@@ -85,7 +85,7 @@ const RouteConfig = () => {
         <Route
           path="/attendance"
           element={
-            <ProtectedRoute allowedRoles={['teacher', 'admin']}>
+            <ProtectedRoute allowedRoles={['trainer', 'admin']}>
               <AttendancePage />
             </ProtectedRoute>
           }
@@ -93,7 +93,7 @@ const RouteConfig = () => {
         <Route
           path="/documents"
           element={
-            <ProtectedRoute allowedRoles={['teacher', 'admin']}>
+            <ProtectedRoute allowedRoles={['trainer', 'admin']}>
               <DocumentsPage />
             </ProtectedRoute>
           }

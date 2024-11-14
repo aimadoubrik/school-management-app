@@ -1,12 +1,17 @@
 import { ChevronDown, LogOut, MessageSquare, UserCircle2 } from 'lucide-react';
 import { Avatar } from '../../../assets';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logout } from '../../../features/auth/slices/authSlice';
 
 const UserMenu = () => {
-  const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
+  // Get the user data from local storage
+  const user =
+    (localStorage.getItem('user') && JSON.parse(localStorage.getItem('user'))) ||
+    (sessionStorage.getItem('user') && JSON.parse(sessionStorage.getItem('user'))) ||
+    null;
 
   return (
     <div className="dropdown dropdown-bottom dropdown-end">
@@ -16,7 +21,7 @@ const UserMenu = () => {
             <img src={Avatar} alt="Profile" />
           </div>
         </div>
-        <span className="hidden sm:inline-block">{user.name === null ? 'User' : user.name} </span>
+        <span className="hidden sm:inline-block"> {user && user.name} </span>
         <ChevronDown className="hidden sm:inline-block w-4 h-4" />
       </button>
       <ul className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">

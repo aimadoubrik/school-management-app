@@ -5,7 +5,7 @@
       "name": "John Doe",
       "email": "john.doe@example.com",
       "password": "Test123!@#",
-      "role": "admin",
+      "role": "trainee",
       "createdAt": "2024-01-01T00:00:00.000Z",
       "lastLogin": "2024-03-15T10:30:00.000Z",
       "status": "active"
@@ -15,9 +15,19 @@
       "name": "Jim Halpert",
       "email": "jim@halpert.com",
       "password": "jim101&P",
-      "role": "teacher",
+      "role": "trainer",
       "acceptTerms": true,
       "createdAt": "2024-11-13T23:20:08.294Z",
+      "status": "active"
+    },
+    {
+      "id": "013f",
+      "name": "Admin Admin",
+      "email": "admin@admin.com",
+      "password": "admin",
+      "role": "admin",
+      "acceptTerms": true,
+      "createdAt": "2024-11-14T05:20:08.294Z",
       "status": "active"
     }
   ]

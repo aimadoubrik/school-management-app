@@ -13,10 +13,6 @@ const config = {
           path: '/users',
           method: 'POST',
         },
-        googleAuth: {
-          path: '/auth/google',
-          method: 'POST',
-        },
         refreshToken: {
           path: '/auth/refresh-token',
           method: 'POST',
@@ -67,11 +63,11 @@ const config = {
     },
   },
   roles: {
-    student: {
+    trainee: {
       permissions: ['read:profile', 'update:profile'],
     },
-    teacher: {
-      permissions: ['read:profile', 'update:profile', 'read:students', 'create:assignments'],
+    trainer: {
+      permissions: ['read:profile', 'update:profile', 'read:trainees', 'create:assignments'],
     },
     admin: {
       permissions: ['*'],
