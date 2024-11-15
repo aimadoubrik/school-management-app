@@ -1,14 +1,13 @@
 {
   "filieres": [
     {
-      "ordre": 4,
+      "id": "611e",
       "code_filiere": "F01",
       "intitule_filiere": "Informatique",
       "secteur": "Technologie",
       "groupes": [
         "i"
-      ],
-      "id": "611e"
+      ]
     },
     {
       "id": "dcb8",
@@ -84,18 +83,6 @@
         "4"
       ],
       "id": "df6b"
-    },
-    {
-      "id": "2f62",
-      "code_filiere": "F03",
-      "intitule_filiere": "AI",
-      "secteur": "Technology",
-      "groupes": [
-        "1",
-        "2",
-        "3",
-        "4"
-      ]
     }
   ]
 }

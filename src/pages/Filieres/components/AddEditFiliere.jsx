@@ -175,7 +175,7 @@ AddEditFiliere.propTypes = {
   onSave: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   filiere: PropTypes.shape({
-    id: PropTypes.number,
+    id: PropTypes.string,
     code_filiere: PropTypes.string,
     intitule_filiere: PropTypes.string,
     secteur: PropTypes.string,
