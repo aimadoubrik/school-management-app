@@ -1,5 +1,5 @@
 import QuickActions from './components/QuickActions';
-function Home() {
+function HomePage() {
   return (
     <div className="flex justify-center flex-wrap gap-4">
       <QuickActions />
@@ -7,4 +7,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;

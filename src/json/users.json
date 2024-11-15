@@ -1,0 +1,64 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Jane Doe",
+      "email": "jane.doe@example.com",
+      "password": "Test123!@#",
+      "role": "trainee",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "lastLogin": "2024-03-15T10:30:00.000Z",
+      "status": "active",
+      "phoneNumber": "+33 6 01 02 03 04",
+      "bio": "This is a bio of Jane Doe",
+      "website": "https://example.com",
+      "address": {
+        "street": "Rue de la Convention",
+        "number": "12",
+        "city": "Paris",
+        "zip": "75015",
+        "country": "France"
+      }
+    },
+    {
+      "id": "018d",
+      "name": "Jim Halpert",
+      "email": "jim@halpert.com",
+      "password": "jim101&P",
+      "role": "trainer",
+      "acceptTerms": true,
+      "createdAt": "2024-11-13T23:20:08.294Z",
+      "status": "active",
+      "phoneNumber": "+33 6 01 02 03 04",
+      "bio": "This is a bio of Jim Halpert",
+      "website": "https://example.com",
+      "address": {
+        "street": "Rue de la Convention",
+        "number": "12",
+        "city": "Paris",
+        "zip": "75015",
+        "country": "France"
+      }
+    },
+    {
+      "id": "013f",
+      "name": "Admin Admin",
+      "email": "admin@admin.com",
+      "password": "admin",
+      "role": "admin",
+      "acceptTerms": true,
+      "createdAt": "2024-11-14T05:20:08.294Z",
+      "status": "active",
+      "phoneNumber": "+33 6 01 02 03 04",
+      "bio": "This is a bio of Admin Admin",
+      "website": "https://example.com",
+      "address": {
+        "street": "Rue de la Convention",
+        "number": "12",
+        "city": "Paris",
+        "zip": "75015",
+        "country": "France"
+      }
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Calendar } from 'lucide-react'
 
+<<<<<<< HEAD:src/pages/Attendance/Attendance.jsx
 export default function Component() {
   const [data, setData] = useState(null)
   const [secteurs, setSecteurs] = useState([])
@@ -16,6 +17,20 @@ export default function Component() {
   const [dateFilter, setDateFilter] = useState('')
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal open state
   const [absentStudents, setAbsentStudents] = useState([]); // List of absent students
+=======
+function AttendancePage() {
+  const [data, setData] = useState(null);
+  const [secteurs, setSecteurs] = useState([]);
+  const [filieres, setFilieres] = useState([]);
+  const [groupes, setGroupes] = useState([]);
+  const [secteur, setSecteur] = useState('');
+  const [filiere, setFiliere] = useState('');
+  const [groupe, setGroupe] = useState('');
+  const [students, setStudents] = useState([]);
+  const [editing, setEditing] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [error, setError] = useState(null);
+>>>>>>> 9d7f1b8a9be9942558d7c5c9a7a03f248207733a:src/pages/Attendance/AttendancePage.jsx
 
   useEffect(() => {
     const fetchData = async () => {
@@ -336,3 +351,8 @@ export default function Component() {
     </div>
   )
 }
+<<<<<<< HEAD:src/pages/Attendance/Attendance.jsx
+=======
+
+export default AttendancePage;
+>>>>>>> 9d7f1b8a9be9942558d7c5c9a7a03f248207733a:src/pages/Attendance/AttendancePage.jsx

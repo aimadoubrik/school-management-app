@@ -1,24 +1,22 @@
 {
   "filieres": [
     {
-      "ordre": 4,
+      "id": "611e",
       "code_filiere": "F01",
       "intitule_filiere": "Informatique",
       "secteur": "Technologie",
       "groupes": [
         "i"
-      ],
-      "id": "611e"
+      ]
     },
     {
-      "ordre": 5,
-      "code_filiere": "F05",
+      "id": "dcb8",
+      "code_filiere": "F02",
       "intitule_filiere": "Réseaux et Télécommu",
       "secteur": "Technologie",
       "groupes": [
         "4"
-      ],
-      "id": "dcb8"
+      ]
     },
     {
       "ordre": 6,
