@@ -110,10 +110,10 @@ const Quiz = () => {
               <button
                 key={option}
                 onClick={() => handleAnswerChange(option)}
-                className={`btn btn-outline ${
+                className={`btn btn-outline  ${
                   selectedAnswers[currentQuestionIndex] === option
-                    ? 'btn-secondary text-secondary-content'
-                    : 'hover:bg-secondary hover:text-secondary-content'
+                    ? 'btn-secondary btn-active'
+                    : 'btn-secondary hover:bg-secondary hover:text-secondary-content'
                 }`}
               >
                 {option}
