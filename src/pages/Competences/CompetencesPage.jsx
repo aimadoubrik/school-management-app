@@ -93,7 +93,7 @@ const CompetencesPage = () => {
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Element de Competence</h1>
-      
+
       {/* Search Bar */}
       <div className="relative mb-6">
         <Search className="absolute left-3 top-3 w-5 h-5 text-gray-500" />
@@ -107,7 +107,14 @@ const CompetencesPage = () => {
       </div>
 
       <div className="flex justify-between items-center mb-6">
-        <button onClick={() => { setSelectedCompetence(null); setViewMode(false); setIsModalOpen(true); }} className="btn btn-primary gap-2">
+        <button
+          onClick={() => {
+            setSelectedCompetence(null);
+            setViewMode(false);
+            setIsModalOpen(true);
+          }}
+          className="btn btn-primary gap-2"
+        >
           <Plus className="w-5 h-5" /> Add Competence
         </button>
         <button onClick={handleCSVExport} className="btn btn-accent gap-2">
@@ -135,16 +142,26 @@ const CompetencesPage = () => {
                   <td>{competence.code_competence}</td>
                   <td>{competence.intitule_competence.join(', ')}</td>
                   <td>{competence.intitule_module}</td>
-                  <td><a href={competence.cours}>Cours</a></td>
-                  <td><a href={competence.quiz}>Quiz</a></td>
+                  <td>
+                    <a href={competence.cours}>Cours</a>
+                  </td>
+                  <td>
+                    <a href={competence.quiz}>Quiz</a>
+                  </td>
                   <td className="flex gap-2">
                     <button className="btn btn-info btn-sm" onClick={() => handleView(competence)}>
                       <Eye className="w-4 h-4" />
                     </button>
-                    <button className="btn btn-success btn-sm" onClick={() => handleEdit(competence)}>
+                    <button
+                      className="btn btn-success btn-sm"
+                      onClick={() => handleEdit(competence)}
+                    >
                       <Edit className="w-4 h-4" />
                     </button>
-                    <button className="btn btn-error btn-sm" onClick={() => handleDelete(competence.id)}>
+                    <button
+                      className="btn btn-error btn-sm"
+                      onClick={() => handleDelete(competence.id)}
+                    >
                       <Trash className="w-4 h-4" />
                     </button>
                   </td>
@@ -152,7 +169,9 @@ const CompetencesPage = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="6" className="text-center">No competences available.</td>
+                <td colSpan="6" className="text-center">
+                  No competences available.
+                </td>
               </tr>
             )}
           </tbody>
@@ -160,34 +179,49 @@ const CompetencesPage = () => {
       </div>
 
       <div className="flex justify-between items-center mt-4">
-        <button onClick={goToPreviousPage} disabled={currentPage === 1} className="btn btn-secondary">
+        <button
+          onClick={goToPreviousPage}
+          disabled={currentPage === 1}
+          className="btn btn-secondary"
+        >
           Previous
         </button>
-        <span>Page {currentPage} of {totalPages}</span>
-        <button onClick={goToNextPage} disabled={currentPage === totalPages} className="btn btn-secondary">
+        <span>
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          onClick={goToNextPage}
+          disabled={currentPage === totalPages}
+          className="btn btn-secondary"
+        >
           Next
         </button>
       </div>
 
       {isModalOpen && (
-      <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
-        <div className="bg-white rounded-lg shadow-lg w-80 p-4 max-h-[500px] overflow-y-auto"> 
-          <div className="flex justify-between items-center">
-            <h2 className="text-xl font-semibold">{viewMode ? 'View Competence' : 'Add Competence'}</h2>
-            <button onClick={handleCloseModal} className="text-gray-200 hover:text-gray-300">X</button>
-          </div>
-          <div className="mt-4">
-            {viewMode ? (
-              <ViewCompetence competence={selectedCompetence} closeModal={handleCloseModal} />
-            ) : (
-              <AddCompetence closeModal={handleCloseModal} selectedCompetence={selectedCompetence} />
-            )}
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white rounded-lg shadow-lg w-80 p-4 max-h-[500px] overflow-y-auto">
+            <div className="flex justify-between items-center">
+              <h2 className="text-xl font-semibold">
+                {viewMode ? 'View Competence' : 'Add Competence'}
+              </h2>
+              <button onClick={handleCloseModal} className="text-gray-200 hover:text-gray-300">
+                X
+              </button>
+            </div>
+            <div className="mt-4">
+              {viewMode ? (
+                <ViewCompetence competence={selectedCompetence} closeModal={handleCloseModal} />
+              ) : (
+                <AddCompetence
+                  closeModal={handleCloseModal}
+                  selectedCompetence={selectedCompetence}
+                />
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    )}
-
-
+      )}
     </div>
   );
 };
