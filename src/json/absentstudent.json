@@ -103,6 +103,52 @@
           "isAbsent": false
         }
       ]
+    },
+    {
+      "id": "d42b",
+      "secteur": "Science",
+      "filiere": "Physics",
+      "groupe": "Group 1",
+      "date": "2024-11-15",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        },
+        {
+          "studentId": "2",
+          "studentCef": "10002",
+          "studentName": "Alice Brown",
+          "studentCin": "CS1002",
+          "isAbsent": false
+        }
+      ]
+    },
+    {
+      "id": "8311",
+      "secteur": "Science",
+      "filiere": "Physics",
+      "groupe": "Group 1",
+      "date": "2024-11-15",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        },
+        {
+          "studentId": "2",
+          "studentCef": "10002",
+          "studentName": "Alice Brown",
+          "studentCin": "CS1002",
+          "isAbsent": false
+        }
+      ]
     }
   ]
 }

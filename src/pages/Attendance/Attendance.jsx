@@ -20,7 +20,7 @@ export default function Component() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3000/secteur')
+        const response = await fetch('http://localhost:4000/secteur')
         if (!response.ok) {
           throw new Error('Failed to fetch data')
         }
@@ -38,7 +38,7 @@ export default function Component() {
 
   const fetchAbsentStudents = async (selectedDate) => {
     try {
-      const response = await fetch(`http://localhost:4000/absentStudents?date=${selectedDate}&secteur=${secteur}&filiere=${filiere}&groupe=${groupe}`);
+      const response = await fetch(`http://localhost:3000/absentStudents?date=${selectedDate}&secteur=${secteur}&filiere=${filiere}&groupe=${groupe}`);
       const result = await response.json();
       console.log('Fetched absent students:', result);
       setAbsentStudents(result);  // Set the absent students state
@@ -60,7 +60,7 @@ export default function Component() {
 
   const saveSelectionsToAPI = async (updatedStudents) => {
     try {
-      const response = await fetch('http://localhost:4000/absentStudents', {
+      const response = await fetch('http://localhost:3000/absentStudents', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
