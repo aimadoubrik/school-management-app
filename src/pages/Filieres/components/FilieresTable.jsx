@@ -43,7 +43,7 @@ const FilieresTable = ({ filieres, sortConfig, onSort, onView, onEdit, onDelete 
 
   // Desktop view
   const DesktopTable = () => (
-    <div className="overflow-x-auto rounded-lg border bg-base-100 hidden md:block">
+    <div className="rounded-lg border bg-base-100 hidden md:block">
       <table className="table table-zebra w-full">
         <thead className="bg-base-200">
           <tr>
