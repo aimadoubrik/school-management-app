@@ -8,7 +8,6 @@ import SignupPage from '../features/auth/components/SignupForm';
 import {
   HomePage,
   NotFoundPage,
-  CoursesPage,
   QuizzesPage,
   FilieresPage,
   Quiz,
@@ -19,8 +18,9 @@ import {
   UnauthorizedPage,
   SchedulePage,
   TraineesPage,
-  CompetencesPage,
+  Courses,
 } from '../pages';
+import Course from '../pages/Courses/Course';
 
 const RouteConfig = () => {
   return (
@@ -65,10 +65,12 @@ const RouteConfig = () => {
           path="/courses"
           element={
             <ProtectedRoute>
-              <CoursesPage />
+              <Courses/>
             </ProtectedRoute>
           }
         />
+        <Route path="/courses/:courseId" element={<Course />} />
+
         <Route
           path="/quizzes"
           element={
@@ -122,14 +124,6 @@ const RouteConfig = () => {
           element={
             <ProtectedRoute allowedRoles={['admin']}>
               <FilieresPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/competences"
-          element={
-            <ProtectedRoute allowedRoles={['admin']}>
-              <CompetencesPage />
             </ProtectedRoute>
           }
         />

@@ -1,0 +1,102 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "name": "Introduction to Programming",
+      "instructor": "Dr. John Doe",
+      "model": "online",
+      "imageurl": "https://wallpapercave.com/wp/wp8661113.jpg",
+      "status": "completed",
+      "progress": 25,
+      "videoUrl": "https://youtu.be/ix9cRaBkVe0?si=FLfag4xR78ipTNZw",
+      "module": "Python Basics",
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+      "content": [
+        {
+          "Introduction" :  "Introduction to programming in Python",
+          "imageurl": "https://example.com/introduction-to-programming.png",
+          "description": "Learn the basics of Python programming language, including variables, data types, control structures, functions, and basic algorithms. This course is designed for beginners and provides a solid foundation for further study in programming."
+        }  
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Data Structures and Algorithms",
+      "instructor": "Prof. Jane Smith",
+      "model": "in-person",
+      "imageurl": "https://wallpapercave.com/wp/wp8661113.jpg",
+      "status": "active",
+      "module": "Data Structures",
+      "videoUrl": "https://example.com/data-structures-and-algorithms.mp4",
+      "progress": 90,
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+      "content": [
+        {
+          "Introduction" :  "Introduction to data structures and algorithms in Python",
+          "imageurl": "https://example.com/data-structures-and-algorithms.png",
+          "description" : "Learn the basics of Python programming language, including variables, data types, control structures, functions, and basic algorithms. This course is designed for beginners and provides a solid foundation for further study in programming."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Web Development",
+      "instructor": "Mr. Tom Brown",
+      "model": "hybrid",
+      "imageurl": "https://wallpapercave.com/wp/wp8661113.jpg",
+      "status": "active",
+      "module": "Web Development",
+      "videoUrl": "https://example.com/web-development.mp4",
+      "progress": 60,
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
+    },
+    {
+      "id": 4,
+      "name": "Machine Learning",
+      "instructor": "Dr. Alice Green",
+      "model": "online",
+      "imageurl": "https://wallpapercave.com/wp/wp8661113.jpg",
+      "status": "active",
+      "module": "Machine Learning",
+      "videoUrl": "https://example.com/machine-learning.mp4",
+      "progress": 80,
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
+    },
+    {
+      "id": 5,
+      "name": "Cybersecurity Basics",
+      "instructor": "Dr. Lisa White",
+      "model": "in-person",
+      "imageurl": "https://wallpapercave.com/wp/wp8661113.jpg",
+      "status": "active",
+      "module": "Cybersecurity",
+      "videoUrl": "https://example.com/cybersecurity-basics.mp4",
+      "progress": 75,
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
+    },
+    {
+      "id": 6,
+      "name": "Artificial Intelligence",
+      "instructor": "Dr. Bob Johnson",
+      "model": "online",
+      "imageurl": "https://wallpapercave.com/wp/wp8661113.jpg",
+      "status": "active",
+      "module": "Artificial Intelligence",
+      "videoUrl": "https://example.com/artificial-intelligence.mp4",
+      "progress": 50,
+      "pdfUrl": "https://example.com/artificial-intelligence.pdf"
+    },
+    {
+      "id": 7,
+      "name": "Database Management",
+      "instructor": "Prof. Emily Davis",
+      "model": "in-person",
+      "imageurl": "https://wallpapercave.com/wp/wp8661113.jpg",
+      "status": "completed",
+      "module": "Database Management",
+      "videoUrl": "https://example.com/database-management.mp4",
+      "progress": 100,
+      "pdfUrl": "https://example.com/database-management.pdf"
+    }
+  ]
+}

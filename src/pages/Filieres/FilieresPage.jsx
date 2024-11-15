@@ -6,8 +6,10 @@ import FilieresTable from './components/FilieresTable';
 import FilieresHeader from './components/FilieresHeader';
 import FilieresSearch from './components/FilieresSearch';
 import FilieresModal from './components/FilieresModal';
-import { LoadingSpinner, ErrorAlert, ConfirmModal } from '../../components';
+import ConfirmationModal from '../../components/shared/ConfirmModal';
 import { useFilieresLogic } from './hooks/useFilieresLogic';
+import LoadingSpinner from '../../components/shared/LoadingSpinner';
+import ErrorAlert from '../../components/shared/ErrorAlert';
 
 const FilieresPage = () => {
   const dispatch = useDispatch();
@@ -42,17 +44,8 @@ const FilieresPage = () => {
     dispatch(fetchFilieres());
   };
 
-  if (loading) return (
-    <div className="flex justify-center items-start min-h-screen">
-      <LoadingSpinner message="Chargement des filières..." />
-    </div>
-  );
-  if (error) return (
-    <div className="flex justify-center items-start min-h-screen">
-      <ErrorAlert message={error}
-      />
-    </div>
-  );
+  if (loading) return <LoadingSpinner message="Chargement des filières..." />;
+  if (error) return <ErrorAlert message={error} />;
 
   return (
     <div className="container mx-auto p-6 space-y-6">
@@ -88,7 +81,7 @@ const FilieresPage = () => {
         onDelete={handleDeleteClick}
       />
 
-      <ConfirmModal
+      <ConfirmationModal
         isOpen={isDeleteModalOpen}
         onClose={handleDeleteCancel}
         onConfirm={handleDeleteConfirm}

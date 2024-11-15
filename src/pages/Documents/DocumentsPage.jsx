@@ -1,7 +1,25 @@
 import { useState } from 'react';
-import { AlertCircle, FileText, Upload, Clock, CheckCircle, XCircle } from 'lucide-react';
+import {
+  AlertCircle,
+  FileText,
+  Upload,
+  Clock,
+  CheckCircle,
+  XCircle,
+  Printer,
+  Phone,
+} from 'lucide-react';
+import jsPDF from 'jspdf';
 
 const DocumentsPage = () => {
+  const Stagiaire = {
+    id: 1,
+    name: 'Mohammed Elmzar',
+    email: 'lG2k9@aza.com',
+    phone: '1234567890',
+    address: 'Elmzar , 23',
+    etablissement: 'Ista Ait Melloul',
+  };
   const documentList = [
     {
       id: 1,
@@ -95,6 +113,78 @@ const DocumentsPage = () => {
 
     setTimeout(() => setShowSuccessAlert(false), 5000);
   };
+
+  const downloadDemande = (request) => {
+    // Create a new PDF document
+    const doc = new jsPDF();
+    const imageUrl = 'https://mir-s3-cdn-cf.behance.net/projects/404/3711ff165624403.Y3JvcCw4MjAsNjQxLDAsMg.png';
+    
+    // Set title font
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(20);
+  
+    // Add image to the document
+    doc.addImage(imageUrl, 'PNG', 10, 0, 40, 40);
+    doc.text('Demande de Document', 105, 20, { align: 'center' });
+  
+    // Reset font for body text
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(12);
+  
+    // Define line height and starting point
+    const startY = 40;
+    const lineHeight = 10;
+  
+    // Helper function to add a label-value pair to the PDF
+    const addLine = (label, value, yPosition) => {
+      doc.setFont('helvetica', 'bold');
+      doc.text(`${label}: `, 20, yPosition);
+      doc.setFont('helvetica', 'normal');
+      doc.text(value, 80, yPosition);
+    };
+  
+    // Add student information
+    addLine('Nom', Stagiaire.name, startY);
+    addLine('Email', Stagiaire.email, startY + lineHeight);
+    addLine('Telephone', Stagiaire.phone, startY + lineHeight * 2);
+    addLine('Adresse', Stagiaire.address, startY + lineHeight * 3);
+    addLine('Etablissement', Stagiaire.etablissement, startY + lineHeight * 4);
+  
+    // Add a horizontal line as a separator
+    doc.line(20, startY + lineHeight * 5, 190, startY + lineHeight * 5);
+  
+    // Add request information
+    addLine('Document', request.document, startY + lineHeight * 6);
+    addLine('Description', request.description, startY + lineHeight * 7);
+    addLine('Date de soumission', request.submissionDate, startY + lineHeight * 8);
+    addLine('Date souhaitée', request.requestDate, startY + lineHeight * 9);
+    addLine('Délai de traitement', request.processingTime, startY + lineHeight * 10);
+  
+    // Get status text and add it
+    const status = statusList.find((s) => s.id === request.status);
+    addLine('Statut', status.name, startY + lineHeight * 11);
+  
+    // Add a horizontal line as a separator
+    doc.line(20, startY + lineHeight * 12, 190, startY + lineHeight * 12);
+    // Add files section
+    doc.setFont('helvetica', 'bold');
+    doc.text('Documents joints:', 20, startY + lineHeight * 13);
+    doc.setFont('helvetica', 'normal');
+  
+    // List all attached files
+    request.files.forEach((file, index) => {
+      doc.text(`- ${file}`, 30, startY + lineHeight * (14 + index));
+    });
+  
+    // Add footer with document generation date
+    const footer = `Document généré le ${new Date().toLocaleDateString('fr-FR')}`;
+    doc.setFontSize(10);
+    doc.text(footer, 105, 280, { align: 'center' });
+  
+    // Save the PDF document
+    doc.save(`demande-${request.document}-${request.id}.pdf`);
+  };
+  
 
   const isFormValid =
     selectedDocument && requestDate && files.length >= selectedDocument?.documentattachment.length;
@@ -279,6 +369,15 @@ const DocumentsPage = () => {
                         </span>
                       ))}
                     </div>
+                  </div>
+                  <div>
+                    <button
+                      onClick={() => downloadDemande(request)}
+                      className="btn btn-sm btn-primary mt-4"
+                    >
+                      <Printer className="w-4 h-4 mr-2" />
+                      Imprimer
+                    </button>
                   </div>
                 </div>
               </div>

@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-import competencesSlice from '../features/competences/CompetenceSlice';
 import {
   notificationsReducer,
   themeReducer,
@@ -9,6 +8,7 @@ import {
   quizzesReducer,
   filieresReducer,
   authReducer,
+  coursesReducer
 } from '../features';
 
 const rootReducer = combineReducers({
@@ -18,8 +18,8 @@ const rootReducer = combineReducers({
   ui: uiReducer,
   quizzes: quizzesReducer,
   filieres: filieresReducer,
-  competences: competencesSlice,
   auth: authReducer,
+  courses: coursesReducer
 });
 
 const store = configureStore({
@@ -27,3 +27,4 @@ const store = configureStore({
 });
 
 export default store;
+
