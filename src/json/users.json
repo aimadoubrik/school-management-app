@@ -2,8 +2,8 @@
   "users": [
     {
       "id": "1",
-      "name": "John Doe",
-      "email": "john.doe@example.com",
+      "name": "Jane Doe",
+      "email": "jane.doe@example.com",
       "password": "Test123!@#",
       "role": "trainee",
       "createdAt": "2024-01-01T00:00:00.000Z",

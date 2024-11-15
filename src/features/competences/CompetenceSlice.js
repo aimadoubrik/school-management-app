@@ -3,31 +3,31 @@ import axios from 'axios';
 
 // Récupérer toutes les compétences
 export const fetchCompetences = createAsyncThunk('competences/fetchCompetences', async () => {
-  const response = await axios.get('http://localhost:3020/compétences');
+  const response = await axios.get('http://localhost:3004/competences');
   return response.data;
 });
 
 // Ajouter une compétence
 export const addCompetence = createAsyncThunk('competences/addCompetence', async (competenceData) => {
-  const response = await axios.post('http://localhost:3020/compétences', competenceData);
+  const response = await axios.post('http://localhost:3004/competences', competenceData);
   return competenceData;
 });
 
 // Modifier une compétence
 export const editCompetence = createAsyncThunk('competences/editCompetence', async (competence) => {
-  const response = await axios.put(`http://localhost:3020/compétences/${competence.id}`, competence);
+  const response = await axios.put(`http://localhost:3004/competences/${competence.id}`, competence);
   return competence;
 });
 
 // Supprimer une compétence
 export const deleteCompetence = createAsyncThunk('competences/deleteCompetence', async (id) => {
-  await axios.delete(`http://localhost:3020/compétences/${id}`);
+  await axios.delete(`http://localhost:3004/competences/${id}`);
   return id;
 });
 
 // Récupérer une compétence par son ID
 export const fetchCompetenceById = createAsyncThunk('competences/fetchCompetenceById', async (id) => {
-  const response = await axios.get(`http://localhost:3020/compétences/${id}`);
+  const response = await axios.get(`http://localhost:3004/competences/${id}`);
   return response.data;
 });
 

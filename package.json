@@ -9,7 +9,7 @@
     "lint": "eslint src",
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md}\"",
-    "json-server": "concurrently \"json-server --watch src/json/quizzes.json --port 3000\" \"json-server --watch src/json/filieres.json --port 3001\" \"json-server --watch src/json/attendance.json --port 3002\" \"json-server --watch src/json/users.json --port 3003\" \"wait\""
+    "json-server": "concurrently \"json-server --watch src/json/quizzes.json --port 3000\" \"json-server --watch src/json/filieres.json --port 3001\" \"json-server --watch src/json/attendance.json --port 3002\" \"json-server --watch src/json/users.json --port 3003\" \"json-server --watch src/json/competences.json --port 3004\""
   },
   "dependencies": {
     "@react-spring/web": "^9.7.5",

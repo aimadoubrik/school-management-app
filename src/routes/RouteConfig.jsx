@@ -5,7 +5,6 @@ import ProtectedRoute from './ProtectedRoute';
 import DashboardLayout from '../layout/DashboardLayout';
 import LoginPage from '../features/auth/components/LoginForm';
 import SignupPage from '../features/auth/components/SignupForm';
-import CompetenceList from '../pages/Competences/CompetenceList';
 import {
   HomePage,
   NotFoundPage,
@@ -20,6 +19,7 @@ import {
   UnauthorizedPage,
   SchedulePage,
   TraineesPage,
+  CompetencesPage
 
 } from '../pages';
 
@@ -126,11 +126,11 @@ const RouteConfig = () => {
             </ProtectedRoute>
           }
         />
-         <Route
-          path="/competenceList"
+        <Route
+          path="/competences"
           element={
             <ProtectedRoute allowedRoles={['admin']}>
-              <CompetenceList />
+              <CompetencesPage />
             </ProtectedRoute>
           }
         />

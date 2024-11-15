@@ -6,7 +6,7 @@ import AddCompetence from './components/AddCompetence';
 import ViewCompetence from './components/ViewCompetence';
 import Papa from 'papaparse';
 
-const CompetenceList = () => {
+const CompetencesPage = () => {
   const dispatch = useDispatch();
   const { competences = [], loading, error } = useSelector((state) => state.competences);
   const [selectedCompetence, setSelectedCompetence] = useState(null);
@@ -192,4 +192,4 @@ const CompetenceList = () => {
   );
 };
 
-export default CompetenceList;
+export default CompetencesPage;
