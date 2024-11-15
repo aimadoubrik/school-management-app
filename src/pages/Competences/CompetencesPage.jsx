@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCompetences, deleteCompetence } from '../../features/competences/CompetenceSlice';
-import { Eye, Edit, Trash, AlertCircle, Download, Plus, Search } from 'lucide-react';
+import { fetchCompetences, deleteCompetence } from '../../features/competences/competencesSlice';
+import { Eye, Edit, Trash, Download, Plus, Search } from 'lucide-react';
 import AddCompetence from './components/AddCompetence';
 import ViewCompetence from './components/ViewCompetence';
 import { LoadingSpinner, ErrorAlert } from '../../components';

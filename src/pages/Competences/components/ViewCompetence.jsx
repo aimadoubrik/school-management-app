@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { deleteCompetence } from '../../../features/competences/CompetenceSlice';
+import { deleteCompetence } from '../../../features/competences/competencesSlice';
 import { X, Trash2, BookOpen, Code, Building2, Users } from 'lucide-react';
 import PropTypes from 'prop-types';
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Calendar } from 'lucide-react';
- 
+
 export default function Component() {
   const [data, setData] = useState(null);
   const [secteurs, setSecteurs] = useState([]);
@@ -15,11 +15,11 @@ export default function Component() {
   const [error, setError] = useState(null);
   const [dateFilter, setDateFilter] = useState('');
   const [absentStudents, setAbsentStudents] = useState([]);
- 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3002/secteur');
+        const response = await fetch('http://localhost:3000/secteur');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -31,20 +31,23 @@ export default function Component() {
         setError('Failed to load data. Please try again.');
       }
     };
- 
+
     fetchData();
   }, []);
- 
+
   const isDateInPast = (selectedDate) => {
     const today = new Date().toISOString().split('T')[0];
     return selectedDate < today;
   };
- 
+
   const fetchAbsentStudents = async (selectedDate) => {
     try {
       const response = await fetch(
-        `http://localhost:3006/absentStudents?date=${selectedDate}&secteur=${secteur}&filiere=${filiere}&groupe=${groupe}`
+        `http://localhost:3000/absentStudents?date=${selectedDate}&secteur=${secteur}&filiere=${filiere}&groupe=${groupe}`
       );
+      if (!response.ok) {
+        throw new Error('Failed to fetch absent students');
+      }
       const result = await response.json();
       setAbsentStudents(result);
     } catch (error) {
@@ -52,20 +55,24 @@ export default function Component() {
       setError('Failed to load absent students. Please try again.');
     }
   };
- 
+
   const handleDateChange = (e) => {
     const selectedDate = e.target.value;
-    const formattedDate = new Date(selectedDate).toISOString().split('T')[0];
-    setDateFilter(formattedDate);
-    if (isDateInPast(formattedDate)) {
-      fetchAbsentStudents(formattedDate); // Load absent students for past date
-      setEditing(false);
-    } else {
-      setEditing(true); // Allow editing for today's date
-      setAbsentStudents([]); // Clear absent students when viewing today's date
+    try {
+      const formattedDate = new Date(selectedDate).toISOString().split('T')[0];
+      setDateFilter(formattedDate);
+      if (isDateInPast(formattedDate)) {
+        fetchAbsentStudents(formattedDate);
+        setEditing(false);
+      } else {
+        setEditing(true);
+        setAbsentStudents([]);
+      }
+    } catch {
+      setError('Invalid date selected.');
     }
   };
- 
+
   const handleSecteurChange = (e) => {
     const value = e.target.value;
     setSecteur(value);
@@ -75,7 +82,7 @@ export default function Component() {
     setStudents([]);
     setEditing(false);
   };
- 
+
   const handleFiliereChange = (e) => {
     const value = e.target.value;
     setFiliere(value);
@@ -84,7 +91,7 @@ export default function Component() {
     setStudents([]);
     setEditing(false);
   };
- 
+
   const handleGroupeChange = (e) => {
     const value = e.target.value;
     setGroupe(value);
@@ -92,31 +99,21 @@ export default function Component() {
     setStudents(studentsList);
     setEditing(!isDateInPast(dateFilter));
   };
- 
+
   const handleCheckboxChange = (id) => {
     setStudents((prevStudents) =>
       prevStudents.map((s) => (s.id === id ? { ...s, selected: !s.selected } : s))
     );
   };
+
   const handleEditCancel = () => {
-    setEditing(!editing);  // Toggle the edit mode
-    if (editing) {
-      // If we're canceling, reset the students to the state before editing
-      setStudents([...students]);
-    } else {
-      // If we're starting to edit, we want to reset the selections
-      setStudents(students.map(student => ({ ...student, selected: false })));
-    }
+    setEditing(!editing);
+    setStudents(students.map((s) => ({ ...s, selected: false })));
   };
- 
-  const isToday = () => {
-    const today = new Date().toISOString().split('T')[0];
-    return dateFilter === today;
-  };
- 
+
   const saveSelectionsToAPI = async (updatedStudents) => {
     try {
-      const response = await fetch('http://localhost:3006/absentStudents', {
+      const response = await fetch('http://localhost:3000/absentStudents', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -136,38 +133,31 @@ export default function Component() {
           })),
         }),
       });
- 
+
       if (!response.ok) {
         throw new Error('Failed to save selections');
       }
-      return await response.json();
     } catch (error) {
       console.error('Error saving selections:', error);
-      throw error;
+      setError('Failed to save selections. Please try again.');
     }
   };
- 
+
   const saveSelections = async () => {
     setIsSaving(true);
     setError(null);
- 
+
     try {
-      const updatedStudents = students.map((student) => ({
-        ...student,
-        selected: student.selected,
-      }));
- 
+      const updatedStudents = students.map((s) => ({ ...s, selected: s.selected }));
       await saveSelectionsToAPI(updatedStudents);
- 
-      setStudents(updatedStudents);
       setEditing(false);
-    } catch (error) {
-      setError('Failed to save selections. Please try again.');
+    } catch {
+      setError('Failed to save selections.');
     } finally {
       setIsSaving(false);
     }
   };
- 
+
   if (!data) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -175,15 +165,11 @@ export default function Component() {
       </div>
     );
   }
- 
+
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
-      {error && (
-        <div className="alert alert-error mb-4">
-          <span>{error}</span>
-        </div>
-      )}
- 
+      {error && <div className="alert alert-error mb-4">{error}</div>}
+
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
         <select
           className="select select-bordered w-full"
@@ -197,7 +183,7 @@ export default function Component() {
             </option>
           ))}
         </select>
- 
+
         <select
           className="select select-bordered w-full"
           value={filiere}
@@ -211,7 +197,7 @@ export default function Component() {
             </option>
           ))}
         </select>
- 
+
         <select
           className="select select-bordered w-full"
           value={groupe}
@@ -225,7 +211,7 @@ export default function Component() {
             </option>
           ))}
         </select>
- 
+
         <div className="relative">
           <input
             type="date"
@@ -233,10 +219,13 @@ export default function Component() {
             value={dateFilter}
             onChange={handleDateChange}
           />
-          <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+          <Calendar
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            size={20}
+          />
         </div>
       </div>
- 
+
       <div className="overflow-x-auto bg-base-100 rounded-lg shadow-lg mb-6">
         <table className="table w-full">
           <thead>
@@ -249,39 +238,29 @@ export default function Component() {
             </tr>
           </thead>
           <tbody>
-            {(isDateInPast(dateFilter) ? absentStudents : students).map((student) => {
-              // Check if the student is in the absentStudents list
-              const isAbsent = absentStudents.some(
-                (absentStudent) => absentStudent.id === student.id
-              );
- 
-              return (
-                <tr key={student.id}>
-                  {editing && (
-                    <td>
-                      <input
-                        type="checkbox"
-                        className="checkbox checkbox-primary"
-                        checked={student.selected || isAbsent} // If the student is in the absent list, mark them as selected
-                        onChange={() => handleCheckboxChange(student.id)}
-                        disabled={!editing}
-                      />
-                    </td>
-                  )}
-                  <td>{student.cef}</td>
-                  <td>{student.fullname}</td>
-                  <td>{student.dateNaissance}</td>
-                  <td>{student.cin}</td>
-                  <td>{isAbsent ? 'Absent' : 'Present'}</td> {/* Show status */}
-                </tr>
-              );
-            })}
+            {(isDateInPast(dateFilter) ? absentStudents : students).map((student) => (
+              <tr key={student.id}>
+                {editing && (
+                  <td>
+                    <input
+                      type="checkbox"
+                      className="checkbox checkbox-primary"
+                      checked={student.selected || absentStudents.some((a) => a.id === student.id)}
+                      onChange={() => handleCheckboxChange(student.id)}
+                      disabled={!editing}
+                    />
+                  </td>
+                )}
+                <td>{student.cef}</td>
+                <td>{student.fullname}</td>
+                <td>{student.dateNaissance}</td>
+                <td>{student.cin}</td>
+              </tr>
+            ))}
           </tbody>
- 
- 
         </table>
       </div>
- 
+
       <div className="flex justify-end space-x-4">
         {editing ? (
           <>
@@ -292,15 +271,14 @@ export default function Component() {
               Cancel
             </button>
           </>
-        ) : isToday() ? (
+        ) : isDateInPast(dateFilter) ? (
+          <div className="text-gray-500 italic">View-only mode for past dates</div>
+        ) : (
           <button onClick={handleEditCancel} className="btn btn-primary">
             Edit
           </button>
-        ) : (
-          <div className="text-gray-500 italic">View-only mode for past dates</div>
         )}
       </div>
     </div>
   );
 }
- 

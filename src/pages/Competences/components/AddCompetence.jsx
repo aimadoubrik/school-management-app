@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { addCompetence, editCompetence } from '../../../features/competences/CompetenceSlice';
+import { addCompetence, editCompetence } from '../../../features/competences/competencesSlice';
 import { Save } from 'lucide-react';
 import PropTypes from 'prop-types';
 

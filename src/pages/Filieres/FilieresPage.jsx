@@ -42,17 +42,18 @@ const FilieresPage = () => {
     dispatch(fetchFilieres());
   };
 
-  if (loading) return (
-    <div className="flex justify-center items-start min-h-screen">
-      <LoadingSpinner message="Chargement des filières..." />
-    </div>
-  );
-  if (error) return (
-    <div className="flex justify-center items-start min-h-screen">
-      <ErrorAlert message={error}
-      />
-    </div>
-  );
+  if (loading)
+    return (
+      <div className="flex justify-center items-start min-h-screen">
+        <LoadingSpinner message="Chargement des filières..." />
+      </div>
+    );
+  if (error)
+    return (
+      <div className="flex justify-center items-start min-h-screen">
+        <ErrorAlert message={error} />
+      </div>
+    );
 
   return (
     <div className="container mx-auto p-6 space-y-6">
