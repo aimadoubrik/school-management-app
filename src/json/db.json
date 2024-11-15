@@ -1,1486 +1,1519 @@
 {
     "users": [
-        {
-            "id": "1",
-            "name": "Jane Doe",
-            "email": "jane.doe@example.com",
-            "password": "Test123!@#",
-            "role": "trainee",
-            "createdAt": "2024-01-01T00:00:00.000Z",
-            "lastLogin": "2024-03-15T10:30:00.000Z",
-            "status": "active",
-            "phoneNumber": "+33 6 01 02 03 04",
-            "bio": "This is a bio of Jane Doe",
-            "website": "https://example.com",
-            "address": {
-                "street": "Rue de la Convention",
-                "number": "12",
-                "city": "Paris",
-                "zip": "75015",
-                "country": "France"
-            }
-        },
-        {
-            "id": "018d",
-            "name": "Jim Halpert",
-            "email": "jim@halpert.com",
-            "password": "jim101&P",
-            "role": "trainer",
-            "acceptTerms": true,
-            "createdAt": "2024-11-13T23:20:08.294Z",
-            "status": "active",
-            "phoneNumber": "+33 6 01 02 03 04",
-            "bio": "This is a bio of Jim Halpert",
-            "website": "https://example.com",
-            "address": {
-                "street": "Rue de la Convention",
-                "number": "12",
-                "city": "Paris",
-                "zip": "75015",
-                "country": "France"
-            }
-        },
-        {
-            "id": "013f",
-            "name": "Admin Admin",
-            "email": "admin@admin.com",
-            "password": "admin",
-            "role": "admin",
-            "acceptTerms": true,
-            "createdAt": "2024-11-14T05:20:08.294Z",
-            "status": "active",
-            "phoneNumber": "+33 6 01 02 03 04",
-            "bio": "This is a bio of Admin Admin",
-            "website": "https://example.com",
-            "address": {
-                "street": "Rue de la Convention",
-                "number": "12",
-                "city": "Paris",
-                "zip": "75015",
-                "country": "France"
-            }
+      {
+        "id": "1",
+        "name": "Jane Doe",
+        "email": "jane.doe@example.com",
+        "password": "Test123!@#",
+        "role": "trainee",
+        "createdAt": "2024-01-01T00:00:00.000Z",
+        "lastLogin": "2024-03-15T10:30:00.000Z",
+        "status": "active",
+        "phoneNumber": "+33 6 01 02 03 04",
+        "bio": "This is a bio of Jane Doe",
+        "website": "https://example.com",
+        "address": {
+          "street": "Rue de la Convention",
+          "number": "12",
+          "city": "Paris",
+          "zip": "75015",
+          "country": "France"
         }
+      },
+      {
+        "id": "018d",
+        "name": "Jim Halpert",
+        "email": "jim@halpert.com",
+        "password": "jim101&P",
+        "role": "trainer",
+        "acceptTerms": true,
+        "createdAt": "2024-11-13T23:20:08.294Z",
+        "status": "active",
+        "phoneNumber": "+33 6 01 02 03 04",
+        "bio": "This is a bio of Jim Halpert",
+        "website": "https://example.com",
+        "address": {
+          "street": "Rue de la Convention",
+          "number": "12",
+          "city": "Paris",
+          "zip": "75015",
+          "country": "France"
+        }
+      },
+      {
+        "id": "013f",
+        "name": "Admin Admin",
+        "email": "admin@admin.com",
+        "password": "admin",
+        "role": "admin",
+        "acceptTerms": true,
+        "createdAt": "2024-11-14T05:20:08.294Z",
+        "status": "active",
+        "phoneNumber": "+33 6 01 02 03 04",
+        "bio": "This is a bio of Admin Admin",
+        "website": "https://example.com",
+        "address": {
+          "street": "Rue de la Convention",
+          "number": "12",
+          "city": "Paris",
+          "zip": "75015",
+          "country": "France"
+        }
+      }
     ],
     "emploi": {
-        "DEV": {
-            "1ere annee": {
-                "Monday": [
-                    "Math",
-                    "Physics",
-                    "Programming",
-                    "English"
-                ],
-                "Tuesday": [
-                    "Database",
-                    "Web Dev",
-                    "empty",
-                    "empty"
-                ],
-                "Wednesday": [
-                    "Programming",
-                    "Math",
-                    "Physics",
-                    "empty"
-                ],
-                "Thursday": [
-                    "English",
-                    "Web Dev",
-                    "Database",
-                    "empty"
-                ],
-                "Friday": [
-                    "Physics",
-                    "Programming",
-                    "Math",
-                    "empty"
-                ],
-                "Saturday": [
-                    "empty",
-                    "empty",
-                    "empty",
-                    "empty"
-                ]
-            },
-            "2eme annee": {
-                "Monday": [
-                    "Advanced Programming",
-                    "Database Design",
-                    "empty",
-                    "empty"
-                ],
-                "Tuesday": [
-                    "Software Engineering",
-                    "Web Framework",
-                    "empty",
-                    "empty"
-                ],
-                "Wednesday": [
-                    "Project Management",
-                    "Advanced Math",
-                    "empty",
-                    "empty"
-                ],
-                "Thursday": [
-                    "Network Security",
-                    "AI Basics",
-                    "empty",
-                    "empty"
-                ],
-                "Friday": [
-                    "Mobile Dev",
-                    "Cloud Computing",
-                    "empty",
-                    "empty"
-                ],
-                "Saturday": [
-                    "empty",
-                    "empty",
-                    "empty",
-                    "empty"
-                ]
-            }
+      "DEV": {
+        "1ere annee": {
+          "Monday": [
+            "Math",
+            "Physics",
+            "Programming",
+            "English"
+          ],
+          "Tuesday": [
+            "Database",
+            "Web Dev",
+            "empty",
+            "empty"
+          ],
+          "Wednesday": [
+            "Programming",
+            "Math",
+            "Physics",
+            "empty"
+          ],
+          "Thursday": [
+            "English",
+            "Web Dev",
+            "Database",
+            "empty"
+          ],
+          "Friday": [
+            "Physics",
+            "Programming",
+            "Math",
+            "empty"
+          ],
+          "Saturday": [
+            "empty",
+            "empty",
+            "empty",
+            "empty"
+          ]
         },
-        "ID": {
-            "1ere annee": {
-                "Monday": [
-                    "Database",
-                    "Network",
-                    "Programming",
-                    "English"
-                ],
-                "Tuesday": [
-                    "Design",
-                    "UI/UX",
-                    "Security",
-                    "empty"
-                ],
-                "Wednesday": [
-                    "Programming",
-                    "Database",
-                    "Network",
-                    "empty"
-                ],
-                "Thursday": [
-                    "English",
-                    "Security",
-                    "UI/UX",
-                    "empty"
-                ],
-                "Friday": [
-                    "Network",
-                    "Programming",
-                    "Database",
-                    "empty"
-                ],
-                "Saturday": [
-                    "empty",
-                    "empty",
-                    "empty",
-                    "empty"
-                ]
-            },
-            "2eme annee": {
-                "Monday": [
-                    "System Design",
-                    "Network Security",
-                    "empty",
-                    "empty"
-                ],
-                "Tuesday": [
-                    "UX Research",
-                    "Advanced Security",
-                    "empty",
-                    "empty"
-                ],
-                "Wednesday": [
-                    "Project Design",
-                    "User Testing",
-                    "empty",
-                    "empty"
-                ],
-                "Thursday": [
-                    "Security Audit",
-                    "UX Design",
-                    "empty",
-                    "empty"
-                ],
-                "Friday": [
-                    "Interface Design",
-                    "System Analysis",
-                    "empty",
-                    "empty"
-                ],
-                "Saturday": [
-                    "empty",
-                    "empty",
-                    "empty",
-                    "empty"
-                ]
-            }
+        "2eme annee": {
+          "Monday": [
+            "Advanced Programming",
+            "Database Design",
+            "empty",
+            "empty"
+          ],
+          "Tuesday": [
+            "Software Engineering",
+            "Web Framework",
+            "empty",
+            "empty"
+          ],
+          "Wednesday": [
+            "Project Management",
+            "Advanced Math",
+            "empty",
+            "empty"
+          ],
+          "Thursday": [
+            "Network Security",
+            "AI Basics",
+            "empty",
+            "empty"
+          ],
+          "Friday": [
+            "Mobile Dev",
+            "Cloud Computing",
+            "empty",
+            "empty"
+          ],
+          "Saturday": [
+            "empty",
+            "empty",
+            "empty",
+            "empty"
+          ]
         }
+      },
+      "ID": {
+        "1ere annee": {
+          "Monday": [
+            "Database",
+            "Network",
+            "Programming",
+            "English"
+          ],
+          "Tuesday": [
+            "Design",
+            "UI/UX",
+            "Security",
+            "empty"
+          ],
+          "Wednesday": [
+            "Programming",
+            "Database",
+            "Network",
+            "empty"
+          ],
+          "Thursday": [
+            "English",
+            "Security",
+            "UI/UX",
+            "empty"
+          ],
+          "Friday": [
+            "Network",
+            "Programming",
+            "Database",
+            "empty"
+          ],
+          "Saturday": [
+            "empty",
+            "empty",
+            "empty",
+            "empty"
+          ]
+        },
+        "2eme annee": {
+          "Monday": [
+            "System Design",
+            "Network Security",
+            "empty",
+            "empty"
+          ],
+          "Tuesday": [
+            "UX Research",
+            "Advanced Security",
+            "empty",
+            "empty"
+          ],
+          "Wednesday": [
+            "Project Design",
+            "User Testing",
+            "empty",
+            "empty"
+          ],
+          "Thursday": [
+            "Security Audit",
+            "UX Design",
+            "empty",
+            "empty"
+          ],
+          "Friday": [
+            "Interface Design",
+            "System Analysis",
+            "empty",
+            "empty"
+          ],
+          "Saturday": [
+            "empty",
+            "empty",
+            "empty",
+            "empty"
+          ]
+        }
+      }
     },
     "quizzes": [
-        {
-            "quizID": "QZ101",
-            "courseId": "BIO101",
-            "courseName": "Introduction to Biology",
-            "teacherId": "T001",
-            "teacherName": "Dr. Alice Johnson",
-            "Deadline": "2024-11-30T23:59:59Z",
-            "questions": [
-                {
-                    "question": "What is the powerhouse of the cell?",
-                    "answers": [
-                        "Nucleus",
-                        "Mitochondria",
-                        "Ribosome",
-                        "Endoplasmic Reticulum"
-                    ],
-                    "correctAnswer": "Mitochondria"
-                },
-                {
-                    "question": "Which of the following is a photosynthetic pigment?",
-                    "answers": [
-                        "Chlorophyll",
-                        "Carotene",
-                        "Hemoglobin",
-                        "Collagen"
-                    ],
-                    "correctAnswer": "Chlorophyll"
-                },
-                {
-                    "question": "What is the main function of red blood cells?",
-                    "answers": [
-                        "Oxygen transport",
-                        "Fight infections",
-                        "Produce insulin",
-                        "Store energy"
-                    ],
-                    "correctAnswer": "Oxygen transport"
-                },
-                {
-                    "question": "Which organ is responsible for filtering blood in humans?",
-                    "answers": [
-                        "Heart",
-                        "Liver",
-                        "Kidneys",
-                        "Lungs"
-                    ],
-                    "correctAnswer": "Kidneys"
-                },
-                {
-                    "question": "Which process involves the conversion of glucose into energy in cells?",
-                    "answers": [
-                        "Photosynthesis",
-                        "Glycolysis",
-                        "Fermentation",
-                        "Osmosis"
-                    ],
-                    "correctAnswer": "Glycolysis"
-                }
+      {
+        "quizID": "QZ101",
+        "courseId": "BIO101",
+        "courseName": "Introduction to Biology",
+        "teacherId": "T001",
+        "teacherName": "Dr. Alice Johnson",
+        "Deadline": "2024-11-30T23:59:59Z",
+        "questions": [
+          {
+            "question": "What is the powerhouse of the cell?",
+            "answers": [
+              "Nucleus",
+              "Mitochondria",
+              "Ribosome",
+              "Endoplasmic Reticulum"
             ],
-            "id": "ac8a"
-        },
-        {
-            "quizID": "QZ102",
-            "courseId": "PHYS101",
-            "courseName": "Introduction to Physics",
-            "teacherId": "T002",
-            "teacherName": "Dr. Michael Smith",
-            "Deadline": "2024-12-01T23:59:59Z",
-            "questions": [
-                {
-                    "question": "What is the SI unit of force?",
-                    "answers": [
-                        "Newton",
-                        "Joule",
-                        "Pascal",
-                        "Watt"
-                    ],
-                    "correctAnswer": "Newton"
-                },
-                {
-                    "question": "Who formulated the laws of motion?",
-                    "answers": [
-                        "Albert Einstein",
-                        "Isaac Newton",
-                        "Galileo Galilei",
-                        "Niels Bohr"
-                    ],
-                    "correctAnswer": "Isaac Newton"
-                },
-                {
-                    "question": "What does the term 'velocity' refer to?",
-                    "answers": [
-                        "Speed",
-                        "Speed in a given direction",
-                        "Acceleration",
-                        "Distance over time"
-                    ],
-                    "correctAnswer": "Speed in a given direction"
-                },
-                {
-                    "question": "What is the speed of light in a vacuum?",
-                    "answers": [
-                        "3 × 10^8 m/s",
-                        "1 × 10^8 m/s",
-                        "5 × 10^6 m/s",
-                        "9 × 10^8 m/s"
-                    ],
-                    "correctAnswer": "3 × 10^8 m/s"
-                },
-                {
-                    "question": "What force keeps planets in orbit around the Sun?",
-                    "answers": [
-                        "Magnetism",
-                        "Electromagnetic Force",
-                        "Gravity",
-                        "Friction"
-                    ],
-                    "correctAnswer": "Gravity"
-                }
+            "correctAnswer": "Mitochondria"
+          },
+          {
+            "question": "Which of the following is a photosynthetic pigment?",
+            "answers": [
+              "Chlorophyll",
+              "Carotene",
+              "Hemoglobin",
+              "Collagen"
             ],
-            "id": "1d80"
-        },
-        {
-            "quizID": "QZ103",
-            "courseId": "HIST201",
-            "courseName": "World History",
-            "teacherId": "T003",
-            "teacherName": "Dr. Sarah Davis",
-            "Deadline": "2024-12-05T23:59:59Z",
-            "questions": [
-                {
-                    "question": "Who was the first President of the United States?",
-                    "answers": [
-                        "Abraham Lincoln",
-                        "George Washington",
-                        "Thomas Jefferson",
-                        "James Madison"
-                    ],
-                    "correctAnswer": "George Washington"
-                },
-                {
-                    "question": "What year did World War II end?",
-                    "answers": [
-                        "1940",
-                        "1945",
-                        "1950",
-                        "1960"
-                    ],
-                    "correctAnswer": "1945"
-                },
-                {
-                    "question": "The French Revolution began in which year?",
-                    "answers": [
-                        "1789",
-                        "1799",
-                        "1812",
-                        "1701"
-                    ],
-                    "correctAnswer": "1789"
-                },
-                {
-                    "question": "What was the name of the ship that brought the Pilgrims to America in 1620?",
-                    "answers": [
-                        "Mayflower",
-                        "Santa Maria",
-                        "Titanic",
-                        "The Beagle"
-                    ],
-                    "correctAnswer": "Mayflower"
-                },
-                {
-                    "question": "Who was the famous leader of the Mongol Empire?",
-                    "answers": [
-                        "Genghis Khan",
-                        "Alexander the Great",
-                        "Napoleon Bonaparte",
-                        "Julius Caesar"
-                    ],
-                    "correctAnswer": "Genghis Khan"
-                }
+            "correctAnswer": "Chlorophyll"
+          },
+          {
+            "question": "What is the main function of red blood cells?",
+            "answers": [
+              "Oxygen transport",
+              "Fight infections",
+              "Produce insulin",
+              "Store energy"
             ],
-            "id": "9441"
-        },
-        {
-            "quizID": "QZ104",
-            "courseId": "CHEM101",
-            "courseName": "General Chemistry",
-            "teacherId": "T004",
-            "teacherName": "Dr. Emily Zhang",
-            "Deadline": "2024-12-10T23:59:59Z",
-            "questions": [
-                {
-                    "question": "What is the chemical symbol for water?",
-                    "answers": [
-                        "H2O",
-                        "O2",
-                        "CO2",
-                        "HO2"
-                    ],
-                    "correctAnswer": "H2O"
-                },
-                {
-                    "question": "Which element is known as the 'noble gas'?",
-                    "answers": [
-                        "Oxygen",
-                        "Nitrogen",
-                        "Neon",
-                        "Hydrogen"
-                    ],
-                    "correctAnswer": "Neon"
-                },
-                {
-                    "question": "Which acid is found in the stomach?",
-                    "answers": [
-                        "Acetic acid",
-                        "Citric acid",
-                        "Hydrochloric acid",
-                        "Sulfuric acid"
-                    ],
-                    "correctAnswer": "Hydrochloric acid"
-                },
-                {
-                    "question": "What is the pH level of pure water?",
-                    "answers": [
-                        "5",
-                        "6",
-                        "7",
-                        "8"
-                    ],
-                    "correctAnswer": "7"
-                },
-                {
-                    "question": "What is the most abundant element in the Earth's crust?",
-                    "answers": [
-                        "Oxygen",
-                        "Silicon",
-                        "Iron",
-                        "Aluminum"
-                    ],
-                    "correctAnswer": "Oxygen"
-                }
+            "correctAnswer": "Oxygen transport"
+          },
+          {
+            "question": "Which organ is responsible for filtering blood in humans?",
+            "answers": [
+              "Heart",
+              "Liver",
+              "Kidneys",
+              "Lungs"
             ],
-            "id": "41df"
-        },
-        {
-            "quizID": "QZ105",
-            "courseId": "MATH101",
-            "courseName": "Introduction to Mathematics",
-            "teacherId": "T005",
-            "teacherName": "Mr. William Lee",
-            "Deadline": "2024-12-12T23:59:59Z",
-            "questions": [
-                {
-                    "question": "What is the square root of 64?",
-                    "answers": [
-                        "6",
-                        "7",
-                        "8",
-                        "9"
-                    ],
-                    "correctAnswer": "8"
-                },
-                {
-                    "question": "What is the value of Pi to two decimal places?",
-                    "answers": [
-                        "3.14",
-                        "3.15",
-                        "3.16",
-                        "3.13"
-                    ],
-                    "correctAnswer": "3.14"
-                },
-                {
-                    "question": "What is the result of 15 ÷ 3?",
-                    "answers": [
-                        "5",
-                        "6",
-                        "4",
-                        "7"
-                    ],
-                    "correctAnswer": "5"
-                },
-                {
-                    "question": "What is the perimeter of a rectangle with length 6 and width 4?",
-                    "answers": [
-                        "24",
-                        "20",
-                        "16",
-                        "12"
-                    ],
-                    "correctAnswer": "20"
-                },
-                {
-                    "question": "What is the formula for the area of a circle?",
-                    "answers": [
-                        "πr²",
-                        "2πr",
-                        "r²",
-                        "πd"
-                    ],
-                    "correctAnswer": "πr²"
-                }
+            "correctAnswer": "Kidneys"
+          },
+          {
+            "question": "Which process involves the conversion of glucose into energy in cells?",
+            "answers": [
+              "Photosynthesis",
+              "Glycolysis",
+              "Fermentation",
+              "Osmosis"
             ],
-            "id": "09fd"
-        },
-        {
-            "quizID": "QZ106",
-            "courseId": "ECON101",
-            "courseName": "Principles of Economics",
-            "teacherId": "T006",
-            "teacherName": "Dr. Rachel Green",
-            "Deadline": "2024-12-15T23:59:59Z",
-            "questions": [
-                {
-                    "question": "What does GDP stand for?",
-                    "answers": [
-                        "Gross Domestic Product",
-                        "Gross Debt Product",
-                        "Global Debt Price",
-                        "General Domestic Product"
-                    ],
-                    "correctAnswer": "Gross Domestic Product"
-                },
-                {
-                    "question": "Which of these is considered a scarcity in economics?",
-                    "answers": [
-                        "Time",
-                        "Free goods",
-                        "Money",
-                        "Labor"
-                    ],
-                    "correctAnswer": "Time"
-                },
-                {
-                    "question": "What is inflation?",
-                    "answers": [
-                        "Decrease in prices",
-                        "Increase in prices",
-                        "Stability of prices",
-                        "Change in production"
-                    ],
-                    "correctAnswer": "Increase in prices"
-                },
-                {
-                    "question": "Which of the following is a type of market structure?",
-                    "answers": [
-                        "Monopoly",
-                        "Anarchy",
-                        "Oligarchy",
-                        "Autocracy"
-                    ],
-                    "correctAnswer": "Monopoly"
-                },
-                {
-                    "question": "What is the main purpose of taxation?",
-                    "answers": [
-                        "Increase government spending",
-                        "Reduce public debt",
-                        "Provide public services",
-                        "Encourage investment"
-                    ],
-                    "correctAnswer": "Provide public services"
-                }
+            "correctAnswer": "Glycolysis"
+          }
+        ],
+        "id": "ac8a"
+      },
+      {
+        "quizID": "QZ102",
+        "courseId": "PHYS101",
+        "courseName": "Introduction to Physics",
+        "teacherId": "T002",
+        "teacherName": "Dr. Michael Smith",
+        "Deadline": "2024-12-01T23:59:59Z",
+        "questions": [
+          {
+            "question": "What is the SI unit of force?",
+            "answers": [
+              "Newton",
+              "Joule",
+              "Pascal",
+              "Watt"
             ],
-            "id": "bc99"
-        },
-        {
-            "quizID": "QZ107",
-            "courseId": "PSY101",
-            "courseName": "Introduction to Psychology",
-            "teacherId": "T007",
-            "teacherName": "Dr. James Walker",
-            "Deadline": "2024-12-20T23:59:59Z",
-            "questions": [
-                {
-                    "question": "Which of the following is a type of psychological disorder?",
-                    "answers": [
-                        "Depression",
-                        "Anger",
-                        "Sadness",
-                        "Fear"
-                    ],
-                    "correctAnswer": "Depression"
-                },
-                {
-                    "question": "What is the main focus of cognitive psychology?",
-                    "answers": [
-                        "Memory and thought processes",
-                        "Emotions",
-                        "Physical behavior",
-                        "Social interactions"
-                    ],
-                    "correctAnswer": "Memory and thought processes"
-                },
-                {
-                    "question": "What part of the brain controls voluntary movement?",
-                    "answers": [
-                        "Cerebellum",
-                        "Medulla",
-                        "Frontal lobe",
-                        "Occipital lobe"
-                    ],
-                    "correctAnswer": "Frontal lobe"
-                },
-                {
-                    "question": "What does the term 'behaviorism' focus on in psychology?",
-                    "answers": [
-                        "Mental processes",
-                        "Behavioral responses",
-                        "Biological factors",
-                        "Cultural influences"
-                    ],
-                    "correctAnswer": "Behavioral responses"
-                },
-                {
-                    "question": "Who is known as the father of psychoanalysis?",
-                    "answers": [
-                        "Sigmund Freud",
-                        "Carl Jung",
-                        "B.F. Skinner",
-                        "Ivan Pavlov"
-                    ],
-                    "correctAnswer": "Sigmund Freud"
-                }
+            "correctAnswer": "Newton"
+          },
+          {
+            "question": "Who formulated the laws of motion?",
+            "answers": [
+              "Albert Einstein",
+              "Isaac Newton",
+              "Galileo Galilei",
+              "Niels Bohr"
             ],
-            "id": "285e"
-        },
-        {
-            "quizID": "QZ108",
-            "courseId": "LIT102",
-            "courseName": "English Literature",
-            "teacherId": "T008",
-            "teacherName": "Dr. Hannah Clark",
-            "Deadline": "2024-12-25T23:59:59Z",
-            "questions": [
-                {
-                    "question": "Who wrote the play 'Romeo and Juliet'?",
-                    "answers": [
-                        "William Shakespeare",
-                        "Charles Dickens",
-                        "Jane Austen",
-                        "Mark Twain"
-                    ],
-                    "correctAnswer": "William Shakespeare"
-                },
-                {
-                    "question": "What is the main theme of George Orwell's '1984'?",
-                    "answers": [
-                        "Totalitarianism",
-                        "Romance",
-                        "Adventure",
-                        "Freedom"
-                    ],
-                    "correctAnswer": "Totalitarianism"
-                },
-                {
-                    "question": "Which literary device is used in the phrase 'The wind whispered through the trees'?",
-                    "answers": [
-                        "Simile",
-                        "Metaphor",
-                        "Personification",
-                        "Alliteration"
-                    ],
-                    "correctAnswer": "Personification"
-                },
-                {
-                    "question": "Who is the author of 'The Great Gatsby'?",
-                    "answers": [
-                        "F. Scott Fitzgerald",
-                        "Hemingway",
-                        "Ernest Hemingway",
-                        "William Faulkner"
-                    ],
-                    "correctAnswer": "F. Scott Fitzgerald"
-                },
-                {
-                    "question": "In which period was William Shakespeare most active?",
-                    "answers": [
-                        "Renaissance",
-                        "Medieval",
-                        "Victorian",
-                        "Enlightenment"
-                    ],
-                    "correctAnswer": "Renaissance"
-                }
+            "correctAnswer": "Isaac Newton"
+          },
+          {
+            "question": "What does the term 'velocity' refer to?",
+            "answers": [
+              "Speed",
+              "Speed in a given direction",
+              "Acceleration",
+              "Distance over time"
             ],
-            "id": "1749"
-        }
+            "correctAnswer": "Speed in a given direction"
+          },
+          {
+            "question": "What is the speed of light in a vacuum?",
+            "answers": [
+              "3 × 10^8 m/s",
+              "1 × 10^8 m/s",
+              "5 × 10^6 m/s",
+              "9 × 10^8 m/s"
+            ],
+            "correctAnswer": "3 × 10^8 m/s"
+          },
+          {
+            "question": "What force keeps planets in orbit around the Sun?",
+            "answers": [
+              "Magnetism",
+              "Electromagnetic Force",
+              "Gravity",
+              "Friction"
+            ],
+            "correctAnswer": "Gravity"
+          }
+        ],
+        "id": "1d80"
+      },
+      {
+        "quizID": "QZ103",
+        "courseId": "HIST201",
+        "courseName": "World History",
+        "teacherId": "T003",
+        "teacherName": "Dr. Sarah Davis",
+        "Deadline": "2024-12-05T23:59:59Z",
+        "questions": [
+          {
+            "question": "Who was the first President of the United States?",
+            "answers": [
+              "Abraham Lincoln",
+              "George Washington",
+              "Thomas Jefferson",
+              "James Madison"
+            ],
+            "correctAnswer": "George Washington"
+          },
+          {
+            "question": "What year did World War II end?",
+            "answers": [
+              "1940",
+              "1945",
+              "1950",
+              "1960"
+            ],
+            "correctAnswer": "1945"
+          },
+          {
+            "question": "The French Revolution began in which year?",
+            "answers": [
+              "1789",
+              "1799",
+              "1812",
+              "1701"
+            ],
+            "correctAnswer": "1789"
+          },
+          {
+            "question": "What was the name of the ship that brought the Pilgrims to America in 1620?",
+            "answers": [
+              "Mayflower",
+              "Santa Maria",
+              "Titanic",
+              "The Beagle"
+            ],
+            "correctAnswer": "Mayflower"
+          },
+          {
+            "question": "Who was the famous leader of the Mongol Empire?",
+            "answers": [
+              "Genghis Khan",
+              "Alexander the Great",
+              "Napoleon Bonaparte",
+              "Julius Caesar"
+            ],
+            "correctAnswer": "Genghis Khan"
+          }
+        ],
+        "id": "9441"
+      },
+      {
+        "quizID": "QZ104",
+        "courseId": "CHEM101",
+        "courseName": "General Chemistry",
+        "teacherId": "T004",
+        "teacherName": "Dr. Emily Zhang",
+        "Deadline": "2024-12-10T23:59:59Z",
+        "questions": [
+          {
+            "question": "What is the chemical symbol for water?",
+            "answers": [
+              "H2O",
+              "O2",
+              "CO2",
+              "HO2"
+            ],
+            "correctAnswer": "H2O"
+          },
+          {
+            "question": "Which element is known as the 'noble gas'?",
+            "answers": [
+              "Oxygen",
+              "Nitrogen",
+              "Neon",
+              "Hydrogen"
+            ],
+            "correctAnswer": "Neon"
+          },
+          {
+            "question": "Which acid is found in the stomach?",
+            "answers": [
+              "Acetic acid",
+              "Citric acid",
+              "Hydrochloric acid",
+              "Sulfuric acid"
+            ],
+            "correctAnswer": "Hydrochloric acid"
+          },
+          {
+            "question": "What is the pH level of pure water?",
+            "answers": [
+              "5",
+              "6",
+              "7",
+              "8"
+            ],
+            "correctAnswer": "7"
+          },
+          {
+            "question": "What is the most abundant element in the Earth's crust?",
+            "answers": [
+              "Oxygen",
+              "Silicon",
+              "Iron",
+              "Aluminum"
+            ],
+            "correctAnswer": "Oxygen"
+          }
+        ],
+        "id": "41df"
+      },
+      {
+        "quizID": "QZ105",
+        "courseId": "MATH101",
+        "courseName": "Introduction to Mathematics",
+        "teacherId": "T005",
+        "teacherName": "Mr. William Lee",
+        "Deadline": "2024-12-12T23:59:59Z",
+        "questions": [
+          {
+            "question": "What is the square root of 64?",
+            "answers": [
+              "6",
+              "7",
+              "8",
+              "9"
+            ],
+            "correctAnswer": "8"
+          },
+          {
+            "question": "What is the value of Pi to two decimal places?",
+            "answers": [
+              "3.14",
+              "3.15",
+              "3.16",
+              "3.13"
+            ],
+            "correctAnswer": "3.14"
+          },
+          {
+            "question": "What is the result of 15 ÷ 3?",
+            "answers": [
+              "5",
+              "6",
+              "4",
+              "7"
+            ],
+            "correctAnswer": "5"
+          },
+          {
+            "question": "What is the perimeter of a rectangle with length 6 and width 4?",
+            "answers": [
+              "24",
+              "20",
+              "16",
+              "12"
+            ],
+            "correctAnswer": "20"
+          },
+          {
+            "question": "What is the formula for the area of a circle?",
+            "answers": [
+              "πr²",
+              "2πr",
+              "r²",
+              "πd"
+            ],
+            "correctAnswer": "πr²"
+          }
+        ],
+        "id": "09fd"
+      },
+      {
+        "quizID": "QZ106",
+        "courseId": "ECON101",
+        "courseName": "Principles of Economics",
+        "teacherId": "T006",
+        "teacherName": "Dr. Rachel Green",
+        "Deadline": "2024-12-15T23:59:59Z",
+        "questions": [
+          {
+            "question": "What does GDP stand for?",
+            "answers": [
+              "Gross Domestic Product",
+              "Gross Debt Product",
+              "Global Debt Price",
+              "General Domestic Product"
+            ],
+            "correctAnswer": "Gross Domestic Product"
+          },
+          {
+            "question": "Which of these is considered a scarcity in economics?",
+            "answers": [
+              "Time",
+              "Free goods",
+              "Money",
+              "Labor"
+            ],
+            "correctAnswer": "Time"
+          },
+          {
+            "question": "What is inflation?",
+            "answers": [
+              "Decrease in prices",
+              "Increase in prices",
+              "Stability of prices",
+              "Change in production"
+            ],
+            "correctAnswer": "Increase in prices"
+          },
+          {
+            "question": "Which of the following is a type of market structure?",
+            "answers": [
+              "Monopoly",
+              "Anarchy",
+              "Oligarchy",
+              "Autocracy"
+            ],
+            "correctAnswer": "Monopoly"
+          },
+          {
+            "question": "What is the main purpose of taxation?",
+            "answers": [
+              "Increase government spending",
+              "Reduce public debt",
+              "Provide public services",
+              "Encourage investment"
+            ],
+            "correctAnswer": "Provide public services"
+          }
+        ],
+        "id": "bc99"
+      },
+      {
+        "quizID": "QZ107",
+        "courseId": "PSY101",
+        "courseName": "Introduction to Psychology",
+        "teacherId": "T007",
+        "teacherName": "Dr. James Walker",
+        "Deadline": "2024-12-20T23:59:59Z",
+        "questions": [
+          {
+            "question": "Which of the following is a type of psychological disorder?",
+            "answers": [
+              "Depression",
+              "Anger",
+              "Sadness",
+              "Fear"
+            ],
+            "correctAnswer": "Depression"
+          },
+          {
+            "question": "What is the main focus of cognitive psychology?",
+            "answers": [
+              "Memory and thought processes",
+              "Emotions",
+              "Physical behavior",
+              "Social interactions"
+            ],
+            "correctAnswer": "Memory and thought processes"
+          },
+          {
+            "question": "What part of the brain controls voluntary movement?",
+            "answers": [
+              "Cerebellum",
+              "Medulla",
+              "Frontal lobe",
+              "Occipital lobe"
+            ],
+            "correctAnswer": "Frontal lobe"
+          },
+          {
+            "question": "What does the term 'behaviorism' focus on in psychology?",
+            "answers": [
+              "Mental processes",
+              "Behavioral responses",
+              "Biological factors",
+              "Cultural influences"
+            ],
+            "correctAnswer": "Behavioral responses"
+          },
+          {
+            "question": "Who is known as the father of psychoanalysis?",
+            "answers": [
+              "Sigmund Freud",
+              "Carl Jung",
+              "B.F. Skinner",
+              "Ivan Pavlov"
+            ],
+            "correctAnswer": "Sigmund Freud"
+          }
+        ],
+        "id": "285e"
+      },
+      {
+        "quizID": "QZ108",
+        "courseId": "LIT102",
+        "courseName": "English Literature",
+        "teacherId": "T008",
+        "teacherName": "Dr. Hannah Clark",
+        "Deadline": "2024-12-25T23:59:59Z",
+        "questions": [
+          {
+            "question": "Who wrote the play 'Romeo and Juliet'?",
+            "answers": [
+              "William Shakespeare",
+              "Charles Dickens",
+              "Jane Austen",
+              "Mark Twain"
+            ],
+            "correctAnswer": "William Shakespeare"
+          },
+          {
+            "question": "What is the main theme of George Orwell's '1984'?",
+            "answers": [
+              "Totalitarianism",
+              "Romance",
+              "Adventure",
+              "Freedom"
+            ],
+            "correctAnswer": "Totalitarianism"
+          },
+          {
+            "question": "Which literary device is used in the phrase 'The wind whispered through the trees'?",
+            "answers": [
+              "Simile",
+              "Metaphor",
+              "Personification",
+              "Alliteration"
+            ],
+            "correctAnswer": "Personification"
+          },
+          {
+            "question": "Who is the author of 'The Great Gatsby'?",
+            "answers": [
+              "F. Scott Fitzgerald",
+              "Hemingway",
+              "Ernest Hemingway",
+              "William Faulkner"
+            ],
+            "correctAnswer": "F. Scott Fitzgerald"
+          },
+          {
+            "question": "In which period was William Shakespeare most active?",
+            "answers": [
+              "Renaissance",
+              "Medieval",
+              "Victorian",
+              "Enlightenment"
+            ],
+            "correctAnswer": "Renaissance"
+          }
+        ],
+        "id": "1749"
+      }
     ],
     "filieres": [
-        {
-            "id": "611e",
-            "code_filiere": "F01",
-            "intitule_filiere": "Informatique",
-            "secteur": "Technologie",
-            "groupes": [
-                "i"
-            ]
-        },
-        {
-            "id": "dcb8",
-            "code_filiere": "F02",
-            "intitule_filiere": "Réseaux et Télécommu",
-            "secteur": "Technologie",
-            "groupes": [
-                "4"
-            ]
-        },
-        {
-            "id": "ff07",
-            "code_filiere": "F03",
-            "intitule_filiere": "Management",
-            "secteur": "Business",
-            "groupes": [
-                "groupe_id"
-            ]
-        },
-        {
-            "id": "5d96",
-            "code_filiere": "F04",
-            "intitule_filiere": "Design Graphique",
-            "secteur": "Arts",
-            "groupes": [
-                "[object Object]"
-            ]
-        },
-        {
-            "id": "7912",
-            "code_filiere": "F05",
-            "intitule_filiere": "Photographie",
-            "secteur": "Arts",
-            "groupes": [
-                "[object Object]"
-            ]
-        },
-        {
-            "id": "791d",
-            "code_filiere": "F06",
-            "intitule_filiere": "Sciences de la Vie",
-            "secteur": "Sciences",
-            "groupes": [
-                "[object Object]"
-            ]
-        },
-        {
-            "ordre": 11,
-            "code_filiere": "F11",
-            "intitule_filiere": "Biotechnologie",
-            "secteur": "Sciences",
-            "groupes": [
-                "4"
-            ],
-            "id": "df6b"
-        }
+      {
+        "id": "611e",
+        "code_filiere": "F01",
+        "intitule_filiere": "Informatique",
+        "secteur": "Technologie",
+        "groupes": [
+          "i"
+        ]
+      },
+      {
+        "id": "dcb8",
+        "code_filiere": "F02",
+        "intitule_filiere": "Réseaux et Télécommu",
+        "secteur": "Technologie",
+        "groupes": [
+          "4"
+        ]
+      },
+      {
+        "id": "ff07",
+        "code_filiere": "F03",
+        "intitule_filiere": "Management",
+        "secteur": "Business",
+        "groupes": [
+          "groupe_id"
+        ]
+      },
+      {
+        "id": "5d96",
+        "code_filiere": "F04",
+        "intitule_filiere": "Design Graphique",
+        "secteur": "Arts",
+        "groupes": [
+          "[object Object]"
+        ]
+      },
+      {
+        "id": "7912",
+        "code_filiere": "F05",
+        "intitule_filiere": "Photographie",
+        "secteur": "Arts",
+        "groupes": [
+          "[object Object]"
+        ]
+      },
+      {
+        "id": "791d",
+        "code_filiere": "F06",
+        "intitule_filiere": "Sciences de la Vie",
+        "secteur": "Sciences",
+        "groupes": [
+          "[object Object]"
+        ]
+      },
+      {
+        "ordre": 11,
+        "code_filiere": "F11",
+        "intitule_filiere": "Biotechnologie",
+        "secteur": "Sciences",
+        "groupes": [
+          "4"
+        ],
+        "id": "df6b"
+      }
     ],
     "competences": [
-        {
-            "id": "1",
-            "code_competence": 1,
-            "code_module": "M101_F01",
-            "intitule_module": "M101",
-            "intitule_competence": [
-                "Analyse de données",
-                "Algorithmes de base"
-            ],
-            "cours": "https://fake-link.com/cours/M101",
-            "quiz": "https://fake-link.com/quiz/M101"
-        },
-        {
-            "id": "2",
-            "code_competence": 2,
-            "code_module": "M102_F01",
-            "intitule_module": "M102",
-            "intitule_competence": [
-                "Programmation en C",
-                "Structures de données"
-            ],
-            "cours": "https://fake-link.com/cours/M102",
-            "quiz": "https://fake-link.com/quiz/M102"
-        },
-        {
-            "id": "3",
-            "code_competence": 3,
-            "code_module": "M103_F01",
-            "intitule_module": "M103",
-            "intitule_competence": [
-                "Introduction à la gestion",
-                "Organisation des entreprises"
-            ],
-            "cours": "https://fake-link.com/cours/M103",
-            "quiz": "https://fake-link.com/quiz/M103"
-        },
-        {
-            "id": "5",
-            "code_competence": 5,
-            "code_module": "M105_F01",
-            "intitule_module": "M105",
-            "intitule_competence": [
-                "Programmation en JavaScript",
-                "DOM manipulation"
-            ],
-            "cours": "https://fake-link.com/cours/M105",
-            "quiz": "https://fake-link.com/quiz/M105"
-        },
-        {
-            "id": "6",
-            "code_competence": 6,
-            "code_module": "M106_F01",
-            "intitule_module": "M106",
-            "intitule_competence": [
-                "Introduction au web",
-                "HTML/CSS"
-            ],
-            "cours": "https://fake-link.com/cours/M106",
-            "quiz": "https://fake-link.com/quiz/M106"
-        },
-        {
-            "id": "7",
-            "code_competence": 7,
-            "code_module": "M107_F01",
-            "intitule_module": "M107",
-            "intitule_competence": [
-                "Réseaux de base",
-                "Modèle OSI"
-            ],
-            "cours": "https://fake-link.com/cours/M107",
-            "quiz": "https://fake-link.com/quiz/M107"
-        },
-        {
-            "id": "8",
-            "code_competence": 8,
-            "code_module": "M108_F01",
-            "intitule_module": "M108",
-            "intitule_competence": [
-                "Sécurité informatique",
-                "Cryptographie"
-            ],
-            "cours": "https://fake-link.com/cours/M108",
-            "quiz": "https://fake-link.com/quiz/M108"
-        },
-        {
-            "id": "9",
-            "code_competence": 9,
-            "code_module": "M109_F01",
-            "intitule_module": "M109",
-            "intitule_competence": [
-                "Design UX/UI",
-                "Prototypage"
-            ],
-            "cours": "https://fake-link.com/cours/M109",
-            "quiz": "https://fake-link.com/quiz/M109"
-        },
-        {
-            "id": "10",
-            "code_competence": 10,
-            "code_module": "M110_F01",
-            "intitule_module": "M110",
-            "intitule_competence": [
-                "Introduction à l'intelligence artificielle",
-                "Machine learning"
-            ],
-            "cours": "https://fake-link.com/cours/M110",
-            "quiz": "https://fake-link.com/quiz/M110"
-        },
-        {
-            "id": "84be",
-            "code_competence": "11",
-            "intitule_competence": [
-                "communication"
-            ],
-            "intitule_module": "softskills",
-            "cours": [
-                "https:/softskills.com"
-            ],
-            "quiz": [
-                "https:/softskills.com"
-            ]
-        },
-        {
-            "id": "1cd6",
-            "code_competence": "12",
-            "intitule_competence": [
-                "innovation"
-            ],
-            "intitule_module": "softskills",
-            "cours": [
-                "https:/softskills.com"
-            ],
-            "quiz": [
-                "https:/softskills.com"
-            ]
-        },
-        {
-            "id": "400f",
-            "code_competence": "13",
-            "intitule_competence": [
-                "esprit d'equipe",
-                "hhh"
-            ],
-            "intitule_module": "softskills",
-            "cours": [
-                "https:/cours.com"
-            ],
-            "quiz": [
-                "https:/quiz.com"
-            ]
-        }
+      {
+        "id": "1",
+        "code_competence": 1,
+        "code_module": "M101_F01",
+        "intitule_module": "M101",
+        "intitule_competence": [
+          "Analyse de données",
+          "Algorithmes de base"
+        ],
+        "cours": "https://fake-link.com/cours/M101",
+        "quiz": "https://fake-link.com/quiz/M101",
+        "filiere": "Informatique"
+      },
+      {
+        "id": "2",
+        "code_competence": 2,
+        "code_module": "M102_F01",
+        "intitule_module": "M102",
+        "intitule_competence": [
+          "Programmation en C",
+          "Structures de données"
+        ],
+        "cours": "https://fake-link.com/cours/M102",
+        "quiz": "https://fake-link.com/quiz/M102",
+        "filiere": "Informatique"
+      },
+      {
+        "id": "3",
+        "code_competence": 3,
+        "code_module": "M103_F01",
+        "intitule_module": "M103",
+        "intitule_competence": [
+          "Introduction à la gestion",
+          "Organisation des entreprises"
+        ],
+        "cours": "https://fake-link.com/cours/M103",
+        "quiz": "https://fake-link.com/quiz/M103",
+        "filiere": "Management"
+      },
+      {
+        "id": "5",
+        "code_competence": 5,
+        "code_module": "M105_F01",
+        "intitule_module": "M105",
+        "intitule_competence": [
+          "Programmation en JavaScript",
+          "DOM manipulation"
+        ],
+        "cours": "https://fake-link.com/cours/M105",
+        "quiz": "https://fake-link.com/quiz/M105",
+        "filiere": "Informatique"
+      },
+      {
+        "id": "6",
+        "code_competence": 6,
+        "code_module": "M106_F01",
+        "intitule_module": "M106",
+        "intitule_competence": [
+          "Introduction au web",
+          "HTML/CSS"
+        ],
+        "cours": "https://fake-link.com/cours/M106",
+        "quiz": "https://fake-link.com/quiz/M106",
+        "filiere": "Informatique"
+      },
+      {
+        "id": "7",
+        "code_competence": 7,
+        "code_module": "M107_F01",
+        "intitule_module": "M107",
+        "intitule_competence": [
+          "Réseaux de base",
+          "Modèle OSI"
+        ],
+        "cours": "https://fake-link.com/cours/M107",
+        "quiz": "https://fake-link.com/quiz/M107",
+        "filiere": "Informatique"
+      },
+      {
+        "id": "8",
+        "code_competence": 8,
+        "code_module": "M108_F01",
+        "intitule_module": "M108",
+        "intitule_competence": [
+          "Sécurité informatique",
+          "Cryptographie"
+        ],
+        "cours": "https://fake-link.com/cours/M108",
+        "quiz": "https://fake-link.com/quiz/M108",
+        "filiere": "Informatique"
+      },
+      {
+        "id": "9",
+        "code_competence": 9,
+        "code_module": "M109_F01",
+        "intitule_module": "M109",
+        "intitule_competence": [
+          "Design UX/UI",
+          "Prototypage"
+        ],
+        "cours": "https://fake-link.com/cours/M109",
+        "quiz": "https://fake-link.com/quiz/M109",
+        "filiere": "Design"
+      },
+      {
+        "id": "10",
+        "code_competence": 10,
+        "code_module": "M110_F01",
+        "intitule_module": "M110",
+        "intitule_competence": [
+          "Introduction à l'intelligence artificielle",
+          "Machine learning"
+        ],
+        "cours": "https://fake-link.com/cours/M110",
+        "quiz": "https://fake-link.com/quiz/M110",
+        "filiere": "Informatique"
+      },
+      {
+        "id": "84be",
+        "code_competence": "11",
+        "intitule_competence": [
+          "communication"
+        ],
+        "intitule_module": "softskills",
+        "cours": [
+          "https:/softskills.com"
+        ],
+        "quiz": [
+          "https:/softskills.com"
+        ],
+        "filiere": "Soft Skills"
+      },
+      {
+        "id": "1cd6",
+        "code_competence": "12",
+        "intitule_competence": [
+          "innovation"
+        ],
+        "intitule_module": "softskills",
+        "cours": [
+          "https:/softskills.com"
+        ],
+        "quiz": [
+          "https:/softskills.com"
+        ],
+        "filiere": "Soft Skills"
+      },
+      {
+        "id": "400f",
+        "code_competence": "13",
+        "intitule_competence": [
+          "esprit d'equipe"
+        ],
+        "intitule_module": "softskills",
+        "cours": [
+          "https:/cours.com"
+        ],
+        "quiz": [
+          "https:/quiz.com"
+        ],
+        "filiere": "Soft Skills"
+      },
+      {
+        "id": "9542",
+        "code_competence": "14",
+        "intitule_competence": [
+          "softskills"
+        ],
+        "intitule_module": "charisme",
+        "cours": [
+          "https:/cours.com"
+        ],
+        "quiz": [
+          "https:/quiz.com"
+        ]
+      }
     ],
     "secteur": {
-        "Science": {
-            "Physics": {
-                "Group 1": [
-                    {
-                        "id": "1",
-                        "cef": "10001",
-                        "fullname": "John Smith",
-                        "dateNaissance": "2000-03-01",
-                        "cin": "CS1001",
-                        "selected": false
-                    },
-                    {
-                        "id": "2",
-                        "cef": "10002",
-                        "fullname": "Alice Brown",
-                        "dateNaissance": "2000-04-15",
-                        "cin": "CS1002",
-                        "selected": false
-                    }
-                ],
-                "Group 2": [
-                    {
-                        "id": "3",
-                        "cef": "10003",
-                        "fullname": "Bob Lee",
-                        "dateNaissance": "2000-05-20",
-                        "cin": "CS1003",
-                        "selected": false
-                    },
-                    {
-                        "id": "4",
-                        "cef": "10004",
-                        "fullname": "Emma Davis",
-                        "dateNaissance": "2000-06-10",
-                        "cin": "CS1004",
-                        "selected": false
-                    }
-                ]
+      "Science": {
+        "Physics": {
+          "Group 1": [
+            {
+              "id": "1",
+              "cef": "10001",
+              "fullname": "John Smith",
+              "dateNaissance": "2000-03-01",
+              "cin": "CS1001",
+              "selected": false
             },
-            "Biology": {
-                "Group 1": [
-                    {
-                        "id": "5",
-                        "cef": "20001",
-                        "fullname": "Sophia Turner",
-                        "dateNaissance": "1999-09-10",
-                        "cin": "BIO2001",
-                        "selected": false
-                    },
-                    {
-                        "id": "6",
-                        "cef": "20002",
-                        "fullname": "Liam Walker",
-                        "dateNaissance": "1999-10-05",
-                        "cin": "BIO2002",
-                        "selected": false
-                    }
-                ],
-                "Group 2": [
-                    {
-                        "id": "7",
-                        "cef": "20003",
-                        "fullname": "Mason Hall",
-                        "dateNaissance": "1999-11-12",
-                        "cin": "BIO2003",
-                        "selected": false
-                    },
-                    {
-                        "id": "8",
-                        "cef": "20004",
-                        "fullname": "Isabella Scott",
-                        "dateNaissance": "1999-12-01",
-                        "cin": "BIO2004",
-                        "selected": false
-                    }
-                ]
+            {
+              "id": "2",
+              "cef": "10002",
+              "fullname": "Alice Brown",
+              "dateNaissance": "2000-04-15",
+              "cin": "CS1002",
+              "selected": false
             }
-        },
-        "Literature": {
-            "English Literature": {
-                "Group 1": [
-                    {
-                        "id": "9",
-                        "cef": "30001",
-                        "fullname": "John Doe",
-                        "dateNaissance": "1998-01-10",
-                        "cin": "ENGL3001",
-                        "selected": false
-                    },
-                    {
-                        "id": "10",
-                        "cef": "30002",
-                        "fullname": "Anna White",
-                        "dateNaissance": "1998-02-20",
-                        "cin": "ENGL3002",
-                        "selected": false
-                    }
-                ],
-                "Group 2": [
-                    {
-                        "id": "11",
-                        "cef": "30003",
-                        "fullname": "James Smith",
-                        "dateNaissance": "1998-03-25",
-                        "cin": "ENGL3003",
-                        "selected": false
-                    },
-                    {
-                        "id": "12",
-                        "cef": "30004",
-                        "fullname": "Olivia Johnson",
-                        "dateNaissance": "1998-04-30",
-                        "cin": "ENGL3004",
-                        "selected": false
-                    }
-                ]
-            }
-        },
-        "Engineering": {
-            "Electrical Engineering": {
-                "Group 1": [
-                    {
-                        "id": "13",
-                        "cef": "40001",
-                        "fullname": "Lucas Brown",
-                        "dateNaissance": "1997-07-18",
-                        "cin": "EE4001",
-                        "selected": false
-                    },
-                    {
-                        "id": "14",
-                        "cef": "40002",
-                        "fullname": "Emma Green",
-                        "dateNaissance": "1997-08-22",
-                        "cin": "EE4002",
-                        "selected": false
-                    }
-                ],
-                "Group 2": [
-                    {
-                        "id": "15",
-                        "cef": "40003",
-                        "fullname": "Henry Adams",
-                        "dateNaissance": "1997-09-05",
-                        "cin": "EE4003",
-                        "selected": false
-                    },
-                    {
-                        "id": "16",
-                        "cef": "40004",
-                        "fullname": "Sophia Clark",
-                        "dateNaissance": "1997-10-14",
-                        "cin": "EE4004",
-                        "selected": false
-                    }
-                ]
+          ],
+          "Group 2": [
+            {
+              "id": "3",
+              "cef": "10003",
+              "fullname": "Bob Lee",
+              "dateNaissance": "2000-05-20",
+              "cin": "CS1003",
+              "selected": false
             },
-            "Mechanical Engineering": {
-                "Group 1": [
-                    {
-                        "id": "17",
-                        "cef": "50001",
-                        "fullname": "Ethan Walker",
-                        "dateNaissance": "1996-03-11",
-                        "cin": "ME5001",
-                        "selected": false
-                    },
-                    {
-                        "id": "18",
-                        "cef": "50002",
-                        "fullname": "Mia Lewis",
-                        "dateNaissance": "1996-04-22",
-                        "cin": "ME5002",
-                        "selected": false
-                    }
-                ],
-                "Group 2": [
-                    {
-                        "id": "19",
-                        "cef": "50003",
-                        "fullname": "Charlotte Robinson",
-                        "dateNaissance": "1996-05-03",
-                        "cin": "ME5003",
-                        "selected": false
-                    },
-                    {
-                        "id": "20",
-                        "cef": "50004",
-                        "fullname": "Oliver Martinez",
-                        "dateNaissance": "1996-06-12",
-                        "cin": "ME5004",
-                        "selected": false
-                    }
-                ]
+            {
+              "id": "4",
+              "cef": "10004",
+              "fullname": "Emma Davis",
+              "dateNaissance": "2000-06-10",
+              "cin": "CS1004",
+              "selected": false
             }
+          ]
+        },
+        "Biology": {
+          "Group 1": [
+            {
+              "id": "5",
+              "cef": "20001",
+              "fullname": "Sophia Turner",
+              "dateNaissance": "1999-09-10",
+              "cin": "BIO2001",
+              "selected": false
+            },
+            {
+              "id": "6",
+              "cef": "20002",
+              "fullname": "Liam Walker",
+              "dateNaissance": "1999-10-05",
+              "cin": "BIO2002",
+              "selected": false
+            }
+          ],
+          "Group 2": [
+            {
+              "id": "7",
+              "cef": "20003",
+              "fullname": "Mason Hall",
+              "dateNaissance": "1999-11-12",
+              "cin": "BIO2003",
+              "selected": false
+            },
+            {
+              "id": "8",
+              "cef": "20004",
+              "fullname": "Isabella Scott",
+              "dateNaissance": "1999-12-01",
+              "cin": "BIO2004",
+              "selected": false
+            }
+          ]
         }
+      },
+      "Literature": {
+        "English Literature": {
+          "Group 1": [
+            {
+              "id": "9",
+              "cef": "30001",
+              "fullname": "John Doe",
+              "dateNaissance": "1998-01-10",
+              "cin": "ENGL3001",
+              "selected": false
+            },
+            {
+              "id": "10",
+              "cef": "30002",
+              "fullname": "Anna White",
+              "dateNaissance": "1998-02-20",
+              "cin": "ENGL3002",
+              "selected": false
+            }
+          ],
+          "Group 2": [
+            {
+              "id": "11",
+              "cef": "30003",
+              "fullname": "James Smith",
+              "dateNaissance": "1998-03-25",
+              "cin": "ENGL3003",
+              "selected": false
+            },
+            {
+              "id": "12",
+              "cef": "30004",
+              "fullname": "Olivia Johnson",
+              "dateNaissance": "1998-04-30",
+              "cin": "ENGL3004",
+              "selected": false
+            }
+          ]
+        }
+      },
+      "Engineering": {
+        "Electrical Engineering": {
+          "Group 1": [
+            {
+              "id": "13",
+              "cef": "40001",
+              "fullname": "Lucas Brown",
+              "dateNaissance": "1997-07-18",
+              "cin": "EE4001",
+              "selected": false
+            },
+            {
+              "id": "14",
+              "cef": "40002",
+              "fullname": "Emma Green",
+              "dateNaissance": "1997-08-22",
+              "cin": "EE4002",
+              "selected": false
+            }
+          ],
+          "Group 2": [
+            {
+              "id": "15",
+              "cef": "40003",
+              "fullname": "Henry Adams",
+              "dateNaissance": "1997-09-05",
+              "cin": "EE4003",
+              "selected": false
+            },
+            {
+              "id": "16",
+              "cef": "40004",
+              "fullname": "Sophia Clark",
+              "dateNaissance": "1997-10-14",
+              "cin": "EE4004",
+              "selected": false
+            }
+          ]
+        },
+        "Mechanical Engineering": {
+          "Group 1": [
+            {
+              "id": "17",
+              "cef": "50001",
+              "fullname": "Ethan Walker",
+              "dateNaissance": "1996-03-11",
+              "cin": "ME5001",
+              "selected": false
+            },
+            {
+              "id": "18",
+              "cef": "50002",
+              "fullname": "Mia Lewis",
+              "dateNaissance": "1996-04-22",
+              "cin": "ME5002",
+              "selected": false
+            }
+          ],
+          "Group 2": [
+            {
+              "id": "19",
+              "cef": "50003",
+              "fullname": "Charlotte Robinson",
+              "dateNaissance": "1996-05-03",
+              "cin": "ME5003",
+              "selected": false
+            },
+            {
+              "id": "20",
+              "cef": "50004",
+              "fullname": "Oliver Martinez",
+              "dateNaissance": "1996-06-12",
+              "cin": "ME5004",
+              "selected": false
+            }
+          ]
+        }
+      }
     },
     "absentStudents": [
-        {
-            "id": "c43c",
-            "secteur": "Science",
-            "filiere": "Physics",
-            "groupe": "Group 1",
-            "date": "2024-11-14",
-            "students": [
-                {
-                    "studentId": "1",
-                    "isAbsent": true
-                },
-                {
-                    "studentId": "2",
-                    "isAbsent": false
-                }
-            ]
-        },
-        {
-            "id": "f45d",
-            "secteur": "Science",
-            "filiere": "Physics",
-            "groupe": "Group 2",
-            "date": "2024-11-14",
-            "students": [
-                {
-                    "studentId": "3",
-                    "studentName": "Bob Lee",
-                    "isAbsent": true
-                },
-                {
-                    "studentId": "4",
-                    "studentName": "Emma Davis",
-                    "isAbsent": true
-                }
-            ]
-        },
-        {
-            "id": "0563",
-            "secteur": "Science",
-            "filiere": "Physics",
-            "groupe": "Group 1",
-            "date": "2024-11-14",
-            "students": [
-                {
-                    "studentId": "1",
-                    "isAbsent": true
-                },
-                {
-                    "studentId": "2",
-                    "isAbsent": true
-                }
-            ]
-        },
-        {
-            "id": "823e",
-            "secteur": "Science",
-            "filiere": "Physics",
-            "groupe": "Group 1",
-            "date": "2024-11-14",
-            "students": [
-                {
-                    "studentId": "1",
-                    "isAbsent": true
-                },
-                {
-                    "studentId": "2",
-                    "isAbsent": false
-                }
-            ]
-        },
-        {
-            "id": "9965",
-            "secteur": "Science",
-            "filiere": "Physics",
-            "groupe": "Group 1",
-            "date": "2024-11-14",
-            "students": [
-                {
-                    "studentId": "1",
-                    "isAbsent": true
-                },
-                {
-                    "studentId": "2",
-                    "isAbsent": false
-                }
-            ]
-        },
-        {
-            "id": "fef5",
-            "secteur": "Science",
-            "filiere": "Physics",
-            "groupe": "Group 1",
-            "date": "2024-11-14",
-            "students": [
-                {
-                    "studentId": "1",
-                    "isAbsent": true
-                },
-                {
-                    "studentId": "2",
-                    "isAbsent": false
-                }
-            ]
-        },
-        {
-            "id": "d42b",
-            "secteur": "Science",
-            "filiere": "Physics",
-            "groupe": "Group 1",
-            "date": "2024-11-15",
-            "students": [
-                {
-                    "studentId": "1",
-                    "studentCef": "10001",
-                    "studentName": "John Smith",
-                    "studentCin": "CS1001",
-                    "isAbsent": true
-                },
-                {
-                    "studentId": "2",
-                    "studentCef": "10002",
-                    "studentName": "Alice Brown",
-                    "studentCin": "CS1002",
-                    "isAbsent": false
-                }
-            ]
-        },
-        {
-            "id": "8311",
-            "secteur": "Science",
-            "filiere": "Physics",
-            "groupe": "Group 1",
-            "date": "2024-11-15",
-            "students": [
-                {
-                    "studentId": "1",
-                    "studentCef": "10001",
-                    "studentName": "John Smith",
-                    "studentCin": "CS1001",
-                    "isAbsent": true
-                },
-                {
-                    "studentId": "2",
-                    "studentCef": "10002",
-                    "studentName": "Alice Brown",
-                    "studentCin": "CS1002",
-                    "isAbsent": false
-                }
-            ]
-        },
-        {
-            "id": "cde9",
-            "secteur": "Science",
-            "filiere": "Physics",
-            "groupe": "Group 1",
-            "date": "2024-11-15",
-            "students": [
-                {
-                    "studentId": "1",
-                    "studentCef": "10001",
-                    "studentName": "John Smith",
-                    "studentDateN": "2000-03-01",
-                    "studentCin": "CS1001",
-                    "isAbsent": true
-                },
-                {
-                    "studentId": "2",
-                    "studentCef": "10002",
-                    "studentName": "Alice Brown",
-                    "studentDateN": "2000-04-15",
-                    "studentCin": "CS1002",
-                    "isAbsent": false
-                }
-            ]
-        },
-        {
-            "id": "cc6b",
-            "secteur": "Science",
-            "filiere": "Physics",
-            "groupe": "Group 1",
-            "date": "2024-11-15",
-            "students": [
-                {
-                    "studentId": "1",
-                    "studentCef": "10001",
-                    "studentName": "John Smith",
-                    "studentDateN": "2000-03-01",
-                    "studentCin": "CS1001",
-                    "isAbsent": false
-                },
-                {
-                    "studentId": "2",
-                    "studentCef": "10002",
-                    "studentName": "Alice Brown",
-                    "studentDateN": "2000-04-15",
-                    "studentCin": "CS1002",
-                    "isAbsent": true
-                }
-            ]
-        },
-        {
-            "id": "e10b",
-            "secteur": "Science",
-            "filiere": "Physics",
-            "groupe": "Group 1",
-            "date": "2024-11-15",
-            "students": [
-                {
-                    "studentId": "1",
-                    "studentCef": "10001",
-                    "studentName": "John Smith",
-                    "studentDateN": "2000-03-01",
-                    "studentCin": "CS1001",
-                    "isAbsent": false
-                },
-                {
-                    "studentId": "2",
-                    "studentCef": "10002",
-                    "studentName": "Alice Brown",
-                    "studentDateN": "2000-04-15",
-                    "studentCin": "CS1002",
-                    "isAbsent": true
-                }
-            ]
-        }
+      {
+        "id": "c43c",
+        "secteur": "Science",
+        "filiere": "Physics",
+        "groupe": "Group 1",
+        "date": "2024-11-14",
+        "students": [
+          {
+            "studentId": "1",
+            "isAbsent": true
+          },
+          {
+            "studentId": "2",
+            "isAbsent": false
+          }
+        ]
+      },
+      {
+        "id": "f45d",
+        "secteur": "Science",
+        "filiere": "Physics",
+        "groupe": "Group 2",
+        "date": "2024-11-14",
+        "students": [
+          {
+            "studentId": "3",
+            "studentName": "Bob Lee",
+            "isAbsent": true
+          },
+          {
+            "studentId": "4",
+            "studentName": "Emma Davis",
+            "isAbsent": true
+          }
+        ]
+      },
+      {
+        "id": "0563",
+        "secteur": "Science",
+        "filiere": "Physics",
+        "groupe": "Group 1",
+        "date": "2024-11-14",
+        "students": [
+          {
+            "studentId": "1",
+            "isAbsent": true
+          },
+          {
+            "studentId": "2",
+            "isAbsent": true
+          }
+        ]
+      },
+      {
+        "id": "823e",
+        "secteur": "Science",
+        "filiere": "Physics",
+        "groupe": "Group 1",
+        "date": "2024-11-14",
+        "students": [
+          {
+            "studentId": "1",
+            "isAbsent": true
+          },
+          {
+            "studentId": "2",
+            "isAbsent": false
+          }
+        ]
+      },
+      {
+        "id": "9965",
+        "secteur": "Science",
+        "filiere": "Physics",
+        "groupe": "Group 1",
+        "date": "2024-11-14",
+        "students": [
+          {
+            "studentId": "1",
+            "isAbsent": true
+          },
+          {
+            "studentId": "2",
+            "isAbsent": false
+          }
+        ]
+      },
+      {
+        "id": "fef5",
+        "secteur": "Science",
+        "filiere": "Physics",
+        "groupe": "Group 1",
+        "date": "2024-11-14",
+        "students": [
+          {
+            "studentId": "1",
+            "isAbsent": true
+          },
+          {
+            "studentId": "2",
+            "isAbsent": false
+          }
+        ]
+      },
+      {
+        "id": "d42b",
+        "secteur": "Science",
+        "filiere": "Physics",
+        "groupe": "Group 1",
+        "date": "2024-11-15",
+        "students": [
+          {
+            "studentId": "1",
+            "studentCef": "10001",
+            "studentName": "John Smith",
+            "studentCin": "CS1001",
+            "isAbsent": true
+          },
+          {
+            "studentId": "2",
+            "studentCef": "10002",
+            "studentName": "Alice Brown",
+            "studentCin": "CS1002",
+            "isAbsent": false
+          }
+        ]
+      },
+      {
+        "id": "8311",
+        "secteur": "Science",
+        "filiere": "Physics",
+        "groupe": "Group 1",
+        "date": "2024-11-15",
+        "students": [
+          {
+            "studentId": "1",
+            "studentCef": "10001",
+            "studentName": "John Smith",
+            "studentCin": "CS1001",
+            "isAbsent": true
+          },
+          {
+            "studentId": "2",
+            "studentCef": "10002",
+            "studentName": "Alice Brown",
+            "studentCin": "CS1002",
+            "isAbsent": false
+          }
+        ]
+      },
+      {
+        "id": "cde9",
+        "secteur": "Science",
+        "filiere": "Physics",
+        "groupe": "Group 1",
+        "date": "2024-11-15",
+        "students": [
+          {
+            "studentId": "1",
+            "studentCef": "10001",
+            "studentName": "John Smith",
+            "studentDateN": "2000-03-01",
+            "studentCin": "CS1001",
+            "isAbsent": true
+          },
+          {
+            "studentId": "2",
+            "studentCef": "10002",
+            "studentName": "Alice Brown",
+            "studentDateN": "2000-04-15",
+            "studentCin": "CS1002",
+            "isAbsent": false
+          }
+        ]
+      },
+      {
+        "id": "cc6b",
+        "secteur": "Science",
+        "filiere": "Physics",
+        "groupe": "Group 1",
+        "date": "2024-11-15",
+        "students": [
+          {
+            "studentId": "1",
+            "studentCef": "10001",
+            "studentName": "John Smith",
+            "studentDateN": "2000-03-01",
+            "studentCin": "CS1001",
+            "isAbsent": false
+          },
+          {
+            "studentId": "2",
+            "studentCef": "10002",
+            "studentName": "Alice Brown",
+            "studentDateN": "2000-04-15",
+            "studentCin": "CS1002",
+            "isAbsent": true
+          }
+        ]
+      },
+      {
+        "id": "e10b",
+        "secteur": "Science",
+        "filiere": "Physics",
+        "groupe": "Group 1",
+        "date": "2024-11-15",
+        "students": [
+          {
+            "studentId": "1",
+            "studentCef": "10001",
+            "studentName": "John Smith",
+            "studentDateN": "2000-03-01",
+            "studentCin": "CS1001",
+            "isAbsent": false
+          },
+          {
+            "studentId": "2",
+            "studentCef": "10002",
+            "studentName": "Alice Brown",
+            "studentDateN": "2000-04-15",
+            "studentCin": "CS1002",
+            "isAbsent": true
+          }
+        ]
+      }
     ],
     "courses": [
-        {
-            "courseId": "BIO101",
-            "courseName": "Introduction to Biology",
-            "teacherId": "T001",
-            "teacherName": "Dr. Alice Johnson",
-            "courseDescription": "An introduction to the fundamental principles of biology, covering topics like cell biology, genetics, and ecology.",
-            "credits": 3,
-            "imageUrl": "https://th.bing.com/th/id/OIP.dJToM1TiZiJA0GYwzDHwjQHaHY?rs=1&pid=ImgDetMain",
-            "schedule": "Mon/Wed/Fri 10:00 AM - 11:30 AM",
-            "location": "Room 203, Science Building",
-            "materials": [
-                "Biology 101 Textbook",
-                "Lab Manual"
-            ],
-            "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
-        },
-        {
-            "courseId": "PHYS101",
-            "courseName": "Introduction to Physics",
-            "teacherId": "T002",
-            "teacherName": "Dr. Michael Smith",
-            "courseDescription": "A basic introduction to the concepts of physics, including motion, energy, and forces.",
-            "credits": 4,
-            "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
-            "schedule": "Tue/Thu 9:00 AM - 10:30 AM",
-            "location": "Room 102, Physics Lab",
-            "materials": [
-                "Physics 101 Textbook",
-                "Lab Safety Manual"
-            ],
-            "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
-        },
-        {
-            "courseId": "HIST201",
-            "courseName": "World History",
-            "teacherId": "T003",
-            "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
-            "teacherName": "Dr. Sarah Davis",
-            "courseDescription": "An exploration of world history from ancient civilizations to modern times.",
-            "credits": 3,
-            "schedule": "Mon/Wed 1:00 PM - 2:30 PM",
-            "location": "Room 104, History Department",
-            "materials": [
-                "World History Textbook",
-                "Primary Source Readings"
-            ],
-            "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
-        },
-        {
-            "courseId": "CHEM101",
-            "courseName": "General Chemistry",
-            "teacherId": "T004",
-            "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
-            "teacherName": "Dr. Emily Zhang",
-            "courseDescription": "A foundational chemistry course covering the basics of chemical reactions, atomic structure, and the periodic table.",
-            "credits": 4,
-            "schedule": "Tue/Thu 2:00 PM - 3:30 PM",
-            "location": "Room 205, Chemistry Lab",
-            "materials": [
-                "General Chemistry Textbook",
-                "Laboratory Notebook"
-            ],
-            "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
-        },
-        {
-            "courseId": "MATH101",
-            "courseName": "Introduction to Mathematics",
-            "teacherId": "T005",
-            "teacherName": "Mr. William Lee",
-            "courseDescription": "A basic course in mathematics, including algebra, calculus, and geometry.",
-            "credits": 3,
-            "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
-            "schedule": "Mon/Fri 11:00 AM - 12:30 PM",
-            "location": "Room 101, Math Department",
-            "materials": [
-                "Mathematics 101 Textbook",
-                "Scientific Calculator"
-            ],
-            "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
-        },
-        {
-            "courseId": "ECON101",
-            "courseName": "Principles of Economics",
-            "teacherId": "T006",
-            "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
-            "teacherName": "Dr. Rachel Green",
-            "courseDescription": "An introductory course to economics, covering basic principles of microeconomics and macroeconomics.",
-            "credits": 3,
-            "schedule": "Mon/Wed 3:00 PM - 4:30 PM",
-            "location": "Room 303, Economics Building",
-            "materials": [
-                "Economics 101 Textbook",
-                "Macroeconomics Reader"
-            ],
-            "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
-        },
-        {
-            "courseId": "PSY101",
-            "courseName": "Introduction to Psychology",
-            "teacherId": "T007",
-            "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
-            "teacherName": "Dr. James Walker",
-            "courseDescription": "A comprehensive introduction to the field of psychology, including behavior, cognition, and emotion.",
-            "credits": 3,
-            "schedule": "Tue/Thu 11:00 AM - 12:30 PM",
-            "location": "Room 306, Psychology Building",
-            "materials": [
-                "Psychology 101 Textbook",
-                "Research Articles Packet"
-            ],
-            "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
-        },
-        {
-            "courseId": "LIT102",
-            "courseName": "English Literature",
-            "teacherId": "T008",
-            "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
-            "teacherName": "Dr. Hannah Clark",
-            "courseDescription": "A study of major works in English literature, from Shakespeare to modern writers.",
-            "credits": 3,
-            "schedule": "Mon/Wed 10:00 AM - 11:30 AM",
-            "location": "Room 202, Literature Department",
-            "materials": [
-                "English Literature Anthology",
-                "Shakespeare Plays Collection"
-            ],
-            "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
-        }
+      {
+        "courseId": "BIO101",
+        "courseName": "Introduction to Biology",
+        "teacherId": "T001",
+        "teacherName": "Dr. Alice Johnson",
+        "courseDescription": "An introduction to the fundamental principles of biology, covering topics like cell biology, genetics, and ecology.",
+        "credits": 3,
+        "imageUrl": "https://th.bing.com/th/id/OIP.dJToM1TiZiJA0GYwzDHwjQHaHY?rs=1&pid=ImgDetMain",
+        "schedule": "Mon/Wed/Fri 10:00 AM - 11:30 AM",
+        "location": "Room 203, Science Building",
+        "materials": [
+          "Biology 101 Textbook",
+          "Lab Manual"
+        ],
+        "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+        "id": "4918"
+      },
+      {
+        "courseId": "PHYS101",
+        "courseName": "Introduction to Physics",
+        "teacherId": "T002",
+        "teacherName": "Dr. Michael Smith",
+        "courseDescription": "A basic introduction to the concepts of physics, including motion, energy, and forces.",
+        "credits": 4,
+        "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+        "schedule": "Tue/Thu 9:00 AM - 10:30 AM",
+        "location": "Room 102, Physics Lab",
+        "materials": [
+          "Physics 101 Textbook",
+          "Lab Safety Manual"
+        ],
+        "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+        "id": "2cc0"
+      },
+      {
+        "courseId": "HIST201",
+        "courseName": "World History",
+        "teacherId": "T003",
+        "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+        "teacherName": "Dr. Sarah Davis",
+        "courseDescription": "An exploration of world history from ancient civilizations to modern times.",
+        "credits": 3,
+        "schedule": "Mon/Wed 1:00 PM - 2:30 PM",
+        "location": "Room 104, History Department",
+        "materials": [
+          "World History Textbook",
+          "Primary Source Readings"
+        ],
+        "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+        "id": "eed2"
+      },
+      {
+        "courseId": "CHEM101",
+        "courseName": "General Chemistry",
+        "teacherId": "T004",
+        "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+        "teacherName": "Dr. Emily Zhang",
+        "courseDescription": "A foundational chemistry course covering the basics of chemical reactions, atomic structure, and the periodic table.",
+        "credits": 4,
+        "schedule": "Tue/Thu 2:00 PM - 3:30 PM",
+        "location": "Room 205, Chemistry Lab",
+        "materials": [
+          "General Chemistry Textbook",
+          "Laboratory Notebook"
+        ],
+        "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+        "id": "0399"
+      },
+      {
+        "courseId": "MATH101",
+        "courseName": "Introduction to Mathematics",
+        "teacherId": "T005",
+        "teacherName": "Mr. William Lee",
+        "courseDescription": "A basic course in mathematics, including algebra, calculus, and geometry.",
+        "credits": 3,
+        "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+        "schedule": "Mon/Fri 11:00 AM - 12:30 PM",
+        "location": "Room 101, Math Department",
+        "materials": [
+          "Mathematics 101 Textbook",
+          "Scientific Calculator"
+        ],
+        "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+        "id": "5fc7"
+      },
+      {
+        "courseId": "ECON101",
+        "courseName": "Principles of Economics",
+        "teacherId": "T006",
+        "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+        "teacherName": "Dr. Rachel Green",
+        "courseDescription": "An introductory course to economics, covering basic principles of microeconomics and macroeconomics.",
+        "credits": 3,
+        "schedule": "Mon/Wed 3:00 PM - 4:30 PM",
+        "location": "Room 303, Economics Building",
+        "materials": [
+          "Economics 101 Textbook",
+          "Macroeconomics Reader"
+        ],
+        "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+        "id": "f4d8"
+      },
+      {
+        "courseId": "PSY101",
+        "courseName": "Introduction to Psychology",
+        "teacherId": "T007",
+        "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+        "teacherName": "Dr. James Walker",
+        "courseDescription": "A comprehensive introduction to the field of psychology, including behavior, cognition, and emotion.",
+        "credits": 3,
+        "schedule": "Tue/Thu 11:00 AM - 12:30 PM",
+        "location": "Room 306, Psychology Building",
+        "materials": [
+          "Psychology 101 Textbook",
+          "Research Articles Packet"
+        ],
+        "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+        "id": "8e1c"
+      },
+      {
+        "courseId": "LIT102",
+        "courseName": "English Literature",
+        "teacherId": "T008",
+        "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+        "teacherName": "Dr. Hannah Clark",
+        "courseDescription": "A study of major works in English literature, from Shakespeare to modern writers.",
+        "credits": 3,
+        "schedule": "Mon/Wed 10:00 AM - 11:30 AM",
+        "location": "Room 202, Literature Department",
+        "materials": [
+          "English Literature Anthology",
+          "Shakespeare Plays Collection"
+        ],
+        "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+        "id": "474c"
+      }
     ]
-}
+  }

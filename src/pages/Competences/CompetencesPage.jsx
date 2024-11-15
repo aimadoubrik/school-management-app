@@ -142,6 +142,7 @@ const CompetencesPage = () => {
                   <td>{competence.code_competence}</td>
                   <td>{competence.intitule_competence.join(', ')}</td>
                   <td>{competence.intitule_module}</td>
+                  <td>{competence.filiere}</td>
                   <td>
                     <a href={competence.cours}>Cours</a>
                   </td>
