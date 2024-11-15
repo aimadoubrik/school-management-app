@@ -1,30 +1,30 @@
-import { useState, useEffect } from "react";
-import { Calendar, Clock, School, AlertCircle, Loader2 } from "lucide-react";
+import { useState, useEffect } from 'react';
+import { Calendar, Clock, School, AlertCircle, Loader2 } from 'lucide-react';
 
-const levels = ["1ere annee", "2eme annee"];
-const classes = ["DEV", "ID"];
+const levels = ['1ere annee', '2eme annee'];
+const classes = ['DEV', 'ID'];
 const timeSlots = [
-  "8:30 AM - 11:00 AM",
-  "11:00 AM - 1:15 PM",
-  "1:30 PM - 4:00 PM",
-  "4:00 PM - 6:30 PM",
+  '8:30 AM - 11:00 AM',
+  '11:00 AM - 1:15 PM',
+  '1:30 PM - 4:00 PM',
+  '4:00 PM - 6:30 PM',
 ];
 
-const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 const SchedulePage = () => {
-  const [selectedLevel, setSelectedLevel] = useState("");
-  const [selectedClass, setSelectedClass] = useState("");
+  const [selectedLevel, setSelectedLevel] = useState('');
+  const [selectedClass, setSelectedClass] = useState('');
   const [schedule, setSchedule] = useState({
-    Monday: Array(timeSlots.length).fill("empty"),
-    Tuesday: Array(timeSlots.length).fill("empty"),
-    Wednesday: Array(timeSlots.length).fill("empty"),
-    Thursday: Array(timeSlots.length).fill("empty"),
-    Friday: Array(timeSlots.length).fill("empty"),
-    Saturday: Array(timeSlots.length).fill("empty"),
+    Monday: Array(timeSlots.length).fill('empty'),
+    Tuesday: Array(timeSlots.length).fill('empty'),
+    Wednesday: Array(timeSlots.length).fill('empty'),
+    Thursday: Array(timeSlots.length).fill('empty'),
+    Friday: Array(timeSlots.length).fill('empty'),
+    Saturday: Array(timeSlots.length).fill('empty'),
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [currentTime, setCurrentTime] = useState(new Date());
 
   // Update current time every minute
@@ -40,14 +40,15 @@ const SchedulePage = () => {
     const currentMinute = currentTime.getMinutes();
     const currentTimeInMinutes = currentHour * 60 + currentMinute;
 
-    const timeSlotIndex = timeSlots.findIndex(slot => {
-      const [start] = slot.split(' - ');
-      const [startHour, startMinute] = start.split(':');
-      const hour = parseInt(startHour);
-      const minute = parseInt(startMinute);
-      const slotTimeInMinutes = hour * 60 + minute;
-      return currentTimeInMinutes < slotTimeInMinutes;
-    }) - 1;
+    const timeSlotIndex =
+      timeSlots.findIndex((slot) => {
+        const [start] = slot.split(' - ');
+        const [startHour, startMinute] = start.split(':');
+        const hour = parseInt(startHour);
+        const minute = parseInt(startMinute);
+        const slotTimeInMinutes = hour * 60 + minute;
+        return currentTimeInMinutes < slotTimeInMinutes;
+      }) - 1;
 
     return { currentDay, timeSlotIndex };
   };
@@ -57,16 +58,16 @@ const SchedulePage = () => {
     const fetchSchedule = async () => {
       if (selectedLevel && selectedClass) {
         setIsLoading(true);
-        setError("");
+        setError('');
         try {
-          const response = await fetch("http://localhost:3005/emploi");
+          const response = await fetch('http://localhost:3005/emploi');
           const data = await response.json();
           if (data && data[selectedClass] && data[selectedClass][selectedLevel]) {
             setSchedule(data[selectedClass][selectedLevel]);
           }
         } catch (error) {
-          setError("Failed to fetch schedule. Please try again later.");
-          console.error("Error fetching schedule:", error);
+          setError('Failed to fetch schedule. Please try again later.');
+          console.error('Error fetching schedule:', error);
         } finally {
           setIsLoading(false);
         }
@@ -174,7 +175,7 @@ const SchedulePage = () => {
                       <tr
                         key={day}
                         className={`
-                          ${day === currentDay ? "bg-blue-50 dark:bg-blue-900/20" : ""}
+                          ${day === currentDay ? 'bg-blue-50 dark:bg-blue-900/20' : ''}
                           hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors
                         `}
                       >
@@ -186,22 +187,20 @@ const SchedulePage = () => {
                             key={`${day}-${index}`}
                             className={`
                               border border-gray-200 dark:border-gray-600 p-3
-                              ${slot === "empty" ? "bg-gray-50 dark:bg-gray-700/50" : ""}
+                              ${slot === 'empty' ? 'bg-gray-50 dark:bg-gray-700/50' : ''}
                               ${
                                 day === currentDay && index === timeSlotIndex
-                                  ? "ring-2 ring-blue-500"
-                                  : ""
+                                  ? 'ring-2 ring-blue-500'
+                                  : ''
                               }
                             `}
                           >
-                            {slot !== "empty" ? (
+                            {slot !== 'empty' ? (
                               <div className="p-2 bg-blue-100 dark:bg-blue-900/50 rounded text-sm">
                                 {slot}
                               </div>
                             ) : (
-                              <span className="text-gray-400 dark:text-gray-500">
-                                No Class
-                              </span>
+                              <span className="text-gray-400 dark:text-gray-500">No Class</span>
                             )}
                           </td>
                         ))}

@@ -16,11 +16,31 @@ const ViewCompetence = ({ competence, closeModal }) => {
 
   // Details to display
   const detailItems = [
-    { icon: <BookOpen className="w-4 h-4" />, label: 'Intitulé Competence', value: competence.intitule_competence.join(', ') || 'No title provided' },
-    { icon: <Code className="w-4 h-4" />, label: 'Code Competence', value: competence.code_competence || 'No code provided' },
-    { icon: <Building2 className="w-4 h-4" />, label: 'Module', value: competence.intitule_module || 'No module assigned' },
-    { icon: <Users className="w-4 h-4" />, label: 'Cours', value: competence.cours || 'No courses assigned' },
-    { icon: <Users className="w-4 h-4" />, label: 'Quiz', value: competence.quiz || 'No quizzes assigned' }
+    {
+      icon: <BookOpen className="w-4 h-4" />,
+      label: 'Intitulé Competence',
+      value: competence.intitule_competence.join(', ') || 'No title provided',
+    },
+    {
+      icon: <Code className="w-4 h-4" />,
+      label: 'Code Competence',
+      value: competence.code_competence || 'No code provided',
+    },
+    {
+      icon: <Building2 className="w-4 h-4" />,
+      label: 'Module',
+      value: competence.intitule_module || 'No module assigned',
+    },
+    {
+      icon: <Users className="w-4 h-4" />,
+      label: 'Cours',
+      value: competence.cours || 'No courses assigned',
+    },
+    {
+      icon: <Users className="w-4 h-4" />,
+      label: 'Quiz',
+      value: competence.quiz || 'No quizzes assigned',
+    },
   ];
 
   return (
@@ -30,16 +50,16 @@ const ViewCompetence = ({ competence, closeModal }) => {
       </div>
 
       <div className="card bg-base-100">
-        <div className='card-body p-4 space-y-6'>
-        {detailItems.map((item, index) => (
-          <div key={index} className="flex items-start space-x-4">
-            <div className="text-primary">{item.icon}</div>
-            <div className="flex-1">
-              <h3 className="font-semibold text-base-content opacity-70">{item.label}</h3>
-              <p className="text-lg text-base-content">{item.value}</p>
+        <div className="card-body p-4 space-y-6">
+          {detailItems.map((item, index) => (
+            <div key={index} className="flex items-start space-x-4">
+              <div className="text-primary">{item.icon}</div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-base-content opacity-70">{item.label}</h3>
+                <p className="text-lg text-base-content">{item.value}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
         </div>
       </div>
 

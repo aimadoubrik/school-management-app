@@ -8,14 +8,20 @@ export const fetchCompetences = createAsyncThunk('competences/fetchCompetences',
 });
 
 // Ajouter une compétence
-export const addCompetence = createAsyncThunk('competences/addCompetence', async (competenceData) => {
-  const response = await axios.post('http://localhost:3004/competences', competenceData);
-  return competenceData;
-});
+export const addCompetence = createAsyncThunk(
+  'competences/addCompetence',
+  async (competenceData) => {
+    const response = await axios.post('http://localhost:3004/competences', competenceData);
+    return competenceData;
+  }
+);
 
 // Modifier une compétence
 export const editCompetence = createAsyncThunk('competences/editCompetence', async (competence) => {
-  const response = await axios.put(`http://localhost:3004/competences/${competence.id}`, competence);
+  const response = await axios.put(
+    `http://localhost:3004/competences/${competence.id}`,
+    competence
+  );
   return competence;
 });
 
@@ -26,10 +32,13 @@ export const deleteCompetence = createAsyncThunk('competences/deleteCompetence',
 });
 
 // Récupérer une compétence par son ID
-export const fetchCompetenceById = createAsyncThunk('competences/fetchCompetenceById', async (id) => {
-  const response = await axios.get(`http://localhost:3004/competences/${id}`);
-  return response.data;
-});
+export const fetchCompetenceById = createAsyncThunk(
+  'competences/fetchCompetenceById',
+  async (id) => {
+    const response = await axios.get(`http://localhost:3004/competences/${id}`);
+    return response.data;
+  }
+);
 
 const competencesSlice = createSlice({
   name: 'competences',
@@ -89,7 +98,9 @@ const competencesSlice = createSlice({
       })
       .addCase(deleteCompetence.fulfilled, (state, action) => {
         state.loading = false;
-        state.competences = state.competences.filter((competence) => competence.id !== action.payload);
+        state.competences = state.competences.filter(
+          (competence) => competence.id !== action.payload
+        );
       })
       .addCase(deleteCompetence.rejected, (state, action) => {
         state.loading = false;
