@@ -24,7 +24,7 @@ const SchedulePage = () => {
     const fetchSchedule = async () => {
       if (selectedLevel && selectedClass) {
         try {
-          const response = await fetch('http://localhost:3004/emploi');
+          const response = await fetch('http://localhost:3005/emploi');
           const data = await response.json();
           console.log(data)
           if (data && data[selectedClass] && data[selectedClass][selectedLevel]) {
