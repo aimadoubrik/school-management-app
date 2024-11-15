@@ -1,0 +1,154 @@
+{
+  "absentStudents": [
+    {
+      "id": "c43c",
+      "secteur": "Science",
+      "filiere": "Physics",
+      "groupe": "Group 1",
+      "date": "2024-11-14",
+      "students": [
+        {
+          "studentId": "1",
+          "isAbsent": true
+        },
+        {
+          "studentId": "2",
+          "isAbsent": false
+        }
+      ]
+    },
+    {
+      "id": "f45d",
+      "secteur": "Science",
+      "filiere": "Physics",
+      "groupe": "Group 2",
+      "date": "2024-11-14",
+      "students": [
+        {
+          "studentId": "3",
+          "studentName": "Bob Lee",
+          "isAbsent": true
+        },
+        {
+          "studentId": "4",
+          "studentName": "Emma Davis",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "0563",
+      "secteur": "Science",
+      "filiere": "Physics",
+      "groupe": "Group 1",
+      "date": "2024-11-14",
+      "students": [
+        {
+          "studentId": "1",
+          "isAbsent": true
+        },
+        {
+          "studentId": "2",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "823e",
+      "secteur": "Science",
+      "filiere": "Physics",
+      "groupe": "Group 1",
+      "date": "2024-11-14",
+      "students": [
+        {
+          "studentId": "1",
+          "isAbsent": true
+        },
+        {
+          "studentId": "2",
+          "isAbsent": false
+        }
+      ]
+    },
+    {
+      "id": "9965",
+      "secteur": "Science",
+      "filiere": "Physics",
+      "groupe": "Group 1",
+      "date": "2024-11-14",
+      "students": [
+        {
+          "studentId": "1",
+          "isAbsent": true
+        },
+        {
+          "studentId": "2",
+          "isAbsent": false
+        }
+      ]
+    },
+    {
+      "id": "fef5",
+      "secteur": "Science",
+      "filiere": "Physics",
+      "groupe": "Group 1",
+      "date": "2024-11-14",
+      "students": [
+        {
+          "studentId": "1",
+          "isAbsent": true
+        },
+        {
+          "studentId": "2",
+          "isAbsent": false
+        }
+      ]
+    },
+    {
+      "id": "d42b",
+      "secteur": "Science",
+      "filiere": "Physics",
+      "groupe": "Group 1",
+      "date": "2024-11-15",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        },
+        {
+          "studentId": "2",
+          "studentCef": "10002",
+          "studentName": "Alice Brown",
+          "studentCin": "CS1002",
+          "isAbsent": false
+        }
+      ]
+    },
+    {
+      "id": "8311",
+      "secteur": "Science",
+      "filiere": "Physics",
+      "groupe": "Group 1",
+      "date": "2024-11-15",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        },
+        {
+          "studentId": "2",
+          "studentCef": "10002",
+          "studentName": "Alice Brown",
+          "studentCin": "CS1002",
+          "isAbsent": false
+        }
+      ]
+    }
+  ]
+}
