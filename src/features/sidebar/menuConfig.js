@@ -45,6 +45,12 @@ export const menuItems = [
     href: '/specializations',
     count: 4,
   },
+  {
+    label: 'Competences',
+    icon: 'BookMarked',
+    href: '/competences',
+    count: 4,
+  },
   { type: 'divider' },
   {
     label: 'Documents',
