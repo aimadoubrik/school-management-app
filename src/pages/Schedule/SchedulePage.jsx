@@ -8,7 +8,6 @@ import {
   SCHEDULE_CONSTANTS,
 } from '../../features/schedule/scheduleSlice';
 
-
 const SelectionBox = ({ title, icon: Icon, value, options, onChange }) => (
   <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
     <div className="mb-3">
