@@ -1,16 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 import { Camera, Mail, Phone, Globe, MapPin, Menu, X, Home, Settings, User, Bell, LogOut } from 'lucide-react';
 import avatar from '../../assets/avatar.png';
 
 function UserProfilePage() {
-  const storedUser = localStorage.getItem('user') || sessionStorage.getItem('user');
-  const initialUser = storedUser ? JSON.parse(storedUser) : null;
-  const [user, setUser] = useState(initialUser);
+  const [user, setUser] = useState(null);
   const [activeTab, setActiveTab] = useState('profile');
   const [isEditing, setIsEditing] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  // Fetch all users and set the current user
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get('http://localhost:3003/users');
+        const allUsers = response.data;
+        const storedUserId =
+          (localStorage.getItem('user') && JSON.parse(localStorage.getItem('user'))) ||
+          (sessionStorage.getItem('user') && JSON.parse(sessionStorage.getItem('user'))) ||
+          null;
+        const currentUser = allUsers.find((user) => user.id === storedUserId.id);
+        setUser(currentUser);
+        console.log(currentUser);
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+    };
+
+    fetchUsers();
+  }, []);
 
   const handlePhotoUpload = (event) => {
     const file = event.target.files[0];
@@ -39,15 +59,27 @@ function UserProfilePage() {
 
   const handleSave = async () => {
     setIsLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    setIsLoading(false);
-    setIsEditing(false);
-    setIsDirty(false);
+    try {
+      // Make a PUT request to update the profile in the API
+      const response = await axios.put(`http://localhost:3003/users/${user.id}`, user);
+
+      // After successful update, update localStorage and state
+      const updatedUser = response.data;
+      setUser(updatedUser);
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+
+      setIsEditing(false);
+      setIsDirty(false);
+    } catch (error) {
+      console.error('Error saving the profile:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleCancel = () => {
     const storedUser = localStorage.getItem('user') || sessionStorage.getItem('user');
-    setUser(storedUser ? JSON.parse(storedUser) : initialUser);
+    setUser(storedUser ? JSON.parse(storedUser) : null);
     setIsEditing(false);
     setIsDirty(false);
   };
@@ -63,32 +95,49 @@ function UserProfilePage() {
     </button>
   );
 
-  const ProfileField = ({ icon: Icon, label, value, name, type = "text" }) => (
-    <div className="form-control w-full">
-      <label className="label">
-        <span className="label-text">{label}</span>
-      </label>
-      <div className="relative">
-        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <Icon className="w-5 h-5 text-base-content/50" />
-        </div>
-        {isEditing && name !== 'role' ? (
-          <input
-            type={type}
-            name={name}
-            value={value}
-            onChange={handleChange}
-            className="input input-bordered w-full pl-10"
-            placeholder={`Enter your ${label.toLowerCase()}`}
-          />
-        ) : (
-          <div className="input input-bordered w-full pl-10 flex items-center bg-base-200/50">
-            {value || <span className="text-base-content/50">Not specified</span>}
+  // ProfileField component with input focus fix using useRef
+  const ProfileField = ({ icon: Icon, label, value, name, type = "text" }) => {
+    const inputRef = useRef(null);
+
+    // Optional: focus the input after it is mounted
+    useEffect(() => {
+      if (isEditing && inputRef.current) {
+        inputRef.current.focus();
+      }
+    }, [isEditing]);
+
+    return (
+      <div className="form-control w-full">
+        <label className="label">
+          <span className="label-text">{label}</span>
+        </label>
+        <div className="relative">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <Icon className="w-5 h-5 text-base-content/50" />
           </div>
-        )}
+          {isEditing && name !== 'role' ? (
+            <input
+              ref={inputRef}
+              type={type}
+              name={name}
+              value={value}
+              onChange={handleChange}
+              className="input input-bordered w-full pl-10"
+              placeholder={`Enter your ${label.toLowerCase()}`}
+            />
+          ) : (
+            <div className="input input-bordered w-full pl-10 flex items-center bg-base-200/50">
+              {value || <span className="text-base-content/50">Not specified</span>}
+            </div>
+          )}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
+
+  if (!user) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="min-h-screen bg-base-200">
@@ -103,10 +152,10 @@ function UserProfilePage() {
       </div>
 
       {/* Sidebar */}
-      <div className={`
-        fixed inset-y-0 left-0 z-40 w-64 bg-base-100 shadow-lg transform transition-transform duration-200 ease-in-out
-        ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-      `}>
+      <div
+        className={`fixed inset-y-0 left-0 z-40 w-64 bg-base-100 shadow-lg transform transition-transform duration-200 ease-in-out
+        ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
+      >
         <div className="flex flex-col h-full">
           {/* Profile Summary */}
           <div className="p-6 border-b border-base-200">
@@ -258,14 +307,14 @@ function UserProfilePage() {
                   icon={Phone}
                   label="Phone"
                   name="phone"
-                  value={user?.phone || ''}
+                  value={user?.phoneNumber || ''}
                   type="tel"
                 />
                 <ProfileField
                   icon={MapPin}
                   label="Address"
                   name="address"
-                  value={user?.address || ''}
+                  value={user?.address.city || ''}
                 />
                 <ProfileField
                   icon={Globe}
@@ -303,4 +352,3 @@ function UserProfilePage() {
 }
 
 export default UserProfilePage;
-

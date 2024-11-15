@@ -42,7 +42,7 @@
     },
     {
       "id": "013f",
-      "name": "Admin Admin",
+      "name": "Admin 1",
       "email": "admin@admin.com",
       "password": "admin",
       "role": "admin",
@@ -50,7 +50,7 @@
       "createdAt": "2024-11-14T05:20:08.294Z",
       "status": "active",
       "phoneNumber": "+33 6 01 02 03 04",
-      "bio": "This is a bio of Admin Admin",
+      "bio": "This is a bio of Admin admin",
       "website": "https://example.com",
       "address": {
         "street": "Rue de la Convention",
