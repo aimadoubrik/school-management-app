@@ -2,6 +2,7 @@ import { useEffect, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchQuizzes } from '../../features/quizzes/quizzesSlice';
 import QuizCard from './QuizCard';
+import { LoadingSpinner, ErrorAlert } from '../../components';
 import { Search, AlertCircle } from 'lucide-react';
 
 const QuizzesPage = () => {
@@ -43,19 +44,15 @@ const QuizzesPage = () => {
   const renderContent = () => {
     if (status === 'loading') {
       return (
-        <div className="flex items-center justify-center min-h-[200px]">
-          <span className="loading loading-spinner loading-lg"></span>
+        <div className="flex justify-center items-start min-h-screen">
+          <LoadingSpinner message="Fetching quizzes..." />
         </div>
       );
     }
     if (status === 'failed') {
       return (
-        <div role="alert" className="alert alert-error">
-          <AlertCircle className="w-6 h-6" />
-          <div>
-            <h3 className="font-bold">Error</h3>
-            <p className="text-sm">{error}</p>
-          </div>
+        <div className="flex justify-center items-start min-h-screen">
+          <ErrorAlert message={error} />
         </div>
       );
     }

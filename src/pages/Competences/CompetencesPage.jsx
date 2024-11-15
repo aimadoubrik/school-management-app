@@ -4,6 +4,7 @@ import { fetchCompetences, deleteCompetence } from '../../features/competences/C
 import { Eye, Edit, Trash, AlertCircle, Download, Plus, Search } from 'lucide-react';
 import AddCompetence from './components/AddCompetence';
 import ViewCompetence from './components/ViewCompetence';
+import { LoadingSpinner, ErrorAlert } from '../../components';
 import Papa from 'papaparse';
 
 const CompetencesPage = () => {
@@ -75,17 +76,16 @@ const CompetencesPage = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
-        <span className="loading loading-spinner loading-lg text-primary"></span>
+      <div className="flex justify-center items-start min-h-screen">
+        <LoadingSpinner message="Fetching competences..." />
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="alert alert-error">
-        <AlertCircle className="h-6 w-6" />
-        <span>{error}</span>
+      <div className="flex justify-center items-start min-h-screen">
+        <ErrorAlert message={error} />
       </div>
     );
   }
