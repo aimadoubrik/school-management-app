@@ -11,6 +11,14 @@ const Quiz = () => {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [quizFinished, setQuizFinished] = useState(false);
   const [isConfettiActive, setIsConfettiActive] = useState(false);
+  const [retries, setRetries] = useState(0);
+
+  useEffect(() => {
+    setTimeLeft(300);
+    setCurrentQuestionIndex(0);
+    setSelectedAnswers([]);
+    setQuizFinished(false);
+  }, [id, retries]);
 
   useEffect(() => {
     if (timeLeft > 0) {
@@ -49,6 +57,10 @@ const Quiz = () => {
     } else {
       finishQuiz();
     }
+  };
+
+  const handleRetryQuiz = () => {
+    setRetries((prev) => prev + 1);
   };
 
   if (!quizData)
@@ -183,7 +195,7 @@ const Quiz = () => {
         </div>
 
         <div className="text-center mt-8">
-          <button className="btn btn-primary btn-wide" onClick={() => window.location.reload()}>
+          <button className="btn btn-primary btn-wide" onClick={() => handleRetryQuiz()}>
             Retry Quiz
           </button>
         </div>

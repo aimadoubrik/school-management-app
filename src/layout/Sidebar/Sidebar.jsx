@@ -12,10 +12,13 @@ const Sidebar = memo(() => {
   const sidebarRef = useRef(null);
   const { isOpen, items } = useSelector((state) => state.sidebar);
   const { isMobile } = useSelector((state) => state.ui);
+  const userProfile = useSelector((state) => state.profile.user);
+
 
   // Get the user data from local storage
   const user = (localStorage.getItem('user') && JSON.parse(localStorage.getItem('user'))) ||
     (sessionStorage.getItem('user') && JSON.parse(sessionStorage.getItem('user'))) || {
+      photo: avatar,
       name: '',
       role: '',
     };
@@ -102,7 +105,7 @@ const Sidebar = memo(() => {
           </nav>
 
           <div className="p-4 border-t border-base-200">
-            <UserProfile name={user.name} role={user.role} avatar={avatar} />
+            <UserProfile name={userProfile?.name || user.name} role={userProfile?.role || user.role} profilePhoto={userProfile?.photo || avatar} />
           </div>
         </div>
       </aside>

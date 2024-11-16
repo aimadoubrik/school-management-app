@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { apiService } from '../../api/config'; // Assuming this is the correct path
+import { apiService } from '../../api/config';
 
 const initialState = {
   user: null,
