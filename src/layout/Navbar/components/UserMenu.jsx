@@ -1,11 +1,11 @@
 import { ChevronDown, LogOut, MessageSquare, UserCircle2 } from 'lucide-react';
-import { Avatar } from '../../../assets';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../../features/auth/slices/authSlice';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
+
   const user =
     (localStorage.getItem('user') && JSON.parse(localStorage.getItem('user'))) ||
     (sessionStorage.getItem('user') && JSON.parse(sessionStorage.getItem('user'))) ||
@@ -16,7 +16,7 @@ const UserMenu = () => {
       <button className="btn btn-ghost btn-sm sm:btn-md p-1 sm:p-2">
         <div className="avatar">
           <div className="w-7 sm:w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <img src={Avatar} alt="Profile" />
+            <img src={user?.photo} alt="Profile" />
           </div>
         </div>
         <span className="hidden sm:inline-block ml-2">{user?.name}</span>
@@ -44,3 +44,5 @@ const UserMenu = () => {
 };
 
 export default UserMenu;
+
+

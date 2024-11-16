@@ -62,30 +62,9 @@ const UserProfilePage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-base-200 ">
+    <div className="min-h-screen bg-base-200 rounded-t-md ">
       {/* Hero Section with Background */}
-      <div className="relative bg-primary h-60 overflow-hidden rounded-t-md">
-        <svg
-            className="absolute top-0  h-full"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1440 320">
-        <path
-            fill="#FF6600"
-            fillOpacity="1"
-            d="M0,96L48,122.7C96,149,192,203,288,197.3C384,192,480,128,576,96C672,64,768,64,864,106.7C960,149,1056,235,1152,250.7C1248,267,1344,213,1392,186.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-        </svg>
-        <svg
-            className="absolute top-0 right-0  h-full"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1440 320">
-        <path
-            fill="#FF6600"
-            fillOpacity="1"
-            d="M0,96L48,122.7C96,149,192,203,288,197.3C384,192,480,128,576,96C672,64,768,64,864,106.7C960,149,1056,235,1152,250.7C1248,267,1344,213,1392,186.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-        </svg>
-
-        
-      </div>
+      <div className="relative bg-primary h-60 overflow-hidden rounded-t-md"></div>
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-32 pb-12">
