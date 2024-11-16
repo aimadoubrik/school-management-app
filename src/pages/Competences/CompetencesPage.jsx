@@ -1,3 +1,5 @@
+// src/pages/CompetencesPage.js
+
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCompetences, deleteCompetence } from '../../features/competences/competencesSlice';
@@ -6,6 +8,7 @@ import AddCompetence from './components/AddCompetence';
 import ViewCompetence from './components/ViewCompetence';
 import { LoadingSpinner, ErrorAlert } from '../../components';
 import Papa from 'papaparse';
+import CompetenceTable from './components/CompetencesTable';
 
 const CompetencesPage = () => {
   const dispatch = useDispatch();
@@ -14,15 +17,33 @@ const CompetencesPage = () => {
   const [viewMode, setViewMode] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedFiliere, setSelectedFiliere] = useState('');
+  const [selectedModule, setSelectedModule] = useState('');
+  const [filieres, setFilieres] = useState([]);
+  const [modules, setModules] = useState([]);
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
   const totalPages = Math.ceil(competences.length / itemsPerPage);
 
-  const [searchTerm, setSearchTerm] = useState('');
-
   useEffect(() => {
     dispatch(fetchCompetences());
   }, [dispatch]);
+
+  useEffect(() => {
+    const uniqueFilieres = [...new Set(competences.map((competence) => competence.filiere))];
+    setFilieres(uniqueFilieres);
+
+    if (selectedFiliere) {
+      const filteredModules = competences
+        .filter((competence) => competence.filiere === selectedFiliere)
+        .map((competence) => competence.intitule_module);
+      setModules([...new Set(filteredModules)]);
+    } else {
+      setModules([]);
+    }
+  }, [competences, selectedFiliere]);
 
   const handleDelete = async (id) => {
     try {
@@ -60,11 +81,14 @@ const CompetencesPage = () => {
     URL.revokeObjectURL(url);
   };
 
-  const filteredCompetences = competences.filter((competence) =>
-    competence.intitule_competence.some((name) =>
+  const filteredCompetences = competences.filter((competence) => {
+    const matchesSearch = competence.intitule_competence.some((name) =>
       name.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  );
+    );
+    const matchesFiliere = selectedFiliere ? competence.filiere === selectedFiliere : true;
+    const matchesModule = selectedModule ? competence.intitule_module === selectedModule : true;
+    return matchesSearch && matchesFiliere && matchesModule;
+  });
 
   const displayedCompetences = filteredCompetences.slice(
     (currentPage - 1) * itemsPerPage,
@@ -94,18 +118,47 @@ const CompetencesPage = () => {
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Element de Competence</h1>
 
-      {/* Search Bar */}
-      <div className="relative mb-6">
-        <Search className="absolute left-3 top-3 w-5 h-5 text-gray-500" />
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Search competences..."
-          className="input input-bordered w-full pl-10"
-        />
+      {/* Search and Filters */}
+      <div className="flex items-center gap-4 mb-6">
+        <div className="relative w-1/4">
+          <Search className="absolute left-3 top-3 w-5 h-5 text-gray-500" />
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search competences..."
+            className="input input-bordered w-full pl-10"
+          />
+        </div>
+
+        <div className="w-1/4">
+          <select
+            value={selectedFiliere}
+            onChange={(e) => setSelectedFiliere(e.target.value)}
+            className="input input-bordered w-full"
+          >
+            <option value="">Select Filiere</option>
+            {filieres.map((filiere, index) => (
+              <option key={index} value={filiere}>{filiere}</option>
+            ))}
+          </select>
+        </div>
+
+        <div className="w-1/4">
+          <select
+            value={selectedModule}
+            onChange={(e) => setSelectedModule(e.target.value)}
+            className="input input-bordered w-full"
+          >
+            <option value="">Select Module</option>
+            {modules.map((module, index) => (
+              <option key={index} value={module}>{module}</option>
+            ))}
+          </select>
+        </div>
       </div>
 
+      {/* Add Competence and CSV Export */}
       <div className="flex justify-between items-center mb-6">
         <button
           onClick={() => {
@@ -123,62 +176,16 @@ const CompetencesPage = () => {
       </div>
 
       <hr />
-      <div className="overflow-x-auto">
-        <table className="table table-zebra w-full">
-          <thead>
-            <tr>
-              <th>Code</th>
-              <th>Intitulé Competence</th>
-              <th>Intitulé Module</th>
-              <th>Cours</th>
-              <th>Quiz</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {displayedCompetences.length > 0 ? (
-              displayedCompetences.map((competence) => (
-                <tr key={competence.id}>
-                  <td>{competence.code_competence}</td>
-                  <td>{competence.intitule_competence.join(', ')}</td>
-                  <td>{competence.intitule_module}</td>
-                  <td>{competence.filiere}</td>
-                  <td>
-                    <a href={competence.cours}>Cours</a>
-                  </td>
-                  <td>
-                    <a href={competence.quiz}>Quiz</a>
-                  </td>
-                  <td className="flex gap-2">
-                    <button className="btn btn-info btn-sm" onClick={() => handleView(competence)}>
-                      <Eye className="w-4 h-4" />
-                    </button>
-                    <button
-                      className="btn btn-success btn-sm"
-                      onClick={() => handleEdit(competence)}
-                    >
-                      <Edit className="w-4 h-4" />
-                    </button>
-                    <button
-                      className="btn btn-error btn-sm"
-                      onClick={() => handleDelete(competence.id)}
-                    >
-                      <Trash className="w-4 h-4" />
-                    </button>
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="6" className="text-center">
-                  No competences available.
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
 
+      {/* Competence Table */}
+      <CompetenceTable
+        competences={displayedCompetences}
+        onView={handleView}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+      />
+
+      {/* Pagination Controls */}
       <div className="flex justify-between items-center mt-4">
         <button
           onClick={goToPreviousPage}
@@ -199,13 +206,13 @@ const CompetencesPage = () => {
         </button>
       </div>
 
+      {/* Modal for View / Edit Competence */}
+      {/* Modal for View / Edit Competence */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white rounded-lg shadow-lg w-80 p-4 max-h-[500px] overflow-y-auto">
             <div className="flex justify-between items-center">
-              <h2 className="text-xl font-semibold">
-                {viewMode ? 'View Competence' : 'Add Competence'}
-              </h2>
+              <h2 className="text-xl font-semibold">{viewMode ? 'View Competence' : 'Add Competence'}</h2>
               <button onClick={handleCloseModal} className="text-gray-200 hover:text-gray-300">
                 X
               </button>
@@ -214,15 +221,13 @@ const CompetencesPage = () => {
               {viewMode ? (
                 <ViewCompetence competence={selectedCompetence} closeModal={handleCloseModal} />
               ) : (
-                <AddCompetence
-                  closeModal={handleCloseModal}
-                  selectedCompetence={selectedCompetence}
-                />
+                <AddCompetence closeModal={handleCloseModal} selectedCompetence={selectedCompetence} />
               )}
             </div>
           </div>
         </div>
       )}
+
     </div>
   );
 };
