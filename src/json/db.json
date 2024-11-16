@@ -773,6 +773,20 @@
         "4"
       ],
       "id": "df6b"
+    },
+    {
+      "id": "041f",
+      "code_competence": "13",
+      "intitule_competence": [
+        "intelligence émotionelle"
+      ],
+      "intitule_module": "softskills",
+      "cours": [
+        "https:/softskills.com"
+      ],
+      "quiz": [
+        "https:/softskills.com"
+      ]
     }
   ],
   "competences": [
