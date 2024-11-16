@@ -19,20 +19,22 @@ const UserProfilePage = () => {
     try {
       const response = await axios.get('http://localhost:3000/users');
       const allUsers = response.data;
-      const storedUserId = JSON.parse(localStorage.getItem('user') || sessionStorage.getItem('user'));
-      const currentUser = allUsers.find(user => user.id === storedUserId?.id);
-      
+      const storedUserId = JSON.parse(
+        localStorage.getItem('user') || sessionStorage.getItem('user')
+      );
+      const currentUser = allUsers.find((user) => user.id === storedUserId?.id);
+
       setUser({
         ...currentUser,
         phoneNumber: currentUser?.phoneNumber || '',
         address: {
           city: currentUser?.address?.city || '',
-          ...(currentUser?.address || {})
+          ...(currentUser?.address || {}),
         },
         company: currentUser?.company || '',
         website: currentUser?.website || '',
         bio: currentUser?.bio || '',
-        joinedDate: currentUser?.joinedDate || '2024-01-01'
+        joinedDate: currentUser?.joinedDate || '2024-01-01',
       });
     } catch (error) {
       showNotification('Error loading profile', 'error');
@@ -52,7 +54,7 @@ const UserProfilePage = () => {
       setIsLoading(true);
       const reader = new FileReader();
       reader.onloadend = () => {
-        setUser(prev => ({ ...prev, photo: reader.result }));
+        setUser((prev) => ({ ...prev, photo: reader.result }));
         setIsDirty(true);
         setIsLoading(false);
         showNotification('Profile photo updated');
@@ -63,9 +65,9 @@ const UserProfilePage = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUser(prev => ({
+    setUser((prev) => ({
       ...prev,
-      [name]: name === 'address' ? { ...prev.address, city: value } : value
+      [name]: name === 'address' ? { ...prev.address, city: value } : value,
     }));
     setIsDirty(true);
   };
@@ -106,7 +108,9 @@ const UserProfilePage = () => {
         {/* Notification Toast */}
         {notification && (
           <div className="toast toast-top toast-end">
-            <div className={`alert ${notification.type === 'error' ? 'alert-error' : 'alert-success'} shadow-lg`}>
+            <div
+              className={`alert ${notification.type === 'error' ? 'alert-error' : 'alert-success'} shadow-lg`}
+            >
               <span>{notification.message}</span>
             </div>
           </div>
@@ -122,8 +126,8 @@ const UserProfilePage = () => {
                 <div className="relative mx-auto sm:mx-0">
                   <div className="avatar">
                     <div className="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 shadow-xl">
-                      <img 
-                        src={user?.photo || avatar} 
+                      <img
+                        src={user?.photo || avatar}
                         alt="Profile"
                         className={`object-cover ${isLoading ? 'opacity-50' : ''}`}
                       />
@@ -194,16 +198,12 @@ const UserProfilePage = () => {
                       </button>
                     </>
                   ) : (
-                    <button
-                      className="btn btn-primary btn-sm"
-                      onClick={() => setIsEditing(true)}
-                    >
+                    <button className="btn btn-primary btn-sm" onClick={() => setIsEditing(true)}>
                       Edit Profile
                     </button>
                   )}
                 </div>
               </div>
-
             </div>
 
             <div className="divider mt-0 mb-0"></div>
@@ -213,9 +213,21 @@ const UserProfilePage = () => {
               <div className="grid gap-6 md:grid-cols-2">
                 {[
                   { icon: Mail, label: 'Email', value: user?.email, name: 'email', type: 'email' },
-                  { icon: Phone, label: 'Phone', value: user?.phoneNumber, name: 'phoneNumber', type: 'tel' },
+                  {
+                    icon: Phone,
+                    label: 'Phone',
+                    value: user?.phoneNumber,
+                    name: 'phoneNumber',
+                    type: 'tel',
+                  },
                   { icon: MapPin, label: 'Location', value: user?.address?.city, name: 'address' },
-                  { icon: Globe, label: 'Website', value: user?.website, name: 'website', type: 'url' },
+                  {
+                    icon: Globe,
+                    label: 'Website',
+                    value: user?.website,
+                    name: 'website',
+                    type: 'url',
+                  },
                 ].map(({ icon: Icon, label, value, name, type }) => (
                   <div key={name} className="form-control">
                     <label className="label">
