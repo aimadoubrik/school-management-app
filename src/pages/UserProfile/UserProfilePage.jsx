@@ -62,33 +62,39 @@ const UserProfilePage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-base-200 rounded-t-md ">
-      {/* Hero Section with Background */}
-      <div className="relative bg-primary h-60 overflow-hidden rounded-t-md"></div>
+    <div className="min-h-screen bg-base-200 ">
+      <div className="relative bg-primary h-60 overflow-hidden rounded-t-md">
+        <svg
+          className="absolute top-0 h-full"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320">
+          <path
+            fill="#FF6600"
+            fillOpacity="1"
+            d="M0,96L48,122.7C96,149,192,203,288,197.3C384,192,480,128,576,96C672,64,768,64,864,106.7C960,149,1056,235,1152,250.7C1248,267,1344,213,1392,186.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+      </div>
 
-      {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-32 pb-12">
-        {/* Notification Toast */}
         {notification && (
           <div className="toast toast-top toast-end">
-            <div className={`alert ${notification.type === 'error' ? 'alert-error' : 'alert-success'} shadow-lg`}>
+            <div
+              className={`alert ${notification.type === 'error' ? 'alert-error' : 'alert-success'} shadow-lg`}
+            >
               <span>{notification.message}</span>
             </div>
           </div>
         )}
 
-        {/* Profile Card */}
         <div className="card bg-base-100 shadow-xl">
           <div className="card-body p-0">
-            {/* Profile Header */}
             <div className="relative p-6 pb-0">
               <div className="flex flex-col sm:flex-row gap-6">
-                {/* Avatar */}
                 <div className="relative mx-auto sm:mx-0">
                   <div className="avatar">
                     <div className="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 shadow-xl">
-                      <img 
-                        src={user?.photo || avatar} 
+                      <img
+                        src={user?.photo || avatar}
                         alt="Profile"
                         className={`object-cover ${isLoading ? 'opacity-50' : ''}`}
                       />
@@ -107,7 +113,6 @@ const UserProfilePage = () => {
                   )}
                 </div>
 
-                {/* Profile Info */}
                 <div className="flex-1 text-center sm:text-left space-y-3">
                   <div className="space-y-1">
                     {isEditing ? (
@@ -135,7 +140,6 @@ const UserProfilePage = () => {
                   </div>
                 </div>
 
-                {/* Action Buttons */}
                 <div className="flex justify-center sm:justify-end gap-2">
                   {isEditing ? (
                     <>
@@ -159,28 +163,35 @@ const UserProfilePage = () => {
                       </button>
                     </>
                   ) : (
-                    <button
-                      className="btn btn-primary btn-sm"
-                      onClick={() => setIsEditing(true)}
-                    >
+                    <button className="btn btn-primary btn-sm" onClick={() => setIsEditing(true)}>
                       Edit Profile
                     </button>
                   )}
                 </div>
               </div>
-
             </div>
 
             <div className="divider mt-0 mb-0"></div>
 
-            {/* Contact Information */}
             <div className="p-6">
               <div className="grid gap-6 md:grid-cols-2">
                 {[
                   { icon: Mail, label: 'Email', value: user?.email, name: 'email', type: 'email' },
-                  { icon: Phone, label: 'Phone', value: user?.phoneNumber, name: 'phoneNumber', type: 'tel' },
+                  {
+                    icon: Phone,
+                    label: 'Phone',
+                    value: user?.phoneNumber,
+                    name: 'phoneNumber',
+                    type: 'tel',
+                  },
                   { icon: MapPin, label: 'Location', value: user?.address?.city, name: 'address' },
-                  { icon: Globe, label: 'Website', value: user?.website, name: 'website', type: 'url' },
+                  {
+                    icon: Globe,
+                    label: 'Website',
+                    value: user?.website,
+                    name: 'website',
+                    type: 'url',
+                  },
                 ].map(({ icon: Icon, label, value, name, type }) => (
                   <div key={name} className="form-control">
                     <label className="label">
@@ -211,24 +222,22 @@ const UserProfilePage = () => {
 
               <div className="divider"></div>
 
-              {/* Bio */}
               <div className="form-control w-full">
                 <label className="label">
-                  <span className="label-text font-medium">About Me</span>
+                  <span className="label-text font-medium">Biography</span>
                 </label>
                 {isEditing ? (
                   <textarea
                     name="bio"
                     value={user?.bio || ''}
                     onChange={handleChange}
-                    rows="4"
                     className="textarea textarea-bordered w-full"
                     placeholder="Tell us about yourself..."
-                  />
+                  ></textarea>
                 ) : (
-                  <div className="textarea textarea-bordered bg-base-200/50 min-h-[8rem]">
-                    {user?.bio || <span className="text-base-content/50">No bio provided</span>}
-                  </div>
+                  <p className="textarea textarea-bordered bg-base-200/50 w-full h-auto p-4">
+                    {user?.bio || <span className="text-base-content/50">No bio available</span>}
+                  </p>
                 )}
               </div>
             </div>
