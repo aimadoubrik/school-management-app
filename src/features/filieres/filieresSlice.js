@@ -13,9 +13,13 @@ const createApiThunk = (typePrefix, apiCall) => {
 };
 
 // Thunks
-export const fetchFilieres = createApiThunk('filieres/fetchFilieres', () => apiService.get('/filieres'));
+export const fetchFilieres = createApiThunk('filieres/fetchFilieres', () =>
+  apiService.get('/filieres')
+);
 
-export const addFiliere = createApiThunk('filieres/addFiliere', (filiereData) => apiService.post('/filieres', filiereData));
+export const addFiliere = createApiThunk('filieres/addFiliere', (filiereData) =>
+  apiService.post('/filieres', filiereData)
+);
 
 export const editFiliere = createApiThunk('filieres/editFiliere', (filiere) =>
   apiService.put(`/filieres/${filiere.id}`, filiere)
