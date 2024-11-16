@@ -20,7 +20,7 @@
         },
         "ID": {
             "1ere annee": {
-                "Monday": ["Database", "Network", "Programming", "English"],
+                "Monday": ["Database", "Database", "Programming", "English"],
                 "Tuesday": ["Design", "UI/UX", "Security", "empty"],
                 "Wednesday": ["Programming", "Database", "Network", "empty"],
                 "Thursday": ["English", "Security", "UI/UX", "empty"],
