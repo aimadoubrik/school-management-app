@@ -1,92 +1,79 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { apiService } from '../../api/config';
 
-// Helper for async thunks
-const createApiThunk = (typePrefix, apiCall) => {
-    return createAsyncThunk(typePrefix, async (args, { rejectWithValue }) => {
-      try {
-        return await apiCall(args);
-      } catch (error) {
-        return rejectWithValue(error.message);
-      }
+export const fetchModules = createAsyncThunk('modules/fetchModules', async () => {
+    const response = await fetch('http://localhost:3000/modules'); 
+    return response.json();
+});
+
+export const addModule = createAsyncThunk('modules/addModule', async (newModule) => {
+    const response = await fetch('http://localhost:3000/modules', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newModule),
+        
     });
-  };
+    return response.json();
+});
 
-// Thunks
-export const fetchModules = createApiThunk('modules/fetchModule', () => apiService.get('/modules'));
+export const deleteModule = createAsyncThunk('modules/deleteModule', async (id) => {
+    const response = await fetch(`http://localhost:3000/modules/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
 
-export const addModule = createApiThunk('modules/addModule', (moduleData) => apiService.post('/modules', filiereData));
+    if (!response.ok) {
+        throw new Error(`Failed to delete module with id: ${id}`);
+    }
 
-export const editModule = createApiThunk('modules/editModule', (module) =>
-  apiService.put(`/modules/${module.id}`, module)
-);
-
-export const deleteModule = createApiThunk('modules/deleteModule', async (id) => {
-  await apiService.delete(`/modules/${id}`);
-  return id;
+    return id;
 });
 
 
-// Helper for handling cases
-const handleAsyncCases = (builder, thunk, operation, onSuccess) => {
-    builder
-      .addCase(thunk.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-        state.currentOperation = operation;
-      })
-      .addCase(thunk.fulfilled, (state, action) => {
-        state.loading = false;
-        onSuccess(state, action);
-        state.currentOperation = null;
-      })
-      .addCase(thunk.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-        state.currentOperation = null;
-      });
-  };
+export const editModule = createAsyncThunk('modules/editModule', async (updatedModule) => {
+    const response = await fetch(`http://localhost:3000/modules/${updatedModule.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedModule),
+    });
+    return response.json();
+});
 
 
-  const initialState = {
-    modules: [],
-    loading: false,
-    error: null,
-    currentOperation: null,
-  };
-
-  const modulesSlice = createSlice({
+const moduleSlice = createSlice({
     name: 'modules',
-    initialState,
-    reducers: {
-      clearError: (state) => {
-        state.error = null;
-      },
-      setCurrentOperation: (state, action) => {
-        state.currentOperation = action.payload;
-      },
-    },
+    initialState: { list: [], status: null },
+    reducers: {},
     extraReducers: (builder) => {
-      handleAsyncCases(builder, fetchModules, 'fetch', (state, action) => {
-        state.modules = action.payload;
-      });
-  
-      handleAsyncCases(builder, addModule, 'add', (state, action) => {
-        state.modules.push(action.payload);
-      });
-  
-      handleAsyncCases(builder, editModule, 'edit', (state, action) => {
-        const index = state.modules.findIndex((f) => f.id === action.payload.id);
-        if (index !== -1) {
-          state.modules[index] = action.payload;
-        }
-      });
-  
-      handleAsyncCases(builder, deleteModule, 'delete', (state, action) => {
-        state.modules = state.modules.filter((filiere) => filiere.id !== action.payload);
-      });
+        builder
+            .addCase(fetchModules.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(fetchModules.fulfilled, (state, action) => {
+                state.list = action.payload;
+                state.status = 'succeeded';
+            })
+            .addCase(fetchModules.rejected, (state) => {
+                state.status = 'failed';
+            })
+            .addCase(addModule.fulfilled, (state, action) => {
+                state.list.push(action.payload);
+            })
+            .addCase(deleteModule.fulfilled, (state, action) => {
+                state.list = state.list.filter(module => module.id !== action.payload);
+            })
+            .addCase(editModule.fulfilled, (state, action) => {
+                const index = state.list.findIndex(module => module.id === action.payload.id);
+                if (index !== -1) {
+                    state.list[index] = action.payload;
+                }
+            });
     },
-  });
-  
-  export const { clearError, setCurrentOperation } = modulesSlice.actions;
-  export default modulesSlice.reducer;
+});
+
+export default moduleSlice.reducer;

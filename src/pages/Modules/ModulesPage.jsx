@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { PlusCircle, Pencil, Trash2, Search, ChevronLeft, ChevronRight } from 'lucide-react';
+import { PlusCircle, Edit, RefreshCcw , Trash2, Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchModules, deleteModule, addModule, editModule } from '../../features/modules/moduleSlice';
 import Modal from './components/Modal';
@@ -14,7 +14,7 @@ function ModulesPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingModuleId, setEditingModuleId] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsParPage = 5;
+  const itemsParPage = 3;
   const [formData, setFormData] = useState({
     code: '',
     intitule: '',
@@ -56,7 +56,7 @@ function ModulesPage() {
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   };
 
-  const handleaddModule = () => {
+  const handleUpdateModule = () => {
     setEditingModuleId(null);
     setIsModalOpen(true);
   };
@@ -96,9 +96,7 @@ function ModulesPage() {
   };
 
   const handleDelete = (id) => {
-    if (window.confirm('Are you sure you want to delete this module?')) {
-      dispatch(deleteModule(id));
-    }
+    dispatch(deleteModule(id));  
   };
 
   const handleSubmit = (e) => {
@@ -146,134 +144,133 @@ function ModulesPage() {
   return (
     <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
       {/* Header Section */}
-      <div className="sm:flex sm:items-center sm:justify-between mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 tracking-tight">Liste des Modules</h2>
-        <div className="mt-4 sm:mt-0 sm:flex sm:space-x-3">
-          <button onClick={handleaddModule} className="group inline-flex items-center px-5 py-2.5 bg-orange-600 text-white rounded-lg hover:bg-orange-700">
-            <PlusCircle className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <h2 className="text-2xl font-bold">Liste des Modules</h2>
+        <div className="flex gap-2">
+          <button onClick={() => dispatch(fetchModules())} className="btn btn-ghost btn-sm tooltip">
+            <RefreshCcw className="w-4 h-4" />
+          </button>
+          <button onClick={handleUpdateModule} className="btn btn-outline btn-primary btn-sm gap-2">
+            <PlusCircle className="w-4 h-4" />
             Add Module
           </button>
         </div>
       </div>
 
-      {/* Filters Section */}
-      <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Search className="h-5 w-5 text-gray-400" />
-            </div>
-            <input
-              type="text"
-              className="block w-full pl-10 pr-3 py-2 border rounded-lg"
-              placeholder="Search modules..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
+    {/* Filters Section */}
+    <div className="flex flex-col sm:flex-row gap-4 py-4">
+      <div className="relative flex-1">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-base-content/50 w-4 h-4" />
           </div>
-          <select value={filterSecteur} onChange={(e) => setfilterSecteur(e.target.value)} className="block w-full px-3 py-2 border rounded-lg">
-            <option value="Digital">Digital</option>
-            <option value="Agro-ali">Agro-ali</option>
-            <option value="Finance">Finance</option>
-            <option value="Marketing">Marketing</option>
-          </select>
-          <select value={filterNiveau} onChange={(e) => setFilterNiveau(e.target.value)} className="block w-full px-3 py-2 border rounded-lg">
-            <option value="1A">1ère année</option>
-            <option value="2A">2ème année</option>
-          </select>
+          <input
+            type="text"
+            className="input input-bordered block pl-10 pr-3 py-2"
+            placeholder="Search modules..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
+        <select value={filterSecteur} onChange={(e) => setfilterSecteur(e.target.value)} className="select select-bordered">
+          <option value="Digital">Digital</option>
+          <option value="Agro-ali">Agro-ali</option>
+          <option value="Finance">Finance</option>
+          <option value="Marketing">Marketing</option>
+        </select>
+        <select value={filterNiveau} onChange={(e) => setFilterNiveau(e.target.value)} className="select select-bordered">
+          <option value="1A">1ère année</option>
+          <option value="2A">2ème année</option>
+        </select>
       </div>
 
-      {/* Modules Table */}
-      <div className="mt-6">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Code</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Intitulé</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Masse Horaire</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Filière</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Niveau</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Compétences</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Etat</th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {currentItems.map((module, index) => (
-              <tr key={index}>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{module.code}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{module.intitule}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{module.masseHoraire}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{module.filiere}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{module.niveau}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{module.competences}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm">
-                  <div
-                    className={`${
-                      module.etat === 'Affecté' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
-                    } inline-block px-2 py-1 rounded`}>
-                    {module.etat}
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <button className="text-indigo-600 hover:text-indigo-900 mr-3" onClick={() => handleEditModule(module)} >
-                    <Pencil className="w-4 h-4 mr-1" />
-                    Edit
-                  </button>
-                  <button className="text-orange-600 hover:text-red-900" onClick={() => handleDelete(module.id)}>
-                    <Trash2 className="w-4 h-4 mr-1" />
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
 
-        {/* Pagination Controls */}
-        <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6 mt-4">
-          <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-              <nav className="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+      {/* Modules Table */}
+      <div className="rounded-lg border bg-base-100 hidden md:block">
+        <table className="table table-zebra w-full">
+          <thead className="bg-base-200">
+          <tr>
+                <th className="cursor-pointer hover:bg-base-300 transition-colors duration-200">Code</th>
+                <th className="cursor-pointer hover:bg-base-300 transition-colors duration-200">Intitulé</th>
+                <th className="cursor-pointer hover:bg-base-300 transition-colors duration-200">Masse Horaire</th>
+                <th className="cursor-pointer hover:bg-base-300 transition-colors duration-200">Filière</th>
+                <th className="cursor-pointer hover:bg-base-300 transition-colors duration-200">Niveau</th>
+                <th className="cursor-pointer hover:bg-base-300 transition-colors duration-200">Compétences</th>
+                <th className="cursor-pointer hover:bg-base-300 transition-colors duration-200">Etat</th>
+                <th className="flex items-center gap-1 pl-2">Actions</th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {currentItems.map((module, index) => (
+                <tr key={index}>
+                  <td className="hover">{module.code}</td>
+                  <td className="hover">{module.intitule}</td>
+                  <td className="hover">{module.masseHoraire}</td>
+                  <td className="hover">{module.filiere}</td>
+                  <td className="hover">{module.niveau}</td>
+                  <td className="hover">{module.competences}</td>
+                  <td className="hover">
+                    <div
+                      className={`${
+                        module.etat === 'Affecté' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
+                      } inline-block px-2 py-1 rounded`}>
+                      {module.etat}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <button className="text-gray-600 hover:text-gray-900 mr-3" onClick={() => handleEditModule(module)} >
+                      <Edit className="w-4 h-4" />
+                    </button>
+                    <button className="text-orange-600 hover:text-red-900" onClick={() => handleDelete(module.id)}>
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+        </table>
+      </div>
+
+      {/* Pagination Controls */}
+      <div className="flex items-center justify-between border-t border-gray-200 px-4 py-3 sm:px-6 mt-4">
+        <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+            <nav className="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+              <button
+                onClick={handlePrevPage}
+                disabled={currentPage === 1}
+                className={`relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 ${
+                  currentPage === 1 ? 'cursor-not-allowed' : 'hover:bg-gray-50'
+                }`}>
+                <span className="sr-only">Previous</span>
+                <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+              </button>
+              {[...Array(totalPages)].map((_, index) => (
                 <button
-                  onClick={handlePrevPage}
-                  disabled={currentPage === 1}
-                  className={`relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 ${
-                    currentPage === 1 ? 'cursor-not-allowed' : 'hover:bg-gray-50'
+                  key={index + 1}
+                  onClick={() => handlePageChange(index + 1)}
+                  className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${
+                    currentPage === index + 1
+                      ? 'z-10 bg-gray-600 text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 '
+                      : 'text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0'
                   }`}>
-                  <span className="sr-only">Previous</span>
-                  <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+                  {index + 1}
                 </button>
-                {[...Array(totalPages)].map((_, index) => (
-                  <button
-                    key={index + 1}
-                    onClick={() => handlePageChange(index + 1)}
-                    className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${
-                      currentPage === index + 1
-                        ? 'z-10 bg-orange-600 text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
-                        : 'text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0'
-                    }`}>
-                    {index + 1}
-                  </button>
-                ))}
-                <button
-                  onClick={handleNextPage}
-                  disabled={currentPage === totalPages}
-                  className={`relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 ${
-                    currentPage === totalPages ? 'cursor-not-allowed' : 'hover:bg-gray-50'
-                  }`}>
-                  <span className="sr-only">Next</span>
-                  <ChevronRight className="h-5 w-5" aria-hidden="true" />
-                </button>
-              </nav>
-            </div>
+              ))}
+              <button
+                onClick={handleNextPage}
+                disabled={currentPage === totalPages}
+                className={`relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 ${
+                  currentPage === totalPages ? 'cursor-not-allowed' : 'hover:bg-gray-50'
+                }`}>
+                <span className="sr-only">Next</span>
+                <ChevronRight className="h-5 w-5" aria-hidden="true" />
+              </button>
+            </nav>
           </div>
       </div>
 
       {/* Add Module Modal */}
       <Modal isOpen={isModalOpen} onClose={handleModalClose}>
         <div className="p-6">
-          <h3 className="text-xl font-semibold text-gray-900 mb-6">Add New Module</h3>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Code Module</label>
@@ -324,6 +321,7 @@ function ModulesPage() {
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
                 required>
                 <option value="Digital">Digital</option>
+                <option value="Agro-ali">Agro-ali</option>
                 <option value="Finance">Finance</option>
                 <option value="Marketing">Marketing</option>
               </select>
@@ -365,12 +363,12 @@ function ModulesPage() {
               <button
                 type="button"
                 onClick={handleModalClose}
-                className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                className="btn btn-ghos">
                 Cancel
               </button>
               <button
                 type="submit"
-                className="px-4 py-2 text-sm font-medium text-white bg-orange-600 rounded-lg hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
+                className="btn btn-primary gap-2">
                 Save Module
               </button>
             </div>

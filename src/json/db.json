@@ -1957,7 +1957,7 @@
       "masseHoraire": 195,
       "filiere": "Marketing de Services",
       "niveau": "2A",
-      "competences": "Stratégies de fidélisation, Études de marché, Marketing d'influence",
+      "competences": "Stratégies de fidélisation, Marketing d'influence",
       "etat": "Affecté",
       "secteur": "Marketing",
       "formateur": "Jean Dupont"
@@ -2077,7 +2077,7 @@
       "masseHoraire": "135",
       "filiere": "Biotechnologies alimentaires",
       "niveau": "1A",
-      "competences": "Innovation dans l'Agro-ali, Techniques de production",
+      "competences": "Innovation dans l'Agro-ali",
       "secteur": "Agro-ali",
       "formateur": "Laurent Boucher",
       "etat": "Affecté"
