@@ -20,6 +20,7 @@ import {
   SchedulePage,
   TraineesPage,
   CompetencesPage,
+  ModulesPage
 } from '../pages';
 
 const RouteConfig = () => {
@@ -138,6 +139,14 @@ const RouteConfig = () => {
           element={
             <ProtectedRoute>
               <UserProfilePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/modules"
+          element={
+            <ProtectedRoute>
+              <ModulesPage />
             </ProtectedRoute>
           }
         />

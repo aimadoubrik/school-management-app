@@ -10,6 +10,7 @@ import {
   authReducer,
   competencesSlice,
   scheduleReducer,
+  moduleReducer,
   profileSlice
 } from '../features';
 
@@ -23,6 +24,8 @@ const rootReducer = combineReducers({
   competences: competencesSlice,
   auth: authReducer,
   schedule: scheduleReducer,
+  modules: moduleReducer,
+   });
   profile: profileSlice
 });
 
