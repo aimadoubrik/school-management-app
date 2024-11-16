@@ -179,7 +179,7 @@ AddEditFiliere.propTypes = {
     code_filiere: PropTypes.string,
     intitule_filiere: PropTypes.string,
     secteur: PropTypes.string,
-    groupes: PropTypes.arrayOf(PropTypes.string),
+    groupes: PropTypes.array,
   }),
 };
 

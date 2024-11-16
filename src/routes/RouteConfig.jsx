@@ -19,8 +19,7 @@ import {
   UnauthorizedPage,
   SchedulePage,
   TraineesPage,
-  CompetencesPage
-
+  CompetencesPage,
 } from '../pages';
 
 const RouteConfig = () => {
