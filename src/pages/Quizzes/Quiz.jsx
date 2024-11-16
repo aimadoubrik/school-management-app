@@ -1,11 +1,18 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchQuizzes } from '../../features/quizzes/quizzesSlice';
 
 const Quiz = () => {
-  const { id } = useParams();
-  const quizData = useSelector((state) => state.quizzes.quizzes.find((quiz) => quiz.id === id));
+  const { id } = useParams(); // Get the quiz ID from the URL
+  const dispatch = useDispatch();
 
+  // Access quizzes and status from Redux store
+  const { quizzes, status, error } = useSelector((state) => state.quizzes);
+  // Filter the quiz based on the ID from the URL
+  const quizData = quizzes.find((quiz) => quiz.id === id);
+  
+  // Local state for handling quiz
   const [timeLeft, setTimeLeft] = useState(300);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
@@ -13,13 +20,22 @@ const Quiz = () => {
   const [isConfettiActive, setIsConfettiActive] = useState(false);
   const [retries, setRetries] = useState(0);
 
+  // Fetch quizzes when the component mounts or the ID changes
   useEffect(() => {
-    setTimeLeft(300);
-    setCurrentQuestionIndex(0);
-    setSelectedAnswers([]);
-    setQuizFinished(false);
-  }, [id, retries]);
+    dispatch(fetchQuizzes());
+  }, [dispatch, id]); // Re-run when the ID or component mounts
 
+  // Reset quiz state when ID or retries change
+  useEffect(() => {
+    if (quizData && quizData.questions) {
+      setTimeLeft(quizData.questions.length * 30); // Set time based on number of questions (30 sec per question)
+      setCurrentQuestionIndex(0);
+      setSelectedAnswers([]);
+      setQuizFinished(false);
+    }
+  }, [id, retries, quizData]); // Run this effect when the quiz ID, retries, or quizData changes
+
+  // Timer for quiz countdown
   useEffect(() => {
     if (timeLeft > 0) {
       const timer = setInterval(() => setTimeLeft((prev) => prev - 1), 1000);
@@ -29,28 +45,33 @@ const Quiz = () => {
     }
   }, [timeLeft]);
 
+  // Calculate score based on answers
   const calculateScore = () =>
-    quizData.questions.reduce(
+    quizData?.questions.reduce(
       (score, question, index) =>
         score + (selectedAnswers[index] === question.correctAnswer ? 1 : 0),
       0
     );
 
+  // Finish quiz logic
   const finishQuiz = () => {
+    if (!quizData || !quizData.questions) return; // Safeguard: Ensure quizData and questions exist
     setQuizFinished(true);
     const score = calculateScore();
     if (score >= 0.7 * quizData.questions.length) {
       setIsConfettiActive(true);
-      setTimeout(() => setIsConfettiActive(false), 3000);
+      setTimeout(() => setIsConfettiActive(false), 3000); // Confetti effect
     }
   };
 
+  // Update selected answer
   const handleAnswerChange = (answer) => {
     const updatedAnswers = [...selectedAnswers];
     updatedAnswers[currentQuestionIndex] = answer;
     setSelectedAnswers(updatedAnswers);
   };
 
+  // Go to the next question
   const nextQuestion = () => {
     if (currentQuestionIndex < quizData.questions.length - 1) {
       setCurrentQuestionIndex((prev) => prev + 1);
@@ -59,20 +80,29 @@ const Quiz = () => {
     }
   };
 
+  // Retry quiz
   const handleRetryQuiz = () => {
     setRetries((prev) => prev + 1);
   };
 
-  if (!quizData)
+  // Loading or error state check
+  if (status === 'loading' || !quizData) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <span className="loading loading-spinner loading-lg text-primary"></span>
       </div>
     );
+  }
 
-  const currentQuestion = quizData.questions[currentQuestionIndex];
-  const score = calculateScore();
+  if (status === 'failed') {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <span className="text-red-500">Error: {error}</span>
+      </div>
+    );
+  }
 
+  // Quiz progress component
   const QuizProgress = () => (
     <div className="w-full mb-8">
       <div className="flex justify-between mb-2">
@@ -91,6 +121,7 @@ const Quiz = () => {
     </div>
   );
 
+  // Quiz header component
   const QuizHeader = () => (
     <div className="card bg-base-200 shadow-xl mb-8">
       <div className="card-body">
@@ -105,14 +136,15 @@ const Quiz = () => {
     </div>
   );
 
+  // Render quiz content (questions, answers, etc.)
   const renderQuizContent = () => (
     <div className="space-y-8">
       <QuizProgress />
       <div className="card bg-base-100 shadow-xl">
         <div className="card-body">
-          <h3 className="text-xl font-medium mb-6">{currentQuestion.question}</h3>
+          <h3 className="text-xl font-medium mb-6">{quizData.questions[currentQuestionIndex].question}</h3>
           <div className="space-y-4">
-            {currentQuestion.answers.map((option) => (
+            {quizData.questions[currentQuestionIndex].answers.map((option) => (
               <button
                 key={option}
                 onClick={() => handleAnswerChange(option)}
@@ -142,6 +174,7 @@ const Quiz = () => {
     </div>
   );
 
+  // Render quiz results (score, review, etc.)
   const renderQuizResults = () => (
     <div className="card bg-base-100 shadow-xl">
       <div className="card-body">
@@ -151,10 +184,10 @@ const Quiz = () => {
             <div className="stat">
               <div className="stat-title text-lg">Your Final Score</div>
               <div className="stat-value text-primary">
-                {score}/{quizData.questions.length}
+                {calculateScore()}/{quizData.questions.length}
               </div>
               <div className="stat-desc text-sm">
-                Accuracy: {((score / quizData.questions.length) * 100).toFixed(1)}%
+                Accuracy: {((calculateScore() / quizData.questions.length) * 100).toFixed(1)}%
               </div>
             </div>
           </div>
@@ -204,12 +237,9 @@ const Quiz = () => {
   );
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-3xl">
-      {isConfettiActive && (
-        <div className="fixed inset-0 pointer-events-none text-center text-4xl">🎉🎊✨</div>
-      )}
+    <div className="min-h-screen p-8">
       <QuizHeader />
-      {!quizFinished ? renderQuizContent() : renderQuizResults()}
+      {quizFinished ? renderQuizResults() : renderQuizContent()}
     </div>
   );
 };
