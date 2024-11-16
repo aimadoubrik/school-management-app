@@ -9,3 +9,4 @@ export { default as authReducer } from './auth/slices/authSlice';
 export { default as competencesSlice } from './competences/competencesSlice';
 export { default as scheduleReducer } from './schedule/scheduleSlice';
 export { default as moduleReducer } from './modules/moduleSlice';
+export { default as profileSlice } from './userProfile/profileSlice';

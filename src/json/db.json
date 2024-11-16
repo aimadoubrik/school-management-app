@@ -10,7 +10,7 @@
       "lastLogin": "2024-03-15T10:30:00.000Z",
       "status": "active",
       "phoneNumber": "+33 6 01 02 03 04",
-      "bio": "This is a bio of Jane Doe",
+      "bio": "My name is Jane Doe and I like to code.",
       "website": "https://example.com",
       "address": {
         "street": "Rue de la Convention",
@@ -42,7 +42,7 @@
     },
     {
       "id": "013f",
-      "name": "Admin wld Admin",
+      "name": "admina",
       "email": "admin@admin.com",
       "password": "admin",
       "role": "admin",
