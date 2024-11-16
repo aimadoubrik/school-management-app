@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 
-const UserProfile = ({ name, role, avatar }) => {
+const UserProfile = ({ name, role, profilePhoto }) => {
   return (
     <div className="flex items-center gap-3 px-2">
-      <div className="avatar">
+      <div className="profile-photo">
         <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-          <img src={avatar} alt={`${name}'s profile`} />
+          <img src={profilePhoto} alt={`${name}'s profile`} />
         </div>
       </div>
       <div className="flex-1 min-w-0">
@@ -19,7 +19,7 @@ const UserProfile = ({ name, role, avatar }) => {
 UserProfile.propTypes = {
   name: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
+  profilePhoto: PropTypes.string.isRequired,
 };
 
 export default UserProfile;
