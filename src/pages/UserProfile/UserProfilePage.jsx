@@ -47,21 +47,26 @@ function UserProfilePage() {
 
   const handlePhotoUpload = (event) => {
     const file = event.target.files[0];
-    if (file) {
-      console.log('File selected:', file); // Debugging
-      setIsLoading(true);
-      const newPhotoUrl = URL.createObjectURL(file);
-      console.log('Generated photo URL:', newPhotoUrl); // Debugging
-      setTimeout(() => {
-        const updatedUser = { ...user, photo: newPhotoUrl };
-        console.log('Updated User Object:', updatedUser); // Debugging
-        setUser(updatedUser);
-        localStorage.setItem('user', JSON.stringify(updatedUser));
-        setIsDirty(true);
-        setIsLoading(false);
-      }, 1000);
-    }
+    if (!file) return;
+  
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      // This `reader.result` will be a base64-encoded image string
+      const base64Image = reader.result;
+  
+      // Update user state and persist image as base64 string
+      const updatedUser = { ...user, photo: base64Image };
+      setUser(updatedUser);
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+      setIsDirty(true);
+      setIsLoading(false);
+    };
+  
+    reader.readAsDataURL(file);
   };
+  
+  
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -202,7 +207,7 @@ function UserProfilePage() {
                   )}
                   <div className="avatar">
                     <div className="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                      <img src={user?.photo || avatar} alt="Profile" />
+                    <img src={user?.photo || avatar} alt="Profile" />
                     </div>
                   </div>
                   {isEditing && (
