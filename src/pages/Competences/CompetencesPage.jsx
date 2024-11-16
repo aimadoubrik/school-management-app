@@ -1,5 +1,3 @@
-// src/pages/CompetencesPage.js
-
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCompetences, deleteCompetence } from '../../features/competences/competencesSlice';
@@ -9,6 +7,8 @@ import ViewCompetence from './components/ViewCompetence';
 import { LoadingSpinner, ErrorAlert } from '../../components';
 import Papa from 'papaparse';
 import CompetenceTable from './components/CompetencesTable';
+import CompetencesModal from './components/CompetencesModal';
+import { ConfirmModal } from '../../components';
 
 const CompetencesPage = () => {
   const dispatch = useDispatch();
@@ -16,13 +16,15 @@ const CompetencesPage = () => {
   const [selectedCompetence, setSelectedCompetence] = useState(null);
   const [viewMode, setViewMode] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [competenceToDelete, setCompetenceToDelete] = useState(null);
+  
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFiliere, setSelectedFiliere] = useState('');
   const [selectedModule, setSelectedModule] = useState('');
   const [filieres, setFilieres] = useState([]);
   const [modules, setModules] = useState([]);
-
+  
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
   const totalPages = Math.ceil(competences.length / itemsPerPage);
@@ -45,30 +47,53 @@ const CompetencesPage = () => {
     }
   }, [competences, selectedFiliere]);
 
-  const handleDelete = async (id) => {
+  const handleDeleteCompetence = (competence) => {
+    setCompetenceToDelete(competence);
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleDeleteConfirm = async () => {
     try {
-      await dispatch(deleteCompetence(id));
-    } catch (err) {
-      console.error('Error deleting competence:', err.message);
+      await dispatch(deleteCompetence(competenceToDelete.id)); // Adjust based on your slice
+      setIsDeleteModalOpen(false);
+      setCompetenceToDelete(null);
+    } catch (error) {
+      console.error("Error deleting competence:", error.message);
     }
   };
 
+  const handleSaveCompetence = async (competenceData) => {
+    try {
+      if (selectedCompetence) {
+        // Update existing competence
+        await dispatch(updateCompetence(competenceData)); // Ensure you have `updateCompetence` in your slice
+      } else {
+        // Add new competence
+        await dispatch(addCompetence(competenceData)); // Ensure you have `addCompetence` in your slice
+      }
+      setIsModalOpen(false);  // Close the modal after save
+    } catch (error) {
+      console.error('Error saving competence:', error);
+    }
+};
+
   const handleEdit = (competence) => {
-    setSelectedCompetence(competence);
+    setSelectedCompetence(competence);  // Set the selected competence for editing
     setViewMode(false);
     setIsModalOpen(true);
-  };
+};
 
-  const handleView = (competence) => {
-    setSelectedCompetence(competence);
+const handleView = (competence) => {
+    setSelectedCompetence(competence);  // Set the selected competence for viewing
     setViewMode(true);
     setIsModalOpen(true);
-  };
+};
 
-  const handleCloseModal = () => {
-    setSelectedCompetence(null);
-    setIsModalOpen(false);
-  };
+const handleCloseModal = () => {
+    setSelectedCompetence(null);  // Clear selected competence
+    setIsModalOpen(false);  // Close the modal
+};
+
 
   const handleCSVExport = () => {
     const csv = Papa.unparse(competences);
@@ -182,7 +207,7 @@ const CompetencesPage = () => {
         competences={displayedCompetences}
         onView={handleView}
         onEdit={handleEdit}
-        onDelete={handleDelete}
+        onDelete={handleDeleteCompetence}
       />
 
       {/* Pagination Controls */}
@@ -206,28 +231,26 @@ const CompetencesPage = () => {
         </button>
       </div>
 
-      {/* Modal for View / Edit Competence */}
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white rounded-lg shadow-lg w-80 p-4 max-h-[500px] overflow-y-auto">
-            <div className="flex justify-between items-center">
-              <h2 className="text-xl font-semibold">{viewMode ? 'View Competence' : 'Add Competence'}</h2>
-              <button onClick={handleCloseModal} className="text-gray-200 hover:text-gray-300">
-                X
-              </button>
-            </div>
-            <div className="mt-4">
-              {viewMode ? (
-                <ViewCompetence competence={selectedCompetence} closeModal={handleCloseModal} />
-              ) : (
-                <AddCompetence closeModal={handleCloseModal} selectedCompetence={selectedCompetence} />
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Competences Modal */}
+      <CompetencesModal
+        isOpen={isModalOpen}
+        mode={viewMode ? 'view' : selectedCompetence ? 'edit' : 'add'}
+        competence={selectedCompetence}
+        onClose={handleCloseModal}
+        onSave={handleSaveCompetence}
+      />
 
-
+      {/* Delete Confirmation Modal */}
+      <ConfirmModal
+        isOpen={isDeleteModalOpen}
+        onClose={() => setIsDeleteModalOpen(false)}
+        onConfirm={handleDeleteConfirm}
+        title="Supprimer la compétence"
+        message={`Êtes-vous sûr de vouloir supprimer la compétence "${competenceToDelete?.intitule_competence}" ? Cette action est irréversible.`}
+        confirmLabel="Supprimer"
+        cancelLabel="Annuler"
+        variant="danger"
+      />
     </div>
   );
 };

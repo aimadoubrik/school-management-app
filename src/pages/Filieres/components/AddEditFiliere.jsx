@@ -1,31 +1,37 @@
-// src/pages/Filieres/components/AddEditFiliere.jsx
 import { useState, useEffect } from 'react';
-import { Code, BookOpen, Building2, Users, Save, Plus } from 'lucide-react';
+import { Code, BookOpen, Users, Save, Plus } from 'lucide-react';
 import PropTypes from 'prop-types';
 
-const AddEditFiliere = ({ filiere, onClose, onSave, isEditMode }) => {
+const AddCompetence = ({ selectedCompetence, onClose, onSave, isEditMode }) => {
+  // Initialize form data state with empty fields
   const [formData, setFormData] = useState({
-    code_filiere: '',
-    intitule_filiere: '',
-    secteur: '',
-    groupes: '',
+    code_competence: '',
+    intitule_competence: '',
+    intitule_module: '',
+    cours: '',
+    quiz: '',
   });
 
+  // Validation errors state
   const [errors, setErrors] = useState({});
+  // Submit state to handle disabling buttons during submission
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Effect to pre-fill form when editing
   useEffect(() => {
-    if (filiere) {
+    if (selectedCompetence) {
       setFormData({
-        id: filiere.id,
-        code_filiere: filiere.code_filiere || '',
-        intitule_filiere: filiere.intitule_filiere || '',
-        secteur: filiere.secteur || '',
-        groupes: Array.isArray(filiere.groupes) ? filiere.groupes.join(', ') : '',
+        id: selectedCompetence.id,
+        code_competence: selectedCompetence.code_competence || '',
+        intitule_competence: selectedCompetence.intitule_competence?.join(', ') || '',
+        intitule_module: selectedCompetence.intitule_module || '',
+        cours: Array.isArray(selectedCompetence.cours) ? selectedCompetence.cours.join(', ') : '',
+        quiz: Array.isArray(selectedCompetence.quiz) ? selectedCompetence.quiz.join(', ') : '',
       });
     }
-  }, [filiere]);
+  }, [selectedCompetence]);
 
+  // Handle form field changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -41,75 +47,88 @@ const AddEditFiliere = ({ filiere, onClose, onSave, isEditMode }) => {
     }
   };
 
+  // Form validation
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.code_filiere.trim()) {
-      newErrors.code_filiere = 'Le code est requis';
-    }
-    if (!formData.intitule_filiere.trim()) {
-      newErrors.intitule_filiere = "L'intitulé est requis";
-    }
-    if (!formData.secteur.trim()) {
-      newErrors.secteur = 'Le secteur est requis';
-    }
+    if (!formData.code_competence.trim()) newErrors.code_competence = 'Code Competence is required';
+    if (!formData.intitule_competence.trim()) newErrors.intitule_competence = 'Intitulé Competence is required';
+    if (!formData.intitule_module.trim()) newErrors.intitule_module = 'Intitulé Module is required';
+    if (!formData.cours.trim()) newErrors.cours = 'Cours is required';
+    if (!formData.quiz.trim()) newErrors.quiz = 'Quiz is required';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm() || isSubmitting) return;
 
     setIsSubmitting(true);
     try {
-      const filiereData = {
+      const competenceData = {
         ...formData,
-        groupes: formData.groupes
+        intitule_competence: formData.intitule_competence
           .split(',')
-          .map((g) => g.trim())
+          .map((item) => item.trim())
+          .filter(Boolean),
+        cours: formData.cours
+          .split(',')
+          .map((cour) => cour.trim())
+          .filter(Boolean),
+        quiz: formData.quiz
+          .split(',')
+          .map((quiz) => quiz.trim())
           .filter(Boolean),
       };
 
       if (isEditMode) {
-        // Ensure we keep the id for editing
-        filiereData.id = filiere.id;
+        // Add ID for editing
+        competenceData.id = selectedCompetence.id;
       }
 
-      await onSave(filiereData);
+      await onSave(competenceData);
     } catch (error) {
       setErrors((prev) => ({
         ...prev,
-        submit: error.message || "Une erreur est survenue lors de l'enregistrement",
+        submit: error.message || 'An error occurred during saving.',
       }));
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  // Form fields configuration (including icons and placeholders)
   const formFields = [
     {
-      id: 'code_filiere',
-      label: 'Code Filière',
+      id: 'code_competence',
+      label: 'Code Competence',
       icon: <Code className="w-4 h-4" />,
-      placeholder: 'Entrez le code de la filière',
+      placeholder: 'Enter the competence code',
     },
     {
-      id: 'intitule_filiere',
-      label: 'Intitulé Filière',
+      id: 'intitule_competence',
+      label: 'Intitulé Competence',
       icon: <BookOpen className="w-4 h-4" />,
-      placeholder: "Entrez l'intitulé de la filière",
+      placeholder: 'Enter the competence title',
     },
     {
-      id: 'secteur',
-      label: 'Secteur',
-      icon: <Building2 className="w-4 h-4" />,
-      placeholder: 'Entrez le secteur',
+      id: 'intitule_module',
+      label: 'Intitulé Module',
+      icon: <BookOpen className="w-4 h-4" />,
+      placeholder: 'Enter the module title',
     },
     {
-      id: 'groupes',
-      label: 'Groupes',
+      id: 'cours',
+      label: 'Cours',
       icon: <Users className="w-4 h-4" />,
-      placeholder: 'Entrez les groupes (séparés par des virgules)',
+      placeholder: 'Enter the courses (comma separated)',
+    },
+    {
+      id: 'quiz',
+      label: 'Quiz',
+      icon: <Users className="w-4 h-4" />,
+      placeholder: 'Enter the quizzes (comma separated)',
     },
   ];
 
@@ -117,7 +136,7 @@ const AddEditFiliere = ({ filiere, onClose, onSave, isEditMode }) => {
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
         {isEditMode ? <Save className="w-6 h-6" /> : <Plus className="w-6 h-6" />}
-        {isEditMode ? 'Modifier la Filière' : 'Ajouter une Filière'}
+        {isEditMode ? 'Edit Competence' : 'Add Competence'}
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -154,7 +173,7 @@ const AddEditFiliere = ({ filiere, onClose, onSave, isEditMode }) => {
 
         <div className="modal-action">
           <button type="button" onClick={onClose} className="btn btn-ghost" disabled={isSubmitting}>
-            Annuler
+            Cancel
           </button>
           <button
             type="submit"
@@ -163,7 +182,7 @@ const AddEditFiliere = ({ filiere, onClose, onSave, isEditMode }) => {
           >
             {!isSubmitting &&
               (isEditMode ? <Save className="w-4 h-4" /> : <Plus className="w-4 h-4" />)}
-            {isEditMode ? 'Mettre à jour' : 'Ajouter'}
+            {isEditMode ? 'Update' : 'Add'}
           </button>
         </div>
       </form>
@@ -171,16 +190,17 @@ const AddEditFiliere = ({ filiere, onClose, onSave, isEditMode }) => {
   );
 };
 
-AddEditFiliere.propTypes = {
+AddCompetence.propTypes = {
   onSave: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
-  filiere: PropTypes.shape({
+  selectedCompetence: PropTypes.shape({
     id: PropTypes.string,
-    code_filiere: PropTypes.string,
-    intitule_filiere: PropTypes.string,
-    secteur: PropTypes.string,
-    groupes: PropTypes.array,
+    code_competence: PropTypes.string,
+    intitule_competence: PropTypes.array,
+    intitule_module: PropTypes.string,
+    cours: PropTypes.array,
+    quiz: PropTypes.array,
   }),
 };
 
-export default AddEditFiliere;
+export default AddCompetence;
