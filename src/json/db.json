@@ -42,7 +42,7 @@
     },
     {
       "id": "013f",
-      "name": "Admin Admin",
+      "name": "Admin wld Admin",
       "email": "admin@admin.com",
       "password": "admin",
       "role": "admin",
@@ -53,12 +53,13 @@
       "bio": "This is a bio of Admin Admin",
       "website": "https://example.com",
       "address": {
+        "city": "Paris",
         "street": "Rue de la Convention",
         "number": "12",
-        "city": "Paris",
         "zip": "75015",
         "country": "France"
-      }
+      },
+      "photo": "blob:http://localhost:5173/7c2a7ca1-a6b9-48e5-b820-77a1e5e1d81a"
     }
   ],
   "emploi": {
