@@ -1,45 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 import { Camera, Mail, Phone, Globe, MapPin, Building, Check, X, Calendar } from 'lucide-react';
 import avatar from '../../assets/avatar.png';
+import { fetchUserProfile, updateUserProfile, updateUserField } from "../../features/userProfile/ProfileSlice";
 
 const UserProfilePage = () => {
-  const [user, setUser] = useState(null);
+  const dispatch = useDispatch();
+  const { user, isLoading, error } = useSelector((state) => state.profile);
   const [isEditing, setIsEditing] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [notification, setNotification] = useState(null);
 
   useEffect(() => {
-    fetchUserData();
-  }, []);
-
-  const fetchUserData = async () => {
-    setIsLoading(true);
-    try {
-      const response = await axios.get('http://localhost:3000/users');
-      const allUsers = response.data;
-      const storedUserId = JSON.parse(localStorage.getItem('user') || sessionStorage.getItem('user'));
-      const currentUser = allUsers.find(user => user.id === storedUserId?.id);
-      
-      setUser({
-        ...currentUser,
-        phoneNumber: currentUser?.phoneNumber || '',
-        address: {
-          city: currentUser?.address?.city || '',
-          ...(currentUser?.address || {})
-        },
-        company: currentUser?.company || '',
-        website: currentUser?.website || '',
-        bio: currentUser?.bio || '',
-        joinedDate: currentUser?.joinedDate || '2024-01-01'
-      });
-    } catch (error) {
-      showNotification('Error loading profile', 'error');
-    } finally {
-      setIsLoading(false);
+    const storedUserId = JSON.parse(localStorage.getItem('user') || sessionStorage.getItem('user'))?.id;
+    if (storedUserId) {
+      dispatch(fetchUserProfile(storedUserId));
     }
-  };
+  }, [dispatch]);
 
   const showNotification = (message, type = 'success') => {
     setNotification({ message, type });
@@ -49,43 +26,30 @@ const UserProfilePage = () => {
   const handlePhotoUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
-      setIsLoading(true);
       const reader = new FileReader();
       reader.onloadend = () => {
-        setUser(prev => ({ ...prev, photo: reader.result }));
+        dispatch(updateUserField({ photo: reader.result }));
         setIsDirty(true);
-        setIsLoading(false);
         showNotification('Profile photo updated');
       };
       reader.readAsDataURL(file);
     }
   };
-  
-  
-  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUser(prev => ({
-      ...prev,
-      [name]: name === 'address' ? { ...prev.address, city: value } : value
-    }));
+    dispatch(updateUserField({ [name]: value }));
     setIsDirty(true);
   };
 
   const handleSave = async () => {
-    setIsLoading(true);
     try {
-      const response = await axios.put(`http://localhost:3000/users/${user.id}`, user);
-      setUser(response.data);
-      localStorage.setItem('user', JSON.stringify(response.data));
+      await dispatch(updateUserProfile(user)).unwrap();
       setIsEditing(false);
       setIsDirty(false);
       showNotification('Profile updated successfully');
     } catch (error) {
       showNotification('Error saving profile', 'error');
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -98,10 +62,29 @@ const UserProfilePage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-base-200">
+    <div className="min-h-screen bg-base-200 ">
       {/* Hero Section with Background */}
-      <div className="relative bg-primary h-60 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+CiAgPHBhdGggZD0iTTAgMGg2MHY2MEgweiIgZmlsbD0ibm9uZSIvPgogIDxwYXRoIGQgPSJNMzAgMzBtLTI4IDBhMjggMjggMCAxIDAgNTYgMGEyOCAyOCAwIDEgMCAtNTYgMCIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjAzKSIvPgo8L3N2Zz4=')] opacity-10"></div>
+      <div className="relative bg-primary h-60 overflow-hidden rounded-t-md">
+        <svg
+            className="absolute top-0  h-full"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 320">
+        <path
+            fill="#FF6600"
+            fillOpacity="1"
+            d="M0,96L48,122.7C96,149,192,203,288,197.3C384,192,480,128,576,96C672,64,768,64,864,106.7C960,149,1056,235,1152,250.7C1248,267,1344,213,1392,186.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+        <svg
+            className="absolute top-0 right-0  h-full"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 320">
+        <path
+            fill="#FF6600"
+            fillOpacity="1"
+            d="M0,96L48,122.7C96,149,192,203,288,197.3C384,192,480,128,576,96C672,64,768,64,864,106.7C960,149,1056,235,1152,250.7C1248,267,1344,213,1392,186.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+
+        
       </div>
 
       {/* Main Content */}
