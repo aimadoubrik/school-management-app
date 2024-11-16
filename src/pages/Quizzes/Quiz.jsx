@@ -14,12 +14,15 @@ const Quiz = () => {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [quizFinished, setQuizFinished] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [showSadFace, setShowSadFace] = useState(false);
 
   const progressAnimation = useSpring({
     width: `${((300 - timeLeft) / 300) * 100}%`,
     config: { tension: 200, friction: 30 },
   });
 
+  // Sound Effects
+  const confettiSound = new Audio('../src/applause-236785.mp3');
   useEffect(() => {
     if (timeLeft <= 0) {
       finishQuiz();
@@ -31,8 +34,17 @@ const Quiz = () => {
 
   const finishQuiz = () => {
     setQuizFinished(true);
-    setShowConfetti(true);
-    setTimeout(() => setShowConfetti(false), 3000); // show confetti for 3 seconds
+    const score = calculateScore();
+    
+    // Show confetti if score is >= 70%
+    if (score >= 0.7 * quizData.questions.length) {
+      setShowConfetti(true);
+      confettiSound.play();  // Play confetti sound
+      setTimeout(() => setShowConfetti(false), 3000); // Show confetti for 3 seconds
+    } else {
+      // Show the sad face if score < 70%
+      setShowSadFace(true);
+    }
   };
 
   const handleAnswerChange = (answer) => {
@@ -60,7 +72,14 @@ const Quiz = () => {
   if (!quizData) return <div>Loading...</div>;
 
   const currentQuestion = quizData.questions[currentQuestionIndex];
-  const score = calculateScore();
+  const score = calculateScore(); // Calculate the score when it's needed
+
+  const sadFaceAnimation = useSpring({
+    opacity: showSadFace ? 1 : 0,
+    scale: showSadFace ? 1.5 : 0.5,
+    config: { tension: 170, friction: 12 },
+  });
+
   const feedbackMessage =
     score >= 0.8 * quizData.questions.length
       ? 'Excellent job! 🎉'
@@ -70,10 +89,19 @@ const Quiz = () => {
 
   return (
     <div className="flex flex-col max-w-[800px] mx-auto justify-center gap-6 p-4 text-base-content">
+      {/* Show confetti if score >= 70% */}
       {showConfetti && (
         <div width={'100%'} height={'100%'}>
           <Confetti />
         </div>
+      )}
+
+      {/* Sad Face Animation if score < 70% */}
+      {quizFinished && showSadFace && (
+        <animated.div style={sadFaceAnimation} className="flex flex-col items-center justify-center my-6">
+          <div className="text-6xl">😞</div>
+          <p className="text-xl font-semibold text-error">Oops, you didn't reach 70%. Keep practicing!</p>
+        </animated.div>
       )}
 
       {/* Quiz Header */}
