@@ -10,7 +10,8 @@ import {
   authReducer,
   competencesSlice,
   scheduleReducer,
-  profileSlice
+  profileSlice,
+  documentsReducer
 } from '../features';
 
 const rootReducer = combineReducers({
@@ -23,7 +24,8 @@ const rootReducer = combineReducers({
   competences: competencesSlice,
   auth: authReducer,
   schedule: scheduleReducer,
-  profile: profileSlice
+  profile: profileSlice,
+  documents: documentsReducer
 });
 
 const store = configureStore({
