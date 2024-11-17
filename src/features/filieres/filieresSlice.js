@@ -1,52 +1,54 @@
-// filieresSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { apiService } from '../../api/config';
 
+// Helper for async thunks
+const createApiThunk = (typePrefix, apiCall) => {
+  return createAsyncThunk(typePrefix, async (args, { rejectWithValue }) => {
+    try {
+      return await apiCall(args);
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  });
+};
+
 // Thunks
-export const fetchFilieres = createAsyncThunk(
-  'filieres/fetchFilieres',
-  async (_, { rejectWithValue }) => {
-    try {
-      return await apiService.get('/filieres');
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
+export const fetchFilieres = createApiThunk('filieres/fetchFilieres', () =>
+  apiService.get('/filieres')
 );
 
-export const addFiliere = createAsyncThunk(
-  'filieres/addFiliere',
-  async (filiereData, { rejectWithValue }) => {
-    try {
-      return await apiService.post('/filieres', filiereData);
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
+export const addFiliere = createApiThunk('filieres/addFiliere', (filiereData) =>
+  apiService.post('/filieres', filiereData)
 );
 
-export const editFiliere = createAsyncThunk(
-  'filieres/editFiliere',
-  async (filiere, { rejectWithValue }) => {
-    try {
-      return await apiService.put(`/filieres/${filiere.id}`, filiere);
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
+export const editFiliere = createApiThunk('filieres/editFiliere', (filiere) =>
+  apiService.put(`/filieres/${filiere.id}`, filiere)
 );
 
-export const deleteFiliere = createAsyncThunk(
-  'filieres/deleteFiliere',
-  async (id, { rejectWithValue }) => {
-    try {
-      await apiService.delete(`/filieres/${id}`);
-      return id;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
+export const deleteFiliere = createApiThunk('filieres/deleteFiliere', async (id) => {
+  await apiService.delete(`/filieres/${id}`);
+  return id;
+});
+
+// Helper for handling cases
+const handleAsyncCases = (builder, thunk, operation, onSuccess) => {
+  builder
+    .addCase(thunk.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+      state.currentOperation = operation;
+    })
+    .addCase(thunk.fulfilled, (state, action) => {
+      state.loading = false;
+      onSuccess(state, action);
+      state.currentOperation = null;
+    })
+    .addCase(thunk.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+      state.currentOperation = null;
+    });
+};
 
 const initialState = {
   filieres: [],
@@ -67,74 +69,24 @@ const filieresSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder
-      // Fetch filieres
-      .addCase(fetchFilieres.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-        state.currentOperation = 'fetch';
-      })
-      .addCase(fetchFilieres.fulfilled, (state, action) => {
-        state.loading = false;
-        state.filieres = action.payload;
-        state.currentOperation = null;
-      })
-      .addCase(fetchFilieres.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-        state.currentOperation = null;
-      })
-      // Add filiere
-      .addCase(addFiliere.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-        state.currentOperation = 'add';
-      })
-      .addCase(addFiliere.fulfilled, (state, action) => {
-        state.loading = false;
-        state.filieres.push(action.payload);
-        state.currentOperation = null;
-      })
-      .addCase(addFiliere.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-        state.currentOperation = null;
-      })
-      // Edit filiere
-      .addCase(editFiliere.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-        state.currentOperation = 'edit';
-      })
-      .addCase(editFiliere.fulfilled, (state, action) => {
-        state.loading = false;
-        const index = state.filieres.findIndex((f) => f.id === action.payload.id);
-        if (index !== -1) {
-          state.filieres[index] = action.payload;
-        }
-        state.currentOperation = null;
-      })
-      .addCase(editFiliere.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-        state.currentOperation = null;
-      })
-      // Delete filiere
-      .addCase(deleteFiliere.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-        state.currentOperation = 'delete';
-      })
-      .addCase(deleteFiliere.fulfilled, (state, action) => {
-        state.loading = false;
-        state.filieres = state.filieres.filter((filiere) => filiere.id !== action.payload);
-        state.currentOperation = null;
-      })
-      .addCase(deleteFiliere.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-        state.currentOperation = null;
-      });
+    handleAsyncCases(builder, fetchFilieres, 'fetch', (state, action) => {
+      state.filieres = action.payload;
+    });
+
+    handleAsyncCases(builder, addFiliere, 'add', (state, action) => {
+      state.filieres.push(action.payload);
+    });
+
+    handleAsyncCases(builder, editFiliere, 'edit', (state, action) => {
+      const index = state.filieres.findIndex((f) => f.id === action.payload.id);
+      if (index !== -1) {
+        state.filieres[index] = action.payload;
+      }
+    });
+
+    handleAsyncCases(builder, deleteFiliere, 'delete', (state, action) => {
+      state.filieres = state.filieres.filter((filiere) => filiere.id !== action.payload);
+    });
   },
 });
 

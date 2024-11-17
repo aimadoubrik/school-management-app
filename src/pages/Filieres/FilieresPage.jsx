@@ -1,13 +1,13 @@
-// src/pages/Filieres/FilieresPage.jsx
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchFilieres } from '../../features/filieres/filieresSlice';
 import FilieresTable from './components/FilieresTable';
 import FilieresHeader from './components/FilieresHeader';
-import FilieresSearch from './components/FilieresSearch';
+import { SearchFilter } from '../../components';
 import FilieresModal from './components/FilieresModal';
 import { LoadingSpinner, ErrorAlert, ConfirmModal } from '../../components';
 import { useFilieresLogic } from './hooks/useFilieresLogic';
+import { Filter } from 'lucide-react';
 
 const FilieresPage = () => {
   const dispatch = useDispatch();
@@ -19,12 +19,12 @@ const FilieresPage = () => {
     viewMode,
     selectedFiliere,
     searchTerm,
-    filterSecteur,
+    filters,
     sortConfig,
     filteredAndSortedFilieres,
     handleSort,
     handleSearch,
-    handleSectorFilter,
+    handleFilterChange,
     handleModalOpen,
     handleModalClose,
     handleDeleteClick,
@@ -63,12 +63,13 @@ const FilieresPage = () => {
         onAdd={() => handleModalOpen(null, 'edit')}
       />
 
-      <FilieresSearch
+      <SearchFilter
         searchTerm={searchTerm}
-        filterSecteur={filterSecteur}
-        sectors={[...new Set(filieres.map((f) => f.secteur))]}
+        filters={filters}
         onSearchChange={handleSearch}
-        onSectorChange={handleSectorFilter}
+        onFilterChange={handleFilterChange}
+        searchPlaceholder="Rechercher par code ou intitulé..."
+        icons={{ SearchIcon: Filter }}
       />
 
       <FilieresTable

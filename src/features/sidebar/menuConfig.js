@@ -51,12 +51,18 @@ export const menuItems = [
     href: '/competences',
     count: 4,
   },
-  { type: 'divider' },
+  {
+    label: 'Modules',
+    icon: 'BookOpen',
+    href: '/modules',
+    count: 64,
+  },
   {
     label: 'Documents',
     icon: 'FileText',
     href: '/documents',
   },
+  { type: 'divider' },
   {
     label: 'Settings',
     icon: 'Settings',

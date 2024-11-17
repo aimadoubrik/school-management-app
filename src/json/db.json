@@ -1188,32 +1188,161 @@
   ],
   "absentStudents": [
     {
-      "id": "0c37",
-      "niveau": "Specialisation",
+      "id": "c43c",
+      "secteur": "Science",
       "filiere": "Physics",
-      "annee": "1st Year",
       "groupe": "Group 1",
-      "date": "2024-11-17",
-      "month": "2024-11",
+      "date": "2024-11-14",
       "students": [
         {
           "studentId": "1",
-          "studentCef": "10001",
-          "studentName": "John Smith",
-          "studentDateN": "2000-03-01",
-          "studentCin": "CS1001",
+          "isAbsent": true
+        },
+        {
+          "studentId": "2",
+          "isAbsent": false
+        }
+      ]
+    },
+    {
+      "id": "f45d",
+      "secteur": "Science",
+      "filiere": "Physics",
+      "groupe": "Group 2",
+      "date": "2024-11-14",
+      "students": [
+        {
+          "studentId": "3",
+          "studentName": "Bob Lee",
+          "isAbsent": true
+        },
+        {
+          "studentId": "4",
+          "studentName": "Emma Davis",
           "isAbsent": true
         }
       ]
     },
     {
-      "id": "6aa9",
-      "niveau": "Specialisation",
+      "id": "0563",
+      "secteur": "Science",
       "filiere": "Physics",
-      "annee": "1st Year",
       "groupe": "Group 1",
-      "date": "2024-11-17",
-      "month": "2024-11",
+      "date": "2024-11-14",
+      "students": [
+        {
+          "studentId": "1",
+          "isAbsent": true
+        },
+        {
+          "studentId": "2",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "823e",
+      "secteur": "Science",
+      "filiere": "Physics",
+      "groupe": "Group 1",
+      "date": "2024-11-14",
+      "students": [
+        {
+          "studentId": "1",
+          "isAbsent": true
+        },
+        {
+          "studentId": "2",
+          "isAbsent": false
+        }
+      ]
+    },
+    {
+      "id": "9965",
+      "secteur": "Science",
+      "filiere": "Physics",
+      "groupe": "Group 1",
+      "date": "2024-11-14",
+      "students": [
+        {
+          "studentId": "1",
+          "isAbsent": true
+        },
+        {
+          "studentId": "2",
+          "isAbsent": false
+        }
+      ]
+    },
+    {
+      "id": "fef5",
+      "secteur": "Science",
+      "filiere": "Physics",
+      "groupe": "Group 1",
+      "date": "2024-11-14",
+      "students": [
+        {
+          "studentId": "1",
+          "isAbsent": true
+        },
+        {
+          "studentId": "2",
+          "isAbsent": false
+        }
+      ]
+    },
+    {
+      "id": "d42b",
+      "secteur": "Science",
+      "filiere": "Physics",
+      "groupe": "Group 1",
+      "date": "2024-11-15",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        },
+        {
+          "studentId": "2",
+          "studentCef": "10002",
+          "studentName": "Alice Brown",
+          "studentCin": "CS1002",
+          "isAbsent": false
+        }
+      ]
+    },
+    {
+      "id": "8311",
+      "secteur": "Science",
+      "filiere": "Physics",
+      "groupe": "Group 1",
+      "date": "2024-11-15",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        },
+        {
+          "studentId": "2",
+          "studentCef": "10002",
+          "studentName": "Alice Brown",
+          "studentCin": "CS1002",
+          "isAbsent": false
+        }
+      ]
+    },
+    {
+      "id": "cde9",
+      "secteur": "Science",
+      "filiere": "Physics",
+      "groupe": "Group 1",
+      "date": "2024-11-15",
       "students": [
         {
           "studentId": "1",
@@ -1222,6 +1351,56 @@
           "studentDateN": "2000-03-01",
           "studentCin": "CS1001",
           "isAbsent": true
+        },
+        {
+          "studentId": "2",
+          "studentCef": "10002",
+          "studentName": "Alice Brown",
+          "studentDateN": "2000-04-15",
+          "studentCin": "CS1002",
+          "isAbsent": false
+        }
+      ]
+    },
+    {
+      "id": "cc6b",
+      "secteur": "Science",
+      "filiere": "Physics",
+      "groupe": "Group 1",
+      "date": "2024-11-15",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": false
+        },
+        {
+          "studentId": "2",
+          "studentCef": "10002",
+          "studentName": "Alice Brown",
+          "studentDateN": "2000-04-15",
+          "studentCin": "CS1002",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "e10b",
+      "secteur": "Science",
+      "filiere": "Physics",
+      "groupe": "Group 1",
+      "date": "2024-11-15",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": false
         },
         {
           "studentId": "2",
@@ -1249,8 +1428,7 @@
         "Biology 101 Textbook",
         "Lab Manual"
       ],
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "dfa4"
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
     },
     {
       "courseId": "PHYS101",
@@ -1266,8 +1444,7 @@
         "Physics 101 Textbook",
         "Lab Safety Manual"
       ],
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "5994"
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
     },
     {
       "courseId": "HIST201",
@@ -1283,8 +1460,7 @@
         "World History Textbook",
         "Primary Source Readings"
       ],
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "e835"
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
     },
     {
       "courseId": "CHEM101",
@@ -1300,8 +1476,7 @@
         "General Chemistry Textbook",
         "Laboratory Notebook"
       ],
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "91ce"
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
     },
     {
       "courseId": "MATH101",
@@ -1317,8 +1492,7 @@
         "Mathematics 101 Textbook",
         "Scientific Calculator"
       ],
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "48e1"
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
     },
     {
       "courseId": "ECON101",
@@ -1334,8 +1508,7 @@
         "Economics 101 Textbook",
         "Macroeconomics Reader"
       ],
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "0897"
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
     },
     {
       "courseId": "PSY101",
@@ -1351,8 +1524,7 @@
         "Psychology 101 Textbook",
         "Research Articles Packet"
       ],
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "548e"
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
     },
     {
       "courseId": "LIT102",
@@ -1368,8 +1540,7 @@
         "English Literature Anthology",
         "Shakespeare Plays Collection"
       ],
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "7c23"
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
     }
   ]
 }
