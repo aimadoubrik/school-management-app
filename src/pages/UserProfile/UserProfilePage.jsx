@@ -1,45 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Camera, Mail, Phone, Globe, MapPin, Building, Check, X, Calendar } from 'lucide-react';
 import avatar from '../../assets/avatar.png';
+import {
+  fetchUserProfile,
+  updateUserProfile,
+  updateUserField,
+} from '../../features/userProfile/profileSlice';
 
 const UserProfilePage = () => {
-  const [user, setUser] = useState(null);
+  const dispatch = useDispatch();
+  const { user, isLoading, error } = useSelector((state) => state.profile);
   const [isEditing, setIsEditing] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [notification, setNotification] = useState(null);
 
   useEffect(() => {
-    fetchUserData();
-  }, []);
-
-  const fetchUserData = async () => {
-    setIsLoading(true);
-    try {
-      const response = await axios.get('http://localhost:3000/users');
-      const allUsers = response.data;
-      const storedUserId = JSON.parse(localStorage.getItem('user') || sessionStorage.getItem('user'));
-      const currentUser = allUsers.find(user => user.id === storedUserId?.id);
-      
-      setUser({
-        ...currentUser,
-        phoneNumber: currentUser?.phoneNumber || '',
-        address: {
-          city: currentUser?.address?.city || '',
-          ...(currentUser?.address || {})
-        },
-        company: currentUser?.company || '',
-        website: currentUser?.website || '',
-        bio: currentUser?.bio || '',
-        joinedDate: currentUser?.joinedDate || '2024-01-01'
-      });
-    } catch (error) {
-      showNotification('Error loading profile', 'error');
-    } finally {
-      setIsLoading(false);
+    const storedUserId = JSON.parse(
+      localStorage.getItem('user') || sessionStorage.getItem('user')
+    )?.id;
+    if (storedUserId) {
+      dispatch(fetchUserProfile(storedUserId));
     }
-  };
+  }, [dispatch]);
 
   const showNotification = (message, type = 'success') => {
     setNotification({ message, type });
@@ -49,13 +32,10 @@ const UserProfilePage = () => {
   const handlePhotoUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
-      setIsLoading(true);
       const reader = new FileReader();
       reader.onloadend = () => {
-        setUser(prev => ({ ...prev, photo: reader.result }));
+        dispatch(updateUserField({ photo: reader.result }));
         setIsDirty(true);
-        setIsLoading(false);
-        showNotification('Profile photo updated');
       };
       reader.readAsDataURL(file);
     }
@@ -63,26 +43,18 @@ const UserProfilePage = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUser(prev => ({
-      ...prev,
-      [name]: name === 'address' ? { ...prev.address, city: value } : value
-    }));
+    dispatch(updateUserField({ [name]: value }));
     setIsDirty(true);
   };
 
   const handleSave = async () => {
-    setIsLoading(true);
     try {
-      const response = await axios.put(`http://localhost:3000/users/${user.id}`, user);
-      setUser(response.data);
-      localStorage.setItem('user', JSON.stringify(response.data));
+      await dispatch(updateUserProfile(user)).unwrap();
       setIsEditing(false);
       setIsDirty(false);
       showNotification('Profile updated successfully');
     } catch (error) {
       showNotification('Error saving profile', 'error');
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -95,35 +67,29 @@ const UserProfilePage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-base-200">
-      {/* Hero Section with Background */}
-      <div className="relative bg-primary h-60 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+CiAgPHBhdGggZD0iTTAgMGg2MHY2MEgweiIgZmlsbD0ibm9uZSIvPgogIDxwYXRoIGQgPSJNMzAgMzBtLTI4IDBhMjggMjggMCAxIDAgNTYgMGEyOCAyOCAwIDEgMCAtNTYgMCIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjAzKSIvPgo8L3N2Zz4=')] opacity-10"></div>
-      </div>
+    <div className="min-h-screen bg-base-200 rounded-t-md">
+      <div className="relative bg-primary h-60 overflow-hidden rounded-t-md"></div>
 
-      {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-32 pb-12">
-        {/* Notification Toast */}
         {notification && (
-          <div className="toast toast-top toast-end">
-            <div className={`alert ${notification.type === 'error' ? 'alert-error' : 'alert-success'} shadow-lg`}>
+          <div className="toast toast-end">
+            <div
+              className={`alert ${notification.type === 'error' ? 'alert-error' : 'alert-success'} shadow-lg`}
+            >
               <span>{notification.message}</span>
             </div>
           </div>
         )}
 
-        {/* Profile Card */}
         <div className="card bg-base-100 shadow-xl">
           <div className="card-body p-0">
-            {/* Profile Header */}
             <div className="relative p-6 pb-0">
               <div className="flex flex-col sm:flex-row gap-6">
-                {/* Avatar */}
                 <div className="relative mx-auto sm:mx-0">
                   <div className="avatar">
                     <div className="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 shadow-xl">
-                      <img 
-                        src={user?.photo || avatar} 
+                      <img
+                        src={user?.photo || avatar}
                         alt="Profile"
                         className={`object-cover ${isLoading ? 'opacity-50' : ''}`}
                       />
@@ -142,7 +108,6 @@ const UserProfilePage = () => {
                   )}
                 </div>
 
-                {/* Profile Info */}
                 <div className="flex-1 text-center sm:text-left space-y-3">
                   <div className="space-y-1">
                     {isEditing ? (
@@ -170,7 +135,6 @@ const UserProfilePage = () => {
                   </div>
                 </div>
 
-                {/* Action Buttons */}
                 <div className="flex justify-center sm:justify-end gap-2">
                   {isEditing ? (
                     <>
@@ -194,28 +158,35 @@ const UserProfilePage = () => {
                       </button>
                     </>
                   ) : (
-                    <button
-                      className="btn btn-primary btn-sm"
-                      onClick={() => setIsEditing(true)}
-                    >
+                    <button className="btn btn-primary btn-sm" onClick={() => setIsEditing(true)}>
                       Edit Profile
                     </button>
                   )}
                 </div>
               </div>
-
             </div>
 
             <div className="divider mt-0 mb-0"></div>
 
-            {/* Contact Information */}
             <div className="p-6">
               <div className="grid gap-6 md:grid-cols-2">
                 {[
                   { icon: Mail, label: 'Email', value: user?.email, name: 'email', type: 'email' },
-                  { icon: Phone, label: 'Phone', value: user?.phoneNumber, name: 'phoneNumber', type: 'tel' },
+                  {
+                    icon: Phone,
+                    label: 'Phone',
+                    value: user?.phoneNumber,
+                    name: 'phoneNumber',
+                    type: 'tel',
+                  },
                   { icon: MapPin, label: 'Location', value: user?.address?.city, name: 'address' },
-                  { icon: Globe, label: 'Website', value: user?.website, name: 'website', type: 'url' },
+                  {
+                    icon: Globe,
+                    label: 'Website',
+                    value: user?.website,
+                    name: 'website',
+                    type: 'url',
+                  },
                 ].map(({ icon: Icon, label, value, name, type }) => (
                   <div key={name} className="form-control">
                     <label className="label">
@@ -246,24 +217,22 @@ const UserProfilePage = () => {
 
               <div className="divider"></div>
 
-              {/* Bio */}
               <div className="form-control w-full">
                 <label className="label">
-                  <span className="label-text font-medium">About Me</span>
+                  <span className="label-text font-medium">Biography</span>
                 </label>
                 {isEditing ? (
                   <textarea
                     name="bio"
                     value={user?.bio || ''}
                     onChange={handleChange}
-                    rows="4"
                     className="textarea textarea-bordered w-full"
                     placeholder="Tell us about yourself..."
-                  />
+                  ></textarea>
                 ) : (
-                  <div className="textarea textarea-bordered bg-base-200/50 min-h-[8rem]">
-                    {user?.bio || <span className="text-base-content/50">No bio provided</span>}
-                  </div>
+                  <p className="textarea textarea-bordered bg-base-200/50 w-full h-auto p-4">
+                    {user?.bio || <span className="text-base-content/50">No bio available</span>}
+                  </p>
                 )}
               </div>
             </div>

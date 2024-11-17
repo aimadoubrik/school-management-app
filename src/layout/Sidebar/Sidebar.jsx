@@ -12,10 +12,12 @@ const Sidebar = memo(() => {
   const sidebarRef = useRef(null);
   const { isOpen, items } = useSelector((state) => state.sidebar);
   const { isMobile } = useSelector((state) => state.ui);
+  const userProfile = useSelector((state) => state.profile?.user); // Add optional chaining here
 
   // Get the user data from local storage
   const user = (localStorage.getItem('user') && JSON.parse(localStorage.getItem('user'))) ||
     (sessionStorage.getItem('user') && JSON.parse(sessionStorage.getItem('user'))) || {
+      photo: avatar,
       name: '',
       role: '',
     };
@@ -67,15 +69,13 @@ const Sidebar = memo(() => {
     return () => window.removeEventListener('resize', handleResize);
   }, [dispatch]);
 
-  const sidebarPositionClasses = `
-    fixed rounded-lg top-20 
+  const sidebarPositionClasses = `fixed rounded-lg top-20 
     h-[calc(100vh-5.5rem)] 
     bg-base-100 border-r border-base-200
     transition-all duration-300 z-30
     ${isOpen ? 'left-2' : '-left-64'}
     ${isMobile ? 'w-64' : 'w-64 lg:left-2 lg:z-20'}
-    ${!isOpen && !isMobile ? 'lg:-left-64' : ''}
-  `.trim();
+    ${!isOpen && !isMobile ? 'lg:-left-64' : ''}`.trim();
 
   const menuContent = items.map((item, index) =>
     item.type === 'divider' ? (
@@ -85,11 +85,9 @@ const Sidebar = memo(() => {
     )
   );
 
-  const overlayClasses = `
-    fixed inset-0 bg-black/20 backdrop-blur-sm z-20
+  const overlayClasses = `fixed inset-0 bg-black/20 backdrop-blur-sm z-20
     transition-opacity duration-300
-    ${isOpen && isMobile ? 'opacity-100' : 'opacity-0 pointer-events-none'}
-  `.trim();
+    ${isOpen && isMobile ? 'opacity-100' : 'opacity-0 pointer-events-none'}`.trim();
 
   return (
     <>
@@ -102,7 +100,11 @@ const Sidebar = memo(() => {
           </nav>
 
           <div className="p-4 border-t border-base-200">
-            <UserProfile name={user.name} role={user.role} avatar={avatar} />
+            <UserProfile
+              name={userProfile?.name || user.name} // Fallback to local storage user
+              role={userProfile?.role || user.role} // Fallback to local storage role
+              profilePhoto={userProfile?.photo || avatar} // Fallback to avatar if no photo
+            />
           </div>
         </div>
       </aside>
