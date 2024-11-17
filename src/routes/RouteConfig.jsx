@@ -20,8 +20,10 @@ import {
   SchedulePage,
   TraineesPage,
   CompetencesPage,
-  ModulesPage
+  ModulesPage,
+  Course
 } from '../pages';
+ Course
 
 const RouteConfig = () => {
   return (
@@ -67,6 +69,14 @@ const RouteConfig = () => {
           element={
             <ProtectedRoute>
               <CoursesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/courses/:id'
+          element={
+            <ProtectedRoute>
+              <Course />
             </ProtectedRoute>
           }
         />
