@@ -25,7 +25,6 @@ const rootReducer = combineReducers({
   auth: authReducer,
   schedule: scheduleReducer,
   modules: moduleReducer,
-   });
   profile: profileSlice
 });
 
