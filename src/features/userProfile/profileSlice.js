@@ -7,21 +7,15 @@ const initialState = {
   error: null,
 };
 
-export const fetchUserProfile = createAsyncThunk(
-  'profile/fetchUserProfile',
-  async (userId) => {
-    const response = await apiService.get(`/users/${userId}`);
-    return response;
-  }
-);
+export const fetchUserProfile = createAsyncThunk('profile/fetchUserProfile', async (userId) => {
+  const response = await apiService.get(`/users/${userId}`);
+  return response;
+});
 
-export const updateUserProfile = createAsyncThunk(
-  'profile/updateUserProfile',
-  async (userData) => {
-    const response = await apiService.put(`/users/${userData.id}`, userData);
-    return response;
-  }
-);
+export const updateUserProfile = createAsyncThunk('profile/updateUserProfile', async (userData) => {
+  const response = await apiService.put(`/users/${userData.id}`, userData);
+  return response;
+});
 
 const profileSlice = createSlice({
   name: 'profile',

@@ -5,7 +5,18 @@ import { deleteGroupAPI, fetchGroups, updateGroupAPI } from './groupsSlice';
 import ModalGroup from './ModalGroup';
 import EditGroupModal from './EditModal';
 import AddGroup from './addGroup';
-import { Edit, Eye, Trash2,Clock,Component, Download, Plus, X, AlertCircle, Users } from 'lucide-react';
+import {
+  Edit,
+  Eye,
+  Trash2,
+  Clock,
+  Component,
+  Download,
+  Plus,
+  X,
+  AlertCircle,
+  Users,
+} from 'lucide-react';
 
 const ListeGroupe = () => {
   const dispatch = useDispatch();
@@ -38,21 +49,21 @@ const ListeGroupe = () => {
 
   const handleViewGroup = (group) => {
     setSelectedGroup(group);
-    setIsEditMode(false); 
+    setIsEditMode(false);
     setIsModalOpen(true);
   };
 
   const handleEditGroup = (group) => {
     setSelectedGroup(group);
-    setIsEditMode(true); 
+    setIsEditMode(true);
     setIsModalOpen(true);
   };
 
   const handleAddGroup = () => {
-    setSelectedGroup(null);        // Reset selected group
-    setIsEditMode(false);          // Set to "add" mode
-    setIsModalOpen(true);          // Open the modal
-    setIsAddingGroup(true);  // Open the "Add Group" modal
+    setSelectedGroup(null); // Reset selected group
+    setIsEditMode(false); // Set to "add" mode
+    setIsModalOpen(true); // Open the modal
+    setIsAddingGroup(true); // Open the "Add Group" modal
   };
 
   const handleUpdateGroup = async (updatedGroup) => {
@@ -60,7 +71,6 @@ const ListeGroupe = () => {
       await dispatch(updateGroupAPI(updatedGroup)).unwrap();
       // alert('Group updated successfully!');
       dispatch(fetchGroups());
-     
     } catch (error) {
       console.error('Error updating group:', error);
       // alert('Failed to update group');
@@ -68,7 +78,16 @@ const ListeGroupe = () => {
   };
 
   const exportGroup = () => {
-    const headers = ['ID', 'Code Groupe', 'Niveau', 'Intitule Groupe', 'Filiere', 'Module', 'Emploi du temps', 'Liste'];
+    const headers = [
+      'ID',
+      'Code Groupe',
+      'Niveau',
+      'Intitule Groupe',
+      'Filiere',
+      'Module',
+      'Emploi du temps',
+      'Liste',
+    ];
     const rows = groups.map((group) => [
       group.codeGroupe,
       group.niveau,
@@ -108,22 +127,17 @@ const ListeGroupe = () => {
             </option>
           ))}
         </select>
-        
+
         <div className="flex gap-4">
           <button
             className="btn btn-accent  gap-2"
             onClick={handleAddGroup} // Open Add Group modal on click
           >
             <Plus className="w-5 h-5" /> Add Group
-           
           </button>
-          <button
-            className="btn btn-success  gap-2"
-            onClick={exportGroup}
-          >   
-          <Download className="w-5 h-5" />
-            Export Groupes 
-         
+          <button className="btn btn-success  gap-2" onClick={exportGroup}>
+            <Download className="w-5 h-5" />
+            Export Groupes
           </button>
         </div>
       </div>
@@ -150,37 +164,37 @@ const ListeGroupe = () => {
               <td className="py-2 px-4">{group.intituleGroupe}</td>
               <td className="py-2 px-4">{group.filiere}</td>
               <td className="py-2 px-4">
-                <Link to={`/modules/${group.codeGroupe}`} 
-                className="link flex items-center gap-2 text-blue-500 hover:underline">
-                <Component className="w-4 h-4" />
+                <Link
+                  to={`/modules/${group.codeGroupe}`}
+                  className="link flex items-center gap-2 text-blue-500 hover:underline"
+                >
+                  <Component className="w-4 h-4" />
                   Module
                 </Link>
               </td>
               <td className="py-2 px-4">
-                <Link to={`/emploiDuTemps/${group.codeGroupe}`} 
-                className="link text-blue-500 flex items-center gap-2 ">
-                <Clock className="w-4 h-4" />
+                <Link
+                  to={`/emploiDuTemps/${group.codeGroupe}`}
+                  className="link text-blue-500 flex items-center gap-2 "
+                >
+                  <Clock className="w-4 h-4" />
                   TimeTable
                 </Link>
               </td>
               <td className="py-2 px-4">
-                <Link to={`/liste/${group.codeGroupe}`} 
-                className="link text-blue-500 flex items-center gap-2">
-                <Users className="w-4 h-4" />
+                <Link
+                  to={`/liste/${group.codeGroupe}`}
+                  className="link text-blue-500 flex items-center gap-2"
+                >
+                  <Users className="w-4 h-4" />
                   Liste
                 </Link>
               </td>
               <td className="py-2 px-4 flex gap-2">
-                <button
-                  className="btn btn-info btn-sm"
-                  onClick={() => handleViewGroup(group)}
-                >
+                <button className="btn btn-info btn-sm" onClick={() => handleViewGroup(group)}>
                   <Eye className="w-4 h-4" />
                 </button>
-                <button
-                  className="btn btn-warning btn-sm"
-                  onClick={() => handleEditGroup(group)}
-                >
+                <button className="btn btn-warning btn-sm" onClick={() => handleEditGroup(group)}>
                   <Edit className="w-4 h-4" />
                 </button>
                 <button
@@ -196,8 +210,12 @@ const ListeGroupe = () => {
       </table>
 
       {/* Modal view */}
-      {isModalOpen && selectedGroup && !isEditMode && !isAddingGroup &&(
-        <ModalGroup group={selectedGroup} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      {isModalOpen && selectedGroup && !isEditMode && !isAddingGroup && (
+        <ModalGroup
+          group={selectedGroup}
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
       )}
       {/* Modal edit */}
       {isModalOpen && selectedGroup && isEditMode && (
@@ -210,10 +228,7 @@ const ListeGroupe = () => {
       )}
       {/* Modal add */}
       {isModalOpen && isAddingGroup && !isEditMode && (
-        <AddGroup
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-        />
+        <AddGroup isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       )}
     </div>
   );

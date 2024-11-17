@@ -11,7 +11,7 @@ const EditGroupModal = ({ group, isOpen, onClose, onUpdate }) => {
   useEffect(() => {
     if (group) {
       setFormData({
-        id:group.id,
+        id: group.id,
         codeGroupe: group.codeGroupe,
         niveau: group.niveau,
         intituleGroupe: group.intituleGroupe,

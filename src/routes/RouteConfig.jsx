@@ -21,9 +21,9 @@ import {
   TraineesPage,
   CompetencesPage,
   ModulesPage,
-  Course
+  Course,
 } from '../pages';
- Course
+Course;
 
 const RouteConfig = () => {
   return (
@@ -73,7 +73,7 @@ const RouteConfig = () => {
           }
         />
         <Route
-          path='/courses/:id'
+          path="/courses/:id"
           element={
             <ProtectedRoute>
               <Course />

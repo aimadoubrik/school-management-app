@@ -775,6 +775,39 @@
       "groupes": [
         "4"
       ]
+    },
+    {
+      "id": "f045",
+      "code_filiere": "F08",
+      "intitule_filiere": "Something",
+      "secteur": "Something else",
+      "groupes": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    {
+      "id": "95a3",
+      "code_filiere": "F09",
+      "intitule_filiere": "Something 1",
+      "secteur": "Something 1 else",
+      "groupes": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    {
+      "id": "3b8e",
+      "code_filiere": "F10",
+      "intitule_filiere": "Something 2",
+      "secteur": "Something 2 else",
+      "groupes": [
+        "1",
+        "2",
+        "3"
+      ]
     }
   ],
   "competences": [

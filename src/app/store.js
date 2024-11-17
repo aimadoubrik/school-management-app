@@ -13,7 +13,7 @@ import {
   scheduleReducer,
   profileSlice,
   documentsReducer,
-  moduleReducer
+  moduleReducer,
 } from '../features';
 
 const rootReducer = combineReducers({
@@ -29,7 +29,7 @@ const rootReducer = combineReducers({
   schedule: scheduleReducer,
   profile: profileSlice,
   documents: documentsReducer,
-  modules: moduleReducer
+  modules: moduleReducer,
 });
 
 const store = configureStore({

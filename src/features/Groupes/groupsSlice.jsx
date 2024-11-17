@@ -3,14 +3,14 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:3003/groups';
 
-
 export const fetchGroups = createAsyncThunk('groups/fetchGroups', async () => {
   const response = await axios.get(API_URL);
   return response.data;
 });
 
-
-export const deleteGroupAPI = createAsyncThunk('groups/deleteGroup',async (id, { rejectWithValue }) => {
+export const deleteGroupAPI = createAsyncThunk(
+  'groups/deleteGroup',
+  async (id, { rejectWithValue }) => {
     try {
       const response = await axios.delete(`${API_URL}/${id}`);
       if (response.status === 200) {
@@ -26,24 +26,25 @@ export const deleteGroupAPI = createAsyncThunk('groups/deleteGroup',async (id, {
   }
 );
 
-
-export const addGroupAPI = createAsyncThunk('groups/addGroup',async (newGroup, { rejectWithValue }) => {
+export const addGroupAPI = createAsyncThunk(
+  'groups/addGroup',
+  async (newGroup, { rejectWithValue }) => {
     try {
       const response = await axios.post(API_URL, newGroup);
       return response.data;
     } catch (error) {
-      console.error('Erreur lors de l\'ajout du groupe:', error);
+      console.error("Erreur lors de l'ajout du groupe:", error);
       return rejectWithValue(error.message);
     }
   }
 );
 export const updateGroupAPI = createAsyncThunk('groups/updateGroup', async (updatedGroup) => {
-  const response = await axios.put(`${API_URL}/${updatedGroup.id}`, updatedGroup); 
-  console.log(updatedGroup)
-  if (!response.status === 200) { 
+  const response = await axios.put(`${API_URL}/${updatedGroup.id}`, updatedGroup);
+  console.log(updatedGroup);
+  if (!response.status === 200) {
     throw new Error('Failed to update group');
   }
-  return response.data; 
+  return response.data;
 });
 
 const groupsSlice = createSlice({
@@ -69,11 +70,11 @@ const groupsSlice = createSlice({
       })
       .addCase(deleteGroupAPI.pending, (state) => {
         state.loading = true;
-      })
-      builder.addCase(deleteGroupAPI.fulfilled, (state, action) => {
+      });
+    builder
+      .addCase(deleteGroupAPI.fulfilled, (state, action) => {
         const id = action.payload;
-        state.groups = state.groups.filter(group => group.id !== id);
-      
+        state.groups = state.groups.filter((group) => group.id !== id);
       })
       .addCase(deleteGroupAPI.rejected, (state, action) => {
         state.error = action.error.message;

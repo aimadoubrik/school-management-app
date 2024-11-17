@@ -49,7 +49,7 @@ const documentSlice = createSlice({
           id: Date.now().toString(),
           document: state.selectedDocument.name,
           description: state.selectedDocument.description,
-          files: state.files.map(file => file.name),
+          files: state.files.map((file) => file.name),
           submissionDate: new Date().toISOString(),
           requestDate: state.requestDate,
           processingTime: state.selectedDocument.processingTime,
@@ -83,5 +83,12 @@ const documentSlice = createSlice({
   },
 });
 
-export const { handleDocumentSelect, setRequestDate, handleFileChange, setIsFormValid, handleSubmitRequest, clearError } = documentSlice.actions;
+export const {
+  handleDocumentSelect,
+  setRequestDate,
+  handleFileChange,
+  setIsFormValid,
+  handleSubmitRequest,
+  clearError,
+} = documentSlice.actions;
 export default documentSlice.reducer;

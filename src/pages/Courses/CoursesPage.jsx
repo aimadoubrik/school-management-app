@@ -1,9 +1,9 @@
-import Courses from "./Courses";
+import Courses from './Courses';
 
 const CoursesPage = () => {
   return (
     <div>
-      <Courses/>
+      <Courses />
     </div>
   );
 };

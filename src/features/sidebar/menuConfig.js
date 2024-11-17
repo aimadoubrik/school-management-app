@@ -57,12 +57,12 @@ export const menuItems = [
     href: '/modules',
     count: 64,
   },
-  { type: 'divider' },
   {
     label: 'Documents',
     icon: 'FileText',
     href: '/documents',
   },
+  { type: 'divider' },
   {
     label: 'Settings',
     icon: 'Settings',

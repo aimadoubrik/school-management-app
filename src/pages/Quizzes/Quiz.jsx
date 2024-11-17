@@ -11,7 +11,7 @@ const Quiz = () => {
   const { quizzes, status, error } = useSelector((state) => state.quizzes);
   // Filter the quiz based on the ID from the URL
   const quizData = quizzes.find((quiz) => quiz.id === id);
-  
+
   // Local state for handling quiz
   const [timeLeft, setTimeLeft] = useState(300);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -142,7 +142,9 @@ const Quiz = () => {
       <QuizProgress />
       <div className="card bg-base-100 shadow-xl">
         <div className="card-body">
-          <h3 className="text-xl font-medium mb-6">{quizData.questions[currentQuestionIndex].question}</h3>
+          <h3 className="text-xl font-medium mb-6">
+            {quizData.questions[currentQuestionIndex].question}
+          </h3>
           <div className="space-y-4">
             {quizData.questions[currentQuestionIndex].answers.map((option) => (
               <button

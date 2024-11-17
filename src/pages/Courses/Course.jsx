@@ -1,9 +1,18 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchQuizzes } from "../../features/quizzes/quizzesSlice"; // Import the fetchQuizzes action
-import { Youtube, BookOpen, CheckCircle, FileText, Clock, Award, ChevronRight, Play } from "lucide-react";
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchQuizzes } from '../../features/quizzes/quizzesSlice'; // Import the fetchQuizzes action
+import {
+  Youtube,
+  BookOpen,
+  CheckCircle,
+  FileText,
+  Clock,
+  Award,
+  ChevronRight,
+  Play,
+} from 'lucide-react';
 
 const Course = () => {
   const { id: courseId } = useParams();
@@ -25,11 +34,11 @@ const Course = () => {
         if (response.data) {
           setCourse(response.data);
         } else {
-          setError("Course not found");
+          setError('Course not found');
         }
       } catch (err) {
-        console.error("Error fetching course:", err);
-        setError("Course not found or network error");
+        console.error('Error fetching course:', err);
+        setError('Course not found or network error');
       }
     };
 
@@ -42,33 +51,34 @@ const Course = () => {
   const handleEndCourse = async () => {
     try {
       const response = await axios.patch(`http://localhost:3000/courses/${courseId}`, {
-        status: "completed",
+        status: 'completed',
       });
       if (response.status === 200) {
-        setCourse({ ...course, status: "completed" });
+        setCourse({ ...course, status: 'completed' });
       }
     } catch (err) {
-      console.error("Error marking course as completed:", err);
+      console.error('Error marking course as completed:', err);
     }
   };
 
   const handleStartQuiz = () => {
-    console.log("Quizzes from Redux:", quizzes);  // Check if quizzes are loaded
+    console.log('Quizzes from Redux:', quizzes); // Check if quizzes are loaded
     const quiz = quizzes.find((q) => q.quizID === course.coursequizID);
 
     if (quiz) {
       navigate(`/quizzes/${quiz.quizID}`);
     } else {
-      console.error("Quiz not found for this course");
+      console.error('Quiz not found for this course');
     }
   };
 
   if (error) return <div className="p-8 text-red-600">{error}</div>;
-  if (!course) return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-    </div>
-  );
+  if (!course)
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      </div>
+    );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8 px-4">
@@ -79,11 +89,11 @@ const Course = () => {
           <div className="flex items-center space-x-4 text-gray-600">
             <span className="flex items-center">
               <Clock className="w-4 h-4 mr-2" />
-              Status: {course.status === "completed" ? "Completed" : "In Progress"}
+              Status: {course.status === 'completed' ? 'Completed' : 'In Progress'}
             </span>
             {course.pdfUrl && (
               <button
-                onClick={() => alert("Downloading course materials...")}
+                onClick={() => alert('Downloading course materials...')}
                 className="flex items-center text-blue-600 hover:text-blue-700"
               >
                 <FileText className="w-4 h-4 mr-2" />
@@ -105,7 +115,7 @@ const Course = () => {
                   className="w-full h-full object-cover"
                 />
                 <button
-                  onClick={() => alert("Opening video player...")}
+                  onClick={() => alert('Opening video player...')}
                   className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity group"
                 >
                   <div className="transform transition-transform group-hover:scale-110">
@@ -136,12 +146,8 @@ const Course = () => {
                           {index + 1}
                         </span>
                         <div>
-                          <h3 className="font-semibold text-gray-900">
-                            {content.contentName}
-                          </h3>
-                          <p className="text-gray-600 mt-1">
-                            {content.contentDescription}
-                          </p>
+                          <h3 className="font-semibold text-gray-900">{content.contentName}</h3>
+                          <p className="text-gray-600 mt-1">{content.contentDescription}</p>
                         </div>
                         <ChevronRight className="w-5 h-5 text-gray-400 ml-auto" />
                       </div>
@@ -156,13 +162,11 @@ const Course = () => {
           <div className="lg:col-span-1">
             <div className="sticky top-8 bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="p-6">
-                {course.status === "completed" ? (
+                {course.status === 'completed' ? (
                   <div className="space-y-6">
                     <div className="flex flex-col items-center p-6 bg-green-50 rounded-lg">
                       <Award className="w-12 h-12 text-green-600 mb-2" />
-                      <h3 className="text-xl font-semibold text-green-600">
-                        Course Completed!
-                      </h3>
+                      <h3 className="text-xl font-semibold text-green-600">Course Completed!</h3>
                     </div>
                     <button
                       onClick={handleStartQuiz}
@@ -175,9 +179,7 @@ const Course = () => {
                 ) : (
                   <div className="space-y-6">
                     <div className="p-6 bg-blue-50 rounded-lg">
-                      <h3 className="text-xl font-semibold text-blue-600 mb-2">
-                        Course Progress
-                      </h3>
+                      <h3 className="text-xl font-semibold text-blue-600 mb-2">Course Progress</h3>
                       <div className="flex items-center">
                         <BookOpen className="w-5 h-5 text-blue-600 mr-2" />
                         <span className="text-gray-600">In Progress</span>

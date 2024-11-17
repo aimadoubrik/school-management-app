@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function Modal({ isOpen,children }) {
+function Modal({ isOpen, children }) {
   if (!isOpen) return null;
 
   return (
@@ -12,10 +12,9 @@ function Modal({ isOpen,children }) {
   );
 }
 
-
 Modal.propTypes = {
-  isOpen: PropTypes.bool.isRequired,       
-  children: PropTypes.node.isRequired,    
+  isOpen: PropTypes.bool.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Modal;

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Youtube, BookOpen, CheckCircle } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCourses } from "../../features/courses/coursesSlice";
-import { fetchQuizzes } from "../../features/quizzes/quizzesSlice";
+import React, { useEffect, useState } from 'react';
+import { Youtube, BookOpen, CheckCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCourses } from '../../features/courses/coursesSlice';
+import { fetchQuizzes } from '../../features/quizzes/quizzesSlice';
 
 const Courses = () => {
   const dispatch = useDispatch();
@@ -11,18 +11,18 @@ const Courses = () => {
   const { courses, status, error } = useSelector((state) => state.courses);
   const { quizzes } = useSelector((state) => state.quizzes);
 
-  const [teacherFilter, setTeacherFilter] = useState("all");
-  const [courseFilter, setCourseFilter] = useState("all");
+  const [teacherFilter, setTeacherFilter] = useState('all');
+  const [courseFilter, setCourseFilter] = useState('all');
 
   useEffect(() => {
-    if (status === "idle") {
+    if (status === 'idle') {
       dispatch(fetchCourses());
       dispatch(fetchQuizzes());
     }
   }, [status, dispatch]);
 
   const handleAction = (course) => {
-    if (course.status === "completed") {
+    if (course.status === 'completed') {
       const quiz = quizzes.find((q) => q.courseId === course.coursequizID);
       if (quiz) {
         navigate(`/quizzes/${quiz.quizID}`);
@@ -35,26 +35,24 @@ const Courses = () => {
   };
 
   // Generate unique values for dropdowns
-  const teacherNames = ["all", ...new Set(courses.map((course) => course.teacherName))];
-  const courseNames = ["all", ...new Set(courses.map((course) => course.courseName))];
+  const teacherNames = ['all', ...new Set(courses.map((course) => course.teacherName))];
+  const courseNames = ['all', ...new Set(courses.map((course) => course.courseName))];
 
   // Filtered course list
   const filteredCourses = courses.filter((course) => {
-    const matchesTeacher =
-      teacherFilter === "all" || course.teacherName === teacherFilter;
-    const matchesCourse =
-      courseFilter === "all" || course.courseName === courseFilter;
+    const matchesTeacher = teacherFilter === 'all' || course.teacherName === teacherFilter;
+    const matchesCourse = courseFilter === 'all' || course.courseName === courseFilter;
     return matchesTeacher && matchesCourse;
   });
 
-  if (status === "loading")
+  if (status === 'loading')
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
       </div>
     );
 
-  if (status === "failed")
+  if (status === 'failed')
     return <div className="p-8 text-red-600 text-center">Error: {error}</div>;
 
   return (
@@ -73,7 +71,7 @@ const Courses = () => {
           >
             {teacherNames.map((teacher) => (
               <option key={teacher} value={teacher}>
-                {teacher === "all" ? "All Teachers" : teacher}
+                {teacher === 'all' ? 'All Teachers' : teacher}
               </option>
             ))}
           </select>
@@ -87,7 +85,7 @@ const Courses = () => {
           >
             {courseNames.map((course) => (
               <option key={course} value={course}>
-                {course === "all" ? "All Courses" : course}
+                {course === 'all' ? 'All Courses' : course}
               </option>
             ))}
           </select>
@@ -111,9 +109,7 @@ const Courses = () => {
                 </div>
 
                 <div className="p-6 space-y-4">
-                  <h3 className="text-xl font-semibold text-gray-900">
-                    {course.courseName}
-                  </h3>
+                  <h3 className="text-xl font-semibold text-gray-900">{course.courseName}</h3>
 
                   <div className="flex items-center space-x-2 text-gray-600">
                     <BookOpen className="w-4 h-4" />
@@ -125,12 +121,12 @@ const Courses = () => {
                   <button
                     onClick={() => handleAction(course)}
                     className={`w-full py-3 px-4 rounded-xl font-semibold text-white transition-colors duration-200 ${
-                      course.status === "completed"
-                        ? "bg-blue-600 hover:bg-blue-700"
-                        : "bg-green-600 hover:bg-green-700"
+                      course.status === 'completed'
+                        ? 'bg-blue-600 hover:bg-blue-700'
+                        : 'bg-green-600 hover:bg-green-700'
                     }`}
                   >
-                    {course.status === "completed" ? "Start Quiz" : "Complete Course"}
+                    {course.status === 'completed' ? 'Start Quiz' : 'Complete Course'}
                   </button>
                 </div>
               </div>

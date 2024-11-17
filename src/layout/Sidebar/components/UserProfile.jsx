@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-
 const UserProfile = () => {
   const [userData, setUserData] = useState(null);
   const userId =
@@ -33,8 +32,10 @@ const UserProfile = () => {
     <div className="flex items-center gap-3 px-2">
       <div className="profile-photo">
         <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-          <img src={userData.photo || 'path/to/default/avatar'} alt={`${userData.name}'s profile`} />
-
+          <img
+            src={userData.photo || 'path/to/default/avatar'}
+            alt={`${userData.name}'s profile`}
+          />
         </div>
       </div>
       <div className="flex-1 min-w-0">

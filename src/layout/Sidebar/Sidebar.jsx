@@ -75,8 +75,7 @@ const Sidebar = memo(() => {
     transition-all duration-300 z-30
     ${isOpen ? 'left-2' : '-left-64'}
     ${isMobile ? 'w-64' : 'w-64 lg:left-2 lg:z-20'}
-    ${!isOpen && !isMobile ? 'lg:-left-64' : ''}`
-    .trim();
+    ${!isOpen && !isMobile ? 'lg:-left-64' : ''}`.trim();
 
   const menuContent = items.map((item, index) =>
     item.type === 'divider' ? (
@@ -88,8 +87,7 @@ const Sidebar = memo(() => {
 
   const overlayClasses = `fixed inset-0 bg-black/20 backdrop-blur-sm z-20
     transition-opacity duration-300
-    ${isOpen && isMobile ? 'opacity-100' : 'opacity-0 pointer-events-none'}`
-    .trim();
+    ${isOpen && isMobile ? 'opacity-100' : 'opacity-0 pointer-events-none'}`.trim();
 
   return (
     <>

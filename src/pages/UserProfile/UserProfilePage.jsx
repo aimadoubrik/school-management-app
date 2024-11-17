@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Camera, Mail, Phone, Globe, MapPin, Building, Check, X, Calendar } from 'lucide-react';
 import avatar from '../../assets/avatar.png';
-import { fetchUserProfile, updateUserProfile, updateUserField } from "../../features/userProfile/profileSlice";
+import {
+  fetchUserProfile,
+  updateUserProfile,
+  updateUserField,
+} from '../../features/userProfile/profileSlice';
 
 const UserProfilePage = () => {
   const dispatch = useDispatch();
@@ -12,7 +16,9 @@ const UserProfilePage = () => {
   const [notification, setNotification] = useState(null);
 
   useEffect(() => {
-    const storedUserId = JSON.parse(localStorage.getItem('user') || sessionStorage.getItem('user'))?.id;
+    const storedUserId = JSON.parse(
+      localStorage.getItem('user') || sessionStorage.getItem('user')
+    )?.id;
     if (storedUserId) {
       dispatch(fetchUserProfile(storedUserId));
     }
@@ -62,9 +68,7 @@ const UserProfilePage = () => {
 
   return (
     <div className="min-h-screen bg-base-200 rounded-t-md">
-      <div className="relative bg-primary h-60 overflow-hidden rounded-t-md">
-     
-      </div>
+      <div className="relative bg-primary h-60 overflow-hidden rounded-t-md"></div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-32 pb-12">
         {notification && (

@@ -9,7 +9,7 @@ import {
   Clock,
   Calendar,
   Loader2,
-  X
+  X,
 } from 'lucide-react';
 
 const DocumentsPage = () => {
@@ -30,7 +30,7 @@ const DocumentsPage = () => {
   useEffect(() => {
     if (alerts.success) {
       const timer = setTimeout(() => {
-        setAlerts(prev => ({ ...prev, success: false }));
+        setAlerts((prev) => ({ ...prev, success: false }));
       }, 5000);
       return () => clearTimeout(timer);
     }
@@ -49,14 +49,15 @@ const DocumentsPage = () => {
 
   const validateAndSetFiles = (selectedFiles) => {
     const validTypes = ['application/pdf', 'image/jpeg', 'image/png'];
-    const validFiles = selectedFiles.filter(file =>
-      validTypes.includes(file.type) && file.size <= 5 * 1024 * 1024
+    const validFiles = selectedFiles.filter(
+      (file) => validTypes.includes(file.type) && file.size <= 5 * 1024 * 1024
     );
 
     if (validFiles.length !== selectedFiles.length) {
-      setAlerts(prev => ({
+      setAlerts((prev) => ({
         ...prev,
-        error: "Certains fichiers ont été rejetés. Veuillez utiliser uniquement des fichiers PDF, JPG ou PNG de moins de 5 Mo."
+        error:
+          'Certains fichiers ont été rejetés. Veuillez utiliser uniquement des fichiers PDF, JPG ou PNG de moins de 5 Mo.',
       }));
     }
 
@@ -66,7 +67,7 @@ const DocumentsPage = () => {
   const handleDrag = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    if (e.type === "dragenter" || e.type === "dragover") {
+    if (e.type === 'dragenter' || e.type === 'dragover') {
       setDragActive(true);
     } else {
       setDragActive(false);
@@ -91,17 +92,17 @@ const DocumentsPage = () => {
       document: selectedDocument.name,
       description: selectedDocument.description,
       requestDate,
-      files: files.map(file => ({
+      files: files.map((file) => ({
         name: file.name,
         size: file.size,
-        type: file.type
+        type: file.type,
       })),
       status: 'en cours',
       submissionDate: new Date().toLocaleDateString(),
       processingTime: selectedDocument.processingTime,
     };
 
-    setRequests(prev => [newRequest, ...prev]);
+    setRequests((prev) => [newRequest, ...prev]);
     setAlerts({ success: true, error: null });
     setSelectedDocument(null);
     setFiles([]);
@@ -128,7 +129,9 @@ const DocumentsPage = () => {
       {alerts.success && (
         <div className="alert alert-success mb-6">
           <CheckCircle className="w-5 h-5" />
-          <span>Votre demande a été soumise avec succès. Vous pouvez suivre son état ci-dessous.</span>
+          <span>
+            Votre demande a été soumise avec succès. Vous pouvez suivre son état ci-dessous.
+          </span>
         </div>
       )}
 
@@ -137,7 +140,7 @@ const DocumentsPage = () => {
           <AlertCircle className="w-5 h-5" />
           <span>{alerts.error}</span>
           <button
-            onClick={() => setAlerts(prev => ({ ...prev, error: null }))}
+            onClick={() => setAlerts((prev) => ({ ...prev, error: null }))}
             className="btn btn-circle btn-ghost btn-sm absolute right-2 top-2"
           >
             <X className="w-4 h-4" />
@@ -159,14 +162,18 @@ const DocumentsPage = () => {
                   <button
                     key={doc.id}
                     onClick={() => handleDocumentSelect(doc)}
-                    className={`w-full text-left transition-all ${selectedDocument?.id === doc.id
+                    className={`w-full text-left transition-all ${
+                      selectedDocument?.id === doc.id
                         ? 'bg-primary/10 border-primary'
                         : 'hover:bg-base-200 border-base-300'
-                      } border rounded-lg p-3 focus:outline-none`}
+                    } border rounded-lg p-3 focus:outline-none`}
                   >
                     <div className="flex items-start gap-3">
-                      <FileText className={`w-5 h-5 mt-1 ${selectedDocument?.id === doc.id ? 'text-primary' : 'text-base-content/60'
-                        }`} />
+                      <FileText
+                        className={`w-5 h-5 mt-1 ${
+                          selectedDocument?.id === doc.id ? 'text-primary' : 'text-base-content/60'
+                        }`}
+                      />
                       <div>
                         <h3 className="font-medium">{doc.name}</h3>
                         <p className="text-sm text-base-content/60 mt-1">{doc.description}</p>
@@ -227,8 +234,9 @@ const DocumentsPage = () => {
                     </div>
 
                     <div
-                      className={`border-2 border-dashed rounded-lg p-6 transition-colors ${dragActive ? 'border-primary bg-primary/5' : 'border-base-300'
-                        }`}
+                      className={`border-2 border-dashed rounded-lg p-6 transition-colors ${
+                        dragActive ? 'border-primary bg-primary/5' : 'border-base-300'
+                      }`}
                       onDragEnter={handleDrag}
                       onDragLeave={handleDrag}
                       onDragOver={handleDrag}
@@ -336,10 +344,7 @@ const DocumentsPage = () => {
                     <h4 className="text-sm font-medium mb-2">Documents joints:</h4>
                     <div className="flex flex-wrap gap-2">
                       {request.files.map((file, index) => (
-                        <span
-                          key={index}
-                          className="badge badge-outline gap-1"
-                        >
+                        <span key={index} className="badge badge-outline gap-1">
                           <FileText className="w-3 h-3" />
                           {file.name}
                         </span>
