@@ -1,59 +1,11 @@
-import { useState } from 'react';
-import { AlertCircle, FileText, Upload, Clock, CheckCircle, XCircle } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchDocuments } from '../../features/documents/documentSlice';
+import { CheckCircle, FileText, Upload, AlertCircle } from 'lucide-react';
 
-const DocumentsPage = () => {
-  const documentList = [
-    {
-      id: 1,
-      name: 'Attestation de présence',
-      description: 'Document confirmant votre présence aux cours',
-      documentattachment: ["Carte d'identité", 'Lettre de demande de document'],
-      processingTime: '2-3 jours',
-    },
-    {
-      id: 2,
-      name: 'Attestation de fin de formation',
-      description: 'Certificat officiel de fin de formation',
-      documentattachment: [
-        "Carte d'identité",
-        'Lettre de demande de document',
-        'Certificat de stage',
-      ],
-      processingTime: '3-5 jours',
-    },
-    {
-      id: 3,
-      name: 'Relevé de notes',
-      description: 'Document détaillant vos résultats académiques',
-      documentattachment: [
-        "Carte d'identité",
-        'Lettre de demande de document',
-        'Attestation de présence',
-      ],
-      processingTime: '2-3 jours',
-    },
-    {
-      id: 4,
-      name: 'Certificat de stage',
-      description: 'Attestation officielle de stage',
-      documentattachment: ["Carte d'identité", 'Lettre de demande de stage en entreprise'],
-      processingTime: '3-4 jours',
-    },
-    {
-      id: 5,
-      name: 'Demande de stage',
-      description: 'Formulaire de demande de stage',
-      documentattachment: ['Lettre de motivation', 'CV'],
-      processingTime: '5-7 jours',
-    },
-  ];
-
-  const statusList = [
-    { id: 1, name: 'En cours', color: 'warning', icon: Clock },
-    { id: 2, name: 'En attente', color: 'info', icon: Clock },
-    { id: 3, name: 'Validé', color: 'success', icon: CheckCircle },
-    { id: 4, name: 'Refusé', color: 'error', icon: XCircle },
-  ];
+const DocumentPage = () => {
+  const dispatch = useDispatch();
+  const { documents, loading, error } = useSelector((state) => state.documents);
 
   const [selectedDocument, setSelectedDocument] = useState(null);
   const [requestDate, setRequestDate] = useState('');
@@ -61,55 +13,45 @@ const DocumentsPage = () => {
   const [requests, setRequests] = useState([]);
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
+  useEffect(() => {
+    dispatch(fetchDocuments());
+  }, [dispatch]);
+
   const handleDocumentSelect = (doc) => {
     setSelectedDocument(doc);
-    setFiles([]); // Reset files when changing document
   };
 
-  const handleFileChange = (event) => {
-    const fileList = Array.from(event.target.files);
-    setFiles(fileList);
+  const handleFileChange = (e) => {
+    setFiles(Array.from(e.target.files));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Simulate request submission
     const newRequest = {
-      id: requests.length + 1,
+      id: Date.now(),
       document: selectedDocument.name,
       description: selectedDocument.description,
       requestDate,
-      submissionDate: new Date().toISOString().split('T')[0],
-      status: 1, // En cours
-      files: files.map((f) => f.name),
+      files: files.map((file) => file.name),
+      status: 'en cours',
+      submissionDate: new Date().toLocaleDateString(),
       processingTime: selectedDocument.processingTime,
     };
-
-    setRequests([newRequest, ...requests]);
+    setRequests([...requests, newRequest]);
     setShowSuccessAlert(true);
-
-    // Reset form
     setSelectedDocument(null);
-    setRequestDate('');
     setFiles([]);
-
-    setTimeout(() => setShowSuccessAlert(false), 5000);
   };
 
-  const isFormValid =
-    selectedDocument && requestDate && files.length >= selectedDocument?.documentattachment.length;
-
-  const renderStatusBadge = (statusId) => {
-    const status = statusList.find((s) => s.id === statusId);
-    const StatusIcon = status.icon;
-
-    return (
-      <div className={`badge badge-${status.color} gap-2`}>
-        <StatusIcon className="w-4 h-4" />
-        {status.name}
-      </div>
-    );
+  const renderStatusBadge = (status) => {
+    if (status === 'en cours') {
+      return <span className="badge badge-warning">{status}</span>;
+    }
+    return <span className="badge badge-success">{status}</span>;
   };
+
+  const isFormValid = selectedDocument && requestDate && files.length > 0;
 
   return (
     <div className="container mx-auto p-4 max-w-5xl">
@@ -127,40 +69,34 @@ const DocumentsPage = () => {
         </div>
       )}
 
+      {loading && <div>Loading...</div>}
+      {error && <div className="text-red-500">{error}</div>}
+
       <div className="grid md:grid-cols-5 gap-6">
         {/* Left side - Document Selection */}
-        <div className="md:col-span-2 space-y-4">
+        <div className="md:col-span-2 space-y-4 rounded-lg shadow p-6">
           <h2 className="text-xl font-semibold mb-4">Documents Disponibles</h2>
-          <div className="space-y-2">
-            {documentList.map((doc) => (
-              <button
-                key={doc.id}
-                onClick={() => handleDocumentSelect(doc)}
-                className={`w-full p-4 rounded-lg border transition-all ${
-                  selectedDocument?.id === doc.id
-                    ? 'border-primary bg-primary/5'
-                    : 'border-gray-200 hover:border-primary/50'
-                }`}
-              >
-                <div className="flex items-center gap-3">
+          <hr />
+          <ul className="space-y-2">
+            {documents.map((doc) => (
+              <li key={doc.id} onClick={() => handleDocumentSelect(doc)}>
+                <div className="flex border border-gray-300 hover:border-primary hover:cursor-pointer items-center gap-3 p-2 rounded-lg hover:bg-black-300 transition-all">
                   <FileText
-                    className={`w-5 h-5 ${
-                      selectedDocument?.id === doc.id ? 'text-primary' : 'text-gray-500'
-                    }`}
+                    className={`w-5 h-5 ${selectedDocument?.id === doc.id ? 'text-primary' : 'text-gray-500'}`}
                   />
                   <div className="text-left">
                     <h3 className="font-medium">{doc.name}</h3>
                     <p className="text-sm text-gray-600">{doc.processingTime}</p>
                   </div>
                 </div>
-              </button>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
 
         {/* Right side - Form */}
         <div className="md:col-span-3">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6 border border-gray-300 rounded-lg p-6">
             <div className="card bg-base-100 shadow">
               <div className="card-body">
                 {selectedDocument ? (
@@ -290,4 +226,5 @@ const DocumentsPage = () => {
   );
 };
 
-export default DocumentsPage;
+export default DocumentPage;
+
