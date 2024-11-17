@@ -11,6 +11,9 @@ import {
   coursesReducer,
   competencesSlice,
   scheduleReducer,
+  profileSlice,
+  documentsReducer,
+  moduleReducer
 } from '../features';
 
 const rootReducer = combineReducers({
@@ -24,6 +27,9 @@ const rootReducer = combineReducers({
   auth: authReducer,
   courses: coursesReducer,
   schedule: scheduleReducer,
+  profile: profileSlice,
+  documents: documentsReducer,
+  modules: moduleReducer
 });
 
 const store = configureStore({

@@ -1573,6 +1573,81 @@
       "status": "active"
     }
   ],
+  "documents": [
+    {
+      "id": "1",
+      "name": "Demande de stage",
+      "description": "Document de demande de stage",
+      "documentattachment": [
+        "Carte d'identité nationale (CIN)",
+        "Lettre de motivation"
+      ],
+      "processingTime": "3-5 jours",
+      "status": "en cours"
+    },
+    {
+      "id": "2",
+      "name": "Certificat de scolarité",
+      "description": "Attestation prouvant que le stagiaire est inscrit",
+      "documentattachment": [
+        "Carte d'identité nationale (CIN)",
+        "Reçu d'inscription"
+      ],
+      "processingTime": "2-4 jours",
+      "status": "en cours"
+    },
+    {
+      "id": "3",
+      "name": "Attestation de réussite",
+      "description": "Attestation prouvant que le stagiaire a réussi ses examens",
+      "documentattachment": [
+        "Carte d'identité nationale (CIN)",
+        "Relevé de notes"
+      ],
+      "processingTime": "3-5 jours",
+      "status": "en cours"
+    },
+    {
+      "id": "4",
+      "name": "Relevé de notes",
+      "description": "Document contenant les notes obtenues par le stagiaire",
+      "documentattachment": [
+        "Carte d'identité nationale (CIN)"
+      ],
+      "processingTime": "2-3 jours",
+      "status": "en cours"
+    },
+    {
+      "id": "5",
+      "name": "Certificat de fin de formation",
+      "description": "Document certifiant la fin de la formation",
+      "documentattachment": [
+        "Carte d'identité nationale (CIN)",
+        "Attestation de réussite"
+      ],
+      "processingTime": "4-7 jours",
+      "status": "en cours"
+    },
+    {
+      "id": "6",
+      "name": "Reglement Interieur",
+      "description": "Document de Reglement Interieur de L'établissement",
+      "documentattachment": [],
+      "processingTime": "",
+      "status": "effectuer"
+    },
+    {
+      "id": "7",
+      "name": "Demande de Diplome",
+      "description": "Document de demande de Diplome",
+      "documentattachment": [
+        "Carte d'identité nationale (CIN)",
+        "Relevé de notes"
+      ],
+      "processingTime": "3-5 jours",
+      "status": "en cours"
+    }
+  ],
   "modules": [
     {
       "id": "2",

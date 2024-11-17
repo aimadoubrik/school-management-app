@@ -10,4 +10,5 @@ export { default as competencesSlice } from './competences/competencesSlice';
 export { default as scheduleReducer } from './schedule/scheduleSlice';
 export { default as moduleReducer } from './modules/moduleSlice';
 export { default as profileSlice } from './userProfile/profileSlice';
-export { default as coursesReducer } from './courses/coursesSlice';      
+export { default as coursesReducer } from './courses/coursesSlice';
+export { default as documentsReducer } from './documents/documentSlice';

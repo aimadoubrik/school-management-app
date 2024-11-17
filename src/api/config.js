@@ -16,6 +16,7 @@ const config = {
       schedule: '/schedule',
       absentStudents: '/absentStudents',
       courses: '/courses',
+      documents: '/documents',
       modules: '/modules'
     },
   },
