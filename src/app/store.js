@@ -8,10 +8,9 @@ import {
   quizzesReducer,
   filieresReducer,
   authReducer,
+  coursesReducer,
   competencesSlice,
   scheduleReducer,
-  moduleReducer,
-  profileSlice
 } from '../features';
 
 const rootReducer = combineReducers({
@@ -23,10 +22,8 @@ const rootReducer = combineReducers({
   filieres: filieresReducer,
   competences: competencesSlice,
   auth: authReducer,
+  courses: coursesReducer,
   schedule: scheduleReducer,
-  modules: moduleReducer,
-   });
-  profile: profileSlice
 });
 
 const store = configureStore({
