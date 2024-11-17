@@ -33,7 +33,7 @@ const ViewCompetence = ({ competence, closeModal }) => {
       fields={fields}
       onClose={closeModal}
       deleteButtonProps={{
-        show: false, // Vous pouvez activer le bouton de suppression si nécessaire
+        show: false, 
       }}
       closeButtonProps={{
         show: true,

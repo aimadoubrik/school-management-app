@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCompetences, deleteCompetence } from '../../features/competences/competencesSlice';
+import { fetchCompetences, deleteCompetence ,addCompetence,editCompetence} from '../../features/competences/competencesSlice';
 import { Eye, Edit, Trash, Download, Plus, Search } from 'lucide-react';
-import AddCompetence from './components/AddCompetence';
-import ViewCompetence from './components/ViewCompetence';
 import { LoadingSpinner, ErrorAlert } from '../../components';
 import Papa from 'papaparse';
 import CompetenceTable from './components/CompetencesTable';
@@ -54,7 +52,7 @@ const CompetencesPage = () => {
 
   const handleDeleteConfirm = async () => {
     try {
-      await dispatch(deleteCompetence(competenceToDelete.id)); // Adjust based on your slice
+      await dispatch(deleteCompetence(competenceToDelete.id)); 
       setIsDeleteModalOpen(false);
       setCompetenceToDelete(null);
     } catch (error) {
@@ -66,16 +64,16 @@ const CompetencesPage = () => {
     try {
       if (selectedCompetence) {
         // Update existing competence
-        await dispatch(updateCompetence(competenceData)); // Ensure you have `updateCompetence` in your slice
+        await dispatch(editCompetence(competenceData));
       } else {
         // Add new competence
-        await dispatch(addCompetence(competenceData)); // Ensure you have `addCompetence` in your slice
+        await dispatch(addCompetence(competenceData));
       }
-      setIsModalOpen(false);  // Close the modal after save
+      setIsModalOpen(false); // Close the modal after saving
     } catch (error) {
       console.error('Error saving competence:', error);
     }
-};
+  };
 
   const handleEdit = (competence) => {
     setSelectedCompetence(competence);  // Set the selected competence for editing
@@ -187,14 +185,15 @@ const handleCloseModal = () => {
       <div className="flex justify-between items-center mb-6">
         <button
           onClick={() => {
-            setSelectedCompetence(null);
-            setViewMode(false);
-            setIsModalOpen(true);
+            setSelectedCompetence(null); // Assurez-vous que `selectedCompetence` est bien null
+            setViewMode(false); // Mode non-lecture
+            setIsModalOpen(true); // Ouvre la modale
           }}
           className="btn btn-primary gap-2"
         >
           <Plus className="w-5 h-5" /> Add Competence
         </button>
+
         <button onClick={handleCSVExport} className="btn btn-accent gap-2">
           <Download className="w-5 h-5" /> Export CSV
         </button>
@@ -239,6 +238,7 @@ const handleCloseModal = () => {
         onClose={handleCloseModal}
         onSave={handleSaveCompetence}
       />
+
 
       {/* Delete Confirmation Modal */}
       <ConfirmModal

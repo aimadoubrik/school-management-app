@@ -906,38 +906,7 @@
       ],
       "quiz": [
         "https:/softskills.com"
-      ],
-      "filiere": "Soft Skills"
-    },
-    {
-      "id": "1cd6",
-      "code_competence": "12",
-      "intitule_competence": [
-        "innovation"
-      ],
-      "intitule_module": "softskills",
-      "cours": [
-        "https:/softskills.com"
-      ],
-      "quiz": [
-        "https:/softskills.com"
-      ],
-      "filiere": "Soft Skills"
-    },
-    {
-      "id": "400f",
-      "code_competence": "13",
-      "intitule_competence": [
-        "esprit d'equipe"
-      ],
-      "intitule_module": "softskills",
-      "cours": [
-        "https:/cours.com"
-      ],
-      "quiz": [
-        "https:/quiz.com"
-      ],
-      "filiere": "Soft Skills"
+      ]
     }
   ],
   "secteur": {

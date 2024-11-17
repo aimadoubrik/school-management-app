@@ -20,6 +20,7 @@ const AddCompetence = ({ selectedCompetence, onClose, onSave, isEditMode }) => {
   // Effect to pre-fill form when editing
   useEffect(() => {
     if (selectedCompetence) {
+      console.log("Selected Competence:", selectedCompetence); // Debugging
       setFormData({
         id: selectedCompetence.id || '',
         code_competence: selectedCompetence.code_competence || '',
@@ -35,7 +36,9 @@ const AddCompetence = ({ selectedCompetence, onClose, onSave, isEditMode }) => {
           : selectedCompetence.quiz || '',
       });
     }
-  }, [selectedCompetence]); // Re-run when selectedCompetence changes
+  }, [selectedCompetence]);
+  
+  
 
   // Handle form field changes
   const handleChange = (e) => {
@@ -210,3 +213,4 @@ AddCompetence.propTypes = {
 };
 
 export default AddCompetence;
+

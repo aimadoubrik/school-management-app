@@ -1,40 +1,54 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Eye, Edit, Trash2, Users, AlertCircle } from 'lucide-react';
+import { Eye, Edit, Trash2, AlertCircle } from 'lucide-react';
 import { DataTable } from '../../../components';
-const FilieresTable = ({ filieres, sortConfig, onSort, onView, onEdit, onDelete }) => {
-  const handleDelete = (filiere, e) => {
+
+const CompetenceTable = ({ competences, sortConfig, onSort, onView, onEdit, onDelete }) => {
+  const handleDelete = (competence, e) => {
     e.stopPropagation();
-    onDelete(filiere);
+    onDelete(competence);
   };
 
   const columns = [
     {
-      key: 'code_filiere',
+      key: 'code_competence',
       label: 'Code',
       sortable: true,
       className: 'font-medium',
     },
     {
-      key: 'intitule_filiere',
-      label: 'Intitulé',
+      key: 'intitule_competence',
+      label: 'Intitulé Compétence',
       sortable: true,
       mobileTruncate: true,
+      render: (row) => row.intitule_competence.join(', '),
     },
     {
-      key: 'secteur',
-      label: 'Secteur',
+      key: 'intitule_module',
+      label: 'Module',
       sortable: true,
-      mobileSecondary: true,
-      render: (row) => <span className="badge badge-ghost badge-sm">{row.secteur}</span>,
     },
     {
-      key: 'groupes',
-      label: 'Groupes',
+      key: 'filiere',
+      label: 'Filière',
+      sortable: true,
+    },
+    {
+      key: 'cours',
+      label: 'Cours',
       render: (row) => (
-        <Link to={`/filieres/groupes/${row.code_filiere}`} className="btn btn-ghost btn-xs gap-2">
-          <Users className="w-4 h-4" />
-          {Array.isArray(row.groupes) ? row.groupes.length : 0} groupes
-        </Link>
+        <a href={row.cours} target="_blank" rel="noopener noreferrer" className="link link-primary">
+          Cours
+        </a>
+      ),
+    },
+    {
+      key: 'quiz',
+      label: 'Quiz',
+      render: (row) => (
+        <a href={row.quiz} target="_blank" rel="noopener noreferrer" className="link link-secondary">
+          Quiz
+        </a>
       ),
     },
     {
@@ -89,17 +103,17 @@ const FilieresTable = ({ filieres, sortConfig, onSort, onView, onEdit, onDelete 
 
   return (
     <DataTable
-      data={filieres}
+      data={competences}
       columns={columns}
       sortConfig={sortConfig}
       onSort={onSort}
       emptyStateProps={{
         icon: AlertCircle,
-        title: 'Aucune filière trouvée',
-        description: 'Commencez par ajouter une nouvelle filière',
+        title: 'Aucune compétence trouvée',
+        description: 'Commencez par ajouter une nouvelle compétence',
       }}
     />
   );
 };
 
-export default FilieresTable;
+export default CompetenceTable;

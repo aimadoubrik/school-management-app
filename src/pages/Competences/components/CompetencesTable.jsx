@@ -43,7 +43,7 @@ const CompetenceTable = ({ competences, onView, onEdit, onDelete }) => {
                   <button className="btn btn-success btn-sm" onClick={() => onEdit(competence)}>
                     <Edit className="w-4 h-4" />
                   </button>
-                  <button className="btn btn-error btn-sm" onClick={() => onDelete(competence.id)}>
+                  <button className="btn btn-error btn-sm" onClick={() => onDelete(competence)}>
                     <Trash className="w-4 h-4" />
                   </button>
                 </td>

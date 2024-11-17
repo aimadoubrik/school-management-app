@@ -3,20 +3,17 @@ import Modal from '../../../components/shared/Modal';
 import ViewCompetence from './ViewCompetence';
 import AddCompetence from './AddCompetence';
 import PropTypes from 'prop-types';
-
-
 const CompetencesModal = ({ isOpen, mode, competence, onClose, onSave, onDelete }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       {mode === 'view' ? (
-        <ViewCompetence competence={competence} onClose={onClose} onDelete={onDelete} />
+        <ViewCompetence competence={competence} closeModal={onClose} />
       ) : (
         <AddCompetence
-          selectedCompetence={competence}  // Pass `selectedCompetence` here
+          selectedCompetence={competence} // Null in 'add' mode
           onClose={onClose}
           onSave={onSave}
-          isEditMode={Boolean(competence)}  // Check if competence exists for edit mode
-          closeModal={onClose}
+          isEditMode={Boolean(competence)} // False in 'add' mode
         />
       )}
     </Modal>
