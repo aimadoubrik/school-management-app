@@ -1,43 +1,51 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Youtube, BookOpen, CheckCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCourses } from "../../features/courses/coursesSlice";
-import { fetchQuizzes } from "../../features/quizzes/quizzesSlice"; // Import fetchQuizzes
+import { fetchQuizzes } from "../../features/quizzes/quizzesSlice";
 
 const Courses = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { courses, status, error } = useSelector((state) => state.courses);
-  const { quizzes } = useSelector((state) => state.quizzes); // Access quizzes from Redux
+  const { quizzes } = useSelector((state) => state.quizzes);
 
-  // Fetch courses and quizzes on initial load
+  const [teacherFilter, setTeacherFilter] = useState("all");
+  const [courseFilter, setCourseFilter] = useState("all");
+
   useEffect(() => {
     if (status === "idle") {
       dispatch(fetchCourses());
-      dispatch(fetchQuizzes()); // Dispatch fetchQuizzes to load quizzes
+      dispatch(fetchQuizzes());
     }
   }, [status, dispatch]);
 
   const handleAction = (course) => {
-    console.log("Course quiz ID:", course.coursequizID); // Log course quiz ID
-    console.log("All quizzes:", quizzes); // Log all quizzes to check their structure
-  
     if (course.status === "completed") {
       const quiz = quizzes.find((q) => q.courseId === course.coursequizID);
-      console.log("Quiz for this course:", quiz); // Log found quiz or undefined
-  
       if (quiz) {
         navigate(`/quizzes/${quiz.quizID}`);
       } else {
         console.error(`Quiz not found for course ID: ${course.coursequizID}`);
-        console.log("Available quizzes:", quizzes);
       }
     } else {
       navigate(`/courses/${course.id}`);
     }
   };
-  
+
+  // Generate unique values for dropdowns
+  const teacherNames = ["all", ...new Set(courses.map((course) => course.teacherName))];
+  const courseNames = ["all", ...new Set(courses.map((course) => course.courseName))];
+
+  // Filtered course list
+  const filteredCourses = courses.filter((course) => {
+    const matchesTeacher =
+      teacherFilter === "all" || course.teacherName === teacherFilter;
+    const matchesCourse =
+      courseFilter === "all" || course.courseName === courseFilter;
+    return matchesTeacher && matchesCourse;
+  });
 
   if (status === "loading")
     return (
@@ -54,9 +62,41 @@ const Courses = () => {
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-gray-900 mb-8">Your Courses</h2>
 
+        {/* Filters */}
+        <div className="mb-8 flex space-x-4 md:space-x-8 justify-end items-end">
+          {/* Teacher Filter */}
+          <select
+            className="select select-bordered w-full md:w-[200px]"
+            aria-label="Filter courses by teacher"
+            value={teacherFilter}
+            onChange={(e) => setTeacherFilter(e.target.value)}
+          >
+            {teacherNames.map((teacher) => (
+              <option key={teacher} value={teacher}>
+                {teacher === "all" ? "All Teachers" : teacher}
+              </option>
+            ))}
+          </select>
+
+          {/* Course Filter */}
+          <select
+            className="select select-bordered w-full md:w-[200px]"
+            aria-label="Filter courses by course name"
+            value={courseFilter}
+            onChange={(e) => setCourseFilter(e.target.value)}
+          >
+            {courseNames.map((course) => (
+              <option key={course} value={course}>
+                {course === "all" ? "All Courses" : course}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Courses */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {courses.length ? (
-            courses.map((course) => (
+          {filteredCourses.length ? (
+            filteredCourses.map((course) => (
               <div
                 key={course.id}
                 className="bg-white rounded-2xl shadow-lg overflow-hidden transition-transform hover:scale-105"
@@ -80,12 +120,7 @@ const Courses = () => {
                     <span>{course.teacherName}</span>
                   </div>
 
-                  {course.status === "completed" && (
-                    <div className="flex items-center space-x-2 text-green-600">
-                      <CheckCircle className="w-4 h-4" />
-                      <span>Completed</span>
-                    </div>
-                  )}
+                  <p className="text-gray-600">{course.courseDescription}</p>
 
                   <button
                     onClick={() => handleAction(course)}
@@ -102,7 +137,7 @@ const Courses = () => {
             ))
           ) : (
             <div className="col-span-full text-center text-gray-500 py-12">
-              No courses available at the moment.
+              No courses match your filters.
             </div>
           )}
         </div>
