@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Camera, Mail, Phone, Globe, MapPin, Building, Check, X, Calendar } from 'lucide-react';
 import avatar from '../../assets/avatar.png';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ChevronUp, ChevronDown, AlertCircle } from 'lucide-react';
 import Pagination from './Pagination';
@@ -17,6 +17,10 @@ const DataTable = ({
   itemsPerPage = 7, // Default number of items per page
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [data]);
 
   const SortIcon = ({ column }) => {
     if (!column.sortable || sortConfig?.key !== column.key) return null;
