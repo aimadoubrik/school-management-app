@@ -1188,161 +1188,13 @@
   ],
   "absentStudents": [
     {
-      "id": "c43c",
-      "secteur": "Science",
+      "id": "d97d",
+      "niveau": "Specialisation",
       "filiere": "Physics",
-      "groupe": "Group 1",
-      "date": "2024-11-14",
-      "students": [
-        {
-          "studentId": "1",
-          "isAbsent": true
-        },
-        {
-          "studentId": "2",
-          "isAbsent": false
-        }
-      ]
-    },
-    {
-      "id": "f45d",
-      "secteur": "Science",
-      "filiere": "Physics",
-      "groupe": "Group 2",
-      "date": "2024-11-14",
-      "students": [
-        {
-          "studentId": "3",
-          "studentName": "Bob Lee",
-          "isAbsent": true
-        },
-        {
-          "studentId": "4",
-          "studentName": "Emma Davis",
-          "isAbsent": true
-        }
-      ]
-    },
-    {
-      "id": "0563",
-      "secteur": "Science",
-      "filiere": "Physics",
-      "groupe": "Group 1",
-      "date": "2024-11-14",
-      "students": [
-        {
-          "studentId": "1",
-          "isAbsent": true
-        },
-        {
-          "studentId": "2",
-          "isAbsent": true
-        }
-      ]
-    },
-    {
-      "id": "823e",
-      "secteur": "Science",
-      "filiere": "Physics",
-      "groupe": "Group 1",
-      "date": "2024-11-14",
-      "students": [
-        {
-          "studentId": "1",
-          "isAbsent": true
-        },
-        {
-          "studentId": "2",
-          "isAbsent": false
-        }
-      ]
-    },
-    {
-      "id": "9965",
-      "secteur": "Science",
-      "filiere": "Physics",
-      "groupe": "Group 1",
-      "date": "2024-11-14",
-      "students": [
-        {
-          "studentId": "1",
-          "isAbsent": true
-        },
-        {
-          "studentId": "2",
-          "isAbsent": false
-        }
-      ]
-    },
-    {
-      "id": "fef5",
-      "secteur": "Science",
-      "filiere": "Physics",
-      "groupe": "Group 1",
-      "date": "2024-11-14",
-      "students": [
-        {
-          "studentId": "1",
-          "isAbsent": true
-        },
-        {
-          "studentId": "2",
-          "isAbsent": false
-        }
-      ]
-    },
-    {
-      "id": "d42b",
-      "secteur": "Science",
-      "filiere": "Physics",
+      "annee": "1st Year",
       "groupe": "Group 1",
       "date": "2024-11-15",
-      "students": [
-        {
-          "studentId": "1",
-          "studentCef": "10001",
-          "studentName": "John Smith",
-          "studentCin": "CS1001",
-          "isAbsent": true
-        },
-        {
-          "studentId": "2",
-          "studentCef": "10002",
-          "studentName": "Alice Brown",
-          "studentCin": "CS1002",
-          "isAbsent": false
-        }
-      ]
-    },
-    {
-      "id": "8311",
-      "secteur": "Science",
-      "filiere": "Physics",
-      "groupe": "Group 1",
-      "date": "2024-11-15",
-      "students": [
-        {
-          "studentId": "1",
-          "studentCef": "10001",
-          "studentName": "John Smith",
-          "studentCin": "CS1001",
-          "isAbsent": true
-        },
-        {
-          "studentId": "2",
-          "studentCef": "10002",
-          "studentName": "Alice Brown",
-          "studentCin": "CS1002",
-          "isAbsent": false
-        }
-      ]
-    },
-    {
-      "id": "cde9",
-      "secteur": "Science",
-      "filiere": "Physics",
-      "groupe": "Group 1",
-      "date": "2024-11-15",
+      "month": "2024-11",
       "students": [
         {
           "studentId": "1",
@@ -1358,41 +1210,18 @@
           "studentName": "Alice Brown",
           "studentDateN": "2000-04-15",
           "studentCin": "CS1002",
-          "isAbsent": false
-        }
-      ]
-    },
-    {
-      "id": "cc6b",
-      "secteur": "Science",
-      "filiere": "Physics",
-      "groupe": "Group 1",
-      "date": "2024-11-15",
-      "students": [
-        {
-          "studentId": "1",
-          "studentCef": "10001",
-          "studentName": "John Smith",
-          "studentDateN": "2000-03-01",
-          "studentCin": "CS1001",
-          "isAbsent": false
-        },
-        {
-          "studentId": "2",
-          "studentCef": "10002",
-          "studentName": "Alice Brown",
-          "studentDateN": "2000-04-15",
-          "studentCin": "CS1002",
           "isAbsent": true
         }
       ]
     },
     {
-      "id": "e10b",
-      "secteur": "Science",
+      "id": "3015",
+      "niveau": "Specialisation",
       "filiere": "Physics",
+      "annee": "1st Year",
       "groupe": "Group 1",
-      "date": "2024-11-15",
+      "date": "2024-11-16",
+      "month": "2024-11",
       "students": [
         {
           "studentId": "1",
@@ -1400,14 +1229,405 @@
           "studentName": "John Smith",
           "studentDateN": "2000-03-01",
           "studentCin": "CS1001",
-          "isAbsent": false
-        },
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "e3c5",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
         {
-          "studentId": "2",
-          "studentCef": "10002",
-          "studentName": "Alice Brown",
-          "studentDateN": "2000-04-15",
-          "studentCin": "CS1002",
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "b5b0",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "30fe",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "3e22",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "298b",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "67f8",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "f767",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "4b59",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "374a",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "53ed",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "6b22",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "ce23",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "b9ee",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "8b99",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "9ad1",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "19d0",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "f86f",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "9872",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "3ddb",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "5341",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "6d90",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
           "isAbsent": true
         }
       ]
