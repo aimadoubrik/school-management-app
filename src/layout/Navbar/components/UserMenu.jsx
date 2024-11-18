@@ -31,15 +31,14 @@ const UserMenu = () => {
 
   return (
     <div className="dropdown dropdown-bottom dropdown-end">
-      <button className="btn btn-ghost btn-sm sm:btn-md p-1 sm:p-2">
-        <div className="avatar">
-          <div className="w-7 sm:w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <img src={userData?.photo || 'path/to/default/avatar'} alt="Profile" />
-          </div>
+      <div tabIndex={0} role="button" className="btn btn-ghost avatar">
+        <div className="w-7 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+          <img src={userData?.photo || 'path/to/default/avatar'} alt="Profile" />
         </div>
-        <span className="hidden sm:inline-block ml-2">{userData?.name || 'Guest'}</span>
-        <ChevronDown className="hidden sm:inline-block w-4 h-4 ml-1" />
-      </button>
+        <span className="hidden lg:inline-block ml-2">{userData?.name || 'Guest'}</span>
+        <ChevronDown className="hidden lg:inline-block w-4 h-4 ml-2" />
+      </div>
+
       <ul className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 text-sm">
         <li>
           <Link to="/messages" className="gap-3">
