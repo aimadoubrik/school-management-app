@@ -5,7 +5,7 @@ export { default as CoursesPage } from './Courses/CoursesPage';
 export { default as FilieresPage } from './Filieres/FilieresPage';
 export { default as QuizzesPage } from './Quizzes/QuizzesPage';
 export { default as Quiz } from './Quizzes/Quiz';
-export { default as AttendanceFormateur } from './Attendance/AttendanceFormateur';
+export { default as AttendancePage } from './Attendance/AttendancePage';
 export { default as DocumentsPage } from './Documents/DocumentsPage';
 export { default as UserProfilePage } from './UserProfile/UserProfilePage';
 export { default as SettingsPage } from './Settings/SettingsPage';

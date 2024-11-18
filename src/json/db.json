@@ -1094,7 +1094,8 @@
             }
           }
         }
-      }
+      },
+      "id": "f66d"
     },
     {
       "id_secteur": "2",
@@ -1183,7 +1184,8 @@
             }
           }
         }
-      }
+      },
+      "id": "731d"
     }
   ],
   "absentStudents": [
@@ -1631,6 +1633,44 @@
           "isAbsent": true
         }
       ]
+    },
+    {
+      "id": "ed1b",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-17",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
+    },
+    {
+      "id": "4a7a",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2024-11-18",
+      "month": "2024-11",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentDateN": "2000-03-01",
+          "studentCin": "CS1001",
+          "isAbsent": true
+        }
+      ]
     }
   ],
   "courses": [
@@ -1648,7 +1688,8 @@
         "Biology 101 Textbook",
         "Lab Manual"
       ],
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+      "id": "8e9e"
     },
     {
       "courseId": "PHYS101",
@@ -1664,7 +1705,8 @@
         "Physics 101 Textbook",
         "Lab Safety Manual"
       ],
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+      "id": "4425"
     },
     {
       "courseId": "HIST201",
@@ -1680,7 +1722,8 @@
         "World History Textbook",
         "Primary Source Readings"
       ],
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+      "id": "932a"
     },
     {
       "courseId": "CHEM101",
@@ -1696,7 +1739,8 @@
         "General Chemistry Textbook",
         "Laboratory Notebook"
       ],
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+      "id": "6781"
     },
     {
       "courseId": "MATH101",
@@ -1712,7 +1756,8 @@
         "Mathematics 101 Textbook",
         "Scientific Calculator"
       ],
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+      "id": "331e"
     },
     {
       "courseId": "ECON101",
@@ -1728,7 +1773,8 @@
         "Economics 101 Textbook",
         "Macroeconomics Reader"
       ],
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+      "id": "74b3"
     },
     {
       "courseId": "PSY101",
@@ -1744,7 +1790,8 @@
         "Psychology 101 Textbook",
         "Research Articles Packet"
       ],
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+      "id": "0c3a"
     },
     {
       "courseId": "LIT102",
@@ -1760,7 +1807,8 @@
         "English Literature Anthology",
         "Shakespeare Plays Collection"
       ],
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf"
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+      "id": "d1c7"
     }
   ]
 }
