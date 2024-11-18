@@ -1,110 +1,140 @@
-import { memo, useEffect, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { closeSidebar } from '../../features/sidebar/sidebarSlice';
-import { toggleMobile } from '../../features/ui/uiSlice';
-import { MenuItem, Divider, UserProfile } from './components';
+// src/layout/Sidebar/Sidebar.jsx
+
+import { memo, useEffect, useRef, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
-import avatar from '../../assets/avatar.png';
+import { LayoutContext } from '../context/LayoutContext';
+import { MenuItem, Divider, UserProfile } from './components';
+import avatar from '/src/assets/avatar.png';
+import menuItems from './config/menuItems';
 
-const Sidebar = memo(() => {
-  const dispatch = useDispatch();
+// Custom hook for handling user data with better error handling and types
+const useUserData = () => {
+  const storedUser = (() => {
+    try {
+      const localUser = localStorage.getItem('user');
+      const sessionUser = sessionStorage.getItem('user');
+      return localUser ? JSON.parse(localUser) : sessionUser ? JSON.parse(sessionUser) : null;
+    } catch (error) {
+      console.error('Error parsing user data:', error);
+      return null;
+    }
+  })();
+
+  return {
+    name: storedUser?.name ?? '',
+    role: storedUser?.role ?? '',
+    photo: storedUser?.photo ?? avatar,
+  };
+};
+
+// Custom hook for handling sidebar close events with cleanup
+const useSidebarCloseHandlers = (sidebarRef, context) => {
   const location = useLocation();
-  const sidebarRef = useRef(null);
-  const { isOpen, items } = useSelector((state) => state.sidebar);
-  const { isMobile } = useSelector((state) => state.ui);
-  const userProfile = useSelector((state) => state.profile?.user); // Add optional chaining here
+  const { isSidebarOpen, setIsSidebarOpen, isMobile } = context;
 
-  // Get the user data from local storage
-  const user = (localStorage.getItem('user') && JSON.parse(localStorage.getItem('user'))) ||
-    (sessionStorage.getItem('user') && JSON.parse(sessionStorage.getItem('user'))) || {
-      photo: avatar,
-      name: '',
-      role: '',
-    };
-
-  // Handle click outside and escape key
   useEffect(() => {
+    if (!isMobile || !isSidebarOpen) return;
+
     const handleClickOutside = (event) => {
-      if (
-        isMobile &&
-        isOpen &&
-        sidebarRef.current &&
-        !sidebarRef.current.contains(event.target) &&
-        !event.target.closest('[data-sidebar-toggle]')
-      ) {
-        dispatch(closeSidebar());
+      const isToggleButton = event.target.closest('[data-sidebar-toggle]');
+      const isInsideSidebar = sidebarRef.current?.contains(event.target);
+
+      if (!isToggleButton && !isInsideSidebar) {
+        setIsSidebarOpen(false);
       }
     };
 
     const handleEscKey = (event) => {
-      if (event.key === 'Escape' && isMobile && isOpen) {
-        dispatch(closeSidebar());
+      if (event.key === 'Escape') {
+        setIsSidebarOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', handleEscKey);
+    document.addEventListener('mousedown', handleClickOutside, { passive: true });
+    document.addEventListener('keydown', handleEscKey, { passive: true });
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('keydown', handleEscKey);
     };
-  }, [isMobile, isOpen, dispatch]);
+  }, [isSidebarOpen, isMobile, setIsSidebarOpen]);
 
-  // Close sidebar on mobile when route changes
   useEffect(() => {
-    if (isMobile && isOpen) {
-      dispatch(closeSidebar());
+    if (isMobile && isSidebarOpen) {
+      setIsSidebarOpen(false);
     }
-  }, [location, isMobile, dispatch]);
+  }, [location.pathname, isMobile, setIsSidebarOpen]);
+};
 
-  // Update isMobile state on window resize
-  useEffect(() => {
-    const handleResize = () => {
-      const isMobileDevice = window.innerWidth < 1024;
-      dispatch(toggleMobile(isMobileDevice));
-    };
+const Sidebar = memo(() => {
+  const sidebarRef = useRef(null);
+  const layoutContext = useContext(LayoutContext);
+  const userData = useUserData();
+  const location = useLocation();
 
-    handleResize(); // Initial check
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [dispatch]);
+  if (!layoutContext) {
+    throw new Error('Sidebar must be used within a LayoutProvider');
+  }
 
-  const sidebarPositionClasses = `fixed rounded-lg top-20 
-    h-[calc(100vh-5.5rem)] 
-    bg-base-100 border-r border-base-200
-    transition-all duration-300 z-30
-    ${isOpen ? 'left-2' : '-left-64'}
-    ${isMobile ? 'w-64' : 'w-64 lg:left-2 lg:z-20'}
-    ${!isOpen && !isMobile ? 'lg:-left-64' : ''}`.trim();
+  const { isSidebarOpen, isMobile, setIsSidebarOpen } = layoutContext;
 
-  const menuContent = items.map((item, index) =>
-    item.type === 'divider' ? (
-      <Divider key={`divider-${index}`} />
-    ) : (
-      <MenuItem key={item.href || item.label} item={item} />
-    )
-  );
+  // Initialize hooks
+  useSidebarCloseHandlers(sidebarRef, layoutContext);
 
-  const overlayClasses = `fixed inset-0 bg-black/20 backdrop-blur-sm z-20
-    transition-opacity duration-300
-    ${isOpen && isMobile ? 'opacity-100' : 'opacity-0 pointer-events-none'}`.trim();
+  const sidebarClasses = {
+    aside: `
+      fixed rounded-lg top-20 
+      h-[calc(100vh-5.5rem)] 
+      bg-base-100 border-r border-base-200
+      transition-transform duration-300 ease-in-out
+      w-64
+      ${isMobile ? 'z-30' : 'z-20 lg:translate-x-2'}
+      ${!isSidebarOpen && (isMobile || !isMobile) ? '-translate-x-full' : 'translate-x-2'}
+    `.trim(),
+    overlay: `
+      fixed inset-0 bg-black/20 backdrop-blur-sm z-20
+      transition-opacity duration-300
+      ${isSidebarOpen && isMobile ? 'opacity-100' : 'opacity-0 pointer-events-none'}
+    `.trim(),
+    nav: 'flex-1 px-4 py-6 overflow-y-auto scrollbar-thin scrollbar-thumb-base-300',
+    menuList: 'space-y-1',
+    userSection: 'p-4 border-t border-base-200',
+  };
 
   return (
     <>
-      <div className={overlayClasses} onClick={() => dispatch(closeSidebar())} aria-hidden="true" />
+      <div
+        className={sidebarClasses.overlay}
+        onClick={() => setIsSidebarOpen(false)}
+        aria-hidden="true"
+      />
 
-      <aside ref={sidebarRef} className={sidebarPositionClasses}>
+      <aside
+        ref={sidebarRef}
+        className={sidebarClasses.aside}
+        aria-hidden={!isSidebarOpen}
+        aria-label="Main navigation"
+        role="navigation"
+      >
         <div className="h-full flex flex-col">
-          <nav className="flex-1 px-4 py-6 overflow-y-auto">
-            <ul className="space-y-1">{menuContent}</ul>
+          <nav className={sidebarClasses.nav}>
+            <ul className={sidebarClasses.menuList} role="menu">
+              {menuItems.map((item, index) =>
+                item.type === 'divider' ? (
+                  <Divider key={`divider-${index}`} />
+                ) : (
+                  <MenuItem
+                    key={item.href || `menu-item-${index}`}
+                    item={item}
+                    isActive={location.pathname === item.href}
+                  />
+                )
+              )}
+            </ul>
           </nav>
 
-          <div className="p-4 border-t border-base-200">
-            <UserProfile
-              name={userProfile?.name || user.name} // Fallback to local storage user
-              role={userProfile?.role || user.role} // Fallback to local storage role
-              profilePhoto={userProfile?.photo || avatar} // Fallback to avatar if no photo
-            />
+          <div className={sidebarClasses.userSection}>
+            <UserProfile name={userData.name} role={userData.role} profilePhoto={userData.photo} />
           </div>
         </div>
       </aside>

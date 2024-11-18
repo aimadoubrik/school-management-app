@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as Icons from 'lucide-react';
 
 const MenuItem = ({ item }) => {
-  const IconComponent = Icons[item.icon]; // Retrieve the icon component from the Icons object
+  const IconComponent = Icons[item.icon];
 
   return (
     <li>
