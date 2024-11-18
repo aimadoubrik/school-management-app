@@ -20,7 +20,6 @@ const AddCompetence = ({ selectedCompetence, onClose, onSave, isEditMode }) => {
   // Effect to pre-fill form when editing
   useEffect(() => {
     if (selectedCompetence) {
-      console.log("Selected Competence:", selectedCompetence); // Debugging
       setFormData({
         id: selectedCompetence.id || '',
         code_competence: selectedCompetence.code_competence || '',
@@ -59,20 +58,34 @@ const AddCompetence = ({ selectedCompetence, onClose, onSave, isEditMode }) => {
   // Form validation
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.code_competence.trim()) newErrors.code_competence = 'Code Competence is required';
-    if (!formData.intitule_competence.trim()) newErrors.intitule_competence = 'Intitulé Competence is required';
-    if (!formData.intitule_module.trim()) newErrors.intitule_module = 'Intitulé Module is required';
-    if (!formData.cours.trim()) newErrors.cours = 'Cours is required';
-    if (!formData.quiz.trim()) newErrors.quiz = 'Quiz is required';
+    
+    // Convert code_competence to string before trimming
+    const codeCompetence = String(formData.code_competence || ''); // Ensure it's a string
+    if (!codeCompetence.trim()) newErrors.code_competence = 'Code Competence is required';
+  
+    const intituleCompetence = formData.intitule_competence || '';
+    if (!intituleCompetence.trim()) newErrors.intitule_competence = 'Intitulé Competence is required';
+  
+    const intituleModule = formData.intitule_module || '';
+    if (!intituleModule.trim()) newErrors.intitule_module = 'Intitulé Module is required';
+  
+    const cours = formData.cours || '';
+    if (!cours.trim()) newErrors.cours = 'Cours is required';
+  
+    const quiz = formData.quiz || '';
+    if (!quiz.trim()) newErrors.quiz = 'Quiz is required';
+  
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+  
+  
 
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm() || isSubmitting) return;
-
+  
     setIsSubmitting(true);
     try {
       const competenceData = {
@@ -84,18 +97,18 @@ const AddCompetence = ({ selectedCompetence, onClose, onSave, isEditMode }) => {
         cours: formData.cours
           .split(',')
           .map((cour) => cour.trim())
-          .filter(Boolean),
+          .filter(Boolean), // Convert cours string to array
         quiz: formData.quiz
           .split(',')
           .map((quiz) => quiz.trim())
           .filter(Boolean),
       };
-
+  
       if (isEditMode) {
         // Add ID for editing
         competenceData.id = selectedCompetence.id;
       }
-
+  
       await onSave(competenceData);
     } catch (error) {
       setErrors((prev) => ({
@@ -106,7 +119,7 @@ const AddCompetence = ({ selectedCompetence, onClose, onSave, isEditMode }) => {
       setIsSubmitting(false);
     }
   };
-
+  
   // Form fields configuration (including icons and placeholders)
   const formFields = [
     {
@@ -204,13 +217,14 @@ AddCompetence.propTypes = {
   onClose: PropTypes.func.isRequired,
   selectedCompetence: PropTypes.shape({
     id: PropTypes.string,
-    code_competence: PropTypes.string,
+    code_competence: PropTypes.oneOfType([PropTypes.string, PropTypes.number]), // Allow both string or number
     intitule_competence: PropTypes.array,
     intitule_module: PropTypes.string,
     cours: PropTypes.array,
     quiz: PropTypes.array,
   }),
 };
+
 
 export default AddCompetence;
 

@@ -812,15 +812,17 @@
     {
       "id": "1",
       "code_competence": 1,
-      "code_module": "M101_F01",
-      "intitule_module": "M101",
       "intitule_competence": [
         "Analyse de données",
         "Algorithmes de base"
       ],
-      "cours": "https://fake-link.com/cours/M101",
-      "quiz": "https://fake-link.com/quiz/M101",
-      "filiere": "Informatique"
+      "intitule_module": "M101",
+      "cours": [
+        "https://fake-link.com/cours/M101"
+      ],
+      "quiz": [
+        "https://fake-link.com/quiz/M101"
+      ]
     },
     {
       "id": "2",
