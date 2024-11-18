@@ -1,54 +1,40 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { Eye, Edit, Trash2, AlertCircle } from 'lucide-react';
+import { Eye, Edit, Trash2, Users, AlertCircle } from 'lucide-react';
 import { DataTable } from '../../../components';
-
-const CompetenceTable = ({ competences, sortConfig, onSort, onView, onEdit, onDelete }) => {
-  const handleDelete = (competence, e) => {
+const FilieresTable = ({ filieres, sortConfig, onSort, onView, onEdit, onDelete }) => {
+  const handleDelete = (filiere, e) => {
     e.stopPropagation();
-    onDelete(competence);
+    onDelete(filiere);
   };
 
   const columns = [
     {
-      key: 'code_competence',
+      key: 'code_filiere',
       label: 'Code',
       sortable: true,
       className: 'font-medium',
     },
     {
-      key: 'intitule_competence',
-      label: 'Intitulé Compétence',
+      key: 'intitule_filiere',
+      label: 'Intitulé',
       sortable: true,
       mobileTruncate: true,
-      render: (row) => row.intitule_competence.join(', '),
     },
     {
-      key: 'intitule_module',
-      label: 'Module',
+      key: 'secteur',
+      label: 'Secteur',
       sortable: true,
+      mobileSecondary: true,
+      render: (row) => <span className="badge badge-ghost badge-sm">{row.secteur}</span>,
     },
     {
-      key: 'filiere',
-      label: 'Filière',
-      sortable: true,
-    },
-    {
-      key: 'cours',
-      label: 'Cours',
+      key: 'groupes',
+      label: 'Groupes',
       render: (row) => (
-        <a href={row.cours} target="_blank" rel="noopener noreferrer" className="link link-primary">
-          Cours
-        </a>
-      ),
-    },
-    {
-      key: 'quiz',
-      label: 'Quiz',
-      render: (row) => (
-        <a href={row.quiz} target="_blank" rel="noopener noreferrer" className="link link-secondary">
-          Quiz
-        </a>
+        <Link to={`/filieres/groupes/${row.code_filiere}`} className="btn btn-ghost btn-xs gap-2">
+          <Users className="w-4 h-4" />
+          {Array.isArray(row.groupes) ? row.groupes.length : 0} groupes
+        </Link>
       ),
     },
     {
@@ -103,17 +89,17 @@ const CompetenceTable = ({ competences, sortConfig, onSort, onView, onEdit, onDe
 
   return (
     <DataTable
-      data={competences}
+      data={filieres}
       columns={columns}
       sortConfig={sortConfig}
       onSort={onSort}
       emptyStateProps={{
         icon: AlertCircle,
-        title: 'Aucune compétence trouvée',
-        description: 'Commencez par ajouter une nouvelle compétence',
+        title: 'Aucune filière trouvée',
+        description: 'Commencez par ajouter une nouvelle filière',
       }}
     />
   );
 };
 
-export default CompetenceTable;
+export default FilieresTable;
