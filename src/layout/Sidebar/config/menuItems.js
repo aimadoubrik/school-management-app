@@ -1,7 +1,7 @@
 // Add your menu items here, they will be rendered in the sidebar, in the order you add them.
 // Make sure to write the icon name correctly, you can find the icon names here: https://lucide.dev/icons.
 
-export const menuItems = [
+const menuItems = [
   {
     label: 'Home',
     icon: 'Home',
@@ -69,3 +69,5 @@ export const menuItems = [
     href: '/settings',
   },
 ];
+
+export default menuItems;
