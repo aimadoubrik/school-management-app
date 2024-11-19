@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { addCompetence, editCompetence } from '../../../features/competences/CompetenceSlice';
+import { addCompetence, editCompetence } from '../../../features/competences/competencesSlice';
 import { Save } from 'lucide-react';
 import PropTypes from 'prop-types';
 
@@ -14,12 +14,12 @@ const AddCompetence = ({ closeModal, selectedCompetence }) => {
     intitule_competence: '',
     intitule_module: '',
     cours: '',
-    quiz: ''
+    quiz: '',
   });
 
   // State to hold validation errors
   const [errors, setErrors] = useState({});
-  
+
   // State to handle submission result (success/error)
   const [submitError, setSubmitError] = useState('');
 
@@ -30,8 +30,12 @@ const AddCompetence = ({ closeModal, selectedCompetence }) => {
         code_competence: selectedCompetence.code_competence || '',
         intitule_competence: selectedCompetence.intitule_competence.join(', ') || '',
         intitule_module: selectedCompetence.intitule_module || '',
-        cours: Array.isArray(selectedCompetence.cours) ? selectedCompetence.cours.join(', ') : selectedCompetence.cours || '',
-        quiz: Array.isArray(selectedCompetence.quiz) ? selectedCompetence.quiz.join(', ') : selectedCompetence.quiz || ''
+        cours: Array.isArray(selectedCompetence.cours)
+          ? selectedCompetence.cours.join(', ')
+          : selectedCompetence.cours || '',
+        quiz: Array.isArray(selectedCompetence.quiz)
+          ? selectedCompetence.quiz.join(', ')
+          : selectedCompetence.quiz || '',
       });
     } else {
       setFormData({
@@ -39,11 +43,10 @@ const AddCompetence = ({ closeModal, selectedCompetence }) => {
         intitule_competence: '',
         intitule_module: '',
         cours: '',
-        quiz: ''
+        quiz: '',
       });
     }
   }, [selectedCompetence]);
-  
 
   // Handle input changes
   const handleChange = (e) => {
@@ -59,7 +62,8 @@ const AddCompetence = ({ closeModal, selectedCompetence }) => {
   const validateForm = () => {
     const newErrors = {};
     if (!formData.code_competence.trim()) newErrors.code_competence = 'Code Competence is required';
-    if (!formData.intitule_competence.trim()) newErrors.intitule_competence = 'Intitulé Competence is required';
+    if (!formData.intitule_competence.trim())
+      newErrors.intitule_competence = 'Intitulé Competence is required';
     if (!formData.intitule_module.trim()) newErrors.intitule_module = 'Intitulé Module is required';
     if (!formData.cours.trim()) newErrors.cours = 'Cours is required';
     if (!formData.quiz.trim()) newErrors.quiz = 'Quiz is required';
@@ -69,21 +73,30 @@ const AddCompetence = ({ closeModal, selectedCompetence }) => {
 
   // Submit form
   const handleSubmit = async (e) => {
-    e.preventDefault();  // Prevent form default submission
-  
+    e.preventDefault(); // Prevent form default submission
+
     // Validate the form before submission
     if (!validateForm()) return;
-  
+
     const competenceData = {
       code_competence: formData.code_competence,
-      intitule_competence: formData.intitule_competence.split(',').map((item) => item.trim()).filter(Boolean),
+      intitule_competence: formData.intitule_competence
+        .split(',')
+        .map((item) => item.trim())
+        .filter(Boolean),
       intitule_module: formData.intitule_module,
-      cours: (typeof formData.cours === 'string' ? formData.cours : '').split(',').map((cour) => cour.trim()).filter(Boolean),
-      quiz: (typeof formData.quiz === 'string' ? formData.quiz : '').split(',').map((quiz) => quiz.trim()).filter(Boolean)
+      cours: (typeof formData.cours === 'string' ? formData.cours : '')
+        .split(',')
+        .map((cour) => cour.trim())
+        .filter(Boolean),
+      quiz: (typeof formData.quiz === 'string' ? formData.quiz : '')
+        .split(',')
+        .map((quiz) => quiz.trim())
+        .filter(Boolean),
     };
-  
+
     try {
-      console.log("Competence data being dispatched:", competenceData);
+      console.log('Competence data being dispatched:', competenceData);
       if (isEditMode) {
         await dispatch(editCompetence({ ...selectedCompetence, ...competenceData }));
       } else {
@@ -94,7 +107,6 @@ const AddCompetence = ({ closeModal, selectedCompetence }) => {
       console.error('Error saving competence:', error.message);
     }
   };
-  
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
@@ -121,7 +133,9 @@ const AddCompetence = ({ closeModal, selectedCompetence }) => {
           onChange={handleChange}
           className="mt-1 p-2 w-full border rounded"
         />
-        {errors.intitule_competence && <p className="text-red-600 text-xs">{errors.intitule_competence}</p>}
+        {errors.intitule_competence && (
+          <p className="text-red-600 text-xs">{errors.intitule_competence}</p>
+        )}
       </div>
 
       <div>
@@ -175,7 +189,7 @@ const AddCompetence = ({ closeModal, selectedCompetence }) => {
 
 AddCompetence.propTypes = {
   closeModal: PropTypes.func.isRequired,
-  selectedCompetence: PropTypes.object
+  selectedCompetence: PropTypes.object,
 };
 
 export default AddCompetence;

@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-import competencesSlice from '../features/competences/CompetenceSlice'
 import {
   notificationsReducer,
   themeReducer,
@@ -9,7 +8,9 @@ import {
   quizzesReducer,
   filieresReducer,
   authReducer,
-  
+  competencesSlice,
+  scheduleReducer,
+  profileSlice
 } from '../features';
 
 const rootReducer = combineReducers({
@@ -21,6 +22,8 @@ const rootReducer = combineReducers({
   filieres: filieresReducer,
   competences: competencesSlice,
   auth: authReducer,
+  schedule: scheduleReducer,
+  profile: profileSlice
 });
 
 const store = configureStore({
