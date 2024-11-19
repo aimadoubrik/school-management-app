@@ -1,24 +1,27 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { toggleSidebar } from '../../../features/sidebar/sidebarSlice';
+import { useContext } from 'react';
 import { Menu, X } from 'lucide-react';
+import { LayoutContext } from '../../context/LayoutContext'; // Ensure the correct path to LayoutContext
 
 const SidebarToggle = () => {
-  const { isOpen } = useSelector((state) => state.sidebar);
-  const { isMobile } = useSelector((state) => state.ui);
-  const dispatch = useDispatch();
+  const context = useContext(LayoutContext);
 
-  if (!isMobile) return null;
+  if (!context) {
+    throw new Error('SidebarToggle must be used within a LayoutProvider');
+  }
+
+  const { isSidebarOpen, setIsSidebarOpen } = context;
 
   return (
     <button
       type="button"
       data-sidebar-toggle
-      onClick={() => dispatch(toggleSidebar())}
-      className="btn btn-ghost btn-square"
-      aria-label={`${isOpen ? 'Close' : 'Open'} sidebar`}
-      aria-expanded={isOpen}
+      onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+      className="btn btn-ghost lg:hidden"
+      aria-label={`${isSidebarOpen ? 'Close' : 'Open'} sidebar`}
+      aria-expanded={isSidebarOpen}
+      aria-controls="sidebar"
     >
-      {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+      {isSidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
     </button>
   );
 };
