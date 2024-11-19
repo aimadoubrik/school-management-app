@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCompetences, deleteCompetence } from '../../features/competences/competencesSlice';
+import { fetchCompetences, deleteCompetence ,addCompetence,editCompetence} from '../../features/competences/competencesSlice';
 import { Eye, Edit, Trash, Download, Plus, Search } from 'lucide-react';
-import AddCompetence from './components/AddCompetence';
-import ViewCompetence from './components/ViewCompetence';
 import { LoadingSpinner, ErrorAlert } from '../../components';
 import Papa from 'papaparse';
+import CompetenceTable from './components/CompetencesTable';
+import CompetencesModal from './components/CompetencesModal';
+import { ConfirmModal } from '../../components';
 
 const CompetencesPage = () => {
   const dispatch = useDispatch();
@@ -13,41 +14,84 @@ const CompetencesPage = () => {
   const [selectedCompetence, setSelectedCompetence] = useState(null);
   const [viewMode, setViewMode] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [competenceToDelete, setCompetenceToDelete] = useState(null);
+  
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedFiliere, setSelectedFiliere] = useState('');
+  const [selectedModule, setSelectedModule] = useState('');
+  const [filieres, setFilieres] = useState([]);
+  const [modules, setModules] = useState([]);
+  
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
   const totalPages = Math.ceil(competences.length / itemsPerPage);
-
-  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     dispatch(fetchCompetences());
   }, [dispatch]);
 
-  const handleDelete = async (id) => {
+  useEffect(() => {
+    const uniqueFilieres = [...new Set(competences.map((competence) => competence.filiere))];
+    setFilieres(uniqueFilieres);
+
+    if (selectedFiliere) {
+      const filteredModules = competences
+        .filter((competence) => competence.filiere === selectedFiliere)
+        .map((competence) => competence.intitule_module);
+      setModules([...new Set(filteredModules)]);
+    } else {
+      setModules([]);
+    }
+  }, [competences, selectedFiliere]);
+
+  const handleDeleteCompetence = (competence) => {
+    setCompetenceToDelete(competence);
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleDeleteConfirm = async () => {
     try {
-      await dispatch(deleteCompetence(id));
-    } catch (err) {
-      console.error('Error deleting competence:', err.message);
+      await dispatch(deleteCompetence(competenceToDelete.id)); 
+      setIsDeleteModalOpen(false);
+      setCompetenceToDelete(null);
+    } catch (error) {
+      console.error("Error deleting competence:", error.message);
+    }
+  };
+
+  const handleSaveCompetence = async (competenceData) => {
+    try {
+      if (selectedCompetence) {
+        // Update existing competence
+        await dispatch(editCompetence(competenceData));
+      } else {
+        // Add new competence
+        await dispatch(addCompetence(competenceData));
+      }
+      setIsModalOpen(false); // Close the modal after saving
+    } catch (error) {
+      console.error('Error saving competence:', error);
     }
   };
 
   const handleEdit = (competence) => {
-    setSelectedCompetence(competence);
+    setSelectedCompetence(competence);  // Set the selected competence for editing
     setViewMode(false);
     setIsModalOpen(true);
-  };
+};
 
-  const handleView = (competence) => {
-    setSelectedCompetence(competence);
+const handleView = (competence) => {
+    setSelectedCompetence(competence);  // Set the selected competence for viewing
     setViewMode(true);
     setIsModalOpen(true);
-  };
+};
 
-  const handleCloseModal = () => {
-    setSelectedCompetence(null);
-    setIsModalOpen(false);
-  };
+const handleCloseModal = () => {
+    setSelectedCompetence(null);  // Clear selected competence
+    setIsModalOpen(false);  // Close the modal
+};
+
 
   const handleCSVExport = () => {
     const csv = Papa.unparse(competences);
@@ -60,11 +104,14 @@ const CompetencesPage = () => {
     URL.revokeObjectURL(url);
   };
 
-  const filteredCompetences = competences.filter((competence) =>
-    competence.intitule_competence.some((name) =>
+  const filteredCompetences = competences.filter((competence) => {
+    const matchesSearch = competence.intitule_competence.some((name) =>
       name.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  );
+    );
+    const matchesFiliere = selectedFiliere ? competence.filiere === selectedFiliere : true;
+    const matchesModule = selectedModule ? competence.intitule_module === selectedModule : true;
+    return matchesSearch && matchesFiliere && matchesModule;
+  });
 
   const displayedCompetences = filteredCompetences.slice(
     (currentPage - 1) * itemsPerPage,
@@ -94,90 +141,75 @@ const CompetencesPage = () => {
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Element de Competence</h1>
 
-      {/* Search Bar */}
-      <div className="relative mb-6">
-        <Search className="absolute left-3 top-3 w-5 h-5 text-gray-500" />
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Search competences..."
-          className="input input-bordered w-full pl-10"
-        />
+      {/* Search and Filters */}
+      <div className="flex items-center gap-4 mb-6">
+        <div className="relative w-1/4">
+          <Search className="absolute left-3 top-3 w-5 h-5 text-gray-500" />
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search competences..."
+            className="input input-bordered w-full pl-10"
+          />
+        </div>
+
+        <div className="w-1/4">
+          <select
+            value={selectedFiliere}
+            onChange={(e) => setSelectedFiliere(e.target.value)}
+            className="input input-bordered w-full"
+          >
+            <option value="">Select Filiere</option>
+            {filieres.map((filiere, index) => (
+              <option key={index} value={filiere}>{filiere}</option>
+            ))}
+          </select>
+        </div>
+
+        <div className="w-1/4">
+          <select
+            value={selectedModule}
+            onChange={(e) => setSelectedModule(e.target.value)}
+            className="input input-bordered w-full"
+          >
+            <option value="">Select Module</option>
+            {modules.map((module, index) => (
+              <option key={index} value={module}>{module}</option>
+            ))}
+          </select>
+        </div>
       </div>
 
+      {/* Add Competence and CSV Export */}
       <div className="flex justify-between items-center mb-6">
         <button
           onClick={() => {
-            setSelectedCompetence(null);
-            setViewMode(false);
-            setIsModalOpen(true);
+            setSelectedCompetence(null); // Assurez-vous que `selectedCompetence` est bien null
+            setViewMode(false); // Mode non-lecture
+            setIsModalOpen(true); // Ouvre la modale
           }}
           className="btn btn-primary gap-2"
         >
           <Plus className="w-5 h-5" /> Add Competence
         </button>
+
         <button onClick={handleCSVExport} className="btn btn-accent gap-2">
           <Download className="w-5 h-5" /> Export CSV
         </button>
       </div>
 
       <hr />
-      <div className="overflow-x-auto">
-        <table className="table table-zebra w-full">
-          <thead>
-            <tr>
-              <th>Code</th>
-              <th>Intitulé Competence</th>
-              <th>Intitulé Module</th>
-              <th>Cours</th>
-              <th>Quiz</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {displayedCompetences.length > 0 ? (
-              displayedCompetences.map((competence) => (
-                <tr key={competence.id}>
-                  <td>{competence.code_competence}</td>
-                  <td>{competence.intitule_competence.join(', ')}</td>
-                  <td>{competence.intitule_module}</td>
-                  <td>
-                    <a href={competence.cours}>Cours</a>
-                  </td>
-                  <td>
-                    <a href={competence.quiz}>Quiz</a>
-                  </td>
-                  <td className="flex gap-2">
-                    <button className="btn btn-info btn-sm" onClick={() => handleView(competence)}>
-                      <Eye className="w-4 h-4" />
-                    </button>
-                    <button
-                      className="btn btn-success btn-sm"
-                      onClick={() => handleEdit(competence)}
-                    >
-                      <Edit className="w-4 h-4" />
-                    </button>
-                    <button
-                      className="btn btn-error btn-sm"
-                      onClick={() => handleDelete(competence.id)}
-                    >
-                      <Trash className="w-4 h-4" />
-                    </button>
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="6" className="text-center">
-                  No competences available.
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
 
+      {/* Competence Table */}
+      <CompetenceTable
+        competences={displayedCompetences}
+        onView={handleView}
+        onEdit={handleEdit}
+        onDelete={handleDeleteCompetence}
+      />
+
+      {/* Pagination Controls */}
       <div className="flex justify-between items-center mt-4">
         <button
           onClick={goToPreviousPage}
@@ -198,30 +230,27 @@ const CompetencesPage = () => {
         </button>
       </div>
 
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white rounded-lg shadow-lg w-80 p-4 max-h-[500px] overflow-y-auto">
-            <div className="flex justify-between items-center">
-              <h2 className="text-xl font-semibold">
-                {viewMode ? 'View Competence' : 'Add Competence'}
-              </h2>
-              <button onClick={handleCloseModal} className="text-gray-200 hover:text-gray-300">
-                X
-              </button>
-            </div>
-            <div className="mt-4">
-              {viewMode ? (
-                <ViewCompetence competence={selectedCompetence} closeModal={handleCloseModal} />
-              ) : (
-                <AddCompetence
-                  closeModal={handleCloseModal}
-                  selectedCompetence={selectedCompetence}
-                />
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Competences Modal */}
+      <CompetencesModal
+        isOpen={isModalOpen}
+        mode={viewMode ? 'view' : selectedCompetence ? 'edit' : 'add'}
+        competence={selectedCompetence}
+        onClose={handleCloseModal}
+        onSave={handleSaveCompetence}
+      />
+
+
+      {/* Delete Confirmation Modal */}
+      <ConfirmModal
+        isOpen={isDeleteModalOpen}
+        onClose={() => setIsDeleteModalOpen(false)}
+        onConfirm={handleDeleteConfirm}
+        title="Supprimer la compétence"
+        message={`Êtes-vous sûr de vouloir supprimer la compétence "${competenceToDelete?.intitule_competence}" ? Cette action est irréversible.`}
+        confirmLabel="Supprimer"
+        cancelLabel="Annuler"
+        variant="danger"
+      />
     </div>
   );
 };

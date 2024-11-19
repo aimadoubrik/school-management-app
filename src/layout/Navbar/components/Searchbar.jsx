@@ -40,7 +40,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="relative w-full max-w-md mx-auto sm:max-w-lg">
+    <div className="relative w-full hidden max-w-md mx-auto sm:max-w-lg sm:block">
       <form onSubmit={handleSubmit} className="relative">
         <input
           id="search-input"

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar } from 'lucide-react';
+import { X } from 'lucide-react';
 
 export default function FiltersFormateur({
     secteursData,
@@ -15,6 +15,7 @@ export default function FiltersFormateur({
     onAnneeChange,
     onGroupeChange,
     onDateChange,
+    onClearFilters,
 }) {
     const [availableNiveaux, setAvailableNiveaux] = useState([]);
     const [availableFilieres, setAvailableFilieres] = useState([]);
@@ -22,7 +23,6 @@ export default function FiltersFormateur({
     const [availableGroupes, setAvailableGroupes] = useState([]);
 
     useEffect(() => {
-        // Update niveaux based on selected secteur
         const selectedSecteur = secteursData.find((s) => s.intitule_secteur === secteur);
         if (selectedSecteur) {
             setAvailableNiveaux(Object.keys(selectedSecteur.niveaux || {}));
@@ -35,11 +35,10 @@ export default function FiltersFormateur({
     }, [secteur, secteursData]);
 
     useEffect(() => {
-        // Update filieres based on selected niveau
         const selectedSecteur = secteursData.find((s) => s.intitule_secteur === secteur);
         if (selectedSecteur && niveau) {
             const niveauxData = selectedSecteur.niveaux[niveau];
-            setAvailableFilieres(Object.keys(niveauxData.filiere || {}));
+            setAvailableFilieres(Object.keys(niveauxData?.filiere || {}));
         } else {
             setAvailableFilieres([]);
         }
@@ -48,7 +47,6 @@ export default function FiltersFormateur({
     }, [niveau, secteur, secteursData]);
 
     useEffect(() => {
-        // Update annees based on selected filiere
         const selectedSecteur = secteursData.find((s) => s.intitule_secteur === secteur);
         if (selectedSecteur && niveau && filiere) {
             const filiereData = selectedSecteur.niveaux[niveau]?.filiere[filiere];
@@ -60,7 +58,6 @@ export default function FiltersFormateur({
     }, [filiere, niveau, secteur, secteursData]);
 
     useEffect(() => {
-        // Update groupes based on selected annee
         const selectedSecteur = secteursData.find((s) => s.intitule_secteur === secteur);
         if (selectedSecteur && niveau && filiere && annee) {
             const anneeData = selectedSecteur.niveaux[niveau]?.filiere[filiere]?.[annee];
@@ -70,91 +67,54 @@ export default function FiltersFormateur({
         }
     }, [annee, filiere, niveau, secteur, secteursData]);
 
+    const clearAllFilters = () => {
+        onSecteurChange('');
+        onNiveauChange('');
+        onFiliereChange('');
+        onAnneeChange('');
+        onGroupeChange('');
+        onDateChange('');
+    };
+
+    const renderSelect = (value, onChange, options, placeholder) => (
+        <select
+            className="select select-bordered select-sm w-full"
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+        >
+            <option value="">{placeholder}</option>
+            {options.map((option) => (
+                <option key={option} value={option}>
+                    {option}
+                </option>
+            ))}
+        </select>
+    );
+
     return (
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8">
-            {/* Secteur Selector */}
-            <select
-                className="select select-bordered w-full"
-                value={secteur}
-                onChange={(e) => onSecteurChange(e.target.value)}
-            >
-                <option value="">Secteur</option>
-                {secteursData.map((s) => (
-                    <option key={s.id_secteur} value={s.intitule_secteur}>
-                        {s.intitule_secteur}
-                    </option>
-                ))}
-            </select>
+        <div className="bg-base-200 p-4 rounded-lg shadow-md mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-4">
+                {renderSelect(secteur, onSecteurChange, secteursData.map((s) => s.intitule_secteur), 'Secteur')}
+                {renderSelect(niveau, onNiveauChange, availableNiveaux, 'Niveau')}
+                {renderSelect(filiere, onFiliereChange, availableFilieres, 'Filière')}
+                {renderSelect(annee, onAnneeChange, availableAnnees, 'Année')}
+                {renderSelect(groupe, onGroupeChange, availableGroupes, 'Groupe')}
+            </div>
 
-            {/* Niveau Selector */}
-            <select
-                className="select select-bordered w-full"
-                value={niveau}
-                onChange={(e) => onNiveauChange(e.target.value)}
-                disabled={!secteur}
-            >
-                <option value="">Niveau</option>
-                {availableNiveaux.map((n) => (
-                    <option key={n} value={n}>
-                        {n}
-                    </option>
-                ))}
-            </select>
-
-            {/* Filiere Selector */}
-            <select
-                className="select select-bordered w-full"
-                value={filiere}
-                onChange={(e) => onFiliereChange(e.target.value)}
-                disabled={!niveau}
-            >
-                <option value="">Filière</option>
-                {availableFilieres.map((f) => (
-                    <option key={f} value={f}>
-                        {f}
-                    </option>
-                ))}
-            </select>
-
-            {/* Annee Selector */}
-            <select
-                className="select select-bordered w-full"
-                value={annee}
-                onChange={(e) => onAnneeChange(e.target.value)}
-                disabled={!filiere}
-            >
-                <option value="">Année</option>
-                {availableAnnees.map((a) => (
-                    <option key={a} value={a}>
-                        {a}
-                    </option>
-                ))}
-            </select>
-
-            {/* Groupe Selector */}
-            <select
-                className="select select-bordered w-full"
-                value={groupe}
-                onChange={(e) => onGroupeChange(e.target.value)}
-                disabled={!annee}
-            >
-                <option value="">Groupe</option>
-                {availableGroupes.map((g) => (
-                    <option key={g} value={g}>
-                        {g}
-                    </option>
-                ))}
-            </select>
-
-            {/* Date Selector */}
-            <div className="relative">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
                 <input
                     type="date"
-                    className="input input-bordered"
+                    className="input input-bordered input-sm w-full"
                     value={dateFilter}
                     onChange={onDateChange}
                 />
+            </div>
 
+            <div className="flex justify-center space-x-2 mt-4">
+                <button className="btn btn-secondary btn-sm" onClick={clearAllFilters}>
+                    <X className="mr-2" size={16} />
+                    Effacer les filtres
+                </button>
             </div>
         </div>
     );

@@ -15,6 +15,21 @@ export default function AttendanceFormateur() {
   const [error, setError] = useState(null);
   const [absentStudents, setAbsentStudents] = useState([]);
   const [isSaved, setIsSaved] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(5);
+  const [checkboxDisabled, setCheckboxDisabled] = useState(false);
+
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = students.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(students.length / itemsPerPage);
+  const currentAbsentItems = absentStudents.slice(indexOfFirstItem, indexOfLastItem);
+  const totalAbsentPages = Math.ceil(absentStudents.length / itemsPerPage);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   useEffect(() => {
     const fetchSecteursData = async () => {
@@ -141,14 +156,22 @@ export default function AttendanceFormateur() {
         setIsSaving(false);
         return;
       }
+
       await saveSelectionsToAPI(absentStudents);
       setIsSaving(false);
       setIsSaved(true);
+
+      // Disable checkboxes but retain table data
+      setEditing(false);
+      setCheckboxDisabled(true);
     } catch {
       setError('Failed to save selections.');
       setIsSaving(false);
     }
   };
+
+
+
 
   return (
     <div className="p-4">
@@ -168,11 +191,11 @@ export default function AttendanceFormateur() {
         onDateChange={handleDateChange}
       />
 
-      <div className="overflow-x-auto bg-base-100 rounded-lg shadow-lg mb-6">
-        <table className="table w-full">
-          <thead>
+      <div className="overflow-x-auto bg-white rounded-lg shadow-md">
+        <table className="table w-full text-center">
+          <thead className='bg-gray-100'>
             <tr>
-              {editing && <th>Action</th>}
+              <th className='font-bold'>{editing ? 'Action' : ''}</th>
               <th>CEF</th>
               <th>Full Name</th>
               <th>Date de Naissance</th>
@@ -195,10 +218,6 @@ export default function AttendanceFormateur() {
                     record?.students?.length > 0 ? (
                       record?.students?.map((student) => (
                         <tr key={student.studentId}>
-                          <td>{student.studentCef}</td>
-                          <td>{student.studentName}</td>
-                          <td>{student.studentDateN}</td>
-                          <td>{student.studentCin}</td>
                           <td>
                             {student.isAbsent ? (
                               <span className="text-red-500">Absent</span>
@@ -206,6 +225,10 @@ export default function AttendanceFormateur() {
                               <span className="text-green-500">Present</span>
                             )}
                           </td>
+                          <td>{student.studentCef}</td>
+                          <td>{student.studentName}</td>
+                          <td>{student.studentDateN}</td>
+                          <td>{student.studentCin}</td>
                         </tr>
                       ))
                     ) : (
@@ -226,18 +249,16 @@ export default function AttendanceFormateur() {
             ) : (
               students.length > 0 ? (
                 students.map((student) => (
-                  <tr key={student.id}>
-                    {editing && (
-                      <td>
-                        <input
-                          type="checkbox"
-                          className="checkbox checkbox-primary"
-                          checked={student.selected}
-                          onChange={() => handleCheckboxChange(student.id)}
-                          disabled={!editing}
-                        />
-                      </td>
-                    )}
+                  <tr key={student.id} className={student.selected ? 'bg-red-500 text-white font-bold' : ''}>
+                    <td>
+                      <input
+                        type="checkbox"
+                        className="checkbox checkbox-primary"
+                        checked={student.selected}
+                        onChange={() => handleCheckboxChange(student.id)}
+                        disabled={checkboxDisabled}
+                      />
+                    </td>
                     <td>{student.cef}</td>
                     <td>{student.fullname}</td>
                     <td>{student.dateNaissance}</td>
@@ -256,18 +277,60 @@ export default function AttendanceFormateur() {
         </table>
       </div>
 
-      <div className="flex justify-center gap-4">
-        <button
-          className="btn btn-primary"
-          onClick={saveSelections}
-          disabled={isSaving || !editing}
-        >
-          {isSaving ? 'Saving...' : 'Save Absences'}
-        </button>
+      <div className="flex justify-center gap-4 mt-6">
+        <div className="btn-group">
+          {Array.from({ length: totalPages }, (_, i) => (
+            <button
+              key={i + 1}
+              className={`btn ${currentPage === i + 1 ? 'btn-active' : ''}`}
+              onClick={() => paginate(i + 1)}
+            >
+              {i + 1}
+            </button>
+          ))}
+        </div>
       </div>
+      <div className="space-x-2 flex flex-wrap gap-2 justify-end">
+        {editing ? (
+          <>
+            <button
+              className="btn btn-primary"
+              onClick={saveSelections}
+              disabled={isSaving}
+            >
+              {isSaving ? 'Saving...' : 'Save'}
+            </button>
+            <button
+              className="btn btn-secondary"
+              onClick={() => {
+                setEditing(false);
+                setStudents((prev) =>
+                  prev.map((student) => ({ ...student, selected: false }))
+                );
+              }}
+              disabled={isSaving}
+            >
+              Cancel
+            </button>
+          </>
+        ) : (
+          <button
+            className="btn btn-accent"
+            onClick={() => {
+              setEditing(true);
+              setCheckboxDisabled(false);
+            }}
+            disabled={isDateInPast(dateFilter)}
+          >
+            Edit
+          </button>
+
+        )}
+      </div>
+
 
       {error && <div className="text-red-500 mt-4">{error}</div>}
       {isSaved && <div className="text-green-500 mt-4">Selections saved successfully!</div>}
-    </div>
+    </div >
   );
 }
