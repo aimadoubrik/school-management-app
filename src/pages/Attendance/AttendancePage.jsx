@@ -1,6 +1,6 @@
 import AttendanceFormateur from './AttendanceFormateur';
 import AttendanceAdmin from './AttendanceAdmin';
-
+import { useState, useEffect } from 'react';
 function AttendancePage() {
   const [currentUser, setCurrentUser] = useState(null);
 
