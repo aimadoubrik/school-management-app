@@ -12,7 +12,7 @@ import {
   QuizzesPage,
   FilieresPage,
   Quiz,
-  AttendanceFormateur,
+  AttendancePage,
   DocumentsPage,
   UserProfilePage,
   SettingsPage,
@@ -100,7 +100,7 @@ const RouteConfig = () => {
           path="/attendance"
           element={
             <ProtectedRoute allowedRoles={['trainer', 'admin']}>
-              <AttendanceFormateur />
+              <AttendancePage />
             </ProtectedRoute>
           }
         />

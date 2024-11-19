@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Search, X } from 'lucide-react';
 
 const SearchBar = () => {
@@ -40,13 +40,13 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="relative w-full max-w-2xl mx-auto">
+    <div className="relative w-full hidden max-w-md mx-auto sm:max-w-lg sm:block">
       <form onSubmit={handleSubmit} className="relative">
         <input
           id="search-input"
           type="search"
           placeholder="Search..."
-          className="input input-bordered w-full h-10 pl-10 pr-12 text-sm rounded-lg"
+          className="input input-bordered w-full pl-10 pr-12 text-sm md:text-base"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onFocus={() => setSearchFocused(true)}
@@ -61,15 +61,15 @@ const SearchBar = () => {
         <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2">
           {searchQuery === '' ? (
             <div className="hidden sm:flex items-center gap-1 font-mono text-[10px] font-medium opacity-60">
-              <kbd className="h-5 select-none rounded border bg-base-200 px-1.5">
+              <kbd className="kbd kbd-xs sm:kbd-sm">
                 {navigator.platform.indexOf('Mac') !== -1 ? '⌘' : 'ctrl'}
               </kbd>
-              <kbd className="h-5 select-none rounded border bg-base-200 px-1.5">K</kbd>
+              <kbd className="kbd kbd-xs sm:kbd-sm">K</kbd>
             </div>
           ) : (
             <button
               type="button"
-              className="btn btn-ghost btn-xs text-base-content/60 p-0"
+              className="btn btn-ghost btn-xs sm:btn-sm btn-circle"
               onClick={handleClearSearch}
               aria-label="Clear search"
             >
@@ -81,17 +81,17 @@ const SearchBar = () => {
 
       {searchFocused && (
         <div
-          className="absolute top-full inset-x-0 mt-2 bg-base-100 rounded-lg shadow-lg border border-base-200 overflow-hidden z-50 mx-2 sm:mx-0"
+          className="absolute top-full inset-x-0 mt-2 card bg-base-100 shadow-xl z-50 mx-2 sm:mx-0"
           role="listbox"
         >
-          <div className="p-2 max-h-[60vh] sm:max-h-[300px] overflow-y-auto">
+          <div className="card-body p-2 max-h-[50vh] sm:max-h-[300px] overflow-y-auto">
             {searchQuery ? (
               <div className="space-y-1">
                 <div className="text-xs font-medium text-base-content/60 px-2 py-1">
                   Search Results
                 </div>
                 <button
-                  className="flex items-center gap-2 w-full p-3 hover:bg-base-200 active:bg-base-300 rounded-md text-sm transition-colors"
+                  className="flex items-center gap-2 w-full p-3 hover:bg-base-200 active:bg-base-300 rounded-btn text-sm transition-colors"
                   role="option"
                   onClick={handleSubmit}
                 >
@@ -107,7 +107,7 @@ const SearchBar = () => {
                 {recentSearches.map((search) => (
                   <button
                     key={search}
-                    className="flex items-center gap-2 w-full p-3 hover:bg-base-200 active:bg-base-300 rounded-md text-sm transition-colors"
+                    className="flex items-center gap-2 w-full p-3 hover:bg-base-200 active:bg-base-300 rounded-btn text-sm transition-colors"
                     onClick={() => setSearchQuery(search)}
                     role="option"
                   >

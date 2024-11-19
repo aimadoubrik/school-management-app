@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Filters from './Filters';
+import FiltersFormateur from './FiltersFormateur';
 
 export default function AttendanceFormateur() {
   const [secteursData, setSecteursData] = useState([]);
@@ -152,7 +152,7 @@ export default function AttendanceFormateur() {
 
   return (
     <div className="p-4">
-      <Filters
+      <FiltersFormateur
         secteursData={secteursData}
         secteur={secteur}
         niveau={niveau}

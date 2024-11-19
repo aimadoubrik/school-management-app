@@ -3,8 +3,6 @@ import { combineReducers } from 'redux';
 import {
   notificationsReducer,
   themeReducer,
-  sidebarReducer,
-  uiReducer,
   quizzesReducer,
   filieresReducer,
   authReducer,
@@ -19,8 +17,6 @@ import {
 const rootReducer = combineReducers({
   notifications: notificationsReducer,
   theme: themeReducer,
-  sidebar: sidebarReducer,
-  ui: uiReducer,
   quizzes: quizzesReducer,
   filieres: filieresReducer,
   competences: competencesSlice,

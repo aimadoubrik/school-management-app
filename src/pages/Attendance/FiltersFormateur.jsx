@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar } from 'lucide-react';
 
-export default function Filters({
+export default function FiltersFormateur({
     secteursData,
     secteur,
     niveau,
