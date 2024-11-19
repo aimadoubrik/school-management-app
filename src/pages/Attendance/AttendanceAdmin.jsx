@@ -252,11 +252,11 @@ export default function AttendanceAdmin() {
         onMonthChange={setSelectedMonth}
       />
 
-      <div className="overflow-x-auto bg-white rounded-lg shadow-md">
+      <div className="overflow-x-auto rounded-lg shadow-md">
         {currentItems.length > 0 ? (
           <>
-            <table className="table w-full text-center">
-              <thead className="bg-gray-100">
+            <table className="table table-zebra w-full text-center hover">
+              <thead className="bg-base-200">
                 <tr>
                   <th className="px-4 py-2">CEF</th>
                   <th className="px-4 py-2">Nom Complet</th>
@@ -273,17 +273,17 @@ export default function AttendanceAdmin() {
                   <th colSpan="7"></th>
                   {selectedMonth ? (
                     <>
-                      <th className="px-4 py-2 bg-accent">Nombre AJ</th>
-                      <th className="px-4 py-2 bg-secondary">Nombre ANJ</th>
-                      <th className="px-4 py-2 bg-accent">Nombre Retards</th>
-                      <th className="px-4 py-2 bg-secondary">Sanctions</th>
+                      <th className="px-4 py-2 bg-base-300">Nombre AJ</th>
+                      <th className="px-4 py-2 bg-base-300">Nombre ANJ</th>
+                      <th className="px-4 py-2 bg-base-300">Nombre Retards</th>
+                      <th className="px-4 py-2 bg-base-300">Sanctions</th>
                     </>
                   ) : (
                     <>
-                      <th className="px-4 py-2 bg-accent">Total AJ</th>
-                      <th className="px-4 py-2 bg-secondary">Total ANJ</th>
-                      <th className="px-4 py-2 bg-accent">Total Retards</th>
-                      <th className="px-4 py-2 bg-secondary">Total Sanctions</th>
+                      <th className="px-4 py-2 bg-base-300">Total AJ</th>
+                      <th className="px-4 py-2 bg-base-300">Total ANJ</th>
+                      <th className="px-4 py-2 bg-base-300">Total Retards</th>
+                      <th className="px-4 py-2 bg-base-300">Total Sanctions</th>
                     </>
                   )}
                 </tr>
@@ -292,12 +292,12 @@ export default function AttendanceAdmin() {
                 {currentItems.map((student, index) => (
                   <tr 
                     key={student.cef} 
-                    className={`${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-gray-100 ${
-                      sanctions[student.cef] && sanctions[student.cef] !== student.sanction ? 'bg-red-100 hover:bg-red-200' : ''
+                    className={`${
+                      sanctions[student.cef] && sanctions[student.cef] !== student.sanction ? 'bg-red-200 hover:bg-red-200' : ''
                     }`}
                   >
                     <td className="px-4 py-2">{student.cef}</td>
-                    <td className="px-4 py-2">{`${student.nom} ${student.prenom}`}</td>
+                    <td className="px-4 py-2">{`${student.fullname}`}</td>
                     <td className="px-4 py-2">{student.secteur}</td>
                     <td className="px-4 py-2">{student.niveau}</td>
                     <td className="px-4 py-2">{student.filiere}</td>
