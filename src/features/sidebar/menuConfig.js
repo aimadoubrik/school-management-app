@@ -51,6 +51,13 @@ export const menuItems = [
     href: '/competences',
     count: 4,
   },
+  {
+    label: 'Formateurs',
+    icon: 'UserRound',
+    href: '/formateur',
+    count: 4,
+  },
+
   { type: 'divider' },
   {
     label: 'Documents',

@@ -20,6 +20,7 @@ import {
   SchedulePage,
   TraineesPage,
   CompetencesPage,
+  Formateur,
 } from '../pages';
 
 const RouteConfig = () => {
@@ -130,6 +131,14 @@ const RouteConfig = () => {
           element={
             <ProtectedRoute allowedRoles={['admin']}>
               <CompetencesPage />
+            </ProtectedRoute>
+          }
+        />
+          <Route
+          path="/formateur"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <Formateur />
             </ProtectedRoute>
           }
         />

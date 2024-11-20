@@ -773,7 +773,7 @@
   ],
   "formateurs": [
     {
-      "id": "17000",
+      "id": "17063",
       "nom": "Dupont",
       "prenom": "Jean",
       "secteur": "Digital",
@@ -794,6 +794,64 @@
         },
         {
           "code": "M204_F01",
+          "intitule": "M205",
+          "mhSynthese": "25 H 00",
+          "mhP": "85 H 00",
+          "mhTotal": "105 H 00"
+        }
+      ],
+      "totalMasseHoraire": "175 H 00"
+    }, {
+      "id": "17020",
+      "nom": "Bouslham",
+      "prenom": "Med",
+      "secteur": "Digital",
+      "modules": [
+        {
+          "code": "M203_F02",
+          "intitule": "M203",
+          "mhSynthese": "15 H 00",
+          "mhP": "60 H 00",
+          "mhTotal": "75 H 00"
+        },
+        {
+          "code": "M205_F01",
+          "intitule": "M204",
+          "mhSynthese": "20 H 00",
+          "mhP": "85 H 00",
+          "mhTotal": "100 H 00"
+        },
+        {
+          "code": "M208_F02",
+          "intitule": "M205",
+          "mhSynthese": "25 H 00",
+          "mhP": "85 H 00",
+          "mhTotal": "105 H 00"
+        }
+      ],
+      "totalMasseHoraire": "175 H 00"
+    }, {
+      "id": "17400",
+      "nom": "Micheal",
+      "prenom": "Jean",
+      "secteur": "Digital",
+      "modules": [
+        {
+          "code": "M308_F01",
+          "intitule": "M202",
+          "mhSynthese": "15 H 00",
+          "mhP": "60 H 00",
+          "mhTotal": "75 H 00"
+        },
+        {
+          "code": "M307_F02",
+          "intitule": "M204",
+          "mhSynthese": "20 H 00",
+          "mhP": "80 H 00",
+          "mhTotal": "100 H 00"
+        },
+        {
+          "code": "M306_F02",
           "intitule": "M205",
           "mhSynthese": "25 H 00",
           "mhP": "85 H 00",
@@ -863,6 +921,36 @@
       "totalMasseHoraire": "190 H 00"
     },
     {
+      "id": "17000",
+      "nom": "Pen",
+      "prenom": "Fean",
+      "secteur": "Digital",
+      "modules": [
+        {
+          "code": "M402_F01",
+          "intitule": "M202",
+          "mhSynthese": "15 H 00",
+          "mhP": "60 H 00",
+          "mhTotal": "75 H 00"
+        },
+        {
+          "code": "M403_F01",
+          "intitule": "M204",
+          "mhSynthese": "20 H 00",
+          "mhP": "80 H 00",
+          "mhTotal": "100 H 00"
+        },
+        {
+          "code": "M405_F01",
+          "intitule": "M205",
+          "mhSynthese": "25 H 00",
+          "mhP": "85 H 00",
+          "mhTotal": "105 H 00"
+        }
+      ],
+      "totalMasseHoraire": "175 H 00"
+    },
+    {
       "id": "17001",
       "nom": "Martin",
       "prenom": "Sophie",
@@ -891,6 +979,66 @@
         }
       ],
       "totalMasseHoraire": "175 H 00"
+    },
+    {
+      "id": "17567",
+      "nom": "Meryem",
+      "prenom": "Hrrat",
+      "secteur": "Finance",
+      "modules": [
+        {
+          "code": "F401_F01",
+          "intitule": "F401",
+          "mhSynthese": "25 H 00",
+          "mhP": "50 H 00",
+          "mhTotal": "75 H 00"
+        },
+        {
+          "code": "M308_F01",
+          "intitule": "M308",
+          "mhSynthese": "20 H 00",
+          "mhP": "80 H 00",
+          "mhTotal": "100 H 00"
+        },
+        {
+          "code": "M309_F01",
+          "intitule": "M309",
+          "mhSynthese": "60 H 00",
+          "mhP": "47 H 00",
+          "mhTotal": "100 H 00"
+        }
+      ],
+      "totalMasseHoraire": "180 H 00"
+    },
+    {
+      "id": "17871",
+      "nom": "Monto",
+      "prenom": "Philie",
+      "secteur": "Finance",
+      "modules": [
+        {
+          "code": "501_F01",
+          "intitule": "F501",
+          "mhSynthese": "25 H 00",
+          "mhP": "50 H 00",
+          "mhTotal": "75 H 00"
+        },
+        {
+          "code": "M508_F01",
+          "intitule": "M508",
+          "mhSynthese": "20 H 00",
+          "mhP": "80 H 00",
+          "mhTotal": "100 H 00"
+        },
+        {
+          "code": "M509_F01",
+          "intitule": "M509",
+          "mhSynthese": "60 H 00",
+          "mhP": "47 H 00",
+          "mhTotal": "100 H 00"
+        }
+      ],
+      "totalMasseHoraire": "185 H 00"
     },
     {
       "id": "17008",
@@ -953,7 +1101,7 @@
       "totalMasseHoraire": "190 H 00"
     },
     {
-      "id": "17002",
+      "id": "17356",
       "nom": "Lemoine",
       "prenom": "Clara",
       "secteur": "Marketing",
@@ -983,6 +1131,36 @@
       "totalMasseHoraire": "170 H 00"
     },
     {
+      "id": "17800",
+      "nom": "Fadili",
+      "prenom": "Haytam",
+      "secteur": "Marketing",
+      "modules": [
+        {
+          "code": "MKT409_F01",
+          "intitule": "MKT409",
+          "mhSynthese": "10 H 00",
+          "mhP": "60 H 00",
+          "mhTotal": "70 H 00"
+        },
+        {
+          "code": "MKT405_F01",
+          "intitule": "MKT405",
+          "mhSynthese": "15 H 00",
+          "mhP": "85 H 00",
+          "mhTotal": "100 H 00"
+        },
+        {
+          "code": "MKT405_F01",
+          "intitule": "MKT405",
+          "mhSynthese": "15 H 00",
+          "mhP": "85 H 00",
+          "mhTotal": "100 H 00"
+        }
+      ],
+      "totalMasseHoraire": "175 H 00"
+    },
+    {
       "id": "17009",
       "nom": "Blanc",
       "prenom": "Sophie",
@@ -1005,6 +1183,36 @@
         {
           "code": "MKT405_F03",
           "intitule": "MKT408",
+          "mhSynthese": "15 H 00",
+          "mhP": "85 H 00",
+          "mhTotal": "100 H 00"
+        }
+      ],
+      "totalMasseHoraire": "180 H 00"
+    },
+    {
+      "id": "17356",
+      "nom": "Hamdan",
+      "prenom": "Lara",
+      "secteur": "Marketing",
+      "modules": [
+        {
+          "code": "MKT420_F01",
+          "intitule": "MKT420",
+          "mhSynthese": "10 H 00",
+          "mhP": "60 H 00",
+          "mhTotal": "70 H 00"
+        },
+        {
+          "code": "MKT421_F01",
+          "intitule": "MKT421",
+          "mhSynthese": "15 H 00",
+          "mhP": "85 H 00",
+          "mhTotal": "100 H 00"
+        },
+        {
+          "code": "MKT422_F01",
+          "intitule": "MKT422",
           "mhSynthese": "15 H 00",
           "mhP": "85 H 00",
           "mhTotal": "100 H 00"
@@ -1043,7 +1251,7 @@
       "totalMasseHoraire": "190 H 00"
     },
     {
-      "id": "17003",
+      "id": "17903",
       "nom": "Moreau",
       "prenom": "Paul",
       "secteur": "Agro-alimentaire",
@@ -1071,6 +1279,125 @@
         }
       ],
       "totalMasseHoraire": "180 H 00"
+    },
+    {
+      "id": "17983",
+      "nom": "Alaam",
+      "prenom": "Lamia",
+      "secteur": "Agro-alimentaire",
+      "modules": [
+        {
+          "code": "AG601_F01",
+          "intitule": "AG601",
+          "mhSynthese": "30 H 00",
+          "mhP": "50 H 00",
+          "mhTotal": "80 H 00"
+        },
+        {
+          "code": "AG602_F01",
+          "intitule": "AG602",
+          "mhSynthese": "35 H 00",
+          "mhP": "65 H 00",
+          "mhTotal": "100 H 00"
+        },
+        {
+          "code": "AG604_F01",
+          "intitule": "AG5605",
+          "mhSynthese": "35 H 00",
+          "mhP": "65 H 00",
+          "mhTotal": "100 H 00"
+        }
+      ],
+      "totalMasseHoraire": "180 H 00"
+    }, {
+      "id": "17773",
+      "nom": "MILI",
+      "prenom": "hanan",
+      "secteur": "Agro-alimentaire",
+      "modules": [
+        {
+          "code": "AG801_F01",
+          "intitule": "AG801",
+          "mhSynthese": "30 H 00",
+          "mhP": "50 H 00",
+          "mhTotal": "80 H 00"
+        },
+        {
+          "code": "AG802_F01",
+          "intitule": "AG802",
+          "mhSynthese": "35 H 00",
+          "mhP": "65 H 00",
+          "mhTotal": "100 H 00"
+        },
+        {
+          "code": "AG804_F01",
+          "intitule": "AG805",
+          "mhSynthese": "35 H 00",
+          "mhP": "65 H 00",
+          "mhTotal": "100 H 00"
+        }
+      ],
+      "totalMasseHoraire": "185 H 00"
+    },
+    {
+      "id": "17123",
+      "nom": "Hanin",
+      "prenom": "Yassmine",
+      "secteur": "Agro-alimentaire",
+      "modules": [
+        {
+          "code": "AG520_F01",
+          "intitule": "AG520",
+          "mhSynthese": "30 H 00",
+          "mhP": "50 H 00",
+          "mhTotal": "80 H 00"
+        },
+        {
+          "code": "AG521_F01",
+          "intitule": "AG521",
+          "mhSynthese": "35 H 00",
+          "mhP": "65 H 00",
+          "mhTotal": "100 H 00"
+        },
+        {
+          "code": "AG522_F01",
+          "intitule": "AG522",
+          "mhSynthese": "35 H 00",
+          "mhP": "65 H 00",
+          "mhTotal": "100 H 00"
+        }
+      ],
+      "totalMasseHoraire": "187 H 00"
+    },
+    {
+      "id": "17903",
+      "nom": "Amara",
+      "prenom": "Sherine",
+      "secteur": "Agro-alimentaire",
+      "modules": [
+        {
+          "code": "AG590_F01",
+          "intitule": "AG590",
+          "mhSynthese": "30 H 00",
+          "mhP": "50 H 00",
+          "mhTotal": "80 H 00"
+        },
+        {
+          "code": "AG591_F01",
+          "intitule": "AG591",
+          "mhSynthese": "35 H 00",
+          "mhP": "65 H 00",
+          "mhTotal": "100 H 00"
+        },
+        {
+          "code": "AG592_F01",
+          "intitule": "AG592",
+          "mhSynthese": "35 H 00",
+          "mhP": "65 H 00",
+          "mhTotal": "100 H 00"
+        }
+      ],
+      "totalMasseHoraire": "192 H 00"
     },
     {
       "id": "17010",
@@ -1104,6 +1431,18 @@
     }
   ],
   "competences": [
+    {
+      "id": "1",
+      "code_competence": 1,
+      "code_module": "M101_F01",
+      "intitule_module": "M101",
+      "intitule_competence": [
+        "Analyse de données",
+        "Algorithmes de base"
+      ],
+      "cours": "https://fake-link.com/cours/M101",
+      "quiz": "https://fake-link.com/quiz/M101"
+    },
     {
       "id": "2",
       "code_competence": 2,
