@@ -806,6 +806,183 @@
       "id": "df6b"
     }
   ],
+  "groups": [
+      {
+        "id": "b44a",
+        "codeGroupe": "1",
+        "niveau": "GR101",
+        "intituleGroupe": "Groupe 1",
+        "filiere": "Développement Digital",
+        "modules": [
+          {
+            "nomModule": "HTML & CSS",
+            "professeur": "Mme Laila"
+          }
+        ],
+        "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe1.pdf",
+        "liste": [
+          {
+            "nomEtudiant": "Ali Ahmed",
+            "idEtudiant": "202301"
+          },
+          {
+            "nomEtudiant": "Sara Bensaid",
+            "idEtudiant": "202302"
+          }
+        ]
+      },
+      {
+        "id": "dd56",
+        "codeGroupe": "2",
+        "niveau": "GR102",
+        "intituleGroupe": "Groupe 2",
+        "filiere": "Marketing Digital",
+        "modules": [
+          {
+            "nomModule": "SEO & SEA",
+            "professeur": "M. Youssef"
+          }
+        ],
+        "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe2.pdf",
+        "liste": [
+          {
+            "nomEtudiant": "Amine Zouhir",
+            "idEtudiant": "202303"
+          },
+          {
+            "nomEtudiant": "Nadia Fahim",
+            "idEtudiant": "202304"
+          }
+        ]
+      },
+      {
+        "id": "1a13",
+        "codeGroupe": "3",
+        "niveau": "GR103",
+        "intituleGroupe": "Groupe 3",
+        "filiere": "Réseaux et Sécurité "
+      },
+      {
+        "id": "2b67",
+        "codeGroupe": "4",
+        "niveau": "GR104",
+        "intituleGroupe": "Groupe 4",
+        "filiere": "Big Data et Intelligence Artificielle",
+        "modules": [
+          {
+            "nomModule": "Data Science",
+            "professeur": "M. Karim"
+          }
+        ],
+        "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe4.pdf",
+        "liste": [
+          {
+            "nomEtudiant": "Omar Hmidouch",
+            "idEtudiant": "202307"
+          },
+          {
+            "nomEtudiant": "Amina Sahli",
+            "idEtudiant": "202308"
+          }
+        ]
+      },
+      {
+        "id": "7c89",
+        "codeGroupe": "5",
+        "niveau": "GR105",
+        "intituleGroupe": "Groupe 5",
+        "filiere": "Gestion des Systèmes d'Information",
+        "modules": [
+          {
+            "nomModule": "ERP & CRM",
+            "professeur": "Mme Khadija"
+          }
+        ],
+        "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe5.pdf",
+        "liste": [
+          {
+            "nomEtudiant": "Laila Amrani",
+            "idEtudiant": "202309"
+          },
+          {
+            "nomEtudiant": "Hassan Elhassani",
+            "idEtudiant": "202310"
+          }
+        ]
+      },
+      {
+        "id": "8d90",
+        "codeGroupe": "6",
+        "niveau": "GR106",
+        "intituleGroupe": "Groupe 6",
+        "filiere": "Ingénierie Logicielle",
+        "modules": [
+          {
+            "nomModule": "Architecture Logicielle",
+            "professeur": "M. Anouar"
+          }
+        ],
+        "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe6.pdf",
+        "liste": [
+          {
+            "nomEtudiant": "Nour Dlimi",
+            "idEtudiant": "202311"
+          },
+          {
+            "nomEtudiant": "Mohamed Khalifi",
+            "idEtudiant": "202312"
+          }
+        ]
+      },
+      {
+        "id": "9e01",
+        "codeGroupe": "7",
+        "niveau": "GR107",
+        "intituleGroupe": "Groupe 7",
+        "filiere": "Commerce International",
+        "modules": [
+          {
+            "nomModule": "Négociation Internationale",
+            "professeur": "Mme Hajar"
+          }
+        ],
+        "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe7.pdf",
+        "liste": [
+          {
+            "nomEtudiant": "Soufiane Tahiri",
+            "idEtudiant": "202313"
+          },
+          {
+            "nomEtudiant": "Zineb El Jiry",
+            "idEtudiant": "202314"
+          }
+        ]
+      },
+      {
+        "id": "0f23",
+        "codeGroupe": "8",
+        "niveau": "GR108",
+        "intituleGroupe": "Groupe 8",
+        "filiere": "Multimédia et Design Graphique",
+        "modules": [
+          {
+            "nomModule": "Design UX/UI",
+            "professeur": "M. Redouane"
+          }
+        ],
+        "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe8.pdf",
+        "liste": [
+          {
+            "nomEtudiant": "Fatima Zahra Habbachi",
+            "idEtudiant": "202315"
+          },
+          {
+            "nomEtudiant": "Kamal Ait Moussa",
+            "idEtudiant": "202316"
+          }
+        ]
+      }
+    ],
   "competences": [
     {
       "id": "1",
