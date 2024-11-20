@@ -19,7 +19,7 @@ export default function AttendanceFormateur() {
   const [absentStudents, setAbsentStudents] = useState([])
   const [isSaved, setIsSaved] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
-  const [itemsPerPage] = useState(5)
+  const [itemsPerPage] = useState(10)
   const [checkboxDisabled, setCheckboxDisabled] = useState(false)
 
   const indexOfLastItem = currentPage * itemsPerPage
