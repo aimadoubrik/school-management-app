@@ -1,49 +1,50 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
-import FiltersAdmin from './FiltersAdmin';
+import React, { useState, useEffect } from 'react'
+import FiltersAdmin from './FiltersAdmin'
+import { Edit, Save, X } from 'lucide-react'
 
 export default function AttendanceAdmin() {
-  const [data, setData] = useState([]);
-  const [filteredStudents, setFilteredStudents] = useState([]);
-  const [niveau, setNiveau] = useState('');
-  const [filiere, setFiliere] = useState('');
-  const [annee, setAnnee] = useState('');
-  const [groupe, setGroupe] = useState('');
-  const [cin, setCin] = useState('');
-  const [cef, setCef] = useState('');
-  const [nom, setNom] = useState('');
-  const [prenom, setPrenom] = useState('');
-  const [selectedMonth, setSelectedMonth] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(5);
-  const [isEditing, setIsEditing] = useState(false);
-  const [hasChanges, setHasChanges] = useState(false);
-  const [sanctions, setSanctions] = useState({});
+  const [data, setData] = useState([])
+  const [filteredStudents, setFilteredStudents] = useState([])
+  const [niveau, setNiveau] = useState('')
+  const [filiere, setFiliere] = useState('')
+  const [annee, setAnnee] = useState('')
+  const [groupe, setGroupe] = useState('')
+  const [cin, setCin] = useState('')
+  const [cef, setCef] = useState('')
+  const [nom, setNom] = useState('')
+  const [prenom, setPrenom] = useState('')
+  const [selectedMonth, setSelectedMonth] = useState('')
+  const [currentPage, setCurrentPage] = useState(1)
+  const [itemsPerPage] = useState(5)
+  const [isEditing, setIsEditing] = useState(false)
+  const [hasChanges, setHasChanges] = useState(false)
+  const [sanctions, setSanctions] = useState({})
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3000/secteurs');
-        if (!response.ok) throw new Error('Failed to fetch data');
-        const result = await response.json();
-        const allStudents = getAllStudents(result);
-        setData(allStudents);
-        setFilteredStudents(allStudents);
+        const response = await fetch('http://localhost:3000/secteurs')
+        if (!response.ok) throw new Error('Failed to fetch data')
+        const result = await response.json()
+        const allStudents = getAllStudents(result)
+        setData(allStudents)
+        setFilteredStudents(allStudents)
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching data:', error)
       }
-    };
+    }
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   useEffect(() => {
-    filterStudents();
-  }, [niveau, filiere, annee, groupe, cin, cef, nom, prenom, selectedMonth, data]);
+    filterStudents()
+  }, [niveau, filiere, annee, groupe, cin, cef, nom, prenom, selectedMonth, data])
 
   const getAllStudents = (data) => {
-    let allStudents = [];
+    let allStudents = []
     
     data.forEach(secteur => {
       Object.entries(secteur.niveaux).forEach(([niveauKey, niveauValue]) => {
@@ -62,15 +63,15 @@ export default function AttendanceAdmin() {
                   anj: 0,
                   retards: 0,
                   sanction: 'aucune'
-                });
-              });
-            });
-          });
-        });
-      });
-    });
-    return allStudents;
-  };
+                })
+              })
+            })
+          })
+        })
+      })
+    })
+    return allStudents
+  }
 
   const filterStudents = () => {
     const filtered = data.filter(student => 
@@ -82,59 +83,57 @@ export default function AttendanceAdmin() {
       (!cef || student.cef.toLowerCase().includes(cef.toLowerCase())) &&
       (!nom || student.nom.toLowerCase().includes(nom.toLowerCase())) &&
       (!prenom || student.prenom.toLowerCase().includes(prenom.toLowerCase()))
-    );
-    setFilteredStudents(filtered);
-    setCurrentPage(1);
-  };
+    )
+    setFilteredStudents(filtered)
+    setCurrentPage(1)
+  }
 
   const calculateSanction = (anj, retards) => {
-    if (anj > 10 || retards > 40) return 'exclusion definitive';
-    if (anj >= 7 || retards >= 28) return 'exclusion temporaire';
-    if (anj === 6 || retards >= 24) return 'exclusion de 2j';
-    if (anj === 5 || retards >= 20) return 'blame';
-    if (anj === 4 || retards >= 16) return '2eme avertissement';
-    if (anj === 3 || retards >= 12) return '1er avertissement';
-    if (anj === 2 || retards >= 8) return '2eme mise en garde';
-    if (anj === 1 || retards >= 4) return '1ere mise en garde';
-    return 'aucune';
-  };
+    if (anj > 10 || retards > 40) return 'exclusion definitive'
+    if (anj >= 7 || retards >= 28) return 'exclusion temporaire'
+    if (anj === 6 || retards >= 24) return 'exclusion de 2j'
+    if (anj === 5 || retards >= 20) return 'blame'
+    if (anj === 4 || retards >= 16) return '2eme avertissement'
+    if (anj === 3 || retards >= 12) return '1er avertissement'
+    if (anj === 2 || retards >= 8) return '2eme mise en garde'
+    if (anj === 1 || retards >= 4) return '1ere mise en garde'
+    return 'aucune'
+  }
 
   const handleInputChange = (studentId, field, value) => {
-    setHasChanges(true);
+    setHasChanges(true)
     const updatedStudents = filteredStudents.map(student => {
       if (student.cef === studentId) {
-        const updatedStudent = { ...student, [field]: parseInt(value, 10) || 0 };
-        const calculatedSanction = calculateSanction(updatedStudent.anj, updatedStudent.retards);
-        setSanctions(prev => ({ ...prev, [studentId]: calculatedSanction }));
-        return updatedStudent;
+        const updatedStudent = { ...student, [field]: parseInt(value, 10) || 0 }
+        const calculatedSanction = calculateSanction(updatedStudent.anj, updatedStudent.retards)
+        setSanctions(prev => ({ ...prev, [studentId]: calculatedSanction }))
+        return updatedStudent
       }
-      return student;
-    });
-    setFilteredStudents(updatedStudents);
-  };
+      return student
+    })
+    setFilteredStudents(updatedStudents)
+  }
 
   const handleSanctionChange = (studentId, sanction) => {
-    setHasChanges(true);
-    setSanctions(prev => ({ ...prev, [studentId]: sanction }));
-  };
+    setHasChanges(true)
+    setSanctions(prev => ({ ...prev, [studentId]: sanction }))
+  }
 
   const handleSave = () => {
     const updatedStudents = filteredStudents.filter(student => {
-      const sanction = sanctions[student.cef] || student.sanction;
+      const sanction = sanctions[student.cef] || student.sanction
       if (sanction === 'exclusion definitive') {
-        // Remove student from the list
-        return false;
+        return false
       }
-      // Update student's data with the new sanction
-      student.sanction = sanction;
-      return true;
-    });
-    setFilteredStudents(updatedStudents);
-    setData(prevData => prevData.map(s => updatedStudents.find(us => us.cef === s.cef) || s));
-    setIsEditing(false);
-    setHasChanges(false);
-    setSanctions({});
-  };
+      student.sanction = sanction
+      return true
+    })
+    setFilteredStudents(updatedStudents)
+    setData(prevData => prevData.map(s => updatedStudents.find(us => us.cef === s.cef) || s))
+    setIsEditing(false)
+    setHasChanges(false)
+    setSanctions({})
+  }
 
   const handleCancel = () => {
     setFilteredStudents(data.filter(student => 
@@ -146,15 +145,15 @@ export default function AttendanceAdmin() {
       (!cef || student.cef.toLowerCase().includes(cef.toLowerCase())) &&
       (!nom || student.nom.toLowerCase().includes(nom.toLowerCase())) &&
       (!prenom || student.prenom.toLowerCase().includes(prenom.toLowerCase()))
-    ));
-    setIsEditing(false);
-    setHasChanges(false);
-    setSanctions({});
-  };
+    ))
+    setIsEditing(false)
+    setHasChanges(false)
+    setSanctions({})
+  }
 
   const handleEdit = () => {
-    setIsEditing(true);
-  };
+    setIsEditing(true)
+  }
 
   const renderAdminTableCells = (student) => (
     selectedMonth ? (
@@ -219,14 +218,14 @@ export default function AttendanceAdmin() {
         <td className="px-4 py-2">{student.totalSanctions || 0}</td>
       </>
     )
-  );
+  )
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredStudents.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(filteredStudents.length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage
+  const currentItems = filteredStudents.slice(indexOfFirstItem, indexOfLastItem)
+  const totalPages = Math.ceil(filteredStudents.length / itemsPerPage)
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl">
@@ -252,11 +251,11 @@ export default function AttendanceAdmin() {
         onMonthChange={setSelectedMonth}
       />
 
-      <div className="overflow-x-auto bg-white rounded-lg shadow-md">
+      <div className="overflow-x-auto rounded-lg shadow-md">
         {currentItems.length > 0 ? (
           <>
-            <table className="table w-full text-center">
-              <thead className="bg-gray-100">
+            <table className="table table-zebra w-full text-center hover">
+              <thead className="bg-base-200 font-bold">
                 <tr>
                   <th className="px-4 py-2">CEF</th>
                   <th className="px-4 py-2">Nom Complet</th>
@@ -273,17 +272,17 @@ export default function AttendanceAdmin() {
                   <th colSpan="7"></th>
                   {selectedMonth ? (
                     <>
-                      <th className="px-4 py-2 bg-accent">Nombre AJ</th>
-                      <th className="px-4 py-2 bg-secondary">Nombre ANJ</th>
-                      <th className="px-4 py-2 bg-accent">Nombre Retards</th>
-                      <th className="px-4 py-2 bg-secondary">Sanctions</th>
+                      <th className="px-4 py-2 bg-base-300">Nombre AJ</th>
+                      <th className="px-4 py-2 bg-base-300">Nombre ANJ</th>
+                      <th className="px-4 py-2 bg-base-300">Nombre Retards</th>
+                      <th className="px-4 py-2 bg-base-300">Sanctions</th>
                     </>
                   ) : (
                     <>
-                      <th className="px-4 py-2 bg-accent">Total AJ</th>
-                      <th className="px-4 py-2 bg-secondary">Total ANJ</th>
-                      <th className="px-4 py-2 bg-accent">Total Retards</th>
-                      <th className="px-4 py-2 bg-secondary">Total Sanctions</th>
+                      <th className="px-4 py-2 bg-base-300">Total AJ</th>
+                      <th className="px-4 py-2 bg-base-300">Total ANJ</th>
+                      <th className="px-4 py-2 bg-base-300">Total Retards</th>
+                      <th className="px-4 py-2 bg-base-300">Total Sanctions</th>
                     </>
                   )}
                 </tr>
@@ -292,12 +291,12 @@ export default function AttendanceAdmin() {
                 {currentItems.map((student, index) => (
                   <tr 
                     key={student.cef} 
-                    className={`${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-gray-100 ${
-                      sanctions[student.cef] && sanctions[student.cef] !== student.sanction ? 'bg-red-100 hover:bg-red-200' : ''
+                    className={`${
+                      sanctions[student.cef] && sanctions[student.cef] !== student.sanction ? 'bg-red-200 hover:bg-red-200' : ''
                     }`}
                   >
                     <td className="px-4 py-2">{student.cef}</td>
-                    <td className="px-4 py-2">{`${student.nom} ${student.prenom}`}</td>
+                    <td className="px-4 py-2">{`${student.fullname}`}</td>
                     <td className="px-4 py-2">{student.secteur}</td>
                     <td className="px-4 py-2">{student.niveau}</td>
                     <td className="px-4 py-2">{student.filiere}</td>
@@ -326,6 +325,7 @@ export default function AttendanceAdmin() {
                   onClick={handleEdit} 
                   disabled={!selectedMonth || isEditing}
                 >
+                  <Edit size={20} className="mr-2" />
                   Modifier
                 </button>
                 <button 
@@ -333,6 +333,7 @@ export default function AttendanceAdmin() {
                   onClick={handleSave} 
                   disabled={!selectedMonth || !isEditing || !hasChanges}
                 >
+                  <Save size={20} className="mr-2" />
                   Enregistrer
                 </button>
                 <button 
@@ -340,6 +341,7 @@ export default function AttendanceAdmin() {
                   onClick={handleCancel} 
                   disabled={!selectedMonth || !isEditing}
                 >
+                  <X size={20} className="mr-2" />
                   Annuler
                 </button>
               </div>
@@ -350,5 +352,5 @@ export default function AttendanceAdmin() {
         )}
       </div>
     </div>
-  );
+  )
 }
