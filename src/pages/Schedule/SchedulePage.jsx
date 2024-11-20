@@ -18,9 +18,9 @@ const SchedulePage = () => {
 
   useEffect(() => {
     const fetchAssignments = async () => {
-      const response = await axios.get('http://localhost:3006/assignments');
+      const response = await axios.get('http://localhost:3000/assignments');
       setAssignments(response.data);
-      const secteursresponse = await axios.get('http://localhost:3007/filieres');
+      const secteursresponse = await axios.get('http://localhost:3000/filieres');
       setSecteurs(secteursresponse.data);
       setLoading(false);
     };
