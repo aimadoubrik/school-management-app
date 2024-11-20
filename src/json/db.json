@@ -1707,7 +1707,7 @@
       "id": "d1c7"
     }
   ],
-    "modules": [
+  "modules": [
     {
       "id": "2",
       "code": "M102_F01",
@@ -2415,6 +2415,8 @@
       "secteur": "Agro-ali",
       "formateur": "Laurent Boucher",
       "etat": "Affecté"
+    }
+  ],
   "assignments": [
     {
       "id_séance": 1,
