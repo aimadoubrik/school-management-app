@@ -10,7 +10,6 @@
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md}\"",
     "json-server": "json-server --watch src/json/db.json --port 3000"
-
   },
   "dependencies": {
     "@react-spring/web": "^9.7.5",
