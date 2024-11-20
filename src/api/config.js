@@ -9,6 +9,7 @@ const config = {
       users: '/users',
       emploi: '/emploi',
       filieres: '/filieres',
+      groups: '/groups',
       competences: '/competences',
       secteur: '/secteur',
       attendance: '/attendance',
