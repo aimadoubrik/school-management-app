@@ -17,7 +17,7 @@ export default function AttendanceAdmin() {
   const [prenom, setPrenom] = useState('')
   const [selectedMonth, setSelectedMonth] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
-  const [itemsPerPage] = useState(5)
+  const [itemsPerPage] = useState(7)
   const [isEditing, setIsEditing] = useState(false)
   const [hasChanges, setHasChanges] = useState(false)
   const [sanctions, setSanctions] = useState({})
@@ -74,16 +74,21 @@ export default function AttendanceAdmin() {
   }
 
   const filterStudents = () => {
-    const filtered = data.filter(student => 
-      (!niveau || student.niveau === niveau) &&
-      (!filiere || student.filiere === filiere) &&
-      (!annee || student.annee === annee) &&
-      (!groupe || student.groupe === groupe) &&
-      (!cin || student.cin.toLowerCase().includes(cin.toLowerCase())) &&
-      (!cef || student.cef.toLowerCase().includes(cef.toLowerCase())) &&
-      (!nom || student.nom.toLowerCase().includes(nom.toLowerCase())) &&
-      (!prenom || student.prenom.toLowerCase().includes(prenom.toLowerCase()))
-    )
+    const filtered = data.filter(student => {
+      const fullname = student.fullname.toLowerCase()
+      const [studentNom, studentPrenom] = fullname.split(' ')
+      
+      return (
+        (!niveau || student.niveau === niveau) &&
+        (!filiere || student.filiere === filiere) &&
+        (!annee || student.annee === annee) &&
+        (!groupe || student.groupe === groupe) &&
+        (!cin || student.cin.toLowerCase().includes(cin.toLowerCase())) &&
+        (!cef || student.cef.toLowerCase().includes(cef.toLowerCase())) &&
+        (!nom || studentNom.includes(nom.toLowerCase())) &&
+        (!prenom || studentPrenom.includes(prenom.toLowerCase()))
+      )
+    })
     setFilteredStudents(filtered)
     setCurrentPage(1)
   }
@@ -143,8 +148,8 @@ export default function AttendanceAdmin() {
       (!groupe || student.groupe === groupe) &&
       (!cin || student.cin.toLowerCase().includes(cin.toLowerCase())) &&
       (!cef || student.cef.toLowerCase().includes(cef.toLowerCase())) &&
-      (!nom || student.nom.toLowerCase().includes(nom.toLowerCase())) &&
-      (!prenom || student.prenom.toLowerCase().includes(prenom.toLowerCase()))
+      (!nom || student.fullname.toLowerCase().includes(nom.toLowerCase())) &&
+      (!prenom || student.fullname.toLowerCase().includes(prenom.toLowerCase()))
     ))
     setIsEditing(false)
     setHasChanges(false)
