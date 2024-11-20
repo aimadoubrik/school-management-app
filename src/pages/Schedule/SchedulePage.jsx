@@ -1,185 +1,171 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Calendar, Clock, School, AlertCircle, Loader2 } from 'lucide-react';
-import {
-  fetchSchedule,
-  setSelectedLevel,
-  setSelectedClass,
-  SCHEDULE_CONSTANTS,
-} from '../../features/schedule/scheduleSlice';
-
-const SelectionBox = ({ title, icon: Icon, value, options, onChange }) => (
-  <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
-    <div className="mb-3">
-      <h3 className="text-lg font-medium flex items-center gap-2 text-gray-800 dark:text-gray-200">
-        <Icon className="w-5 h-5" />
-        {title}
-      </h3>
-    </div>
-    <select
-      value={value}
-      onChange={onChange}
-      className="w-full p-2 border rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 
-               focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
-    >
-      <option value="">Select {title}</option>
-      {options.map((option) => (
-        <option key={option} value={option}>
-          {option}
-        </option>
-      ))}
-    </select>
-  </div>
-);
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const SchedulePage = () => {
-  const dispatch = useDispatch();
-  const { scheduleData, selectedLevel, selectedClass, loading, error } = useSelector(
-    (state) => state.schedule
-  );
-  const [currentTime, setCurrentTime] = useState(new Date());
+  const [assignments, setAssignments] = useState([]);
+  const [secteurs, setSecteurs] = useState([]);
+  const [selectedGroup, setSelectedGroup] = useState('all');
+  const [selectedSecteur, setSelectedSecteur] = useState('all');
+  const [secteurGroups , setSecteurGroups] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const timeSlots = [
+    '08:30 - 09:30', '09:30 - 10:30', '10:30 - 11:30', '11:30 - 12:30',
+    '12:30 - 13:30', '13:30 - 14:30', '14:30 - 15:30', '15:30 - 16:30',
+    '16:30 - 17:30', '17:30 - 18:30'
+  ];
 
   useEffect(() => {
-    const timer = setInterval(() => setCurrentTime(new Date()), 60000);
-    return () => clearInterval(timer);
+    const fetchAssignments = async () => {
+      const response = await axios.get('http://localhost:3000/assignments');
+      setAssignments(response.data);
+      const secteursresponse = await axios.get('http://localhost:3000/filieres');
+      setSecteurs(secteursresponse.data);
+      setLoading(false);
+    };
+    fetchAssignments();
   }, []);
+  
+  
+  const uniqueGroups = [...new Set(assignments.map(a => a.groupe))].sort();
+  const filteredAssignments = selectedGroup === 'all'
+    ? assignments
+    : assignments.filter(a => a.groupe === selectedGroup);
 
-  const getCurrentTimeSlot = () => {
-    const currentDay = currentTime.toLocaleDateString('en-US', { weekday: 'long' });
-    const currentHour = currentTime.getHours();
-    const currentMinute = currentTime.getMinutes();
-    const currentTimeInMinutes = currentHour * 60 + currentMinute;
-
-    const timeSlotIndex =
-      SCHEDULE_CONSTANTS.timeSlots.findIndex((slot) => {
-        const [start] = slot.split(' - ');
-        const [startHour, startMinute] = start.split(':');
-        const hour = parseInt(startHour);
-        const minute = parseInt(startMinute);
-        const slotTimeInMinutes = hour * 60 + minute;
-        return currentTimeInMinutes < slotTimeInMinutes;
-      }) - 1;
-
-    return { currentDay, timeSlotIndex };
+  const getDayName = (dateStr) => {
+    const date = new Date(dateStr);
+    return days[date.getDay() - 1];
   };
 
+  const getTimeSlotIndex = (time) => {
+    return timeSlots.findIndex(slot => slot.startsWith(time));
+  };
   useEffect(() => {
-    if (selectedLevel && selectedClass) {
-      dispatch(fetchSchedule({ selectedClass, selectedLevel }));
-    }
-  }, [selectedLevel, selectedClass, dispatch]);
+    const secteurgroupes = secteurs.find(secteur => secteur.id == selectedSecteur)?.groupes;
+    setSecteurGroups(secteurgroupes);
+    
+  }, [selectedSecteur]) 
 
-  const { currentDay, timeSlotIndex } = getCurrentTimeSlot();
+  const calculateColspan = (startTime, endTime) => {
+    const startIndex = getTimeSlotIndex(startTime);
+    const endTime2 = endTime.split(':');
+    const endTimeFormatted = `${endTime2[0]}:${endTime2[1]}`;
+    const endIndex = timeSlots.findIndex(slot => slot.startsWith(endTimeFormatted));
+    return Math.max(1, endIndex - startIndex) || 1;
+  };
+
+  const getClassesForDay = (day) => {
+    return filteredAssignments.filter(assignment => getDayName(assignment.day) === day);
+  };
+
+  if (loading) {
+    return <div className="p-8 text-center">Loading schedule...</div>;
+  }
+
 
   return (
-    <div className="p-4 md:p-6 bg-gray-50 dark:bg-gray-900 min-h-screen">
-      <div className="max-w-7xl mx-auto space-y-6">
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
-            Class Schedule
-          </h1>
-          <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-            <Clock className="w-4 h-4" />
-            {currentTime.toLocaleTimeString()}
-          </div>
-        </div>
+    <div className="space-y-4">
+      <div className="flex items-center gap-4">
+        <label htmlFor="secteur-filter" className="label">Filter by Secteur:</label>
+        <select
+          id="secteur-filter"
+          value={selectedSecteur}
+          onChange={(e) => setSelectedSecteur(e.target.value)}
+          className="select select-primary w-full max-w-md"
+        >
+          <option value="all">All Secteur</option>
+          {secteurs.map(secteur => (
+            <option key={secteur.id} value={secteur.id}>{secteur.secteur}</option>
+          ))}
+        </select>
+        <label htmlFor="group-filter" className="label">Filter by Group:</label>
+        <select
+          id="group-filter"
+          value={selectedGroup}
+          onChange={(e) => setSelectedGroup(e.target.value)}
+          className="select select-primary w-full max-w-md"
+        >
+          <option value="all">All Groups</option>
+          {!secteurGroups ? (
+            uniqueGroups.map(group => (
+              <option key={group} value={group}>{group}</option>
+            ))
+          ) : secteurGroups.map(group => (
+            <option key={group.id} value={group.nom}>{group.nom}</option>
+          ))}
+        </select>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <SelectionBox
-            title="Level"
-            icon={School}
-            value={selectedLevel}
-            options={SCHEDULE_CONSTANTS.levels}
-            onChange={(e) => dispatch(setSelectedLevel(e.target.value))}
-          />
-          <SelectionBox
-            title="Class"
-            icon={Calendar}
-            value={selectedClass}
-            options={SCHEDULE_CONSTANTS.classes}
-            onChange={(e) => dispatch(setSelectedClass(e.target.value))}
-          />
-        </div>
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse">
+          <thead>
+            <tr>
+              <th className="border p-2 bg-base-300 dark:text-white">Day</th>
+              {timeSlots.map(slot => (
+                <th key={slot} className="border p-2 bg-base-300 dark:text-white min-w-[120px]">
+                  {slot}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {days.map(day => (
+              <tr key={day}>
+                <td className="border p-2 font-medium bg-base-300 dark:text-white">{day}</td>
+                {(() => {
+                  const dayClasses = getClassesForDay(day);
+                  let currentSlot = 0;
+                  const cells = [];
 
-        {error && (
-          <div className="flex items-center gap-2 p-4 text-red-800 bg-red-100 dark:bg-red-900/30 dark:text-red-200 rounded-lg">
-            <AlertCircle className="h-5 w-5" />
-            <p>{error}</p>
-          </div>
-        )}
+                  while (currentSlot < timeSlots.length) {
+                    const classForSlot = dayClasses.find(cls =>
+                      getTimeSlotIndex(cls.startTime) === currentSlot
+                    );
 
-        {loading ? (
-          <div className="flex items-center justify-center p-8">
-            <Loader2 className="h-8 w-8 animate-spin text-blue-500" />
-          </div>
-        ) : (
-          selectedLevel &&
-          selectedClass && (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-              <div className="p-4 border-b dark:border-gray-700">
-                <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
-                  Schedule for {selectedClass} - {selectedLevel}
-                </h2>
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
-                  <thead>
-                    <tr className="bg-gray-50 dark:bg-gray-700">
-                      <th className="border border-gray-200 dark:border-gray-600 p-3 text-left min-w-[100px]">
-                        Day / Time
-                      </th>
-                      {SCHEDULE_CONSTANTS.timeSlots.map((slot) => (
-                        <th
-                          key={slot}
-                          className="border border-gray-200 dark:border-gray-600 p-3 text-left min-w-[150px] text-sm"
+                    if (classForSlot) {
+                      const colspan = calculateColspan(classForSlot.startTime, classForSlot.endTime);
+                      cells.push(
+                        <td
+                          key={`${day}-${currentSlot}`}
+                          colSpan={colspan}
+                          className="border p-2 relative h-20"
                         >
-                          {slot}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {SCHEDULE_CONSTANTS.days.map((day) => (
-                      <tr
-                        key={day}
-                        className={`
-                          ${day === currentDay ? 'bg-blue-50 dark:bg-blue-900/20' : ''}
-                          hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors
-                        `}
-                      >
-                        <td className="border border-gray-200 dark:border-gray-600 p-3 font-medium">
-                          {day}
-                        </td>
-                        {scheduleData[day].map((slot, index) => (
-                          <td
-                            key={`${day}-${index}`}
-                            className={`
-                              border border-gray-200 dark:border-gray-600 p-3
-                              ${slot === 'empty' ? 'bg-gray-50 dark:bg-gray-700/50' : ''}
-                              ${
-                                day === currentDay && index === timeSlotIndex
-                                  ? 'ring-2 ring-blue-500'
-                                  : ''
-                              }
-                            `}
+                          <h2 className="text-2xl font-bold mb-4 text-center">Class Schedule</h2>
+                          <div
+                            className="bg-gradient-to-r from-blue-600 to-blue-700 text-center text-white p-2 rounded-lg shadow-lg absolute inset-1 overflow-hidden hover:from-blue-700 hover:to-blue-800 transition-all duration-300"
+                            title={`${classForSlot.title}\nInstructor: ${classForSlot.formateur}\nRoom: ${classForSlot.salle}\nTime: ${classForSlot.startTime} - ${classForSlot.endTime}`}
                           >
-                            {slot !== 'empty' ? (
-                              <div className="p-2 bg-blue-100 dark:bg-blue-900/50 rounded text-sm">
-                                {slot}
+                            <div className="flex flex-col gap-2 justify-center h-full">
+                              <div className="flex items-center justify-center gap-2">
+                                <div className="font-bold tracking-wide truncate">{classForSlot.title}</div>
+                                <span className="text-blue-200">|</span>
+                                <div className="text-xs font-medium text-blue-100">{classForSlot.formateur}</div>
                               </div>
-                            ) : (
-                              <span className="text-gray-400 dark:text-gray-500">No Class</span>
-                            )}
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          )
-        )}
+                              <div className="text-xs bg-base-300 text-secondary-content dark:text-white rounded-md py-1 px-2 mx-auto">
+                                {classForSlot.salle}
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      );
+                      currentSlot += colspan;
+                    } else {
+                      cells.push(
+                        <td
+                          key={`${day}-${currentSlot}`}
+                          className="border p-2 h-16"
+                        />
+                      );
+                      currentSlot += 1;
+                    }
+                  }
+                  return cells;
+                })()}
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
