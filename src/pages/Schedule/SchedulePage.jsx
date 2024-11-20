@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const SchedulePage = () => {
@@ -133,16 +133,16 @@ const SchedulePage = () => {
                         >
                           <h2 className="text-2xl font-bold mb-4 text-center">Class Schedule</h2>
                           <div
-                            className="bg-gradient-to-r from-blue-600 to-blue-700 text-center text-white p-2 rounded-lg shadow-lg absolute inset-1 overflow-hidden hover:from-blue-700 hover:to-blue-800 transition-all duration-300"
+                            className="bg-gray-400 text-black  p-2 rounded shadow-lg absolute inset-1 overflow-hidden text-base-100 transition-all duration-300"
                             title={`${classForSlot.title}\nInstructor: ${classForSlot.formateur}\nRoom: ${classForSlot.salle}\nTime: ${classForSlot.startTime} - ${classForSlot.endTime}`}
                           >
                             <div className="flex flex-col gap-2 justify-center h-full">
                               <div className="flex items-center justify-center gap-2">
                                 <div className="font-bold tracking-wide truncate">{classForSlot.title}</div>
-                                <span className="text-blue-200">|</span>
-                                <div className="text-xs font-medium text-blue-100">{classForSlot.formateur}</div>
+                                <span className="">|</span>
+                                <div className="text-xs font-medium ">{classForSlot.formateur}</div>
                               </div>
-                              <div className="text-xs bg-base-300 text-secondary-content dark:text-white rounded-md py-1 px-2 mx-auto">
+                              <div className="text-xs text-secondary-content  rounded-md py-1 px-2 mx-auto">
                                 {classForSlot.salle}
                               </div>
                             </div>
@@ -171,4 +171,6 @@ const SchedulePage = () => {
   );
 };
 
-export default SchedulePage;
+const App = () => <SchedulePage />;
+
+export default App;

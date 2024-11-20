@@ -1,0 +1,25 @@
+{
+  "secteur": {
+    "secteur": "Literature",
+    "filiere": "English Literature",
+    "groupe": "Group 1",
+    "students": [
+      {
+        "id": "9",
+        "cef": "30001",
+        "fullname": "John Doe",
+        "dateNaissance": "1998-01-10",
+        "cin": "ENGL3001",
+        "selected": false
+      },
+      {
+        "id": "10",
+        "cef": "30002",
+        "fullname": "Anna White",
+        "dateNaissance": "1998-02-20",
+        "cin": "ENGL3002",
+        "selected": false
+      }
+    ]
+  }
+}
