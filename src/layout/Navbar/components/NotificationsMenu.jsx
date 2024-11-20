@@ -30,7 +30,7 @@ const NotificationsMenu = () => {
   return (
     <div className="relative" ref={menuRef}>
       <button
-        className="btn btn-ghost btn-sm sm:btn-md relative"
+        className="btn btn-ghost relative"
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Notifications"
       >

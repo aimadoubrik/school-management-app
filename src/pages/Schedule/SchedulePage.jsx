@@ -1,204 +1,167 @@
-import React, { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import dayjs from 'dayjs';
-
-// URL for json-server
-const API_URL = 'http://localhost:3006/assignments';
 
 const SchedulePage = () => {
   const [assignments, setAssignments] = useState([]);
-  const [selectedGroupe, setSelectedGroupe] = useState('');
-  const [startOfWeek, setStartOfWeek] = useState(
-    dayjs().startOf('week').add(1, 'day').format('YYYY-MM-DD')
-  );
-  const [selectedSecteur, setSelectedSecteur] = useState('');
-  const [secteur , setSecteur] = useState([])
-  const [hours, setHours] = useState(
-    Array.from({ length: 10 }, (_, i) => {
-      const startTime = dayjs()
-        .hour(8 + i)
-        .minute(30);
-      return {
-        startTime: startTime.format('HH:mm'),
-        endTime: startTime.add(1, 'hour').format('HH:mm'),
-        subHours: [
-          {
-            startTime: startTime.format('HH:mm'),
-            endTime: startTime.add(30, 'minute').format('HH:mm'),
-          },
-          {
-            startTime: startTime.add(30, 'minute').format('HH:mm'),
-            endTime: startTime.add(1, 'hour').format('HH:mm'),
-          },
-        ],
-      };
-    })
-  );
+  const [secteurs, setSecteurs] = useState([]);
+  const [selectedGroup, setSelectedGroup] = useState('all');
+  const [selectedSecteur, setSelectedSecteur] = useState('all');
+  const [secteurGroups , setSecteurGroups] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const timeSlots = [
+    '08:30 - 09:30', '09:30 - 10:30', '10:30 - 11:30', '11:30 - 12:30',
+    '12:30 - 13:30', '13:30 - 14:30', '14:30 - 15:30', '15:30 - 16:30',
+    '16:30 - 17:30', '17:30 - 18:30'
+  ];
 
   useEffect(() => {
     const fetchAssignments = async () => {
-      try {
-        const response = await axios.get(API_URL);
-        setAssignments(response.data);
-        const resp = await axios.get('http://localhost:3007/filieres')
-        console.log(resp.data)
-        setSecteur([...new Set(resp.data.map(el => el.secteur))]);
-       
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
+      const response = await axios.get('http://localhost:3006/assignments');
+      setAssignments(response.data);
+      const secteursresponse = await axios.get('http://localhost:3007/filieres');
+      setSecteurs(secteursresponse.data);
+      setLoading(false);
     };
-
     fetchAssignments();
   }, []);
+  
+  
+  const uniqueGroups = [...new Set(assignments.map(a => a.groupe))].sort();
+  const filteredAssignments = selectedGroup === 'all'
+    ? assignments
+    : assignments.filter(a => a.groupe === selectedGroup);
 
+  const getDayName = (dateStr) => {
+    const date = new Date(dateStr);
+    return days[date.getDay() - 1];
+  };
 
-  const handleSecteurChange = (e) => {
-    setSelectedSecteur(e.target.value);
-    setSelectedGroupe('')
+  const getTimeSlotIndex = (time) => {
+    return timeSlots.findIndex(slot => slot.startsWith(time));
+  };
+  useEffect(() => {
+    const secteurgroupes = secteurs.find(secteur => secteur.id == selectedSecteur)?.groupes;
+    setSecteurGroups(secteurgroupes);
+    
+  }, [selectedSecteur]) 
+
+  const calculateColspan = (startTime, endTime) => {
+    const startIndex = getTimeSlotIndex(startTime);
+    const endTime2 = endTime.split(':');
+    const endTimeFormatted = `${endTime2[0]}:${endTime2[1]}`;
+    const endIndex = timeSlots.findIndex(slot => slot.startsWith(endTimeFormatted));
+    return Math.max(1, endIndex - startIndex) || 1;
+  };
+
+  const getClassesForDay = (day) => {
+    return filteredAssignments.filter(assignment => getDayName(assignment.day) === day);
+  };
+
+  if (loading) {
+    return <div className="p-8 text-center">Loading schedule...</div>;
   }
 
-  const filteredAssignments = selectedGroupe
-    ? assignments.filter((assignment) => assignment.groupe === selectedGroupe)
-    : assignments;
-
-  const daysOfWeek = Array.from({ length: 6 }, (_, i) => dayjs(startOfWeek).add(i, 'day')); // Exclude Sunday
-
-  const getSpanCount = (startTime, endTime) => {
-    const flatSubHours = hours.flatMap((hour) => hour.subHours);
-    const startIndex = flatSubHours.findIndex((subHour) => subHour.startTime === startTime);
-    const endIndex = flatSubHours.findIndex((subHour) => subHour.endTime === endTime);
-
-    if (startIndex === -1 || endIndex === -1) {
-      return 1;
-    }
-
-    return endIndex - startIndex + 1;
-  };
-
-  const isWithinAssignmentRange = (assignment, subHour, day) => {
-    return (
-      assignment.day === day.format('YYYY-MM-DD') &&
-      subHour.startTime >= assignment.startTime &&
-      subHour.endTime <= assignment.endTime
-    );
-  };
 
   return (
-    <div className="overflow-x-auto p-4">
-      <div className="flex w-full gap-5">
-        <div className="mb-4 flex flex-col w-full">
-          <label htmlFor="group-select" className="mr-2 font-semibold">
-            Select Group:
-          </label>
-          <select
-            id="secteur-select"
-            value={selectedGroupe}
-            onChange={(e) => handleSecteurChange(e.target.value)}
-            className="border px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 select select-primary w-full"
-          >
-            <option value="">All Groups</option>
-            {secteur.map(
-              (group, index) => (
-                <option key={index} value={group}>
-                  {group}
-                </option>
-              )
-            )}
-          </select>
-        </div>
-        <div className="mb-4 flex flex-col w-full">
-          <label htmlFor="group-select" className="mr-2 font-semibold">
-            Select Group:
-          </label>
-          <select
-            id="group-select"
-            value={selectedGroupe}
-            onChange={(e) => setSelectedGroupe(e.target.value)}
-            className="border px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 select select-primary w-full"
-          >
-            <option value="">All Groups</option>
-            {[...new Set(assignments.map((assignment) => assignment.groupe))].map(
-              (group, index) => (
-                <option key={index} value={group}>
-                  {group}
-                </option>
-              )
-            )}
-          </select>
-        </div>
+    <div className="space-y-4">
+      <div className="flex items-center gap-4">
+        <label htmlFor="secteur-filter" className="label">Filter by Secteur:</label>
+        <select
+          id="secteur-filter"
+          value={selectedSecteur}
+          onChange={(e) => setSelectedSecteur(e.target.value)}
+          className="select select-primary w-full max-w-md"
+        >
+          <option value="all">All Secteur</option>
+          {secteurs.map(secteur => (
+            <option key={secteur.id} value={secteur.id}>{secteur.secteur}</option>
+          ))}
+        </select>
+        <label htmlFor="group-filter" className="label">Filter by Group:</label>
+        <select
+          id="group-filter"
+          value={selectedGroup}
+          onChange={(e) => setSelectedGroup(e.target.value)}
+          className="select select-primary w-full max-w-md"
+        >
+          <option value="all">All Groups</option>
+          {!secteurGroups ? (
+            uniqueGroups.map(group => (
+              <option key={group} value={group}>{group}</option>
+            ))
+          ) : secteurGroups.map(group => (
+            <option key={group.id} value={group.nom}>{group.nom}</option>
+          ))}
+        </select>
       </div>
 
-      <div className="inline-block min-w-full overflow-hidden rounded-lg border border-base-200 shadow-md">
-        <table className="min-w-full border-collapse text-center text-sm size-max">
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse">
           <thead>
             <tr>
-              <th className="px-4 py-2 border bg-base-200">Day</th>
-              {hours.map((hour, index) => (
-                <th key={index} colSpan={2} className="px-4 py-2 border bg-base-200">
-                  {hour.startTime} - {hour.endTime}
+              <th className="border p-2 bg-base-300 dark:text-white">Day</th>
+              {timeSlots.map(slot => (
+                <th key={slot} className="border p-2 bg-base-300 dark:text-white min-w-[120px]">
+                  {slot}
                 </th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {daysOfWeek.map((day, dayIndex) => (
-              <tr key={dayIndex}>
-                <td className="px-4 py-2 border font-semibold bg-base-200">{day.format('dddd')}</td>
-                {hours.map((hour) =>
-                  hour.subHours.map((subHour, subHourIndex) => {
-                    const assignment = filteredAssignments.find((assignment) =>
-                      isWithinAssignmentRange(assignment, subHour, day)
+            {days.map(day => (
+              <tr key={day}>
+                <td className="border p-2 font-medium bg-base-300 dark:text-white">{day}</td>
+                {(() => {
+                  const dayClasses = getClassesForDay(day);
+                  let currentSlot = 0;
+                  const cells = [];
+
+                  while (currentSlot < timeSlots.length) {
+                    const classForSlot = dayClasses.find(cls =>
+                      getTimeSlotIndex(cls.startTime) === currentSlot
                     );
 
-                    if (assignment && subHour.startTime === assignment.startTime) {
-                      const spanCount = getSpanCount(assignment.startTime, assignment.endTime);
-                      return (
+                    if (classForSlot) {
+                      const colspan = calculateColspan(classForSlot.startTime, classForSlot.endTime);
+                      cells.push(
                         <td
-                          key={`${subHour.startTime}-${subHour.endTime}`}
-                          colSpan={spanCount}
-                          className="border  p-2 cursor-pointer bg-blue-100 text-blue-900"
+                          key={`${day}-${currentSlot}`}
+                          colSpan={colspan}
+                          className="border p-2 relative h-20"
                         >
-                          <div className="flex flex-col">
-
-                          <span className='font-bold text-md'>{assignment.title}</span>
-                          <span>{assignment.formateur} -- {assignment.salle}  {selectedGroupe === '' && <span>-- { assignment.groupe}</span>}</span>
+                          <h2 className="text-2xl font-bold mb-4 text-center">Class Schedule</h2>
+                          <div
+                            className="bg-gradient-to-r from-blue-600 to-blue-700 text-center text-white p-2 rounded-lg shadow-lg absolute inset-1 overflow-hidden hover:from-blue-700 hover:to-blue-800 transition-all duration-300"
+                            title={`${classForSlot.title}\nInstructor: ${classForSlot.formateur}\nRoom: ${classForSlot.salle}\nTime: ${classForSlot.startTime} - ${classForSlot.endTime}`}
+                          >
+                            <div className="flex flex-col gap-2 justify-center h-full">
+                              <div className="flex items-center justify-center gap-2">
+                                <div className="font-bold tracking-wide truncate">{classForSlot.title}</div>
+                                <span className="text-blue-200">|</span>
+                                <div className="text-xs font-medium text-blue-100">{classForSlot.formateur}</div>
+                              </div>
+                              <div className="text-xs bg-base-300 text-secondary-content dark:text-white rounded-md py-1 px-2 mx-auto">
+                                {classForSlot.salle}
+                              </div>
+                            </div>
                           </div>
                         </td>
                       );
+                      currentSlot += colspan;
+                    } else {
+                      cells.push(
+                        <td
+                          key={`${day}-${currentSlot}`}
+                          className="border p-2 h-16"
+                        />
+                      );
+                      currentSlot += 1;
                     }
-
-                    const isCellCovered = filteredAssignments.some((assignment) => {
-                      const flatSubHours = hours.flatMap((hour) => hour.subHours);
-                      const startIndex = flatSubHours.findIndex(
-                        (subHour) => subHour.startTime === assignment.startTime
-                      );
-                      const endIndex = flatSubHours.findIndex(
-                        (subHour) => subHour.endTime === assignment.endTime
-                      );
-                      const currentIndex = flatSubHours.findIndex(
-                        (s) => s.startTime === subHour.startTime
-                      );
-
-                      return (
-                        assignment.day === day.format('YYYY-MM-DD') &&
-                        currentIndex > startIndex &&
-                        currentIndex <= endIndex
-                      );
-                    });
-
-                    if (isCellCovered) {
-                      return null;
-                    }
-
-                    return (
-                      <td
-                        key={`${subHour.startTime}-${subHour.endTime}`}
-                        className="border p-2"
-                      ></td>
-                    );
-                  })
-                )}
+                  }
+                  return cells;
+                })()}
               </tr>
             ))}
           </tbody>

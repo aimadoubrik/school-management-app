@@ -1,0 +1,38 @@
+{
+    "filieres": [
+      {
+        "id": 1,
+        "code_filiere": "DGT",
+        "secteur": "Digital",
+        "groupes": [
+          {
+            "id": 1,
+            "nom": "DEV101",
+            "annee": "1ère année"
+          },
+          {
+            "id": 2,
+            "nom": "DEVOWFS201",
+            "annee": "2ème année"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "code_filiere": "FIN",
+        "secteur": "Finance",
+        "groupes": [
+          {
+            "id": 3,
+            "nom": "FIN-1",
+            "annee": "1ère année"
+          },
+          {
+            "id": 4,
+            "nom": "FIN-2",
+            "annee": "2ème année"
+          }
+        ]
+      }
+    ]
+  }

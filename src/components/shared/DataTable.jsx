@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ChevronUp, ChevronDown, AlertCircle } from 'lucide-react';
+import Pagination from './Pagination';
 
 const DataTable = ({
   data,
@@ -13,7 +14,14 @@ const DataTable = ({
     description: 'No records to display',
   },
   rowKeyField = 'id',
+  itemsPerPage = 7, // Default number of items per page
 }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [data]);
+
   const SortIcon = ({ column }) => {
     if (!column.sortable || sortConfig?.key !== column.key) return null;
     return sortConfig.direction === 'asc' ? (
@@ -42,9 +50,11 @@ const DataTable = ({
     );
   }
 
+  const paginatedData = data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
   // Desktop view
   const DesktopTable = () => (
-    <div className="rounded-lg border bg-base-100 hidden md:block">
+    <div className="bg-base-100 hidden md:block">
       <table className="table table-zebra w-full">
         <thead className="bg-base-200">
           <tr>
@@ -67,7 +77,7 @@ const DataTable = ({
           </tr>
         </thead>
         <tbody>
-          {data.map((row) => (
+          {paginatedData.map((row) => (
             <tr key={row[rowKeyField]} className="hover">
               {columns.map((column) => (
                 <td key={column.key} className={column.className}>
@@ -85,7 +95,7 @@ const DataTable = ({
   const MobileView = () => (
     <div className="md:hidden">
       <div className="divide-y divide-base-200">
-        {data.map((row) => (
+        {paginatedData.map((row) => (
           <div key={row[rowKeyField]} className="bg-base-100 py-3">
             <div className="flex items-center justify-between">
               <div className="min-w-0 flex-1">
@@ -134,9 +144,16 @@ const DataTable = ({
   );
 
   return (
-    <div className="w-full">
+    <div className="w-full h-full">
       <DesktopTable />
       <MobileView />
+      {data.length > itemsPerPage && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={Math.ceil(data.length / itemsPerPage)}
+          setCurrentPage={setCurrentPage}
+        />
+      )}
     </div>
   );
 };
@@ -166,6 +183,7 @@ DataTable.propTypes = {
     description: PropTypes.string,
   }),
   rowKeyField: PropTypes.string,
+  itemsPerPage: PropTypes.number,
 };
 
 export default DataTable;
