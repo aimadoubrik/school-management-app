@@ -33,7 +33,10 @@ const ModalGroup = ({ group, isOpen, onClose }) => {
           </p>
           <p>
             <strong>Modules:</strong>{' '}
-            <Link to={`/modules/${group.codeGroupe}`} className="text-blue-600 hover:underline">
+            <Link
+              to={`/modules/${group.codeGroupe}`}
+              className="text-blue-600 hover:underline"
+            >
               Voir Modules
             </Link>
           </p>
@@ -48,7 +51,10 @@ const ModalGroup = ({ group, isOpen, onClose }) => {
           </p>
           <p>
             <strong>Liste:</strong>{' '}
-            <Link to={`/liste/${group.codeGroupe}`} className="text-blue-600 hover:underline">
+            <Link
+              to={`/liste/${group.codeGroupe}`}
+              className="text-blue-600 hover:underline"
+            >
               Voir Liste
             </Link>
           </p>

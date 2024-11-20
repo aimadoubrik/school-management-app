@@ -22,6 +22,7 @@ import {
   CompetencesPage,
   ModulesPage,
   Course,
+  GroupesPage,
 } from '../pages';
 Course;
 
@@ -133,6 +134,14 @@ const RouteConfig = () => {
           element={
             <ProtectedRoute allowedRoles={['admin']}>
               <FilieresPage />
+            </ProtectedRoute>
+          }
+        />
+         <Route
+          path="/groups"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <GroupesPage/>
             </ProtectedRoute>
           }
         />

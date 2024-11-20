@@ -12,6 +12,7 @@ import {
   profileSlice,
   documentsReducer,
   moduleReducer,
+  GroupesSlice,
 } from '../features';
 
 const rootReducer = combineReducers({
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   theme: themeReducer,
   quizzes: quizzesReducer,
   filieres: filieresReducer,
+  groups: GroupesSlice,
   competences: competencesSlice,
   auth: authReducer,
   courses: coursesReducer,

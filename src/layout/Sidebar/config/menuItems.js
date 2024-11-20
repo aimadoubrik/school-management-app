@@ -46,6 +46,12 @@ const menuItems = [
     count: 4,
   },
   {
+    label: 'Groupes',
+    icon: 'Users',
+    href: '/groups',
+    count: 8,
+  },
+  {
     label: 'Competences',
     icon: 'BookMarked',
     href: '/competences',
