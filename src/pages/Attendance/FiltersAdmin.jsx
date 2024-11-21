@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import React, { useEffect, useState } from 'react'
-import { X } from 'lucide-react'
+import React, { useEffect, useState } from 'react';
+import { X } from 'lucide-react';
 
 export default function FiltersAdmin({
   allData = [],
@@ -22,66 +22,66 @@ export default function FiltersAdmin({
   onCefChange = () => {},
   onNomChange = () => {},
   onPrenomChange = () => {},
-  onMonthChange = () => {}
+  onMonthChange = () => {},
 }) {
-  const [filteredFilieres, setFilteredFilieres] = useState([])
-  const [filteredAnnees, setFilteredAnnees] = useState([])
-  const [filteredGroupes, setFilteredGroupes] = useState([])
+  const [filteredFilieres, setFilteredFilieres] = useState([]);
+  const [filteredAnnees, setFilteredAnnees] = useState([]);
+  const [filteredGroupes, setFilteredGroupes] = useState([]);
 
   useEffect(() => {
     if (!Array.isArray(allData)) {
-      console.error('allData is not an array:', allData)
-      return
+      console.error('allData is not an array:', allData);
+      return;
     }
 
     // Filter filieres based on selected niveau
     const newFilteredFilieres = niveau
-      ? [...new Set(allData.filter(item => item.niveau === niveau).map(item => item.filiere))]
-      : [...new Set(allData.map(item => item.filiere))]
-    setFilteredFilieres(newFilteredFilieres)
+      ? [...new Set(allData.filter((item) => item.niveau === niveau).map((item) => item.filiere))]
+      : [...new Set(allData.map((item) => item.filiere))];
+    setFilteredFilieres(newFilteredFilieres);
 
     // Reset filiere if it's not in the new filtered list
     if (filiere && !newFilteredFilieres.includes(filiere)) {
-      onFiliereChange('')
+      onFiliereChange('');
     }
-  }, [niveau, allData, filiere, onFiliereChange])
+  }, [niveau, allData, filiere, onFiliereChange]);
 
   useEffect(() => {
-    if (!Array.isArray(allData)) return
+    if (!Array.isArray(allData)) return;
 
     // Filter annees based on selected niveau and filiere
     const newFilteredAnnees = allData
-      .filter(item => 
-        (!niveau || item.niveau === niveau) &&
-        (!filiere || item.filiere === filiere)
+      .filter(
+        (item) => (!niveau || item.niveau === niveau) && (!filiere || item.filiere === filiere)
       )
-      .map(item => item.annee)
-    setFilteredAnnees([...new Set(newFilteredAnnees)])
+      .map((item) => item.annee);
+    setFilteredAnnees([...new Set(newFilteredAnnees)]);
 
     // Reset annee if it's not in the new filtered list
     if (annee && !newFilteredAnnees.includes(annee)) {
-      onAnneeChange('')
+      onAnneeChange('');
     }
-  }, [niveau, filiere, allData, annee, onAnneeChange])
+  }, [niveau, filiere, allData, annee, onAnneeChange]);
 
   useEffect(() => {
-    if (!Array.isArray(allData)) return
+    if (!Array.isArray(allData)) return;
 
     // Filter groupes based on selected niveau, filiere, and annee
     const newFilteredGroupes = allData
-      .filter(item => 
-        (!niveau || item.niveau === niveau) &&
-        (!filiere || item.filiere === filiere) &&
-        (!annee || item.annee === annee)
+      .filter(
+        (item) =>
+          (!niveau || item.niveau === niveau) &&
+          (!filiere || item.filiere === filiere) &&
+          (!annee || item.annee === annee)
       )
-      .map(item => item.groupe)
-    setFilteredGroupes([...new Set(newFilteredGroupes)])
+      .map((item) => item.groupe);
+    setFilteredGroupes([...new Set(newFilteredGroupes)]);
 
     // Reset groupe if it's not in the new filtered list
     if (groupe && !newFilteredGroupes.includes(groupe)) {
-      onGroupeChange('')
+      onGroupeChange('');
     }
-  }, [niveau, filiere, annee, allData, groupe, onGroupeChange])
+  }, [niveau, filiere, annee, allData, groupe, onGroupeChange]);
 
   const renderSelect = (value, onChange, options, placeholder) => (
     <select
@@ -96,7 +96,7 @@ export default function FiltersAdmin({
         </option>
       ))}
     </select>
-  )
+  );
 
   const renderSearchInput = (value, onChange, placeholder) => (
     <input
@@ -106,42 +106,47 @@ export default function FiltersAdmin({
       value={value}
       onChange={(e) => onChange(e.target.value)}
     />
-  )
+  );
 
   const clearAllFilters = () => {
-    onNiveauChange('')
-    onFiliereChange('')
-    onAnneeChange('')
-    onGroupeChange('')
-    onCinChange('')
-    onCefChange('')
-    onNomChange('')
-    onPrenomChange('')
-    onMonthChange('')
-  }
+    onNiveauChange('');
+    onFiliereChange('');
+    onAnneeChange('');
+    onGroupeChange('');
+    onCinChange('');
+    onCefChange('');
+    onNomChange('');
+    onPrenomChange('');
+    onMonthChange('');
+  };
 
   if (!Array.isArray(allData)) {
-    return <div className="text-red-500">Error: Invalid data format</div>
+    return <div className="text-red-500">Error: Invalid data format</div>;
   }
 
   return (
     <div className="bg-base-200 p-4 rounded-lg shadow-md mb-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-        {renderSelect(niveau, onNiveauChange, [...new Set(allData.map(item => item.niveau))], "Niveau")}
-        {renderSelect(filiere, onFiliereChange, filteredFilieres, "Filière")}
-        {renderSelect(annee, onAnneeChange, filteredAnnees, "Année")}
-        {renderSelect(groupe, onGroupeChange, filteredGroupes, "Groupe")}
+        {renderSelect(
+          niveau,
+          onNiveauChange,
+          [...new Set(allData.map((item) => item.niveau))],
+          'Niveau'
+        )}
+        {renderSelect(filiere, onFiliereChange, filteredFilieres, 'Filière')}
+        {renderSelect(annee, onAnneeChange, filteredAnnees, 'Année')}
+        {renderSelect(groupe, onGroupeChange, filteredGroupes, 'Groupe')}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-        {renderSearchInput(cin, onCinChange, "CIN")}
-        {renderSearchInput(cef, onCefChange, "CEF")}
-        {renderSearchInput(nom, onNomChange, "Nom")}
-        {renderSearchInput(prenom, onPrenomChange, "Prénom")}
+        {renderSearchInput(cin, onCinChange, 'CIN')}
+        {renderSearchInput(cef, onCefChange, 'CEF')}
+        {renderSearchInput(nom, onNomChange, 'Nom')}
+        {renderSearchInput(prenom, onPrenomChange, 'Prénom')}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-        <select 
+        <select
           className="select select-bordered select-sm w-full"
           value={selectedMonth}
           onChange={(e) => onMonthChange(e.target.value)}
@@ -163,14 +168,11 @@ export default function FiltersAdmin({
       </div>
 
       <div className="flex justify-center space-x-2 mt-4">
-        <button 
-          className="btn btn-secondary btn-sm" 
-          onClick={clearAllFilters}
-        >
+        <button className="btn btn-secondary btn-sm" onClick={clearAllFilters}>
           <X className="mr-2" size={16} />
           Effacer les filtres
         </button>
       </div>
     </div>
-  )
+  );
 }

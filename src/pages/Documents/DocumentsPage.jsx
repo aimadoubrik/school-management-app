@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchDocuments } from '../../features/documents/documentSlice';
 import { fetchDemandes, deleteDemande } from '../../features/documents/demandeSlice';
 import {
+
     CheckCircle,
     FileText,
     Upload,
@@ -13,10 +14,20 @@ import {
     Loader2,
     X,
     Download,
+
+  CheckCircle,
+  FileText,
+  Upload,
+  AlertCircle,
+  Clock,
+  Calendar,
+  Loader2,
+  X,
 } from 'lucide-react';
 import axios from 'axios';
 
 const DocumentsPage = () => {
+
     const dispatch = useDispatch();
     const { documents, loading, error } = useSelector((state) => state.documents);
     const { demandes } = useSelector((state) => state.demandes);
@@ -57,42 +68,76 @@ const DocumentsPage = () => {
         validateAndSetFiles(selectedFiles);
     };
 
-    const validateAndSetFiles = (selectedFiles) => {
-        const validTypes = ['application/pdf', 'image/jpeg', 'image/png'];
-        const validFiles = selectedFiles.filter(
-            (file) => validTypes.includes(file.type) && file.size <= 5 * 1024 * 1024
-        );
+  const dispatch = useDispatch();
+  const { documents, loading, error } = useSelector((state) => state.documents);
 
-        if (validFiles.length !== selectedFiles.length) {
-            setAlerts((prev) => ({
-                ...prev,
-                error:
-                    'Certains fichiers ont été rejetés. Veuillez utiliser uniquement des fichiers PDF, JPG ou PNG de moins de 5 Mo.',
-            }));
-        }
+  const [selectedDocument, setSelectedDocument] = useState(null);
+  const [requestDate, setRequestDate] = useState('');
+  const [files, setFiles] = useState([]);
+  const [alerts, setAlerts] = useState({ success: false, error: null });
+  const [dragActive, setDragActive] = useState(false);
 
-        setFiles(validFiles);
-    };
+  useEffect(() => {
+    dispatch(fetchDocuments());
+  }, [dispatch]);
 
-    const handleDrag = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        if (e.type === 'dragenter' || e.type === 'dragover') {
-            setDragActive(true);
-        } else {
-            setDragActive(false);
-        }
-    };
+  useEffect(() => {
+    if (alerts.success) {
+      const timer = setTimeout(() => {
+        setAlerts((prev) => ({ ...prev, success: false }));
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [alerts.success]);
 
-    const handleDrop = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        setDragActive(false);
+  const handleDocumentSelect = (doc) => {
+    setSelectedDocument(doc);
+    setFiles([]);
+    setRequestDate('');
+  };
 
-        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-            validateAndSetFiles(Array.from(e.dataTransfer.files));
-        }
-    };
+  const handleFileChange = (e) => {
+    const selectedFiles = Array.from(e.target.files);
+    validateAndSetFiles(selectedFiles);
+  };
+
+  const validateAndSetFiles = (selectedFiles) => {
+    const validTypes = ['application/pdf', 'image/jpeg', 'image/png'];
+    const validFiles = selectedFiles.filter(
+      (file) => validTypes.includes(file.type) && file.size <= 5 * 1024 * 1024
+    );
+
+
+    if (validFiles.length !== selectedFiles.length) {
+      setAlerts((prev) => ({
+        ...prev,
+        error:
+          'Certains fichiers ont été rejetés. Veuillez utiliser uniquement des fichiers PDF, JPG ou PNG de moins de 5 Mo.',
+      }));
+    }
+
+    setFiles(validFiles);
+  };
+
+  const handleDrag = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === 'dragenter' || e.type === 'dragover') {
+      setDragActive(true);
+    } else {
+      setDragActive(false);
+    }
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      validateAndSetFiles(Array.from(e.dataTransfer.files));
+    }
+  };
 
     const userId =
         (localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).id) ||
@@ -133,27 +178,25 @@ const DocumentsPage = () => {
             processingTime: selectedDocument.processingTime,
         };
 
+  const [userData, setUserData] = useState(null);
+  const userId =
+    (localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).id) ||
+    (sessionStorage.getItem('user') && JSON.parse(sessionStorage.getItem('user')).id) ||
+    null;
+
+
+  useEffect(() => {
+    if (userId) {
+      const fetchUser = async () => {
         try {
-            const response = await fetch('http://localhost:3000/demandes', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newRequest),
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to submit request');
-            }
-
-            setAlerts({ success: true, error: null });
-            setSelectedDocument(null);
-            setFiles([]);
-            setRequestDate('');
+          const response = await axios.get('http://localhost:3000/users');
+          const user = response.data.find((u) => u.id === userId);
+          setUserData(user);
         } catch (error) {
-            setAlerts((prev) => ({ ...prev, error: error.message }));
+          console.error('Error fetching user data:', error);
         }
-    };
+      };
+
 
     useEffect(() => {
         if (userData && demandes) {
@@ -178,20 +221,130 @@ const DocumentsPage = () => {
 
     const isFormValid = selectedDocument && requestDate && files.length > 0;
 
-    if (loading) {
-        return (
-            <div className="flex items-center justify-center min-h-screen">
-                <Loader2 className="w-8 h-8 animate-spin" />
-            </div>
-        );
+      fetchUser();
     }
+  }, [userId]);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const newRequest = {
+      document: selectedDocument.name,
+      description: selectedDocument.description,
+      requestDate,
+      files: files.map((file) => ({
+        name: file.name,
+        size: file.size,
+        type: file.type,
+      })),
+      user: userData?.name || 'Inconnu',
+      status: 'en cours',
+      submissionDate: new Date().toLocaleDateString(),
+      processingTime: selectedDocument.processingTime,
+    };
+
+
+    try {
+      const response = await fetch('http://localhost:3000/demandes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newRequest),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit request');
+      }
+
+      setAlerts({ success: true, error: null });
+      setSelectedDocument(null);
+      setFiles([]);
+      setRequestDate('');
+    } catch (error) {
+      setAlerts((prev) => ({ ...prev, error: error.message }));
+    }
+  };
+
+  const isFormValid = selectedDocument && requestDate && files.length > 0;
+
+  if (loading) {
     return (
-        <div className="container mx-auto p-4 max-w-6xl">
-            <div className="text-center mb-8">
-                <h1 className="text-4xl font-bold mb-2">Demande de Documents</h1>
-                <p className="text-gray -600 text-lg">Portail de demande de documents administratifs</p>
+      <div className="flex items-center justify-center min-h-screen">
+        <Loader2 className="w-8 h-8 animate-spin" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="container mx-auto p-4 max-w-6xl">
+      <div className="text-center mb-8">
+        <h1 className="text-4xl font-bold mb-2">Demande de Documents</h1>
+        <p className="text-gray -600 text-lg">Portail de demande de documents administratifs</p>
+      </div>
+
+      {alerts.success && (
+        <div className="alert alert-success mb-6">
+          <CheckCircle className="w-5 h-5" />
+          <span>
+            Votre demande a été soumise avec succès. Vous pouvez suivre son état ci-dessous.
+          </span>
+        </div>
+      )}
+
+      {alerts.error && (
+        <div className="alert alert-error mb-6">
+          <AlertCircle className="w-5 h-5" />
+          <span>{alerts.error}</span>
+          <button
+            onClick={() => setAlerts((prev) => ({ ...prev, error: null }))}
+            className="btn btn-circle btn-ghost btn-sm absolute right-2 top-2"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+      )}
+
+      <div className="grid md:grid-cols-5 gap-6">
+        {/* Document Selection */}
+        <div className="md:col-span-2">
+          <div className="card bg-base-100 shadow-xl">
+            <div className="card-body">
+              <h2 className="card-title flex items-center gap-2">
+                <FileText className="w-5 h-5" />
+                Documents Disponibles
+              </h2>
+              <div className="space-y-3">
+                {(documents || []).map((doc) => (
+                  <button
+                    key={doc.id}
+                    onClick={() => handleDocumentSelect(doc)}
+                    className={`w-full text-left transition-all ${
+                      selectedDocument?.id === doc.id
+                        ? 'bg-primary/10 border-primary'
+                        : 'hover:bg-base-200 border-base-300'
+                    } border rounded-lg p-3 focus:outline-none`}
+                  >
+                    <div className="flex items-start gap-3">
+                      <FileText
+                        className={`w-5 h-5 mt-1 ${
+                          selectedDocument?.id === doc.id ? 'text-primary' : 'text-base-content/60'
+                        }`}
+                      />
+                      <div>
+                        <h3 className="font-medium">{doc.name}</h3>
+                        <p className="text-sm text-base-content/60 mt-1">{doc.description}</p>
+                        <div className="flex items-center gap-2 mt-2 text-sm text-base-content/60">
+                          <Clock className="w-4 h-4" />
+                          {doc.processingTime}
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
             </div>
+
             <hr className='h-px bg-gray-200 border-0 my-4'/>
             {alerts.success && (
                 <div className="alert alert-success mb-6">
@@ -252,8 +405,51 @@ const DocumentsPage = () => {
                                 ))}
                             </div>
                         </div>
+
+          </div>
+        </div>
+
+        {/* Request Form */}
+        <div className="md:col-span-3">
+          <div className="card bg-base-100 shadow-xl">
+            <div className="card-body">
+              {selectedDocument ? (
+                selectedDocument.documentLink ? (
+                  <a
+                    href={selectedDocument.documentLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn-primary btn-block"
+                  >
+                    Consulter le document
+                  </a>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div>
+                      <h2 className="text-xl font-semibold flex items-center gap-2">
+                        <FileText className="w-5 h-5" />
+                        {selectedDocument.name}
+                      </h2>
+                      <p className="text-base-content/60 mt-1">{selectedDocument.description}</p>
                     </div>
-                </div>
+
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">Date de demande</span>
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="date"
+                          value={requestDate}
+                          onChange={(e) => setRequestDate(e.target.value)}
+                          className="input input-bordered w-full pr-10"
+                          min={new Date().toISOString().split('T')[0]}
+                        />
+                        <Calendar className="absolute right-3 top-3 w-5 h-5 text-base-content/40" />
+                      </div>
+
+                    </div>
+
 
                 {/* Request Form */}
                 <div className="md:col-span-3">
@@ -378,9 +574,91 @@ const DocumentsPage = () => {
                                 </div>
                             )}
                         </div>
+
+                    <div className="alert alert-info">
+                      <AlertCircle className="w-5 h-5" />
+                      <div>
+                        <h3 className="font-medium">Documents requis :</h3>
+                        <ul className="mt-2 space-y-1 ml-6 list-disc">
+                          {selectedDocument.documentAttachment.map((doc, index) => (
+                            <li key={index}>{doc}</li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
+
+                    <div
+                      className={`border-2 border-dashed rounded-lg p-6 transition-colors ${
+                        dragActive ? 'border-primary bg-primary/5' : 'border-base-300'
+                      }`}
+                      onDragEnter={handleDrag}
+                      onDragLeave={handleDrag}
+                      onDragOver={handleDrag}
+                      onDrop={handleDrop}
+                    >
+                      <div className="text-center">
+                        <Upload className="mx-auto w-8 h-8 text-base-content/40" />
+                        <p className="mt-2 text-sm">
+                          Glissez-déposez vos fichiers ici ou
+                          <label className="link link-primary mx-1 cursor-pointer">
+                            parcourez
+                            <input
+                              type="file"
+                              multiple
+                              onChange={handleFileChange}
+                              accept=".pdf,.jpg,.jpeg,.png"
+                              className="hidden"
+                            />
+                          </label>
+                        </p>
+                        <p className="text-xs text-base-content/60 mt-1">
+                          PDF, JPG ou PNG (max. 5 Mo)
+                        </p>
+                      </div>
+
+                    </div>
+
+                    {files.length > 0 && (
+                      <div className="space-y-2">
+                        {files.map((file, index) => (
+                          <div
+                            key={index}
+                            className="flex items-center justify-between p-2 bg-base-200 rounded-lg"
+                          >
+                            <div className="flex items-center gap-2">
+                              <FileText className="w-4 h-4" />
+                              <span className="text-sm">{file.name}</span>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => setFiles(files.filter((_, i) => i !== index))}
+                              className="btn btn-ghost btn-circle btn-sm"
+                            >
+                              <X className="w-4 h-4" />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    <button
+                      type="submit"
+                      disabled={!isFormValid}
+                      className="btn btn-primary w-full"
+                    >
+                      <Upload className="w-4 h-4 mr-2" />
+                      Soumettre la demande
+                    </button>
+                  </form>
+                )
+              ) : (
+                <div className="alert alert-info">
+                  <AlertCircle className="w-5 h-5" />
+                  <span>Veuillez choisir un document pour soumettre une demande.</span>
                 </div>
+              )}
             </div>
+
             <hr className='my-4' />
             <div>
                 <h1 className="text-2xl font-bold mb-4 text-center">Votre Demandes</h1>
@@ -428,10 +706,14 @@ const DocumentsPage = () => {
                     </div>
                 )}
             </div>
+
+          </div>
+
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default DocumentsPage;
-
 

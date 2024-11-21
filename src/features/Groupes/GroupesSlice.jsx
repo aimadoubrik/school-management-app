@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { apiService } from '../../api/config';
 
-
 const createApiThunk = (typePrefix, apiCall) => {
   return createAsyncThunk(typePrefix, async (args, { rejectWithValue }) => {
     try {
@@ -15,7 +14,9 @@ const createApiThunk = (typePrefix, apiCall) => {
 // Thunks
 export const fetchGroupes = createApiThunk('groups/fetchGroupes', () => apiService.get('/groups'));
 
-export const addGroupe = createApiThunk('groups/addGroupe', (groupeData) => apiService.post('/groups', groupeData));
+export const addGroupe = createApiThunk('groups/addGroupe', (groupeData) =>
+  apiService.post('/groups', groupeData)
+);
 
 export const editGroupe = createApiThunk('groups/editGroupe', (group) =>
   apiService.put(`/groups/${group.id}`, group)
@@ -88,6 +89,3 @@ const GroupesSlice = createSlice({
 
 export const { clearError, setCurrentOperation } = GroupesSlice.actions;
 export default GroupesSlice.reducer;
-
-
-

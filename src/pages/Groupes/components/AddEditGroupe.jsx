@@ -1,6 +1,16 @@
 // src/pages/Filieres/components/AddEditFiliere.jsx
 import { useState, useEffect } from 'react';
-import { Code, BookOpen, Building2, Users, Save, Plus, Clock, Component, SquareStack } from 'lucide-react';
+import {
+  Code,
+  BookOpen,
+  Building2,
+  Users,
+  Save,
+  Plus,
+  Clock,
+  Component,
+  SquareStack,
+} from 'lucide-react';
 import PropTypes from 'prop-types';
 
 const AddEditGroupe = ({ group, onClose, onSave, isEditMode }) => {
@@ -9,10 +19,9 @@ const AddEditGroupe = ({ group, onClose, onSave, isEditMode }) => {
     niveau: '',
     intituleGroupe: '',
     filiere: '',
-    modules:'',
-    emploiDuTemps:'',
-    liste:'',
-
+    modules: '',
+    emploiDuTemps: '',
+    liste: '',
   });
 
   const [errors, setErrors] = useState({});
@@ -31,7 +40,6 @@ const AddEditGroupe = ({ group, onClose, onSave, isEditMode }) => {
         emploiDuTemps: group.emploiDuTemps || '',
         liste: Array.isArray(group.liste) ? group.liste.join(', ') : '',
         // liste: group.liste || '',
-
       });
     }
   }, [group]);
@@ -63,11 +71,11 @@ const AddEditGroupe = ({ group, onClose, onSave, isEditMode }) => {
       newErrors.intituleGroupe = "L'Intitulé Groupe est requis";
     }
     if (!formData.filiere.trim()) {
-        newErrors.filiere = 'la filiere est requis';
-      }
+      newErrors.filiere = 'la filiere est requis';
+    }
     if (!formData.emploiDuTemps.trim()) {
-        newErrors.emploiDuTemps = "L'emploiDuTemps est requis";
-      }
+      newErrors.emploiDuTemps = "L'emploiDuTemps est requis";
+    }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -110,11 +118,11 @@ const AddEditGroupe = ({ group, onClose, onSave, isEditMode }) => {
       placeholder: 'Entrez le code du Groupe',
     },
     {
-        id: 'niveau',
-        label: 'Niveau',
-        icon: <SquareStack className="w-4 h-4" />,
-        placeholder: 'Entrez le niveau du Groupe',
-      },
+      id: 'niveau',
+      label: 'Niveau',
+      icon: <SquareStack className="w-4 h-4" />,
+      placeholder: 'Entrez le niveau du Groupe',
+    },
     {
       id: 'intituleGroupe',
       label: 'Intitulé Groupe ',
@@ -134,18 +142,17 @@ const AddEditGroupe = ({ group, onClose, onSave, isEditMode }) => {
       placeholder: 'Entrez les modules',
     },
     {
-        id: 'emploiDuTemps',
-        label: 'emploi Du Temps',
-        icon: <Clock className="w-4 h-4" />,
-        placeholder:"Entrez l'emploiDuTemp",
-      },
-      {
-        id: 'liste',
-        label: 'liste',
-        icon: <Users className="w-4 h-4" />,
-        placeholder: 'Entrez la liste',
-      },
-
+      id: 'emploiDuTemps',
+      label: 'emploi Du Temps',
+      icon: <Clock className="w-4 h-4" />,
+      placeholder: "Entrez l'emploiDuTemp",
+    },
+    {
+      id: 'liste',
+      label: 'liste',
+      icon: <Users className="w-4 h-4" />,
+      placeholder: 'Entrez la liste',
+    },
   ];
 
   return (

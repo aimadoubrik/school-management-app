@@ -14,6 +14,7 @@ import {
   moduleReducer,
   GroupesSlice,
   demandesReducer,
+  formateurReducer,
 } from '../features';
 
 const rootReducer = combineReducers({
@@ -30,6 +31,7 @@ const rootReducer = combineReducers({
   documents: documentsReducer,
   modules: moduleReducer,
   demandes: demandesReducer,
+  formateurs: formateurReducer,
 });
 
 const store = configureStore({
