@@ -1,0 +1,12 @@
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1352.58 622.44">
+  <style>
+    .cls-1 {
+      fill: none;
+      stroke: green; /* Changed to green */
+      stroke-miterlimit: 10;
+      stroke-width: 81px;
+    }
+  </style>
+  <path class="cls-1" d="M434.61 179.03 327.77 57.25 57.15 294.66l237.42 270.62 301.06-264.12M552.85 443.46l106.83 121.78 301.07-264.13" />
+  <path class="cls-1" d="m756.94 321.27 301.07-264.12 237.41 270.62-270.62 237.42-106.83-121.78M391.83 321.32 692.89 57.2l106.84 121.78" />
+</svg>
