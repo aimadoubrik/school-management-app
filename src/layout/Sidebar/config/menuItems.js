@@ -46,6 +46,12 @@ const menuItems = [
     count: 4,
   },
   {
+    label: 'Groupes',
+    icon: 'Users',
+    href: '/groups',
+    count: 8,
+  },
+  {
     label: 'Competences',
     icon: 'BookMarked',
     href: '/competences',
@@ -58,9 +64,22 @@ const menuItems = [
     count: 64,
   },
   {
+    label: 'Formateurs',
+    icon: 'UserRound',
+    href: '/formateur',
+    count: 4,
+  },
+
+  { type: 'divider' },
+  {
     label: 'Documents',
     icon: 'FileText',
     href: '/documents',
+  },
+  {
+    label: 'Demandes',
+    icon: 'FileStack',
+    href: '/demandes',
   },
   { type: 'divider' },
   {

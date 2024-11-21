@@ -9,6 +9,7 @@ const config = {
       users: '/users',
       emploi: '/emploi',
       filieres: '/filieres',
+      groups: '/groups',
       competences: '/competences',
       secteur: '/secteur',
       attendance: '/attendance',
@@ -17,7 +18,9 @@ const config = {
       absentStudents: '/absentStudents',
       courses: '/courses',
       documents: '/documents',
+      demandes: '/demandes',
       modules: '/modules',
+      formateur: '/formateur',
     },
   },
 };

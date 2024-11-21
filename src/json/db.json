@@ -718,7 +718,16 @@
       "intitule_filiere": "Informatique",
       "secteur": "Technologie",
       "groupes": [
-        "i"
+        {
+          "id": 1,
+          "nom": "DEV101",
+          "annee": "1ère année"
+        },
+        {
+          "id": 2,
+          "nom": "DEVOWFS201",
+          "annee": "2ème année"
+        }
       ]
     },
     {
@@ -727,7 +736,11 @@
       "intitule_filiere": "Réseaux et Télécommu",
       "secteur": "Technologie",
       "groupes": [
-        "4"
+        {
+          "id": 4,
+          "nom": "DEV201",
+          "annee": "2ème année"
+        }
       ]
     },
     {
@@ -736,7 +749,11 @@
       "intitule_filiere": "Management",
       "secteur": "Business",
       "groupes": [
-        "groupe_id"
+        {
+          "id": 3,
+          "nom": "MAN101",
+          "annee": "1ère année"
+        }
       ]
     },
     {
@@ -745,7 +762,11 @@
       "intitule_filiere": "Design Graphique",
       "secteur": "Arts",
       "groupes": [
-        "[object Object]"
+        {
+          "id": 5,
+          "nom": "DES101",
+          "annee": "1ère année"
+        }
       ]
     },
     {
@@ -754,7 +775,11 @@
       "intitule_filiere": "Photographie",
       "secteur": "Arts",
       "groupes": [
-        "[object Object]"
+        {
+          "id": 6,
+          "nom": "PHO101",
+          "annee": "1ère année"
+        }
       ]
     },
     {
@@ -763,7 +788,11 @@
       "intitule_filiere": "Sciences de la Vie",
       "secteur": "Sciences",
       "groupes": [
-        "[object Object]"
+        {
+          "id": 7,
+          "nom": "SCI101",
+          "annee": "1ère année"
+        }
       ]
     },
     {
@@ -775,21 +804,529 @@
         "4"
       ],
       "id": "df6b"
+    },
+    {
+      "id": "5896",
+      "code_filiere": "F15",
+      "intitule_filiere": "Something",
+      "secteur": "Something",
+      "groupes": [
+        "1",
+        "2",
+        "3"
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "b44a",
+      "codeGroupe": "1",
+      "niveau": "GR101",
+      "intituleGroupe": "Groupe 1",
+      "filiere": "Développement Digital",
+      "modules": [
+        {
+          "nomModule": "HTML & CSS",
+          "professeur": "Mme Laila"
+        }
+      ],
+      "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe1.pdf",
+      "liste": [
+        {
+          "nomEtudiant": "Ali Ahmed",
+          "idEtudiant": "202301"
+        },
+        {
+          "nomEtudiant": "Sara Bensaid",
+          "idEtudiant": "202302"
+        }
+      ]
+    },
+    {
+      "id": "dd56",
+      "codeGroupe": "2",
+      "niveau": "GR102",
+      "intituleGroupe": "Groupe 2",
+      "filiere": "Marketing Digital",
+      "modules": [
+        {
+          "nomModule": "SEO & SEA",
+          "professeur": "M. Youssef"
+        }
+      ],
+      "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe2.pdf",
+      "liste": [
+        {
+          "nomEtudiant": "Amine Zouhir",
+          "idEtudiant": "202303"
+        },
+        {
+          "nomEtudiant": "Nadia Fahim",
+          "idEtudiant": "202304"
+        }
+      ]
+    },
+    {
+      "id": "1a13",
+      "codeGroupe": "3",
+      "niveau": "GR103",
+      "intituleGroupe": "Groupe 3",
+      "filiere": "Réseaux et Sécurité "
+    },
+    {
+      "id": "2b67",
+      "codeGroupe": "4",
+      "niveau": "GR104",
+      "intituleGroupe": "Groupe 4",
+      "filiere": "Big Data et Intelligence Artificielle",
+      "modules": [
+        {
+          "nomModule": "Data Science",
+          "professeur": "M. Karim"
+        }
+      ],
+      "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe4.pdf",
+      "liste": [
+        {
+          "nomEtudiant": "Omar Hmidouch",
+          "idEtudiant": "202307"
+        },
+        {
+          "nomEtudiant": "Amina Sahli",
+          "idEtudiant": "202308"
+        }
+      ]
+    },
+    {
+      "id": "7c89",
+      "codeGroupe": "5",
+      "niveau": "GR105",
+      "intituleGroupe": "Groupe 5",
+      "filiere": "Gestion des Systèmes d'Information",
+      "modules": [
+        {
+          "nomModule": "ERP & CRM",
+          "professeur": "Mme Khadija"
+        }
+      ],
+      "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe5.pdf",
+      "liste": [
+        {
+          "nomEtudiant": "Laila Amrani",
+          "idEtudiant": "202309"
+        },
+        {
+          "nomEtudiant": "Hassan Elhassani",
+          "idEtudiant": "202310"
+        }
+      ]
+    },
+    {
+      "id": "8d90",
+      "codeGroupe": "6",
+      "niveau": "GR106",
+      "intituleGroupe": "Groupe 6",
+      "filiere": "Ingénierie Logicielle",
+      "modules": [
+        {
+          "nomModule": "Architecture Logicielle",
+          "professeur": "M. Anouar"
+        }
+      ],
+      "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe6.pdf",
+      "liste": [
+        {
+          "nomEtudiant": "Nour Dlimi",
+          "idEtudiant": "202311"
+        },
+        {
+          "nomEtudiant": "Mohamed Khalifi",
+          "idEtudiant": "202312"
+        }
+      ]
+    },
+    {
+      "id": "9e01",
+      "codeGroupe": "7",
+      "niveau": "GR107",
+      "intituleGroupe": "Groupe 7",
+      "filiere": "Commerce International",
+      "modules": [
+        {
+          "nomModule": "Négociation Internationale",
+          "professeur": "Mme Hajar"
+        }
+      ],
+      "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe7.pdf",
+      "liste": [
+        {
+          "nomEtudiant": "Soufiane Tahiri",
+          "idEtudiant": "202313"
+        },
+        {
+          "nomEtudiant": "Zineb El Jiry",
+          "idEtudiant": "202314"
+        }
+      ]
+    },
+    {
+      "id": "0f23",
+      "codeGroupe": "8",
+      "niveau": "GR108",
+      "intituleGroupe": "Groupe 8",
+      "filiere": "Multimédia et Design Graphique",
+      "modules": [
+        {
+          "nomModule": "Design UX/UI",
+          "professeur": "M. Redouane"
+        }
+      ],
+      "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe8.pdf",
+      "liste": [
+        {
+          "nomEtudiant": "Fatima Zahra Habbachi",
+          "idEtudiant": "202315"
+        },
+        {
+          "nomEtudiant": "Kamal Ait Moussa",
+          "idEtudiant": "202316"
+        }
+      ]
+    }
+  ],
+  "formateurs": [
+    {
+      "id": "17000",
+      "nom": "Dupont",
+      "prenom": "Jean",
+      "secteur": "Digital",
+      "modules": [
+        {
+          "code": "M202_F01",
+          "intitule": "M202",
+          "mhSynthese": "15 H 00",
+          "mhP": "60 H 00",
+          "mhTotal": "75 H 00"
+        },
+        {
+          "code": "M204_F01",
+          "intitule": "M204",
+          "mhSynthese": "20 H 00",
+          "mhP": "80 H 00",
+          "mhTotal": "100 H 00"
+        },
+        {
+          "code": "M204_F01",
+          "intitule": "M205",
+          "mhSynthese": "25 H 00",
+          "mhP": "85 H 00",
+          "mhTotal": "105 H 00"
+        }
+      ],
+      "totalMasseHoraire": "175 H 00"
+    },
+    {
+      "id": "17007",
+      "nom": "Leroy",
+      "prenom": "Camille",
+      "secteur": "Digital",
+      "modules": [
+        {
+          "code": "M203_F01",
+          "intitule": "M203",
+          "mhSynthese": "10 H 00",
+          "mhP": "70 H 00",
+          "mhTotal": "80 H 00"
+        },
+        {
+          "code": "M206_F01",
+          "intitule": "M206",
+          "mhSynthese": "25 H 00",
+          "mhP": "65 H 00",
+          "mhTotal": "90 H 00"
+        },
+        {
+          "code": "M200_F01",
+          "intitule": "M209",
+          "mhSynthese": "27 H 00",
+          "mhP": "80 H 00",
+          "mhTotal": "98 H 00"
+        }
+      ],
+      "totalMasseHoraire": "170 H 00"
+    },
+    {
+      "id": "17011",
+      "nom": "Bernard",
+      "prenom": "Alice",
+      "secteur": "Digital",
+      "modules": [
+        {
+          "code": "M207_F01",
+          "intitule": "M207",
+          "mhSynthese": "12 H 00",
+          "mhP": "78 H 00",
+          "mhTotal": "90 H 00"
+        },
+        {
+          "code": "M208_F01",
+          "intitule": "M208",
+          "mhSynthese": "20 H 00",
+          "mhP": "80 H 00",
+          "mhTotal": "100 H 00"
+        },
+        {
+          "code": "M209_F01",
+          "intitule": "M209",
+          "mhSynthese": "20 H 00",
+          "mhP": "8 H 00",
+          "mhTotal": "170 H 00"
+        }
+      ],
+      "totalMasseHoraire": "190 H 00"
+    },
+    {
+      "id": "17001",
+      "nom": "Martin",
+      "prenom": "Sophie",
+      "secteur": "Finance",
+      "modules": [
+        {
+          "code": "F301_F01",
+          "intitule": "F301",
+          "mhSynthese": "25 H 00",
+          "mhP": "50 H 00",
+          "mhTotal": "75 H 00"
+        },
+        {
+          "code": "M208_F01",
+          "intitule": "M208",
+          "mhSynthese": "20 H 00",
+          "mhP": "80 H 00",
+          "mhTotal": "100 H 00"
+        },
+        {
+          "code": "M209_F01",
+          "intitule": "M209",
+          "mhSynthese": "60 H 00",
+          "mhP": "47 H 00",
+          "mhTotal": "100 H 00"
+        }
+      ],
+      "totalMasseHoraire": "175 H 00"
+    },
+    {
+      "id": "17008",
+      "nom": "Durand",
+      "prenom": "Julien",
+      "secteur": "Finance",
+      "modules": [
+        {
+          "code": "F304_F01",
+          "intitule": "F304",
+          "mhSynthese": "15 H 00",
+          "mhP": "60 H 00",
+          "mhTotal": "75 H 00"
+        },
+        {
+          "code": "F305_F01",
+          "intitule": "F305",
+          "mhSynthese": "20 H 00",
+          "mhP": "80 H 00",
+          "mhTotal": "100 H 00"
+        },
+        {
+          "code": "F306_F01",
+          "intitule": "F306",
+          "mhSynthese": "20 H 00",
+          "mhP": "89 H 00",
+          "mhTotal": "100 H 00"
+        }
+      ],
+      "totalMasseHoraire": "175 H 00"
+    },
+    {
+      "id": "17012",
+      "nom": "Blanchard",
+      "prenom": "Paul",
+      "secteur": "Finance",
+      "modules": [
+        {
+          "code": "F306_F01",
+          "intitule": "F306",
+          "mhSynthese": "18 H 00",
+          "mhP": "72 H 00",
+          "mhTotal": "90 H 00"
+        },
+        {
+          "code": "F307_F01",
+          "intitule": "F307",
+          "mhSynthese": "25 H 00",
+          "mhP": "75 H 00",
+          "mhTotal": "100 H 00"
+        },
+        {
+          "code": "F308_F01",
+          "intitule": "F308",
+          "mhSynthese": "25 H 00",
+          "mhP": "75 H 00",
+          "mhTotal": "100 H 00"
+        }
+      ],
+      "totalMasseHoraire": "190 H 00"
+    },
+    {
+      "id": "17002",
+      "nom": "Lemoine",
+      "prenom": "Clara",
+      "secteur": "Marketing",
+      "modules": [
+        {
+          "code": "MKT401_F01",
+          "intitule": "MKT401",
+          "mhSynthese": "10 H 00",
+          "mhP": "60 H 00",
+          "mhTotal": "70 H 00"
+        },
+        {
+          "code": "MKT402_F01",
+          "intitule": "MKT402",
+          "mhSynthese": "15 H 00",
+          "mhP": "85 H 00",
+          "mhTotal": "100 H 00"
+        },
+        {
+          "code": "MKT406_F01",
+          "intitule": "MKT403",
+          "mhSynthese": "15 H 00",
+          "mhP": "85 H 00",
+          "mhTotal": "100 H 00"
+        }
+      ],
+      "totalMasseHoraire": "170 H 00"
+    },
+    {
+      "id": "17009",
+      "nom": "Blanc",
+      "prenom": "Sophie",
+      "secteur": "Marketing",
+      "modules": [
+        {
+          "code": "MKT404_F01",
+          "intitule": "MKT404",
+          "mhSynthese": "20 H 00",
+          "mhP": "60 H 00",
+          "mhTotal": "80 H 00"
+        },
+        {
+          "code": "MKT405_F01",
+          "intitule": "MKT405",
+          "mhSynthese": "15 H 00",
+          "mhP": "85 H 00",
+          "mhTotal": "100 H 00"
+        },
+        {
+          "code": "MKT405_F03",
+          "intitule": "MKT408",
+          "mhSynthese": "15 H 00",
+          "mhP": "85 H 00",
+          "mhTotal": "100 H 00"
+        }
+      ],
+      "totalMasseHoraire": "180 H 00"
+    },
+    {
+      "id": "17013",
+      "nom": "Masson",
+      "prenom": "Lucie",
+      "secteur": "Marketing",
+      "modules": [
+        {
+          "code": "MKT406_F01",
+          "intitule": "MKT406",
+          "mhSynthese": "18 H 00",
+          "mhP": "72 H 00",
+          "mhTotal": "90 H 00"
+        },
+        {
+          "code": "MKT407_F01",
+          "intitule": "MKT407",
+          "mhSynthese": "22 H 00",
+          "mhP": "78 H 00",
+          "mhTotal": "100 H 00"
+        },
+        {
+          "code": "MKT408_F01",
+          "intitule": "MKT408",
+          "mhSynthese": "22 H 00",
+          "mhP": "78 H 00",
+          "mhTotal": "100 H 00"
+        }
+      ],
+      "totalMasseHoraire": "190 H 00"
+    },
+    {
+      "id": "17003",
+      "nom": "Moreau",
+      "prenom": "Paul",
+      "secteur": "Agro-alimentaire",
+      "modules": [
+        {
+          "code": "AG501_F01",
+          "intitule": "AG501",
+          "mhSynthese": "30 H 00",
+          "mhP": "50 H 00",
+          "mhTotal": "80 H 00"
+        },
+        {
+          "code": "AG502_F01",
+          "intitule": "AG502",
+          "mhSynthese": "35 H 00",
+          "mhP": "65 H 00",
+          "mhTotal": "100 H 00"
+        },
+        {
+          "code": "AG504_F01",
+          "intitule": "AG505",
+          "mhSynthese": "35 H 00",
+          "mhP": "65 H 00",
+          "mhTotal": "100 H 00"
+        }
+      ],
+      "totalMasseHoraire": "180 H 00"
+    },
+    {
+      "id": "17010",
+      "nom": "Petit",
+      "prenom": "Alice",
+      "secteur": "Agro-alimentaire",
+      "modules": [
+        {
+          "code": "AG503_F01",
+          "intitule": "AG503",
+          "mhSynthese": "20 H 00",
+          "mhP": "60 H 00",
+          "mhTotal": "80 H 00"
+        },
+        {
+          "code": "AG504_F01",
+          "intitule": "AG504",
+          "mhSynthese": "25 H 00",
+          "mhP": "75 H 00",
+          "mhTotal": "100 H 00"
+        },
+        {
+          "code": "AG506_F01",
+          "intitule": "AG506",
+          "mhSynthese": "25 H 00",
+          "mhP": "75 H 00",
+          "mhTotal": "100 H 00"
+        }
+      ],
+      "totalMasseHoraire": "180 H 00"
     }
   ],
   "competences": [
-    {
-      "id": "1",
-      "code_competence": 1,
-      "code_module": "M101_F01",
-      "intitule_module": "M101",
-      "intitule_competence": [
-        "Analyse de données",
-        "Algorithmes de base"
-      ],
-      "cours": "https://fake-link.com/cours/M101",
-      "quiz": "https://fake-link.com/quiz/M101"
-    },
     {
       "id": "2",
       "code_competence": 2,
@@ -1066,6 +1603,1065 @@
       ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
       "id": "d1c7"
+    }
+  ],
+  "modules": [
+    {
+      "id": "2",
+      "code": "M102_F01",
+      "intitule": "M102",
+      "masseHoraire": 50,
+      "filiere": "Développement Logiciel",
+      "niveau": "1A",
+      "competences": "Programmation en C, Structures de données",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Sophie Bernard"
+    },
+    {
+      "id": "4",
+      "code": "M104_F01",
+      "intitule": "M104",
+      "masseHoraire": 70,
+      "filiere": "Base de Données",
+      "niveau": "1A",
+      "competences": "Bases de données SQL, Conception de schémas",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Michel Dubois"
+    },
+    {
+      "id": "4",
+      "code": "M104_F01",
+      "intitule": "M104",
+      "masseHoraire": 70,
+      "filiere": "Base de Données",
+      "niveau": "1A",
+      "competences": "Bases de données SQL, Conception de schémas",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Michel Dubois"
+    },
+    {
+      "id": "5",
+      "code": "M105_F01",
+      "intitule": "M105",
+      "masseHoraire": 90,
+      "filiere": "Développement Frontend",
+      "niveau": "1A",
+      "competences": "Programmation en JavaScript, DOM manipulation",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Clara Dupuis"
+    },
+    {
+      "id": "6",
+      "code": "M106_F01",
+      "intitule": "M106",
+      "masseHoraire": 100,
+      "filiere": "Développement Web",
+      "niveau": "1A",
+      "competences": "Introduction au web, HTML/CSS",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Nicolas Leroy"
+    },
+    {
+      "id": "7",
+      "code": "M107_F01",
+      "intitule": "M107",
+      "masseHoraire": 40,
+      "filiere": "Réseaux Informatiques",
+      "niveau": "1A",
+      "competences": "Réseaux de base, Modèle OSI",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Juliette Moreau"
+    },
+    {
+      "id": "8",
+      "code": "M108_F01",
+      "intitule": "M108",
+      "masseHoraire": 60,
+      "filiere": "Sécurité Informatique",
+      "niveau": "2A",
+      "competences": "Sécurité informatique, Cryptographie",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Vincent Lefevre"
+    },
+    {
+      "id": "9",
+      "code": "M109_F01",
+      "intitule": "M109",
+      "masseHoraire": 55,
+      "filiere": "Design UX/UI",
+      "niveau": "2A",
+      "competences": "Design UX/UI, Prototypage",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Emilie Martin"
+    },
+    {
+      "id": "10",
+      "code": "M110_F01",
+      "intitule": "M110",
+      "masseHoraire": 45,
+      "filiere": "Intelligence Artificielle",
+      "niveau": "2A",
+      "competences": "Introduction à l'intelligence artificielle",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Louis Petit"
+    },
+    {
+      "id": "11",
+      "code": "M111_F01",
+      "intitule": "M111",
+      "masseHoraire": 30,
+      "filiere": "Gestion de Projet",
+      "niveau": "2A",
+      "competences": "Gestion de projet, Méthodes agiles",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Claire Robert"
+    },
+    {
+      "id": "12",
+      "code": "M112_F01",
+      "intitule": "M112",
+      "masseHoraire": 65,
+      "filiere": "Systèmes Embarqués",
+      "niveau": "2A",
+      "competences": "Systèmes embarqués, Microcontrôleurs",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Hugo Durand"
+    },
+    {
+      "id": "13",
+      "code": "M113_F01",
+      "intitule": "M113",
+      "masseHoraire": 75,
+      "filiere": "Développement Python",
+      "niveau": "2A",
+      "competences": "Programmation en Python, Scripts automatiques",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Camille Lefevre"
+    },
+    {
+      "id": "14",
+      "code": "M114_F01",
+      "intitule": "M114",
+      "masseHoraire": 80,
+      "filiere": "Mathématiques Appliquées",
+      "niveau": "2A",
+      "competences": "Calculs avancés, Mathématiques appliquées",
+      "etat": "Non affecté",
+      "secteur": "",
+      "formateur": ""
+    },
+    {
+      "code": "M115_F01",
+      "intitule": "M115",
+      "masseHoraire": 95,
+      "filiere": "FINANCE",
+      "niveau": "1A",
+      "competences": "Architecture des ordinateurs, Organisation mémoire",
+      "secteur": "Finance",
+      "formateur": "Alex Martin",
+      "id": "15",
+      "etat": "Affecté"
+    },
+    {
+      "id": "16",
+      "code": "M115_F02",
+      "intitule": "M115",
+      "masseHoraire": 100,
+      "filiere": "Gestion Financière",
+      "niveau": "1A",
+      "competences": "Introduction à la gestion financière",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Marc Durand"
+    },
+    {
+      "id": "17",
+      "code": "M115_F03",
+      "intitule": "M115",
+      "masseHoraire": 90,
+      "filiere": "Analyse Financière",
+      "niveau": "1A",
+      "competences": "Analyse financière de base, Prévisions financières",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Claire Martin"
+    },
+    {
+      "id": "21",
+      "code": "M115_F07",
+      "intitule": "M115",
+      "masseHoraire": 105,
+      "filiere": "Investissement",
+      "niveau": "1A",
+      "competences": "Investissements immobiliers",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Luc Bernard"
+    },
+    {
+      "id": "22",
+      "code": "M115_F08",
+      "intitule": "M115",
+      "masseHoraire": 95,
+      "filiere": "Gestion de Trésorerie",
+      "niveau": "1A",
+      "competences": "Planification financière",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Nathalie Moreau"
+    },
+    {
+      "id": "23",
+      "code": "M115_F09",
+      "intitule": "M115",
+      "masseHoraire": 100,
+      "filiere": "Évaluation d'Entreprise",
+      "niveau": "2A",
+      "competences": "Évaluation des entreprises, Analyse des investissements",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Pierre Lefevre"
+    },
+    {
+      "id": "24",
+      "code": "M115_F10",
+      "intitule": "M115",
+      "masseHoraire": 90,
+      "filiere": "Finance Internationale",
+      "niveau": "1A",
+      "competences": "Financement international, Stratégies de diversification",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Sophie Petit"
+    },
+    {
+      "id": "27",
+      "code": "M115_F13",
+      "intitule": "M115",
+      "masseHoraire": 115,
+      "filiere": "Modélisation Financière",
+      "niveau": "1A",
+      "competences": "Modélisation financière avancée",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Thomas Leroy"
+    },
+    {
+      "id": "28",
+      "code": "M115_F14",
+      "intitule": "M115",
+      "masseHoraire": 120,
+      "filiere": "Analyse de Risques",
+      "niveau": "1A",
+      "competences": "Évaluation des actifs, Analyse quantitative des risques",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Julie Richard"
+    },
+    {
+      "id": "29",
+      "code": "M115_F15",
+      "intitule": "M115",
+      "masseHoraire": 130,
+      "filiere": "Stratégies de Financement",
+      "niveau": "2A",
+      "competences": "Gestion des fusions et acquisitions",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Gabriel Morel"
+    },
+    {
+      "id": "32",
+      "code": "M115_F18",
+      "intitule": "M115",
+      "masseHoraire": 115,
+      "filiere": "Analyse Financière Internationale",
+      "niveau": "2A",
+      "competences": "Analyse financière internationale, Marchés émergents",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Amélie Dupuis"
+    },
+    {
+      "id": "33",
+      "code": "M115_F19",
+      "intitule": "M115",
+      "masseHoraire": 120,
+      "filiere": "Gestion des Risques",
+      "niveau": "2A",
+      "competences": "Gestion des risques systémiques",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Olivier Durand"
+    },
+    {
+      "id": "34",
+      "code": "M115_F20",
+      "intitule": "M115",
+      "masseHoraire": 125,
+      "filiere": "Marchés Financiers",
+      "niveau": "2A",
+      "competences": "Analyse des marchés financiers",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Laura Martel"
+    },
+    {
+      "id": "36",
+      "code": "M117_F20",
+      "intitule": "M117",
+      "masseHoraire": 135,
+      "filiere": "Marketing Digital",
+      "niveau": "1A",
+      "competences": "Gest Comportement du consommateur",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Jean Dupont"
+    },
+    {
+      "id": "37",
+      "code": "M118_F20",
+      "intitule": "M118",
+      "masseHoraire": 140,
+      "filiere": "Marketing Stratégique",
+      "niveau": "1A",
+      "competences": "Marketing de contenu, SEO et SEM",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Jean Dupont"
+    },
+    {
+      "id": "38",
+      "code": "M119_F20",
+      "intitule": "M119",
+      "masseHoraire": 145,
+      "filiere": "Marketing de Produits",
+      "niveau": "1A",
+      "competences": "Publicité en ligne, Analyse des données marketing",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Jean Dupont"
+    },
+    {
+      "id": "39",
+      "code": "M120_F20",
+      "intitule": "M120",
+      "masseHoraire": 150,
+      "filiere": "Marketing International",
+      "niveau": "1A",
+      "competences": "Analyse des données marketing, Gestion de la marque",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Jean Dupont"
+    },
+    {
+      "id": "40",
+      "code": "M121_F20",
+      "intitule": "M121",
+      "masseHoraire": 155,
+      "filiere": "Marketing de Services",
+      "niveau": "1A",
+      "competences": "Analyse des données marketing, Gestion de la marque",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Jean Dupont"
+    },
+    {
+      "id": "41",
+      "code": "M122_F20",
+      "intitule": "M122",
+      "masseHoraire": 160,
+      "filiere": "Marketing de Produits",
+      "niveau": "1A",
+      "competences": "Analyse des marchés financiers, Stratégies de fidélisation",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Jean Dupont"
+    },
+    {
+      "id": "42",
+      "code": "M123_F20",
+      "intitule": "M123",
+      "masseHoraire": 165,
+      "filiere": "Marketing Digital",
+      "niveau": "1A",
+      "competences": "Branding, Gest Comportement du consommateur",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Jean Dupont"
+    },
+    {
+      "id": "43",
+      "code": "M124_F20",
+      "intitule": "M124",
+      "masseHoraire": 170,
+      "filiere": "Marketing International",
+      "niveau": "2A",
+      "competences": "SEO et SEM, Analyse des données marketing",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Jean Dupont"
+    },
+    {
+      "id": "44",
+      "code": "M125_F20",
+      "intitule": "M125",
+      "masseHoraire": 175,
+      "filiere": "Marketing Stratégique",
+      "niveau": "2A",
+      "competences": "Marketing relationnel, Stratégies de fidélisation",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Jean Dupont"
+    },
+    {
+      "id": "45",
+      "code": "M126_F20",
+      "intitule": "M126",
+      "masseHoraire": 180,
+      "filiere": "Marketing Digital",
+      "niveau": "2A",
+      "competences": "Analyse des marchés financier, Marketing relationnel",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Jean Dupont"
+    },
+    {
+      "id": "46",
+      "code": "M127_F20",
+      "intitule": "M127",
+      "masseHoraire": 185,
+      "filiere": "Marketing de Produits",
+      "niveau": "2A",
+      "competences": "Comportement du consommateur, Marketing de contenu",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Jean Dupont"
+    },
+    {
+      "id": "47",
+      "code": "M128_F20",
+      "intitule": "M128",
+      "masseHoraire": 190,
+      "filiere": "Marketing International",
+      "niveau": "2A",
+      "competences": "Publicité traditionnelle, Études de marché",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Jean Dupont"
+    },
+    {
+      "id": "48",
+      "code": "M129_F20",
+      "intitule": "M129",
+      "masseHoraire": 195,
+      "filiere": "Marketing de Services",
+      "niveau": "2A",
+      "competences": "Stratégies de fidélisation, Marketing d'influence",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Jean Dupont"
+    },
+    {
+      "id": "49",
+      "code": "M102_A10",
+      "intitule": "102",
+      "masseHoraire": "120",
+      "filiere": "Technologie des aliments",
+      "niveau": "1A",
+      "competences": "Gestion de la production alimentaire",
+      "secteur": "Agro-ali",
+      "formateur": "Emilie Martin",
+      "etat": "Affecté"
+    },
+    {
+      "id": "50",
+      "code": "M103_A11",
+      "intitule": "103",
+      "masseHoraire": "100",
+      "filiere": "Transformation alimentaire",
+      "niveau": "1A",
+      "competences": "Transformation des produits alimentaires",
+      "secteur": "Agro-ali",
+      "formateur": "Léa Dupont",
+      "etat": "Affecté"
+    },
+    {
+      "id": "51",
+      "code": "M104_A12",
+      "intitule": "104",
+      "masseHoraire": "110",
+      "filiere": "Gestion de la production alimentaire",
+      "niveau": "1A",
+      "competences": "Optimisation des processus, Contrôle de qualité",
+      "secteur": "Agro-ali",
+      "formateur": "Marc Robert",
+      "etat": "Affecté"
+    },
+    {
+      "id": "52",
+      "code": "M105_A13",
+      "intitule": "105",
+      "masseHoraire": "130",
+      "filiere": "Contrôle qualité alimentaire",
+      "niveau": "1A",
+      "competences": "Contrôle qualité, Sécurité alimentaire",
+      "secteur": "Agro-ali",
+      "formateur": "Sophie Dufresne",
+      "etat": "Affecté"
+    },
+    {
+      "id": "53",
+      "code": "M106_A14",
+      "intitule": "106",
+      "masseHoraire": "140",
+      "filiere": "Nutrition et diététique",
+      "niveau": "1A",
+      "competences": "Nutrition, Diététique, Équilibre alimentaire",
+      "secteur": "Agro-ali",
+      "formateur": "Chantal Durand",
+      "etat": "Affecté"
+    },
+    {
+      "id": "54",
+      "code": "M107_A15",
+      "intitule": "107",
+      "masseHoraire": "120",
+      "filiere": "Sécurité alimentaire",
+      "niveau": "1A",
+      "competences": "Réglementation sur la sécurité alimentaire",
+      "secteur": "Agro-ali",
+      "formateur": "Thomas Lefevre",
+      "etat": "Affecté"
+    },
+    {
+      "id": "55",
+      "code": "M108_A16",
+      "intitule": "108",
+      "masseHoraire": "110",
+      "filiere": "Agronomie et production agricole",
+      "niveau": "1A",
+      "competences": "Production agricole, Techniques agricoles",
+      "secteur": "Agro-ali",
+      "formateur": "Pierre Lefevre",
+      "etat": "Affecté"
+    },
+    {
+      "id": "56",
+      "code": "M109_A17",
+      "intitule": "109",
+      "masseHoraire": "115",
+      "filiere": "Logistique et chaîne du froid",
+      "niveau": "1A",
+      "competences": "Distribution des produits alimentaires",
+      "secteur": "Agro-ali",
+      "formateur": "Elise Moreau",
+      "etat": "Affecté"
+    },
+    {
+      "id": "57",
+      "code": "M110_A18",
+      "intitule": "110",
+      "masseHoraire": "125",
+      "filiere": "Marketing Agro-ali",
+      "niveau": "1A",
+      "competences": "Stratégies de marketing, Communication Agro-ali",
+      "secteur": "Agro-ali",
+      "formateur": "Jean-Paul Lemoine",
+      "etat": "Affecté"
+    },
+    {
+      "id": "58",
+      "code": "M111_A19",
+      "intitule": "111",
+      "masseHoraire": "135",
+      "filiere": "Biotechnologies alimentaires",
+      "niveau": "1A",
+      "competences": "Innovation dans l'Agro-ali",
+      "secteur": "Agro-ali",
+      "formateur": "Laurent Boucher",
+      "etat": "Affecté"
+    },
+    {
+      "id": "59",
+      "code": "M201_A20",
+      "intitule": "201",
+      "masseHoraire": "130",
+      "filiere": "Technologie des aliments",
+      "niveau": "2A",
+      "competences": "Techniques avancées de transformation",
+      "secteur": "Agro-ali",
+      "formateur": "Emilie Martin",
+      "etat": "Affecté"
+    },
+    {
+      "id": "60",
+      "code": "M202_A21",
+      "intitule": "202",
+      "masseHoraire": "120",
+      "filiere": "Transformation alimentaire",
+      "niveau": "2A",
+      "competences": "Procédés de transformation, Conservation des aliments",
+      "secteur": "Agro-ali",
+      "formateur": "Léa Dupont",
+      "etat": "Affecté"
+    },
+    {
+      "id": "61",
+      "code": "M203_A22",
+      "intitule": "203",
+      "masseHoraire": "115",
+      "filiere": "Gestion de la production alimentaire",
+      "niveau": "2A",
+      "competences": "Planification de la production, Gestion des ressources",
+      "secteur": "Agro-ali",
+      "formateur": "Marc Robert",
+      "etat": "Affecté"
+    },
+    {
+      "id": "62",
+      "code": "M204_A23",
+      "intitule": "204",
+      "masseHoraire": "125",
+      "filiere": "Contrôle qualité alimentaire",
+      "niveau": "2A",
+      "competences": "Normes HACCP, Sécurité alimentaire",
+      "secteur": "Agro-ali",
+      "formateur": "Sophie Dufresne",
+      "etat": "Affecté"
+    },
+    {
+      "id": "63",
+      "code": "M205_A24",
+      "intitule": "205",
+      "masseHoraire": "135",
+      "filiere": "Nutrition et diététique",
+      "niveau": "2A",
+      "competences": "Nutrition clinique, Régimes alimentaires",
+      "secteur": "Agro-ali",
+      "formateur": "Chantal Durand",
+      "etat": "Affecté"
+    },
+    {
+      "id": "64",
+      "code": "M206_A25",
+      "intitule": "206",
+      "masseHoraire": "140",
+      "filiere": "Sécurité alimentaire",
+      "niveau": "2A",
+      "competences": "Analyse des risques, Législation en sécurité alimentaire",
+      "secteur": "Agro-ali",
+      "formateur": "Thomas Lefevre",
+      "etat": "Affecté"
+    },
+    {
+      "id": "65",
+      "code": "M207_A26",
+      "intitule": "207",
+      "masseHoraire": "110",
+      "filiere": "Agronomie et production agricole",
+      "niveau": "2A",
+      "competences": "Agriculture durable,Techniques de culture avancées",
+      "secteur": "Agro-ali",
+      "formateur": "Pierre Lefevre",
+      "etat": "Affecté"
+    },
+    {
+      "id": "66",
+      "code": "M208_A27",
+      "intitule": "208",
+      "masseHoraire": "120",
+      "filiere": "Logistique et chaîne du froid",
+      "niveau": "2A",
+      "competences": "Gestion logistique avancée, Chaîne du froid internationale",
+      "secteur": "Agro-ali",
+      "formateur": "Elise Moreau",
+      "etat": "Affecté"
+    },
+    {
+      "id": "67",
+      "code": "M209_A28",
+      "intitule": "209",
+      "masseHoraire": "125",
+      "filiere": "Marketing Agro-ali",
+      "niveau": "2A",
+      "competences": "Stratégies de vente, Marketing de produits Agro-alis",
+      "secteur": "Agro-ali",
+      "formateur": "Jean-Paul Lemoine",
+      "etat": "Affecté"
+    },
+    {
+      "id": "68",
+      "code": "M210_A29",
+      "intitule": "210",
+      "masseHoraire": "130",
+      "filiere": "Biotechnologies alimentaires",
+      "niveau": "2A",
+      "competences": "Biotechnologie de la fermentation, Probiotiques",
+      "secteur": "Agro-ali",
+      "formateur": "Laurent Boucher",
+      "etat": "Affecté"
+    }
+  ],
+  "assignments": [
+    {
+      "id_séance": 1,
+      "title": "Math Class",
+      "formateur": "Mr. Smith",
+      "groupe": "DEV101",
+      "salle": "Room 101",
+      "day": "2024-11-15",
+      "startTime": "08:30",
+      "endTime": "13:30",
+      "durée": "30",
+      "id": "3bd4"
+    },
+    {
+      "id_séance": 100,
+      "title": "HHHH Class",
+      "formateur": "Mr. Smith",
+      "groupe": "DEV101",
+      "salle": "Room 101",
+      "day": "2024-11-16",
+      "startTime": "10:30",
+      "endTime": "12:30",
+      "durée": "30",
+      "id": "3bd4"
+    },
+    {
+      "id_séance": 3,
+      "title": "History Class",
+      "formateur": "Ms. Davis",
+      "groupe": "C3",
+      "salle": "Room 103",
+      "day": "2024-11-15",
+      "startTime": "09:30",
+      "endTime": "10:30",
+      "durée": "30",
+      "id": "b3b8"
+    },
+    {
+      "id_séance": 5,
+      "title": "Art Class",
+      "formateur": "Ms. Green",
+      "groupe": "FIN-1",
+      "salle": "Room 105",
+      "day": "2024-11-15",
+      "startTime": "10:30",
+      "endTime": "13:00",
+      "durée": "30",
+      "id": "5f92"
+    },
+    {
+      "id_séance": 7,
+      "title": "Physics Class",
+      "formateur": "Dr. Adams",
+      "groupe": "FIN-1",
+      "salle": "Room 107",
+      "day": "2024-11-16",
+      "startTime": "08:30",
+      "endTime": "11:00",
+      "durée": "30",
+      "id": "c564"
+    },
+    {
+      "id_séance": 9,
+      "title": "Geography Class",
+      "formateur": "Mr. Black",
+      "groupe": "D3",
+      "salle": "Room 109",
+      "day": "2024-11-16",
+      "startTime": "10:00",
+      "endTime": "10:30",
+      "durée": "30",
+      "id": "257b"
+    },
+    {
+      "id_séance": 11,
+      "title": "Biology Class",
+      "formateur": "Dr. Carter",
+      "groupe": "F1",
+      "salle": "Room 111",
+      "day": "2024-11-17",
+      "startTime": "08:30",
+      "endTime": "09:00",
+      "durée": "30",
+      "id": "348d"
+    },
+    {
+      "id_séance": 13,
+      "title": "Philosophy Class",
+      "formateur": "Mr. Harris",
+      "groupe": "H3",
+      "salle": "Room 113",
+      "day": "2024-11-17",
+      "startTime": "09:30",
+      "endTime": "10:00",
+      "durée": "30",
+      "id": "17f8"
+    },
+    {
+      "id_séance": 15,
+      "title": "Political Science",
+      "formateur": "Ms. Miller",
+      "groupe": "J5",
+      "salle": "Room 115",
+      "day": "2024-11-17",
+      "startTime": "10:30",
+      "endTime": "11:00",
+      "durée": "30",
+      "id": "c9b2"
+    },
+    {
+      "id_séance": 16,
+      "title": "French Class",
+      "formateur": "Mr. Wilson",
+      "groupe": "K1",
+      "salle": "Room 116",
+      "day": "2024-11-18",
+      "startTime": "08:30",
+      "endTime": "09:00",
+      "durée": "30",
+      "id": "fcc7"
+    },
+    {
+      "id_séance": 17,
+      "title": "German Class",
+      "formateur": "Ms. King",
+      "groupe": "L2",
+      "salle": "Room 117",
+      "day": "2024-11-18",
+      "startTime": "09:00",
+      "endTime": "09:30",
+      "durée": "30",
+      "id": "152e"
+    },
+    {
+      "id_séance": 18,
+      "title": "Spanish Class",
+      "formateur": "Mr. Brown",
+      "groupe": "M3",
+      "salle": "Room 118",
+      "day": "2024-11-18",
+      "startTime": "09:30",
+      "endTime": "10:00",
+      "durée": "30",
+      "id": "f8f7"
+    },
+    {
+      "id_séance": 19,
+      "title": "Computer Science",
+      "formateur": "Ms. Wright",
+      "groupe": "N4",
+      "salle": "Room 119",
+      "day": "2024-11-18",
+      "startTime": "10:00",
+      "endTime": "10:30",
+      "durée": "30",
+      "id": "3cfd"
+    },
+    {
+      "id_séance": 20,
+      "title": "Literature Class",
+      "formateur": "Mr. Harris",
+      "groupe": "O5",
+      "salle": "Room 120",
+      "day": "2024-11-18",
+      "startTime": "10:30",
+      "endTime": "11:00",
+      "durée": "30",
+      "id": "5c6b"
+    },
+    {
+      "id": "1731750401200",
+      "title": "nfgfgn",
+      "teacher": "",
+      "groupe": "N4",
+      "nbrAssignment": "",
+      "startTime": "14:30",
+      "endTime": "15:00",
+      "day": "2024-11-13"
+    }
+  ],
+  "documents": [
+    {
+      "id": "1",
+      "name": "Attestation de présence",
+      "status": "En cours",
+      "description": "Document confirmant votre présence aux cours",
+      "documentAttachment": [
+        "Carte d'identité",
+        "Lettre de demande de document"
+      ],
+      "processingTime": "2-3 jours"
+    },
+    {
+      "id": "2",
+      "name": "Attestation de scolarité",
+      "status": "Disponible",
+      "description": "Justifie que le stagiaire est inscrit dans une filière de formation",
+      "documentAttachment": [
+        "Carte d'identité",
+        "Lettre de demande de document"
+      ],
+      "processingTime": "1-2 jours"
+    },
+    {
+      "id": "3",
+      "name": "Relevé de notes",
+      "status": "En cours",
+      "description": "Résumé des notes obtenues durant les examens",
+      "documentAttachment": [
+        "Carte d'identité",
+        "Lettre de demande de document"
+      ],
+      "processingTime": "3-5 jours"
+    },
+    {
+      "id": "4",
+      "name": "Attestation de stage",
+      "status": "En attente",
+      "description": "Document confirmant la réalisation d'un stage pratique obligatoire",
+      "documentAttachment": [
+        "Carte d'identité",
+        "Convention de stage signée"
+      ],
+      "processingTime": "4-6 jours"
+    },
+    {
+      "id": "5",
+      "name": "Certificat d'inscription",
+      "status": "Disponible",
+      "description": "Utilisé pour prouver l'inscription à l'année en cours",
+      "documentAttachment": [
+        "Carte d'identité",
+        "Lettre de demande de document"
+      ],
+      "processingTime": "1-2 jours"
+    },
+    {
+      "id": "6",
+      "name": "Demande de transfert",
+      "status": "En cours",
+      "description": "Permet de demander un transfert vers un autre établissement de l'OFPPT",
+      "documentAttachment": [
+        "Carte d'identité",
+        "Lettre explicative",
+        "Justificatif (le cas échéant)"
+      ],
+      "processingTime": "5-7 jours"
+    },
+    {
+      "id": "7",
+      "name": "Déclaration de perte de carte d'étudiant",
+      "status": "En attente",
+      "description": "Permet de demander une nouvelle carte d'étudiant après une perte",
+      "documentAttachment": [
+        "Carte d'identité",
+        "Déclaration de perte (émise par les autorités)"
+      ],
+      "processingTime": "3-4 jours"
+    },
+    {
+      "id": "8",
+      "name": "Diplôme ou certificat de qualification",
+      "status": "En cours",
+      "description": "Document remis après la réussite de la formation",
+      "documentAttachment": [
+        "Carte d'identité",
+        "Lettre de demande de document",
+        "Relevé de notes final"
+      ],
+      "processingTime": "10-15 jours"
+    },
+    {
+      "id": "9",
+      "name": "Autorisation pour la participation à des concours ou activités externes",
+      "status": "Disponible",
+      "description": "Autorisation pour participer à des concours ou projets externes",
+      "documentAttachment": [
+        "Carte d'identité",
+        "Lettre explicative"
+      ],
+      "processingTime": "2-3 jours"
+    },
+    {
+      "id": "10",
+      "name": "Certificat médical",
+      "status": "En attente",
+      "description": "Certificat médical justifiant une absence prolongée",
+      "documentAttachment": [
+        "Carte d'identité",
+        "Rapport médical"
+      ],
+      "processingTime": "1-2 jours"
+    },
+    {
+      "id": "11",
+      "name": "Regelement intérieur",
+      "status": "En cours",
+      "description": "Document de réglement interne de l'OFPPT",
+      "documentAttachment": [],
+      "processingTime": "En temps",
+      "documentLink": "https://drive.google.com/file/d/1288Ix_xlp7KDQTCHuhHE5lYjy84HR2MV/view"
+    }
+  ],
+  "demandes": [
+    {
+      "id": "a08b",
+      "document": "Autorisation pour la participation à des concours ou activités externes",
+      "description": "Autorisation pour participer à des concours ou projets externes",
+      "requestDate": "2024-11-23",
+      "files": [
+        {
+          "name": "Contrôles.pdf",
+          "size": 222376,
+          "type": "application/pdf"
+        },
+        {
+          "name": "TP4.pdf",
+          "size": 103558,
+          "type": "application/pdf"
+        }
+      ],
+      "user": "Admin Admin",
+      "status": "effectuer",
+      "submissionDate": "11/21/2024",
+      "processingTime": "2-3 jours"
+    },
+    {
+      "id": "23c9",
+      "document": "Autorisation pour la participation à des concours ou activités externes",
+      "description": "Autorisation pour participer à des concours ou projets externes",
+      "requestDate": "2024-11-22",
+      "files": [
+        {
+          "name": "Contrôles.pdf",
+          "size": 222376,
+          "type": "application/pdf"
+        },
+        {
+          "name": "TP4.pdf",
+          "size": 103558,
+          "type": "application/pdf"
+        }
+      ],
+      "user": "Admin Admin",
+      "status": "en cours",
+      "submissionDate": "11/21/2024",
+      "processingTime": "2-3 jours"
     }
   ]
 }
