@@ -2739,7 +2739,7 @@
         }
       ],
       "user": "Admin Admin",
-      "status": "en cours",
+      "status": "rejeter",
       "submissionDate": "11/21/2024",
       "processingTime": "2-3 jours"
     },
@@ -2761,9 +2761,75 @@
         }
       ],
       "user": "Admin Admin",
-      "status": "en cours",
+      "status": "termin ",
       "submissionDate": "11/21/2024",
       "processingTime": "2-3 jours"
+    },
+    {
+      "id": "b868",
+      "document": "Certificat médical",
+      "description": "Certificat médical justifiant une absence prolongée",
+      "requestDate": "2024-11-29",
+      "files": [
+        {
+          "name": "Capture d'écran 2024-10-10 190144.png",
+          "size": 59597,
+          "type": "image/png"
+        },
+        {
+          "name": "Capture d'écran 2024-10-14 095955.png",
+          "size": 649415,
+          "type": "image/png"
+        }
+      ],
+      "user": "Admin Admin",
+      "status": "effectuer",
+      "submissionDate": "11/21/2024",
+      "processingTime": "1-2 jours"
+    },
+    {
+      "id": "e124",
+      "document": "Attestation de scolarité",
+      "description": "Justifie que le stagiaire est inscrit dans une filière de formation",
+      "requestDate": "2024-11-22",
+      "files": [
+        {
+          "name": "Capture d'écran 2024-10-10 190144.png",
+          "size": 59597,
+          "type": "image/png"
+        },
+        {
+          "name": "Capture d'écran 2024-10-14 095955.png",
+          "size": 649415,
+          "type": "image/png"
+        }
+      ],
+      "user": "Admin Admin",
+      "status": "en cours",
+      "submissionDate": "11/21/2024",
+      "processingTime": "1-2 jours"
+    },
+    {
+      "id": "d172",
+      "document": "Relevé de notes",
+      "description": "Résumé des notes obtenues durant les examens",
+      "requestDate": "2024-11-29",
+      "files": [
+        {
+          "name": "Capture d'écran 2024-10-10 190144.png",
+          "size": 59597,
+          "type": "image/png"
+        },
+        {
+          "name": "Capture d'écran 2024-10-14 095955.png",
+          "size": 649415,
+          "type": "image/png"
+        }
+      ],
+      "user": "Admin Admin",
+      "status": "en cours",
+      "submissionDate": "11/21/2024",
+      "processingTime": "3-5 jours"
     }
   ]
 }

@@ -1,30 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDocuments } from '../../features/documents/documentSlice';
+import { fetchDemandes, deleteDemande } from '../../features/documents/demandeSlice';
 import {
     CheckCircle,
     FileText,
     Upload,
     AlertCircle,
     Clock,
+    Trash,
     Calendar,
     Loader2,
     X,
+    Download,
 } from 'lucide-react';
 import axios from 'axios';
 
 const DocumentsPage = () => {
     const dispatch = useDispatch();
     const { documents, loading, error } = useSelector((state) => state.documents);
+    const { demandes } = useSelector((state) => state.demandes);
 
     const [selectedDocument, setSelectedDocument] = useState(null);
     const [requestDate, setRequestDate] = useState('');
     const [files, setFiles] = useState([]);
+    const [userData, setUserData] = useState(null);
     const [alerts, setAlerts] = useState({ success: false, error: null });
     const [dragActive, setDragActive] = useState(false);
+    const [filteredDemandes, setFilteredDemandes] = useState([]);
 
     useEffect(() => {
         dispatch(fetchDocuments());
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(fetchDemandes());
     }, [dispatch]);
 
     useEffect(() => {
@@ -84,7 +94,6 @@ const DocumentsPage = () => {
         }
     };
 
-    const [userData, setUserData] = useState(null);
     const userId =
         (localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).id) ||
         (sessionStorage.getItem('user') && JSON.parse(sessionStorage.getItem('user')).id) ||
@@ -146,6 +155,27 @@ const DocumentsPage = () => {
         }
     };
 
+    useEffect(() => {
+        if (userData && demandes) {
+            const filtered = demandes.filter((demande) => demande.user === userData?.name);
+            setFilteredDemandes(filtered);
+        }
+    }, [userData, demandes]);
+
+    const handleDelete = (demande) => {
+        dispatch(deleteDemande(demande.id));
+        const newDemandes = documents.filter((d) => d.id !== demande.id);
+        dispatch(fetchDocuments(newDemandes));
+    };
+
+    if (loading) {
+        return <div>Loading demandes...</div>;
+    }
+
+    if (error) {
+        return <div>Error fetching demandes: {error}</div>;
+    }
+
     const isFormValid = selectedDocument && requestDate && files.length > 0;
 
     if (loading) {
@@ -162,7 +192,7 @@ const DocumentsPage = () => {
                 <h1 className="text-4xl font-bold mb-2">Demande de Documents</h1>
                 <p className="text-gray -600 text-lg">Portail de demande de documents administratifs</p>
             </div>
-
+            <hr className='h-px bg-gray-200 border-0 my-4'/>
             {alerts.success && (
                 <div className="alert alert-success mb-6">
                     <CheckCircle className="w-5 h-5" />
@@ -188,9 +218,9 @@ const DocumentsPage = () => {
             <div className="grid md:grid-cols-5 gap-6">
                 {/* Document Selection */}
                 <div className="md:col-span-2">
-                    <div className="card bg-base-100 shadow-xl">
+                    <div className="card bg-base-100 shadow-xl border border-gray-400 rounded">
                         <div className="card-body">
-                            <h2 className="card-title flex items-center gap-2">
+                            <h2 className="card-title flex items-center gap-2 my-3">
                                 <FileText className="w-5 h-5" />
                                 Documents Disponibles
                             </h2>
@@ -202,7 +232,7 @@ const DocumentsPage = () => {
                                         className={`w-full text-left transition-all ${selectedDocument?.id === doc.id
                                             ? 'bg-primary/10 border-primary'
                                             : 'hover:bg-base-200 border-base-300'
-                                            } border rounded-lg p-3 focus:outline-none`}
+                                            } border border-gray-400 rounded-lg p-3 focus:outline-none`}
                                     >
                                         <div className="flex items-start gap-3">
                                             <FileText
@@ -227,7 +257,7 @@ const DocumentsPage = () => {
 
                 {/* Request Form */}
                 <div className="md:col-span-3">
-                    <div className="card bg-base-100 shadow-xl">
+                    <div className="card bg-base-100 shadow-xl border border-gray-400 rounded">
                         <div className="card-body">
                             {selectedDocument ? (
                                 selectedDocument.documentLink ? (
@@ -237,7 +267,8 @@ const DocumentsPage = () => {
                                         rel="noreferrer"
                                         className="btn btn-primary btn-block"
                                     >
-                                        Consulter le document
+                                        <Download className="w-5 h-5 mr-2" />
+                                        Telecharger
                                     </a>
                                 ) : (
                                     <form onSubmit={handleSubmit} className="space-y-6">
@@ -350,9 +381,57 @@ const DocumentsPage = () => {
                     </div>
                 </div>
             </div>
+            <hr className='my-4' />
+            <div>
+                <h1 className="text-2xl font-bold mb-4 text-center">Votre Demandes</h1>
+                {filteredDemandes.length === 0 ? (
+                    <p>Aucune demande trouvée.</p>
+                ) : (
+                    <div className="flex flex-wrap -mx-2">
+                        {filteredDemandes.map((demande) => (
+                            <div key={demande.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-2 mb-4">
+                                <div className="shadow-xl space-y-4 bg-transparent border border-gray-400 p-4 rounded h-full flex flex-col justify-between">
+                                    <div>
+                                        <h2 className="font-semibold">{demande.document}</h2>
+                                        <p className="text-sm text-gray-500 mt-3">Date: {demande.requestDate}</p>
+                                    </div>
+                                    <div className="flex justify-end mt-4">
+                                        <span
+                                            className={
+                                                `text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full
+                                                bg-${{
+                                                    'en cours': 'yellow',
+                                                    'effectuer': 'green',
+                                                    'rejeter': 'red',
+                                                }[demande.status]}-100 text-${{
+                                                    'en cours': 'yellow',
+                                                    'effectuer': 'green',
+                                                    'rejeter': 'red',
+                                                }[demande.status]}-800`
+                                            }
+                                            style={{ textTransform: 'capitalize' }}
+                                        >
+                                            {demande.status}
+                                        </span>
+                                        {demande.status !== 'effectuer' && demande.status !== 'rejeter' && (
+                                            <button
+                                                onClick={() => handleDelete(demande.id)}
+                                                className="hover:text-red-500"
+                                            >
+                                                <Trash className="w-4 h-4" />
+                                            </button>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
 
 export default DocumentsPage;
+
 
