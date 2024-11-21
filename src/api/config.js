@@ -18,6 +18,7 @@ const config = {
       absentStudents: '/absentStudents',
       courses: '/courses',
       documents: '/documents',
+      demandes: '/demandes',
       modules: '/modules',
     },
   },

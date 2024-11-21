@@ -13,6 +13,7 @@ import {
   documentsReducer,
   moduleReducer,
   GroupesSlice,
+  demandesReducer,
 } from '../features';
 
 const rootReducer = combineReducers({
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   profile: profileSlice,
   documents: documentsReducer,
   modules: moduleReducer,
+  demandes: demandesReducer,
 });
 
 const store = configureStore({

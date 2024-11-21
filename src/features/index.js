@@ -10,4 +10,5 @@ export { default as moduleReducer } from './modules/moduleSlice';
 export { default as profileSlice } from './userProfile/profileSlice';
 export { default as coursesReducer } from './courses/coursesSlice';
 export { default as documentsReducer } from './documents/documentSlice';
-export { default as GroupesSlice } from './Groupes/GroupesSlice'
+export { default as GroupesSlice } from './Groupes/GroupesSlice';
+export { default as demandesReducer } from './documents/demandeSlice';
