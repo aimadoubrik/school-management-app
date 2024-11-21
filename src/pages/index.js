@@ -16,3 +16,4 @@ export { default as CompetencesPage } from './Competences/CompetencesPage';
 export { default as ModulesPage } from './Modules/ModulesPage';
 export { default as Course } from './Courses/Course';
 export { default as GroupesPage } from './Groupes/GroupesPage';
+export { default as Formateur } from './formateur/formateur';

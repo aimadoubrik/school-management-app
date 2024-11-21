@@ -64,6 +64,14 @@ const menuItems = [
     count: 64,
   },
   {
+    label: 'Formateurs',
+    icon: 'UserRound',
+    href: '/formateur',
+    count: 4,
+  },
+
+  { type: 'divider' },
+  {
     label: 'Documents',
     icon: 'FileText',
     href: '/documents',
