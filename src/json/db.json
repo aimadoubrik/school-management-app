@@ -2417,7 +2417,7 @@
       "etat": "Affecté"
     }
   ],
-  "modules": [
+    "modules": [
     {
       "id": "2",
       "code": "M102_F01",
@@ -3305,6 +3305,175 @@
       "startTime": "14:30",
       "endTime": "15:00",
       "day": "2024-11-13"
+    }
+  ],
+  "documents": [
+    {
+      "id": 1,
+      "name": "Attestation de présence",
+      "status": "En cours",
+      "description": "Document confirmant votre présence aux cours",
+      "documentAttachment": [
+        "Carte d'identité",
+        "Lettre de demande de document"
+      ],
+      "processingTime": "2-3 jours"
+    },
+    {
+      "id": 2,
+      "name": "Attestation de scolarité",
+      "status": "Disponible",
+      "description": "Justifie que le stagiaire est inscrit dans une filière de formation",
+      "documentAttachment": [
+        "Carte d'identité",
+        "Lettre de demande de document"
+      ],
+      "processingTime": "1-2 jours"
+    },
+    {
+      "id": 3,
+      "name": "Relevé de notes",
+      "status": "En cours",
+      "description": "Résumé des notes obtenues durant les examens",
+      "documentAttachment": [
+        "Carte d'identité",
+        "Lettre de demande de document"
+      ],
+      "processingTime": "3-5 jours"
+    },
+    {
+      "id": 4,
+      "name": "Attestation de stage",
+      "status": "En attente",
+      "description": "Document confirmant la réalisation d'un stage pratique obligatoire",
+      "documentAttachment": [
+        "Carte d'identité",
+        "Convention de stage signée"
+      ],
+      "processingTime": "4-6 jours"
+    },
+    {
+      "id": 5,
+      "name": "Certificat d'inscription",
+      "status": "Disponible",
+      "description": "Utilisé pour prouver l'inscription à l'année en cours",
+      "documentAttachment": [
+        "Carte d'identité",
+        "Lettre de demande de document"
+      ],
+      "processingTime": "1-2 jours"
+    },
+    {
+      "id": 6,
+      "name": "Demande de transfert",
+      "status": "En cours",
+      "description": "Permet de demander un transfert vers un autre établissement de l'OFPPT",
+      "documentAttachment": [
+        "Carte d'identité",
+        "Lettre explicative",
+        "Justificatif (le cas échéant)"
+      ],
+      "processingTime": "5-7 jours"
+    },
+    {
+      "id": 7,
+      "name": "Déclaration de perte de carte d'étudiant",
+      "status": "En attente",
+      "description": "Permet de demander une nouvelle carte d'étudiant après une perte",
+      "documentAttachment": [
+        "Carte d'identité",
+        "Déclaration de perte (émise par les autorités)"
+      ],
+      "processingTime": "3-4 jours"
+    },
+    {
+      "id": 8,
+      "name": "Diplôme ou certificat de qualification",
+      "status": "En cours",
+      "description": "Document remis après la réussite de la formation",
+      "documentAttachment": [
+        "Carte d'identité",
+        "Lettre de demande de document",
+        "Relevé de notes final"
+      ],
+      "processingTime": "10-15 jours"
+    },
+    {
+      "id": 9,
+      "name": "Autorisation pour la participation à des concours ou activités externes",
+      "status": "Disponible",
+      "description": "Autorisation pour participer à des concours ou projets externes",
+      "documentAttachment": [
+        "Carte d'identité",
+        "Lettre explicative"
+      ],
+      "processingTime": "2-3 jours"
+    },
+    {
+      "id": 10,
+      "name": "Certificat médical",
+      "status": "En attente",
+      "description": "Certificat médical justifiant une absence prolongée",
+      "documentAttachment": [
+        "Carte d'identité",
+        "Rapport médical"
+      ],
+      "processingTime": "1-2 jours"
+    },
+    {
+      "id": 11,
+      "name": "Regelement intérieur",
+      "status": "En cours",
+      "description": "Document de réglement interne de l'OFPPT",
+      "documentAttachment": [],
+      "processingTime": "En temps",
+      "documentLink": "https://drive.google.com/file/d/1288Ix_xlp7KDQTCHuhHE5lYjy84HR2MV/view"
+    }
+  ],
+  "demandes": [
+    {
+      "id": "a08b",
+      "document": "Autorisation pour la participation à des concours ou activités externes",
+      "description": "Autorisation pour participer à des concours ou projets externes",
+      "requestDate": "2024-11-23",
+      "files": [
+        {
+          "name": "Contrôles.pdf",
+          "size": 222376,
+          "type": "application/pdf"
+        },
+        {
+          "name": "TP4.pdf",
+          "size": 103558,
+          "type": "application/pdf"
+        }
+      ],
+      "user": "Admin Admin",
+      "status": "en cours",
+      "submissionDate": "11/21/2024",
+      "processingTime": "2-3 jours"
+    },
+    {
+      "id": "23c9",
+      "document": "Autorisation pour la participation à des concours ou activités externes",
+      "description": "Autorisation pour participer à des concours ou projets externes",
+      "requestDate": "2024-11-22",
+      "files": [
+        {
+          "name": "Contrôles.pdf",
+          "size": 222376,
+          "type": "application/pdf"
+        },
+        {
+          "name": "TP4.pdf",
+          "size": 103558,
+          "type": "application/pdf"
+        }
+      ],
+      "user": "Admin Admin",
+      "status": "en cours",
+      "submissionDate": "11/21/2024",
+      "processingTime": "2-3 jours"
     }
   ]
 }

@@ -68,6 +68,11 @@ const menuItems = [
     icon: 'FileText',
     href: '/documents',
   },
+  {
+    label: 'Demandes',
+    icon: 'FileStack',
+    href: '/demandes',
+  },
   { type: 'divider' },
   {
     label: 'Settings',
