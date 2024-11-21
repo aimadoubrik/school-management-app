@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { Eye, Edit, Trash2, Users, AlertCircle } from 'lucide-react';
 import { DataTable } from '../../../components';
 
-
 const GroupesTable = ({ groups, sortConfig, onSort, onView, onEdit, onDelete }) => {
   const handleDelete = (group, e) => {
     e.stopPropagation();
@@ -16,7 +15,7 @@ const GroupesTable = ({ groups, sortConfig, onSort, onView, onEdit, onDelete }) 
       sortable: true,
       className: 'font-medium',
     },
-    
+
     {
       key: 'niveau',
       label: 'Niveau',
@@ -25,35 +24,38 @@ const GroupesTable = ({ groups, sortConfig, onSort, onView, onEdit, onDelete }) 
       render: (row) => <span className="badge badge-ghost badge-sm">{row.niveau}</span>,
     },
     {
-        key: 'intituleGroupe',
-        label: 'intitule Groupe',
-        sortable: true,
-        mobileTruncate: true,
-      },
-      {
-        key: 'filiere',
-        label: 'Filiere',
-        sortable: true,
-        mobileTruncate: true,
-      },
-      {
-        key: 'modules',
-        label: 'Modules',
-        render: (row) => (
-          <Link to={`/groups/modules/${row.codeGroupe}`} className="btn btn-ghost btn-xs gap-2">
-            {Array.isArray(row.groupes) ? row.modules.length : 5} modules
-          </Link>
-        ),
-      },
-      {
-        key: 'emploiDuTemps',
-        label: 'emploi Du Temps',
-        render: (row) => (
-          <Link to={`/groups/emplloiDuTemps/${row.codeGroupe}`} className="btn btn-ghost btn-xs gap-2">
-            Time Table
-          </Link>
-        ),
-      },
+      key: 'intituleGroupe',
+      label: 'intitule Groupe',
+      sortable: true,
+      mobileTruncate: true,
+    },
+    {
+      key: 'filiere',
+      label: 'Filiere',
+      sortable: true,
+      mobileTruncate: true,
+    },
+    {
+      key: 'modules',
+      label: 'Modules',
+      render: (row) => (
+        <Link to={`/groups/modules/${row.codeGroupe}`} className="btn btn-ghost btn-xs gap-2">
+          {Array.isArray(row.groupes) ? row.modules.length : 5} modules
+        </Link>
+      ),
+    },
+    {
+      key: 'emploiDuTemps',
+      label: 'emploi Du Temps',
+      render: (row) => (
+        <Link
+          to={`/groups/emplloiDuTemps/${row.codeGroupe}`}
+          className="btn btn-ghost btn-xs gap-2"
+        >
+          Time Table
+        </Link>
+      ),
+    },
     {
       key: 'liste',
       label: 'Liste',

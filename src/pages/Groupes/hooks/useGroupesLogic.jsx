@@ -1,4 +1,3 @@
-
 import { useState, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { addGroupe, editGroupe } from '../../../features/Groupes/GroupesSlice';
@@ -102,7 +101,15 @@ export const useGroupesLogic = (groups) => {
   };
 
   const exportGroupes = () => {
-    const headers = ['Code Groupe','Niveau', 'Intitule groupe', 'filiere', 'Modules', 'EmploiDuTemps', 'liste'];
+    const headers = [
+      'Code Groupe',
+      'Niveau',
+      'Intitule groupe',
+      'filiere',
+      'Modules',
+      'EmploiDuTemps',
+      'liste',
+    ];
     const rows = filteredAndSortedGroupes.map((group) => [
       group.codeGroupe,
       group.niveau,

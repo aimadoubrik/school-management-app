@@ -241,7 +241,6 @@ const UserProfilePage = () => {
       </div>
     </div>
   );
-
-}
+};
 
 export default UserProfilePage;

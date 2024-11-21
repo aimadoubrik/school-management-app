@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCompetences, deleteCompetence ,addCompetence,editCompetence} from '../../features/competences/competencesSlice';
+import {
+  fetchCompetences,
+  deleteCompetence,
+  addCompetence,
+  editCompetence,
+} from '../../features/competences/competencesSlice';
 import { Eye, Edit, Trash, Download, Plus, Search } from 'lucide-react';
 import { LoadingSpinner, ErrorAlert } from '../../components';
 import Papa from 'papaparse';
@@ -16,13 +21,13 @@ const CompetencesPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [competenceToDelete, setCompetenceToDelete] = useState(null);
-  
+
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFiliere, setSelectedFiliere] = useState('');
   const [selectedModule, setSelectedModule] = useState('');
   const [filieres, setFilieres] = useState([]);
   const [modules, setModules] = useState([]);
-  
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
   const totalPages = Math.ceil(competences.length / itemsPerPage);
@@ -52,11 +57,11 @@ const CompetencesPage = () => {
 
   const handleDeleteConfirm = async () => {
     try {
-      await dispatch(deleteCompetence(competenceToDelete.id)); 
+      await dispatch(deleteCompetence(competenceToDelete.id));
       setIsDeleteModalOpen(false);
       setCompetenceToDelete(null);
     } catch (error) {
-      console.error("Error deleting competence:", error.message);
+      console.error('Error deleting competence:', error.message);
     }
   };
 
@@ -76,22 +81,21 @@ const CompetencesPage = () => {
   };
 
   const handleEdit = (competence) => {
-    setSelectedCompetence(competence);  // Set the selected competence for editing
+    setSelectedCompetence(competence); // Set the selected competence for editing
     setViewMode(false);
     setIsModalOpen(true);
-};
+  };
 
-const handleView = (competence) => {
-    setSelectedCompetence(competence);  // Set the selected competence for viewing
+  const handleView = (competence) => {
+    setSelectedCompetence(competence); // Set the selected competence for viewing
     setViewMode(true);
     setIsModalOpen(true);
-};
+  };
 
-const handleCloseModal = () => {
-    setSelectedCompetence(null);  // Clear selected competence
-    setIsModalOpen(false);  // Close the modal
-};
-
+  const handleCloseModal = () => {
+    setSelectedCompetence(null); // Clear selected competence
+    setIsModalOpen(false); // Close the modal
+  };
 
   const handleCSVExport = () => {
     const csv = Papa.unparse(competences);
@@ -162,7 +166,9 @@ const handleCloseModal = () => {
           >
             <option value="">Select Filiere</option>
             {filieres.map((filiere, index) => (
-              <option key={index} value={filiere}>{filiere}</option>
+              <option key={index} value={filiere}>
+                {filiere}
+              </option>
             ))}
           </select>
         </div>
@@ -175,7 +181,9 @@ const handleCloseModal = () => {
           >
             <option value="">Select Module</option>
             {modules.map((module, index) => (
-              <option key={index} value={module}>{module}</option>
+              <option key={index} value={module}>
+                {module}
+              </option>
             ))}
           </select>
         </div>
@@ -238,7 +246,6 @@ const handleCloseModal = () => {
         onClose={handleCloseModal}
         onSave={handleSaveCompetence}
       />
-
 
       {/* Delete Confirmation Modal */}
       <ConfirmModal

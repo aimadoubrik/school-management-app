@@ -19,10 +19,10 @@ const ViewGroupes = ({ group, onClose, onDelete }) => {
       icon: <Building2 className="w-5 h-5" />,
     },
     {
-        key: 'emploiDuTemps',
-        label: 'emploi Du Temps',
-        icon: <Clock className="w-5 h-5" />,
-      },
+      key: 'emploiDuTemps',
+      label: 'emploi Du Temps',
+      icon: <Clock className="w-5 h-5" />,
+    },
     {
       key: 'modules',
       label: 'Modules',

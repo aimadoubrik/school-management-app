@@ -146,11 +146,11 @@ const RouteConfig = () => {
             </ProtectedRoute>
           }
         />
-         <Route
+        <Route
           path="/groups"
           element={
             <ProtectedRoute allowedRoles={['admin']}>
-              <GroupesPage/>
+              <GroupesPage />
             </ProtectedRoute>
           }
         />

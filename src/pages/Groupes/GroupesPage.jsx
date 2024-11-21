@@ -10,7 +10,7 @@ import { fetchGroupes } from '../../features/Groupes/GroupesSlice';
 
 const GroupesPage = () => {
   const dispatch = useDispatch();
-  const {groups, loading, error } = useSelector((state) => state.groups);
+  const { groups, loading, error } = useSelector((state) => state.groups);
   const {
     isModalOpen,
     isDeleteModalOpen,
