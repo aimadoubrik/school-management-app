@@ -20,6 +20,7 @@ const config = {
       documents: '/documents',
       demandes: '/demandes',
       modules: '/modules',
+      formateur: '/formateur',
     },
   },
 };
