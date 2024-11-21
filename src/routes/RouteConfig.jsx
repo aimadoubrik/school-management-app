@@ -162,7 +162,7 @@ const RouteConfig = () => {
             </ProtectedRoute>
           }
         />
-          <Route
+        <Route
           path="/formateur"
           element={
             <ProtectedRoute allowedRoles={['admin']}>
