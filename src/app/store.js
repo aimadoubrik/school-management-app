@@ -10,6 +10,7 @@ import {
   authReducer,
   competencesSlice,
   scheduleReducer,
+  stagiairesReducer
 } from '../features';
 
 const rootReducer = combineReducers({
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   competences: competencesSlice,
   auth: authReducer,
   schedule: scheduleReducer,
+  stagiaires: stagiairesReducer,
 });
 
 const store = configureStore({

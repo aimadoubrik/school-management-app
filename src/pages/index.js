@@ -13,3 +13,4 @@ export { default as UnauthorizedPage } from './Unauthorized/UnauthorizedPage';
 export { default as SchedulePage } from './Schedule/SchedulePage';
 export { default as TraineesPage } from './Trainees/TraineesPage';
 export { default as CompetencesPage } from './Competences/CompetencesPage';
+export { default as Stagiaire } from './Stagiaire/Stagiaire';

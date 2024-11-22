@@ -15,7 +15,9 @@ const config = {
       quizzes: '/quizzes',
       schedule: '/schedule',
       absentStudents: '/absentStudents',
-      courses: '/courses'
+      courses: '/courses',
+      stagiaires: '/stagiaires'
+
     },
   },
 };
