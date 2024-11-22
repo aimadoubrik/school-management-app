@@ -18,12 +18,7 @@ const ViewCompetence = ({ competence, closeModal }) => {
       key: 'filiere',
       label: 'Filière',
       icon: <Users className="w-5 h-5" />,
-    },
-    {
-      key: 'description',
-      label: 'Description',
-      render: (data) => data.description || 'Aucune description',
-    },
+    }
   ];
 
   return (

@@ -1,23 +1,26 @@
 import { useState, useEffect } from 'react';
-import { Code, BookOpen, Users, Save, Plus } from 'lucide-react';
+import { useSelector } from 'react-redux';
+import { Code, BookOpen, Users, Save, Plus, Building2 } from 'lucide-react';
 import PropTypes from 'prop-types';
 
 const AddCompetence = ({ selectedCompetence, onClose, onSave, isEditMode }) => {
-  // Initialize form data state with empty fields
+  const { competences } = useSelector((state) => state.competences);
+
+  // Extract unique filieres from competences
+  const filieres = [...new Set(competences.map((competence) => competence.filiere))];
+
   const [formData, setFormData] = useState({
     code_competence: '',
     intitule_competence: '',
     intitule_module: '',
+    filiere: '',
     cours: '',
     quiz: '',
   });
 
-  // Validation errors state
   const [errors, setErrors] = useState({});
-  // Submit state to handle disabling buttons during submission
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Effect to pre-fill form when editing
   useEffect(() => {
     if (selectedCompetence) {
       setFormData({
@@ -27,6 +30,7 @@ const AddCompetence = ({ selectedCompetence, onClose, onSave, isEditMode }) => {
           ? selectedCompetence.intitule_competence.join(', ')
           : selectedCompetence.intitule_competence || '',
         intitule_module: selectedCompetence.intitule_module || '',
+        filiere: selectedCompetence.filiere || '',
         cours: Array.isArray(selectedCompetence.cours)
           ? selectedCompetence.cours.join(', ')
           : selectedCompetence.cours || '',
@@ -37,14 +41,12 @@ const AddCompetence = ({ selectedCompetence, onClose, onSave, isEditMode }) => {
     }
   }, [selectedCompetence]);
 
-  // Handle form field changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
@@ -53,32 +55,19 @@ const AddCompetence = ({ selectedCompetence, onClose, onSave, isEditMode }) => {
     }
   };
 
-  // Form validation
   const validateForm = () => {
     const newErrors = {};
-
-    // Convert code_competence to string before trimming
-    const codeCompetence = String(formData.code_competence || ''); // Ensure it's a string
-    if (!codeCompetence.trim()) newErrors.code_competence = 'Code Competence is required';
-
-    const intituleCompetence = formData.intitule_competence || '';
-    if (!intituleCompetence.trim())
-      newErrors.intitule_competence = 'Intitulé Competence is required';
-
-    const intituleModule = formData.intitule_module || '';
-    if (!intituleModule.trim()) newErrors.intitule_module = 'Intitulé Module is required';
-
-    const cours = formData.cours || '';
-    if (!cours.trim()) newErrors.cours = 'Cours is required';
-
-    const quiz = formData.quiz || '';
-    if (!quiz.trim()) newErrors.quiz = 'Quiz is required';
+    if (!String(formData.code_competence).trim()) newErrors.code_competence = 'Code Competence is required';
+    if (!formData.intitule_competence.trim()) newErrors.intitule_competence = 'Intitulé Competence is required';
+    if (!formData.intitule_module.trim()) newErrors.intitule_module = 'Intitulé Module is required';
+    if (!formData.filiere.trim()) newErrors.filiere = 'Filière is required';
+    if (!formData.cours.trim()) newErrors.cours = 'Cours is required';
+    if (!formData.quiz.trim()) newErrors.quiz = 'Quiz is required';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm() || isSubmitting) return;
@@ -94,7 +83,7 @@ const AddCompetence = ({ selectedCompetence, onClose, onSave, isEditMode }) => {
         cours: formData.cours
           .split(',')
           .map((cour) => cour.trim())
-          .filter(Boolean), // Convert cours string to array
+          .filter(Boolean),
         quiz: formData.quiz
           .split(',')
           .map((quiz) => quiz.trim())
@@ -102,7 +91,6 @@ const AddCompetence = ({ selectedCompetence, onClose, onSave, isEditMode }) => {
       };
 
       if (isEditMode) {
-        // Add ID for editing
         competenceData.id = selectedCompetence.id;
       }
 
@@ -117,40 +105,6 @@ const AddCompetence = ({ selectedCompetence, onClose, onSave, isEditMode }) => {
     }
   };
 
-  // Form fields configuration (including icons and placeholders)
-  const formFields = [
-    {
-      id: 'code_competence',
-      label: 'Code Competence',
-      icon: <Code className="w-4 h-4" />,
-      placeholder: 'Enter the competence code',
-    },
-    {
-      id: 'intitule_competence',
-      label: 'Intitulé Competence',
-      icon: <BookOpen className="w-4 h-4" />,
-      placeholder: 'Enter the competence title',
-    },
-    {
-      id: 'intitule_module',
-      label: 'Intitulé Module',
-      icon: <BookOpen className="w-4 h-4" />,
-      placeholder: 'Enter the module title',
-    },
-    {
-      id: 'cours',
-      label: 'Cours',
-      icon: <Users className="w-4 h-4" />,
-      placeholder: 'Enter the courses (comma separated)',
-    },
-    {
-      id: 'quiz',
-      label: 'Quiz',
-      icon: <Users className="w-4 h-4" />,
-      placeholder: 'Enter the quizzes (comma separated)',
-    },
-  ];
-
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
@@ -159,49 +113,71 @@ const AddCompetence = ({ selectedCompetence, onClose, onSave, isEditMode }) => {
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        {formFields.map((field) => (
-          <div key={field.id} className="form-control">
+        {[
+          { label: 'Code Competence', icon: <Code />, name: 'code_competence' },
+          { label: 'Intitulé Competence', icon: <Users />, name: 'intitule_competence' },
+          { label: 'Intitulé Module', icon: <BookOpen />, name: 'intitule_module' },
+          { label: 'Cours', icon: <BookOpen />, name: 'cours' },
+          { label: 'Quiz', icon: <BookOpen />, name: 'quiz' },
+        ].map(({ label, icon, name }) => (
+          <div key={name} className="form-control">
             <label className="label">
               <span className="label-text flex items-center gap-2">
-                {field.icon}
-                {field.label}
+                {icon} {label}
               </span>
             </label>
             <input
               type="text"
-              name={field.id}
-              value={formData[field.id]}
+              name={name}
+              value={formData[name]}
               onChange={handleChange}
-              placeholder={field.placeholder}
-              className={`input input-bordered w-full ${errors[field.id] ? 'input-error' : ''}`}
+              placeholder={`Enter the ${label.toLowerCase()}`}
+              className={`input input-bordered w-full ${errors[name] ? 'input-error' : ''}`}
               disabled={isSubmitting}
             />
-            {errors[field.id] && (
+            {errors[name] && (
               <label className="label">
-                <span className="label-text-alt text-error">{errors[field.id]}</span>
+                <span className="label-text-alt text-error">{errors[name]}</span>
               </label>
             )}
           </div>
         ))}
 
-        {errors.submit && (
-          <div className="alert alert-error">
-            <span>{errors.submit}</span>
-          </div>
-        )}
+        {/* Filière Select */}
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text flex items-center gap-2">
+              <Building2 className="w-4 h-4" />
+              Filière
+            </span>
+          </label>
+          <select
+            name="filiere"
+            value={formData.filiere}
+            onChange={handleChange}
+            className={`input input-bordered w-full ${errors.filiere ? 'input-error' : ''}`}
+            disabled={isSubmitting}
+          >
+            <option value="">Select Filière</option>
+            {filieres.map((filiere, index) => (
+              <option key={index} value={filiere}>
+                {filiere}
+              </option>
+            ))}
+          </select>
+          {errors.filiere && (
+            <label className="label">
+              <span className="label-text-alt text-error">{errors.filiere}</span>
+            </label>
+          )}
+        </div>
 
-        <div className="modal-action">
+        <div className="flex justify-end gap-4">
           <button type="button" onClick={onClose} className="btn btn-ghost" disabled={isSubmitting}>
             Cancel
           </button>
-          <button
-            type="submit"
-            className={`btn btn-primary gap-2 ${isSubmitting ? 'loading' : ''}`}
-            disabled={isSubmitting}
-          >
-            {!isSubmitting &&
-              (isEditMode ? <Save className="w-4 h-4" /> : <Plus className="w-4 h-4" />)}
-            {isEditMode ? 'Update' : 'Add'}
+          <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+            {isSubmitting ? 'Saving...' : isEditMode ? 'Save Changes' : 'Add Competence'}
           </button>
         </div>
       </form>
@@ -214,12 +190,14 @@ AddCompetence.propTypes = {
   onClose: PropTypes.func.isRequired,
   selectedCompetence: PropTypes.shape({
     id: PropTypes.string,
-    code_competence: PropTypes.oneOfType([PropTypes.string, PropTypes.number]), // Allow both string or number
+    code_competence: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     intitule_competence: PropTypes.array,
     intitule_module: PropTypes.string,
+    filiere: PropTypes.string,
     cours: PropTypes.array,
     quiz: PropTypes.array,
   }),
+  isEditMode: PropTypes.bool.isRequired,
 };
 
 export default AddCompetence;
