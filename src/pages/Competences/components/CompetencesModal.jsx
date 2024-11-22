@@ -20,8 +20,6 @@ const CompetencesModal = ({ isOpen, mode, competence, onClose, onSave, onDelete 
   );
 };
 
-
-
 CompetencesModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   mode: PropTypes.oneOf(['view', 'edit', 'add']).isRequired,
@@ -30,6 +28,5 @@ CompetencesModal.propTypes = {
   onSave: PropTypes.func.isRequired,
   onDelete: PropTypes.func, // Rendre cette propriété facultative
 };
-
 
 export default CompetencesModal;

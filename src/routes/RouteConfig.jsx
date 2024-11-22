@@ -5,6 +5,7 @@ import ProtectedRoute from './ProtectedRoute';
 import DashboardLayout from '../layout/DashboardLayout';
 import LoginPage from '../features/auth/components/LoginForm';
 import SignupPage from '../features/auth/components/SignupForm';
+import DemandesPage from '../pages/Documents/DemandesPage';
 import {
   HomePage,
   NotFoundPage,
@@ -22,8 +23,9 @@ import {
   CompetencesPage,
   ModulesPage,
   Course,
+  GroupesPage,
+  Formateur,
 } from '../pages';
-Course;
 
 const RouteConfig = () => {
   return (
@@ -113,6 +115,14 @@ const RouteConfig = () => {
           }
         />
         <Route
+          path="/demandes"
+          element={
+            <ProtectedRoute allowedRoles={['trainer', 'admin']}>
+              <DemandesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/schedule"
           element={
             <ProtectedRoute>
@@ -137,10 +147,26 @@ const RouteConfig = () => {
           }
         />
         <Route
+          path="/groups"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <GroupesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/competences"
           element={
             <ProtectedRoute allowedRoles={['admin']}>
               <CompetencesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/formateur"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <Formateur />
             </ProtectedRoute>
           }
         />

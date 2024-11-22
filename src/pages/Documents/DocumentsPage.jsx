@@ -11,6 +11,7 @@ import {
   Loader2,
   X,
 } from 'lucide-react';
+import axios from 'axios';
 
 const DocumentsPage = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,6 @@ const DocumentsPage = () => {
   const [selectedDocument, setSelectedDocument] = useState(null);
   const [requestDate, setRequestDate] = useState('');
   const [files, setFiles] = useState([]);
-  const [requests, setRequests] = useState([]);
   const [alerts, setAlerts] = useState({ success: false, error: null });
   const [dragActive, setDragActive] = useState(false);
 
@@ -84,11 +84,32 @@ const DocumentsPage = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const [userData, setUserData] = useState(null);
+  const userId =
+    (localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).id) ||
+    (sessionStorage.getItem('user') && JSON.parse(sessionStorage.getItem('user')).id) ||
+    null;
+
+  useEffect(() => {
+    if (userId) {
+      const fetchUser = async () => {
+        try {
+          const response = await axios.get('http://localhost:3000/users');
+          const user = response.data.find((u) => u.id === userId);
+          setUserData(user);
+        } catch (error) {
+          console.error('Error fetching user data:', error);
+        }
+      };
+
+      fetchUser();
+    }
+  }, [userId]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newRequest = {
-      id: Date.now(),
       document: selectedDocument.name,
       description: selectedDocument.description,
       requestDate,
@@ -97,16 +118,32 @@ const DocumentsPage = () => {
         size: file.size,
         type: file.type,
       })),
+      user: userData?.name || 'Inconnu',
       status: 'en cours',
       submissionDate: new Date().toLocaleDateString(),
       processingTime: selectedDocument.processingTime,
     };
 
-    setRequests((prev) => [newRequest, ...prev]);
-    setAlerts({ success: true, error: null });
-    setSelectedDocument(null);
-    setFiles([]);
-    setRequestDate('');
+    try {
+      const response = await fetch('http://localhost:3000/demandes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newRequest),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit request');
+      }
+
+      setAlerts({ success: true, error: null });
+      setSelectedDocument(null);
+      setFiles([]);
+      setRequestDate('');
+    } catch (error) {
+      setAlerts((prev) => ({ ...prev, error: error.message }));
+    }
   };
 
   const isFormValid = selectedDocument && requestDate && files.length > 0;
@@ -123,7 +160,7 @@ const DocumentsPage = () => {
     <div className="container mx-auto p-4 max-w-6xl">
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold mb-2">Demande de Documents</h1>
-        <p className="text-gray-600 text-lg">Portail de demande de documents administratifs</p>
+        <p className="text-gray -600 text-lg">Portail de demande de documents administratifs</p>
       </div>
 
       {alerts.success && (
@@ -158,7 +195,7 @@ const DocumentsPage = () => {
                 Documents Disponibles
               </h2>
               <div className="space-y-3">
-                {documents.map((doc) => (
+                {(documents || []).map((doc) => (
                   <button
                     key={doc.id}
                     onClick={() => handleDocumentSelect(doc)}
@@ -194,9 +231,18 @@ const DocumentsPage = () => {
         <div className="md:col-span-3">
           <div className="card bg-base-100 shadow-xl">
             <div className="card-body">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {selectedDocument ? (
-                  <>
+              {selectedDocument ? (
+                selectedDocument.documentLink ? (
+                  <a
+                    href={selectedDocument.documentLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn-primary btn-block"
+                  >
+                    Consulter le document
+                  </a>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
                       <h2 className="text-xl font-semibold flex items-center gap-2">
                         <FileText className="w-5 h-5" />
@@ -207,7 +253,7 @@ const DocumentsPage = () => {
 
                     <div className="form-control">
                       <label className="label">
-                        <span className="label-text">Date souhaitée de réception</span>
+                        <span className="label-text">Date de demande</span>
                       </label>
                       <div className="relative">
                         <input
@@ -226,7 +272,7 @@ const DocumentsPage = () => {
                       <div>
                         <h3 className="font-medium">Documents requis :</h3>
                         <ul className="mt-2 space-y-1 ml-6 list-disc">
-                          {selectedDocument.documentattachment.map((doc, index) => (
+                          {selectedDocument.documentAttachment.map((doc, index) => (
                             <li key={index}>{doc}</li>
                           ))}
                         </ul>
@@ -294,69 +340,18 @@ const DocumentsPage = () => {
                       <Upload className="w-4 h-4 mr-2" />
                       Soumettre la demande
                     </button>
-                  </>
-                ) : (
-                  <div className="text-center py-12 text-base-content/60">
-                    <FileText className="w-12 h-12 mx-auto mb-3" />
-                    Veuillez sélectionner un document à gauche pour commencer
-                  </div>
-                )}
-              </form>
+                  </form>
+                )
+              ) : (
+                <div className="alert alert-info">
+                  <AlertCircle className="w-5 h-5" />
+                  <span>Veuillez choisir un document pour soumettre une demande.</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
-
-      {/* Requests List */}
-      {requests.length > 0 && (
-        <div className="mt-12">
-          <h2 className="text-2xl font-semibold mb-6">Mes demandes</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {requests.map((request) => (
-              <div key={request.id} className="card bg-base-100 shadow-xl">
-                <div className="card-body">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="font-semibold">{request.document}</h3>
-                      <p className="text-sm text-base-content/60 mt-1">{request.description}</p>
-                    </div>
-                    <div className="badge badge-primary">{request.status}</div>
-                  </div>
-
-                  <div className="divider"></div>
-
-                  <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div>
-                      <p className="text-base-content/60">Date de demande</p>
-                      <p className="font-medium">{request.submissionDate}</p>
-                    </div>
-                    <div>
-                      <p className="text-base-content/60">Date souhaitée</p>
-                      <p className="font-medium">{request.requestDate}</p>
-                    </div>
-                    <div className="col-span-2">
-                      <p className="text-base-content/60">Délai de traitement</p>
-                      <p className="font-medium">{request.processingTime}</p>
-                    </div>
-                  </div>
-
-                  <div className="mt-4">
-                    <h4 className="text-sm font-medium mb-2">Documents joints:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {request.files.map((file, index) => (
-                        <span key={index} className="badge badge-outline gap-1">
-                          <FileText className="w-3 h-3" />
-                          {file.name}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   );
 };

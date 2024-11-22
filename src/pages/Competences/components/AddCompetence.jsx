@@ -36,8 +36,6 @@ const AddCompetence = ({ selectedCompetence, onClose, onSave, isEditMode }) => {
       });
     }
   }, [selectedCompetence]);
-  
-  
 
   // Handle form field changes
   const handleChange = (e) => {
@@ -58,34 +56,33 @@ const AddCompetence = ({ selectedCompetence, onClose, onSave, isEditMode }) => {
   // Form validation
   const validateForm = () => {
     const newErrors = {};
-    
+
     // Convert code_competence to string before trimming
     const codeCompetence = String(formData.code_competence || ''); // Ensure it's a string
     if (!codeCompetence.trim()) newErrors.code_competence = 'Code Competence is required';
-  
+
     const intituleCompetence = formData.intitule_competence || '';
-    if (!intituleCompetence.trim()) newErrors.intitule_competence = 'Intitulé Competence is required';
-  
+    if (!intituleCompetence.trim())
+      newErrors.intitule_competence = 'Intitulé Competence is required';
+
     const intituleModule = formData.intitule_module || '';
     if (!intituleModule.trim()) newErrors.intitule_module = 'Intitulé Module is required';
-  
+
     const cours = formData.cours || '';
     if (!cours.trim()) newErrors.cours = 'Cours is required';
-  
+
     const quiz = formData.quiz || '';
     if (!quiz.trim()) newErrors.quiz = 'Quiz is required';
-  
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-  
-  
 
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm() || isSubmitting) return;
-  
+
     setIsSubmitting(true);
     try {
       const competenceData = {
@@ -103,12 +100,12 @@ const AddCompetence = ({ selectedCompetence, onClose, onSave, isEditMode }) => {
           .map((quiz) => quiz.trim())
           .filter(Boolean),
       };
-  
+
       if (isEditMode) {
         // Add ID for editing
         competenceData.id = selectedCompetence.id;
       }
-  
+
       await onSave(competenceData);
     } catch (error) {
       setErrors((prev) => ({
@@ -119,7 +116,7 @@ const AddCompetence = ({ selectedCompetence, onClose, onSave, isEditMode }) => {
       setIsSubmitting(false);
     }
   };
-  
+
   // Form fields configuration (including icons and placeholders)
   const formFields = [
     {
@@ -225,6 +222,4 @@ AddCompetence.propTypes = {
   }),
 };
 
-
 export default AddCompetence;
-

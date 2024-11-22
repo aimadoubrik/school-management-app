@@ -1,5 +1,3 @@
-'use client'
-
 import React, { useState, useEffect } from 'react'
 import FiltersFormateur from './FiltersFormateur'
 import { Save, X, Edit } from 'lucide-react'
@@ -36,7 +34,7 @@ export default function AttendanceFormateur() {
   useEffect(() => {
     const fetchSecteursData = async () => {
       try {
-        const response = await fetch('http://localhost:3000/secteurs')
+        const response = await fetch('http://localhost:4000/secteurs')
         const data = await response.json()
         setSecteursData(data)
       } catch (error) {
@@ -68,7 +66,7 @@ export default function AttendanceFormateur() {
 
   const fetchAbsentStudents = async () => {
     try {
-      const response = await fetch('http://localhost:3000/absentStudents', {
+      const response = await fetch('http://localhost:4000/absentStudents', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })
@@ -115,7 +113,10 @@ export default function AttendanceFormateur() {
 
   const saveSelectionsToAPI = async (absentStudents) => {
     try {
-      const response = await fetch('http://localhost:3000/absentStudents', {
+      // Format the month in letters
+      const monthInLetters = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(new Date(dateFilter));
+
+      const response = await fetch('http://localhost:4000/absentStudents', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -126,7 +127,7 @@ export default function AttendanceFormateur() {
           annee,
           groupe,
           date: dateFilter,
-          month: new Date(dateFilter).toISOString().slice(0, 7),
+          month: monthInLetters, // Use the formatted month in letters
           students: absentStudents.map((student) => ({
             studentId: student.id,
             studentCef: student.cef,
@@ -136,16 +137,17 @@ export default function AttendanceFormateur() {
             isAbsent: student.selected,
           })),
         }),
-      })
+      });
 
       if (!response.ok) {
-        throw new Error('Failed to save absent students')
+        throw new Error('Failed to save absent students');
       }
     } catch (error) {
-      console.error('Error saving absent students:', error)
-      setError('Failed to save absent students. Please try again.')
+      console.error('Error saving absent students:', error);
+      setError('Failed to save absent students. Please try again.');
     }
-  }
+  };
+
 
   const saveSelections = async () => {
     setIsSaving(true)
