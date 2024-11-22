@@ -2798,50 +2798,6 @@
   ],
   "demandes": [
     {
-      "id": "a08b",
-      "document": "Autorisation pour la participation à des concours ou activités externes",
-      "description": "Autorisation pour participer à des concours ou projets externes",
-      "requestDate": "2024-11-23",
-      "files": [
-        {
-          "name": "Contrôles.pdf",
-          "size": 222376,
-          "type": "application/pdf"
-        },
-        {
-          "name": "TP4.pdf",
-          "size": 103558,
-          "type": "application/pdf"
-        }
-      ],
-      "user": "Admin Admin",
-      "status": "rejeter",
-      "submissionDate": "11/21/2024",
-      "processingTime": "2-3 jours"
-    },
-    {
-      "id": "23c9",
-      "document": "Autorisation pour la participation à des concours ou activités externes",
-      "description": "Autorisation pour participer à des concours ou projets externes",
-      "requestDate": "2024-11-22",
-      "files": [
-        {
-          "name": "Contrôles.pdf",
-          "size": 222376,
-          "type": "application/pdf"
-        },
-        {
-          "name": "TP4.pdf",
-          "size": 103558,
-          "type": "application/pdf"
-        }
-      ],
-      "user": "Admin Admin",
-      "status": "termin ",
-      "submissionDate": "11/21/2024",
-      "processingTime": "2-3 jours"
-    },
-    {
       "id": "b868",
       "document": "Certificat médical",
       "description": "Certificat médical justifiant une absence prolongée",
