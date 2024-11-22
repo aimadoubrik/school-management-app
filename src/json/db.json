@@ -2410,23 +2410,14 @@
       "codeGroupe": "8",
       "niveau": "GR108",
       "intituleGroupe": "Groupe 8",
-      "filiere": "Multimédia et Design Graphique",
+      "filiere": "Multimédia et Design Graphique ",
       "modules": [
-        {
-          "nomModule": "Design UX/UI",
-          "professeur": "M. Redouane"
-        }
+        "[object Object]"
       ],
       "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe8.pdf",
       "liste": [
-        {
-          "nomEtudiant": "Fatima Zahra Habbachi",
-          "idEtudiant": "202315"
-        },
-        {
-          "nomEtudiant": "Kamal Ait Moussa",
-          "idEtudiant": "202316"
-        }
+        "[object Object]",
+        "[object Object]"
       ]
     }
   ],
