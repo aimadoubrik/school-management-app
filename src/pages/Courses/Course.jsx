@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchQuizzes } from "../../features/quizzes/quizzesSlice";
-import { Youtube, BookOpen, CheckCircle, FileText, Clock, Award, ChevronRight, Play } from "lucide-react";
+import { BookOpen, CheckCircle, FileText, Clock, Award, ChevronRight, Play } from "lucide-react";
 import QuizCard from "../Quizzes/QuizCard";
 
 const Course = () => {
@@ -55,32 +55,21 @@ const Course = () => {
   const handleStartQuiz = (quizId) => {
     navigate(`/quiz/${quizId}`);
   };
-
-  const handleViewCourseMaterials = () => {
-    if (course.pdfUrl) {
-      navigate("/view-pdf", { state: { pdfUrl: course.pdfUrl } });
-    }
-  };
-
   // Handle course completion
   const handleEndCourse = async () => {
     try {
-      // Update course status on the backend
       await axios.patch(`http://localhost:3000/courses/${courseId}`, {
         status: "completed"
       });
 
-      // Update local state
       setIsCourseEnded(true);
       
-      // Optionally, update the course state
       setCourse(prevCourse => ({
         ...prevCourse,
         status: "completed"
       }));
     } catch (error) {
       console.error("Error ending course:", error);
-      // Optionally, show an error message to the user
     }
   };
 
@@ -92,12 +81,12 @@ const Course = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8 px-4">
+    <div className="min-h-screen  from-blue-50 to-indigo-50 py-8 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">{course.courseName}</h1>
-          <div className="flex items-center space-x-4 text-gray-600">
+          <h1 className="text-4xl font-bold mb-2">{course.courseName}</h1>
+          <div className="flex items-center space-x-4 ">
             <span className="flex items-center">
               <Clock className="w-4 h-4 mr-2" />
               Status: {isCourseEnded ? "Completed" : "In Progress"}
@@ -118,7 +107,7 @@ const Course = () => {
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
             {/* Course Preview and Description */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className=" shadow-lg overflow-hidden ">
               <div className="relative aspect-video rounded-t-lg overflow-hidden">
                 <img
                   src={course.imageUrl}
@@ -141,28 +130,28 @@ const Course = () => {
             </div>
 
             {/* Course Content */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className=" rounded-lg shadow-lg overflow-hidden">
               <div className="border-b border-gray-200 p-6">
-                <h2 className="text-xl font-semibold text-gray-900">Course Content</h2>
+                <h2 className="text-xl font-semibold">Course Content</h2>
               </div>
               <div className="p-6">
                 <div className="space-y-4">
                   {course.contentOfCourse.map((content, index) => (
                     <div
                       key={content.contentId}
-                      className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                      className="p-4 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-white cursor-pointer rounded-lg transition-colors"
                     >
                       <div className="flex items-center">
-                        <span className="w-8 h-8 flex items-center justify-center bg-blue-100 text-blue-600 rounded-full mr-4">
+                        <span className="w-8 h-8 flex items-center justify-center rounded-full mr-4">
                           {index + 1}
                         </span>
                         <div>
-                          <h3 className="font-semibold text-gray-900">
+                          <h3 className="font-semibold ">
                             {content.contentName}
                           </h3>
-                          <p className="text-gray-600 mt-1">{content.contentDescription}</p>
+                          <p className=" mt-1">{content.contentDescription}</p>
                         </div>
-                        <ChevronRight className="w-5 h-5 text-gray-400 ml-auto" />
+                        <ChevronRight className="w-5 h-5  ml-auto" />
                       </div>
                     </div>
                   ))}
@@ -172,7 +161,7 @@ const Course = () => {
 
             {/* Quizzes Section - Only show when course is ended */}
             {isCourseEnded && courseQuizzes.length > 0 && (
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div className=" shadow-lg overflow-hidden">
                 <div className="border-b border-gray-200 p-6">
                   <h2 className="text-xl font-semibold text-gray-900">Course Quizzes</h2>
                 </div>
@@ -191,13 +180,13 @@ const Course = () => {
 
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="sticky top-8 bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="sticky top-8 shadow-lg rounded-lg border border-gray-200 overflow-hidden">
               <div className="p-6">
                 {isCourseEnded ? (
                   <div className="space-y-6">
-                    <div className="flex flex-col items-center p-6 bg-green-50 rounded-lg">
-                      <Award className="w-12 h-12 text-green-600 mb-2" />
-                      <h3 className="text-xl font-semibold text-green-600">Course Completed!</h3>
+                    <div className="flex flex-col items-center p-6 rounded-lg">
+                      <Award className="w-12 h-12  mb-2" />
+                      <h3 className="text-xl font-semibold">Course Completed!</h3>
                     </div>
                     {courseQuizzes.length > 0 && (
                       <button

@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Youtube, BookOpen, CheckCircle } from "lucide-react";
+import  { useEffect } from "react";
+import { BookOpen, CheckCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCourses } from "../../features/courses/coursesSlice";
@@ -11,7 +11,6 @@ const Courses = () => {
   const { courses, status, error } = useSelector((state) => state.courses);
   const { quizzes } = useSelector((state) => state.quizzes);
 
-  // Fetch courses and quizzes on initial load
   useEffect(() => {
     if (status === "idle") {
       dispatch(fetchCourses());
@@ -20,7 +19,6 @@ const Courses = () => {
   }, [status, dispatch]);
 
   const handleAction = (course) => {
-    // If course is completed, find and navigate to the corresponding quiz
     if (course.status === "completed") {
       const courseQuiz = quizzes.find(
         (quiz) => quiz.courseId === course.id || quiz.courseName === course.courseName
@@ -29,12 +27,10 @@ const Courses = () => {
       if (courseQuiz) {
         navigate(`/quiz/${courseQuiz.id}`);
       } else {
-        // Fallback navigation if no quiz is found
         navigate(`/courses/${course.id}`);
         console.warn(`No quiz found for course: ${course.courseName}`);
       }
     } else {
-      // If course is not completed, navigate to the course page
       navigate(`/courses/${course.id}`);
     }
   };
@@ -52,14 +48,14 @@ const Courses = () => {
   return (
     <div className="min-h-screen py-12">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-gray-900 mb-8">Your Courses</h2>
+        <h2 className="text-4xl font-bold space-y-2  mb-8">Your Courses</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {courses.length ? (
             courses.map((course) => (
               <div
                 key={course.id}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden transition-transform hover:scale-105"
+                className=" rounded-2xl shadow-lg border border-gray-300 overflow-hidden transition-transform hover:scale-105"
               >
                 <div className="relative group">
                   <img
@@ -71,11 +67,11 @@ const Courses = () => {
                 </div>
 
                 <div className="p-6 space-y-4">
-                  <h3 className="text-xl font-semibold text-gray-900">
+                  <h3 className="text-xl font-semibold">
                     {course.courseName}
                   </h3>
 
-                  <div className="flex items-center space-x-2 text-gray-600">
+                  <div className="flex items-center space-x-2 ">
                     <BookOpen className="w-4 h-4" />
                     <span>{course.teacherName}</span>
                   </div>
