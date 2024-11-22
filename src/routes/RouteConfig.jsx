@@ -3,8 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 import PublicRoute from './PublicRoute';
 import ProtectedRoute from './ProtectedRoute';
 import DashboardLayout from '../layout/DashboardLayout';
-import LoginPage from '../features/auth/components/LoginForm';
-import SignupPage from '../features/auth/components/SignupForm';
 import AuthPage from '../pages/Auth/AuthPage';
 import DemandesPage from '../pages/Documents/DemandesPage';
 import {
@@ -29,7 +27,8 @@ import {
   AllQuestions,
   QuizQuestions,
   TeacherQuizzes,
-  RoleBasedQuizRoute
+  RoleBasedQuizRoute,
+  SecteursPage,
 } from '../pages';
 
 const RouteConfig = () => {
@@ -208,8 +207,14 @@ const RouteConfig = () => {
           </ProtectedRoute>
         }
       />
-         
-      
+      <Route
+        path="/secteurs"
+        element={
+          <ProtectedRoute>
+            <SecteursPage />
+          </ProtectedRoute>
+        }
+      />
       </Route>
 
       {/* Error routes */}
