@@ -1,12 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCompetences, deleteCompetence ,addCompetence,editCompetence} from '../../features/competences/competencesSlice';
-import { Eye, Edit, Trash, Download, Plus, Search } from 'lucide-react';
+import {
+  fetchCompetences,
+  deleteCompetence,
+  addCompetence,
+  editCompetence,
+} from '../../features/competences/competencesSlice';
+import { Eye, Edit, Trash, Download, Plus, Search, Filter } from 'lucide-react';
 import { LoadingSpinner, ErrorAlert } from '../../components';
 import Papa from 'papaparse';
 import CompetenceTable from './components/CompetencesTable';
 import CompetencesModal from './components/CompetencesModal';
 import { ConfirmModal } from '../../components';
+import CompetenceHeader from './components/CompetenceHeader';
+import { SearchFilter } from '../../components';
+import Pagination from '../../components/shared/Pagination';
 
 const CompetencesPage = () => {
   const dispatch = useDispatch();
@@ -16,16 +24,13 @@ const CompetencesPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [competenceToDelete, setCompetenceToDelete] = useState(null);
-  
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFiliere, setSelectedFiliere] = useState('');
   const [selectedModule, setSelectedModule] = useState('');
   const [filieres, setFilieres] = useState([]);
   const [modules, setModules] = useState([]);
-  
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
-  const totalPages = Math.ceil(competences.length / itemsPerPage);
 
   useEffect(() => {
     dispatch(fetchCompetences());
@@ -52,46 +57,43 @@ const CompetencesPage = () => {
 
   const handleDeleteConfirm = async () => {
     try {
-      await dispatch(deleteCompetence(competenceToDelete.id)); 
+      await dispatch(deleteCompetence(competenceToDelete.id));
       setIsDeleteModalOpen(false);
       setCompetenceToDelete(null);
     } catch (error) {
-      console.error("Error deleting competence:", error.message);
+      console.error('Error deleting competence:', error.message);
     }
   };
 
   const handleSaveCompetence = async (competenceData) => {
     try {
       if (selectedCompetence) {
-        // Update existing competence
         await dispatch(editCompetence(competenceData));
       } else {
-        // Add new competence
         await dispatch(addCompetence(competenceData));
       }
-      setIsModalOpen(false); // Close the modal after saving
+      setIsModalOpen(false);
     } catch (error) {
       console.error('Error saving competence:', error);
     }
   };
 
   const handleEdit = (competence) => {
-    setSelectedCompetence(competence);  // Set the selected competence for editing
+    setSelectedCompetence(competence);
     setViewMode(false);
     setIsModalOpen(true);
-};
+  };
 
-const handleView = (competence) => {
-    setSelectedCompetence(competence);  // Set the selected competence for viewing
+  const handleView = (competence) => {
+    setSelectedCompetence(competence);
     setViewMode(true);
     setIsModalOpen(true);
-};
+  };
 
-const handleCloseModal = () => {
-    setSelectedCompetence(null);  // Clear selected competence
-    setIsModalOpen(false);  // Close the modal
-};
-
+  const handleCloseModal = () => {
+    setSelectedCompetence(null);
+    setIsModalOpen(false);
+  };
 
   const handleCSVExport = () => {
     const csv = Papa.unparse(competences);
@@ -104,22 +106,33 @@ const handleCloseModal = () => {
     URL.revokeObjectURL(url);
   };
 
-  const filteredCompetences = competences.filter((competence) => {
-    const matchesSearch = competence.intitule_competence.some((name) =>
-      name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    const matchesFiliere = selectedFiliere ? competence.filiere === selectedFiliere : true;
-    const matchesModule = selectedModule ? competence.intitule_module === selectedModule : true;
-    return matchesSearch && matchesFiliere && matchesModule;
+  const handleRefresh = () => {
+    dispatch(fetchCompetences());
+  };
+
+  // Filter competences based on search, filieres, and modules
+  const filteredCompetences = competences.filter(competence => {
+    const title = competence.intitule_competence || '';
+    const filiereMatch = selectedFiliere ? competence.filiere === selectedFiliere : true;
+    const moduleMatch = selectedModule ? competence.intitule_module === selectedModule : true;
+    const searchMatch = searchTerm
+      ? title.toLowerCase().includes(searchTerm.toLowerCase())
+      : true;
+
+    return searchMatch && filiereMatch && moduleMatch;
   });
 
+  const totalPages = Math.ceil(filteredCompetences.length / itemsPerPage);
   const displayedCompetences = filteredCompetences.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
-  const goToPreviousPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
-  const goToNextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  const modalMode = selectedCompetence
+    ? viewMode
+      ? 'view'
+      : 'edit'
+    : 'add';
 
   if (loading) {
     return (
@@ -138,66 +151,33 @@ const handleCloseModal = () => {
   }
 
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">Element de Competence</h1>
+    <div className="container mx-auto p-6 space-y-6">
+
+        <CompetenceHeader
+          onRefresh={handleRefresh}
+          onExport={handleCSVExport}
+          onAdd={() => setIsModalOpen(true)}
+        />
 
       {/* Search and Filters */}
-      <div className="flex items-center gap-4 mb-6">
-        <div className="relative w-1/4">
-          <Search className="absolute left-3 top-3 w-5 h-5 text-gray-500" />
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search competences..."
-            className="input input-bordered w-full pl-10"
-          />
-        </div>
-
-        <div className="w-1/4">
-          <select
-            value={selectedFiliere}
-            onChange={(e) => setSelectedFiliere(e.target.value)}
-            className="input input-bordered w-full"
-          >
-            <option value="">Select Filiere</option>
-            {filieres.map((filiere, index) => (
-              <option key={index} value={filiere}>{filiere}</option>
-            ))}
-          </select>
-        </div>
-
-        <div className="w-1/4">
-          <select
-            value={selectedModule}
-            onChange={(e) => setSelectedModule(e.target.value)}
-            className="input input-bordered w-full"
-          >
-            <option value="">Select Module</option>
-            {modules.map((module, index) => (
-              <option key={index} value={module}>{module}</option>
-            ))}
-          </select>
-        </div>
-      </div>
-
-      {/* Add Competence and CSV Export */}
-      <div className="flex justify-between items-center mb-6">
-        <button
-          onClick={() => {
-            setSelectedCompetence(null); // Assurez-vous que `selectedCompetence` est bien null
-            setViewMode(false); // Mode non-lecture
-            setIsModalOpen(true); // Ouvre la modale
-          }}
-          className="btn btn-primary gap-2"
-        >
-          <Plus className="w-5 h-5" /> Add Competence
-        </button>
-
-        <button onClick={handleCSVExport} className="btn btn-accent gap-2">
-          <Download className="w-5 h-5" /> Export CSV
-        </button>
-      </div>
+      <SearchFilter
+        searchTerm={searchTerm}
+        filters={[
+          { key: 'filiere', value: selectedFiliere, options: filieres, placeholder: 'Select Filiere' },
+          { key: 'module', value: selectedModule, options: modules, placeholder: 'Select Module' },
+        ]}
+        onSearchChange={setSearchTerm}
+        onFilterChange={(key, value) => {
+          if (key === 'filiere') {
+            setSelectedFiliere(value);
+            setSelectedModule('');
+          } else if (key === 'module') {
+            setSelectedModule(value);
+          }
+        }}
+        searchPlaceholder="Rechercher par code ou intitulé..."
+        icons={{ SearchIcon: Filter}}
+      />
 
       <hr />
 
@@ -209,36 +189,21 @@ const handleCloseModal = () => {
         onDelete={handleDeleteCompetence}
       />
 
-      {/* Pagination Controls */}
-      <div className="flex justify-between items-center mt-4">
-        <button
-          onClick={goToPreviousPage}
-          disabled={currentPage === 1}
-          className="btn btn-secondary"
-        >
-          Previous
-        </button>
-        <span>
-          Page {currentPage} of {totalPages}
-        </span>
-        <button
-          onClick={goToNextPage}
-          disabled={currentPage === totalPages}
-          className="btn btn-secondary"
-        >
-          Next
-        </button>
-      </div>
+      {/* Pagination Component */}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        setCurrentPage={setCurrentPage}
+      />
 
       {/* Competences Modal */}
       <CompetencesModal
         isOpen={isModalOpen}
-        mode={viewMode ? 'view' : selectedCompetence ? 'edit' : 'add'}
+        mode={modalMode}
         competence={selectedCompetence}
         onClose={handleCloseModal}
         onSave={handleSaveCompetence}
       />
-
 
       {/* Delete Confirmation Modal */}
       <ConfirmModal
@@ -256,3 +221,5 @@ const handleCloseModal = () => {
 };
 
 export default CompetencesPage;
+
+

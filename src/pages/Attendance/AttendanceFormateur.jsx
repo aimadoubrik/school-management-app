@@ -1,5 +1,8 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import FiltersFormateur from './FiltersFormateur';
+import { Save, X, Edit } from 'lucide-react';
 
 export default function AttendanceFormateur() {
   const [secteursData, setSecteursData] = useState([]);
@@ -15,6 +18,20 @@ export default function AttendanceFormateur() {
   const [error, setError] = useState(null);
   const [absentStudents, setAbsentStudents] = useState([]);
   const [isSaved, setIsSaved] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
+  const [checkboxDisabled, setCheckboxDisabled] = useState(false);
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = students.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(students.length / itemsPerPage);
+  const currentAbsentItems = absentStudents.slice(indexOfFirstItem, indexOfLastItem);
+  const totalAbsentPages = Math.ceil(absentStudents.length / itemsPerPage);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   useEffect(() => {
     const fetchSecteursData = async () => {
@@ -31,13 +48,10 @@ export default function AttendanceFormateur() {
 
   useEffect(() => {
     if (secteur && niveau && filiere && annee && groupe) {
-      const selectedSecteur = secteursData.find(
-        (s) => s.intitule_secteur === secteur
-      );
+      const selectedSecteur = secteursData.find((s) => s.intitule_secteur === secteur);
       if (selectedSecteur) {
-        const groupData =
-          selectedSecteur.niveaux[niveau]?.filiere[filiere]?.[annee]?.[groupe];
-        setStudents(groupData?.map(student => ({ ...student, selected: false })) || []);
+        const groupData = selectedSecteur.niveaux[niveau]?.filiere[filiere]?.[annee]?.[groupe];
+        setStudents(groupData?.map((student) => ({ ...student, selected: false })) || []);
       }
     } else {
       setStudents([]);
@@ -141,9 +155,14 @@ export default function AttendanceFormateur() {
         setIsSaving(false);
         return;
       }
+
       await saveSelectionsToAPI(absentStudents);
       setIsSaving(false);
       setIsSaved(true);
+
+      // Disable checkboxes but retain table data
+      setEditing(false);
+      setCheckboxDisabled(true);
     } catch {
       setError('Failed to save selections.');
       setIsSaving(false);
@@ -168,11 +187,11 @@ export default function AttendanceFormateur() {
         onDateChange={handleDateChange}
       />
 
-      <div className="overflow-x-auto bg-base-100 rounded-lg shadow-lg mb-6">
-        <table className="table w-full">
-          <thead>
+      <div className="overflow-x-auto rounded-lg shadow-md">
+        <table className="table table-zebra w-full text-center hover">
+          <thead className="bg-base-200">
             <tr>
-              {editing && <th>Action</th>}
+              <th className="font-bold">{editing ? 'Action' : ''}</th>
               <th>CEF</th>
               <th>Full Name</th>
               <th>Date de Naissance</th>
@@ -195,10 +214,6 @@ export default function AttendanceFormateur() {
                     record?.students?.length > 0 ? (
                       record?.students?.map((student) => (
                         <tr key={student.studentId}>
-                          <td>{student.studentCef}</td>
-                          <td>{student.studentName}</td>
-                          <td>{student.studentDateN}</td>
-                          <td>{student.studentCin}</td>
                           <td>
                             {student.isAbsent ? (
                               <span className="text-red-500">Absent</span>
@@ -206,6 +221,10 @@ export default function AttendanceFormateur() {
                               <span className="text-green-500">Present</span>
                             )}
                           </td>
+                          <td>{student.studentCef}</td>
+                          <td>{student.studentName}</td>
+                          <td>{student.studentDateN}</td>
+                          <td>{student.studentCin}</td>
                         </tr>
                       ))
                     ) : (
@@ -223,47 +242,83 @@ export default function AttendanceFormateur() {
                   </td>
                 </tr>
               )
-            ) : (
-              students.length > 0 ? (
-                students.map((student) => (
-                  <tr key={student.id}>
-                    {editing && (
-                      <td>
-                        <input
-                          type="checkbox"
-                          className="checkbox checkbox-primary"
-                          checked={student.selected}
-                          onChange={() => handleCheckboxChange(student.id)}
-                          disabled={!editing}
-                        />
-                      </td>
-                    )}
-                    <td>{student.cef}</td>
-                    <td>{student.fullname}</td>
-                    <td>{student.dateNaissance}</td>
-                    <td>{student.cin}</td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="5" className="text-center">
-                    No students available for this selection.
+            ) : students.length > 0 ? (
+              students.map((student) => (
+                <tr
+                  key={student.id}
+                  className={student.selected ? 'bg-red-500 text-white font-bold' : ''}
+                >
+                  <td>
+                    <input
+                      type="checkbox"
+                      className="checkbox checkbox-primary"
+                      checked={student.selected}
+                      onChange={() => handleCheckboxChange(student.id)}
+                      disabled={checkboxDisabled}
+                    />
                   </td>
+                  <td>{student.cef}</td>
+                  <td>{student.fullname}</td>
+                  <td>{student.dateNaissance}</td>
+                  <td>{student.cin}</td>
                 </tr>
-              )
+              ))
+            ) : (
+              <tr>
+                <td colSpan="5" className="text-center">
+                  No students available for this selection.
+                </td>
+              </tr>
             )}
           </tbody>
         </table>
       </div>
 
-      <div className="flex justify-center gap-4">
-        <button
-          className="btn btn-primary"
-          onClick={saveSelections}
-          disabled={isSaving || !editing}
-        >
-          {isSaving ? 'Saving...' : 'Save Absences'}
-        </button>
+      <div className="flex justify-center gap-4 mt-6">
+        <div className="btn-group">
+          {Array.from({ length: totalPages }, (_, i) => (
+            <button
+              key={i + 1}
+              className={`btn ${currentPage === i + 1 ? 'btn-active' : ''}`}
+              onClick={() => paginate(i + 1)}
+            >
+              {i + 1}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="space-x-2 flex flex-wrap gap-2 justify-end mt-4">
+        {editing ? (
+          <>
+            <button className="btn btn-primary" onClick={saveSelections} disabled={isSaving}>
+              <Save size={20} className="mr-2" />
+              {isSaving ? 'Saving...' : 'Save'}
+            </button>
+            <button
+              className="btn btn-secondary"
+              onClick={() => {
+                setEditing(false);
+                setStudents((prev) => prev.map((student) => ({ ...student, selected: false })));
+              }}
+              disabled={isSaving}
+            >
+              <X size={20} className="mr-2" />
+              Cancel
+            </button>
+          </>
+        ) : (
+          <button
+            className="btn btn-accent"
+            onClick={() => {
+              setEditing(true);
+              setCheckboxDisabled(false);
+            }}
+            disabled={isDateInPast(dateFilter)}
+          >
+            <Edit size={20} className="mr-2" />
+            Edit
+          </button>
+        )}
       </div>
 
       {error && <div className="text-red-500 mt-4">{error}</div>}

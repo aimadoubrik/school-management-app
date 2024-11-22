@@ -1,7 +1,8 @@
-'use client'
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import FiltersAdmin from './FiltersAdmin';
+import { Edit, Save, X } from 'lucide-react';
 
 export default function AttendanceAdmin() {
   const [data, setData] = useState([]);
@@ -16,7 +17,7 @@ export default function AttendanceAdmin() {
   const [prenom, setPrenom] = useState('');
   const [selectedMonth, setSelectedMonth] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(5);
+  const [itemsPerPage] = useState(7);
   const [isEditing, setIsEditing] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
   const [sanctions, setSanctions] = useState({});
@@ -44,13 +45,13 @@ export default function AttendanceAdmin() {
 
   const getAllStudents = (data) => {
     let allStudents = [];
-    
-    data.forEach(secteur => {
+
+    data.forEach((secteur) => {
       Object.entries(secteur.niveaux).forEach(([niveauKey, niveauValue]) => {
         Object.entries(niveauValue.filiere).forEach(([filiereKey, filiereValue]) => {
           Object.entries(filiereValue).forEach(([anneeKey, anneeValue]) => {
             Object.entries(anneeValue).forEach(([groupeKey, students]) => {
-              students.forEach(student => {
+              students.forEach((student) => {
                 allStudents.push({
                   ...student,
                   niveau: niveauKey,
@@ -61,7 +62,7 @@ export default function AttendanceAdmin() {
                   aj: 0,
                   anj: 0,
                   retards: 0,
-                  sanction: 'aucune'
+                  sanction: 'aucune',
                 });
               });
             });
@@ -73,16 +74,21 @@ export default function AttendanceAdmin() {
   };
 
   const filterStudents = () => {
-    const filtered = data.filter(student => 
-      (!niveau || student.niveau === niveau) &&
-      (!filiere || student.filiere === filiere) &&
-      (!annee || student.annee === annee) &&
-      (!groupe || student.groupe === groupe) &&
-      (!cin || student.cin.toLowerCase().includes(cin.toLowerCase())) &&
-      (!cef || student.cef.toLowerCase().includes(cef.toLowerCase())) &&
-      (!nom || student.nom.toLowerCase().includes(nom.toLowerCase())) &&
-      (!prenom || student.prenom.toLowerCase().includes(prenom.toLowerCase()))
-    );
+    const filtered = data.filter((student) => {
+      const fullname = student.fullname.toLowerCase();
+      const [studentNom, studentPrenom] = fullname.split(' ');
+
+      return (
+        (!niveau || student.niveau === niveau) &&
+        (!filiere || student.filiere === filiere) &&
+        (!annee || student.annee === annee) &&
+        (!groupe || student.groupe === groupe) &&
+        (!cin || student.cin.toLowerCase().includes(cin.toLowerCase())) &&
+        (!cef || student.cef.toLowerCase().includes(cef.toLowerCase())) &&
+        (!nom || studentNom.includes(nom.toLowerCase())) &&
+        (!prenom || studentPrenom.includes(prenom.toLowerCase()))
+      );
+    });
     setFilteredStudents(filtered);
     setCurrentPage(1);
   };
@@ -101,11 +107,11 @@ export default function AttendanceAdmin() {
 
   const handleInputChange = (studentId, field, value) => {
     setHasChanges(true);
-    const updatedStudents = filteredStudents.map(student => {
+    const updatedStudents = filteredStudents.map((student) => {
       if (student.cef === studentId) {
         const updatedStudent = { ...student, [field]: parseInt(value, 10) || 0 };
         const calculatedSanction = calculateSanction(updatedStudent.anj, updatedStudent.retards);
-        setSanctions(prev => ({ ...prev, [studentId]: calculatedSanction }));
+        setSanctions((prev) => ({ ...prev, [studentId]: calculatedSanction }));
         return updatedStudent;
       }
       return student;
@@ -115,38 +121,39 @@ export default function AttendanceAdmin() {
 
   const handleSanctionChange = (studentId, sanction) => {
     setHasChanges(true);
-    setSanctions(prev => ({ ...prev, [studentId]: sanction }));
+    setSanctions((prev) => ({ ...prev, [studentId]: sanction }));
   };
 
   const handleSave = () => {
-    const updatedStudents = filteredStudents.filter(student => {
+    const updatedStudents = filteredStudents.filter((student) => {
       const sanction = sanctions[student.cef] || student.sanction;
       if (sanction === 'exclusion definitive') {
-        // Remove student from the list
         return false;
       }
-      // Update student's data with the new sanction
       student.sanction = sanction;
       return true;
     });
     setFilteredStudents(updatedStudents);
-    setData(prevData => prevData.map(s => updatedStudents.find(us => us.cef === s.cef) || s));
+    setData((prevData) => prevData.map((s) => updatedStudents.find((us) => us.cef === s.cef) || s));
     setIsEditing(false);
     setHasChanges(false);
     setSanctions({});
   };
 
   const handleCancel = () => {
-    setFilteredStudents(data.filter(student => 
-      (!niveau || student.niveau === niveau) &&
-      (!filiere || student.filiere === filiere) &&
-      (!annee || student.annee === annee) &&
-      (!groupe || student.groupe === groupe) &&
-      (!cin || student.cin.toLowerCase().includes(cin.toLowerCase())) &&
-      (!cef || student.cef.toLowerCase().includes(cef.toLowerCase())) &&
-      (!nom || student.nom.toLowerCase().includes(nom.toLowerCase())) &&
-      (!prenom || student.prenom.toLowerCase().includes(prenom.toLowerCase()))
-    ));
+    setFilteredStudents(
+      data.filter(
+        (student) =>
+          (!niveau || student.niveau === niveau) &&
+          (!filiere || student.filiere === filiere) &&
+          (!annee || student.annee === annee) &&
+          (!groupe || student.groupe === groupe) &&
+          (!cin || student.cin.toLowerCase().includes(cin.toLowerCase())) &&
+          (!cef || student.cef.toLowerCase().includes(cef.toLowerCase())) &&
+          (!nom || student.fullname.toLowerCase().includes(nom.toLowerCase())) &&
+          (!prenom || student.fullname.toLowerCase().includes(prenom.toLowerCase()))
+      )
+    );
     setIsEditing(false);
     setHasChanges(false);
     setSanctions({});
@@ -156,7 +163,7 @@ export default function AttendanceAdmin() {
     setIsEditing(true);
   };
 
-  const renderAdminTableCells = (student) => (
+  const renderAdminTableCells = (student) =>
     selectedMonth ? (
       <>
         <td className="px-4 py-2">
@@ -193,7 +200,7 @@ export default function AttendanceAdmin() {
           />
         </td>
         <td className="px-4 py-2">
-          <select 
+          <select
             className="select select-bordered w-full"
             value={sanctions[student.cef] || student.sanction || 'aucune'}
             onChange={(e) => handleSanctionChange(student.cef, e.target.value)}
@@ -218,8 +225,7 @@ export default function AttendanceAdmin() {
         <td className="px-4 py-2">{student.totalRetards || 0}</td>
         <td className="px-4 py-2">{student.totalSanctions || 0}</td>
       </>
-    )
-  );
+    );
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -252,11 +258,11 @@ export default function AttendanceAdmin() {
         onMonthChange={setSelectedMonth}
       />
 
-      <div className="overflow-x-auto bg-white rounded-lg shadow-md">
+      <div className="overflow-x-auto rounded-lg shadow-md">
         {currentItems.length > 0 ? (
           <>
-            <table className="table w-full text-center">
-              <thead className="bg-gray-100">
+            <table className="table table-zebra w-full text-center hover">
+              <thead className="bg-base-200 font-bold">
                 <tr>
                   <th className="px-4 py-2">CEF</th>
                   <th className="px-4 py-2">Nom Complet</th>
@@ -266,38 +272,40 @@ export default function AttendanceAdmin() {
                   <th className="px-4 py-2">Année</th>
                   <th className="px-4 py-2">Groupe</th>
                   <th colSpan="4" className="px-4 py-2">
-                    {selectedMonth ? `Mois : ${selectedMonth}` : "État Total :"}
+                    {selectedMonth ? `Mois : ${selectedMonth}` : 'État Total :'}
                   </th>
                 </tr>
                 <tr>
                   <th colSpan="7"></th>
                   {selectedMonth ? (
                     <>
-                      <th className="px-4 py-2 bg-accent">Nombre AJ</th>
-                      <th className="px-4 py-2 bg-secondary">Nombre ANJ</th>
-                      <th className="px-4 py-2 bg-accent">Nombre Retards</th>
-                      <th className="px-4 py-2 bg-secondary">Sanctions</th>
+                      <th className="px-4 py-2 bg-base-300">Nombre AJ</th>
+                      <th className="px-4 py-2 bg-base-300">Nombre ANJ</th>
+                      <th className="px-4 py-2 bg-base-300">Nombre Retards</th>
+                      <th className="px-4 py-2 bg-base-300">Sanctions</th>
                     </>
                   ) : (
                     <>
-                      <th className="px-4 py-2 bg-accent">Total AJ</th>
-                      <th className="px-4 py-2 bg-secondary">Total ANJ</th>
-                      <th className="px-4 py-2 bg-accent">Total Retards</th>
-                      <th className="px-4 py-2 bg-secondary">Total Sanctions</th>
+                      <th className="px-4 py-2 bg-base-300">Total AJ</th>
+                      <th className="px-4 py-2 bg-base-300">Total ANJ</th>
+                      <th className="px-4 py-2 bg-base-300">Total Retards</th>
+                      <th className="px-4 py-2 bg-base-300">Total Sanctions</th>
                     </>
                   )}
                 </tr>
               </thead>
               <tbody>
                 {currentItems.map((student, index) => (
-                  <tr 
-                    key={student.cef} 
-                    className={`${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-gray-100 ${
-                      sanctions[student.cef] && sanctions[student.cef] !== student.sanction ? 'bg-red-100 hover:bg-red-200' : ''
+                  <tr
+                    key={student.cef}
+                    className={`${
+                      sanctions[student.cef] && sanctions[student.cef] !== student.sanction
+                        ? 'bg-red-200 hover:bg-red-200'
+                        : ''
                     }`}
                   >
                     <td className="px-4 py-2">{student.cef}</td>
-                    <td className="px-4 py-2">{`${student.nom} ${student.prenom}`}</td>
+                    <td className="px-4 py-2">{`${student.fullname}`}</td>
                     <td className="px-4 py-2">{student.secteur}</td>
                     <td className="px-4 py-2">{student.niveau}</td>
                     <td className="px-4 py-2">{student.filiere}</td>
@@ -321,25 +329,28 @@ export default function AttendanceAdmin() {
                 ))}
               </div>
               <div className="space-x-2 flex flex-wrap gap-2 justify-end">
-                <button 
-                  className="btn btn-primary" 
-                  onClick={handleEdit} 
+                <button
+                  className="btn btn-primary"
+                  onClick={handleEdit}
                   disabled={!selectedMonth || isEditing}
                 >
+                  <Edit size={20} className="mr-2" />
                   Modifier
                 </button>
-                <button 
-                  className="btn btn-success" 
-                  onClick={handleSave} 
+                <button
+                  className="btn btn-success"
+                  onClick={handleSave}
                   disabled={!selectedMonth || !isEditing || !hasChanges}
                 >
+                  <Save size={20} className="mr-2" />
                   Enregistrer
                 </button>
-                <button 
-                  className="btn btn-error" 
-                  onClick={handleCancel} 
+                <button
+                  className="btn btn-error"
+                  onClick={handleCancel}
                   disabled={!selectedMonth || !isEditing}
                 >
+                  <X size={20} className="mr-2" />
                   Annuler
                 </button>
               </div>

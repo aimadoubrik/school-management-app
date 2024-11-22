@@ -52,20 +52,26 @@ const useSidebarCloseHandlers = (sidebarRef, context) => {
   const location = useLocation();
   const { isSidebarOpen, setIsSidebarOpen, isMobile } = context;
 
-  const handleClickOutside = useCallback((event) => {
-    const isToggleButton = event.target.closest('[data-sidebar-toggle]');
-    const isInsideSidebar = sidebarRef.current?.contains(event.target);
+  const handleClickOutside = useCallback(
+    (event) => {
+      const isToggleButton = event.target.closest('[data-sidebar-toggle]');
+      const isInsideSidebar = sidebarRef.current?.contains(event.target);
 
-    if (!isToggleButton && !isInsideSidebar) {
-      setIsSidebarOpen(false);
-    }
-  }, [setIsSidebarOpen]);
+      if (!isToggleButton && !isInsideSidebar) {
+        setIsSidebarOpen(false);
+      }
+    },
+    [setIsSidebarOpen]
+  );
 
-  const handleEscKey = useCallback((event) => {
-    if (event.key === 'Escape') {
-      setIsSidebarOpen(false);
-    }
-  }, [setIsSidebarOpen]);
+  const handleEscKey = useCallback(
+    (event) => {
+      if (event.key === 'Escape') {
+        setIsSidebarOpen(false);
+      }
+    },
+    [setIsSidebarOpen]
+  );
 
   // Handle click outside and ESC key
   useEffect(() => {
@@ -190,11 +196,7 @@ const Sidebar = memo(() => {
         onKeyDown={handleKeyDown}
       >
         <div className="h-full flex flex-col">
-          <SidebarContent
-            menuItems={menuItems}
-            location={location}
-            userData={userData}
-          />
+          <SidebarContent menuItems={menuItems} location={location} userData={userData} />
         </div>
       </aside>
     </>

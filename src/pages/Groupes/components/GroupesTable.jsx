@@ -1,60 +1,69 @@
 import { Link } from 'react-router-dom';
-import { Eye, Edit, Trash2, Code, BookOpen, AlertCircle } from 'lucide-react';
+import { Eye, Edit, Trash2, Users, AlertCircle } from 'lucide-react';
 import { DataTable } from '../../../components';
 
-const CompetencesTable = ({ competences, sortConfig, onSort, onView, onEdit, onDelete }) => {
-  const handleDelete = (competence, e) => {
+const GroupesTable = ({ groups, sortConfig, onSort, onView, onEdit, onDelete }) => {
+  const handleDelete = (group, e) => {
     e.stopPropagation();
-    onDelete(competence);
+    onDelete(group);
   };
 
   const columns = [
     {
-      key: 'code_competence',
-      label: 'Code',
+      key: 'codeGroupe',
+      label: 'code Groupe',
       sortable: true,
       className: 'font-medium',
     },
+
     {
-      key: 'intitule_competence',
-      label: 'Intitulé',
+      key: 'niveau',
+      label: 'Niveau',
       sortable: true,
-      render: (row) =>
-        Array.isArray(row.intitule_competence)
-          ? row.intitule_competence.join(', ')
-          : row.intitule_competence,
+      mobileSecondary: true,
+      render: (row) => <span className="badge badge-ghost badge-sm">{row.niveau}</span>,
     },
     {
-      key: 'intitule_module',
-      label: 'Module',
+      key: 'intituleGroupe',
+      label: 'intitule Groupe',
       sortable: true,
       mobileTruncate: true,
     },
     {
       key: 'filiere',
-      label: 'Filière',
+      label: 'Filiere',
       sortable: true,
-      render: (row) => <span className="badge badge-ghost badge-sm">{row.filiere}</span>,
+      mobileTruncate: true,
     },
     {
-      key: 'cours',
-      label: 'Cours',
-      render: (row) =>
-        Array.isArray(row.cours) ? (
-          <span className="badge badge-ghost badge-sm">{row.cours.length} cours</span>
-        ) : (
-          '0 cours'
-        ),
+      key: 'modules',
+      label: 'Modules',
+      render: (row) => (
+        <Link to={`/groups/modules/${row.codeGroupe}`} className="btn btn-ghost btn-xs gap-2">
+          {Array.isArray(row.groupes) ? row.modules.length : 5} modules
+        </Link>
+      ),
     },
     {
-      key: 'quiz',
-      label: 'Quiz',
-      render: (row) =>
-        Array.isArray(row.quiz) ? (
-          <span className="badge badge-ghost badge-sm">{row.quiz.length} quiz</span>
-        ) : (
-          '0 quiz'
-        ),
+      key: 'emploiDuTemps',
+      label: 'emploi Du Temps',
+      render: (row) => (
+        <Link
+          to={`/groups/emplloiDuTemps/${row.codeGroupe}`}
+          className="btn btn-ghost btn-xs gap-2"
+        >
+          Time Table
+        </Link>
+      ),
+    },
+    {
+      key: 'liste',
+      label: 'Liste',
+      render: (row) => (
+        <Link to={`/groups/liste/${row.codeGroupe}`} className="btn btn-ghost btn-xs gap-2">
+          {Array.isArray(row.liste) ? row.liste.length : 1} liste
+        </Link>
+      ),
     },
     {
       key: 'actions',
@@ -108,17 +117,17 @@ const CompetencesTable = ({ competences, sortConfig, onSort, onView, onEdit, onD
 
   return (
     <DataTable
-      data={competences}
+      data={groups}
       columns={columns}
       sortConfig={sortConfig}
       onSort={onSort}
       emptyStateProps={{
         icon: AlertCircle,
-        title: 'Aucune compétence trouvée',
-        description: 'Commencez par ajouter une nouvelle compétence',
+        title: 'Aucune groupe trouvée',
+        description: 'Commencez par ajouter un nouvelle groupe',
       }}
     />
   );
 };
 
-export default CompetencesTable;
+export default GroupesTable;

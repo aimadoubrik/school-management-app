@@ -106,127 +106,128 @@ const recordLoginAttempt = (email) => {
 };
 
 // Thunks
-export const login = createAsyncThunk(
-  'auth/login',
-  async (credentials, { rejectWithValue }) => {
-    try {
-      const emailError = validateEmail(credentials.email);
-      if (emailError) {
-        throw new Error(emailError);
-      }
-
-      if (!credentials.password) {
-        throw new Error('Password is required');
-      }
-
-      if (isLockedOut(credentials.email)) {
-        const remainingTime = Math.ceil((LOCKOUT_DURATION - (Date.now() - getStorageItem(`${STORAGE_KEYS.LOGIN_ATTEMPTS}-${credentials.email}`).timestamp)) / 60000);
-        throw new Error(`Account temporarily locked. Please try again in ${remainingTime} minutes.`);
-      }
-
-      const users = await apiService.get(`/users?email=${encodeURIComponent(credentials.email)}`);
-      const user = users[0];
-      console.log(user);
-
-      if (!user) {
-        // Use a generic error message to prevent user enumeration
-        throw new Error('Invalid email or password');
-      }
-
-      if (user.password !== credentials.password) {
-        const attempts = recordLoginAttempt(credentials.email);
-        const remainingAttempts = MAX_LOGIN_ATTEMPTS - attempts;
-
-        if (remainingAttempts > 0) {
-          throw new Error(`Invalid email or password. ${remainingAttempts} attempts remaining.`);
-        } else {
-          throw new Error('Account temporarily locked. Please try again later.');
-        }
-      }
-
-      // Generate tokens (in real app these would come from the server)
-      const token = `dummy-token-${Date.now()}-${Math.random().toString(36).substring(7)}`;
-      const refreshToken = `dummy-refresh-token-${Date.now()}-${Math.random().toString(36).substring(7)}`;
-
-      const storage = credentials.rememberMe ? localStorage : sessionStorage;
-      const userData = {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        role: user.role,
-        photo: user.photo,
-      };
-
-      setStorageItem(STORAGE_KEYS.TOKEN, token, storage);
-      setStorageItem(STORAGE_KEYS.REFRESH_TOKEN, refreshToken, storage);
-      setStorageItem(STORAGE_KEYS.USER, userData, storage);
-
-      return {
-        token,
-        refreshToken,
-        user: userData,
-      };
-    } catch (error) {
-      return rejectWithValue(error.message || 'Login failed');
+export const login = createAsyncThunk('auth/login', async (credentials, { rejectWithValue }) => {
+  try {
+    const emailError = validateEmail(credentials.email);
+    if (emailError) {
+      throw new Error(emailError);
     }
-  }
-);
 
-export const signup = createAsyncThunk(
-  'auth/signup',
-  async (userData, { rejectWithValue }) => {
-    try {
-      const emailError = validateEmail(userData.email);
-      if (emailError) {
-        throw new Error(emailError);
-      }
-
-      const passwordErrors = validatePassword(userData.password);
-      if (passwordErrors.length > 0) {
-        throw new Error(passwordErrors.join('. '));
-      }
-
-      // Check if user exists
-      const existingUsers = await apiService.get(`/users?email=${encodeURIComponent(userData.email)}`);
-      if (existingUsers.length > 0) {
-        throw new Error('Email already registered');
-      }
-
-      // Create new user
-      const newUser = {
-        ...userData,
-        createdAt: new Date().toISOString(),
-        status: 'active',
-      };
-
-      const response = await apiService.post('/users', newUser);
-
-      // Generate tokens
-      const token = `dummy-token-${Date.now()}-${Math.random().toString(36).substring(7)}`;
-      const refreshToken = `dummy-refresh-token-${Date.now()}-${Math.random().toString(36).substring(7)}`;
-
-      const userDataToStore = {
-        id: response.id,
-        name: response.name,
-        email: response.email,
-        role: response.role,
-        photo: response.photo,
-      };
-
-      setStorageItem(STORAGE_KEYS.TOKEN, token);
-      setStorageItem(STORAGE_KEYS.REFRESH_TOKEN, refreshToken);
-      setStorageItem(STORAGE_KEYS.USER, userDataToStore);
-
-      return {
-        token,
-        refreshToken,
-        user: userDataToStore,
-      };
-    } catch (error) {
-      return rejectWithValue(error.message || 'Signup failed');
+    if (!credentials.password) {
+      throw new Error('Password is required');
     }
+
+    if (isLockedOut(credentials.email)) {
+      const remainingTime = Math.ceil(
+        (LOCKOUT_DURATION -
+          (Date.now() -
+            getStorageItem(`${STORAGE_KEYS.LOGIN_ATTEMPTS}-${credentials.email}`).timestamp)) /
+          60000
+      );
+      throw new Error(`Account temporarily locked. Please try again in ${remainingTime} minutes.`);
+    }
+
+    const users = await apiService.get(`/users?email=${encodeURIComponent(credentials.email)}`);
+    const user = users[0];
+    console.log(user);
+
+    if (!user) {
+      // Use a generic error message to prevent user enumeration
+      throw new Error('Invalid email or password');
+    }
+
+    if (user.password !== credentials.password) {
+      const attempts = recordLoginAttempt(credentials.email);
+      const remainingAttempts = MAX_LOGIN_ATTEMPTS - attempts;
+
+      if (remainingAttempts > 0) {
+        throw new Error(`Invalid email or password. ${remainingAttempts} attempts remaining.`);
+      } else {
+        throw new Error('Account temporarily locked. Please try again later.');
+      }
+    }
+
+    // Generate tokens (in real app these would come from the server)
+    const token = `dummy-token-${Date.now()}-${Math.random().toString(36).substring(7)}`;
+    const refreshToken = `dummy-refresh-token-${Date.now()}-${Math.random().toString(36).substring(7)}`;
+
+    const storage = credentials.rememberMe ? localStorage : sessionStorage;
+    const userData = {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      photo: user.photo,
+    };
+
+    setStorageItem(STORAGE_KEYS.TOKEN, token, storage);
+    setStorageItem(STORAGE_KEYS.REFRESH_TOKEN, refreshToken, storage);
+    setStorageItem(STORAGE_KEYS.USER, userData, storage);
+
+    return {
+      token,
+      refreshToken,
+      user: userData,
+    };
+  } catch (error) {
+    return rejectWithValue(error.message || 'Login failed');
   }
-);
+});
+
+export const signup = createAsyncThunk('auth/signup', async (userData, { rejectWithValue }) => {
+  try {
+    const emailError = validateEmail(userData.email);
+    if (emailError) {
+      throw new Error(emailError);
+    }
+
+    const passwordErrors = validatePassword(userData.password);
+    if (passwordErrors.length > 0) {
+      throw new Error(passwordErrors.join('. '));
+    }
+
+    // Check if user exists
+    const existingUsers = await apiService.get(
+      `/users?email=${encodeURIComponent(userData.email)}`
+    );
+    if (existingUsers.length > 0) {
+      throw new Error('Email already registered');
+    }
+
+    // Create new user
+    const newUser = {
+      ...userData,
+      createdAt: new Date().toISOString(),
+      status: 'active',
+    };
+
+    const response = await apiService.post('/users', newUser);
+
+    // Generate tokens
+    const token = `dummy-token-${Date.now()}-${Math.random().toString(36).substring(7)}`;
+    const refreshToken = `dummy-refresh-token-${Date.now()}-${Math.random().toString(36).substring(7)}`;
+
+    const userDataToStore = {
+      id: response.id,
+      name: response.name,
+      email: response.email,
+      role: response.role,
+      photo: response.photo,
+    };
+
+    setStorageItem(STORAGE_KEYS.TOKEN, token);
+    setStorageItem(STORAGE_KEYS.REFRESH_TOKEN, refreshToken);
+    setStorageItem(STORAGE_KEYS.USER, userDataToStore);
+
+    return {
+      token,
+      refreshToken,
+      user: userDataToStore,
+    };
+  } catch (error) {
+    return rejectWithValue(error.message || 'Signup failed');
+  }
+});
 
 // Initial state
 const initialState = {

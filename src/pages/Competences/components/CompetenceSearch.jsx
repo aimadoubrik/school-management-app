@@ -1,7 +1,7 @@
 import { SearchFilter } from '../../../components';
 import { Search, Filter } from 'lucide-react';
 
-const FilieresSearch = ({ searchTerm, filters, onSearchChange, onFilterChange }) => (
+const CompetenceSearch = ({ searchTerm, filters, onSearchChange, onFilterChange }) => (
   <SearchFilter
     searchTerm={searchTerm}
     filters={filters}
@@ -12,4 +12,4 @@ const FilieresSearch = ({ searchTerm, filters, onSearchChange, onFilterChange })
   />
 );
 
-export default FilieresSearch;
+export default CompetenceSearch;

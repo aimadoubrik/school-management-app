@@ -72,9 +72,9 @@ const UserProfilePage = () => {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-32 pb-12">
         {notification && (
-          <div className="toast toast-end">
+          <div className="fixed top-24 right-4 transition-opacity duration-300 transform -translate-x-1/2 z-50">
             <div
-              className={`alert ${notification.type === 'error' ? 'alert-error' : 'alert-success'} shadow-lg`}
+              className={`alert alert-sm ${notification.type === 'error' ? 'alert-error' : 'alert-success'} shadow-lg`}
             >
               <span>{notification.message}</span>
             </div>

@@ -27,8 +27,8 @@ const Quiz = () => {
 
   // Reset quiz state when ID or retries change
   useEffect(() => {
-    if (quizData && quizData.questions) {
-      setTimeLeft(quizData.questions.length * 30); // Set time based on number of questions (30 sec per question)
+    if (quizData && quizData.questionsSelected) {
+      setTimeLeft(quizData.questionsSelected.length * 30); // Set time based on number of questions (30 sec per question)
       setCurrentQuestionIndex(0);
       setSelectedAnswers([]);
       setQuizFinished(false);
@@ -47,7 +47,7 @@ const Quiz = () => {
 
   // Calculate score based on answers
   const calculateScore = () =>
-    quizData?.questions.reduce(
+    quizData?.questionsSelected.reduce(
       (score, question, index) =>
         score + (selectedAnswers[index] === question.correctAnswer ? 1 : 0),
       0
@@ -55,10 +55,10 @@ const Quiz = () => {
 
   // Finish quiz logic
   const finishQuiz = () => {
-    if (!quizData || !quizData.questions) return; // Safeguard: Ensure quizData and questions exist
+    if (!quizData || !quizData.questionsSelected) return; // Safeguard: Ensure quizData and questions exist
     setQuizFinished(true);
     const score = calculateScore();
-    if (score >= 0.7 * quizData.questions.length) {
+    if (score >= 0.7 * quizData.questionsSelected.length) {
       setIsConfettiActive(true);
       setTimeout(() => setIsConfettiActive(false), 3000); // Confetti effect
     }
@@ -73,7 +73,7 @@ const Quiz = () => {
 
   // Go to the next question
   const nextQuestion = () => {
-    if (currentQuestionIndex < quizData.questions.length - 1) {
+    if (currentQuestionIndex < quizData.questionsSelected.length - 1) {
       setCurrentQuestionIndex((prev) => prev + 1);
     } else {
       finishQuiz();
@@ -107,7 +107,7 @@ const Quiz = () => {
     <div className="w-full mb-8">
       <div className="flex justify-between mb-2">
         <span className="text-sm">
-          Question {currentQuestionIndex + 1} of {quizData.questions.length}
+          Question {currentQuestionIndex + 1} of {quizData.questionsSelected.length}
         </span>
         <span className="text-sm font-mono">
           {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}
@@ -116,7 +116,7 @@ const Quiz = () => {
       <progress
         className="progress progress-primary w-full"
         value={currentQuestionIndex + 1}
-        max={quizData.questions.length}
+        max={quizData.questionsSelected.length}
       ></progress>
     </div>
   );
@@ -143,10 +143,10 @@ const Quiz = () => {
       <div className="card bg-base-100 shadow-xl">
         <div className="card-body">
           <h3 className="text-xl font-medium mb-6">
-            {quizData.questions[currentQuestionIndex].question}
+            {quizData.questionsSelected[currentQuestionIndex].question}
           </h3>
           <div className="space-y-4">
-            {quizData.questions[currentQuestionIndex].answers.map((option) => (
+            {quizData.questionsSelected[currentQuestionIndex].answers.map((option) => (
               <button
                 key={option}
                 onClick={() => handleAnswerChange(option)}
@@ -166,7 +166,7 @@ const Quiz = () => {
               disabled={!selectedAnswers[currentQuestionIndex]}
               className="btn btn-primary"
             >
-              {currentQuestionIndex < quizData.questions.length - 1
+              {currentQuestionIndex < quizData.questionsSelected.length - 1
                 ? 'Next Question'
                 : 'Finish Quiz'}
             </button>
@@ -186,10 +186,10 @@ const Quiz = () => {
             <div className="stat">
               <div className="stat-title text-lg">Your Final Score</div>
               <div className="stat-value text-primary">
-                {calculateScore()}/{quizData.questions.length}
+                {calculateScore()}/{quizData.questionsSelected.length}
               </div>
               <div className="stat-desc text-sm">
-                Accuracy: {((calculateScore() / quizData.questions.length) * 100).toFixed(1)}%
+                Accuracy: {((calculateScore() / quizData.questionsSelected.length) * 100).toFixed(1)}%
               </div>
             </div>
           </div>
@@ -197,7 +197,7 @@ const Quiz = () => {
 
         <div className="divider text-lg">📜 Question Review</div>
         <div className="space-y-6">
-          {quizData.questions.map((question, index) => (
+          {quizData.questionsSelected.map((question, index) => (
             <div key={index} className="border border-base-200 rounded-lg p-4 shadow-sm">
               <p className="font-medium mb-2">
                 <span className="text-primary">{index + 1}.</span> {question.question}
