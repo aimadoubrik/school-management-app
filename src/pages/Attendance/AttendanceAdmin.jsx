@@ -1,5 +1,3 @@
-'use client'
-
 import React, { useState, useEffect } from 'react'
 import FiltersAdmin from './FiltersAdmin'
 import { Edit, Save, X } from 'lucide-react'
@@ -27,8 +25,8 @@ export default function AttendanceAdmin() {
     const fetchData = async () => {
       try {
         const [secteurResponse, absentResponse] = await Promise.all([
-          fetch('http://localhost:4000/secteurs'),
-          fetch('http://localhost:4000/absentStudents')
+          fetch('http://localhost:3000/secteurs'),
+          fetch('http://localhost:3000/absentStudents')
         ])
         if (!secteurResponse.ok || !absentResponse.ok) throw new Error('Failed to fetch data')
         const secteurResult = await secteurResponse.json()
@@ -173,7 +171,7 @@ export default function AttendanceAdmin() {
     }))
 
     try {
-      const response = await fetch('http://localhost:4000/studentDiscipline', {
+      const response = await fetch('http://localhost:3000/studentDiscipline', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
