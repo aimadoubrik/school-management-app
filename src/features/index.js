@@ -13,4 +13,3 @@ export { default as documentsReducer } from './documents/documentSlice';
 export { default as GroupesSlice } from './Groupes/GroupesSlice';
 export { default as demandesReducer } from './documents/demandeSlice';
 export { default as formateurReducer } from './formateur/formateurSlice';
-

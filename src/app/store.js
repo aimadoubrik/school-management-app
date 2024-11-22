@@ -31,7 +31,7 @@ const rootReducer = combineReducers({
   documents: documentsReducer,
   modules: moduleReducer,
   demandes: demandesReducer,
-  formateurs: formateurReducer,  
+  formateurs: formateurReducer,
 });
 
 const store = configureStore({

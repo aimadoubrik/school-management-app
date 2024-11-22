@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { FaRegFileExcel , FaFilePdf } from "react-icons/fa";
-import { FaDownload } from "react-icons/fa6";
+import { FaRegFileExcel, FaFilePdf } from 'react-icons/fa';
+import { FaDownload } from 'react-icons/fa6';
 import { setFormateurs, setSelectedSecteur } from '../../features/formateur/formateurSlice';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
@@ -67,7 +67,7 @@ const Formateur = () => {
     doc.text(`Modules de ${formateurName}`, 10, 10);
     autoTable(doc, {
       head: [['Code', 'Intitulé', 'MH Synthese', 'MH P', 'MH Total']],
-      body: modules.map(module => [
+      body: modules.map((module) => [
         module.code,
         module.intitule,
         module.mhSynthese,
@@ -104,7 +104,9 @@ const Formateur = () => {
       <h1 className="text-center text-xl font-bold">FORMATEURS :</h1>
 
       <div className="mb-4">
-        <label htmlFor="secteur" className="block text-lg font-medium">Secteur :</label>
+        <label htmlFor="secteur" className="block text-lg font-medium">
+          Secteur :
+        </label>
         <select
           value={selectedSecteur}
           onChange={handleSecteurChange}
