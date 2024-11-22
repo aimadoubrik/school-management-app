@@ -1,118 +1,122 @@
-'use client';
-
-import React, { useState, useEffect } from 'react';
-import FiltersFormateur from './FiltersFormateur';
-import { Save, X, Edit } from 'lucide-react';
+import React, { useState, useEffect } from 'react'
+import FiltersFormateur from './FiltersFormateur'
+import { Save, X, Edit } from 'lucide-react'
 
 export default function AttendanceFormateur() {
-  const [secteursData, setSecteursData] = useState([]);
-  const [secteur, setSecteur] = useState('');
-  const [niveau, setNiveau] = useState('');
-  const [filiere, setFiliere] = useState('');
-  const [annee, setAnnee] = useState('');
-  const [groupe, setGroupe] = useState('');
-  const [dateFilter, setDateFilter] = useState('');
-  const [students, setStudents] = useState([]);
-  const [editing, setEditing] = useState(false);
-  const [isSaving, setIsSaving] = useState(false);
-  const [error, setError] = useState(null);
-  const [absentStudents, setAbsentStudents] = useState([]);
-  const [isSaved, setIsSaved] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
-  const [checkboxDisabled, setCheckboxDisabled] = useState(false);
+  const [secteursData, setSecteursData] = useState([])
+  const [secteur, setSecteur] = useState('')
+  const [niveau, setNiveau] = useState('')
+  const [filiere, setFiliere] = useState('')
+  const [annee, setAnnee] = useState('')
+  const [groupe, setGroupe] = useState('')
+  const [dateFilter, setDateFilter] = useState('')
+  const [students, setStudents] = useState([])
+  const [editing, setEditing] = useState(false)
+  const [isSaving, setIsSaving] = useState(false)
+  const [error, setError] = useState(null)
+  const [absentStudents, setAbsentStudents] = useState([])
+  const [isSaved, setIsSaved] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [itemsPerPage] = useState(10)
+  const [checkboxDisabled, setCheckboxDisabled] = useState(false)
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = students.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(students.length / itemsPerPage);
-  const currentAbsentItems = absentStudents.slice(indexOfFirstItem, indexOfLastItem);
-  const totalAbsentPages = Math.ceil(absentStudents.length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage
+  const currentItems = students.slice(indexOfFirstItem, indexOfLastItem)
+  const totalPages = Math.ceil(students.length / itemsPerPage)
+  const currentAbsentItems = absentStudents.slice(indexOfFirstItem, indexOfLastItem)
+  const totalAbsentPages = Math.ceil(absentStudents.length / itemsPerPage)
 
   const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+    setCurrentPage(pageNumber)
+  }
 
   useEffect(() => {
     const fetchSecteursData = async () => {
       try {
-        const response = await fetch('http://localhost:3000/secteurs');
-        const data = await response.json();
-        setSecteursData(data);
+        const response = await fetch('http://localhost:4000/secteurs')
+        const data = await response.json()
+        setSecteursData(data)
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching data:', error)
       }
-    };
-    fetchSecteursData();
-  }, []);
+    }
+    fetchSecteursData()
+  }, [])
 
   useEffect(() => {
     if (secteur && niveau && filiere && annee && groupe) {
-      const selectedSecteur = secteursData.find((s) => s.intitule_secteur === secteur);
+      const selectedSecteur = secteursData.find(
+        (s) => s.intitule_secteur === secteur
+      )
       if (selectedSecteur) {
-        const groupData = selectedSecteur.niveaux[niveau]?.filiere[filiere]?.[annee]?.[groupe];
-        setStudents(groupData?.map((student) => ({ ...student, selected: false })) || []);
+        const groupData =
+          selectedSecteur.niveaux[niveau]?.filiere[filiere]?.[annee]?.[groupe]
+        setStudents(groupData?.map(student => ({ ...student, selected: false })) || [])
       }
     } else {
-      setStudents([]);
+      setStudents([])
     }
-  }, [secteur, niveau, filiere, annee, groupe, secteursData]);
+  }, [secteur, niveau, filiere, annee, groupe, secteursData])
 
   const isDateInPast = (selectedDate) => {
-    const today = new Date().toISOString().split('T')[0];
-    return selectedDate < today;
-  };
+    const today = new Date().toISOString().split('T')[0]
+    return selectedDate < today
+  }
 
   const fetchAbsentStudents = async () => {
     try {
-      const response = await fetch('http://localhost:3000/absentStudents', {
+      const response = await fetch('http://localhost:4000/absentStudents', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
-      });
-      if (!response.ok) throw new Error('Failed to fetch absent students');
-      const data = await response.json();
-      setAbsentStudents(data);
+      })
+      if (!response.ok) throw new Error('Failed to fetch absent students')
+      const data = await response.json()
+      setAbsentStudents(data)
     } catch (error) {
-      console.error('Error fetching absent students:', error);
-      setError('Failed to fetch absent students. Please try again.');
+      console.error('Error fetching absent students:', error)
+      setError('Failed to fetch absent students. Please try again.')
     }
-  };
+  }
 
   useEffect(() => {
     if (isDateInPast(dateFilter)) {
-      fetchAbsentStudents();
+      fetchAbsentStudents()
     }
-  }, [dateFilter, niveau, filiere, annee, groupe]);
+  }, [dateFilter, niveau, filiere, annee, groupe])
 
   const handleDateChange = (e) => {
-    const selectedDate = e.target.value;
+    const selectedDate = e.target.value
 
     // Check if the date is valid
-    const parsedDate = new Date(selectedDate);
+    const parsedDate = new Date(selectedDate)
     if (isNaN(parsedDate.getTime())) {
-      setError('Invalid date selected.');
-      return; // Exit the function if the date is invalid
+      setError('Invalid date selected.')
+      return // Exit the function if the date is invalid
     }
 
-    const formattedDate = parsedDate.toISOString().split('T')[0];
-    setDateFilter(formattedDate);
+    const formattedDate = parsedDate.toISOString().split('T')[0]
+    setDateFilter(formattedDate)
 
     // Only allow editing for future dates
-    setEditing(!isDateInPast(formattedDate));
-    setIsSaved(false);
-  };
+    setEditing(!isDateInPast(formattedDate))
+    setIsSaved(false)
+  }
 
   const handleCheckboxChange = (studentId) => {
     setStudents((prev) =>
       prev.map((student) =>
         student.id === studentId ? { ...student, selected: !student.selected } : student
       )
-    );
-  };
+    )
+  }
 
   const saveSelectionsToAPI = async (absentStudents) => {
     try {
-      const response = await fetch('http://localhost:3000/absentStudents', {
+      // Format the month in letters
+      const monthInLetters = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(new Date(dateFilter));
+
+      const response = await fetch('http://localhost:4000/absentStudents', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -123,7 +127,7 @@ export default function AttendanceFormateur() {
           annee,
           groupe,
           date: dateFilter,
-          month: new Date(dateFilter).toISOString().slice(0, 7),
+          month: monthInLetters, // Use the formatted month in letters
           students: absentStudents.map((student) => ({
             studentId: student.id,
             studentCef: student.cef,
@@ -144,30 +148,31 @@ export default function AttendanceFormateur() {
     }
   };
 
+
   const saveSelections = async () => {
-    setIsSaving(true);
-    setError(null);
+    setIsSaving(true)
+    setError(null)
 
     try {
-      const absentStudents = students.filter((s) => s.selected);
+      const absentStudents = students.filter((s) => s.selected)
       if (absentStudents.length === 0) {
-        setError('No students marked as absent.');
-        setIsSaving(false);
-        return;
+        setError('No students marked as absent.')
+        setIsSaving(false)
+        return
       }
 
-      await saveSelectionsToAPI(absentStudents);
-      setIsSaving(false);
-      setIsSaved(true);
+      await saveSelectionsToAPI(absentStudents)
+      setIsSaving(false)
+      setIsSaved(true)
 
       // Disable checkboxes but retain table data
-      setEditing(false);
-      setCheckboxDisabled(true);
+      setEditing(false)
+      setCheckboxDisabled(true)
     } catch {
-      setError('Failed to save selections.');
-      setIsSaving(false);
+      setError('Failed to save selections.')
+      setIsSaving(false)
     }
-  };
+  }
 
   return (
     <div className="p-4">
@@ -189,9 +194,9 @@ export default function AttendanceFormateur() {
 
       <div className="overflow-x-auto rounded-lg shadow-md">
         <table className="table table-zebra w-full text-center hover">
-          <thead className="bg-base-200">
+          <thead className='bg-base-200'>
             <tr>
-              <th className="font-bold">{editing ? 'Action' : ''}</th>
+              <th className='font-bold'>{editing ? 'Action' : ''}</th>
               <th>CEF</th>
               <th>Full Name</th>
               <th>Date de Naissance</th>
@@ -242,33 +247,32 @@ export default function AttendanceFormateur() {
                   </td>
                 </tr>
               )
-            ) : students.length > 0 ? (
-              students.map((student) => (
-                <tr
-                  key={student.id}
-                  className={student.selected ? 'bg-red-500 text-white font-bold' : ''}
-                >
-                  <td>
-                    <input
-                      type="checkbox"
-                      className="checkbox checkbox-primary"
-                      checked={student.selected}
-                      onChange={() => handleCheckboxChange(student.id)}
-                      disabled={checkboxDisabled}
-                    />
-                  </td>
-                  <td>{student.cef}</td>
-                  <td>{student.fullname}</td>
-                  <td>{student.dateNaissance}</td>
-                  <td>{student.cin}</td>
-                </tr>
-              ))
             ) : (
-              <tr>
-                <td colSpan="5" className="text-center">
-                  No students available for this selection.
-                </td>
-              </tr>
+              students.length > 0 ? (
+                students.map((student) => (
+                  <tr key={student.id} className={student.selected ? 'text-dark-900 font-bold' : ''}>
+                    <td>
+                      <input
+                        type="checkbox"
+                        className="checkbox checkbox-primary"
+                        checked={student.selected}
+                        onChange={() => handleCheckboxChange(student.id)}
+                        disabled={checkboxDisabled}
+                      />
+                    </td>
+                    <td>{student.cef}</td>
+                    <td>{student.fullname}</td>
+                    <td>{student.dateNaissance}</td>
+                    <td>{student.cin}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="5" className="text-center">
+                    No students available for this selection.
+                  </td>
+                </tr>
+              )
             )}
           </tbody>
         </table>
@@ -290,15 +294,21 @@ export default function AttendanceFormateur() {
       <div className="space-x-2 flex flex-wrap gap-2 justify-end mt-4">
         {editing ? (
           <>
-            <button className="btn btn-primary" onClick={saveSelections} disabled={isSaving}>
+            <button
+              className="btn btn-primary"
+              onClick={saveSelections}
+              disabled={isSaving}
+            >
               <Save size={20} className="mr-2" />
               {isSaving ? 'Saving...' : 'Save'}
             </button>
             <button
               className="btn btn-secondary"
               onClick={() => {
-                setEditing(false);
-                setStudents((prev) => prev.map((student) => ({ ...student, selected: false })));
+                setEditing(false)
+                setStudents((prev) =>
+                  prev.map((student) => ({ ...student, selected: false }))
+                )
               }}
               disabled={isSaving}
             >
@@ -310,8 +320,8 @@ export default function AttendanceFormateur() {
           <button
             className="btn btn-accent"
             onClick={() => {
-              setEditing(true);
-              setCheckboxDisabled(false);
+              setEditing(true)
+              setCheckboxDisabled(false)
             }}
             disabled={isDateInPast(dateFilter)}
           >
@@ -324,5 +334,5 @@ export default function AttendanceFormateur() {
       {error && <div className="text-red-500 mt-4">{error}</div>}
       {isSaved && <div className="text-green-500 mt-4">Selections saved successfully!</div>}
     </div>
-  );
+  )
 }
