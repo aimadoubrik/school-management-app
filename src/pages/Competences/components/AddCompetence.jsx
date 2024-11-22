@@ -57,8 +57,10 @@ const AddCompetence = ({ selectedCompetence, onClose, onSave, isEditMode }) => {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!String(formData.code_competence).trim()) newErrors.code_competence = 'Code Competence is required';
-    if (!formData.intitule_competence.trim()) newErrors.intitule_competence = 'Intitulé Competence is required';
+    if (!String(formData.code_competence).trim())
+      newErrors.code_competence = 'Code Competence is required';
+    if (!formData.intitule_competence.trim())
+      newErrors.intitule_competence = 'Intitulé Competence is required';
     if (!formData.intitule_module.trim()) newErrors.intitule_module = 'Intitulé Module is required';
     if (!formData.filiere.trim()) newErrors.filiere = 'Filière is required';
     if (!formData.cours.trim()) newErrors.cours = 'Cours is required';

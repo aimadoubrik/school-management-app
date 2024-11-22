@@ -1,5 +1,5 @@
 // src/features/quizzes/quizzesSlice.js
-import { createSelector,createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSelector, createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { apiService } from '../../api/config';
 
 const initialState = {
@@ -7,15 +7,14 @@ const initialState = {
   questions: {},
   courses: [],
   status: 'idle',
-  error: null
+  error: null,
 };
 
-export const selectCoursesData = state => state.courses?.coursess || [];
-export const selectMemoizedCourses = createSelector(
-  [selectCoursesData],
-  (coursesData) => coursesData.map(course => ({
+export const selectCoursesData = (state) => state.courses?.coursess || [];
+export const selectMemoizedCourses = createSelector([selectCoursesData], (coursesData) =>
+  coursesData.map((course) => ({
     courseId: course.courseId,
-    courseName: course.courseName
+    courseName: course.courseName,
   }))
 );
 export const fetchQuizzes = createAsyncThunk(
@@ -29,17 +28,14 @@ export const fetchQuizzes = createAsyncThunk(
   }
 );
 
-export const addQuiz = createAsyncThunk(
-  'quizzes/addQuiz',
-  async (quiz, { rejectWithValue }) => {
-    try {
-      const response = await apiService.post('/quizzes', quiz);
-      return response.data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
+export const addQuiz = createAsyncThunk('quizzes/addQuiz', async (quiz, { rejectWithValue }) => {
+  try {
+    const response = await apiService.post('/quizzes', quiz);
+    return response.data;
+  } catch (error) {
+    return rejectWithValue(error.message);
   }
-);
+});
 
 export const updateQuiz = createAsyncThunk(
   'quizzes/updateQuiz',
@@ -85,7 +81,7 @@ export const addQuestion = createAsyncThunk(
       const quiz = quizResponse.data;
       const newQuestion = {
         ...question,
-        id: Date.now().toString()
+        id: Date.now().toString(),
       };
 
       if (!quiz.questions) {
@@ -102,17 +98,16 @@ export const addQuestion = createAsyncThunk(
 );
 // Add this action along with your other createAsyncThunk actions
 
-
 export const deleteAllQuestions = createAsyncThunk(
   'quizzes/deleteAllQuestions',
   async ({ quizId, questionIds }, { rejectWithValue }) => {
     try {
       const quizResponse = await apiService.get(`/quizzes/${quizId}`);
       const quiz = quizResponse.data;
-      
+
       // Filter out questions with the specified IDs
-      quiz.questions = quiz.questions.filter(q => !questionIds.includes(q.id));
-      
+      quiz.questions = quiz.questions.filter((q) => !questionIds.includes(q.id));
+
       await apiService.put(`/quizzes/${quizId}`, quiz);
       return { quizId, questionIds };
     } catch (error) {
@@ -126,10 +121,10 @@ export const deleteQuestion = createAsyncThunk(
     try {
       const quizResponse = await apiService.get(`/quizzes/${quizId}`);
       const quiz = quizResponse.data;
-      
+
       // Filter out the question with the specific ID
-      quiz.questions = quiz.questions.filter(q => q.id !== questionId);
-      
+      quiz.questions = quiz.questions.filter((q) => q.id !== questionId);
+
       await apiService.put(`/quizzes/${quizId}`, quiz);
       return { quizId, questionId };
     } catch (error) {
@@ -141,53 +136,48 @@ export const deleteQuestion = createAsyncThunk(
 // Add this with your other createAsyncThunk actions
 
 // src/features/quizzes/quizzesSlice.js
-export const fetchCourses = createAsyncThunk(
-  'quizzes/fetchCourses',
-  async () => {
-    const response = await fetch('/api/courses'); // adjust the API endpoint as needed
-    const data = await response.json();
-    return data.coursess; // matches your API response structure
-  }
-);
+export const fetchCourses = createAsyncThunk('quizzes/fetchCourses', async () => {
+  const response = await fetch('/api/courses'); // adjust the API endpoint as needed
+  const data = await response.json();
+  return data.coursess; // matches your API response structure
+});
 
 const quizzesSlice = createSlice({
   name: 'quizzes',
   initialState: {
     quizzes: [],
-    questions:[],
+    questions: [],
     courses: {
-      coursess: []  
+      coursess: [],
     },
     status: 'idle',
-    error: null
+    error: null,
   },
   reducers: {
     clearError: (state) => {
       state.error = null;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
-    .addCase(fetchCourses.fulfilled, (state, action) => {
-      state.courses = {
-        coursess: action.payload
-      };
-      state.status = 'succeeded';
-    })
-    .addCase(deleteQuestion.fulfilled, (state, action) => {
-      const { quizId, questionId } = action.payload;
-      if (Array.isArray(state.questions[quizId])) {
-        state.questions[quizId] = state.questions[quizId].filter(
-          q => q.id !== questionId
-        );
-      }
-    })
+      .addCase(fetchCourses.fulfilled, (state, action) => {
+        state.courses = {
+          coursess: action.payload,
+        };
+        state.status = 'succeeded';
+      })
+      .addCase(deleteQuestion.fulfilled, (state, action) => {
+        const { quizId, questionId } = action.payload;
+        if (Array.isArray(state.questions[quizId])) {
+          state.questions[quizId] = state.questions[quizId].filter((q) => q.id !== questionId);
+        }
+      })
       // Also add the case to your extraReducers in the slice:
       .addCase(deleteAllQuestions.fulfilled, (state, action) => {
         const { quizId, questionIds } = action.payload;
         if (Array.isArray(state.questions[quizId])) {
           state.questions[quizId] = state.questions[quizId].filter(
-            q => !questionIds.includes(q.id)
+            (q) => !questionIds.includes(q.id)
           );
         }
       })
@@ -207,17 +197,18 @@ const quizzesSlice = createSlice({
         state.quizzes.push(action.payload);
       })
       .addCase(updateQuiz.fulfilled, (state, action) => {
-        if (action.payload && action.payload.id) { // Add null check
-          const index = state.quizzes.findIndex(quiz => quiz.id === action.payload.id);
+        if (action.payload && action.payload.id) {
+          // Add null check
+          const index = state.quizzes.findIndex((quiz) => quiz.id === action.payload.id);
           if (index !== -1) {
             state.quizzes[index] = action.payload;
           }
         }
       })
       .addCase(deleteQuiz.fulfilled, (state, action) => {
-        state.quizzes = state.quizzes.filter(quiz => quiz.id !== action.payload);
+        state.quizzes = state.quizzes.filter((quiz) => quiz.id !== action.payload);
       })
-      
+
       .addCase(addQuestion.fulfilled, (state, action) => {
         if (!state.questions[action.payload.quizId]) {
           state.questions[action.payload.quizId] = [];
@@ -235,11 +226,8 @@ const quizzesSlice = createSlice({
       .addCase(fetchQuestions.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
-      })
-      ;
-
-
-  }
+      });
+  },
 });
 
 export const { clearError } = quizzesSlice.actions;

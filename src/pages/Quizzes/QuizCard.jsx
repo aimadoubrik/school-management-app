@@ -10,12 +10,12 @@ export const getTimeStatus = (deadline) => {
       return {
         text: 'No deadline',
         color: 'badge-warning',
-        urgency: 'none'
+        urgency: 'none',
       };
     }
 
     const deadlineDate = new Date(deadline);
-    
+
     // Validate the date is valid
     if (isNaN(deadlineDate.getTime())) {
       throw new Error('Invalid date format');
@@ -29,7 +29,7 @@ export const getTimeStatus = (deadline) => {
       return {
         text: 'Expired',
         color: 'badge-error',
-        urgency: 'expired'
+        urgency: 'expired',
       };
     }
 
@@ -37,7 +37,7 @@ export const getTimeStatus = (deadline) => {
       return {
         text: 'Due Today',
         color: 'badge-warning',
-        urgency: 'urgent'
+        urgency: 'urgent',
       };
     }
 
@@ -45,26 +45,24 @@ export const getTimeStatus = (deadline) => {
       return {
         text: `${daysLeft} days left`,
         color: 'badge-warning',
-        urgency: 'soon'
+        urgency: 'soon',
       };
     }
 
     return {
       text: `${daysLeft} days left`,
       color: 'badge-info',
-      urgency: 'normal'
+      urgency: 'normal',
     };
-
   } catch (error) {
     console.error('Error calculating time status:', error);
     return {
       text: 'Invalid date',
       color: 'badge-error',
-      urgency: 'error'
+      urgency: 'error',
     };
   }
 };
-
 
 const QuizCardSkeleton = () => (
   <div className="card bg-base-100 shadow-lg animate-pulse h-[280px] w-full">

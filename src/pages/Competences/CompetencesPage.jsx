@@ -111,13 +111,11 @@ const CompetencesPage = () => {
   };
 
   // Filter competences based on search, filieres, and modules
-  const filteredCompetences = competences.filter(competence => {
+  const filteredCompetences = competences.filter((competence) => {
     const title = competence.intitule_competence || '';
     const filiereMatch = selectedFiliere ? competence.filiere === selectedFiliere : true;
     const moduleMatch = selectedModule ? competence.intitule_module === selectedModule : true;
-    const searchMatch = searchTerm
-      ? title.toLowerCase().includes(searchTerm.toLowerCase())
-      : true;
+    const searchMatch = searchTerm ? title.toLowerCase().includes(searchTerm.toLowerCase()) : true;
 
     return searchMatch && filiereMatch && moduleMatch;
   });
@@ -128,11 +126,7 @@ const CompetencesPage = () => {
     currentPage * itemsPerPage
   );
 
-  const modalMode = selectedCompetence
-    ? viewMode
-      ? 'view'
-      : 'edit'
-    : 'add';
+  const modalMode = selectedCompetence ? (viewMode ? 'view' : 'edit') : 'add';
 
   if (loading) {
     return (
@@ -152,18 +146,22 @@ const CompetencesPage = () => {
 
   return (
     <div className="container mx-auto p-6 space-y-6">
-
-        <CompetenceHeader
-          onRefresh={handleRefresh}
-          onExport={handleCSVExport}
-          onAdd={() => setIsModalOpen(true)}
-        />
+      <CompetenceHeader
+        onRefresh={handleRefresh}
+        onExport={handleCSVExport}
+        onAdd={() => setIsModalOpen(true)}
+      />
 
       {/* Search and Filters */}
       <SearchFilter
         searchTerm={searchTerm}
         filters={[
-          { key: 'filiere', value: selectedFiliere, options: filieres, placeholder: 'Select Filiere' },
+          {
+            key: 'filiere',
+            value: selectedFiliere,
+            options: filieres,
+            placeholder: 'Select Filiere',
+          },
           { key: 'module', value: selectedModule, options: modules, placeholder: 'Select Module' },
         ]}
         onSearchChange={setSearchTerm}
@@ -176,7 +174,7 @@ const CompetencesPage = () => {
           }
         }}
         searchPlaceholder="Rechercher par code ou intitulé..."
-        icons={{ SearchIcon: Filter}}
+        icons={{ SearchIcon: Filter }}
       />
 
       <hr />
@@ -221,5 +219,3 @@ const CompetencesPage = () => {
 };
 
 export default CompetencesPage;
-
-
