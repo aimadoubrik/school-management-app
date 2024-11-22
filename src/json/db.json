@@ -3059,8 +3059,6 @@
         }
       ],
       "user": "Admin Admin",
-      "status": "rejeter",
-
       "status": "effectuer",
       "submissionDate": "11/21/2024",
       "processingTime": "2-3 jours"
@@ -3083,7 +3081,7 @@
         }
       ],
       "user": "Admin Admin",
-      "status": "termin ",
+      "status": "en cours",
       "submissionDate": "11/21/2024",
       "processingTime": "2-3 jours"
     },
