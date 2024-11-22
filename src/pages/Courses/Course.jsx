@@ -1,84 +1,95 @@
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchQuizzes } from '../../features/quizzes/quizzesSlice'; // Import the fetchQuizzes action
-import {
-  Youtube,
-  BookOpen,
-  CheckCircle,
-  FileText,
-  Clock,
-  Award,
-  ChevronRight,
-  Play,
-} from 'lucide-react';
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchQuizzes } from "../../features/quizzes/quizzesSlice";
+import { Youtube, BookOpen, CheckCircle, FileText, Clock, Award, ChevronRight, Play } from "lucide-react";
+import QuizCard from "../Quizzes/QuizCard";
 
 const Course = () => {
   const { id: courseId } = useParams();
   const [course, setCourse] = useState(null);
   const [error, setError] = useState(null);
+  const [isCourseEnded, setIsCourseEnded] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   // Get quizzes from Redux store
   const quizzes = useSelector((state) => state.quizzes.quizzes);
+  const quizzesStatus = useSelector((state) => state.quizzes.status);
 
-  // Fetch the course data only when courseId is available
+  // Filter quizzes specific to this course
+  const courseQuizzes = isCourseEnded 
+    ? quizzes.filter((quiz) => quiz.courseId === courseId || quiz.courseName === course?.courseName)
+    : [];
+
+  // Fetch course data and quizzes only when courseId is available
   useEffect(() => {
-    if (!courseId) return; // Ensure courseId is available
+    if (!courseId) return;
 
-    const fetchCourse = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/courses/${courseId}`);
-        if (response.data) {
-          setCourse(response.data);
+        // Fetch course data
+        const courseResponse = await axios.get(`http://localhost:3000/courses/${courseId}`);
+        if (courseResponse.data) {
+          setCourse(courseResponse.data);
+          // Set initial course status based on existing status
+          setIsCourseEnded(courseResponse.data.status === "completed");
         } else {
-          setError('Course not found');
+          setError("Course not found");
+        }
+
+        // Fetch quizzes if not already fetched
+        if (quizzesStatus === "idle") {
+          await dispatch(fetchQuizzes());
         }
       } catch (err) {
-        console.error('Error fetching course:', err);
-        setError('Course not found or network error');
+        console.error("Error fetching course:", err);
+        setError("Course not found or network error");
       }
     };
 
-    fetchCourse();
+    fetchData();
+  }, [courseId, dispatch, quizzesStatus]);
 
-    // Fetch quizzes only when course is loaded or courseId changes
-    dispatch(fetchQuizzes());
-  }, [courseId, dispatch]); // Added dispatch to dependencies
+  const handleStartQuiz = (quizId) => {
+    navigate(`/quiz/${quizId}`);
+  };
 
-  const handleEndCourse = async () => {
-    try {
-      const response = await axios.patch(`http://localhost:3000/courses/${courseId}`, {
-        status: 'completed',
-      });
-      if (response.status === 200) {
-        setCourse({ ...course, status: 'completed' });
-      }
-    } catch (err) {
-      console.error('Error marking course as completed:', err);
+  const handleViewCourseMaterials = () => {
+    if (course.pdfUrl) {
+      navigate("/view-pdf", { state: { pdfUrl: course.pdfUrl } });
     }
   };
 
-  const handleStartQuiz = () => {
-    console.log('Quizzes from Redux:', quizzes); // Check if quizzes are loaded
-    const quiz = quizzes.find((q) => q.quizID === course.coursequizID);
+  // Handle course completion
+  const handleEndCourse = async () => {
+    try {
+      // Update course status on the backend
+      await axios.patch(`http://localhost:3000/courses/${courseId}`, {
+        status: "completed"
+      });
 
-    if (quiz) {
-      navigate(`/quizzes/${quiz.quizID}`);
-    } else {
-      console.error('Quiz not found for this course');
+      // Update local state
+      setIsCourseEnded(true);
+      
+      // Optionally, update the course state
+      setCourse(prevCourse => ({
+        ...prevCourse,
+        status: "completed"
+      }));
+    } catch (error) {
+      console.error("Error ending course:", error);
+      // Optionally, show an error message to the user
     }
   };
 
   if (error) return <div className="p-8 text-red-600">{error}</div>;
-  if (!course)
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-      </div>
-    );
+  if (!course) return (
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8 px-4">
@@ -89,11 +100,11 @@ const Course = () => {
           <div className="flex items-center space-x-4 text-gray-600">
             <span className="flex items-center">
               <Clock className="w-4 h-4 mr-2" />
-              Status: {course.status === 'completed' ? 'Completed' : 'In Progress'}
+              Status: {isCourseEnded ? "Completed" : "In Progress"}
             </span>
             {course.pdfUrl && (
               <button
-                onClick={() => window.open(course.pdfUrl, '_blank')}
+              onClick={() => window.open(course.pdfUrl, "_blank")}
                 className="flex items-center text-blue-600 hover:text-blue-700"
               >
                 <FileText className="w-4 h-4 mr-2" />
@@ -106,7 +117,7 @@ const Course = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
-            {/* Course Preview */}
+            {/* Course Preview and Description */}
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="relative aspect-video rounded-t-lg overflow-hidden">
                 <img
@@ -115,7 +126,7 @@ const Course = () => {
                   className="w-full h-full object-cover"
                 />
                 <button
-                  onClick={() => window.open(course.videoLink, '_blank')}
+                  onClick={() => window.open(course.videoLink, "_blank")}
                   className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity group"
                 >
                   <div className="transform transition-transform group-hover:scale-110">
@@ -146,7 +157,9 @@ const Course = () => {
                           {index + 1}
                         </span>
                         <div>
-                          <h3 className="font-semibold text-gray-900">{content.contentName}</h3>
+                          <h3 className="font-semibold text-gray-900">
+                            {content.contentName}
+                          </h3>
                           <p className="text-gray-600 mt-1">{content.contentDescription}</p>
                         </div>
                         <ChevronRight className="w-5 h-5 text-gray-400 ml-auto" />
@@ -156,25 +169,45 @@ const Course = () => {
                 </div>
               </div>
             </div>
+
+            {/* Quizzes Section - Only show when course is ended */}
+            {isCourseEnded && courseQuizzes.length > 0 && (
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div className="border-b border-gray-200 p-6">
+                  <h2 className="text-xl font-semibold text-gray-900">Course Quizzes</h2>
+                </div>
+                <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {courseQuizzes.map(quiz => (
+                    <QuizCard
+                      key={quiz.id}
+                      quiz={quiz}
+                      onQuizStart={handleStartQuiz}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Sidebar */}
           <div className="lg:col-span-1">
             <div className="sticky top-8 bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="p-6">
-                {course.status === 'completed' ? (
+                {isCourseEnded ? (
                   <div className="space-y-6">
                     <div className="flex flex-col items-center p-6 bg-green-50 rounded-lg">
                       <Award className="w-12 h-12 text-green-600 mb-2" />
                       <h3 className="text-xl font-semibold text-green-600">Course Completed!</h3>
                     </div>
-                    <button
-                      onClick={handleStartQuiz}
-                      className="w-full py-4 px-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors duration-200 flex items-center justify-center space-x-2"
-                    >
-                      <span>Start Quiz</span>
-                      <ChevronRight className="w-5 h-5" />
-                    </button>
+                    {courseQuizzes.length > 0 && (
+                      <button
+                        onClick={() => handleStartQuiz(courseQuizzes[0].id)}
+                        className="w-full py-4 px-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors duration-200 flex items-center justify-center space-x-2"
+                      >
+                        <span>Start Quiz</span>
+                        <ChevronRight className="w-5 h-5" />
+                      </button>
+                    )}
                   </div>
                 ) : (
                   <div className="space-y-6">
