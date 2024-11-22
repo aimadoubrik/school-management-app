@@ -994,339 +994,20 @@
       ]
     }
   ],
-  "formateurs": [
-    {
-      "id": "17000",
-      "nom": "Dupont",
-      "prenom": "Jean",
-      "secteur": "Digital",
-      "modules": [
-        {
-          "code": "M202_F01",
-          "intitule": "M202",
-          "mhSynthese": "15 H 00",
-          "mhP": "60 H 00",
-          "mhTotal": "75 H 00"
-        },
-        {
-          "code": "M204_F01",
-          "intitule": "M204",
-          "mhSynthese": "20 H 00",
-          "mhP": "80 H 00",
-          "mhTotal": "100 H 00"
-        },
-        {
-          "code": "M204_F01",
-          "intitule": "M205",
-          "mhSynthese": "25 H 00",
-          "mhP": "85 H 00",
-          "mhTotal": "105 H 00"
-        }
-      ],
-      "totalMasseHoraire": "175 H 00"
-    },
-    {
-      "id": "17007",
-      "nom": "Leroy",
-      "prenom": "Camille",
-      "secteur": "Digital",
-      "modules": [
-        {
-          "code": "M203_F01",
-          "intitule": "M203",
-          "mhSynthese": "10 H 00",
-          "mhP": "70 H 00",
-          "mhTotal": "80 H 00"
-        },
-        {
-          "code": "M206_F01",
-          "intitule": "M206",
-          "mhSynthese": "25 H 00",
-          "mhP": "65 H 00",
-          "mhTotal": "90 H 00"
-        },
-        {
-          "code": "M200_F01",
-          "intitule": "M209",
-          "mhSynthese": "27 H 00",
-          "mhP": "80 H 00",
-          "mhTotal": "98 H 00"
-        }
-      ],
-      "totalMasseHoraire": "170 H 00"
-    },
-    {
-      "id": "17011",
-      "nom": "Bernard",
-      "prenom": "Alice",
-      "secteur": "Digital",
-      "modules": [
-        {
-          "code": "M207_F01",
-          "intitule": "M207",
-          "mhSynthese": "12 H 00",
-          "mhP": "78 H 00",
-          "mhTotal": "90 H 00"
-        },
-        {
-          "code": "M208_F01",
-          "intitule": "M208",
-          "mhSynthese": "20 H 00",
-          "mhP": "80 H 00",
-          "mhTotal": "100 H 00"
-        },
-        {
-          "code": "M209_F01",
-          "intitule": "M209",
-          "mhSynthese": "20 H 00",
-          "mhP": "8 H 00",
-          "mhTotal": "170 H 00"
-        }
-      ],
-      "totalMasseHoraire": "190 H 00"
-    },
-    {
-      "id": "17001",
-      "nom": "Martin",
-      "prenom": "Sophie",
-      "secteur": "Finance",
-      "modules": [
-        {
-          "code": "F301_F01",
-          "intitule": "F301",
-          "mhSynthese": "25 H 00",
-          "mhP": "50 H 00",
-          "mhTotal": "75 H 00"
-        },
-        {
-          "code": "M208_F01",
-          "intitule": "M208",
-          "mhSynthese": "20 H 00",
-          "mhP": "80 H 00",
-          "mhTotal": "100 H 00"
-        },
-        {
-          "code": "M209_F01",
-          "intitule": "M209",
-          "mhSynthese": "60 H 00",
-          "mhP": "47 H 00",
-          "mhTotal": "100 H 00"
-        }
-      ],
-      "totalMasseHoraire": "175 H 00"
-    },
-    {
-      "id": "17008",
-      "nom": "Durand",
-      "prenom": "Julien",
-      "secteur": "Finance",
-      "modules": [
-        {
-          "code": "F304_F01",
-          "intitule": "F304",
-          "mhSynthese": "15 H 00",
-          "mhP": "60 H 00",
-          "mhTotal": "75 H 00"
-        },
-        {
-          "code": "F305_F01",
-          "intitule": "F305",
-          "mhSynthese": "20 H 00",
-          "mhP": "80 H 00",
-          "mhTotal": "100 H 00"
-        },
-        {
-          "code": "F306_F01",
-          "intitule": "F306",
-          "mhSynthese": "20 H 00",
-          "mhP": "89 H 00",
-          "mhTotal": "100 H 00"
-        }
-      ],
-      "totalMasseHoraire": "175 H 00"
-    },
-    {
-      "id": "17012",
-      "nom": "Blanchard",
-      "prenom": "Paul",
-      "secteur": "Finance",
-      "modules": [
-        {
-          "code": "F306_F01",
-          "intitule": "F306",
-          "mhSynthese": "18 H 00",
-          "mhP": "72 H 00",
-          "mhTotal": "90 H 00"
-        },
-        {
-          "code": "F307_F01",
-          "intitule": "F307",
-          "mhSynthese": "25 H 00",
-          "mhP": "75 H 00",
-          "mhTotal": "100 H 00"
-        },
-        {
-          "code": "F308_F01",
-          "intitule": "F308",
-          "mhSynthese": "25 H 00",
-          "mhP": "75 H 00",
-          "mhTotal": "100 H 00"
-        }
-      ],
-      "totalMasseHoraire": "190 H 00"
-    },
-    {
-      "id": "17002",
-      "nom": "Lemoine",
-      "prenom": "Clara",
-      "secteur": "Marketing",
-      "modules": [
-        {
-          "code": "MKT401_F01",
-          "intitule": "MKT401",
-          "mhSynthese": "10 H 00",
-          "mhP": "60 H 00",
-          "mhTotal": "70 H 00"
-        },
-        {
-          "code": "MKT402_F01",
-          "intitule": "MKT402",
-          "mhSynthese": "15 H 00",
-          "mhP": "85 H 00",
-          "mhTotal": "100 H 00"
-        },
-        {
-          "code": "MKT406_F01",
-          "intitule": "MKT403",
-          "mhSynthese": "15 H 00",
-          "mhP": "85 H 00",
-          "mhTotal": "100 H 00"
-        }
-      ],
-      "totalMasseHoraire": "170 H 00"
-    },
-    {
-      "id": "17009",
-      "nom": "Blanc",
-      "prenom": "Sophie",
-      "secteur": "Marketing",
-      "modules": [
-        {
-          "code": "MKT404_F01",
-          "intitule": "MKT404",
-          "mhSynthese": "20 H 00",
-          "mhP": "60 H 00",
-          "mhTotal": "80 H 00"
-        },
-        {
-          "code": "MKT405_F01",
-          "intitule": "MKT405",
-          "mhSynthese": "15 H 00",
-          "mhP": "85 H 00",
-          "mhTotal": "100 H 00"
-        },
-        {
-          "code": "MKT405_F03",
-          "intitule": "MKT408",
-          "mhSynthese": "15 H 00",
-          "mhP": "85 H 00",
-          "mhTotal": "100 H 00"
-        }
-      ],
-      "totalMasseHoraire": "180 H 00"
-    },
-    {
-      "id": "17013",
-      "nom": "Masson",
-      "prenom": "Lucie",
-      "secteur": "Marketing",
-      "modules": [
-        {
-          "code": "MKT406_F01",
-          "intitule": "MKT406",
-          "mhSynthese": "18 H 00",
-          "mhP": "72 H 00",
-          "mhTotal": "90 H 00"
-        },
-        {
-          "code": "MKT407_F01",
-          "intitule": "MKT407",
-          "mhSynthese": "22 H 00",
-          "mhP": "78 H 00",
-          "mhTotal": "100 H 00"
-        },
-        {
-          "code": "MKT408_F01",
-          "intitule": "MKT408",
-          "mhSynthese": "22 H 00",
-          "mhP": "78 H 00",
-          "mhTotal": "100 H 00"
-        }
-      ],
-      "totalMasseHoraire": "190 H 00"
-    },
-    {
-      "id": "17003",
-      "nom": "Moreau",
-      "prenom": "Paul",
-      "secteur": "Agro-alimentaire",
-      "modules": [
-        {
-          "code": "AG501_F01",
-          "intitule": "AG501",
-          "mhSynthese": "30 H 00",
-          "mhP": "50 H 00",
-          "mhTotal": "80 H 00"
-        },
-        {
-          "code": "AG502_F01",
-          "intitule": "AG502",
-          "mhSynthese": "35 H 00",
-          "mhP": "65 H 00",
-          "mhTotal": "100 H 00"
-        },
-        {
-          "code": "AG504_F01",
-          "intitule": "AG505",
-          "mhSynthese": "35 H 00",
-          "mhP": "65 H 00",
-          "mhTotal": "100 H 00"
-        }
-      ],
-      "totalMasseHoraire": "180 H 00"
-    },
-    {
-      "id": "17010",
-      "nom": "Petit",
-      "prenom": "Alice",
-      "secteur": "Agro-alimentaire",
-      "modules": [
-        {
-          "code": "AG503_F01",
-          "intitule": "AG503",
-          "mhSynthese": "20 H 00",
-          "mhP": "60 H 00",
-          "mhTotal": "80 H 00"
-        },
-        {
-          "code": "AG504_F01",
-          "intitule": "AG504",
-          "mhSynthese": "25 H 00",
-          "mhP": "75 H 00",
-          "mhTotal": "100 H 00"
-        },
-        {
-          "code": "AG506_F01",
-          "intitule": "AG506",
-          "mhSynthese": "25 H 00",
-          "mhP": "75 H 00",
-          "mhTotal": "100 H 00"
-        }
-      ],
-      "totalMasseHoraire": "180 H 00"
-    }
-  ],
   "competences": [
+    {
+      "id": "1",
+      "code_competence": 1,
+      "code_module": "M101_F01",
+      "intitule_module": "M101",
+      "intitule_competence": [
+        "Analyse de données",
+        "Algorithmes de base"
+      ],
+      "filiere": "Informatique",
+      "cours": "https://fake-link.com/cours/M101",
+      "quiz": "https://fake-link.com/quiz/M101"
+    },
     {
       "id": "2",
       "code_competence": 2,
@@ -1336,6 +1017,7 @@
         "Programmation en C",
         "Structures de données"
       ],
+      "filiere": "Informatique",
       "cours": "https://fake-link.com/cours/M102",
       "quiz": "https://fake-link.com/quiz/M102"
     },
@@ -1348,6 +1030,7 @@
         "Introduction à la gestion",
         "Organisation des entreprises"
       ],
+      "filiere": "Gestion",
       "cours": "https://fake-link.com/cours/M103",
       "quiz": "https://fake-link.com/quiz/M103"
     },
@@ -1360,6 +1043,7 @@
         "Programmation en JavaScript",
         "DOM manipulation"
       ],
+      "filiere": "Informatique",
       "cours": "https://fake-link.com/cours/M105",
       "quiz": "https://fake-link.com/quiz/M105"
     },
@@ -1372,6 +1056,7 @@
         "Introduction au web",
         "HTML/CSS"
       ],
+      "filiere": "Informatique",
       "cours": "https://fake-link.com/cours/M106",
       "quiz": "https://fake-link.com/quiz/M106"
     },
@@ -1384,6 +1069,7 @@
         "Réseaux de base",
         "Modèle OSI"
       ],
+      "filiere": "Informatique",
       "cours": "https://fake-link.com/cours/M107",
       "quiz": "https://fake-link.com/quiz/M107"
     },
@@ -1396,6 +1082,7 @@
         "Sécurité informatique",
         "Cryptographie"
       ],
+      "filiere": "Informatique",
       "cours": "https://fake-link.com/cours/M108",
       "quiz": "https://fake-link.com/quiz/M108"
     },
@@ -1408,6 +1095,7 @@
         "Design UX/UI",
         "Prototypage"
       ],
+      "filiere": "Design",
       "cours": "https://fake-link.com/cours/M109",
       "quiz": "https://fake-link.com/quiz/M109"
     },
@@ -1420,6 +1108,7 @@
         "Introduction à l'intelligence artificielle",
         "Machine learning"
       ],
+      "filiere": "IA",
       "cours": "https://fake-link.com/cours/M110",
       "quiz": "https://fake-link.com/quiz/M110"
     },
@@ -1429,6 +1118,7 @@
       "intitule_competence": [
         "communication"
       ],
+      "filiere": "Soft Skills",
       "intitule_module": "softskills",
       "cours": [
         "https:/softskills.com"
@@ -1443,27 +1133,13 @@
       "intitule_competence": [
         "innovation"
       ],
+      "filiere": "Soft Skills",
       "intitule_module": "softskills",
       "cours": [
         "https:/softskills.com"
       ],
       "quiz": [
         "https:/softskills.com"
-      ]
-    },
-    {
-      "id": "400f",
-      "code_competence": "13",
-      "intitule_competence": [
-        "esprit d'equipe",
-        "hhh"
-      ],
-      "intitule_module": "softskills",
-      "cours": [
-        "https:/cours.com"
-      ],
-      "quiz": [
-        "https:/quiz.com"
       ]
     }
   ],
@@ -3139,7 +2815,7 @@
         }
       ],
       "user": "Admin Admin",
-      "status": "effectuer",
+      "status": "rejeter",
       "submissionDate": "11/21/2024",
       "processingTime": "2-3 jours"
     },
@@ -3161,7 +2837,7 @@
         }
       ],
       "user": "Admin Admin",
-      "status": "en cours",
+      "status": "termin ",
       "submissionDate": "11/21/2024",
       "processingTime": "2-3 jours"
     },
@@ -3230,28 +2906,6 @@
       "status": "en cours",
       "submissionDate": "11/21/2024",
       "processingTime": "3-5 jours"
-    },
-    {
-      "id": "6dd7",
-      "document": "Certificat médical",
-      "description": "Certificat médical justifiant une absence prolongée",
-      "requestDate": "2024-11-30",
-      "files": [
-        {
-          "name": "ExplicationEtatTransition.pdf",
-          "size": 245836,
-          "type": "application/pdf"
-        },
-        {
-          "name": "board-laughing-wisecracker.pdf",
-          "size": 32610,
-          "type": "application/pdf"
-        }
-      ],
-      "user": "Admin Admin",
-      "status": "effectuer",
-      "submissionDate": "22/11/2024",
-      "processingTime": "1-2 jours"
     }
   ]
 }
