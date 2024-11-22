@@ -28,7 +28,8 @@ import {
   AllQuestions,
   QuizQuestions,
   TeacherQuizzes,
-  RoleBasedQuizRoute
+  RoleBasedQuizRoute,
+  SecteursPage,
 } from '../pages';
 
 const RouteConfig = () => {
@@ -215,8 +216,14 @@ const RouteConfig = () => {
           </ProtectedRoute>
         }
       />
-         
-      
+      <Route
+        path="/secteurs"
+        element={
+          <ProtectedRoute>
+            <SecteursPage />
+          </ProtectedRoute>
+        }
+      />
       </Route>
 
       {/* Error routes */}
