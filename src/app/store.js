@@ -12,6 +12,7 @@ import {
   profileSlice,
   documentsReducer,
   moduleReducer,
+  secteursReducer,
 } from '../features';
 
 const rootReducer = combineReducers({
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   profile: profileSlice,
   documents: documentsReducer,
   modules: moduleReducer,
+  secteur: secteursReducer,
 });
 
 const store = configureStore({

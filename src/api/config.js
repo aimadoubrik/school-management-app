@@ -18,6 +18,7 @@ const config = {
       courses: '/courses',
       documents: '/documents',
       modules: '/modules',
+      
     },
   },
 };

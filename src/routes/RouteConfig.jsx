@@ -22,6 +22,7 @@ import {
   CompetencesPage,
   ModulesPage,
   Course,
+  SecteursPage,
 } from '../pages';
 Course;
 
@@ -169,6 +170,14 @@ const RouteConfig = () => {
           }
         />
       </Route>
+      <Route
+        path="/secteurs"
+        element={
+          <ProtectedRoute>
+            <SecteursPage />
+          </ProtectedRoute>
+        }
+      />
 
       {/* Error routes */}
       <Route path="/unauthorized" element={<UnauthorizedPage />} />
