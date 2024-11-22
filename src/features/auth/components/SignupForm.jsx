@@ -124,105 +124,133 @@ const SignupForm = () => {
   const displayErrors = [...localErrors, reduxError].filter(Boolean);
 
   return (
-<form onSubmit={handleSubmit} className="space-y-4">
-      <div className="lg:flex md:flex lg:space-x-4 md:space-x-4 space-y-4 lg:space-y-0 md:space-y-0">
-        <div className="lg:w-1/2 md:w-1/2">
-          <label className="block text-sm font-medium mb-1">Full Name</label>
-          <input
-            type="text"
-            placeholder="John Doe"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-            value={formData.name}
-            onChange={(e) =>
-              setFormData({ ...formData, name: e.target.value })
-            }
-            required
-          />
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="">
+        <div className="flex flex-row space-x-4">
+          <div className="flex-1">
+            <div className="relative z-0 w-full mb-6 group">
+              <input
+                type="text"
+                name="name"
+                id="name"
+                className="block py-2.5 px-0 w-full text-lg bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                placeholder=" "
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                required
+              />
+              <label
+                htmlFor="name"
+                className="absolute text-lg duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] left-0 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:translate-y-[-1.5rem] peer-focus:scale-75 peer-focus:text-blue-400"
+              >
+                Full Name
+              </label>
+            </div>
+          </div>
+          <div className="flex-1">
+            <div className="relative z-0 w-full mb-6 group">
+              <input
+                type="email"
+                name="email"
+                id="email"
+                className="block py-2.5 px-0 w-full text-lg  bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                placeholder=" "
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                required
+              />
+              <label
+                htmlFor="email"
+                className="absolute text-lg duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] left-0 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:translate-y-[-1.5rem] peer-focus:scale-75 peer-focus:text-blue-400"
+              >
+                Email
+              </label>
+            </div>
+          </div>
         </div>
-        <div className="lg:w-1/2 md:w-1/2">
-          <label className="block text-sm font-medium mb-1">Email</label>
-          <input
-            type="email"
-            placeholder="your@email.com"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-            value={formData.email}
-            onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-            }
-            required
-          />
+        <div className="relative z-0 w-full mb-6 group">
+          <label className="block text-sm font-medium mb-1">Role</label>
+          <select
+            className="select select-primary w-full bg-transparent"
+            value={formData.role}
+            onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+          >
+            <option className='text-white bg-slate-900' value="trainee">Trainee</option>
+            <option className='text-white bg-slate-900' value="trainer">Trainer</option>
+            <option className='text-white bg-slate-900' value="admin">Admin</option>
+          </select>
+        </div>
+        <div className="md:flex lg:flex gap-4">
+          <div className="w-full md:w-1/2 lg:w-1/2">
+            <div className="relative z-0 w-full mb-6 group">
+              <input
+                type="password"
+                name="password"
+                id="password"
+                className="block py-2.5 px-0 w-full text-lg bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                placeholder=" "
+                value={formData.password}
+                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                required
+              />
+              <label
+                htmlFor="password"
+                className="absolute text-lg duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] left-0 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:translate-y-[-1.5rem] peer-focus:scale-75 peer-focus:text-blue-400"
+              >
+                Password
+              </label>
+            </div>
+          </div>
+          <div className="w-full md:w-1/2 lg:w-1/2">
+            <div className="relative z-0 w-full mb-6 group">
+              <input
+                type="password"
+                name="confirmPassword"
+                id="confirmPassword"
+                className="block py-2.5 px-0 w-full text-lg bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                placeholder=" "
+                value={formData.confirmPassword}
+                onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+                required
+              />
+              <label
+                htmlFor="confirmPassword"
+                className="absolute text-lg duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] left-0 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:translate-y-[-1.5rem] peer-focus:scale-75 peer-focus:text-blue-400"
+              >
+                Confirm Password
+              </label>
+            </div>
+          </div>
         </div>
       </div>
-      <div>
-        <label className="block text-sm font-medium mb-1">Role</label>
-        <select
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-          value={formData.role}
-          onChange={(e) =>
-            setFormData({ ...formData, role: e.target.value })
-          }
+        <div className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            className="mr-2"
+            checked={formData.acceptTerms}
+            onChange={(e) =>
+              setFormData({ ...formData, acceptTerms: e.target.checked })
+            }
+            required
+          />
+          <span className="text-lg">
+            I agree to the{" "}
+            <a href="/terms" className="text-green-500 hover:underline">
+              Terms of Service
+            </a>{" "}
+            and{" "}
+            <a href="/privacy" className="text-green-500 hover:underline">
+              Privacy Policy
+            </a>
+          </span>
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-transparent border border-primary text-white p-3 rounded-lg hover:bg-primary cursor-pointer transition"
+          disabled={!formData.acceptTerms}
         >
-          <option value="trainee">Trainee</option>
-          <option value="trainer">Trainer</option>
-          <option value="admin">Admin</option>
-        </select>
-      </div>
-      <div className="md:flex lg:flex gap-4">
-        <div className="w-full md:w-1/2 lg:w-1/2">
-          <label className="block text-sm font-medium mb-1">Password</label>
-          <input
-            type="password"
-            placeholder="••••••••"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-            value={formData.password}
-            onChange={(e) =>
-              setFormData({ ...formData, password: e.target.value })
-            }
-            required
-          />
-        </div>
-        <div className="w-full md:w-1/2 lg:w-1/2">
-          <label className="block text-sm font-medium mb-1">Confirm Password</label>
-          <input
-            type="password"
-            placeholder="••••••••"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-            value={formData.confirmPassword}
-            onChange={(e) =>
-              setFormData({ ...formData, confirmPassword: e.target.value })
-            }
-            required
-          />
-        </div>
-      </div>
-      <div className="flex items-center gap-2">
-        <input
-          type="checkbox"
-          className="mr-2"
-          checked={formData.acceptTerms}
-          onChange={(e) =>
-            setFormData({ ...formData, acceptTerms: e.target.checked })
-          }
-          required
-        />
-        <span className="text-sm text-gray-600">
-          I agree to the{" "}
-          <a href="/terms" className="text-green-500 hover:underline">
-            Terms of Service
-          </a>{" "}
-          and{" "}
-          <a href="/privacy" className="text-green-500 hover:underline">
-            Privacy Policy
-          </a>
-        </span>
-      </div>
-      <button
-        type="submit"
-        className="w-full bg-green-500 text-white p-3 rounded-lg hover:bg-green-600 transition"
-        disabled={!formData.acceptTerms}
-      >
-        Create Account
-      </button>
+          Create Account
+        </button>
     </form>
 
   );

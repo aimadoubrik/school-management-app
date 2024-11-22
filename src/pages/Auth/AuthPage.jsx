@@ -13,8 +13,8 @@ const AuthPage = () => {
   }
 
   return (
-    <div className="auth-page min-h-screen bg-gradient-to-r from-green-100 to-blue-300 flex items-center justify-center">
-    <div className="flex flex-col md:flex-row w-11/12 max-w-5xl bg-white shadow-2xl rounded-lg overflow-hidden">
+    <div className="auth-page min-h-screen bg-gradient-to-r from-gray-800 to-gray-900 dark:bg-gradient-to-r dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
+    <div className="flex flex-col md:flex-row w-11/12 md:w-8/12 bg-gray-900 text-white shadow-xl rounded-lg overflow-hidden">
       {/* Left Section */}
       <div className={`w-full md:w-1/2 p-8 ${isLogin ? "order-1" : "order-2"}`}>
         <h1 className="text-3xl text-center font-bold mb-4">
@@ -32,13 +32,9 @@ const AuthPage = () => {
 
       {/* Right Section */}
       <div
-        className={`w-full md:w-1/2 p-8 flex flex-col justify-center items-center bg-no-repeat bg-center bg-cover text-white ${
+        className={`w-full bg-gray-900 md:w-1/2 p-8 flex flex-col justify-center items-center text-white shadow-xl rounded-lg ${
           isLogin ? "order-2" : "order-1"
         }`}
-        style={{
-          backgroundImage: "linear-gradient(to right, rgba(0, 128, 0, 0.5), rgba(0, 0, 255, 0.5))",
-          backdropFilter: "blur(30px)",
-        }}
       >
         <h1 className="text-3xl font-bold mb-4">
           {isLogin ? "Create Account" : "Welcome Back!"}
@@ -51,8 +47,8 @@ const AuthPage = () => {
 
         <button
           onClick={() => setIsLogin(!isLogin)}
-          className="mt-6 w-1/2 px-4 py-2 bg-transparent border border-white text-white hover:bg-white hover:text-gray-500 text-green-500 rounded-lg font-semibold shadow-lg hover:bg-gray-100 transition duration-150"
-          >
+          className="mt-6 w-1/2 px-4 py-2 bg-transparent border border-white text-white hover:border hover:border-primary rounded-lg font-semibold transition duration-150"
+        >
           {isLogin ? "Sign up" : "Login"}
         </button>
       </div>

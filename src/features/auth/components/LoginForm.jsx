@@ -44,32 +44,46 @@ const LoginForm = () => {
 
   return (
 <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <label className="block text-sm font-medium mb-1">Email</label>
+      <div className="relative z-0 w-full mb-8 group">
         <input
           type="email"
-          placeholder="Enter your email"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          name="email"
+          id="email"
+          className="block py-2.5 px-0 w-full text-lg bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" "
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           required
         />
+        <label
+          htmlFor="email"
+          className="absolute text-lg duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] left-0 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:translate-y-[-1.5rem] peer-focus:scale-75 peer-focus:text-blue-400"
+        >
+          Email
+        </label>
       </div>
-      <div>
-        <label className="block text-sm font-medium mb-1">Password</label>
+
+      {/* Password Input */}
+      <div className="relative z-0 w-full mb-11 group">
         <input
           type="password"
-          placeholder="Enter your password"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          name="password"
+          id="password"
+          className="block py-2.5 px-0 w-full text-lg bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" "
           value={formData.password}
-          onChange={(e) =>
-            setFormData({ ...formData, password: e.target.value })
-          }
+          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
           required
         />
+        <label
+          htmlFor="password"
+          className="absolute text-lg duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] left-0 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:translate-y-[-1.5rem] peer-focus:scale-75 peer-focus:text-blue-400"
+        >
+          Password
+        </label>
       </div>
       <div className="flex items-center justify-between">
-        <div className="flex items-center">
+        <div className="flex items-center mt-6">
           <input
             type="checkbox"
             className="mr-2"
@@ -78,18 +92,18 @@ const LoginForm = () => {
               setFormData({ ...formData, rememberMe: e.target.checked })
             }
           />
-          <label className="text-sm text-gray-600">Remember me</label>
+          <label className="text-sm">Remember me</label>
         </div>
         <a
           href="/forgot-password"
-          className="text-sm text-green-500 hover:underline"
+          className="text-sm text-green-500 hover:underline mt-6"
         >
           Forgot Password?
         </a>
       </div>
       <button
         type="submit"
-        className="w-full bg-green-500 text-white p-3 rounded-lg hover:bg-green-600 transition"
+        className="w-full bg-transparent border border-primary text-white p-3 rounded-lg hover:bg-primary transition"
       >
         Log in
       </button>
