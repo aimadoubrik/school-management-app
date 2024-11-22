@@ -4,7 +4,7 @@ import { ChevronUp, ChevronDown, AlertCircle } from 'lucide-react';
 import Pagination from './Pagination';
 
 const DataTable = ({
-  data,
+  data = [], // Ensure data has a default value
   columns,
   sortConfig,
   onSort,
@@ -14,7 +14,7 @@ const DataTable = ({
     description: 'No records to display',
   },
   rowKeyField = 'id',
-  itemsPerPage = 7, // Default number of items per page
+  itemsPerPage = 7,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -37,7 +37,7 @@ const DataTable = ({
     }
   };
 
-  if (!data.length) {
+  if (!data || data.length === 0) {
     const { icon: Icon, title, description } = emptyStateProps;
     return (
       <div className="card bg-base-100 shadow">
@@ -52,7 +52,6 @@ const DataTable = ({
 
   const paginatedData = data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
-  // Desktop view
   const DesktopTable = () => (
     <div className="bg-base-100 hidden md:block">
       <table className="table table-zebra w-full">
@@ -91,7 +90,6 @@ const DataTable = ({
     </div>
   );
 
-  // Mobile view
   const MobileView = () => (
     <div className="md:hidden">
       <div className="divide-y divide-base-200">
@@ -103,7 +101,6 @@ const DataTable = ({
                   if (column.hideOnMobile) return null;
                   if (column.key === 'actions') return null;
 
-                  // Primary field (first column) gets special styling
                   if (index === 0) {
                     return (
                       <div key={column.key} className="flex items-center gap-2">
@@ -115,7 +112,6 @@ const DataTable = ({
                     );
                   }
 
-                  // Skip secondary field as it's already rendered
                   if (column.mobileSecondary) return null;
 
                   return (
@@ -130,7 +126,6 @@ const DataTable = ({
                   );
                 })}
               </div>
-              {/* Render actions column separately */}
               {columns.find((col) => col.key === 'actions') && (
                 <div className="flex items-center gap-1 pl-2">
                   {columns.find((col) => col.key === 'actions').render(row)}

@@ -9,11 +9,11 @@ const RoleBasedQuizRoute = () => {
 
   // Show TeacherQuizzes for trainers
   if (userRole === 'trainer') {
-    return <TeacherQuizzes/>;
+    return <TeacherQuizzes />;
   }
 
   // Show QuizzesPage for trainees and admins
-  if (userRole === 'trainee' ) {
+  if (userRole === 'trainee') {
     return <QuizzesPage />;
   }
 

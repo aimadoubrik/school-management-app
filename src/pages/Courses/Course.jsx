@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchQuizzes } from "../../features/quizzes/quizzesSlice";
-import { BookOpen, CheckCircle, FileText, Clock, Award, ChevronRight, Play } from "lucide-react";
-import QuizCard from "../Quizzes/QuizCard";
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchQuizzes } from '../../features/quizzes/quizzesSlice';
+import { BookOpen, CheckCircle, FileText, Clock, Award, ChevronRight, Play } from 'lucide-react';
+import QuizCard from '../Quizzes/QuizCard';
 
 const Course = () => {
   const { id: courseId } = useParams();
@@ -19,7 +19,7 @@ const Course = () => {
   const quizzesStatus = useSelector((state) => state.quizzes.status);
 
   // Filter quizzes specific to this course
-  const courseQuizzes = isCourseEnded 
+  const courseQuizzes = isCourseEnded
     ? quizzes.filter((quiz) => quiz.courseId === courseId || quiz.courseName === course?.courseName)
     : [];
 
@@ -34,18 +34,18 @@ const Course = () => {
         if (courseResponse.data) {
           setCourse(courseResponse.data);
           // Set initial course status based on existing status
-          setIsCourseEnded(courseResponse.data.status === "completed");
+          setIsCourseEnded(courseResponse.data.status === 'completed');
         } else {
-          setError("Course not found");
+          setError('Course not found');
         }
 
         // Fetch quizzes if not already fetched
-        if (quizzesStatus === "idle") {
+        if (quizzesStatus === 'idle') {
           await dispatch(fetchQuizzes());
         }
       } catch (err) {
-        console.error("Error fetching course:", err);
-        setError("Course not found or network error");
+        console.error('Error fetching course:', err);
+        setError('Course not found or network error');
       }
     };
 
@@ -59,26 +59,27 @@ const Course = () => {
   const handleEndCourse = async () => {
     try {
       await axios.patch(`http://localhost:3000/courses/${courseId}`, {
-        status: "completed"
+        status: 'completed',
       });
 
       setIsCourseEnded(true);
-      
-      setCourse(prevCourse => ({
+
+      setCourse((prevCourse) => ({
         ...prevCourse,
-        status: "completed"
+        status: 'completed',
       }));
     } catch (error) {
-      console.error("Error ending course:", error);
+      console.error('Error ending course:', error);
     }
   };
 
   if (error) return <div className="p-8 text-red-600">{error}</div>;
-  if (!course) return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-    </div>
-  );
+  if (!course)
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      </div>
+    );
 
   return (
     <div className="min-h-screen  from-blue-50 to-indigo-50 py-8 px-4">
@@ -89,11 +90,11 @@ const Course = () => {
           <div className="flex items-center space-x-4 ">
             <span className="flex items-center">
               <Clock className="w-4 h-4 mr-2" />
-              Status: {isCourseEnded ? "Completed" : "In Progress"}
+              Status: {isCourseEnded ? 'Completed' : 'In Progress'}
             </span>
             {course.pdfUrl && (
               <button
-              onClick={() => window.open(course.pdfUrl, "_blank")}
+                onClick={() => window.open(course.pdfUrl, '_blank')}
                 className="flex items-center text-blue-600 hover:text-blue-700"
               >
                 <FileText className="w-4 h-4 mr-2" />
@@ -115,7 +116,7 @@ const Course = () => {
                   className="w-full h-full object-cover"
                 />
                 <button
-                  onClick={() => window.open(course.videoLink, "_blank")}
+                  onClick={() => window.open(course.videoLink, '_blank')}
                   className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity group"
                 >
                   <div className="transform transition-transform group-hover:scale-110">
@@ -146,9 +147,7 @@ const Course = () => {
                           {index + 1}
                         </span>
                         <div>
-                          <h3 className="font-semibold ">
-                            {content.contentName}
-                          </h3>
+                          <h3 className="font-semibold ">{content.contentName}</h3>
                           <p className=" mt-1">{content.contentDescription}</p>
                         </div>
                         <ChevronRight className="w-5 h-5  ml-auto" />
@@ -166,12 +165,8 @@ const Course = () => {
                   <h2 className="text-xl font-semibold text-gray-900">Course Quizzes</h2>
                 </div>
                 <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {courseQuizzes.map(quiz => (
-                    <QuizCard
-                      key={quiz.id}
-                      quiz={quiz}
-                      onQuizStart={handleStartQuiz}
-                    />
+                  {courseQuizzes.map((quiz) => (
+                    <QuizCard key={quiz.id} quiz={quiz} onQuizStart={handleStartQuiz} />
                   ))}
                 </div>
               </div>

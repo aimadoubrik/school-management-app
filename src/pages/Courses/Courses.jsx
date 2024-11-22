@@ -1,9 +1,9 @@
-import  { useEffect } from "react";
-import { BookOpen, CheckCircle } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCourses } from "../../features/courses/coursesSlice";
-import { fetchQuizzes } from "../../features/quizzes/quizzesSlice";
+import { useEffect } from 'react';
+import { BookOpen, CheckCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCourses } from '../../features/courses/coursesSlice';
+import { fetchQuizzes } from '../../features/quizzes/quizzesSlice';
 
 const Courses = () => {
   const dispatch = useDispatch();
@@ -12,14 +12,14 @@ const Courses = () => {
   const { quizzes } = useSelector((state) => state.quizzes);
 
   useEffect(() => {
-    if (status === "idle") {
+    if (status === 'idle') {
       dispatch(fetchCourses());
       dispatch(fetchQuizzes());
     }
   }, [status, dispatch]);
 
   const handleAction = (course) => {
-    if (course.status === "completed") {
+    if (course.status === 'completed') {
       const courseQuiz = quizzes.find(
         (quiz) => quiz.courseId === course.id || quiz.courseName === course.courseName
       );
@@ -35,14 +35,14 @@ const Courses = () => {
     }
   };
 
-  if (status === "loading")
+  if (status === 'loading')
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
       </div>
     );
 
-  if (status === "failed")
+  if (status === 'failed')
     return <div className="p-8 text-red-600 text-center">Error: {error}</div>;
 
   return (
@@ -67,16 +67,14 @@ const Courses = () => {
                 </div>
 
                 <div className="p-6 space-y-4">
-                  <h3 className="text-xl font-semibold">
-                    {course.courseName}
-                  </h3>
+                  <h3 className="text-xl font-semibold">{course.courseName}</h3>
 
                   <div className="flex items-center space-x-2 ">
                     <BookOpen className="w-4 h-4" />
                     <span>{course.teacherName}</span>
                   </div>
 
-                  {course.status === "completed" && (
+                  {course.status === 'completed' && (
                     <div className="flex items-center space-x-2 text-green-600">
                       <CheckCircle className="w-4 h-4" />
                       <span>Completed</span>
@@ -86,12 +84,12 @@ const Courses = () => {
                   <button
                     onClick={() => handleAction(course)}
                     className={`w-full py-3 px-4 rounded-xl font-semibold text-white transition-colors duration-200 ${
-                      course.status === "completed"
-                        ? "bg-blue-600 hover:bg-blue-700"
-                        : "bg-green-600 hover:bg-green-700"
+                      course.status === 'completed'
+                        ? 'bg-blue-600 hover:bg-blue-700'
+                        : 'bg-green-600 hover:bg-green-700'
                     }`}
                   >
-                    {course.status === "completed" ? "Start Quiz" : "Complete Course"}
+                    {course.status === 'completed' ? 'Start Quiz' : 'Complete Course'}
                   </button>
                 </div>
               </div>
