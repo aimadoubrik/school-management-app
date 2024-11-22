@@ -6,15 +6,13 @@ import {
   addCompetence,
   editCompetence,
 } from '../../features/competences/competencesSlice';
-import { Eye, Edit, Trash, Download, Plus, Search, Filter } from 'lucide-react';
-import { LoadingSpinner, ErrorAlert } from '../../components';
-import Papa from 'papaparse';
+import { LoadingSpinner, ErrorAlert, ConfirmModal } from '../../components';
 import CompetenceTable from './components/CompetencesTable';
 import CompetencesModal from './components/CompetencesModal';
-import { ConfirmModal } from '../../components';
 import CompetenceHeader from './components/CompetenceHeader';
 import { SearchFilter } from '../../components';
 import Pagination from '../../components/shared/Pagination';
+
 
 const CompetencesPage = () => {
   const dispatch = useDispatch();
@@ -78,6 +76,12 @@ const CompetencesPage = () => {
     }
   };
 
+  const handleAdd = () => {
+    setSelectedCompetence(null); 
+    setViewMode(false); 
+    setIsModalOpen(true); 
+  };
+
   const handleEdit = (competence) => {
     setSelectedCompetence(competence);
     setViewMode(false);
@@ -95,7 +99,7 @@ const CompetencesPage = () => {
     setIsModalOpen(false);
   };
 
-  const handleCSVExport = () => {
+  const handleExport = () => {
     const csv = Papa.unparse(competences);
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
@@ -110,7 +114,7 @@ const CompetencesPage = () => {
     dispatch(fetchCompetences());
   };
 
-  // Filter competences based on search, filieres, and modules
+  // Filter competences based on search term, filiere, and module
   const filteredCompetences = competences.filter((competence) => {
     const title = competence.intitule_competence || '';
     const filiereMatch = selectedFiliere ? competence.filiere === selectedFiliere : true;
@@ -187,14 +191,14 @@ const CompetencesPage = () => {
         onDelete={handleDeleteCompetence}
       />
 
-      {/* Pagination Component */}
+      {/* Pagination */}
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
         setCurrentPage={setCurrentPage}
       />
 
-      {/* Competences Modal */}
+      {/* Competence Modal */}
       <CompetencesModal
         isOpen={isModalOpen}
         mode={modalMode}

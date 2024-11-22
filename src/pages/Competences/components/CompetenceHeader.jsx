@@ -18,7 +18,7 @@ const CompetenceHeader = ({ onRefresh, onExport, onAdd }) => {
     },
     {
       icon: Plus,
-      label: 'Nouvelle Filière',
+      label: 'Nouvelle Compétence',
       onClick: onAdd,
       className: 'btn btn-primary btn-sm gap-2',
     },
