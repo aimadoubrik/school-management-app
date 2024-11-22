@@ -5,6 +5,7 @@ import ProtectedRoute from './ProtectedRoute';
 import DashboardLayout from '../layout/DashboardLayout';
 import LoginPage from '../features/auth/components/LoginForm';
 import SignupPage from '../features/auth/components/SignupForm';
+import AuthPage from '../pages/Auth/AuthPage';
 import DemandesPage from '../pages/Documents/DemandesPage';
 import {
   HomePage,
@@ -36,18 +37,10 @@ const RouteConfig = () => {
     <Routes>
       {/* Public routes */}
       <Route
-        path="/login"
+        path="/auth"
         element={
           <PublicRoute>
-            <LoginPage />
-          </PublicRoute>
-        }
-      />
-      <Route
-        path="/signup"
-        element={
-          <PublicRoute>
-            <SignupPage />
+            <AuthPage />
           </PublicRoute>
         }
       />

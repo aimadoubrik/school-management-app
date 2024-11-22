@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+// import PropTypes from 'prop-types';
+// import Pagination from '../../components/shared/Pagination';
 import { fetchDemandes, editDemande, deleteDemande } from '../../features/documents/demandeSlice';
 import { Edit, Check, Trash } from 'lucide-react';
 
@@ -179,72 +181,85 @@ const DemandesPage = () => {
             {/* mobile view */}
             {/* mobile view */}
             <div className="sm:hidden">
-                {demandes.map(demande => (
-                    <div key={demande.id} className="bg-transparent border border-gray-300 rounded-lg shadow-md p-4 mb-4 relative">
-                        <div className="flex justify-between">
-                            <h3 className="text-lg font-medium w-64">{demande.document}</h3>
-                        </div>
-                        <div className="mt-4">
-                            <p className="text-sm text-gray-400">
-                                {demande.description}
-                            </p>
-                            <p className="text-sm text-gray-400">
-                                {demande.requestDate}
-                            </p>
-                            <p className="text-sm text-gray-400">
-                                {demande.processingTime}
-                            </p>
-                            <hr className='my-2'/>
-                            <p className="text-sm text-gray-400">
+                {filteredDemandes.length > 0 ? (
+                    filteredDemandes.map(demande => (
+                        <div key={demande.id} className="bg-transparent border border-gray-300 rounded-lg shadow-md p-4 mb-4 relative">
+                            <div className="flex justify-between">
+                                <h3 className="text-lg font-medium w-64">{demande.document}</h3>
+                            </div>
+                            <div className="mt-4">
+                                <p className="text-sm text-gray-400">
+                                    {demande.description}
+                                </p>
+                                <p className="text-sm text-gray-400">
+                                    {demande.requestDate}
+                                </p>
+                                <hr />
+                                <p className="py-3 text-sm text-gray-400">
+                                    {demande.user || "Inconnu"}
+                                </p>
+                                <p className="text-sm text-gray-400">
+                                    {demande.processingTime}
+                                </p>
+                                <hr className='my-2'/>
+                                <p className="text-sm text-gray-400">
+                                    {showEditSelect && editedDemande?.id === demande.id ? (
+                                        <select
+                                            value={editedDemande?.status}
+                                            onChange={handleConfirmEdit}
+                                            className="select select-primary w-full mt-3"
+                                        >
+                                            <option value="en cours">En cours</option>
+                                            <option value="effectuer">Effectuer </option>
+                                            <option value="rejeter">Rejeter</option>
+                                        </select>
+                                    ) : (
+                                        <span className={
+                                            demande.status === "en cours" ? "text-yellow-500" :
+                                                demande.status === "effectuer" ? "text-green-500" :
+                                                "text-red-500"
+                                        }>
+                                            {demande.status}
+                                        </span>
+                                    )}
+                                </p>
+                            </div>
+                            <div className="absolute top-0 right-0 p-2">
                                 {showEditSelect && editedDemande?.id === demande.id ? (
-                                    <select
-                                        value={editedDemande?.status}
-                                        onChange={handleConfirmEdit}
-                                        className="select select-primary w-full mt-3"
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowEditSelect(false)}
+                                        className="inline-flex items-center px-2 py-3 text-sm leading-4 font-medium rounded-md text-indigo-600 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                     >
-                                        <option value="en cours">En cours</option>
-                                        <option value="effectuer">Effectuer </option>
-                                        <option value="rejeter">Rejeter</option>
-                                    </select>
+                                        <Check className="h-5 w-5 text-black dark:text-white" aria-hidden="true" />
+                                    </button>
                                 ) : (
-                                    <span className={
-                                        demande.status === "en cours" ? "text-yellow-500" :
-                                        demande.status === "effectuer" ? "text-green-500" :
-                                        "text-red-500"
-                                    }>
-                                        {demande.status}
-                                    </span>
+                                    <button
+                                        type="button"
+                                        onClick={() => handleEdit(demande)}
+                                        className="inline-flex items-center px-2 py-3 text-sm leading-4 font-medium rounded-md text-indigo-600 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                    >
+                                        <Edit className="h-5 w-5 text-black dark:text-white" aria-hidden="true" />
+                                    </button>
                                 )}
-                            </p>
+                                <button
+                                    type="button"
+                                    onClick={() => handleDelete(demande)}
+                                    className="inline-flex items-center px-2 py-3 text-sm leading-4 font-medium rounded-md text-indigo-600 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                >
+                                    <Trash className="h-5 w-5 text-red-600" aria-hidden="true" />
+                                </button>
+                            </div>
                         </div>
-                        <div className="absolute top-0 right-0 p-2">
-                            {showEditSelect && editedDemande?.id === demande.id ? (
-                                <button
-                                    type="button"
-                                    onClick={() => setShowEditSelect(false)}
-                                    className="inline-flex items-center px-2 py-3 text-sm leading-4 font-medium rounded-md text-indigo-600 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                >
-                                    <Check className="h-5 w-5 text-black dark:text-white" aria-hidden="true" />
-                                </button>
-                            ) : (
-                                <button
-                                    type="button"
-                                    onClick={() => handleEdit(demande)}
-                                    className="inline-flex items-center px-2 py-3 text-sm leading-4 font-medium rounded-md text-indigo-600 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                >
-                                    <Edit className="h-5 w-5 text-black dark:text-white" aria-hidden="true" />
-                                </button>
-                            )}
-                            <button
-                                type="button"
-                                onClick={() => handleDelete(demande)}
-                                className="inline-flex items-center px-2 py-3 text-sm leading-4 font-medium rounded-md text-indigo-600 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                            >
-                                <Trash className="h-5 w-5 text-red-600" aria-hidden="true" />
-                            </button>
+                    ))
+                ) : (
+                    <div className="bg-transparent border border-gray-300 rounded-lg shadow-md p-4 mb-4 relative">
+                        <div className="flex justify-center">
+                            <p className="text-lg font-medium">Aucune demande trouvée</p>
                         </div>
                     </div>
-                ))}
+                )}
+                
             </div>
             
         </div>

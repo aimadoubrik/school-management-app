@@ -43,90 +43,57 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-base-200 flex items-center justify-center px-4">
-      <div className="card w-full max-w-md bg-base-100 shadow-xl">
-        <div className="card-body">
-          <h2 className="card-title text-2xl font-bold text-center justify-center mb-2">
-            Welcome Back!
-          </h2>
-          <p className="text-center text-base-content/60 mb-6">Please sign in to your account</p>
-
-          {error && (
-            <div className="alert alert-error mb-6">
-              <AlertCircle className="h-5 w-5" />
-              <span>{error}</span>
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <div className="relative">
-                <input
-                  type="email"
-                  placeholder="your@email.com"
-                  className="input input-bordered w-full pl-10"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  required
-                />
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-base-content/40" />
-              </div>
-            </div>
-
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-                <Link to="/forgot-password" className="label-text-alt link link-hover">
-                  Forgot password?
-                </Link>
-              </label>
-              <div className="relative">
-                <input
-                  type="password"
-                  placeholder="••••••••"
-                  className="input input-bordered w-full pl-10"
-                  value={formData.password}
-                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  required
-                />
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-base-content/40" />
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                className="checkbox checkbox-primary"
-                checked={formData.rememberMe}
-                onChange={(e) => setFormData({ ...formData, rememberMe: e.target.checked })}
-              />
-              <span className="label-text">Remember me</span>
-            </div>
-
-            <button type="submit" className="btn btn-primary w-full" disabled={isLoading}>
-              {isLoading ? (
-                <>
-                  <Loader2 className="h-5 w-5 animate-spin" />
-                  Signing in...
-                </>
-              ) : (
-                'Sign in'
-              )}
-            </button>
-          </form>
-
-          <p className="text-center mt-6">
-            Don't have an account?{' '}
-            <Link to="/signup" className="link link-primary">
-              Sign up
-            </Link>
-          </p>
-        </div>
+<form onSubmit={handleSubmit} className="space-y-4">
+      <div>
+        <label className="block text-sm font-medium mb-1">Email</label>
+        <input
+          type="email"
+          placeholder="Enter your email"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          value={formData.email}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          required
+        />
       </div>
-    </div>
+      <div>
+        <label className="block text-sm font-medium mb-1">Password</label>
+        <input
+          type="password"
+          placeholder="Enter your password"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          value={formData.password}
+          onChange={(e) =>
+            setFormData({ ...formData, password: e.target.value })
+          }
+          required
+        />
+      </div>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            className="mr-2"
+            checked={formData.rememberMe}
+            onChange={(e) =>
+              setFormData({ ...formData, rememberMe: e.target.checked })
+            }
+          />
+          <label className="text-sm text-gray-600">Remember me</label>
+        </div>
+        <a
+          href="/forgot-password"
+          className="text-sm text-green-500 hover:underline"
+        >
+          Forgot Password?
+        </a>
+      </div>
+      <button
+        type="submit"
+        className="w-full bg-green-500 text-white p-3 rounded-lg hover:bg-green-600 transition"
+      >
+        Log in
+      </button>
+    </form>
   );
 };
 

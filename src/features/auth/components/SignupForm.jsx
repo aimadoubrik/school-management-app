@@ -124,173 +124,107 @@ const SignupForm = () => {
   const displayErrors = [...localErrors, reduxError].filter(Boolean);
 
   return (
-    <div className="min-h-screen bg-base-200 flex items-center justify-center px-4 py-8">
-      <div className="card w-full max-w-md bg-base-100 shadow-xl">
-        <div className="card-body">
-          <h2 className="card-title text-2xl font-bold text-center justify-center mb-2">
-            Create Account
-          </h2>
-          <p className="text-center text-base-content/60 mb-6">Join our learning platform today</p>
-
-          {displayErrors.length > 0 && (
-            <div className="alert alert-error mb-6">
-              <AlertCircle className="h-5 w-5" />
-              <ul className="list-disc ml-4">
-                {displayErrors.map((error, index) => (
-                  <li key={index}>{error}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Full Name</span>
-              </label>
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="John Doe"
-                  className="input input-bordered w-full pl-10"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  required
-                />
-                <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-base-content/40" />
-              </div>
-            </div>
-
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <div className="relative">
-                <input
-                  type="email"
-                  placeholder="your@email.com"
-                  className="input input-bordered w-full pl-10"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  required
-                />
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-base-content/40" />
-              </div>
-            </div>
-
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Role</span>
-              </label>
-              <div className="relative">
-                <select
-                  className="select select-bordered w-full pl-10"
-                  value={formData.role}
-                  onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                >
-                  <option value="trainee">Trainee</option>
-                  <option value="trainer">Trainer</option>
-                  <option value="admin">Admin</option>
-                </select>
-                <GraduationCap className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-base-content/40" />
-              </div>
-            </div>
-
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <div className="relative">
-                <input
-                  type="password"
-                  placeholder="••••••••"
-                  className="input input-bordered w-full pl-10"
-                  value={formData.password}
-                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  required
-                />
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-base-content/40" />
-              </div>
-              {formData.password && (
-                <div className="mt-2">
-                  <div className="w-full bg-base-200 rounded-full h-2">
-                    <div
-                      className={`h-2 rounded-full ${
-                        passwordStrength.score >= 80
-                          ? 'bg-success'
-                          : passwordStrength.score >= 60
-                            ? 'bg-warning'
-                            : 'bg-error'
-                      }`}
-                      style={{ width: `${passwordStrength.score}%` }}
-                    />
-                  </div>
-                </div>
-              )}
-            </div>
-
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Confirm Password</span>
-              </label>
-              <div className="relative">
-                <input
-                  type="password"
-                  placeholder="••••••••"
-                  className="input input-bordered w-full pl-10"
-                  value={formData.confirmPassword}
-                  onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                  required
-                />
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-base-content/40" />
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                className="checkbox checkbox-primary"
-                checked={formData.acceptTerms}
-                onChange={(e) => setFormData({ ...formData, acceptTerms: e.target.checked })}
-                required
-              />
-              <span className="label-text">
-                I agree to the{' '}
-                <Link to="/terms" className="link link-primary">
-                  Terms of Service
-                </Link>{' '}
-                and{' '}
-                <Link to="/privacy" className="link link-primary">
-                  Privacy Policy
-                </Link>
-              </span>
-            </div>
-
-            <button
-              type="submit"
-              className="btn btn-primary w-full"
-              disabled={isLoading || !formData.acceptTerms}
-            >
-              {isLoading ? (
-                <>
-                  <Loader2 className="h-5 w-5 animate-spin" />
-                  Creating account...
-                </>
-              ) : (
-                'Create Account'
-              )}
-            </button>
-          </form>
-
-          <p className="text-center mt-6">
-            Already have an account?{' '}
-            <Link to="/login" className="link link-primary">
-              Sign in
-            </Link>
-          </p>
+<form onSubmit={handleSubmit} className="space-y-4">
+      <div className="lg:flex md:flex lg:space-x-4 md:space-x-4 space-y-4 lg:space-y-0 md:space-y-0">
+        <div className="lg:w-1/2 md:w-1/2">
+          <label className="block text-sm font-medium mb-1">Full Name</label>
+          <input
+            type="text"
+            placeholder="John Doe"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            value={formData.name}
+            onChange={(e) =>
+              setFormData({ ...formData, name: e.target.value })
+            }
+            required
+          />
+        </div>
+        <div className="lg:w-1/2 md:w-1/2">
+          <label className="block text-sm font-medium mb-1">Email</label>
+          <input
+            type="email"
+            placeholder="your@email.com"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            value={formData.email}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
+            required
+          />
         </div>
       </div>
-    </div>
+      <div>
+        <label className="block text-sm font-medium mb-1">Role</label>
+        <select
+          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          value={formData.role}
+          onChange={(e) =>
+            setFormData({ ...formData, role: e.target.value })
+          }
+        >
+          <option value="trainee">Trainee</option>
+          <option value="trainer">Trainer</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <div className="md:flex lg:flex gap-4">
+        <div className="w-full md:w-1/2 lg:w-1/2">
+          <label className="block text-sm font-medium mb-1">Password</label>
+          <input
+            type="password"
+            placeholder="••••••••"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            value={formData.password}
+            onChange={(e) =>
+              setFormData({ ...formData, password: e.target.value })
+            }
+            required
+          />
+        </div>
+        <div className="w-full md:w-1/2 lg:w-1/2">
+          <label className="block text-sm font-medium mb-1">Confirm Password</label>
+          <input
+            type="password"
+            placeholder="••••••••"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            value={formData.confirmPassword}
+            onChange={(e) =>
+              setFormData({ ...formData, confirmPassword: e.target.value })
+            }
+            required
+          />
+        </div>
+      </div>
+      <div className="flex items-center gap-2">
+        <input
+          type="checkbox"
+          className="mr-2"
+          checked={formData.acceptTerms}
+          onChange={(e) =>
+            setFormData({ ...formData, acceptTerms: e.target.checked })
+          }
+          required
+        />
+        <span className="text-sm text-gray-600">
+          I agree to the{" "}
+          <a href="/terms" className="text-green-500 hover:underline">
+            Terms of Service
+          </a>{" "}
+          and{" "}
+          <a href="/privacy" className="text-green-500 hover:underline">
+            Privacy Policy
+          </a>
+        </span>
+      </div>
+      <button
+        type="submit"
+        className="w-full bg-green-500 text-white p-3 rounded-lg hover:bg-green-600 transition"
+        disabled={!formData.acceptTerms}
+      >
+        Create Account
+      </button>
+    </form>
+
   );
 };
 

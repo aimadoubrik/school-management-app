@@ -164,8 +164,8 @@ const DocumentsPage = () => {
 
     const handleDelete = (demande) => {
         dispatch(deleteDemande(demande.id));
-        const newDemandes = documents.filter((d) => d.id !== demande.id);
-        dispatch(fetchDocuments(newDemandes));
+        const newDemandes = demandes.filter((d) => d.id !== demande.id);
+        dispatch(fetchDemandes(newDemandes));
     };
 
     if (loading) {
@@ -399,28 +399,14 @@ const DocumentsPage = () => {
                                         <span
                                             className={
                                                 `text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full
-                                                bg-${{
-                                                    'en cours': 'yellow',
-                                                    'effectuer': 'green',
-                                                    'rejeter': 'red',
-                                                }[demande.status]}-100 text-${{
-                                                    'en cours': 'yellow',
-                                                    'effectuer': 'green',
-                                                    'rejeter': 'red',
-                                                }[demande.status]}-800`
+                                                ${demande.status === 'effectuer' ? 'bg-green-100 text-green-800' : 
+                                                  demande.status === 'en cours' ? 'bg-yellow-100 text-yellow-800' : 
+                                                  'bg-red-100 text-red-800'}`
                                             }
                                             style={{ textTransform: 'capitalize' }}
                                         >
                                             {demande.status}
                                         </span>
-                                        {demande.status !== 'effectuer' && demande.status !== 'rejeter' && (
-                                            <button
-                                                onClick={() => handleDelete(demande.id)}
-                                                className="hover:text-red-500"
-                                            >
-                                                <Trash className="w-4 h-4" />
-                                            </button>
-                                        )}
                                     </div>
                                 </div>
                             </div>
