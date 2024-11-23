@@ -64,42 +64,33 @@ const Courses = () => {
         <h2 className="text-4xl font-bold space-y-2 mb-8">Your Courses</h2>
 
         {/* Filters Section */}
-        <div className="mb-8 flex">
-          {/* Course Name Dropdown */}
-          <div className="flex-1 mr-4 justify-end items-end">
-            <select
-              value={selectedCourseName}
-              onChange={(e) => setSelectedCourseName(e.target.value)}
-              className="select select-primary w-full max-w-xs mr-4"
-            >
-              <option value="">All Courses</option>
-              {courses.map((course) => (
-                <option key={course.id} value={course.courseName} 
-                className=" w-full max-w-xs">
-                  {course.courseName}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Teacher Name Dropdown */}
-          <div className="flex-1">
-            <select
-              value={selectedTeacherName}
-              onChange={(e) => setSelectedTeacherName(e.target.value)}
-              className="select select-primary w-full max-w-xs mr-4"
-            >
-              <option value="">All Teachers</option>
-              {[
-                ...new Set(courses.map((course) => course.teacherName)),
-              ].map((teacherName) => (
-                <option key={teacherName} value={teacherName} 
-                className='rounded-lg shadow-lg border border-gray-300 overflow-hidden transition-transform hover:scale-105 w-full max-w-xs'>
-                  {teacherName}
-                </option>
-              ))}
-            </select>
-          </div>
+        <div className="flex mb-4 w-full gap-4">
+          <select
+            className="select select-primary w-1/2"
+            value={selectedCourseName}
+            onChange={(e) => setSelectedCourseName(e.target.value)}
+          >
+            <option value="">All Courses</option>
+            {courses.map((course) => (
+              <option key={course.id} value={course.courseName} >
+                {course.courseName}
+              </option>
+            ))}
+          </select>
+          <select
+            className="select select-primary w-1/2"
+            value={selectedTeacherName}
+            onChange={(e) => setSelectedTeacherName(e.target.value)}
+          >
+            <option value="">All Teachers</option>
+            {[
+              ...new Set(courses.map((course) => course.teacherName)),
+            ].map((teacherName) => (
+              <option key={teacherName} value={teacherName} >
+                {teacherName}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* Courses Grid */}
@@ -108,7 +99,7 @@ const Courses = () => {
             filteredCourses.map((course) => (
               <div
                 key={course.id}
-                className="rounded-2xl shadow-lg border border-gray-300 overflow-hidden transition-transform hover:scale-105"
+                className="rounded-2xl shadow-lg border border-gray-300 overflow-hidden"
               >
                 <div className="relative group">
                   <img
@@ -136,10 +127,10 @@ const Courses = () => {
 
                   <button
                     onClick={() => handleAction(course)}
-                    className={`w-full py-3 px-4 rounded-xl font-semibold text-white transition-colors duration-200 ${
+                    className={`w-full py-3 px-4 rounded-xl font-semibold transition-colors duration-200 ${
                       course.status === 'completed'
-                        ? 'bg-blue-600 hover:bg-blue-700'
-                        : 'bg-green-600 hover:bg-green-700'
+                        ? 'border border-green-600 hover:bg-green-600 hover:text-white'
+                        : 'border border-blue-600 hover:bg-blue-600 hover:text-white'
                     }`}
                   >
                     {course.status === 'completed' ? 'Start Quiz' : 'Complete Course'}
