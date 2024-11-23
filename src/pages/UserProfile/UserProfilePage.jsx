@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Camera, Mail, Phone, Globe, MapPin, Building, Check, X, Calendar } from 'lucide-react';
+import { 
+  Camera, Mail, Phone, Globe, MapPin, Building, 
+  Check, X, Calendar, Trash2, User, Edit3 
+} from 'lucide-react';
 import avatar from '../../assets/avatar.png';
+import defaultImage from '../../assets/default.png';
 import {
   fetchUserProfile,
   updateUserProfile,
@@ -14,6 +18,7 @@ const UserProfilePage = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
   const [notification, setNotification] = useState(null);
+  const [imageHovered, setImageHovered] = useState(false);
 
   useEffect(() => {
     const storedUserId = JSON.parse(
@@ -36,9 +41,16 @@ const UserProfilePage = () => {
       reader.onloadend = () => {
         dispatch(updateUserField({ photo: reader.result }));
         setIsDirty(true);
+        showNotification('Photo uploaded successfully');
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleDeletePhoto = () => {
+    dispatch(updateUserField({ photo: defaultImage }));
+    setIsDirty(true);
+    showNotification('Photo removed successfully');
   };
 
   const handleChange = (e) => {
@@ -56,90 +68,114 @@ const UserProfilePage = () => {
     } catch (error) {
       showNotification('Error saving profile', 'error');
     }
+    window.location.reload();
   };
 
   if (isLoading && !user) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-base-200">
-        <div className="loading loading-spinner loading-lg text-primary"></div>
+        <div className="flex flex-col items-center gap-4">
+          <span className="loading loading-spinner loading-lg text-primary"></span>
+          <p className="text-base-content/60 animate-pulse">Loading profile...</p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-base-200 rounded-t-md">
-      <div className="relative bg-primary h-60 overflow-hidden rounded-t-md"></div>
-
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-32 pb-12">
-        {notification && (
-          <div className="fixed top-24 right-4 transition-opacity duration-300 transform -translate-x-1/2 z-50">
-            <div
-              className={`alert alert-sm ${notification.type === 'error' ? 'alert-error' : 'alert-success'} shadow-lg`}
-            >
-              <span>{notification.message}</span>
-            </div>
-          </div>
-        )}
-
-        <div className="card bg-base-100 shadow-xl">
+    <div className="min-h-screen bg-base-200 transition-all duration-300 ">
+      {/* Hero Banner */}
+      <div className="relative bg-primary h-72 overflow-hidden rounded-t-md">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary to-secondary rounded-t-md opacity-100"></div>
+      </div>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-40 pb-12 relative z-10">
+        {/* Main Card */}
+        <div className="card bg-base-100 shadow-2xl backdrop-blur-sm">
           <div className="card-body p-0">
-            <div className="relative p-6 pb-0">
-              <div className="flex flex-col sm:flex-row gap-6">
-                <div className="relative mx-auto sm:mx-0">
-                  <div className="avatar">
-                    <div className="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 shadow-xl">
-                      <img
-                        src={user?.photo || avatar}
-                        alt="Profile"
-                        className={`object-cover ${isLoading ? 'opacity-50' : ''}`}
-                      />
+            {/* Profile Header */}
+            <div className="p-8 pb-6">
+              <div className="flex flex-col sm:flex-row gap-8">
+                {/* Avatar Section */}
+                <div className="relative mx-auto sm:mx-0 group">
+                  <div className="avatar" 
+                       onMouseEnter={() => setImageHovered(true)}
+                       onMouseLeave={() => setImageHovered(false)}>
+                    <div className={`w-36 rounded-full ring ring-primary ring-offset-base-100 ring-offset-4 shadow-xl transition-all duration-300 ${imageHovered ? 'ring-secondary' : ''}`}>
+                      <div className="relative">
+                        <img
+                          src={user?.photo || avatar}
+                          alt="Profile"
+                          className={`object-cover transition-all duration-300 ${isLoading ? 'opacity-50' : ''} ${imageHovered ? 'scale-105' : ''}`}
+                        />
+                        {isEditing && imageHovered && (
+                          <div className="absolute inset-0 bg-base-content/30 backdrop-blur-sm flex items-center justify-center rounded-full transition-all duration-300">
+                            <Camera className="w-6 h-6 text-base-100" />
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                   {isEditing && (
-                    <label className="absolute bottom-0 right-0 btn btn-circle btn-primary btn-sm">
-                      <Camera className="w-4 h-4" />
-                      <input
-                        type="file"
-                        accept="image/*"
-                        className="hidden"
-                        onChange={handlePhotoUpload}
-                      />
-                    </label>
+                    <div className="absolute -bottom-2 right-0 flex gap-2 scale-90 opacity-90 hover:scale-100 hover:opacity-100 transition-all duration-200">
+                      <label className="btn btn-circle btn-primary btn-sm hover:btn-secondary tooltip tooltip-top" data-tip="Upload photo">
+                        <Camera className=" w-4 m-auto mt-1" />
+                        <input
+                          type="file"
+                          accept="image/*"
+                          className="hidden"
+                          onChange={handlePhotoUpload}
+                        />
+                      </label>
+                      {user?.photo && user.photo !== defaultImage && (
+                        <button
+                          className="btn btn-circle btn-error btn-sm hover:btn-secondary tooltip tooltip-top"
+                          data-tip="Remove photo"
+                          onClick={handleDeletePhoto}
+                        >
+                          <Trash2 className="w-4 m-auto " />
+                        </button>
+                      )}
+                    </div>
                   )}
                 </div>
 
-                <div className="flex-1 text-center sm:text-left space-y-3">
-                  <div className="space-y-1">
+                {/* Profile Info */}
+                <div className="flex-1 text-center sm:text-left space-y-4">
+                  <div className="space-y-3">
                     {isEditing ? (
-                      <input
-                        type="text"
-                        name="name"
-                        value={user?.name || ''}
-                        onChange={handleChange}
-                        className="input input-bordered w-full max-w-xs text-2xl font-bold"
-                        placeholder="Your name"
-                      />
+                      <div className="relative">
+                        <input
+                          type="text"
+                          name="name"
+                          value={user?.name || ''}
+                          onChange={handleChange}
+                          className="input input-bordered input-primary w-full max-w-xs text-2xl font-bold pe-10"
+                          placeholder="Your name"
+                        />
+                        <User className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/60" />
+                      </div>
                     ) : (
-                      <h2 className="text-2xl font-bold">{user?.name}</h2>
+                      <h2 className="text-2xl font-bold text-base-content tracking-tight">{user?.name}</h2>
                     )}
                     <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
-                      <div className="badge badge-primary gap-1">
-                        <Building className="w-3 h-3" />
+                      <div className="badge badge-primary gap-2 p-3 badge-lg">
+                        <Building className="w-4 h-4" />
                         {user?.role || 'Member'}
                       </div>
-                      <div className="badge badge-ghost gap-1">
-                        <Calendar className="w-3 h-3" />
+                      <div className="badge badge-ghost gap-2 p-3 badge-lg">
+                        <Calendar className="w-4 h-4" />
                         Joined {new Date(user?.joinedDate).toLocaleDateString()}
                       </div>
                     </div>
                   </div>
                 </div>
 
+                {/* Action Buttons */}
                 <div className="flex justify-center sm:justify-end gap-2">
                   {isEditing ? (
-                    <>
+                    <div className="join">
                       <button
-                        className="btn btn-ghost btn-sm gap-2"
+                        className="btn btn-ghost join-item gap-2 hover:btn-error"
                         onClick={() => {
                           setIsEditing(false);
                           setIsDirty(false);
@@ -149,16 +185,20 @@ const UserProfilePage = () => {
                         Cancel
                       </button>
                       <button
-                        className="btn btn-primary btn-sm gap-2"
+                        className="btn btn-primary join-item gap-2 hover:btn-secondary"
                         onClick={handleSave}
                         disabled={!isDirty || isLoading}
                       >
                         <Check className="w-4 h-4" />
-                        Save
+                        Save Changes
                       </button>
-                    </>
+                    </div>
                   ) : (
-                    <button className="btn btn-primary btn-sm" onClick={() => setIsEditing(true)}>
+                    <button 
+                      className="btn btn-primary gap-2 hover:btn-secondary transition-all duration-200" 
+                      onClick={() => setIsEditing(true)}
+                    >
+                      <Edit3 className="w-4 h-4" />
                       Edit Profile
                     </button>
                   )}
@@ -166,35 +206,26 @@ const UserProfilePage = () => {
               </div>
             </div>
 
-            <div className="divider mt-0 mb-0"></div>
+            <div className="divider my-0"></div>
 
-            <div className="p-6">
+            {/* Profile Details */}
+            <div className="p-8">
               <div className="grid gap-6 md:grid-cols-2">
                 {[
                   { icon: Mail, label: 'Email', value: user?.email, name: 'email', type: 'email' },
-                  {
-                    icon: Phone,
-                    label: 'Phone',
-                    value: user?.phoneNumber,
-                    name: 'phoneNumber',
-                    type: 'tel',
-                  },
+                  { icon: Phone, label: 'Phone', value: user?.phoneNumber, name: 'phoneNumber', type: 'tel' },
                   { icon: MapPin, label: 'Location', value: user?.address?.city, name: 'address' },
-                  {
-                    icon: Globe,
-                    label: 'Website',
-                    value: user?.website,
-                    name: 'website',
-                    type: 'url',
-                  },
+                  { icon: Globe, label: 'Website', value: user?.website, name: 'website', type: 'url' },
                 ].map(({ icon: Icon, label, value, name, type }) => (
-                  <div key={name} className="form-control">
+                  <div key={name} className="form-control group">
                     <label className="label">
-                      <span className="label-text font-medium">{label}</span>
+                      <span className="label-text font-medium text-base-content/80 group-hover:text-primary transition-colors duration-200">
+                        {label}
+                      </span>
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <Icon className="w-5 h-5 text-base-content/50" />
+                        <Icon className="w-5 h-5 text-primary/60 group-hover:text-primary transition-colors duration-200" />
                       </div>
                       {isEditing ? (
                         <input
@@ -202,12 +233,12 @@ const UserProfilePage = () => {
                           name={name}
                           value={value || ''}
                           onChange={handleChange}
-                          className="input input-bordered w-full pl-10"
+                          className="input input-bordered w-full pl-10 focus:input-primary transition-all duration-200 hover:border-primary"
                           placeholder={`Enter your ${label.toLowerCase()}`}
                         />
                       ) : (
-                        <div className="input input-bordered w-full pl-10 flex items-center bg-base-200/50">
-                          {value || <span className="text-base-content/50">Not specified</span>}
+                        <div className="input input-bordered w-full  pl-10 bg-base-200/50 text-base-content/80 flex items-center  group-hover:text-primary group-hover:bg-base-200 transition-all duration-200">
+                          {value ? <span className="">{value}</span> : <span className="text-base-content/40  ">Not specified</span>}
                         </div>
                       )}
                     </div>
@@ -217,22 +248,25 @@ const UserProfilePage = () => {
 
               <div className="divider"></div>
 
-              <div className="form-control w-full">
+              {/* Biography Section */}
+              <div className="form-control w-full group">
                 <label className="label">
-                  <span className="label-text font-medium">Biography</span>
+                  <span className="label-text font-medium text-base-content/80 group-hover:text-primary transition-colors duration-200">
+                    Biography
+                  </span>
                 </label>
                 {isEditing ? (
                   <textarea
                     name="bio"
                     value={user?.bio || ''}
                     onChange={handleChange}
-                    className="textarea textarea-bordered w-full"
+                    className="textarea textarea-bordered  focus:textarea-primary min-h-32 transition-all duration-200 hover:border-primary"
                     placeholder="Tell us about yourself..."
                   ></textarea>
                 ) : (
-                  <p className="textarea textarea-bordered bg-base-200/50 w-full h-auto p-4">
-                    {user?.bio || <span className="text-base-content/50">No bio available</span>}
-                  </p>
+                  <div className="textarea textarea-bordered bg-base-200/50 min-h-32 group-hover:text-primary text-base-content/80 group-hover:bg-base-200 transition-all duration-200">
+                    {user?.bio || <span className="text-base-content/40">No bio available</span>}
+                  </div>
                 )}
               </div>
             </div>
