@@ -14,4 +14,3 @@ export { default as secteursReducer } from './secteur/secteurslice';
 export { default as GroupesSlice } from './Groupes/GroupesSlice';
 export { default as demandesReducer } from './documents/demandeSlice';
 export { default as formateurReducer } from './formateur/formateurSlice';
-

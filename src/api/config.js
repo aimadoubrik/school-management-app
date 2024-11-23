@@ -22,6 +22,7 @@ const config = {
       demandes: '/demandes',
       modules: '/modules',
       formateur: '/formateur',
+      scheduler: '/scheduler'
     },
   },
 };
