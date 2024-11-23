@@ -21,6 +21,9 @@ import {
   SchedulePage,
   TraineesPage,
   CompetencesPage,
+
+  Stagiaire,
+
   ModulesPage,
   Course,
   GroupesPage,
@@ -30,6 +33,7 @@ import {
   TeacherQuizzes,
   RoleBasedQuizRoute,
   SecteursPage,
+
 } from '../pages';
 
 const RouteConfig = () => {
@@ -104,6 +108,15 @@ const RouteConfig = () => {
             </ProtectedRoute>
           }
         />
+         <Route
+          path="/stagiaire"
+          element={
+            <ProtectedRoute>
+              <Stagiaire />
+            </ProtectedRoute>
+          }
+        />
+    
         <Route
           path="/documents"
           element={

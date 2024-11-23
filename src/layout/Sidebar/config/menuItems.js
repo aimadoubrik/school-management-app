@@ -40,6 +40,12 @@ const menuItems = [
     count: 12,
   },
   {
+    label: 'Student',
+    icon: 'User',
+    href: '/Stagiaire',
+    count: 65,
+  },
+  {
     label: 'Specializations',
     icon: 'BookMarked',
     href: '/specializations',
