@@ -44,6 +44,9 @@ const menuItems = [
     icon: 'User',
     href: '/Stagiaire',
     count: 65,
+    label: 'Scheduler',
+    icon: 'Calendar',
+    href: '/Scheduler'
   },
   {
     label: 'Specializations',

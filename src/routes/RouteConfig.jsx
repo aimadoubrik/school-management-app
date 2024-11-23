@@ -33,6 +33,7 @@ import {
   TeacherQuizzes,
   RoleBasedQuizRoute,
   SecteursPage,
+  SchedulerPage
 
 } from '../pages';
 
@@ -138,6 +139,14 @@ const RouteConfig = () => {
           element={
             <ProtectedRoute>
               <SchedulePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/scheduler"
+          element={
+            <ProtectedRoute>
+              <SchedulerPage />
             </ProtectedRoute>
           }
         />
