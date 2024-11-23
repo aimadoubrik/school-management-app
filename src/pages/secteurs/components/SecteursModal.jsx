@@ -1,3 +1,7 @@
+import { Modal } from "../../../components";
+import ViewSecteur from "./ViewSecteur";
+import AddEditSecteur from "./AddEditSecteur";
+
 const SecteursModal = ({ isOpen, mode, secteur, onClose, onSave, onDelete }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -14,3 +18,5 @@ const SecteursModal = ({ isOpen, mode, secteur, onClose, onSave, onDelete }) => 
     </Modal>
   );
 };
+
+export default SecteursModal;
