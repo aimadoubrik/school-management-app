@@ -9,14 +9,14 @@ const initialState = {
 
 // Action asynchrone pour récupérer les stagiaires depuis l'API
 export const fetchStagiaires = createAsyncThunk('stagiaires/fetchStagiaires', async () => {
-  const response = await fetch('http://localhost:5000/stagiaires');
+  const response = await fetch('http://localhost:3000/stagiaires');
   const data = await response.json();
   return data;
 });
 
 // Action asynchrone pour ajouter un stagiaire via l'API
 export const addStagiaireAPI = createAsyncThunk('stagiaires/addStagiaireAPI', async (stagiaire) => {
-  const response = await fetch('http://localhost:5000/stagiaires', {
+  const response = await fetch('http://localhost:3000/stagiaires', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ export const addStagiaireAPI = createAsyncThunk('stagiaires/addStagiaireAPI', as
 
 // Action asynchrone pour supprimer un stagiaire via l'API
 export const deleteStagiaireAPI = createAsyncThunk('stagiaires/deleteStagiaireAPI', async (cef) => {
-  await fetch(`http://localhost:5000/stagiaires/${cef}`, {
+  await fetch(`http://localhost:3000/stagiaires/${cef}`, {
     method: 'DELETE',
   });
   return cef; // Renvoi du cef pour la suppression dans le state
@@ -37,7 +37,7 @@ export const deleteStagiaireAPI = createAsyncThunk('stagiaires/deleteStagiaireAP
 
 // Action asynchrone pour mettre à jour un stagiaire via l'API
 export const updateStagiaireAPI = createAsyncThunk('stagiaires/updateStagiaireAPI', async (stagiaire) => {
-  const response = await fetch(`http://localhost:5000/stagiaires/${stagiaire.cef}`, {
+  const response = await fetch(`http://localhost:3000/stagiaires/${stagiaire.cef}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
