@@ -34,7 +34,7 @@ export default function AttendanceFormateur() {
   useEffect(() => {
     const fetchSecteursData = async () => {
       try {
-        const response = await fetch('http://localhost:4000/secteurs')
+        const response = await fetch('http://localhost:3000/secteurs')
         const data = await response.json()
         setSecteursData(data)
       } catch (error) {
@@ -66,7 +66,7 @@ export default function AttendanceFormateur() {
 
   const fetchAbsentStudents = async () => {
     try {
-      const response = await fetch('http://localhost:4000/absentStudents', {
+      const response = await fetch('http://localhost:3000/absentStudents', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })
@@ -116,7 +116,7 @@ export default function AttendanceFormateur() {
       // Format the month in letters
       const monthInLetters = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(new Date(dateFilter));
 
-      const response = await fetch('http://localhost:4000/absentStudents', {
+      const response = await fetch('http://localhost:3000/absentStudents', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

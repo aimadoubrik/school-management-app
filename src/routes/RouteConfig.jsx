@@ -87,11 +87,11 @@ const RouteConfig = () => {
             </ProtectedRoute>
           }
         />
-        
+
         <Route
           path="/quiz/:id"
           element={
-            <ProtectedRoute >
+            <ProtectedRoute>
               <Quiz />
             </ProtectedRoute>
           }
@@ -193,37 +193,37 @@ const RouteConfig = () => {
           }
         />
         <Route
-        path="/quizzes"
-        element={
-          <ProtectedRoute>
-            <RoleBasedQuizRoute />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/quizzes/questions/:quizId"
-        element={
-          <ProtectedRoute allowedRoles={['trainer']}>
-            <QuizQuestions />
-          </ProtectedRoute>
-        }
-      />
+          path="/quizzes"
+          element={
+            <ProtectedRoute>
+              <RoleBasedQuizRoute />
+            </ProtectedRoute>
+          }
+        />
         <Route
-        path="/quizzes/all-questions/:quizId"
-        element={
-          <ProtectedRoute allowedRoles={['trainer']}>
-            <AllQuestions />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/secteurs"
-        element={
-          <ProtectedRoute>
-            <SecteursPage />
-          </ProtectedRoute>
-        }
-      />
+          path="/quizzes/questions/:quizId"
+          element={
+            <ProtectedRoute allowedRoles={['trainer']}>
+              <QuizQuestions />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/quizzes/all-questions/:quizId"
+          element={
+            <ProtectedRoute allowedRoles={['trainer']}>
+              <AllQuestions />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/secteurs"
+          element={
+            <ProtectedRoute>
+              <SecteursPage />
+            </ProtectedRoute>
+          }
+        />
       </Route>
 
       {/* Error routes */}

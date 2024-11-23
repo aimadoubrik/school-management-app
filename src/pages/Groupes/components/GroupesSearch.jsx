@@ -1,7 +1,7 @@
 import { Search, Filter } from 'lucide-react';
 import PropTypes from 'prop-types';
 
-const GroupesSearch = ({ searchTerm, filterNiveau, niveaux, onSearchChange, onNiveauChange }) => (
+const GroupesSearch = ({ searchTerm, filterNiveau, niveaux=[], onSearchChange, onSectorChange }) => (
   <div className="flex flex-col sm:flex-row gap-4">
     <div className="relative flex-1">
       <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-base-content/50 w-4 h-4" />
@@ -17,7 +17,7 @@ const GroupesSearch = ({ searchTerm, filterNiveau, niveaux, onSearchChange, onNi
       <Filter className="w-4 h-4 text-base-content/50" />
       <select
         value={filterNiveau}
-        onChange={(e) => onNiveauChange(e.target.value)}
+        onChange={(e) => onSectorChange(e.target.value)}
         className="select select-bordered"
       >
         <option value="">Tous les Niveaux</option>
@@ -36,7 +36,7 @@ GroupesSearch.propTypes = {
   filterNiveau: PropTypes.string.isRequired,
   niveaux: PropTypes.array.isRequired,
   onSearchChange: PropTypes.func.isRequired,
-  onNiveauChange: PropTypes.func.isRequired,
+  onSectorChange: PropTypes.func.isRequired,
 };
 
 export default GroupesSearch;

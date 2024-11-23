@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
-import { addGroupe, editGroupe } from '../../../features/Groupes/GroupesSlice';
+import { addGroupe, deleteGroupe, editGroupe } from '../../../features/Groupes/GroupesSlice';
 
 export const useGroupesLogic = (groups) => {
   const dispatch = useDispatch();

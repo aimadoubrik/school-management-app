@@ -1,5 +1,3 @@
-'use client'
-
 import React, { useState, useEffect } from 'react'
 import FiltersAdmin from './FiltersAdmin'
 import { Edit, Save, X } from 'lucide-react'
@@ -21,20 +19,21 @@ export default function AttendanceAdmin() {
   const [editedAbsences, setEditedAbsences] = useState({})
   const [isEditing, setIsEditing] = useState(false)
   const [hasChanges, setHasChanges] = useState(false)
-  const [sanctions, setSanctions] = useState({})
-  const [absentStudents, setAbsentStudents] = useState([])
+  const [sanctionsAssiduite, setSanctionsAssiduite] = useState({})
+  const [sanctionsComportement, setSanctionsComportement] = useState({})
+  const [observations, setObservations] = useState({})
+  const [disciplineNotes, setDisciplineNotes] = useState({})
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [secteurResponse, absentResponse] = await Promise.all([
-          fetch('http://localhost:4000/secteurs'),
-          fetch('http://localhost:4000/absentStudents')
+          fetch('http://localhost:3000/secteurs'),
+          fetch('http://localhost:3000/absentStudents')
         ])
         if (!secteurResponse.ok || !absentResponse.ok) throw new Error('Failed to fetch data')
         const secteurResult = await secteurResponse.json()
         const absentResult = await absentResponse.json()
-        setAbsentStudents(absentResult)
         const allStudents = getAllStudents(secteurResult, absentResult)
         setData(allStudents)
         setFilteredStudents(allStudents)
@@ -78,7 +77,11 @@ export default function AttendanceAdmin() {
                   anj: monthlyAbsences,
                   totalANJ: absences.length,
                   retards: 0,
-                  sanction: 'aucune'
+                  sanctionAssiduite: 'aucune',
+                  sanctionComportement: 'aucune',
+                  observationSA: '',
+                  observationSC: '',
+                  disciplineNote: 15
                 })
               })
             })
@@ -109,7 +112,7 @@ export default function AttendanceAdmin() {
     setCurrentPage(1)
   }
 
-  const calculateSanction = (absences, delays) => {
+  const calculateSanctionAssiduite = (absences, delays) => {
     const totalAbsences = absences + Math.floor(delays / 4)
 
     if (totalAbsences > 10) return 'exclusion definitive'
@@ -123,6 +126,36 @@ export default function AttendanceAdmin() {
     return 'aucune'
   }
 
+  const calculateDisciplineNote = (sa, sc) => {
+    let saNote = 10
+    let scNote = 5
+
+    // Calculate SA note
+    switch (sa) {
+      case '1ere mise en garde': saNote -= 1; break;
+      case '2eme mise en garde': saNote -= 2; break;
+      case '1er avertissement': saNote -= 3; break;
+      case '2eme avertissement': saNote -= 4; break;
+      case 'blame': saNote -= 5; break;
+      case 'exclusion de 2j': saNote -= 6; break;
+      case 'exclusion temporaire':
+        saNote -= 7;
+        break;
+      case 'exclusion definitive': saNote = 0; break;
+    }
+
+    // Calculate SC note
+    switch (sc) {
+      case 'mise en garde': scNote -= 1; break;
+      case 'avertissement': scNote -= 2; break;
+      case 'blame': scNote -= 3; break;
+      case 'exclusion 2j': scNote -= 4; break;
+      case 'exclusion definitive': scNote = 0; break;
+    }
+
+    return Math.max(saNote + scNote, 0)
+  }
+
   const handleInputChange = (studentId, field, value, month = null) => {
     setHasChanges(true)
     const updatedStudents = filteredStudents.map(student => {
@@ -132,19 +165,21 @@ export default function AttendanceAdmin() {
           if (month) {
             updatedStudent.anj = { ...updatedStudent.anj, [month]: parseInt(value, 10) || 0 }
           } else {
-            // Update total ANJ
             updatedStudent.totalANJ = parseInt(value, 10) || 0
           }
-        } else if (field === 'retards') {
+        } else if (field === 'retards' || field === 'aj') {
           updatedStudent[field] = parseInt(value, 10) || 0
         }
         
-        // Store the edited total absences
         const totalEditedAbsences = updatedStudent.totalANJ + Math.floor(updatedStudent.retards / 4)
         setEditedAbsences(prev => ({ ...prev, [studentId]: totalEditedAbsences }))
 
-        const calculatedSanction = calculateSanction(totalEditedAbsences, updatedStudent.retards)
-        setSanctions(prev => ({ ...prev, [studentId]: calculatedSanction }))
+        const calculatedSA = calculateSanctionAssiduite(totalEditedAbsences, updatedStudent.retards)
+        setSanctionsAssiduite(prev => ({ ...prev, [studentId]: calculatedSA }))
+
+        const disciplineNote = calculateDisciplineNote(calculatedSA, sanctionsComportement[studentId] || 'aucune')
+        setDisciplineNotes(prev => ({ ...prev, [studentId]: disciplineNote }))
+
         return updatedStudent
       }
       return student
@@ -152,19 +187,42 @@ export default function AttendanceAdmin() {
     setFilteredStudents(updatedStudents)
   }
 
-  const handleSanctionChange = (studentId, sanction) => {
+  const handleSAChange = (studentId, sanction) => {
     setHasChanges(true)
-    setSanctions(prev => ({ ...prev, [studentId]: sanction }))
+    setSanctionsAssiduite(prev => ({ ...prev, [studentId]: sanction }))
+
+    const disciplineNote = calculateDisciplineNote(sanction, sanctionsComportement[studentId] || 'aucune')
+    setDisciplineNotes(prev => ({ ...prev, [studentId]: disciplineNote }))
+  }
+
+  const handleSCChange = (studentId, sanction) => {
+    setHasChanges(true)
+    setSanctionsComportement(prev => ({ ...prev, [studentId]: sanction }))
+
+    const disciplineNote = calculateDisciplineNote(sanctionsAssiduite[studentId] || 'aucune', sanction)
+    setDisciplineNotes(prev => ({ ...prev, [studentId]: disciplineNote }))
+  }
+
+  const handleObservationChange = (studentId, observation, type) => {
+    setHasChanges(true)
+    setObservations(prev => ({
+      ...prev,
+      [studentId]: { ...prev[studentId], [type]: observation }
+    }))
   }
 
   const handleSave = async () => {
     const updatedStudents = filteredStudents.map(student => ({
       ...student,
-      sanction: sanctions[student.cef] || student.sanction
+      sanctionAssiduite: sanctionsAssiduite[student.cef] || 'aucune',
+      sanctionComportement: sanctionsComportement[student.cef] || 'aucune',
+      observationSA: observations[student.cef]?.SA || '',
+      observationSC: observations[student.cef]?.SC || '',
+      disciplineNote: disciplineNotes[student.cef] || 15
     }))
 
     try {
-      const response = await fetch('http://localhost:4000/studentDiscipline', {
+      const response = await fetch('http://localhost:3000/studentDiscipline', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -180,7 +238,10 @@ export default function AttendanceAdmin() {
       setFilteredStudents(updatedStudents)
       setIsEditing(false)
       setHasChanges(false)
-      setSanctions({})
+      setSanctionsAssiduite({})
+      setSanctionsComportement({})
+      setObservations({})
+      setDisciplineNotes({})
       alert('Changes saved successfully!')
     } catch (error) {
       console.error('Error saving changes:', error)
@@ -201,7 +262,10 @@ export default function AttendanceAdmin() {
     ))
     setIsEditing(false)
     setHasChanges(false)
-    setSanctions({})
+    setSanctionsAssiduite({})
+    setSanctionsComportement({})
+    setObservations({})
+    setDisciplineNotes({})
   }
 
   const handleEdit = () => {
@@ -244,8 +308,8 @@ export default function AttendanceAdmin() {
       <td className="px-4 py-2">
         <select
           className="select select-bordered w-full"
-          value={sanctions[student.cef] || student.sanction || 'aucune'}
-          onChange={(e) => handleSanctionChange(student.cef, e.target.value)}
+          value={sanctionsAssiduite[student.cef] || student.sanctionAssiduite || 'aucune'}
+          onChange={(e) => handleSAChange(student.cef, e.target.value)}
           disabled={!isEditing}
         >
           <option value="aucune">Aucune</option>
@@ -258,6 +322,45 @@ export default function AttendanceAdmin() {
           <option value="exclusion temporaire">Exclusion temporaire</option>
           <option value="exclusion definitive">Exclusion definitive</option>
         </select>
+      </td>
+      <td className="px-4 py-2">
+        <input
+          type="text"
+          className="input input-bordered w-full"
+          value={observations[student.cef]?.SA || student.observationSA || ''}
+          
+onChange={(e) => handleObservationChange(student.cef, e.target.value, 'SA')}
+          disabled={!isEditing}
+          placeholder="Observations SA"
+        />
+      </td>
+      <td className="px-4 py-2">
+        <select
+          className="select select-bordered w-full"
+          value={sanctionsComportement[student.cef] || student.sanctionComportement || 'aucune'}
+          onChange={(e) => handleSCChange(student.cef, e.target.value)}
+          disabled={!isEditing}
+        >
+          <option value="aucune">Aucune</option>
+          <option value="mise en garde">Mise en garde</option>
+          <option value="avertissement">Avertissement</option>
+          <option value="blame">Blâme</option>
+          <option value="exclusion 2j">Exclusion de 2 jours</option>
+          <option value="exclusion definitive">Exclusion definitive</option>
+        </select>
+      </td>
+      <td className="px-4 py-2">
+        <input
+          type="text"
+          className="input input-bordered w-full"
+          value={observations[student.cef]?.SC || student.observationSC || ''}
+          onChange={(e) => handleObservationChange(student.cef, e.target.value, 'SC')}
+          disabled={!isEditing}
+          placeholder="Observations SC"
+        />
+      </td>
+      <td className="px-4 py-2">
+        {disciplineNotes[student.cef] || student.disciplineNote || 15}/15
       </td>
     </>
   )
@@ -272,6 +375,7 @@ export default function AttendanceAdmin() {
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl">
       <FiltersAdmin
+        filteredStudents={filteredStudents}
         allData={data}
         niveau={niveau}
         filiere={filiere}
@@ -306,7 +410,7 @@ export default function AttendanceAdmin() {
                   <th className="px-4 py-2">Filière</th>
                   <th className="px-4 py-2">Année</th>
                   <th className="px-4 py-2">Groupe</th>
-                  <th colSpan="4" className="px-4 py-2">
+                  <th colSpan="8" className="px-4 py-2">
                     {selectedMonth ? `Mois : ${selectedMonth}` : "État Total :"}
                   </th>
                 </tr>
@@ -315,18 +419,26 @@ export default function AttendanceAdmin() {
                   <th className="px-4 py-2 bg-base-300">Nombre AJ</th>
                   <th className="px-4 py-2 bg-base-300">Nombre ANJ</th>
                   <th className="px-4 py-2 bg-base-300">Nombre Retards</th>
-                  <th className="px-4 py-2 bg-base-300">Sanctions</th>
+                  <th className="px-4 py-2 bg-base-300">Sanctions Assiduité</th>
+                  <th className="px-4 py-2 bg-base-300">Observations SA</th>
+                  <th className="px-4 py-2 bg-base-300">Sanctions Comportement</th>
+                  <th className="px-4 py-2 bg-base-300">Observations SC</th>
+                  <th className="px-4 py-2 bg-base-300">Note Discipline</th>
                 </tr>
               </thead>
               <tbody>
-                {currentItems.map((student, index) => (
+                {currentItems.map((student) => (
                   <tr
                     key={student.cef}
-                    className={`${sanctions[student.cef] && sanctions[student.cef] !== student.sanction ? 'bg-red-200 hover:bg-red-200' : ''
-                      }`}
+                    className={`${
+                      sanctionsComportement[student.cef] === 'exclusion definitive' ||
+                      student.sanctionComportement === 'exclusion definitive'
+                        ? 'line-through'
+                        : ''
+                    }`}
                   >
                     <td className="px-4 py-2">{student.cef}</td>
-                    <td className="px-4 py-2">{`${student.fullname}`}</td>
+                    <td className="px-4 py-2">{student.fullname}</td>
                     <td className="px-4 py-2">{student.secteur}</td>
                     <td className="px-4 py-2">{student.niveau}</td>
                     <td className="px-4 py-2">{student.filiere}</td>
@@ -349,34 +461,34 @@ export default function AttendanceAdmin() {
                   </button>
                 ))}
               </div>
-              {selectedMonth && ( // Only render the buttons if a month is selected
-          <div className="space-x-2 flex flex-wrap gap-2 justify-end">
-            <button
-              className="btn btn-primary"
-              onClick={handleEdit}
-              disabled={isEditing}
-            >
-              <Edit size={20} className="mr-2" />
-              Modifier
-            </button>
-            <button
-              className="btn btn-success"
-              onClick={handleSave}
-              disabled={!isEditing || !hasChanges}
-            >
-              <Save size={20} className="mr-2" />
-              Enregistrer
-            </button>
-            <button
-              className="btn btn-error"
-              onClick={handleCancel}
-              disabled={!isEditing}
-            >
-              <X size={20} className="mr-2" />
-              Annuler
-            </button>
-          </div>
-        )}
+              {selectedMonth && (
+                <div className="space-x-2 flex flex-wrap gap-2 justify-end">
+                  <button
+                    className="btn btn-primary"
+                    onClick={handleEdit}
+                    disabled={isEditing}
+                  >
+                    <Edit size={20} className="mr-2" />
+                    Modifier
+                  </button>
+                  <button
+                    className="btn btn-success"
+                    onClick={handleSave}
+                    disabled={!isEditing || !hasChanges}
+                  >
+                    <Save size={20} className="mr-2" />
+                    Enregistrer
+                  </button>
+                  <button
+                    className="btn btn-error"
+                    onClick={handleCancel}
+                    disabled={!isEditing}
+                  >
+                    <X size={20} className="mr-2" />
+                    Annuler
+                  </button>
+                </div>
+              )}
             </div>
           </>
         ) : (
