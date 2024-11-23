@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const THEMES = {
   light: 'cupcake',
-  dark: 'night',
+  dark: 'synthwave',
 };
 
 // Function to get the theme from localStorage or fallback to default

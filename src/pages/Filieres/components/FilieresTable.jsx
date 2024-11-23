@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Eye, Edit, Trash2, Users, AlertCircle } from 'lucide-react';
 import { DataTable } from '../../../components';
+
 const FilieresTable = ({ filieres, sortConfig, onSort, onView, onEdit, onDelete }) => {
   const handleDelete = (filiere, e) => {
     e.stopPropagation();

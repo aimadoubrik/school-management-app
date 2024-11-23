@@ -170,7 +170,6 @@ export default function AttendanceAdmin() {
         } else if (field === 'retards' || field === 'aj') {
           updatedStudent[field] = parseInt(value, 10) || 0
         }
-        
         const totalEditedAbsences = updatedStudent.totalANJ + Math.floor(updatedStudent.retards / 4)
         setEditedAbsences(prev => ({ ...prev, [studentId]: totalEditedAbsences }))
 
@@ -498,4 +497,5 @@ onChange={(e) => handleObservationChange(student.cef, e.target.value, 'SA')}
     </div>
   )
 }
+
 

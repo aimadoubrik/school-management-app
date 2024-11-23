@@ -1,49 +1,51 @@
-import { BookOpen, Code, Building2, Users } from 'lucide-react';
-import { DetailView } from '../../../components';
-
-const ViewSecteur = ({ Secteur, onClose, onDelete }) => {
-  const fields = [
-    {
-      key: 'intitule_Secteur',
-      label: 'Intitulé Secteur',
-      icon: <BookOpen className="w-5 h-5" />,
-    },
-    {
-      key: 'code_Secteur',
-      label: 'Code Secteur',
-      icon: <Code className="w-5 h-5" />,
-    },
-    {
-      key: 'secteur',
-      label: 'Secteur',
-      icon: <Building2 className="w-5 h-5" />,
-    },
-    {
-      key: 'filieres',
-      label: 'Filieres',
-      icon: <Users className="w-5 h-5" />,
-      render: (data) => (Array.isArray(data.filieres) ? data.filieres.join(', ') : 'Aucun groupe'),
-    },
-  ];
+const ViewSecteur = ({ secteur, onClose, onDelete }) => {
+  if (!secteur) return null;
 
   return (
-    <DetailView
-      title="Détails de la Secteur"
-      data={Secteur}
-      fields={fields}
-      onClose={onClose}
-      onDelete={onDelete}
-      deleteButtonProps={{
-        show: true,
-        label: 'Supprimer',
-        className: 'btn-error',
-      }}
-      closeButtonProps={{
-        show: true,
-        label: 'Fermer',
-        className: 'btn-ghost',
-      }}
-    />
+    <div className="space-y-4">
+      <h2 className="text-xl font-bold mb-4">Détails du secteur</h2>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="label">
+            <span className="label-text">Code secteur</span>
+          </label>
+          <div className="text-sm">{secteur.code_secteur}</div>
+        </div>
+        
+        <div>
+          <label className="label">
+            <span className="label-text">Intitulé</span>
+          </label>
+          <div className="text-sm">{secteur.intitule_secteur}</div>
+        </div>
+        
+        <div>
+          <label className="label">
+            <span className="label-text">Secteur</span>
+          </label>
+          <div className="text-sm">{secteur.secteur}</div>
+        </div>
+        
+        <div>
+          <label className="label">
+            <span className="label-text">Groupes</span>
+          </label>
+          <div className="text-sm">
+            {Array.isArray(secteur.groupes) ? secteur.groupes.join(', ') : secteur.groupes}
+          </div>
+        </div>
+      </div>
+
+      <div className="modal-action">
+        <button onClick={onClose} className="btn">
+          Fermer
+        </button>
+        <button onClick={() => onDelete(secteur)} className="btn btn-error">
+          Supprimer
+        </button>
+      </div>
+    </div>
   );
 };
 
