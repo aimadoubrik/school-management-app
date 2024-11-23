@@ -1,8 +1,10 @@
+// RouteConfig.jsx
 import { Routes, Route } from 'react-router-dom';
 import PublicRoute from './PublicRoute';
 import ProtectedRoute from './ProtectedRoute';
 import DashboardLayout from '../layout/DashboardLayout';
-import AuthPage from '../pages/Auth/AuthPage';
+import LoginPage from '../features/auth/components/LoginForm';
+import SignupPage from '../features/auth/components/SignupForm';
 import DemandesPage from '../pages/Documents/DemandesPage';
 import {
   HomePage,
@@ -19,6 +21,9 @@ import {
   SchedulePage,
   TraineesPage,
   CompetencesPage,
+
+  Stagiaire,
+
   ModulesPage,
   Course,
   GroupesPage,
@@ -28,6 +33,8 @@ import {
   TeacherQuizzes,
   RoleBasedQuizRoute,
   SecteursPage,
+  SchedulerPage
+
 } from '../pages';
 
 const RouteConfig = () => {
@@ -35,14 +42,21 @@ const RouteConfig = () => {
     <Routes>
       {/* Public routes */}
       <Route
-        path="/auth"
+        path="/login"
         element={
           <PublicRoute>
-            <AuthPage />
+            <LoginPage />
           </PublicRoute>
         }
       />
-
+      <Route
+        path="/signup"
+        element={
+          <PublicRoute>
+            <SignupPage />
+          </PublicRoute>
+        }
+      />
 
       {/* Protected routes wrapped in DashboardLayout */}
       <Route element={<DashboardLayout />}>
@@ -80,15 +94,6 @@ const RouteConfig = () => {
         />
 
         <Route
-          path="/quizzes"
-          element={
-            <ProtectedRoute>
-              <QuizzesPage />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
           path="/quiz/:id"
           element={
             <ProtectedRoute>
@@ -104,6 +109,15 @@ const RouteConfig = () => {
             </ProtectedRoute>
           }
         />
+         <Route
+          path="/stagiaire"
+          element={
+            <ProtectedRoute>
+              <Stagiaire />
+            </ProtectedRoute>
+          }
+        />
+    
         <Route
           path="/documents"
           element={
@@ -125,6 +139,14 @@ const RouteConfig = () => {
           element={
             <ProtectedRoute>
               <SchedulePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/scheduler"
+          element={
+            <ProtectedRoute>
+              <SchedulerPage />
             </ProtectedRoute>
           }
         />

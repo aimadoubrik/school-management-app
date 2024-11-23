@@ -9,6 +9,7 @@ import {
   coursesReducer,
   competencesSlice,
   scheduleReducer,
+  stagiairesReducer,
   profileSlice,
   documentsReducer,
   moduleReducer,
@@ -16,6 +17,7 @@ import {
   GroupesSlice,
   demandesReducer,
   formateurReducer,
+  schedulerReducer
 } from '../features';
 
 const rootReducer = combineReducers({
@@ -28,12 +30,16 @@ const rootReducer = combineReducers({
   auth: authReducer,
   courses: coursesReducer,
   schedule: scheduleReducer,
+
+  stagiaires: stagiairesReducer,
+
   profile: profileSlice,
   documents: documentsReducer,
   modules: moduleReducer,
   secteur: secteursReducer,
   demandes: demandesReducer,
   formateurs: formateurReducer,
+  scheduler: schedulerReducer
 });
 
 const store = configureStore({

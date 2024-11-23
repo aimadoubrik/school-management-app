@@ -21,7 +21,7 @@ export default {
     require('daisyui'),
   ],
   daisyui: {
-    themes: ["light", "night", "cupcake", "coffee", "lofi"],
+    themes: ["light", "night", "cupcake", "coffee", "lofi", "synthwave"],
   },
   darkMode: ['selector', '[data-theme="night"]'],
 }

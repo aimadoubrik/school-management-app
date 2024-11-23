@@ -22,7 +22,7 @@ const ProtectedRoute = ({ children, allowedRoles = [] }) => {
 
   // Redirect to login if not authenticated
   if (!isAuthenticated) {
-    return <Navigate to="/auth" state={{ from: location }} replace />;
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
   // Redirect to unauthorized page if user's role is not allowed

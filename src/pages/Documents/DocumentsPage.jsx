@@ -162,7 +162,11 @@ const DocumentsPage = () => {
     }
   }, [userData, demandes]);
 
-
+  const handleDelete = (demande) => {
+    dispatch(deleteDemande(demande.id));
+    const newDemandes = documents.filter((d) => d.id !== demande.id);
+    dispatch(fetchDocuments(newDemandes));
+  };
 
   if (loading) {
     return <div>Loading demandes...</div>;
@@ -387,6 +391,7 @@ const DocumentsPage = () => {
         ) : (
           <div className="flex flex-wrap mx-2 gap-4">
             {filteredDemandes.map((demande) => (
+
               <div key={demande.id} className="relative m-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5" style={{maxHeight: '300px'}}>
                 
                 <span
@@ -407,6 +412,42 @@ const DocumentsPage = () => {
                   <h2 className="font-semibold">{demande.document}</h2>
                   <p className="text-sm text-gray-500 mt-3">Date: {demande.requestDate}</p>
                   
+
+              <div key={demande.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-2 mb-4">
+                <div className="shadow-xl space-y-4 bg-transparent border border-gray-400 p-4 rounded h-full flex flex-col justify-between">
+                  <div>
+                    <h2 className="font-semibold">{demande.document}</h2>
+                    <p className="text-sm text-gray-500 mt-3">Date: {demande.requestDate}</p>
+                  </div>
+                  <div className="flex justify-end mt-4">
+                    <span
+                      className={`text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full
+                                                bg-${
+                                                  {
+                                                    'en cours': 'yellow',
+                                                    effectuer: 'green',
+                                                    rejeter: 'red',
+                                                  }[demande.status]
+                                                }-100 text-${
+                                                  {
+                                                    'en cours': 'yellow',
+                                                    effectuer: 'green',
+                                                    rejeter: 'red',
+                                                  }[demande.status]
+                                                }-800`}
+                      style={{ textTransform: 'capitalize' }}
+                    >
+                      {demande.status}
+                    </span>
+                    {demande.status !== 'effectuer' && demande.status !== 'rejeter' && (
+                      <button
+                        onClick={() => handleDelete(demande.id)}
+                        className="hover:text-red-500"
+                      >
+                        <Trash className="w-4 h-4" />
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}

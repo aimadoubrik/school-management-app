@@ -37,7 +37,6 @@ const handleAsyncCases = (builder, thunk, operation, onSuccess) => {
     })
     .addCase(thunk.fulfilled, (state, action) => {
       state.loading = false;
-      console.log(`${operation} succeeded:`, action.payload);
       onSuccess(state, action);
       state.currentOperation = null;
     })
