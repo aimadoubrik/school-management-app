@@ -2,7 +2,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 
 // Base selector for quizzes state
-const selectQuizzesState = state => state.quizzes;
+const selectQuizzesState = (state) => state.quizzes;
 
 // Select all quizzes
 export const selectAllQuizzes = createSelector(

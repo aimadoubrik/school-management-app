@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, Trash2, ArrowLeft } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Trash2, ArrowLeft } from 'lucide-react';
 
 const BASE_URL = 'http://localhost:3000';
 
@@ -36,9 +36,7 @@ export default function QuizQuestions() {
         <h2 className="card-title text-2xl">{courseName}</h2>
         <div className="flex flex-col gap-1">
           <p className="text-sm opacity-70">Quiz ID: {quizId}</p>
-          <p className="text-sm opacity-70">
-            Due: {new Date(Deadline).toLocaleDateString()}
-          </p>
+          <p className="text-sm opacity-70">Due: {new Date(Deadline).toLocaleDateString()}</p>
         </div>
       </div>
     </div>
@@ -89,10 +87,8 @@ export default function QuizQuestions() {
 
   // Handle question selection
   const handleQuestionSelect = (questionId) => {
-    setSelectedQuestions(prev =>
-      prev.includes(questionId)
-        ? prev.filter(id => id !== questionId)
-        : [...prev, questionId]
+    setSelectedQuestions((prev) =>
+      prev.includes(questionId) ? prev.filter((id) => id !== questionId) : [...prev, questionId]
     );
   };
 
@@ -108,12 +104,12 @@ export default function QuizQuestions() {
 
       // Remove selected questions from the quiz
       const updatedQuestions = questions.filter(
-        question => !selectedQuestions.includes(question.id)
+        (question) => !selectedQuestions.includes(question.id)
       );
 
       // Update the quiz in the backend
       await axios.patch(`${BASE_URL}/quizzes/${quizId}`, {
-        questionsSelected: updatedQuestions
+        questionsSelected: updatedQuestions,
       });
 
       // Update local state
@@ -135,27 +131,25 @@ export default function QuizQuestions() {
   }
 
   return (
-    <><div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold text-center mb-2">Quiz Questions</h1>
-      <div>
-        <QuizHeader />
-      </div>
+    <>
+      <div className="container mx-auto p-4">
+        <h1 className="text-3xl font-bold text-center mb-2">Quiz Questions</h1>
+        <div>
+          <QuizHeader />
+        </div>
 
-      {selectedQuestions.length > 0 && (
-        <button
-          onClick={handleDeleteQuestions}
-          className="btn btn-error flex items-center"
-        >
-          <Trash2 className="mr-2" />
-          Delete {selectedQuestions.length} Questions
-        </button>
-      )}
-    </div>
+        {selectedQuestions.length > 0 && (
+          <button onClick={handleDeleteQuestions} className="btn btn-error flex items-center">
+            <Trash2 className="mr-2" />
+            Delete {selectedQuestions.length} Questions
+          </button>
+        )}
+      </div>
       <hr />
       <div className="overflow-x-auto">
-        <div >
+        <div>
           <table className="table table-zebra w-full">
-            <thead >
+            <thead>
               <tr>
                 <th>
                   <label>
@@ -165,10 +159,8 @@ export default function QuizQuestions() {
                       checked={selectedQuestions.length === questions.length}
                       onChange={() => {
                         // Toggle all questions
-                        setSelectedQuestions(prev =>
-                          prev.length === questions.length
-                            ? []
-                            : questions.map(q => q.id)
+                        setSelectedQuestions((prev) =>
+                          prev.length === questions.length ? [] : questions.map((q) => q.id)
                         );
                       }}
                     />
@@ -179,7 +171,7 @@ export default function QuizQuestions() {
                 <th>Correct Answer</th>
               </tr>
             </thead>
-            <tbody >
+            <tbody>
               {currentQuestions.map((question) => (
                 <tr key={question.id}>
                   <td>
@@ -216,7 +208,9 @@ export default function QuizQuestions() {
               <ChevronLeft className="h-5 w-5" aria-hidden="true" />
             </button>
 
-            <span className="text-center">Page {currentPage} sur {totalPages}</span>
+            <span className="text-center">
+              Page {currentPage} sur {totalPages}
+            </span>
 
             <button
               onClick={goToNextPage}
@@ -228,15 +222,13 @@ export default function QuizQuestions() {
             </button>
           </div>
           <div className="mt-4">
-            <button
-              onClick={handleGoBack}
-              className="btn btn-outline btn-primary"
-            >
+            <button onClick={handleGoBack} className="btn btn-outline btn-primary">
               <ArrowLeft className="w-4 h-4" />
               Back
             </button>
           </div>
         </div>
-      </div></>
+      </div>
+    </>
   );
 }

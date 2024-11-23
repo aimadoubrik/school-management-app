@@ -6,133 +6,158 @@ import {
   addCompetence,
   editCompetence,
 } from '../../features/competences/competencesSlice';
-import { Eye, Edit, Trash, Download, Plus, Search, Filter } from 'lucide-react';
-import { LoadingSpinner, ErrorAlert } from '../../components';
-import Papa from 'papaparse';
+import { LoadingSpinner, ErrorAlert, ConfirmModal } from '../../components';
 import CompetenceTable from './components/CompetencesTable';
 import CompetencesModal from './components/CompetencesModal';
-import { ConfirmModal } from '../../components';
 import CompetenceHeader from './components/CompetenceHeader';
 import { SearchFilter } from '../../components';
 import Pagination from '../../components/shared/Pagination';
+import { Filter } from 'lucide-react';
+import Papa from 'papaparse';
 
 const CompetencesPage = () => {
   const dispatch = useDispatch();
   const { competences = [], loading, error } = useSelector((state) => state.competences);
-  const [selectedCompetence, setSelectedCompetence] = useState(null);
-  const [viewMode, setViewMode] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [competenceToDelete, setCompetenceToDelete] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedFiliere, setSelectedFiliere] = useState('');
-  const [selectedModule, setSelectedModule] = useState('');
-  const [filieres, setFilieres] = useState([]);
-  const [modules, setModules] = useState([]);
+  
+  const [modalState, setModalState] = useState({
+    isOpen: false,
+    viewMode: false,
+    selectedCompetence: null
+  });
+  
+  const [deleteState, setDeleteState] = useState({
+    isOpen: false,
+    competenceToDelete: null
+  });
+  
+  const [filterState, setFilterState] = useState({
+    searchTerm: '',
+    selectedFiliere: '',
+    selectedModule: '',
+    filieres: [],
+    modules: []
+  });
+  
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 4;
+  const ITEMS_PER_PAGE = 4;
 
   useEffect(() => {
     dispatch(fetchCompetences());
   }, [dispatch]);
 
   useEffect(() => {
-    const uniqueFilieres = [...new Set(competences.map((competence) => competence.filiere))];
-    setFilieres(uniqueFilieres);
+    const uniqueFilieres = [...new Set(competences.map(comp => comp.filiere).filter(Boolean))];
+    
+    const filteredModules = filterState.selectedFiliere
+      ? [...new Set(competences
+          .filter(comp => comp.filiere === filterState.selectedFiliere)
+          .map(comp => comp.intitule_module)
+          .filter(Boolean))]
+      : [];
 
-    if (selectedFiliere) {
-      const filteredModules = competences
-        .filter((competence) => competence.filiere === selectedFiliere)
-        .map((competence) => competence.intitule_module);
-      setModules([...new Set(filteredModules)]);
-    } else {
-      setModules([]);
-    }
-  }, [competences, selectedFiliere]);
+    setFilterState(prev => ({
+      ...prev,
+      filieres: uniqueFilieres,
+      modules: filteredModules
+    }));
+  }, [competences, filterState.selectedFiliere]);
 
-  const handleDeleteCompetence = (competence) => {
-    setCompetenceToDelete(competence);
-    setIsDeleteModalOpen(true);
+  const handleModalOpen = (competence = null, viewMode = false) => {
+    setModalState({
+      isOpen: true,
+      viewMode,
+      selectedCompetence: competence
+    });
+  };
+
+  const handleModalClose = () => {
+    setModalState({
+      isOpen: false,
+      viewMode: false,
+      selectedCompetence: null
+    });
+  };
+
+  const handleDeleteClick = (competence) => {
+    setDeleteState({
+      isOpen: true,
+      competenceToDelete: competence
+    });
   };
 
   const handleDeleteConfirm = async () => {
     try {
-      await dispatch(deleteCompetence(competenceToDelete.id));
-      setIsDeleteModalOpen(false);
-      setCompetenceToDelete(null);
+      await dispatch(deleteCompetence(deleteState.competenceToDelete.id));
+      setDeleteState({
+        isOpen: false,
+        competenceToDelete: null
+      });
     } catch (error) {
-      console.error('Error deleting competence:', error.message);
+      console.error('Error deleting competence:', error);
     }
   };
 
   const handleSaveCompetence = async (competenceData) => {
     try {
-      if (selectedCompetence) {
+      if (modalState.selectedCompetence) {
         await dispatch(editCompetence(competenceData));
       } else {
         await dispatch(addCompetence(competenceData));
       }
-      setIsModalOpen(false);
+      handleModalClose();
     } catch (error) {
       console.error('Error saving competence:', error);
     }
   };
 
-  const handleEdit = (competence) => {
-    setSelectedCompetence(competence);
-    setViewMode(false);
-    setIsModalOpen(true);
+  const handleExport = () => {
+    try {
+      const csv = Papa.unparse(competences);
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'competences.csv';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error exporting competences:', error);
+    }
   };
 
-  const handleView = (competence) => {
-    setSelectedCompetence(competence);
-    setViewMode(true);
-    setIsModalOpen(true);
+  const handleFilterChange = (key, value) => {
+    setFilterState(prev => {
+      const newState = { ...prev, [key]: value };
+      if (key === 'selectedFiliere') {
+        newState.selectedModule = '';
+      }
+      return newState;
+    });
+    setCurrentPage(1);
   };
 
-  const handleCloseModal = () => {
-    setSelectedCompetence(null);
-    setIsModalOpen(false);
-  };
-
-  const handleCSVExport = () => {
-    const csv = Papa.unparse(competences);
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'competences.csv';
-    a.click();
-    URL.revokeObjectURL(url);
-  };
-
-  const handleRefresh = () => {
-    dispatch(fetchCompetences());
-  };
-
-  // Filter competences based on search, filieres, and modules
+  // Fixed filtering logic
   const filteredCompetences = competences.filter(competence => {
-    const title = competence.intitule_competence || '';
-    const filiereMatch = selectedFiliere ? competence.filiere === selectedFiliere : true;
-    const moduleMatch = selectedModule ? competence.intitule_module === selectedModule : true;
-    const searchMatch = searchTerm
-      ? title.toLowerCase().includes(searchTerm.toLowerCase())
-      : true;
-
-    return searchMatch && filiereMatch && moduleMatch;
+    const { searchTerm, selectedFiliere, selectedModule } = filterState;
+    
+    // Safely convert competence title to string and lowercase
+    const title = String(competence?.intitule_competence || '').toLowerCase();
+    const searchTermLower = searchTerm.toLowerCase();
+    
+    const matchesSearch = !searchTerm || title.includes(searchTermLower);
+    const matchesFiliere = !selectedFiliere || competence?.filiere === selectedFiliere;
+    const matchesModule = !selectedModule || competence?.intitule_module === selectedModule;
+    
+    return matchesSearch && matchesFiliere && matchesModule;
   });
 
-  const totalPages = Math.ceil(filteredCompetences.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredCompetences.length / ITEMS_PER_PAGE);
   const displayedCompetences = filteredCompetences.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
   );
-
-  const modalMode = selectedCompetence
-    ? viewMode
-      ? 'view'
-      : 'edit'
-    : 'add';
 
   if (loading) {
     return (
@@ -152,66 +177,65 @@ const CompetencesPage = () => {
 
   return (
     <div className="container mx-auto p-6 space-y-6">
+      <CompetenceHeader
+        onRefresh={() => dispatch(fetchCompetences())}
+        onExport={handleExport}
+        onAdd={() => handleModalOpen()}
+      />
 
-        <CompetenceHeader
-          onRefresh={handleRefresh}
-          onExport={handleCSVExport}
-          onAdd={() => setIsModalOpen(true)}
-        />
-
-      {/* Search and Filters */}
       <SearchFilter
-        searchTerm={searchTerm}
+        searchTerm={filterState.searchTerm}
         filters={[
-          { key: 'filiere', value: selectedFiliere, options: filieres, placeholder: 'Select Filiere' },
-          { key: 'module', value: selectedModule, options: modules, placeholder: 'Select Module' },
-        ]}
-        onSearchChange={setSearchTerm}
-        onFilterChange={(key, value) => {
-          if (key === 'filiere') {
-            setSelectedFiliere(value);
-            setSelectedModule('');
-          } else if (key === 'module') {
-            setSelectedModule(value);
+          {
+            key: 'selectedFiliere',
+            value: filterState.selectedFiliere,
+            options: filterState.filieres,
+            placeholder: 'Select Filiere'
+          },
+          {
+            key: 'selectedModule',
+            value: filterState.selectedModule,
+            options: filterState.modules,
+            placeholder: 'Select Module'
           }
-        }}
+        ]}
+        onSearchChange={(term) => handleFilterChange('searchTerm', term)}
+        onFilterChange={handleFilterChange}
         searchPlaceholder="Rechercher par code ou intitulé..."
-        icons={{ SearchIcon: Filter}}
+        icons={{ SearchIcon: Filter }}
       />
 
       <hr />
 
-      {/* Competence Table */}
       <CompetenceTable
         competences={displayedCompetences}
-        onView={handleView}
-        onEdit={handleEdit}
-        onDelete={handleDeleteCompetence}
+        onView={(competence) => handleModalOpen(competence, true)}
+        onEdit={(competence) => handleModalOpen(competence, false)}
+        onDelete={handleDeleteClick}
       />
 
-      {/* Pagination Component */}
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
         setCurrentPage={setCurrentPage}
       />
 
-      {/* Competences Modal */}
       <CompetencesModal
-        isOpen={isModalOpen}
-        mode={modalMode}
-        competence={selectedCompetence}
-        onClose={handleCloseModal}
+        isOpen={modalState.isOpen}
+        mode={modalState.selectedCompetence 
+          ? (modalState.viewMode ? 'view' : 'edit')
+          : 'add'}
+        competence={modalState.selectedCompetence}
+        onClose={handleModalClose}
         onSave={handleSaveCompetence}
       />
 
-      {/* Delete Confirmation Modal */}
       <ConfirmModal
-        isOpen={isDeleteModalOpen}
-        onClose={() => setIsDeleteModalOpen(false)}
+        isOpen={deleteState.isOpen}
+        onClose={() => setDeleteState({ isOpen: false, competenceToDelete: null })}
         onConfirm={handleDeleteConfirm}
         title="Supprimer la compétence"
-        message={`Êtes-vous sûr de vouloir supprimer la compétence "${competenceToDelete?.intitule_competence}" ? Cette action est irréversible.`}
+        message={`Êtes-vous sûr de vouloir supprimer la compétence "${deleteState.competenceToDelete?.intitule_competence}" ? Cette action est irréversible.`}
         confirmLabel="Supprimer"
         cancelLabel="Annuler"
         variant="danger"
@@ -221,5 +245,3 @@ const CompetencesPage = () => {
 };
 
 export default CompetencesPage;
-
-

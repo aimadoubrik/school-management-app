@@ -145,17 +145,16 @@ export const useSecteursLogic = (Secteurs) => {
   const exportSecteurs = () => {
     const headers = ['Code Secteur', 'Intitule Secteur', 'Secteur', 'Groupes'];
     const rows = filteredAndSortedSecteurs.map((Secteur) => [
-      Secteur.code_Secteur,
-      Secteur.intitule_Secteur,
-
-      Array.isArray(Secteur.niveaux.Specialisation.filiere) ? Secteur.groupes.join(';') : '',
+      Secteur.code_secteur,
+      Secteur.intitule_secteur,
+      Array.isArray(Secteur.niveaux) ? Secteur.niveaux.join(';') : '',
     ]);
 
     const csvContent = [headers.join(','), ...rows.map((row) => row.join(','))].join('\n');
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = `Secteurs_export_${new Date().toISOString().split('T')[0]}.csv`;
+    link.download = `secteurs_export_${new Date().toISOString().split('T')[0]}.csv`;
     link.click();
   };
 
