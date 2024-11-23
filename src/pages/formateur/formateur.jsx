@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FaRegFileExcel, FaFilePdf } from 'react-icons/fa';
 import { FaDownload } from 'react-icons/fa6';
@@ -17,7 +17,7 @@ const Formateur = () => {
   const [modules, setModules] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const itemsPerPage = 3; // Nombre d'éléments par page
+  const itemsPerPage = 3;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,7 +49,7 @@ const Formateur = () => {
 
   const handleSecteurChange = (e) => {
     dispatch(setSelectedSecteur(e.target.value));
-    setCurrentPage(1); // Réinitialiser à la première page
+    setCurrentPage(1); 
   };
 
   const handlePageChange = (newPage) => {
@@ -147,7 +147,7 @@ const Formateur = () => {
                   <td className="px-6 py-3 border-b text-center">
                     <button
                       onClick={() => handleToggleModal(formateur)}
-                      className="btn btn-info px-4 py-2 rounded-md text-white"
+                      className="btn btn-primary px-4 py-2 rounded-md text-white"
                     >
                       Voir Modules
                     </button>
