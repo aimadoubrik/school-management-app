@@ -129,7 +129,6 @@ export const login = createAsyncThunk('auth/login', async (credentials, { reject
 
     const users = await apiService.get(`/users?email=${encodeURIComponent(credentials.email)}`);
     const user = users[0];
-    console.log(user);
 
     if (!user) {
       // Use a generic error message to prevent user enumeration
