@@ -16,6 +16,7 @@ export default function AttendanceAdmin() {
   const [selectedMonth, setSelectedMonth] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage] = useState(7)
+  const [editedAbsences, setEditedAbsences] = useState({})
   const [isEditing, setIsEditing] = useState(false)
   const [hasChanges, setHasChanges] = useState(false)
   const [sanctions, setSanctions] = useState({})
@@ -106,15 +107,17 @@ export default function AttendanceAdmin() {
     setCurrentPage(1)
   }
 
-  const calculateSanction = (anj, retards) => {
-    if (anj > 10 || retards > 40) return 'exclusion definitive'
-    if (anj >= 7 || retards >= 28) return 'exclusion temporaire'
-    if (anj === 6 || retards >= 24) return 'exclusion de 2j'
-    if (anj === 5 || retards >= 20) return 'blame'
-    if (anj === 4 || retards >= 16) return '2eme avertissement'
-    if (anj === 3 || retards >= 12) return '1er avertissement'
-    if (anj === 2 || retards >= 8) return '2eme mise en garde'
-    if (anj === 1 || retards >= 4) return '1ere mise en garde'
+  const calculateSanction = (absences, delays) => {
+    const totalAbsences = absences + Math.floor(delays / 4)
+
+    if (totalAbsences > 10) return 'exclusion definitive'
+    if (totalAbsences >= 7) return 'exclusion temporaire'
+    if (totalAbsences === 6) return 'exclusion de 2j'
+    if (totalAbsences === 5) return 'blame'
+    if (totalAbsences === 4) return '2eme avertissement'
+    if (totalAbsences === 3) return '1er avertissement'
+    if (totalAbsences === 2) return '2eme mise en garde'
+    if (totalAbsences === 1) return '1ere mise en garde'
     return 'aucune'
   }
 
@@ -129,28 +132,16 @@ export default function AttendanceAdmin() {
           } else {
             // Update total ANJ
             updatedStudent.totalANJ = parseInt(value, 10) || 0
-            // Distribute the difference to monthly ANJ values
-            const totalMonthlyANJ = Object.values(updatedStudent.anj).reduce((sum, val) => sum + val, 0)
-            const difference = updatedStudent.totalANJ - totalMonthlyANJ
-            if (difference !== 0) {
-              const months = Object.keys(updatedStudent.anj)
-              const distributedDifference = Math.floor(difference / months.length)
-              months.forEach(m => {
-                updatedStudent.anj[m] = Math.max(0, (updatedStudent.anj[m] || 0) + distributedDifference)
-              })
-              // Add any remaining difference to the last month
-              const remainingDifference = difference - (distributedDifference * months.length)
-              if (remainingDifference !== 0 && months.length > 0) {
-                updatedStudent.anj[months[months.length - 1]] += remainingDifference
-              }
-            }
           }
-        } else {
+        } else if (field === 'retards') {
           updatedStudent[field] = parseInt(value, 10) || 0
         }
-        // Recalculate total ANJ
-        updatedStudent.totalANJ = Object.values(updatedStudent.anj).reduce((sum, val) => sum + val, 0)
-        const calculatedSanction = calculateSanction(updatedStudent.totalANJ, updatedStudent.retards)
+
+        // Store the edited total absences
+        const totalEditedAbsences = updatedStudent.totalANJ + Math.floor(updatedStudent.retards / 4)
+        setEditedAbsences(prev => ({ ...prev, [studentId]: totalEditedAbsences }))
+
+        const calculatedSanction = calculateSanction(totalEditedAbsences, updatedStudent.retards)
         setSanctions(prev => ({ ...prev, [studentId]: calculatedSanction }))
         return updatedStudent
       }
@@ -232,9 +223,8 @@ export default function AttendanceAdmin() {
         <input
           type="number"
           min="0"
-          max="10"
           className="input input-bordered w-full"
-          value={selectedMonth ? (student.anj[selectedMonth] || 0) : student.totalANJ}
+          value={selectedMonth ? (student.anj[selectedMonth] || 0) : (editedAbsences[student.cef] || student.totalANJ)}
           onChange={(e) => handleInputChange(student.cef, 'anj', e.target.value, selectedMonth)}
           disabled={!isEditing}
         />
@@ -243,7 +233,6 @@ export default function AttendanceAdmin() {
         <input
           type="number"
           min="0"
-          max="40"
           className="input input-bordered w-full"
           value={student.retards || 0}
           onChange={(e) => handleInputChange(student.cef, 'retards', e.target.value)}
@@ -358,32 +347,34 @@ export default function AttendanceAdmin() {
                   </button>
                 ))}
               </div>
-              <div className="space-x-2 flex flex-wrap gap-2 justify-end">
-                <button
-                  className="btn btn-primary"
-                  onClick={handleEdit}
-                  disabled={isEditing}
-                >
-                  <Edit size={20} className="mr-2" />
-                  Modifier
-                </button>
-                <button
-                  className="btn btn-success"
-                  onClick={handleSave}
-                  disabled={!isEditing || !hasChanges}
-                >
-                  <Save size={20} className="mr-2" />
-                  Enregistrer
-                </button>
-                <button
-                  className="btn btn-error"
-                  onClick={handleCancel}
-                  disabled={!isEditing}
-                >
-                  <X size={20} className="mr-2" />
-                  Annuler
-                </button>
-              </div>
+              {selectedMonth && ( // Only render the buttons if a month is selected
+                <div className="space-x-2 flex flex-wrap gap-2 justify-end">
+                  <button
+                    className="btn btn-primary"
+                    onClick={handleEdit}
+                    disabled={isEditing}
+                  >
+                    <Edit size={20} className="mr-2" />
+                    Modifier
+                  </button>
+                  <button
+                    className="btn btn-success"
+                    onClick={handleSave}
+                    disabled={!isEditing || !hasChanges}
+                  >
+                    <Save size={20} className="mr-2" />
+                    Enregistrer
+                  </button>
+                  <button
+                    className="btn btn-error"
+                    onClick={handleCancel}
+                    disabled={!isEditing}
+                  >
+                    <X size={20} className="mr-2" />
+                    Annuler
+                  </button>
+                </div>
+              )}
             </div>
           </>
         ) : (
@@ -393,4 +384,5 @@ export default function AttendanceAdmin() {
     </div>
   )
 }
+
 
