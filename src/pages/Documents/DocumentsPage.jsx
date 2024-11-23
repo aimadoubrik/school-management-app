@@ -162,7 +162,11 @@ const DocumentsPage = () => {
     }
   }, [userData, demandes]);
 
-
+  const handleDelete = (demande) => {
+    dispatch(deleteDemande(demande.id));
+    const newDemandes = documents.filter((d) => d.id !== demande.id);
+    dispatch(fetchDocuments(newDemandes));
+  };
 
   if (loading) {
     return <div>Loading demandes...</div>;
@@ -413,7 +417,14 @@ const DocumentsPage = () => {
                     >
                       {demande.status}
                     </span>
-                    
+                    {demande.status !== 'effectuer' && demande.status !== 'rejeter' && (
+                      <button
+                        onClick={() => handleDelete(demande.id)}
+                        className="hover:text-red-500"
+                      >
+                        <Trash className="w-4 h-4" />
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
