@@ -194,22 +194,28 @@ const Course = () => {
                     )}
                   </div>
                 ) : (
-                  <div className="space-y-6">
-                    <div className="p-6 bg-blue-50 rounded-lg">
-                      <h3 className="text-xl font-semibold text-blue-600 mb-2">Course Progress</h3>
-                      <div className="flex items-center">
-                        <BookOpen className="w-5 h-5 text-blue-600 mr-2" />
-                        <span className="text-gray-600">In Progress</span>
+                  <>
+                    <div className="space-y-6">
+                      <div className="p-6 bg-blue-50 rounded-lg">
+                        <h3 className="text-xl font-semibold text-blue-600 mb-2">
+                          Course Progress
+                        </h3>
+                        <div className="flex items-center">
+                          <BookOpen className="w-5 h-5 text-blue-600 mr-2" />
+                          <span className="text-gray-600">In Progress</span>
+                        </div>
                       </div>
+                      <button
+                        onClick={handleEndCourse}
+                        className="w-full py-4 px-6 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl transition-colors duration-200 flex items-center justify-center space-x-2"
+                      >
+                        <span>End Course</span>
+                        <CheckCircle className="w-5 h-5" />
+                      </button>
                     </div>
-                    <button
-                      onClick={handleEndCourse}
-                      className="w-full py-4 px-6 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl transition-colors duration-200 flex items-center justify-center space-x-2"
-                    >
-                      <span>End Course</span>
-                      <CheckCircle className="w-5 h-5" />
-                    </button>
-                  </div>
+                    {/* sections of the course */}
+                    
+                  </>
                 )}
               </div>
             </div>
