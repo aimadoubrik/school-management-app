@@ -94,6 +94,7 @@ const UserProfilePage = () => {
   }
 
   return (
+    
     <div className="min-h-screen bg-base-200 transition-all duration-300 ">
     {/* Hero Banner */}
     <div className="relative bg-primary h-72 overflow-hidden rounded-t-md">
