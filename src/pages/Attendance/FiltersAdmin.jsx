@@ -1,7 +1,9 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { X } from 'lucide-react';
+import { X, Download } from 'lucide-react';
+import { jsPDF } from 'jspdf';
+import 'jspdf-autotable';
 
 export default function FiltersAdmin({
   allData = [],
@@ -23,6 +25,7 @@ export default function FiltersAdmin({
   onNomChange = () => { },
   onPrenomChange = () => { },
   onMonthChange = () => { },
+  filteredStudents = [],
 }) {
   const [filteredFilieres, setFilteredFilieres] = useState([]);
   const [filteredAnnees, setFilteredAnnees] = useState([]);
@@ -120,6 +123,107 @@ export default function FiltersAdmin({
     onMonthChange('');
   };
 
+  const exportToPDF = () => {
+    const doc = new jsPDF('l', 'mm', 'a4'); // Set to landscape mode
+    const pageWidth = doc.internal.pageSize.width;
+    const pageHeight = doc.internal.pageSize.height;
+    const margin = 10;
+    const tableWidth = pageWidth - margin - 5; // 5 is the new right margin
+
+    doc.setFontSize(18);
+    doc.text('Student Attendance and Discipline Report', pageWidth / 2, 20, { align: 'center' });
+    
+    doc.setFontSize(12);
+    doc.text(`Generated on: ${new Date().toLocaleDateString()}`, margin, 30);
+    
+    doc.autoTable({
+      startY: 40,
+      tableWidth: tableWidth,
+      head: [['CEF', 'Nom Complet', 'Secteur', 'Niveau', 'Filière', 'Année', 'Groupe', 'AJ', 'ANJ', 'Retards', 'Sanctions Assiduité', 'Observations SA', 'Sanctions Comportement', 'Observations SC', 'Note Discipline']],
+      body: filteredStudents.map(student => [
+        student.cef,
+        student.fullname,
+        student.secteur,
+        student.niveau,
+        student.filiere,
+        student.annee,
+        student.groupe,
+        student.aj || 0,
+        selectedMonth ? (student.anj[selectedMonth] || 0) : student.totalANJ,
+        student.retards || 0,
+        student.sanctionAssiduite || 'aucune',
+        student.observationSA || '',
+        student.sanctionComportement || 'aucune',
+        student.observationSC || '',
+        student.disciplineNote || 15
+      ]),
+      styles: { fontSize: 8, cellPadding: 2 },
+      columnStyles: {
+        0: { cellWidth: 20 }, // CEF
+        1: { cellWidth: 30 }, // Nom Complet
+        2: { cellWidth: 20 }, // Secteur
+        3: { cellWidth: 15 }, // Niveau
+        4: { cellWidth: 20 }, // Filière
+        5: { cellWidth: 15 }, // Année
+        6: { cellWidth: 15 }, // Groupe
+        7: { cellWidth: 10 }, // AJ
+        8: { cellWidth: 10 }, // ANJ
+        9: { cellWidth: 15 }, // Retards
+        10: { cellWidth: 25 }, // Sanctions Assiduité
+        11: { cellWidth: 25 }, // Observations SA
+        12: { cellWidth: 25 }, // Sanctions Comportement
+        13: { cellWidth: 25 }, // Observations SC
+        14: { cellWidth: 20 }  // Note Discipline
+      },
+      headStyles: { fillColor: [41, 128, 185], textColor: 255, fontStyle: 'bold' },
+      alternateRowStyles: { fillColor: [224, 224, 224] },
+      margin: { top: 40, right: 5, bottom: margin, left: margin },
+    });
+
+    // Add page numbers
+    const pageCount = doc.internal.getNumberOfPages();
+    for (let i = 1; i <= pageCount; i++) {
+      doc.setPage(i);
+      doc.setFontSize(10);
+      doc.text(`Page ${i} of ${pageCount}`, pageWidth - 20, pageHeight - 10);
+    }
+
+    doc.save('student_attendance_and_discipline.pdf');
+  };
+
+  const exportToCSV = () => {
+    const headers = ['CEF', 'Nom Complet', 'Secteur', 'Niveau', 'Filière', 'Année', 'Groupe', 'AJ', 'ANJ', 'Retards', 'Sanctions Assiduité', 'Observations SA', 'Sanctions Comportement', 'Observations SC', 'Note Discipline'];
+    const data = filteredStudents.map(student => [
+      student.cef,
+      student.fullname,
+      student.secteur,
+      student.niveau,
+      student.filiere,
+      student.annee,
+      student.groupe,
+      student.aj || 0,
+      selectedMonth ? (student.anj[selectedMonth] || 0) : student.totalANJ,
+      student.retards || 0,
+      student.sanctionAssiduite || 'aucune',
+      student.observationSA || '',
+      student.sanctionComportement || 'aucune',
+      student.observationSC || '',
+      student.disciplineNote || 15
+    ]);
+    const csvContent = [headers, ...data].map(row => row.join(',')).join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    if (link.download !== undefined) {
+      const url = URL.createObjectURL(blob);
+      link.setAttribute('href', url);
+      link.setAttribute('download', 'student_attendance_and_discipline.csv');
+      link.style.visibility = 'hidden';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
   if (!Array.isArray(allData)) {
     return <div className="text-red-500">Error: Invalid data format</div>;
   }
@@ -172,7 +276,18 @@ export default function FiltersAdmin({
           <X className="mr-2" size={16} />
           Effacer les filtres
         </button>
+        <div className="dropdown dropdown-end">
+          <label tabIndex={0} className="btn btn-primary btn-sm">
+            <Download className="mr-2" size={16} />
+            Exporter
+          </label>
+          <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+            <li><a onClick={exportToPDF}>Exporter en PDF</a></li>
+            <li><a onClick={exportToCSV}>Exporter en CSV</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   );
 }
+
