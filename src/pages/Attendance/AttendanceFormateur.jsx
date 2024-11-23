@@ -250,7 +250,7 @@ export default function AttendanceFormateur() {
             ) : (
               students.length > 0 ? (
                 students.map((student) => (
-                  <tr key={student.id} className={student.selected ? 'bg-red-500 text-white font-bold' : ''}>
+                  <tr key={student.id} className={student.selected ? 'text-dark-900 font-bold' : ''}>
                     <td>
                       <input
                         type="checkbox"

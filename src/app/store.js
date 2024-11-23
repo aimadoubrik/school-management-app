@@ -12,6 +12,7 @@ import {
   profileSlice,
   documentsReducer,
   moduleReducer,
+  secteursReducer,
   GroupesSlice,
   demandesReducer,
   formateurReducer,
@@ -30,6 +31,7 @@ const rootReducer = combineReducers({
   profile: profileSlice,
   documents: documentsReducer,
   modules: moduleReducer,
+  secteur: secteursReducer,
   demandes: demandesReducer,
   formateurs: formateurReducer,
 });

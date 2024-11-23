@@ -222,227 +222,1465 @@
   "quizzes": [
     {
       "quizID": "QZ101",
-      "courseId": "BIO101",
+      "coursequizID": "BIO101",
       "courseName": "Introduction to Biology",
       "teacherId": "T001",
       "teacherName": "Dr. Alice Johnson",
       "Deadline": "2024-11-30T23:59:59Z",
+      "status": "draft",
       "questions": [
         {
-          "question": "What is the powerhouse of the cell?",
+          "id": "1a",
+          "question": "What is the basic unit of life?",
+          "answers": [
+            "Atom",
+            "Molecule",
+            "Cell",
+            "Tissue"
+          ],
+          "correctAnswer": "Cell"
+        },
+        {
+          "id": "2b",
+          "question": "Which macromolecule is the main source of energy for living organisms?",
+          "answers": [
+            "Lipids",
+            "Proteins",
+            "Carbohydrates",
+            "Nucleic acids"
+          ],
+          "correctAnswer": "Carbohydrates"
+        },
+        {
+          "id": "3c",
+          "question": "What is the process by which plants convert sunlight into chemical energy?",
+          "answers": [
+            "Respiration",
+            "Fermentation",
+            "Photosynthesis",
+            "Digestion"
+          ],
+          "correctAnswer": "Photosynthesis"
+        },
+        {
+          "id": "4d",
+          "question": "Which organelle is known as the powerhouse of the cell?",
           "answers": [
             "Nucleus",
+            "Chloroplast",
             "Mitochondria",
-            "Ribosome",
-            "Endoplasmic Reticulum"
+            "Ribosome"
           ],
           "correctAnswer": "Mitochondria"
         },
         {
-          "question": "Which of the following is a photosynthetic pigment?",
+          "id": "5e",
+          "question": "Which molecule carries genetic information in most living organisms?",
+          "answers": [
+            "RNA",
+            "DNA",
+            "Protein",
+            "ATP"
+          ],
+          "correctAnswer": "DNA"
+        },
+        {
+          "id": "6f",
+          "question": "What is the term for a group of similar cells that perform a specific function?",
+          "answers": [
+            "Organ",
+            "Tissue",
+            "System",
+            "Organism"
+          ],
+          "correctAnswer": "Tissue"
+        },
+        {
+          "id": "7g",
+          "question": "Which process describes the movement of water across a selectively permeable membrane?",
+          "answers": [
+            "Diffusion",
+            "Osmosis",
+            "Active transport",
+            "Endocytosis"
+          ],
+          "correctAnswer": "Osmosis"
+        },
+        {
+          "id": "8h",
+          "question": "What is the main pigment involved in photosynthesis?",
           "answers": [
             "Chlorophyll",
             "Carotene",
-            "Hemoglobin",
-            "Collagen"
+            "Xanthophyll",
+            "Hemoglobin"
           ],
           "correctAnswer": "Chlorophyll"
         },
         {
-          "question": "What is the main function of red blood cells?",
+          "id": "9i",
+          "question": "Which biological molecule is primarily responsible for catalyzing reactions in cells?",
           "answers": [
-            "Oxygen transport",
-            "Fight infections",
-            "Produce insulin",
-            "Store energy"
+            "Lipids",
+            "Proteins",
+            "Carbohydrates",
+            "Nucleic acids"
           ],
-          "correctAnswer": "Oxygen transport"
+          "correctAnswer": "Proteins"
         },
         {
-          "question": "Which organ is responsible for filtering blood in humans?",
+          "id": "10j",
+          "question": "Which level of biological organization comes immediately after 'organism'?",
           "answers": [
-            "Heart",
-            "Liver",
-            "Kidneys",
-            "Lungs"
+            "Population",
+            "Community",
+            "Ecosystem",
+            "Biosphere"
           ],
-          "correctAnswer": "Kidneys"
+          "correctAnswer": "Population"
         },
         {
-          "question": "Which process involves the conversion of glucose into energy in cells?",
+          "id": "11k",
+          "question": "What is the term for the process by which organisms maintain a stable internal environment?",
           "answers": [
-            "Photosynthesis",
-            "Glycolysis",
+            "Evolution",
+            "Homeostasis",
+            "Adaptation",
+            "Metabolism"
+          ],
+          "correctAnswer": "Homeostasis"
+        },
+        {
+          "id": "12l",
+          "question": "What type of bond forms between two water molecules?",
+          "answers": [
+            "Ionic bond",
+            "Covalent bond",
+            "Hydrogen bond",
+            "Peptide bond"
+          ],
+          "correctAnswer": "Hydrogen bond"
+        },
+        {
+          "id": "13m",
+          "question": "What is the primary function of ribosomes?",
+          "answers": [
+            "Energy production",
+            "Protein synthesis",
+            "DNA replication",
+            "Transport of molecules"
+          ],
+          "correctAnswer": "Protein synthesis"
+        },
+        {
+          "id": "14n",
+          "question": "Which domain of life includes humans?",
+          "answers": [
+            "Bacteria",
+            "Archaea",
+            "Eukarya",
+            "Prokaryota"
+          ],
+          "correctAnswer": "Eukarya"
+        },
+        {
+          "id": "15o",
+          "question": "Which process results in two identical daughter cells?",
+          "answers": [
+            "Meiosis",
+            "Mitosis",
+            "Binary fission",
+            "Budding"
+          ],
+          "correctAnswer": "Mitosis"
+        },
+        {
+          "id": "16p",
+          "question": "What is the building block of proteins?",
+          "answers": [
+            "Nucleotides",
+            "Fatty acids",
+            "Amino acids",
+            "Monosaccharides"
+          ],
+          "correctAnswer": "Amino acids"
+        },
+        {
+          "id": "17q",
+          "question": "What is the term for organisms that produce their own food?",
+          "answers": [
+            "Heterotrophs",
+            "Autotrophs",
+            "Decomposers",
+            "Parasites"
+          ],
+          "correctAnswer": "Autotrophs"
+        },
+        {
+          "id": "18r",
+          "question": "Which type of RNA carries the genetic code from DNA to the ribosome?",
+          "answers": [
+            "tRNA",
+            "mRNA",
+            "rRNA",
+            "snRNA"
+          ],
+          "correctAnswer": "mRNA"
+        },
+        {
+          "id": "19s",
+          "question": "Which organ system is responsible for transporting nutrients and oxygen to cells?",
+          "answers": [
+            "Digestive system",
+            "Nervous system",
+            "Circulatory system",
+            "Respiratory system"
+          ],
+          "correctAnswer": "Circulatory system"
+        },
+        {
+          "id": "20t",
+          "question": "What is the main component of the cell membrane?",
+          "answers": [
+            "Proteins",
+            "Carbohydrates",
+            "Lipids",
+            "Nucleic acids"
+          ],
+          "correctAnswer": "Lipids"
+        }
+      ],
+      "id": "ecb9",
+      "questionsSelected": [
+        {
+          "id": "5e",
+          "question": "Which molecule carries genetic information in most living organisms?",
+          "answers": [
+            "RNA",
+            "DNA",
+            "Protein",
+            "ATP"
+          ],
+          "correctAnswer": "DNA"
+        },
+        {
+          "id": "6f",
+          "question": "What is the term for a group of similar cells that perform a specific function?",
+          "answers": [
+            "Organ",
+            "Tissue",
+            "System",
+            "Organism"
+          ],
+          "correctAnswer": "Tissue"
+        },
+        {
+          "id": "7g",
+          "question": "Which process describes the movement of water across a selectively permeable membrane?",
+          "answers": [
+            "Diffusion",
+            "Osmosis",
+            "Active transport",
+            "Endocytosis"
+          ],
+          "correctAnswer": "Osmosis"
+        },
+        {
+          "id": "8h",
+          "question": "What is the main pigment involved in photosynthesis?",
+          "answers": [
+            "Chlorophyll",
+            "Carotene",
+            "Xanthophyll",
+            "Hemoglobin"
+          ],
+          "correctAnswer": "Chlorophyll"
+        },
+        {
+          "id": "9i",
+          "question": "Which biological molecule is primarily responsible for catalyzing reactions in cells?",
+          "answers": [
+            "Lipids",
+            "Proteins",
+            "Carbohydrates",
+            "Nucleic acids"
+          ],
+          "correctAnswer": "Proteins"
+        },
+        {
+          "id": "10j",
+          "question": "Which level of biological organization comes immediately after 'organism'?",
+          "answers": [
+            "Population",
+            "Community",
+            "Ecosystem",
+            "Biosphere"
+          ],
+          "correctAnswer": "Population"
+        },
+        {
+          "id": "11k",
+          "question": "What is the term for the process by which organisms maintain a stable internal environment?",
+          "answers": [
+            "Evolution",
+            "Homeostasis",
+            "Adaptation",
+            "Metabolism"
+          ],
+          "correctAnswer": "Homeostasis"
+        },
+        {
+          "id": "12l",
+          "question": "What type of bond forms between two water molecules?",
+          "answers": [
+            "Ionic bond",
+            "Covalent bond",
+            "Hydrogen bond",
+            "Peptide bond"
+          ],
+          "correctAnswer": "Hydrogen bond"
+        },
+        {
+          "id": "13m",
+          "question": "What is the primary function of ribosomes?",
+          "answers": [
+            "Energy production",
+            "Protein synthesis",
+            "DNA replication",
+            "Transport of molecules"
+          ],
+          "correctAnswer": "Protein synthesis"
+        },
+        {
+          "id": "14n",
+          "question": "Which domain of life includes humans?",
+          "answers": [
+            "Bacteria",
+            "Archaea",
+            "Eukarya",
+            "Prokaryota"
+          ],
+          "correctAnswer": "Eukarya"
+        },
+        {
+          "id": "15o",
+          "question": "Which process results in two identical daughter cells?",
+          "answers": [
+            "Meiosis",
+            "Mitosis",
+            "Binary fission",
+            "Budding"
+          ],
+          "correctAnswer": "Mitosis"
+        },
+        {
+          "id": "16p",
+          "question": "What is the building block of proteins?",
+          "answers": [
+            "Nucleotides",
+            "Fatty acids",
+            "Amino acids",
+            "Monosaccharides"
+          ],
+          "correctAnswer": "Amino acids"
+        },
+        {
+          "id": "17q",
+          "question": "What is the term for organisms that produce their own food?",
+          "answers": [
+            "Heterotrophs",
+            "Autotrophs",
+            "Decomposers",
+            "Parasites"
+          ],
+          "correctAnswer": "Autotrophs"
+        },
+        {
+          "id": "18r",
+          "question": "Which type of RNA carries the genetic code from DNA to the ribosome?",
+          "answers": [
+            "tRNA",
+            "mRNA",
+            "rRNA",
+            "snRNA"
+          ],
+          "correctAnswer": "mRNA"
+        },
+        {
+          "id": "19s",
+          "question": "Which organ system is responsible for transporting nutrients and oxygen to cells?",
+          "answers": [
+            "Digestive system",
+            "Nervous system",
+            "Circulatory system",
+            "Respiratory system"
+          ],
+          "correctAnswer": "Circulatory system"
+        },
+        {
+          "id": "20t",
+          "question": "What is the main component of the cell membrane?",
+          "answers": [
+            "Proteins",
+            "Carbohydrates",
+            "Lipids",
+            "Nucleic acids"
+          ],
+          "correctAnswer": "Lipids"
+        },
+        {
+          "id": "1a",
+          "question": "What is the basic unit of life?",
+          "answers": [
+            "Atom",
+            "Molecule",
+            "Cell",
+            "Tissue"
+          ],
+          "correctAnswer": "Cell"
+        },
+        {
+          "id": "2b",
+          "question": "Which macromolecule is the main source of energy for living organisms?",
+          "answers": [
+            "Lipids",
+            "Proteins",
+            "Carbohydrates",
+            "Nucleic acids"
+          ],
+          "correctAnswer": "Carbohydrates"
+        },
+        {
+          "id": "3c",
+          "question": "What is the process by which plants convert sunlight into chemical energy?",
+          "answers": [
+            "Respiration",
             "Fermentation",
-            "Osmosis"
+            "Photosynthesis",
+            "Digestion"
           ],
-          "correctAnswer": "Glycolysis"
+          "correctAnswer": "Photosynthesis"
+        },
+        {
+          "id": "4d",
+          "question": "Which organelle is known as the powerhouse of the cell?",
+          "answers": [
+            "Nucleus",
+            "Chloroplast",
+            "Mitochondria",
+            "Ribosome"
+          ],
+          "correctAnswer": "Mitochondria"
         }
-      ],
-      "id": "ac8a"
-    },
-    {
-      "quizID": "QZ102",
-      "courseId": "PHYS101",
-      "courseName": "Introduction to Physics",
-      "teacherId": "T002",
-      "teacherName": "Dr. Michael Smith",
-      "Deadline": "2024-12-01T23:59:59Z",
-      "questions": [
-        {
-          "question": "What is the SI unit of force?",
-          "answers": [
-            "Newton",
-            "Joule",
-            "Pascal",
-            "Watt"
-          ],
-          "correctAnswer": "Newton"
-        },
-        {
-          "question": "Who formulated the laws of motion?",
-          "answers": [
-            "Albert Einstein",
-            "Isaac Newton",
-            "Galileo Galilei",
-            "Niels Bohr"
-          ],
-          "correctAnswer": "Isaac Newton"
-        },
-        {
-          "question": "What does the term 'velocity' refer to?",
-          "answers": [
-            "Speed",
-            "Speed in a given direction",
-            "Acceleration",
-            "Distance over time"
-          ],
-          "correctAnswer": "Speed in a given direction"
-        },
-        {
-          "question": "What is the speed of light in a vacuum?",
-          "answers": [
-            "3 × 10^8 m/s",
-            "1 × 10^8 m/s",
-            "5 × 10^6 m/s",
-            "9 × 10^8 m/s"
-          ],
-          "correctAnswer": "3 × 10^8 m/s"
-        },
-        {
-          "question": "What force keeps planets in orbit around the Sun?",
-          "answers": [
-            "Magnetism",
-            "Electromagnetic Force",
-            "Gravity",
-            "Friction"
-          ],
-          "correctAnswer": "Gravity"
-        }
-      ],
-      "id": "1d80"
+      ]
     },
     {
       "quizID": "QZ103",
-      "courseId": "HIST201",
+      "coursequizID": "HIST201",
       "courseName": "World History",
       "teacherId": "T003",
       "teacherName": "Dr. Sarah Davis",
-      "Deadline": "2024-12-05T23:59:59Z",
+      "Deadline": "2024-11-17T22:31",
+      "status": "active",
       "questions": [
         {
-          "question": "Who was the first President of the United States?",
+          "id": "1a",
+          "question": "What was the primary goal of the Silk Road?",
           "answers": [
-            "Abraham Lincoln",
-            "George Washington",
-            "Thomas Jefferson",
-            "James Madison"
+            "Religious conversion",
+            "Trade and cultural exchange",
+            "Military expansion",
+            "Agricultural development"
           ],
-          "correctAnswer": "George Washington"
+          "correctAnswer": "Trade and cultural exchange"
         },
         {
-          "question": "What year did World War II end?",
+          "id": "2b",
+          "question": "Which empire was known for building an extensive road system in South America?",
           "answers": [
-            "1940",
-            "1945",
-            "1950",
-            "1960"
+            "Aztec Empire",
+            "Inca Empire",
+            "Mayan Empire",
+            "Olmec Civilization"
           ],
-          "correctAnswer": "1945"
+          "correctAnswer": "Inca Empire"
         },
         {
-          "question": "The French Revolution began in which year?",
+          "id": "3c",
+          "question": "Who was the leader of the Mongol Empire at its peak?",
           "answers": [
-            "1789",
-            "1799",
-            "1812",
-            "1701"
-          ],
-          "correctAnswer": "1789"
-        },
-        {
-          "question": "What was the name of the ship that brought the Pilgrims to America in 1620?",
-          "answers": [
-            "Mayflower",
-            "Santa Maria",
-            "Titanic",
-            "The Beagle"
-          ],
-          "correctAnswer": "Mayflower"
-        },
-        {
-          "question": "Who was the famous leader of the Mongol Empire?",
-          "answers": [
+            "Kublai Khan",
             "Genghis Khan",
-            "Alexander the Great",
-            "Napoleon Bonaparte",
-            "Julius Caesar"
+            "Timur",
+            "Attila the Hun"
           ],
           "correctAnswer": "Genghis Khan"
+        },
+        {
+          "id": "4d",
+          "question": "What was the primary cause of the fall of the Roman Empire?",
+          "answers": [
+            "Economic instability and invasions",
+            "Overpopulation",
+            "Discovery of the New World",
+            "Rise of the Ottoman Empire"
+          ],
+          "correctAnswer": "Economic instability and invasions"
+        },
+        {
+          "id": "5e",
+          "question": "Which event marked the beginning of the French Revolution?",
+          "answers": [
+            "Storming of the Bastille",
+            "Reign of Terror",
+            "Execution of Louis XVI",
+            "Napoleon's rise to power"
+          ],
+          "correctAnswer": "Storming of the Bastille"
+        },
+        {
+          "id": "6f",
+          "question": "Which treaty ended World War I?",
+          "answers": [
+            "Treaty of Versailles",
+            "Treaty of Tordesillas",
+            "Treaty of Paris",
+            "Treaty of Ghent"
+          ],
+          "correctAnswer": "Treaty of Versailles"
+        },
+        {
+          "id": "7g",
+          "question": "Who was the first emperor of unified China?",
+          "answers": [
+            "Liu Bang",
+            "Wu Zetian",
+            "Qin Shi Huang",
+            "Confucius"
+          ],
+          "correctAnswer": "Qin Shi Huang"
+        },
+        {
+          "id": "8h",
+          "question": "Which event initiated the Protestant Reformation?",
+          "answers": [
+            "Council of Trent",
+            "The posting of the 95 Theses",
+            "English Civil War",
+            "Establishment of the Anglican Church"
+          ],
+          "correctAnswer": "The posting of the 95 Theses"
+        },
+        {
+          "id": "9i",
+          "question": "What was the primary goal of the Marshall Plan after World War II?",
+          "answers": [
+            "To prevent the spread of communism",
+            "To rebuild Europe's economy",
+            "To establish NATO",
+            "To create the European Union"
+          ],
+          "correctAnswer": "To rebuild Europe's economy"
+        },
+        {
+          "id": "10j",
+          "question": "Which civilization is credited with creating the first known system of writing?",
+          "answers": [
+            "Ancient Egyptians",
+            "Sumerians",
+            "Indus Valley Civilization",
+            "Phoenicians"
+          ],
+          "correctAnswer": "Sumerians"
         }
       ],
-      "id": "9441"
+      "questionsSelected": [
+        {
+          "id": "1a",
+          "question": "What was the primary goal of the Silk Road?",
+          "answers": [
+            "Religious conversion",
+            "Trade and cultural exchange",
+            "Military expansion",
+            "Agricultural development"
+          ],
+          "correctAnswer": "Trade and cultural exchange"
+        },
+        {
+          "id": "2b",
+          "question": "Which empire was known for building an extensive road system in South America?",
+          "answers": [
+            "Aztec Empire",
+            "Inca Empire",
+            "Mayan Empire",
+            "Olmec Civilization"
+          ],
+          "correctAnswer": "Inca Empire"
+        },
+        {
+          "id": "3c",
+          "question": "Who was the leader of the Mongol Empire at its peak?",
+          "answers": [
+            "Kublai Khan",
+            "Genghis Khan",
+            "Timur",
+            "Attila the Hun"
+          ],
+          "correctAnswer": "Genghis Khan"
+        },
+        {
+          "id": "4d",
+          "question": "What was the primary cause of the fall of the Roman Empire?",
+          "answers": [
+            "Economic instability and invasions",
+            "Overpopulation",
+            "Discovery of the New World",
+            "Rise of the Ottoman Empire"
+          ],
+          "correctAnswer": "Economic instability and invasions"
+        },
+        {
+          "id": "6f",
+          "question": "Which treaty ended World War I?",
+          "answers": [
+            "Treaty of Versailles",
+            "Treaty of Tordesillas",
+            "Treaty of Paris",
+            "Treaty of Ghent"
+          ],
+          "correctAnswer": "Treaty of Versailles"
+        },
+        {
+          "id": "7g",
+          "question": "Who was the first emperor of unified China?",
+          "answers": [
+            "Liu Bang",
+            "Wu Zetian",
+            "Qin Shi Huang",
+            "Confucius"
+          ],
+          "correctAnswer": "Qin Shi Huang"
+        },
+        {
+          "id": "8h",
+          "question": "Which event initiated the Protestant Reformation?",
+          "answers": [
+            "Council of Trent",
+            "The posting of the 95 Theses",
+            "English Civil War",
+            "Establishment of the Anglican Church"
+          ],
+          "correctAnswer": "The posting of the 95 Theses"
+        },
+        {
+          "id": "9i",
+          "question": "What was the primary goal of the Marshall Plan after World War II?",
+          "answers": [
+            "To prevent the spread of communism",
+            "To rebuild Europe's economy",
+            "To establish NATO",
+            "To create the European Union"
+          ],
+          "correctAnswer": "To rebuild Europe's economy"
+        },
+        {
+          "id": "10j",
+          "question": "Which civilization is credited with creating the first known system of writing?",
+          "answers": [
+            "Ancient Egyptians",
+            "Sumerians",
+            "Indus Valley Civilization",
+            "Phoenicians"
+          ],
+          "correctAnswer": "Sumerians"
+        },
+        {
+          "id": "1a",
+          "question": "What was the primary goal of the Silk Road?",
+          "answers": [
+            "Religious conversion",
+            "Trade and cultural exchange",
+            "Military expansion",
+            "Agricultural development"
+          ],
+          "correctAnswer": "Trade and cultural exchange"
+        },
+        {
+          "id": "2b",
+          "question": "Which empire was known for building an extensive road system in South America?",
+          "answers": [
+            "Aztec Empire",
+            "Inca Empire",
+            "Mayan Empire",
+            "Olmec Civilization"
+          ],
+          "correctAnswer": "Inca Empire"
+        }
+      ],
+      "id": "f4dc"
     },
     {
-      "quizID": "QZ104",
-      "courseId": "CHEM101",
-      "courseName": "General Chemistry",
-      "teacherId": "T004",
-      "teacherName": "Dr. Emily Zhang",
-      "Deadline": "2024-12-10T23:59:59Z",
+      "quizID": "b906",
+      "courseName": "World History",
+      "coursequizID": "HIST201",
+      "teacherName": "werek",
+      "Deadline": "2024-11-16T09:41",
+      "status": "active",
       "questions": [
         {
-          "question": "What is the chemical symbol for water?",
+          "id": "6f",
+          "question": "Which treaty ended World War I?",
+          "answers": [
+            "Treaty of Versailles",
+            "Treaty of Tordesillas",
+            "Treaty of Paris",
+            "Treaty of Ghent"
+          ],
+          "correctAnswer": "Treaty of Versailles"
+        },
+        {
+          "id": "7g",
+          "question": "Who was the first emperor of unified China?",
+          "answers": [
+            "Liu Bang",
+            "Wu Zetian",
+            "Qin Shi Huang",
+            "Confucius"
+          ],
+          "correctAnswer": "Qin Shi Huang"
+        },
+        {
+          "id": "8h",
+          "question": "Which event initiated the Protestant Reformation?",
+          "answers": [
+            "Council of Trent",
+            "The posting of the 95 Theses",
+            "English Civil War",
+            "Establishment of the Anglican Church"
+          ],
+          "correctAnswer": "The posting of the 95 Theses"
+        },
+        {
+          "id": "9i",
+          "question": "What was the primary goal of the Marshall Plan after World War II?",
+          "answers": [
+            "To prevent the spread of communism",
+            "To rebuild Europe's economy",
+            "To establish NATO",
+            "To create the European Union"
+          ],
+          "correctAnswer": "To rebuild Europe's economy"
+        }
+      ],
+      "id": "3951",
+      "questionsSelected": [
+        {
+          "id": "7g",
+          "question": "Who was the first emperor of unified China?",
+          "answers": [
+            "Liu Bang",
+            "Wu Zetian",
+            "Qin Shi Huang",
+            "Confucius"
+          ],
+          "correctAnswer": "Qin Shi Huang"
+        },
+        {
+          "id": "8h",
+          "question": "Which event initiated the Protestant Reformation?",
+          "answers": [
+            "Council of Trent",
+            "The posting of the 95 Theses",
+            "English Civil War",
+            "Establishment of the Anglican Church"
+          ],
+          "correctAnswer": "The posting of the 95 Theses"
+        },
+        {
+          "id": "9i",
+          "question": "What was the primary goal of the Marshall Plan after World War II?",
+          "answers": [
+            "To prevent the spread of communism",
+            "To rebuild Europe's economy",
+            "To establish NATO",
+            "To create the European Union"
+          ],
+          "correctAnswer": "To rebuild Europe's economy"
+        }
+      ]
+    },
+    {
+      "quizID": "6db7",
+      "courseName": "General Chemistry",
+      "coursequizID": "CHEM101",
+      "teacherName": "qqqqq",
+      "Deadline": "2024-11-13T01:59",
+      "status": "active",
+      "questions": [
+        {
+          "id": "1a",
+          "question": "What is the smallest unit of an element that retains its chemical properties?",
+          "answers": [
+            "Atom",
+            "Molecule",
+            "Ion",
+            "Proton"
+          ],
+          "correctAnswer": "Atom"
+        },
+        {
+          "id": "2b",
+          "question": "What is the chemical symbol for gold?",
+          "answers": [
+            "Au",
+            "Ag",
+            "Go",
+            "Gd"
+          ],
+          "correctAnswer": "Au"
+        },
+        {
+          "id": "3c",
+          "question": "What is the atomic number of carbon?",
+          "answers": [
+            "6",
+            "8",
+            "12",
+            "14"
+          ],
+          "correctAnswer": "6"
+        },
+        {
+          "id": "4d",
+          "question": "What is the main type of bond in sodium chloride (NaCl)?",
+          "answers": [
+            "Ionic bond",
+            "Covalent bond",
+            "Hydrogen bond",
+            "Metallic bond"
+          ],
+          "correctAnswer": "Ionic bond"
+        },
+        {
+          "id": "5e",
+          "question": "What is the chemical formula for water?",
           "answers": [
             "H2O",
-            "O2",
-            "CO2",
+            "O2H",
+            "H2O2",
             "HO2"
           ],
           "correctAnswer": "H2O"
         },
         {
-          "question": "Which element is known as the 'noble gas'?",
+          "id": "6f",
+          "question": "What is the pH of a neutral solution at 25°C?",
+          "answers": [
+            "7",
+            "0",
+            "14",
+            "1"
+          ],
+          "correctAnswer": "7"
+        },
+        {
+          "id": "7g",
+          "question": "Which gas is most abundant in the Earth's atmosphere?",
           "answers": [
             "Oxygen",
             "Nitrogen",
+            "Carbon dioxide",
+            "Hydrogen"
+          ],
+          "correctAnswer": "Nitrogen"
+        },
+        {
+          "id": "8h",
+          "question": "What is the name of the process by which a liquid turns into a gas?",
+          "answers": [
+            "Melting",
+            "Condensation",
+            "Evaporation",
+            "Sublimation"
+          ],
+          "correctAnswer": "Evaporation"
+        },
+        {
+          "id": "9i",
+          "question": "Which of the following is an example of a covalent compound?",
+          "answers": [
+            "NaCl",
+            "H2O",
+            "CaO",
+            "MgBr2"
+          ],
+          "correctAnswer": "H2O"
+        },
+        {
+          "id": "10j",
+          "question": "What is the term for a reaction that absorbs heat?",
+          "answers": [
+            "Exothermic",
+            "Endothermic",
+            "Combustion",
+            "Neutralization"
+          ],
+          "correctAnswer": "Endothermic"
+        },
+        {
+          "id": "11k",
+          "question": "What is Avogadro's number?",
+          "answers": [
+            "6.022 × 10^23",
+            "3.14",
+            "9.8 m/s^2",
+            "1.6 × 10^-19"
+          ],
+          "correctAnswer": "6.022 × 10^23"
+        },
+        {
+          "id": "12l",
+          "question": "Which element is a noble gas?",
+          "answers": [
+            "Oxygen",
             "Neon",
+            "Nitrogen",
             "Hydrogen"
           ],
           "correctAnswer": "Neon"
         },
         {
-          "question": "Which acid is found in the stomach?",
+          "id": "13m",
+          "question": "What is the molar mass of H2O?",
           "answers": [
-            "Acetic acid",
-            "Citric acid",
-            "Hydrochloric acid",
-            "Sulfuric acid"
+            "16 g/mol",
+            "18 g/mol",
+            "20 g/mol",
+            "24 g/mol"
           ],
-          "correctAnswer": "Hydrochloric acid"
+          "correctAnswer": "18 g/mol"
         },
         {
-          "question": "What is the pH level of pure water?",
+          "id": "14n",
+          "question": "What is the shape of a methane (CH4) molecule?",
+          "answers": [
+            "Linear",
+            "Bent",
+            "Tetrahedral",
+            "Trigonal planar"
+          ],
+          "correctAnswer": "Tetrahedral"
+        },
+        {
+          "id": "15o",
+          "question": "What is the oxidation state of oxygen in most compounds?",
+          "answers": [
+            "-1",
+            "-2",
+            "+1",
+            "+2"
+          ],
+          "correctAnswer": "-2"
+        },
+        {
+          "id": "16p",
+          "question": "What is the term for the ability of an atom to attract electrons in a bond?",
+          "answers": [
+            "Ionization energy",
+            "Electronegativity",
+            "Atomic radius",
+            "Electron affinity"
+          ],
+          "correctAnswer": "Electronegativity"
+        },
+        {
+          "id": "17q",
+          "question": "What is the process of a solid turning directly into a gas?",
+          "answers": [
+            "Condensation",
+            "Sublimation",
+            "Melting",
+            "Deposition"
+          ],
+          "correctAnswer": "Sublimation"
+        },
+        {
+          "id": "18r",
+          "question": "What is the term for a substance that speeds up a chemical reaction without being consumed?",
+          "answers": [
+            "Solvent",
+            "Catalyst",
+            "Reactant",
+            "Inhibitor"
+          ],
+          "correctAnswer": "Catalyst"
+        },
+        {
+          "id": "19s",
+          "question": "Which law states that pressure and volume of a gas are inversely proportional?",
+          "answers": [
+            "Charles's Law",
+            "Boyle's Law",
+            "Avogadro's Law",
+            "Ideal Gas Law"
+          ],
+          "correctAnswer": "Boyle's Law"
+        },
+        {
+          "id": "20t",
+          "question": "What is the product of a neutralization reaction?",
+          "answers": [
+            "Salt and water",
+            "Gas and salt",
+            "Acid and base",
+            "Heat and gas"
+          ],
+          "correctAnswer": "Salt and water"
+        },
+        {
+          "id": "21u",
+          "question": "Which subatomic particle has a positive charge?",
+          "answers": [
+            "Proton",
+            "Neutron",
+            "Electron",
+            "Photon"
+          ],
+          "correctAnswer": "Proton"
+        },
+        {
+          "id": "22v",
+          "question": "Which element is the most abundant in the Earth's crust?",
+          "answers": [
+            "Oxygen",
+            "Silicon",
+            "Aluminum",
+            "Iron"
+          ],
+          "correctAnswer": "Oxygen"
+        },
+        {
+          "id": "23w",
+          "question": "What is the main component of an acid?",
+          "answers": [
+            "Hydroxide ions",
+            "Hydrogen ions",
+            "Chloride ions",
+            "Carbonate ions"
+          ],
+          "correctAnswer": "Hydrogen ions"
+        },
+        {
+          "id": "24x",
+          "question": "What is the standard temperature in Kelvin for STP?",
+          "answers": [
+            "0 K",
+            "273 K",
+            "298 K",
+            "100 K"
+          ],
+          "correctAnswer": "273 K"
+        },
+        {
+          "id": "25y",
+          "question": "What is the common name for HCl in aqueous form?",
+          "answers": [
+            "Sulfuric acid",
+            "Hydrochloric acid",
+            "Nitric acid",
+            "Acetic acid"
+          ],
+          "correctAnswer": "Hydrochloric acid"
+        }
+      ],
+      "questionsSelected": [
+        {
+          "id": "21u",
+          "question": "Which subatomic particle has a positive charge?",
+          "answers": [
+            "Proton",
+            "Neutron",
+            "Electron",
+            "Photon"
+          ],
+          "correctAnswer": "Proton"
+        },
+        {
+          "id": "1a",
+          "question": "What is the smallest unit of an element that retains its chemical properties?",
+          "answers": [
+            "Atom",
+            "Molecule",
+            "Ion",
+            "Proton"
+          ],
+          "correctAnswer": "Atom"
+        },
+        {
+          "id": "2b",
+          "question": "What is the chemical symbol for gold?",
+          "answers": [
+            "Au",
+            "Ag",
+            "Go",
+            "Gd"
+          ],
+          "correctAnswer": "Au"
+        },
+        {
+          "id": "3c",
+          "question": "What is the atomic number of carbon?",
+          "answers": [
+            "6",
+            "8",
+            "12",
+            "14"
+          ],
+          "correctAnswer": "6"
+        },
+        {
+          "id": "4d",
+          "question": "What is the main type of bond in sodium chloride (NaCl)?",
+          "answers": [
+            "Ionic bond",
+            "Covalent bond",
+            "Hydrogen bond",
+            "Metallic bond"
+          ],
+          "correctAnswer": "Ionic bond"
+        },
+        {
+          "id": "5e",
+          "question": "What is the chemical formula for water?",
+          "answers": [
+            "H2O",
+            "O2H",
+            "H2O2",
+            "HO2"
+          ],
+          "correctAnswer": "H2O"
+        }
+      ],
+      "id": "a8d4"
+    },
+    {
+      "quizID": "a123",
+      "courseName": "Introduction to Physics",
+      "coursequizID": "PHYS101",
+      "teacherName": "Dr. Michael Smith",
+      "Deadline": "2024-11-20T23:59",
+      "status": "draft",
+      "questions": [
+        {
+          "id": "1abdd",
+          "question": "What is the SI unit of force?",
+          "answers": [
+            "Newton",
+            "Pascal",
+            "Joule",
+            "Watt"
+          ],
+          "correctAnswer": "Newton"
+        },
+        {
+          "id": "2bbbbbsb",
+          "question": "What is the acceleration due to gravity on Earth?",
+          "answers": [
+            "9.8 m/s²",
+            "10 m/s²",
+            "9.8 m/s",
+            "10 m/s"
+          ],
+          "correctAnswer": "9.8 m/s²"
+        },
+        {
+          "id": "3cccz",
+          "question": "What is the formula for velocity?",
+          "answers": [
+            "Distance ÷ Time",
+            "Force ÷ Mass",
+            "Mass × Acceleration",
+            "Work ÷ Distance"
+          ],
+          "correctAnswer": "Distance ÷ Time"
+        },
+        {
+          "id": "4dddddd",
+          "question": "Which law states that an object in motion stays in motion unless acted upon?",
+          "answers": [
+            "Newton's First Law",
+            "Newton's Second Law",
+            "Newton's Third Law",
+            "Law of Gravitation"
+          ],
+          "correctAnswer": "Newton's First Law"
+        },
+        {
+          "id": "5eeeeeeee",
+          "question": "What is the kinetic energy formula?",
+          "answers": [
+            "1/2 mv²",
+            "mgh",
+            "mv²",
+            "1/2 gh"
+          ],
+          "correctAnswer": "1/2 mv²"
+        }
+      ],
+      "id": "238b"
+    },
+    {
+      "quizID": "c345",
+      "courseName": "Principles of Economics",
+      "coursequizID": "ECON101",
+      "teacherName": "Dr. Emily Johnson",
+      "Deadline": "2024-12-13T23:59",
+      "status": "draft",
+      "questions": [],
+      "id": "f11a",
+      "questionsSelected": []
+    },
+    {
+      "id": "b979",
+      "courseName": "General Chemistry",
+      "coursequizID": "CHEM101",
+      "teacherName": "khba",
+      "Deadline": "2024-11-14T23:26",
+      "status": "active"
+    },
+    {
+      "id": "70b2",
+      "courseName": "Introduction to Physics",
+      "coursequizID": "PHYS101",
+      "teacherName": "Jim Halpert",
+      "Deadline": "2024-10-31T11:57",
+      "status": "draft"
+    },
+    {
+      "id": "ffee",
+      "courseName": "Principles of Economics",
+      "coursequizID": "106",
+      "teacherName": "Jim Halpert",
+      "Deadline": "2024-12-05T12:02",
+      "status": "active"
+    },
+    {
+      "id": "8381",
+      "courseName": "Introduction to Mathematics",
+      "coursequizID": "105",
+      "teacherName": "Jim Halpert",
+      "Deadline": "2024-11-24T12:05",
+      "status": "active"
+    },
+    {
+      "id": "199a",
+      "courseName": "General Chemistry",
+      "coursequizID": "104",
+      "teacherName": "Jim Halpert",
+      "Deadline": "2024-12-07T12:09",
+      "status": "active",
+      "questions": [
+        {
+          "id": "1",
+          "question": "What is the atomic number of Carbon?",
+          "answers": [
+            "4",
+            "6",
+            "8",
+            "12"
+          ],
+          "correctAnswer": "6"
+        },
+        {
+          "id": "2",
+          "question": "Which planet is known as the Red Planet?",
+          "answers": [
+            "Venus",
+            "Mars",
+            "Jupiter",
+            "Saturn"
+          ],
+          "correctAnswer": "Mars"
+        },
+        {
+          "id": "3",
+          "question": "What is the chemical formula for water?",
+          "answers": [
+            "H2O",
+            "CO2",
+            "NaCl",
+            "O2"
+          ],
+          "correctAnswer": "H2O"
+        },
+        {
+          "id": "4",
+          "question": "Which vitamin is produced when skin is exposed to sunlight?",
+          "answers": [
+            "Vitamin A",
+            "Vitamin B",
+            "Vitamin C",
+            "Vitamin D"
+          ],
+          "correctAnswer": "Vitamin D"
+        },
+        {
+          "id": "5",
+          "question": "What is the largest organ in the human body?",
+          "answers": [
+            "Brain",
+            "Heart",
+            "Skin",
+            "Liver"
+          ],
+          "correctAnswer": "Skin"
+        },
+        {
+          "id": "6",
+          "question": "Which gas makes up the majority of Earth's atmosphere?",
+          "answers": [
+            "Oxygen",
+            "Carbon Dioxide",
+            "Nitrogen",
+            "Hydrogen"
+          ],
+          "correctAnswer": "Nitrogen"
+        },
+        {
+          "id": "7",
+          "question": "What is the speed of light in vacuum?",
+          "answers": [
+            "299792 km/s",
+            "300000 km/s",
+            "199792 km/s",
+            "200000 km/s"
+          ],
+          "correctAnswer": "299792 km/s"
+        },
+        {
+          "id": "8",
+          "question": "Which element has the chemical symbol 'Fe'?",
+          "answers": [
+            "Iron",
+            "Gold",
+            "Silver",
+            "Copper"
+          ],
+          "correctAnswer": "Iron"
+        },
+        {
+          "id": "9",
+          "question": "What is the unit of electrical resistance?",
+          "answers": [
+            "Volt",
+            "Ampere",
+            "Ohm",
+            "Watt"
+          ],
+          "correctAnswer": "Ohm"
+        },
+        {
+          "id": "10",
+          "question": "Which blood type is known as the universal donor?",
+          "answers": [
+            "A+",
+            "B+",
+            "AB+",
+            "O-"
+          ],
+          "correctAnswer": "O-"
+        },
+        {
+          "id": "11",
+          "question": "What is the smallest unit of life?",
+          "answers": [
+            "Cell",
+            "Atom",
+            "Molecule",
+            "Protein"
+          ],
+          "correctAnswer": "Cell"
+        },
+        {
+          "id": "12",
+          "question": "Which gas do plants release during photosynthesis?",
+          "answers": [
+            "Carbon Dioxide",
+            "Nitrogen",
+            "Oxygen",
+            "Hydrogen"
+          ],
+          "correctAnswer": "Oxygen"
+        },
+        {
+          "id": "13",
+          "question": "What is the normal human body temperature in Celsius?",
+          "answers": [
+            "35.5",
+            "36.6",
+            "37.5",
+            "38.5"
+          ],
+          "correctAnswer": "36.6"
+        },
+        {
+          "id": "14",
+          "question": "Which element is most abundant in the universe?",
+          "answers": [
+            "Oxygen",
+            "Helium",
+            "Carbon",
+            "Hydrogen"
+          ],
+          "correctAnswer": "Hydrogen"
+        },
+        {
+          "id": "15",
+          "question": "What is the hardest material on the Mohs scale?",
+          "answers": [
+            "Ruby",
+            "Diamond",
+            "Topaz",
+            "Quartz"
+          ],
+          "correctAnswer": "Diamond"
+        },
+        {
+          "id": "16",
+          "question": "Which planet is closest to the Sun?",
+          "answers": [
+            "Mercury",
+            "Venus",
+            "Earth",
+            "Mars"
+          ],
+          "correctAnswer": "Mercury"
+        },
+        {
+          "id": "17",
+          "question": "What is the main component of natural gas?",
+          "answers": [
+            "Methane",
+            "Ethane",
+            "Propane",
+            "Butane"
+          ],
+          "correctAnswer": "Methane"
+        },
+        {
+          "id": "18",
+          "question": "Which bone is the longest in the human body?",
+          "answers": [
+            "Skull",
+            "Femur",
+            "Tibia",
+            "Humerus"
+          ],
+          "correctAnswer": "Femur"
+        },
+        {
+          "id": "19",
+          "question": "What is the pH of pure water?",
           "answers": [
             "5",
             "6",
@@ -452,28 +1690,85 @@
           "correctAnswer": "7"
         },
         {
-          "question": "What is the most abundant element in the Earth's crust?",
+          "id": "20",
+          "question": "Which galaxy contains our solar system?",
+          "answers": [
+            "Andromeda",
+            "Milky Way",
+            "Triangulum",
+            "Centaurus A"
+          ],
+          "correctAnswer": "Milky Way"
+        },
+        {
+          "id": "21",
+          "question": "What is the chemical symbol for silver?",
+          "answers": [
+            "Au",
+            "Ag",
+            "Cu",
+            "Pt"
+          ],
+          "correctAnswer": "Ag"
+        },
+        {
+          "id": "22",
+          "question": "Which element is essential for human blood?",
+          "answers": [
+            "Iron",
+            "Calcium",
+            "Potassium",
+            "Sodium"
+          ],
+          "correctAnswer": "Iron"
+        },
+        {
+          "id": "23",
+          "question": "What is the unit of force?",
+          "answers": [
+            "Pascal",
+            "Newton",
+            "Joule",
+            "Watt"
+          ],
+          "correctAnswer": "Newton"
+        },
+        {
+          "id": "24",
+          "question": "Which particle has a negative charge?",
+          "answers": [
+            "Proton",
+            "Neutron",
+            "Electron",
+            "Positron"
+          ],
+          "correctAnswer": "Electron"
+        },
+        {
+          "id": "25",
+          "question": "What is the largest organ inside the human body?",
+          "answers": [
+            "Heart",
+            "Liver",
+            "Lung",
+            "Brain"
+          ],
+          "correctAnswer": "Liver"
+        },
+        {
+          "id": "26",
+          "question": "Which gas is used in fire extinguishers?",
           "answers": [
             "Oxygen",
-            "Silicon",
-            "Iron",
-            "Aluminum"
+            "Nitrogen",
+            "Carbon Dioxide",
+            "Helium"
           ],
-          "correctAnswer": "Oxygen"
-        }
-      ],
-      "id": "41df"
-    },
-    {
-      "quizID": "QZ105",
-      "courseId": "MATH101",
-      "courseName": "Introduction to Mathematics",
-      "teacherId": "T005",
-      "teacherName": "Mr. William Lee",
-      "Deadline": "2024-12-12T23:59:59Z",
-      "questions": [
+          "correctAnswer": "Carbon Dioxide"
+        },
         {
-          "question": "What is the square root of 64?",
+          "id": "27",
+          "question": "What is the atomic number of oxygen?",
           "answers": [
             "6",
             "7",
@@ -483,230 +1778,371 @@
           "correctAnswer": "8"
         },
         {
-          "question": "What is the value of Pi to two decimal places?",
+          "id": "28",
+          "question": "Which vitamin is found abundantly in citrus fruits?",
           "answers": [
-            "3.14",
-            "3.15",
-            "3.16",
-            "3.13"
+            "Vitamin A",
+            "Vitamin B",
+            "Vitamin C",
+            "Vitamin D"
           ],
-          "correctAnswer": "3.14"
+          "correctAnswer": "Vitamin C"
         },
         {
-          "question": "What is the result of 15 ÷ 3?",
+          "id": "29",
+          "question": "What is the chemical symbol for potassium?",
           "answers": [
-            "5",
+            "P",
+            "K",
+            "Po",
+            "Ka"
+          ],
+          "correctAnswer": "K"
+        },
+        {
+          "id": "30",
+          "question": "Which blood type is the universal recipient?",
+          "answers": [
+            "A+",
+            "B+",
+            "AB+",
+            "O-"
+          ],
+          "correctAnswer": "AB+"
+        },
+        {
+          "id": "31",
+          "question": "What is the speed of sound in air?",
+          "answers": [
+            "330 m/s",
+            "343 m/s",
+            "350 m/s",
+            "360 m/s"
+          ],
+          "correctAnswer": "343 m/s"
+        },
+        {
+          "id": "32",
+          "question": "Which element is a noble gas?",
+          "answers": [
+            "Oxygen",
+            "Nitrogen",
+            "Neon",
+            "Hydrogen"
+          ],
+          "correctAnswer": "Neon"
+        },
+        {
+          "id": "33",
+          "question": "What is the unit of electric current?",
+          "answers": [
+            "Volt",
+            "Ampere",
+            "Ohm",
+            "Watt"
+          ],
+          "correctAnswer": "Ampere"
+        },
+        {
+          "id": "34",
+          "question": "Which planet has the most moons?",
+          "answers": [
+            "Jupiter",
+            "Saturn",
+            "Uranus",
+            "Neptune"
+          ],
+          "correctAnswer": "Saturn"
+        },
+        {
+          "id": "35",
+          "question": "What is the chemical formula for table salt?",
+          "answers": [
+            "NaCl",
+            "KCl",
+            "MgCl",
+            "CaCl"
+          ],
+          "correctAnswer": "NaCl"
+        },
+        {
+          "id": "36",
+          "question": "Which bone protects the brain?",
+          "answers": [
+            "Femur",
+            "Skull",
+            "Ribs",
+            "Spine"
+          ],
+          "correctAnswer": "Skull"
+        },
+        {
+          "id": "37",
+          "question": "What is the atomic number of gold?",
+          "answers": [
+            "77",
+            "79",
+            "81",
+            "83"
+          ],
+          "correctAnswer": "79"
+        },
+        {
+          "id": "38",
+          "question": "Which gas is responsible for the greenhouse effect?",
+          "answers": [
+            "Oxygen",
+            "Nitrogen",
+            "Carbon Dioxide",
+            "Helium"
+          ],
+          "correctAnswer": "Carbon Dioxide"
+        },
+        {
+          "id": "39",
+          "question": "What is the unit of power?",
+          "answers": [
+            "Joule",
+            "Newton",
+            "Watt",
+            "Pascal"
+          ],
+          "correctAnswer": "Watt"
+        },
+        {
+          "id": "40",
+          "question": "Which element is liquid at room temperature?",
+          "answers": [
+            "Iron",
+            "Mercury",
+            "Copper",
+            "Gold"
+          ],
+          "correctAnswer": "Mercury"
+        }
+      ],
+      "questionsSelected": [
+        {
+          "id": "3",
+          "question": "What is the chemical formula for water?",
+          "answers": [
+            "H2O",
+            "CO2",
+            "NaCl",
+            "O2"
+          ],
+          "correctAnswer": "H2O"
+        },
+        {
+          "id": "4",
+          "question": "Which vitamin is produced when skin is exposed to sunlight?",
+          "answers": [
+            "Vitamin A",
+            "Vitamin B",
+            "Vitamin C",
+            "Vitamin D"
+          ],
+          "correctAnswer": "Vitamin D"
+        },
+        {
+          "id": "5",
+          "question": "What is the largest organ in the human body?",
+          "answers": [
+            "Brain",
+            "Heart",
+            "Skin",
+            "Liver"
+          ],
+          "correctAnswer": "Skin"
+        },
+        {
+          "id": "6",
+          "question": "Which gas makes up the majority of Earth's atmosphere?",
+          "answers": [
+            "Oxygen",
+            "Carbon Dioxide",
+            "Nitrogen",
+            "Hydrogen"
+          ],
+          "correctAnswer": "Nitrogen"
+        },
+        {
+          "id": "7",
+          "question": "What is the speed of light in vacuum?",
+          "answers": [
+            "299792 km/s",
+            "300000 km/s",
+            "199792 km/s",
+            "200000 km/s"
+          ],
+          "correctAnswer": "299792 km/s"
+        },
+        {
+          "id": "10",
+          "question": "Which blood type is known as the universal donor?",
+          "answers": [
+            "A+",
+            "B+",
+            "AB+",
+            "O-"
+          ],
+          "correctAnswer": "O-"
+        },
+        {
+          "id": "11",
+          "question": "What is the smallest unit of life?",
+          "answers": [
+            "Cell",
+            "Atom",
+            "Molecule",
+            "Protein"
+          ],
+          "correctAnswer": "Cell"
+        },
+        {
+          "id": "14",
+          "question": "Which element is most abundant in the universe?",
+          "answers": [
+            "Oxygen",
+            "Helium",
+            "Carbon",
+            "Hydrogen"
+          ],
+          "correctAnswer": "Hydrogen"
+        },
+        {
+          "id": "20",
+          "question": "Which galaxy contains our solar system?",
+          "answers": [
+            "Andromeda",
+            "Milky Way",
+            "Triangulum",
+            "Centaurus A"
+          ],
+          "correctAnswer": "Milky Way"
+        },
+        {
+          "id": "22",
+          "question": "Which element is essential for human blood?",
+          "answers": [
+            "Iron",
+            "Calcium",
+            "Potassium",
+            "Sodium"
+          ],
+          "correctAnswer": "Iron"
+        },
+        {
+          "id": "24",
+          "question": "Which particle has a negative charge?",
+          "answers": [
+            "Proton",
+            "Neutron",
+            "Electron",
+            "Positron"
+          ],
+          "correctAnswer": "Electron"
+        },
+        {
+          "id": "26",
+          "question": "Which gas is used in fire extinguishers?",
+          "answers": [
+            "Oxygen",
+            "Nitrogen",
+            "Carbon Dioxide",
+            "Helium"
+          ],
+          "correctAnswer": "Carbon Dioxide"
+        },
+        {
+          "id": "27",
+          "question": "What is the atomic number of oxygen?",
+          "answers": [
             "6",
-            "4",
-            "7"
+            "7",
+            "8",
+            "9"
           ],
-          "correctAnswer": "5"
+          "correctAnswer": "8"
         },
         {
-          "question": "What is the perimeter of a rectangle with length 6 and width 4?",
+          "id": "28",
+          "question": "Which vitamin is found abundantly in citrus fruits?",
           "answers": [
-            "24",
-            "20",
-            "16",
-            "12"
+            "Vitamin A",
+            "Vitamin B",
+            "Vitamin C",
+            "Vitamin D"
           ],
-          "correctAnswer": "20"
+          "correctAnswer": "Vitamin C"
         },
         {
-          "question": "What is the formula for the area of a circle?",
+          "id": "31",
+          "question": "What is the speed of sound in air?",
           "answers": [
-            "πr²",
-            "2πr",
-            "r²",
-            "πd"
+            "330 m/s",
+            "343 m/s",
+            "350 m/s",
+            "360 m/s"
           ],
-          "correctAnswer": "πr²"
+          "correctAnswer": "343 m/s"
+        },
+        {
+          "id": "32",
+          "question": "Which element is a noble gas?",
+          "answers": [
+            "Oxygen",
+            "Nitrogen",
+            "Neon",
+            "Hydrogen"
+          ],
+          "correctAnswer": "Neon"
+        },
+        {
+          "id": "33",
+          "question": "What is the unit of electric current?",
+          "answers": [
+            "Volt",
+            "Ampere",
+            "Ohm",
+            "Watt"
+          ],
+          "correctAnswer": "Ampere"
+        },
+        {
+          "id": "36",
+          "question": "Which bone protects the brain?",
+          "answers": [
+            "Femur",
+            "Skull",
+            "Ribs",
+            "Spine"
+          ],
+          "correctAnswer": "Skull"
+        },
+        {
+          "id": "37",
+          "question": "What is the atomic number of gold?",
+          "answers": [
+            "77",
+            "79",
+            "81",
+            "83"
+          ],
+          "correctAnswer": "79"
+        },
+        {
+          "id": "39",
+          "question": "What is the unit of power?",
+          "answers": [
+            "Joule",
+            "Newton",
+            "Watt",
+            "Pascal"
+          ],
+          "correctAnswer": "Watt"
         }
-      ],
-      "id": "09fd"
-    },
-    {
-      "quizID": "QZ106",
-      "courseId": "ECON101",
-      "courseName": "Principles of Economics",
-      "teacherId": "T006",
-      "teacherName": "Dr. Rachel Green",
-      "Deadline": "2024-12-15T23:59:59Z",
-      "questions": [
-        {
-          "question": "What does GDP stand for?",
-          "answers": [
-            "Gross Domestic Product",
-            "Gross Debt Product",
-            "Global Debt Price",
-            "General Domestic Product"
-          ],
-          "correctAnswer": "Gross Domestic Product"
-        },
-        {
-          "question": "Which of these is considered a scarcity in economics?",
-          "answers": [
-            "Time",
-            "Free goods",
-            "Money",
-            "Labor"
-          ],
-          "correctAnswer": "Time"
-        },
-        {
-          "question": "What is inflation?",
-          "answers": [
-            "Decrease in prices",
-            "Increase in prices",
-            "Stability of prices",
-            "Change in production"
-          ],
-          "correctAnswer": "Increase in prices"
-        },
-        {
-          "question": "Which of the following is a type of market structure?",
-          "answers": [
-            "Monopoly",
-            "Anarchy",
-            "Oligarchy",
-            "Autocracy"
-          ],
-          "correctAnswer": "Monopoly"
-        },
-        {
-          "question": "What is the main purpose of taxation?",
-          "answers": [
-            "Increase government spending",
-            "Reduce public debt",
-            "Provide public services",
-            "Encourage investment"
-          ],
-          "correctAnswer": "Provide public services"
-        }
-      ],
-      "id": "bc99"
-    },
-    {
-      "quizID": "QZ107",
-      "courseId": "PSY101",
-      "courseName": "Introduction to Psychology",
-      "teacherId": "T007",
-      "teacherName": "Dr. James Walker",
-      "Deadline": "2024-12-20T23:59:59Z",
-      "questions": [
-        {
-          "question": "Which of the following is a type of psychological disorder?",
-          "answers": [
-            "Depression",
-            "Anger",
-            "Sadness",
-            "Fear"
-          ],
-          "correctAnswer": "Depression"
-        },
-        {
-          "question": "What is the main focus of cognitive psychology?",
-          "answers": [
-            "Memory and thought processes",
-            "Emotions",
-            "Physical behavior",
-            "Social interactions"
-          ],
-          "correctAnswer": "Memory and thought processes"
-        },
-        {
-          "question": "What part of the brain controls voluntary movement?",
-          "answers": [
-            "Cerebellum",
-            "Medulla",
-            "Frontal lobe",
-            "Occipital lobe"
-          ],
-          "correctAnswer": "Frontal lobe"
-        },
-        {
-          "question": "What does the term 'behaviorism' focus on in psychology?",
-          "answers": [
-            "Mental processes",
-            "Behavioral responses",
-            "Biological factors",
-            "Cultural influences"
-          ],
-          "correctAnswer": "Behavioral responses"
-        },
-        {
-          "question": "Who is known as the father of psychoanalysis?",
-          "answers": [
-            "Sigmund Freud",
-            "Carl Jung",
-            "B.F. Skinner",
-            "Ivan Pavlov"
-          ],
-          "correctAnswer": "Sigmund Freud"
-        }
-      ],
-      "id": "285e"
-    },
-    {
-      "quizID": "QZ108",
-      "courseId": "LIT102",
-      "courseName": "English Literature",
-      "teacherId": "T008",
-      "teacherName": "Dr. Hannah Clark",
-      "Deadline": "2024-12-25T23:59:59Z",
-      "questions": [
-        {
-          "question": "Who wrote the play 'Romeo and Juliet'?",
-          "answers": [
-            "William Shakespeare",
-            "Charles Dickens",
-            "Jane Austen",
-            "Mark Twain"
-          ],
-          "correctAnswer": "William Shakespeare"
-        },
-        {
-          "question": "What is the main theme of George Orwell's '1984'?",
-          "answers": [
-            "Totalitarianism",
-            "Romance",
-            "Adventure",
-            "Freedom"
-          ],
-          "correctAnswer": "Totalitarianism"
-        },
-        {
-          "question": "Which literary device is used in the phrase 'The wind whispered through the trees'?",
-          "answers": [
-            "Simile",
-            "Metaphor",
-            "Personification",
-            "Alliteration"
-          ],
-          "correctAnswer": "Personification"
-        },
-        {
-          "question": "Who is the author of 'The Great Gatsby'?",
-          "answers": [
-            "F. Scott Fitzgerald",
-            "Hemingway",
-            "Ernest Hemingway",
-            "William Faulkner"
-          ],
-          "correctAnswer": "F. Scott Fitzgerald"
-        },
-        {
-          "question": "In which period was William Shakespeare most active?",
-          "answers": [
-            "Renaissance",
-            "Medieval",
-            "Victorian",
-            "Enlightenment"
-          ],
-          "correctAnswer": "Renaissance"
-        }
-      ],
-      "id": "1749"
+      ]
     }
   ],
   "filieres": [
@@ -992,339 +2428,20 @@
       ]
     }
   ],
-  "formateurs": [
-    {
-      "id": "17000",
-      "nom": "Dupont",
-      "prenom": "Jean",
-      "secteur": "Digital",
-      "modules": [
-        {
-          "code": "M202_F01",
-          "intitule": "M202",
-          "mhSynthese": "15 H 00",
-          "mhP": "60 H 00",
-          "mhTotal": "75 H 00"
-        },
-        {
-          "code": "M204_F01",
-          "intitule": "M204",
-          "mhSynthese": "20 H 00",
-          "mhP": "80 H 00",
-          "mhTotal": "100 H 00"
-        },
-        {
-          "code": "M204_F01",
-          "intitule": "M205",
-          "mhSynthese": "25 H 00",
-          "mhP": "85 H 00",
-          "mhTotal": "105 H 00"
-        }
-      ],
-      "totalMasseHoraire": "175 H 00"
-    },
-    {
-      "id": "17007",
-      "nom": "Leroy",
-      "prenom": "Camille",
-      "secteur": "Digital",
-      "modules": [
-        {
-          "code": "M203_F01",
-          "intitule": "M203",
-          "mhSynthese": "10 H 00",
-          "mhP": "70 H 00",
-          "mhTotal": "80 H 00"
-        },
-        {
-          "code": "M206_F01",
-          "intitule": "M206",
-          "mhSynthese": "25 H 00",
-          "mhP": "65 H 00",
-          "mhTotal": "90 H 00"
-        },
-        {
-          "code": "M200_F01",
-          "intitule": "M209",
-          "mhSynthese": "27 H 00",
-          "mhP": "80 H 00",
-          "mhTotal": "98 H 00"
-        }
-      ],
-      "totalMasseHoraire": "170 H 00"
-    },
-    {
-      "id": "17011",
-      "nom": "Bernard",
-      "prenom": "Alice",
-      "secteur": "Digital",
-      "modules": [
-        {
-          "code": "M207_F01",
-          "intitule": "M207",
-          "mhSynthese": "12 H 00",
-          "mhP": "78 H 00",
-          "mhTotal": "90 H 00"
-        },
-        {
-          "code": "M208_F01",
-          "intitule": "M208",
-          "mhSynthese": "20 H 00",
-          "mhP": "80 H 00",
-          "mhTotal": "100 H 00"
-        },
-        {
-          "code": "M209_F01",
-          "intitule": "M209",
-          "mhSynthese": "20 H 00",
-          "mhP": "8 H 00",
-          "mhTotal": "170 H 00"
-        }
-      ],
-      "totalMasseHoraire": "190 H 00"
-    },
-    {
-      "id": "17001",
-      "nom": "Martin",
-      "prenom": "Sophie",
-      "secteur": "Finance",
-      "modules": [
-        {
-          "code": "F301_F01",
-          "intitule": "F301",
-          "mhSynthese": "25 H 00",
-          "mhP": "50 H 00",
-          "mhTotal": "75 H 00"
-        },
-        {
-          "code": "M208_F01",
-          "intitule": "M208",
-          "mhSynthese": "20 H 00",
-          "mhP": "80 H 00",
-          "mhTotal": "100 H 00"
-        },
-        {
-          "code": "M209_F01",
-          "intitule": "M209",
-          "mhSynthese": "60 H 00",
-          "mhP": "47 H 00",
-          "mhTotal": "100 H 00"
-        }
-      ],
-      "totalMasseHoraire": "175 H 00"
-    },
-    {
-      "id": "17008",
-      "nom": "Durand",
-      "prenom": "Julien",
-      "secteur": "Finance",
-      "modules": [
-        {
-          "code": "F304_F01",
-          "intitule": "F304",
-          "mhSynthese": "15 H 00",
-          "mhP": "60 H 00",
-          "mhTotal": "75 H 00"
-        },
-        {
-          "code": "F305_F01",
-          "intitule": "F305",
-          "mhSynthese": "20 H 00",
-          "mhP": "80 H 00",
-          "mhTotal": "100 H 00"
-        },
-        {
-          "code": "F306_F01",
-          "intitule": "F306",
-          "mhSynthese": "20 H 00",
-          "mhP": "89 H 00",
-          "mhTotal": "100 H 00"
-        }
-      ],
-      "totalMasseHoraire": "175 H 00"
-    },
-    {
-      "id": "17012",
-      "nom": "Blanchard",
-      "prenom": "Paul",
-      "secteur": "Finance",
-      "modules": [
-        {
-          "code": "F306_F01",
-          "intitule": "F306",
-          "mhSynthese": "18 H 00",
-          "mhP": "72 H 00",
-          "mhTotal": "90 H 00"
-        },
-        {
-          "code": "F307_F01",
-          "intitule": "F307",
-          "mhSynthese": "25 H 00",
-          "mhP": "75 H 00",
-          "mhTotal": "100 H 00"
-        },
-        {
-          "code": "F308_F01",
-          "intitule": "F308",
-          "mhSynthese": "25 H 00",
-          "mhP": "75 H 00",
-          "mhTotal": "100 H 00"
-        }
-      ],
-      "totalMasseHoraire": "190 H 00"
-    },
-    {
-      "id": "17002",
-      "nom": "Lemoine",
-      "prenom": "Clara",
-      "secteur": "Marketing",
-      "modules": [
-        {
-          "code": "MKT401_F01",
-          "intitule": "MKT401",
-          "mhSynthese": "10 H 00",
-          "mhP": "60 H 00",
-          "mhTotal": "70 H 00"
-        },
-        {
-          "code": "MKT402_F01",
-          "intitule": "MKT402",
-          "mhSynthese": "15 H 00",
-          "mhP": "85 H 00",
-          "mhTotal": "100 H 00"
-        },
-        {
-          "code": "MKT406_F01",
-          "intitule": "MKT403",
-          "mhSynthese": "15 H 00",
-          "mhP": "85 H 00",
-          "mhTotal": "100 H 00"
-        }
-      ],
-      "totalMasseHoraire": "170 H 00"
-    },
-    {
-      "id": "17009",
-      "nom": "Blanc",
-      "prenom": "Sophie",
-      "secteur": "Marketing",
-      "modules": [
-        {
-          "code": "MKT404_F01",
-          "intitule": "MKT404",
-          "mhSynthese": "20 H 00",
-          "mhP": "60 H 00",
-          "mhTotal": "80 H 00"
-        },
-        {
-          "code": "MKT405_F01",
-          "intitule": "MKT405",
-          "mhSynthese": "15 H 00",
-          "mhP": "85 H 00",
-          "mhTotal": "100 H 00"
-        },
-        {
-          "code": "MKT405_F03",
-          "intitule": "MKT408",
-          "mhSynthese": "15 H 00",
-          "mhP": "85 H 00",
-          "mhTotal": "100 H 00"
-        }
-      ],
-      "totalMasseHoraire": "180 H 00"
-    },
-    {
-      "id": "17013",
-      "nom": "Masson",
-      "prenom": "Lucie",
-      "secteur": "Marketing",
-      "modules": [
-        {
-          "code": "MKT406_F01",
-          "intitule": "MKT406",
-          "mhSynthese": "18 H 00",
-          "mhP": "72 H 00",
-          "mhTotal": "90 H 00"
-        },
-        {
-          "code": "MKT407_F01",
-          "intitule": "MKT407",
-          "mhSynthese": "22 H 00",
-          "mhP": "78 H 00",
-          "mhTotal": "100 H 00"
-        },
-        {
-          "code": "MKT408_F01",
-          "intitule": "MKT408",
-          "mhSynthese": "22 H 00",
-          "mhP": "78 H 00",
-          "mhTotal": "100 H 00"
-        }
-      ],
-      "totalMasseHoraire": "190 H 00"
-    },
-    {
-      "id": "17003",
-      "nom": "Moreau",
-      "prenom": "Paul",
-      "secteur": "Agro-alimentaire",
-      "modules": [
-        {
-          "code": "AG501_F01",
-          "intitule": "AG501",
-          "mhSynthese": "30 H 00",
-          "mhP": "50 H 00",
-          "mhTotal": "80 H 00"
-        },
-        {
-          "code": "AG502_F01",
-          "intitule": "AG502",
-          "mhSynthese": "35 H 00",
-          "mhP": "65 H 00",
-          "mhTotal": "100 H 00"
-        },
-        {
-          "code": "AG504_F01",
-          "intitule": "AG505",
-          "mhSynthese": "35 H 00",
-          "mhP": "65 H 00",
-          "mhTotal": "100 H 00"
-        }
-      ],
-      "totalMasseHoraire": "180 H 00"
-    },
-    {
-      "id": "17010",
-      "nom": "Petit",
-      "prenom": "Alice",
-      "secteur": "Agro-alimentaire",
-      "modules": [
-        {
-          "code": "AG503_F01",
-          "intitule": "AG503",
-          "mhSynthese": "20 H 00",
-          "mhP": "60 H 00",
-          "mhTotal": "80 H 00"
-        },
-        {
-          "code": "AG504_F01",
-          "intitule": "AG504",
-          "mhSynthese": "25 H 00",
-          "mhP": "75 H 00",
-          "mhTotal": "100 H 00"
-        },
-        {
-          "code": "AG506_F01",
-          "intitule": "AG506",
-          "mhSynthese": "25 H 00",
-          "mhP": "75 H 00",
-          "mhTotal": "100 H 00"
-        }
-      ],
-      "totalMasseHoraire": "180 H 00"
-    }
-  ],
   "competences": [
+    {
+      "id": "1",
+      "code_competence": 1,
+      "code_module": "M101_F01",
+      "intitule_module": "M101",
+      "intitule_competence": [
+        "Analyse de données",
+        "Algorithmes de base"
+      ],
+      "filiere": "Informatique",
+      "cours": "https://fake-link.com/cours/M101",
+      "quiz": "https://fake-link.com/quiz/M101"
+    },
     {
       "id": "2",
       "code_competence": 2,
@@ -1334,6 +2451,7 @@
         "Programmation en C",
         "Structures de données"
       ],
+      "filiere": "Informatique",
       "cours": "https://fake-link.com/cours/M102",
       "quiz": "https://fake-link.com/quiz/M102"
     },
@@ -1346,6 +2464,7 @@
         "Introduction à la gestion",
         "Organisation des entreprises"
       ],
+      "filiere": "Gestion",
       "cours": "https://fake-link.com/cours/M103",
       "quiz": "https://fake-link.com/quiz/M103"
     },
@@ -1358,6 +2477,7 @@
         "Programmation en JavaScript",
         "DOM manipulation"
       ],
+      "filiere": "Informatique",
       "cours": "https://fake-link.com/cours/M105",
       "quiz": "https://fake-link.com/quiz/M105"
     },
@@ -1370,6 +2490,7 @@
         "Introduction au web",
         "HTML/CSS"
       ],
+      "filiere": "Informatique",
       "cours": "https://fake-link.com/cours/M106",
       "quiz": "https://fake-link.com/quiz/M106"
     },
@@ -1382,6 +2503,7 @@
         "Réseaux de base",
         "Modèle OSI"
       ],
+      "filiere": "Informatique",
       "cours": "https://fake-link.com/cours/M107",
       "quiz": "https://fake-link.com/quiz/M107"
     },
@@ -1394,6 +2516,7 @@
         "Sécurité informatique",
         "Cryptographie"
       ],
+      "filiere": "Informatique",
       "cours": "https://fake-link.com/cours/M108",
       "quiz": "https://fake-link.com/quiz/M108"
     },
@@ -1406,6 +2529,7 @@
         "Design UX/UI",
         "Prototypage"
       ],
+      "filiere": "Design",
       "cours": "https://fake-link.com/cours/M109",
       "quiz": "https://fake-link.com/quiz/M109"
     },
@@ -1418,6 +2542,7 @@
         "Introduction à l'intelligence artificielle",
         "Machine learning"
       ],
+      "filiere": "IA",
       "cours": "https://fake-link.com/cours/M110",
       "quiz": "https://fake-link.com/quiz/M110"
     },
@@ -1427,6 +2552,7 @@
       "intitule_competence": [
         "communication"
       ],
+      "filiere": "Soft Skills",
       "intitule_module": "softskills",
       "cours": [
         "https:/softskills.com"
@@ -1441,167 +2567,233 @@
       "intitule_competence": [
         "innovation"
       ],
+      "filiere": "Soft Skills",
       "intitule_module": "softskills",
       "cours": [
         "https:/softskills.com"
       ],
       "quiz": [
         "https:/softskills.com"
-      ]
-    },
-    {
-      "id": "400f",
-      "code_competence": "13",
-      "intitule_competence": [
-        "esprit d'equipe",
-        "hhh"
-      ],
-      "intitule_module": "softskills",
-      "cours": [
-        "https:/cours.com"
-      ],
-      "quiz": [
-        "https:/quiz.com"
       ]
     }
   ],
   
   "courses": [
     {
-      "courseId": "BIO101",
+      "id": "1",
+      "coursequizID": "BIO101",
       "courseName": "Introduction to Biology",
       "teacherId": "T001",
       "teacherName": "Dr. Alice Johnson",
       "courseDescription": "An introduction to the fundamental principles of biology, covering topics like cell biology, genetics, and ecology.",
       "credits": 3,
-      "imageUrl": "https://th.bing.com/th/id/OIP.dJToM1TiZiJA0GYwzDHwjQHaHY?rs=1&pid=ImgDetMain",
+      "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
       "schedule": "Mon/Wed/Fri 10:00 AM - 11:30 AM",
       "location": "Room 203, Science Building",
       "materials": [
         "Biology 101 Textbook",
         "Lab Manual"
       ],
+      "contentOfCourse": [
+        {
+          "contentId": "1",
+          "contentName": "Introduction to Biology",
+          "contentDescription": "An overview of the fundamental concepts of biology, including cell biology, genetics, and ecology."
+        },
+        {
+          "contentId": "2",
+          "contentName": "Lab Safety Guidelines",
+          "contentDescription": "Guidelines for safe and responsible use of laboratory equipment and materials."
+        },
+        {
+          "contentId": "3",
+          "contentName": "Lab Equipment Maintenance",
+          "contentDescription": "Instructions for maintaining and repairing laboratory equipment."
+        }
+      ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "8e9e"
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
+      "status": "completed"
     },
     {
-      "courseId": "PHYS101",
+      "id": "2",
+      "coursequizID": "PHYS101",
       "courseName": "Introduction to Physics",
       "teacherId": "T002",
       "teacherName": "Dr. Michael Smith",
-      "courseDescription": "A basic introduction to the concepts of physics, including motion, energy, and forces.",
+      "courseDescription": "An introduction to the fundamental principles of biology, covering topics like cell biology, genetics, and ecology.",
       "credits": 4,
-      "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+      "imageUrl": "https://th.bing.com/th/id/OIP.RKDSdMJ5v5Hb4uflD3AoZgHaD5?rs=1&pid=ImgDetMain",
       "schedule": "Tue/Thu 9:00 AM - 10:30 AM",
       "location": "Room 102, Physics Lab",
       "materials": [
         "Physics 101 Textbook",
         "Lab Safety Manual"
       ],
+      "contentOfCourse": [
+        {
+          "contentId": "1",
+          "contentName": "Introduction to Physics",
+          "contentDescription": "An overview of the fundamental concepts of physics, including motion, energy, and forces."
+        },
+        {
+          "contentId": "2",
+          "contentName": "Lab Safety Guidelines",
+          "contentDescription": "Guidelines for safe and responsible use of laboratory equipment and materials."
+        },
+        {
+          "contentId": "3",
+          "contentName": "Lab Equipment Maintenance",
+          "contentDescription": "Instructions for maintaining and repairing laboratory equipment."
+        }
+      ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "4425"
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
+      "status": "completed"
     },
     {
-      "courseId": "HIST201",
+      "id": "3",
+      "coursequizID": "HIST201",
       "courseName": "World History",
       "teacherId": "T003",
-      "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
       "teacherName": "Dr. Sarah Davis",
       "courseDescription": "An exploration of world history from ancient civilizations to modern times.",
       "credits": 3,
+      "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
       "schedule": "Mon/Wed 1:00 PM - 2:30 PM",
       "location": "Room 104, History Department",
       "materials": [
         "World History Textbook",
         "Primary Source Readings"
       ],
+      "contentOfCourse": [
+        {
+          "contentId": "1",
+          "contentName": "Introduction to World History",
+          "contentDescription": "An overview of the fundamental concepts of world history, including major events, figures, and cultural movements."
+        },
+        {
+          "contentId": "2",
+          "contentName": "Lab Safety Guidelines",
+          "contentDescription": "Guidelines for safe and responsible use of laboratory equipment and materials."
+        },
+        {
+          "contentId": "3",
+          "contentName": "Lab Equipment Maintenance",
+          "contentDescription": "Instructions for maintaining and repairing laboratory equipment."
+        }
+      ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "932a"
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
+      "status": "completed"
     },
     {
-      "courseId": "CHEM101",
+      "id": "4",
+      "coursequizID": "104",
       "courseName": "General Chemistry",
       "teacherId": "T004",
-      "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
       "teacherName": "Dr. Emily Zhang",
       "courseDescription": "A foundational chemistry course covering the basics of chemical reactions, atomic structure, and the periodic table.",
       "credits": 4,
+      "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
       "schedule": "Tue/Thu 2:00 PM - 3:30 PM",
       "location": "Room 205, Chemistry Lab",
       "materials": [
         "General Chemistry Textbook",
         "Laboratory Notebook"
       ],
+      "contentOfCourse": [
+        {
+          "contentId": "1",
+          "contentName": "Introduction to Chemistry",
+          "contentDescription": "An overview of the fundamental concepts of chemistry, including chemical reactions, atomic structure, and the periodic table."
+        },
+        {
+          "contentId": "2",
+          "contentName": "Lab Safety Guidelines",
+          "contentDescription": "Guidelines for safe and responsible use of laboratory equipment and materials."
+        },
+        {
+          "contentId": "3",
+          "contentName": "Lab Equipment Maintenance",
+          "contentDescription": "Instructions for maintaining and repairing laboratory equipment."
+        }
+      ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "6781"
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
+      "status": "completed"
     },
     {
-      "courseId": "MATH101",
+      "id": "5",
+      "coursequizID": "105",
       "courseName": "Introduction to Mathematics",
       "teacherId": "T005",
       "teacherName": "Mr. William Lee",
       "courseDescription": "A basic course in mathematics, including algebra, calculus, and geometry.",
       "credits": 3,
-      "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+      "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
       "schedule": "Mon/Fri 11:00 AM - 12:30 PM",
       "location": "Room 101, Math Department",
       "materials": [
         "Mathematics 101 Textbook",
         "Scientific Calculator"
       ],
+      "contentOfCourse": [
+        {
+          "contentId": "1",
+          "contentName": "Introduction to Mathematics",
+          "contentDescription": "An overview of the fundamental concepts of mathematics, including algebra, calculus, and geometry."
+        },
+        {
+          "contentId": "2",
+          "contentName": "Lab Safety Guidelines",
+          "contentDescription": "Guidelines for safe and responsible use of laboratory equipment and materials."
+        },
+        {
+          "contentId": "3",
+          "contentName": "Lab Equipment Maintenance",
+          "contentDescription": "Instructions for maintaining and repairing laboratory equipment."
+        }
+      ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "331e"
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
+      "status": "completed"
     },
     {
-      "courseId": "ECON101",
+      "id": "6",
+      "coursequizID": "106",
       "courseName": "Principles of Economics",
       "teacherId": "T006",
-      "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
       "teacherName": "Dr. Rachel Green",
       "courseDescription": "An introductory course to economics, covering basic principles of microeconomics and macroeconomics.",
       "credits": 3,
+      "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
       "schedule": "Mon/Wed 3:00 PM - 4:30 PM",
       "location": "Room 303, Economics Building",
       "materials": [
         "Economics 101 Textbook",
         "Macroeconomics Reader"
       ],
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "74b3"
-    },
-    {
-      "courseId": "PSY101",
-      "courseName": "Introduction to Psychology",
-      "teacherId": "T007",
-      "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
-      "teacherName": "Dr. James Walker",
-      "courseDescription": "A comprehensive introduction to the field of psychology, including behavior, cognition, and emotion.",
-      "credits": 3,
-      "schedule": "Tue/Thu 11:00 AM - 12:30 PM",
-      "location": "Room 306, Psychology Building",
-      "materials": [
-        "Psychology 101 Textbook",
-        "Research Articles Packet"
+      "contentOfCourse": [
+        {
+          "contentId": "1",
+          "contentName": "Introduction to Economics",
+          "contentDescription": "An overview of the fundamental concepts of economics, including microeconomics and macroeconomics."
+        },
+        {
+          "contentId": "2",
+          "contentName": "Lab Safety Guidelines",
+          "contentDescription": "Guidelines for safe and responsible use of laboratory equipment and materials."
+        },
+        {
+          "contentId": "3",
+          "contentName": "Lab Equipment Maintenance",
+          "contentDescription": "Instructions for maintaining and repairing laboratory equipment."
+        }
       ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "0c3a"
-    },
-    {
-      "courseId": "LIT102",
-      "courseName": "English Literature",
-      "teacherId": "T008",
-      "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
-      "teacherName": "Dr. Hannah Clark",
-      "courseDescription": "A study of major works in English literature, from Shakespeare to modern writers.",
-      "credits": 3,
-      "schedule": "Mon/Wed 10:00 AM - 11:30 AM",
-      "location": "Room 202, Literature Department",
-      "materials": [
-        "English Literature Anthology",
-        "Shakespeare Plays Collection"
-      ],
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "d1c7"
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
+      "status": "active"
     }
   ],
   "modules": [
@@ -2636,7 +3828,7 @@
         }
       ],
       "user": "Admin Admin",
-      "status": "effectuer",
+      "status": "rejeter",
       "submissionDate": "11/21/2024",
       "processingTime": "2-3 jours"
     },
@@ -2658,9 +3850,75 @@
         }
       ],
       "user": "Admin Admin",
-      "status": "en cours",
+      "status": "termin ",
       "submissionDate": "11/21/2024",
       "processingTime": "2-3 jours"
+    },
+    {
+      "id": "b868",
+      "document": "Certificat médical",
+      "description": "Certificat médical justifiant une absence prolongée",
+      "requestDate": "2024-11-29",
+      "files": [
+        {
+          "name": "Capture d'écran 2024-10-10 190144.png",
+          "size": 59597,
+          "type": "image/png"
+        },
+        {
+          "name": "Capture d'écran 2024-10-14 095955.png",
+          "size": 649415,
+          "type": "image/png"
+        }
+      ],
+      "user": "Admin Admin",
+      "status": "effectuer",
+      "submissionDate": "11/21/2024",
+      "processingTime": "1-2 jours"
+    },
+    {
+      "id": "e124",
+      "document": "Attestation de scolarité",
+      "description": "Justifie que le stagiaire est inscrit dans une filière de formation",
+      "requestDate": "2024-11-22",
+      "files": [
+        {
+          "name": "Capture d'écran 2024-10-10 190144.png",
+          "size": 59597,
+          "type": "image/png"
+        },
+        {
+          "name": "Capture d'écran 2024-10-14 095955.png",
+          "size": 649415,
+          "type": "image/png"
+        }
+      ],
+      "user": "Admin Admin",
+      "status": "en cours",
+      "submissionDate": "11/21/2024",
+      "processingTime": "1-2 jours"
+    },
+    {
+      "id": "d172",
+      "document": "Relevé de notes",
+      "description": "Résumé des notes obtenues durant les examens",
+      "requestDate": "2024-11-29",
+      "files": [
+        {
+          "name": "Capture d'écran 2024-10-10 190144.png",
+          "size": 59597,
+          "type": "image/png"
+        },
+        {
+          "name": "Capture d'écran 2024-10-14 095955.png",
+          "size": 649415,
+          "type": "image/png"
+        }
+      ],
+      "user": "Admin Admin",
+      "status": "en cours",
+      "submissionDate": "11/21/2024",
+      "processingTime": "3-5 jours"
     }
   ]
 }

@@ -87,6 +87,11 @@ const menuItems = [
     icon: 'Settings',
     href: '/settings',
   },
+  {
+    label: 'secteurs',
+    icon: 'FolderCog',
+    href: '/secteurs',
+  },
 ];
 
 export default menuItems;

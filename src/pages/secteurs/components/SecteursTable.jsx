@@ -1,60 +1,41 @@
 import { Link } from 'react-router-dom';
-import { Eye, Edit, Trash2, Code, BookOpen, AlertCircle } from 'lucide-react';
-import { DataTable } from '../../../components';
+import { Eye, Edit, Trash2, Users, AlertCircle } from 'lucide-react';
+import DataTable from '../../../components/shared/DataTable'; // Adjust the import path accordingly
 
-const CompetencesTable = ({ competences, sortConfig, onSort, onView, onEdit, onDelete }) => {
-  const handleDelete = (competence, e) => {
+const SecteursTable = ({ secteurs, sortConfig, onSort, onView, onEdit, onDelete }) => {
+  const handleDelete = (secteur, e) => {
     e.stopPropagation();
-    onDelete(competence);
+    onDelete(secteur);
   };
 
   const columns = [
     {
-      key: 'code_competence',
+      key: 'code_secteur',
       label: 'Code',
-      sortable: true,
-      className: 'font-medium',
-    },
-    {
-      key: 'intitule_competence',
-      label: 'Intitulé',
-      sortable: true,
-      render: (row) =>
-        Array.isArray(row.intitule_competence)
-          ? row.intitule_competence.join(', ')
-          : row.intitule_competence,
-    },
-    {
-      key: 'intitule_module',
-      label: 'Module',
       sortable: true,
       mobileTruncate: true,
     },
     {
-      key: 'filiere',
-      label: 'Filière',
+      key: 'intitule_secteur',
+      label: 'Intitulé',
       sortable: true,
-      render: (row) => <span className="badge badge-ghost badge-sm">{row.filiere}</span>,
+      mobileTruncate: true,
     },
     {
-      key: 'cours',
-      label: 'Cours',
-      render: (row) =>
-        Array.isArray(row.cours) ? (
-          <span className="badge badge-ghost badge-sm">{row.cours.length} cours</span>
-        ) : (
-          '0 cours'
-        ),
-    },
-    {
-      key: 'quiz',
-      label: 'Quiz',
-      render: (row) =>
-        Array.isArray(row.quiz) ? (
-          <span className="badge badge-ghost badge-sm">{row.quiz.length} quiz</span>
-        ) : (
-          '0 quiz'
-        ),
+      key: 'niveaux.Specialisation.filiere',
+      label: 'Filières',
+      render: (row) => {
+        const filiereCount = Object.keys(row.niveaux?.Specialisation?.filiere || {}).length;
+        return (
+          <Link
+            to={`/secteurs/niveaux/specialisation/${row.code_secteur}`}
+            className="btn btn-ghost btn-xs gap-2"
+          >
+            <Users className="w-4 h-4" />
+            {filiereCount} filière{filiereCount !== 1 ? 's' : ''}
+          </Link>
+        );
+      },
     },
     {
       key: 'actions',
@@ -62,7 +43,6 @@ const CompetencesTable = ({ competences, sortConfig, onSort, onView, onEdit, onD
       className: 'text-right',
       render: (row) => (
         <>
-          {/* Desktop actions */}
           <div className="hidden md:flex justify-end gap-2">
             <button
               onClick={() => onView(row)}
@@ -86,7 +66,6 @@ const CompetencesTable = ({ competences, sortConfig, onSort, onView, onEdit, onD
               <Trash2 className="w-4 h-4" />
             </button>
           </div>
-          {/* Mobile actions */}
           <div className="md:hidden">
             <button onClick={() => onView(row)} className="btn btn-ghost btn-sm btn-square">
               <Eye className="w-4 h-4" />
@@ -108,17 +87,17 @@ const CompetencesTable = ({ competences, sortConfig, onSort, onView, onEdit, onD
 
   return (
     <DataTable
-      data={competences}
+      data={secteurs}
       columns={columns}
       sortConfig={sortConfig}
       onSort={onSort}
       emptyStateProps={{
         icon: AlertCircle,
-        title: 'Aucune compétence trouvée',
-        description: 'Commencez par ajouter une nouvelle compétence',
+        title: 'Aucune secteur trouvée',
+        description: 'Commencez par ajouter une nouvelle secteur',
       }}
     />
   );
 };
 
-export default CompetencesTable;
+export default SecteursTable;
