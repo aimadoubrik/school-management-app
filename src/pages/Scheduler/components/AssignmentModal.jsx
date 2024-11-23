@@ -7,27 +7,31 @@ import {
   deleteAssignment,
 } from "../../../features/scheduler/schedulerSlice";
 import { Modal } from "../../../components";
-import { Captions, Pause, Play, Plus, Save, Trash2, User, Users } from 'lucide-react';
+import { Captions, Pause, Play, Plus, Save, Trash2, User, Users } from "lucide-react";
 import AssignmentField from "./AssignmentFields";
 
 export default function AssignmentModal() {
   const dispatch = useDispatch();
-  const showAddAssignmentModal = useSelector((state) => state.scheduler.showAddAssignmentModal);
-  const hours = useSelector((state) => state.scheduler.hours);
-  const selectedDay = useSelector((state) => state.scheduler.selectedDay);
-  const selectedStartTime = useSelector((state) => state.scheduler.selectedStartTime);
-  const selectedEndTime = useSelector((state) => state.scheduler.selectedEndTime);
-  const assignments = useSelector((state) => state.scheduler.assignments);
-  const selectedGroupe = useSelector((state) => state.scheduler.selectedGroupe);
-  const selectedFormateur = useSelector((state) => state.scheduler.selectedFormateur);
+  const {
+    showAddAssignmentModal,
+    hours,
+    selectedDay,
+    selectedStartTime,
+    selectedEndTime,
+    assignments,
+    selectedGroupe,
+    selectedFormateur,
+    isEditingMode,
+  } = useSelector((state) => state.scheduler);
 
   const timeSlots = hours.flatMap((hour) => hour.subHours);
   const existingAssignment = assignments.find(
     (assignment) =>
       assignment.day === selectedDay &&
       assignment.startTime === selectedStartTime &&
-      assignment.endTime === selectedEndTime && 
-      (assignment.groupe.codeGroupe === selectedGroupe || assignment.formateur.matricule === selectedFormateur)
+      assignment.endTime === selectedEndTime &&
+      (assignment.groupe.codeGroupe === selectedGroupe || 
+        assignment.formateur.matricule === selectedFormateur)
   );
 
   const [assignmentData, setAssignmentData] = useState({
@@ -36,7 +40,7 @@ export default function AssignmentModal() {
       matricule: "",
       nom: "",
       email: "",
-      secteur: ""
+      secteur: "",
     },
     groupe: {
       codeGroupe: selectedGroupe || "",
@@ -51,55 +55,37 @@ export default function AssignmentModal() {
     id: null,
   });
 
-  const findGroupDetails = (codeGroupe) => {
-    return (
-      assignments.find(
-        (assignment) => assignment.groupe.codeGroupe === codeGroupe
-      )?.groupe || {}
-    );
-  };
+  const findGroupDetails = (codeGroupe) =>
+    assignments.find((assignment) => assignment.groupe.codeGroupe === codeGroupe)?.groupe || {};
 
-  const findFormateurDetails = (matricule) => {
-    return (
-      assignments.find(
-        (assignment) => assignment.formateur.matricule === matricule
-      )?.formateur || {}
-    );
-  };
-  
+  const findFormateurDetails = (matricule) =>
+    assignments.find((assignment) => assignment.formateur.matricule === matricule)?.formateur || {};
 
-  const getFormateursForGroup = (group) => {
-    return assignments
+  const getFormateursForGroup = (group) =>
+    assignments
       .filter((assignment) => assignment.groupe.codeGroupe === group?.codeGroupe)
       .map((assignment) => assignment.formateur)
       .filter(
         (formateur, index, self) =>
           formateur &&
-          index ===
-            self.findIndex((f) => f?.matricule === formateur?.matricule)
+          index === self.findIndex((f) => f?.matricule === formateur?.matricule)
       );
-  };
 
-  const getGroupsForFormateur = (formateur) => {
-    return assignments
-      .filter(
-        (assignment) =>
-          assignment.formateur?.matricule === formateur?.matricule
-      )
+  const getGroupsForFormateur = (formateur) =>
+    assignments
+      .filter((assignment) => assignment.formateur?.matricule === formateur?.matricule)
       .map((assignment) => assignment.groupe)
       .filter(
         (groupe, index, self) =>
           groupe &&
           index === self.findIndex((g) => g?.codeGroupe === groupe?.codeGroupe)
       );
-  };
 
   useEffect(() => {
-    if (showAddAssignmentModal && selectedStartTime && selectedEndTime ) {
+    if (showAddAssignmentModal && selectedStartTime && selectedEndTime) {
       if (existingAssignment) {
         setAssignmentData(existingAssignment);
       } else {
-        // Update assignment data when a group or formateur is selected
         const groupDetails = selectedGroupe ? findGroupDetails(selectedGroupe) : {};
         const formateurDetails = selectedFormateur ? findFormateurDetails(selectedFormateur) : {};
 
@@ -129,7 +115,6 @@ export default function AssignmentModal() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const { title, startTime, endTime, formateur } = assignmentData;
     if (!title || !startTime || !endTime || !formateur.matricule) {
       alert("Please fill in all required fields.");
@@ -168,7 +153,7 @@ export default function AssignmentModal() {
         matricule: "",
         nom: "",
         email: "",
-        secteur: ""
+        secteur: "",
       },
       groupe: {
         codeGroupe: selectedGroupe || "",
@@ -190,12 +175,6 @@ export default function AssignmentModal() {
     const fieldsConfig = selectedGroupe
       ? [
           {
-            label: "Groupe",
-            icon: Users,
-            value: assignmentData.groupe.codeGroupe,
-            isDisabled: true,
-          },
-          {
             label: "Formateur",
             icon: User,
             value: assignmentData.formateur?.matricule || "",
@@ -214,12 +193,6 @@ export default function AssignmentModal() {
         ]
       : [
           {
-            label: "Formateur",
-            icon: User,
-            value: assignmentData.formateur?.nom || "",
-            isDisabled: true,
-          },
-          {
             label: "Groupe",
             icon: Users,
             value: assignmentData.groupe?.codeGroupe || "",
@@ -236,8 +209,7 @@ export default function AssignmentModal() {
               }),
           },
         ];
-  
-    // Render fields dynamically
+
     return fieldsConfig.map((field, index) => (
       <AssignmentField
         key={index}
@@ -246,7 +218,6 @@ export default function AssignmentModal() {
         value={field.value}
         options={field.options}
         onChange={field.onChange}
-        isDisabled={field.isDisabled}
       />
     ));
   };
@@ -254,101 +225,159 @@ export default function AssignmentModal() {
   return (
     <Modal isOpen={showAddAssignmentModal} onClose={handleClose} maxWidth="max-w-xl">
       <div className="p-4">
-        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+        <h2 className="text-2xl font-bold mb-6">
           {assignmentData.id ? "Edit Assignment" : "Add Assignment"}
         </h2>
-        <form
-        onSubmit={handleSubmit}
-        className="space-y-4"
-        >
-        <div className="form-control">
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="form-control">
             <label className="label">
               <span className="label-text flex items-center gap-2">
                 <Captions className="w-4 h-4" />
                 Title
               </span>
             </label>
-          <input
-            type="text"
-            name="title"
-            placeholder="Assignment title"
-            value={assignmentData.title}
-            onChange={(e) =>
-              setAssignmentData({ ...assignmentData, title: e.target.value })
-            }
-            className="input input-bordered w-full"
-            required
-          />
-        </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text flex items-center gap-2">
-              <Play className="w-4 h-4" />
-              Start Time
-            </span>
-          </label>
-          <select
-            value={assignmentData.startTime}
-            onChange={(e) =>
-              setAssignmentData({ ...assignmentData, startTime: e.target.value })
-            }
-            className="select select-bordered w-full"
-            required
-          >
-            <option value="">Select Start Time</option>
-            {timeSlots.map((slot, index) => (
-              <option key={index} value={slot.startTime}>
-                {slot.startTime}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text flex items-center gap-2">
-              <Pause className="w-4 h-4" />
-              End Time
-            </span>
-          </label>
-          <select
-            value={assignmentData.endTime}
-            onChange={(e) =>
-              setAssignmentData({ ...assignmentData, endTime: e.target.value })
-            }
-            className="select select-bordered w-full"
-            required
-          >
-            <option value="">Select End Time</option>
-            {timeSlots.map((slot, index) => (
-              <option key={index} value={slot.endTime}>
-                {slot.endTime}
-              </option>
-            ))}
-          </select>
-        </div>
-        {renderFields()}
-
-        <div className="flex justify-end space-x-2">
-          {assignmentData.id && (
-            <button
-              type="button"
-              onClick={handleDelete}
-              className="btn btn-error gap-2"
+            <input
+              type="text"
+              value={assignmentData.title}
+              onChange={(e) =>
+                setAssignmentData({ ...assignmentData, title: e.target.value })
+              }
+              className="input input-bordered w-full"
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text flex items-center gap-2">
+                <Play className="w-4 h-4" />
+                Start Time
+              </span>
+            </label>
+            <select
+              value={assignmentData.startTime}
+              onChange={(e) =>
+                setAssignmentData({ ...assignmentData, startTime: e.target.value })
+              }
+              className="select select-bordered w-full"
+              required
             >
-              <Trash2 className="w-4 h-4" /> Delete
+              <option value="">Select Start Time</option>
+              {timeSlots.map((slot, index) => (
+                <option key={index} value={slot.startTime}>
+                  {slot.startTime}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text flex items-center gap-2">
+                <Pause className="w-4 h-4" />
+                End Time
+              </span>
+            </label>
+            <select
+              value={assignmentData.endTime}
+              onChange={(e) =>
+                setAssignmentData({ ...assignmentData, endTime: e.target.value })
+              }
+              className="select select-bordered w-full"
+              required
+            >
+              <option value="">Select End Time</option>
+              {timeSlots.map((slot, index) => (
+                <option key={index} value={slot.endTime}>
+                  {slot.endTime}
+                </option>
+              ))}
+            </select>
+          </div>
+          {(selectedGroupe || selectedFormateur) ? 
+          renderFields() : 
+          (
+            <>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text flex items-center gap-2">
+                    <Plus className="w-4 h-4" />
+                    Groupe
+                  </span>
+                </label>
+                <input
+                  type="text"
+                  value={assignmentData.salle}
+                  onChange={(matricule) =>
+                    setAssignmentData({
+                      ...assignmentData,
+                      formateur: getFormateursForGroup(assignmentData.groupe).find(
+                        (f) => f.matricule === matricule
+                      ),
+                    })}
+                  className="input input-bordered w-full"
+                />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text flex items-center gap-2">
+                  <Plus className="w-4 h-4" />
+                  Formateur 
+                </span>
+              </label>
+              <input
+                type="text"
+                value={assignmentData.salle}
+                onChange={(codeGroupe) =>
+                  setAssignmentData({
+                    ...assignmentData,
+                    groupe: getGroupsForFormateur(assignmentData.formateur).find(
+                      (g) => g.codeGroupe === codeGroupe
+                    ),
+                  })}
+                className="input input-bordered w-full"
+              />
+            </div>
+            </>
+          )
+          }
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text flex items-center gap-2">
+                <Plus className="w-4 h-4" />
+                Salle
+              </span>
+            </label>
+            <input
+              type="text"
+              value={assignmentData.salle}
+              onChange={(e) =>
+                setAssignmentData({ ...assignmentData, salle: e.target.value })
+              }
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div className="flex justify-between items-center mt-4">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              aria-label="Save Assignment"
+            >
+              <Save className="w-4 h-4 mr-2" />
+              Save
             </button>
-          )}
-          <button
-            type="submit"
-            className="btn btn-primary gap-2"
-          >
-            {assignmentData.id ? <Save className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-            {assignmentData.id ? "Update" : "Add"}
-          </button>
-        </div>
-      </form>
+            {assignmentData.id && (
+              <button
+                type="button"
+                className="btn btn-error"
+                onClick={handleDelete}
+                aria-label="Delete Assignment"
+              >
+                <Trash2 className="w-4 h-4 mr-2" />
+                Delete
+              </button>
+            )}
+          </div>
+        </form>
       </div>
     </Modal>
-
   );
 }

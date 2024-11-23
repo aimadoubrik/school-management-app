@@ -23,7 +23,9 @@ export default function SchedulerHeader() {
       <div className="flex items-center pt-5 mx-5">
         <button 
           className="btn btn-primary btn-sm gap-2"
-          onClick={() => dispatch(setShowAddAssignmentModal(true))}>
+          onClick={() => {dispatch(setShowAddAssignmentModal(true));
+            dispatch(setShowAddAssignmentModal(true));
+          }}>
           <Plus/>
           Add Assignment
         </button>

@@ -5225,6 +5225,26 @@
       "day": "2024-11-22",
       "startTime": "10:30",
       "endTime": "11:30"
+    },
+    {
+      "id": "1732350233929",
+      "title": "assignment",
+      "formateur": {
+        "matricule": "H2345",
+        "nom": "Ms. Davis",
+        "email": "davis@gmail.com",
+        "secteur": "social sciences"
+      },
+      "groupe": {
+        "codeGroupe": "HIST201",
+        "intituleGroupe": "Histoire Générale",
+        "filiere": "Humanities",
+        "secteur": "social sciences"
+      },
+      "salle": "salle2",
+      "day": "2024-11-20",
+      "startTime": "14:00",
+      "endTime": "16:00"
     }
   ]
 }

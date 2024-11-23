@@ -54,7 +54,8 @@ const handleAsyncCases = (builder, thunk, operation, onSuccess) => {
 
 const initialState = {
   assignments: [],
-  startOfWeek: dayjs().startOf("week").add(1, "day").format('YYYY-MM-DD'),  hours: Array.from({ length: 10 }, (_, i) => {
+  startOfWeek: dayjs().startOf("week").add(1, "day").format('YYYY-MM-DD'),
+  hours: Array.from({ length: 10 }, (_, i) => {
     const startTime = dayjs().hour(8 + i).minute(30);
     return {
       startTime: startTime.format('HH:mm'),
@@ -76,10 +77,7 @@ const initialState = {
   selectedStartTime: '',
   selectedEndTime: '',
   selectedGroupe: null,
-  selectedFormateur: null,
-  loading: false,
-  error: null,
-  currentOperation: null,
+  isAddAssignmentButtonClicked: false,
 };
 
 const schedulerSlice = createSlice({
@@ -103,6 +101,9 @@ const schedulerSlice = createSlice({
     },
     setShowAddAssignmentModal: (state, action) => {
       state.showAddAssignmentModal = action.payload;
+      if (!action.payload) {
+        state.isEditingMode = false; // Reset editing mode when modal closes
+      }
     },
     setSelectedGroupe: (state, action) => {
       if (state.selectedGroupe !== action.payload) {
@@ -113,6 +114,9 @@ const schedulerSlice = createSlice({
       if (state.selectedFormateur !== action.payload) {
         state.selectedFormateur = action.payload;
       }
+    },
+    setAddAssignmentButtonClicked(state, action) {
+      state.isAddAssignmentButtonClicked = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -146,9 +150,7 @@ export const {
   setShowAddAssignmentModal,
   setSelectedGroupe,
   setSelectedFormateur,
+  setAddAssignmentButtonClicked 
 } = schedulerSlice.actions;
 
 export default schedulerSlice.reducer;
-
-
-

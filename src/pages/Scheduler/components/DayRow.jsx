@@ -40,7 +40,7 @@ const DayRow = ({ day, hours, assignments }) => {
 
   return (
     <tr>
-      <td className="px-1 py-5 border font-semibold text-gray-700">
+      <td className="px-1 py-5 border w-25 font-semibold text-gray-700">
         {day.format('dddd')}
       </td>
       {hours.map((hour) => (
@@ -56,7 +56,7 @@ const DayRow = ({ day, hours, assignments }) => {
                 <td
                   key={`${subHour.startTime}-${subHour.endTime}`}
                   colSpan={spanCount}
-                  className="border p-2 cursor-pointer bg-blue-100"
+                  className="border p-2 w-25 cursor-pointer bg-primary text-primary-content hover:bg-primary/90"
                   onClick={() => {
                     dispatch(setSelectedDay(day.format('YYYY-MM-DD')));
                     dispatch(setSelectedStartTime(assignment.startTime));
@@ -90,12 +90,12 @@ const DayRow = ({ day, hours, assignments }) => {
           return (
             <td
               key={`${subHour.startTime}-${subHour.endTime}`}
-              className="border p-2 cursor-pointer"
+              className="border p-2 w-25 cursor-pointer"
               onClick={() => {
                 dispatch(setSelectedDay(day.format('YYYY-MM-DD')));
                 dispatch(setSelectedStartTime(subHour.startTime));
                 dispatch(setSelectedEndTime(subHour.endTime));
-                dispatch(setShowAddAssignmentModal(true));
+                (selectedGroupe || selectedFormateur) && dispatch(setShowAddAssignmentModal(true));
               }}
             ></td>
           );

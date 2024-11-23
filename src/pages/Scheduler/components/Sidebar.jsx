@@ -111,100 +111,107 @@ function Sidebar() {
   };
 
   return (
-    <div className="w-41 p-4 rounded-lg flex flex-col space-y-4">
-      <span className="text-lg font-semibold text-600 mb-4 label-text flex items-center gap-2"><Users/> Groups</span>
+    <div className="w-full bg-50 max-w-sm">
 
-      {/* Group Filters Section */}
-      <div className="space-y-4">
-          <select
-            value={selectedSecteur}
-            onChange={(e) => {
-              setSelectedSecteur(e.target.value);
-              setSelectedFiliere('');
-            }}
-            className="w-full select select-bordered"
-          >
-            <option value="">All Secteurs</option>
-            {secteurs.map((secteur) => (
-              <option key={secteur} value={secteur}>
-                {secteur}
-              </option>
-            ))}
-          </select>
+      {/* Groups Section */}
+      <h3 className="text-lg font-semibold text-[#57a9ad] mb-3 flex items-center gap-2">
+        <Users className="w-5 h-5" /> Groups
+      </h3>
 
-          <select
-            value={selectedFiliere}
-            onChange={(e) => setSelectedFiliere(e.target.value)}
-            className="w-full select select-bordered"
-          >
-            <option value="">All Filieres</option>
-            {filteredFilieres.map((filiere, index) => (
-              <option key={index} value={filiere}>
-                {filiere}
-              </option>
-            ))}
-          </select>
+      {/* Group Filters */}
+      <div className="space-y-3">
+        <select
+          value={selectedSecteur}
+          onChange={(e) => {
+            setSelectedSecteur(e.target.value);
+            setSelectedFiliere('');
+          }}
+          className="select select-bordered w-full"
+        >
+          <option value="">All Secteurs</option>
+          {secteurs.map((secteur) => (
+            <option key={secteur} value={secteur}>
+              {secteur}
+            </option>
+          ))}
+        </select>
+
+        <select
+          value={selectedFiliere}
+          onChange={(e) => setSelectedFiliere(e.target.value)}
+          className="select select-bordered w-full"
+        >
+          <option value="">All Filieres</option>
+          {filteredFilieres.map((filiere, index) => (
+            <option key={index} value={filiere}>
+              {filiere}
+            </option>
+          ))}
+        </select>
       </div>
 
       {/* Group List */}
-      <div className="space-y-2 mt-4 max-h-40 overflow-y-auto">
+      <div className="mt-4 max-h-40 overflow-y-auto space-y-2">
         {filteredGroups.length > 0 ? (
           filteredGroups.map((group, index) => (
             <div
               key={index}
-              className={`p-3 border rounded cursor-pointer ${
+              className={`p-3 rounded-lg border ${
                 selectedGroupe === group.codeGroupe
-                  ? 'bg-indigo-100 border-indigo-500'
+                  ? 'bg-primary text-primary-content hover:bg-primary/90'
                   : 'hover:bg-gray-100'
-              }`}
+              } cursor-pointer`}
               onClick={() => handleSelectGroupe(group.codeGroupe)}
             >
-              <h3 className="text-sm font-medium">{group.intituleGroupe}</h3>
-              <p className="text-xs text-gray-500">{group.filiere}</p>
+              <h4 className="text-sm font-medium">{group.intituleGroupe}</h4>
+              <p className="text-xs text-gray-600">{group.filiere}</p>
             </div>
           ))
         ) : (
-          <p className="text-gray-500 text-center">No groups match the selected filters.</p>
+          <p className="text-center text-gray-500">No groups found.</p>
         )}
       </div>
 
-
       {/* Formateurs Section */}
-      <h2 className="text-lg font-semibold text-600 mb-4 label-text flex items-center gap-2"><User/> Formateurs</h2>
-      <div className="space-y-4">
-      <select
-            value={selectedFormateurSecteur}
-            onChange={(e) => setSelectedFormateurSecteur(e.target.value)}
-            className="w-full select select-bordered"
-          >
-            <option value="">All Secteurs</option>
-            {secteurs.map((secteur) => (
-              <option key={secteur} value={secteur}>
-                {secteur}
-              </option>
-            ))}
-          </select>
+      <h3 className="text-lg font-semibold text-[#57a9ad] mt-6 flex items-center gap-2">
+        <User className="w-5 h-5" /> Formateurs
+      </h3>
+
+      {/* Formateur Filters */}
+      <div className="space-y-3 mt-3">
+        <select
+          value={selectedFormateurSecteur}
+          onChange={(e) => setSelectedFormateurSecteur(e.target.value)}
+          className="select select-bordered w-full"
+        >
+          <option value="">All Secteurs</option>
+          {secteurs.map((secteur) => (
+            <option key={secteur} value={secteur}>
+              {secteur}
+            </option>
+          ))}
+        </select>
       </div>
 
-
-    <div className="space-y-2 mt-4 max-h-40 overflow-y-auto">
+      {/* Formateur List */}
+      <div className="mt-4 max-h-40 overflow-y-auto space-y-2">
         {filteredFormateurs.length > 0 ? (
           filteredFormateurs.map((formateur, index) => (
             <div
               key={index}
-              className={`p-3 border rounded cursor-pointer ${
+              className={`p-3 rounded-lg border ${
                 selectedFormateur === formateur.matricule
-                  ? 'bg-indigo-100 border-indigo-500'
+                  ? 'bg-primary text-primary-content hover:bg-primary/90'
                   : 'hover:bg-gray-100'
-              }`}
+              } cursor-pointer`}
               onClick={() => handleSelectFormateur(formateur.matricule)}
             >
-              <h3 className="text-sm font-medium">{formateur.nom}</h3>
-              <p className="text-xs text-gray-500">{formateur.email}</p>
+              <h4 className="text-sm font-medium">{formateur.nom}</h4>
+              <p className="text-xs text-gray-600">{formateur.email}</p>
             </div>
           ))
         ) : (
-          <p className="text-gray-500 text-center">No formateurs found.</p>
+          <p className="text-center text-gray-500">No formateurs found.</p>
         )}
       </div>
     </div>
