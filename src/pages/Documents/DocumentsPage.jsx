@@ -389,8 +389,30 @@ const DocumentsPage = () => {
         {filteredDemandes.length === 0 ? (
           <p>Aucune demande trouvée.</p>
         ) : (
-          <div className="flex flex-wrap -mx-2">
+          <div className="flex flex-wrap mx-2 gap-4">
             {filteredDemandes.map((demande) => (
+
+              <div key={demande.id} className="relative m-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5" style={{maxHeight: '300px'}}>
+                
+                <span
+                  className={
+                    `absolute py-1 z-10 px-2 -left-8 -top-2 rounded-lg -rotate-[10deg] ` +
+                    (demande.status === 'en cours'
+                      ? 'border border-yellow-500 text-yellow-500 bg-white dark:bg-gray-800'
+                      : demande.status === 'effectuer'
+                      ? 'border border-green-500 text-green-500 bg-white dark:bg-gray-800'
+                      : 'border border-red-500 text-red-500 bg-white dark:bg-gray-800')
+                  }
+                  style={{ borderColor: demande.status === 'en cours' ? '#FCD34D' : demande.status === 'effectuer' ? '#34D399' : '#F87171' }}
+                  
+                >
+                  {demande.status}
+                </span>
+                <div className="p-8 border border-gray-400 purple_border bg-white rounded-xl z-20 dark:bg-gray-800 h-full">
+                  <h2 className="font-semibold">{demande.document}</h2>
+                  <p className="text-sm text-gray-500 mt-3">Date: {demande.requestDate}</p>
+                  
+
               <div key={demande.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-2 mb-4">
                 <div className="shadow-xl space-y-4 bg-transparent border border-gray-400 p-4 rounded h-full flex flex-col justify-between">
                   <div>

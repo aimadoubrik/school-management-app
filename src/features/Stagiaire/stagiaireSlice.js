@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { apiService } from '../../api/config';
+import { apiService } from '../../api/config.js';
 import config from '../../api/config.js';
 
 const STAGIAIRES_ENDPOINT = config.api.endpoints.stagiaires;

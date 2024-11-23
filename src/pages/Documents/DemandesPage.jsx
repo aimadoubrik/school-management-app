@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDemandes, editDemande, deleteDemande } from '../../features/documents/demandeSlice';
 import { Edit, Check, Trash } from 'lucide-react';
+import Pagination from '../../components/shared/Pagination';
 
 const DemandesPage = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,10 @@ const DemandesPage = () => {
   const [selectedStatus, setSelectedStatus] = useState('');
   const [editedDemande, setEditedDemande] = useState(null);
   const [showEditSelect, setShowEditSelect] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
+
+  const totalPages = Math.ceil(demandes.length / itemsPerPage);
 
   const handleEdit = (demande) => {
     setEditedDemande(demande);
@@ -113,67 +118,74 @@ const DemandesPage = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredDemandes.map((demande) => (
-                  <tr key={demande.id} className="hover">
-                    <th
-                      scope="row"
-                      className="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                    >
-                      {demande.document}
-                    </th>
-                    <td className="px-6 py-4">{demande?.user || 'Inconnu'}</td>
-                    <td className="px-6 py-4">
-                      {demande.files.map((file) => (
-                        <div key={file.name}>
-                          {file.name} ({file.size} octets)
-                        </div>
-                      ))}
-                    </td>
-                    <td className="px-6 py-4">
-                      {showEditSelect && editedDemande.id === demande.id ? (
-                        <div className="flex">
-                          <select className="select select-primary" onChange={handleConfirmEdit}>
-                            <option value="en cours">En Cours</option>
-                            <option value="effectuer">Effectuer</option>
-                            <option value="rejeter">Rejeter</option>
-                          </select>
+                {filteredDemandes
+                  .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+                  .map((demande) => (
+                    <tr key={demande.id} className="hover">
+                      <th
+                        scope="row"
+                        className="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                      >
+                        {demande.document}
+                      </th>
+                      <td className="px-6 py-4">{demande?.user || 'Inconnu'}</td>
+                      <td className="px-6 py-4">
+                        {demande.files.map((file) => (
+                          <div key={file.name}>
+                            {file.name} ({file.size} octets)
+                          </div>
+                        ))}
+                      </td>
+                      <td className="px-6 py-4">
+                        {showEditSelect && editedDemande.id === demande.id ? (
+                          <div className="flex">
+                            <select className="select select-primary" onChange={handleConfirmEdit}>
+                              <option value="en cours">En Cours</option>
+                              <option value="effectuer">Effectuer</option>
+                              <option value="rejeter">Rejeter</option>
+                            </select>
+                            <button
+                              type="button"
+                              onClick={() => setShowEditSelect(false)}
+                              className="inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                            >
+                              <Check className="h-5 w-5" aria-hidden="true" />
+                            </button>
+                          </div>
+                        ) : (
+                          demande.status
+                        )}
+                      </td>
+                      <td className="px-6 py-4">{demande.submissionDate}</td>
+                      <td className="px-6 py-4">{demande.processingTime}</td>
+                      <td className="px-6 py-4">
+                        <div className="flex space-x-2">
                           <button
                             type="button"
-                            onClick={() => setShowEditSelect(false)}
-                            className="inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                            onClick={() => handleEdit(demande)}
+                            className="inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-indigo-600 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                           >
-                            <Check className="h-5 w-5" aria-hidden="true" />
+                            <Edit className="h-5 w-5 text-black dark:text-white" aria-hidden="true" />
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => handleDelete(demande)}
+                            className="inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-indigo-600 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                          >
+                            <Trash className="h-5 w-5 text-red-600" aria-hidden="true" />
                           </button>
                         </div>
-                      ) : (
-                        demande.status
-                      )}
-                    </td>
-                    <td className="px-6 py-4">{demande.submissionDate}</td>
-                    <td className="px-6 py-4">{demande.processingTime}</td>
-                    <td className="px-6 py-4">
-                      <div className="flex space-x-2">
-                        <button
-                          type="button"
-                          onClick={() => handleEdit(demande)}
-                          className="inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-indigo-600 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        >
-                          <Edit className="h-5 w-5 text-black dark:text-white" aria-hidden="true" />
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => handleDelete(demande)}
-                          className="inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-indigo-600 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        >
-                          <Trash className="h-5 w-5 text-red-600" aria-hidden="true" />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
       )}
       {/* mobile view */}
