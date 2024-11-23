@@ -7,7 +7,10 @@ import { Search, AlertCircle } from 'lucide-react';
 
 const QuizzesPage = () => {
   const dispatch = useDispatch();
-  const quizData = useSelector((state) => state.quizzes.quizzes) || [];
+  // Modify the selector to filter out draft quizzes
+  const quizData = useSelector((state) =>
+    state.quizzes.quizzes ? state.quizzes.quizzes.filter((quiz) => quiz.status === 'active') : []
+  );
   const status = useSelector((state) => state.quizzes.status);
   const error = useSelector((state) => state.quizzes.error);
 
@@ -20,6 +23,7 @@ const QuizzesPage = () => {
     }
   }, [dispatch, status]);
 
+  // Update categories to only include active quizzes
   const categories = useMemo(
     () => [
       'all',
@@ -70,7 +74,7 @@ const QuizzesPage = () => {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {filteredQuizzes.map((quiz) => (
-          <QuizCard key={quiz.quizID} quiz={quiz} />
+          <QuizCard key={quiz.id} quiz={quiz} />
         ))}
       </div>
     );

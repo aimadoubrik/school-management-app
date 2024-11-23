@@ -2,15 +2,28 @@ import { Link } from 'react-router-dom';
 import { Clock, PlayCircle, User, BookOpen } from 'lucide-react';
 import PropTypes from 'prop-types';
 
-const getTimeStatus = (deadline) => {
+// src/pages/Quizzes/QuizCard.jsx
+export const getTimeStatus = (deadline) => {
   try {
+    // Handle empty or invalid deadline
+    if (!deadline) {
+      return {
+        text: 'No deadline',
+        color: 'badge-warning',
+        urgency: 'none',
+      };
+    }
+
     const deadlineDate = new Date(deadline);
+
+    // Validate the date is valid
     if (isNaN(deadlineDate.getTime())) {
-      throw new Error('Invalid date');
+      throw new Error('Invalid date format');
     }
 
     const now = new Date();
     const timeDiff = deadlineDate - now;
+    const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 
     if (timeDiff <= 0) {
       return {
@@ -20,39 +33,31 @@ const getTimeStatus = (deadline) => {
       };
     }
 
-    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-    if (days > 7) {
+    if (daysLeft <= 1) {
       return {
-        text: `${days} days left`,
-        color: 'badge-neutral',
-        urgency: 'low',
-      };
-    }
-    if (days > 0) {
-      return {
-        text: `${days} day${days > 1 ? 's' : ''} left`,
-        color: 'badge-primary',
-        urgency: 'medium',
-      };
-    }
-    if (hours > 0) {
-      return {
-        text: `${hours} hour${hours > 1 ? 's' : ''} left`,
+        text: 'Due Today',
         color: 'badge-warning',
-        urgency: 'high',
+        urgency: 'urgent',
       };
     }
+
+    if (daysLeft <= 3) {
+      return {
+        text: `${daysLeft} days left`,
+        color: 'badge-warning',
+        urgency: 'soon',
+      };
+    }
+
     return {
-      text: 'Less than an hour left',
-      color: 'badge-error',
-      urgency: 'critical',
+      text: `${daysLeft} days left`,
+      color: 'badge-info',
+      urgency: 'normal',
     };
   } catch (error) {
-    console.error('Error calculating time status:', error.message);
+    console.error('Error calculating time status:', error);
     return {
-      text: 'Invalid deadline',
+      text: 'Invalid date',
       color: 'badge-error',
       urgency: 'error',
     };

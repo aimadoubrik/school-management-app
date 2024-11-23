@@ -1,5 +1,4 @@
-// src/pages/Filieres/hooks/useFilieresLogic.js
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteFiliere, editFiliere, addFiliere } from '../../../features/filieres/filieresSlice';
 
@@ -11,31 +10,62 @@ export const useFilieresLogic = (filieres) => {
   const [viewMode, setViewMode] = useState(false);
   const [selectedFiliere, setSelectedFiliere] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [filterSecteur, setFilterSecteur] = useState('');
+  const [filters, setFilters] = useState([
+    {
+      key: 'secteur',
+      value: '',
+      placeholder: 'Tous les secteurs',
+      options: [],
+    },
+  ]);
   const [sortConfig, setSortConfig] = useState({ key: 'code_filiere', direction: 'asc' });
 
-  const filteredAndSortedFilieres = useMemo(() => {
-    return filieres
-      .filter((filiere) => {
-        const matchesSearch =
-          filiere.code_filiere?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          filiere.intitule_filiere?.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesSector = !filterSecteur || filiere.secteur === filterSecteur;
-        return matchesSearch && matchesSector;
-      })
-      .sort((a, b) => {
-        if (sortConfig.key) {
-          const aValue = a[sortConfig.key] || '';
-          const bValue = b[sortConfig.key] || '';
-          return (
-            (sortConfig.direction === 'asc' ? 1 : -1) *
-            (aValue > bValue ? 1 : aValue < bValue ? -1 : 0)
-          );
-        }
-        return 0;
-      });
-  }, [filieres, searchTerm, filterSecteur, sortConfig]);
+  // Update filter options whenever `filieres` changes
+  useEffect(() => {
+    if (filieres && filieres.length > 0) {
+      setFilters((prevFilters) => [
+        {
+          ...prevFilters[0], // Spread the existing filter config (if any)
+          options: [...new Set(filieres.map((f) => f.secteur))], // Get unique secteurs
+        },
+      ]);
+    }
+  }, [filieres]);
 
+  // Memoized filtered and sorted filieres
+  const filteredAndSortedFilieres = useMemo(() => {
+    let result = [...filieres]; // Create a shallow copy of the filieres array
+
+    // Search filter
+    if (searchTerm) {
+      result = result.filter(
+        (filiere) =>
+          filiere.code_filiere?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          filiere.intitule_filiere?.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    // Dynamic filters
+    filters.forEach((filter) => {
+      if (filter.value) {
+        result = result.filter((filiere) => filiere[filter.key] === filter.value);
+      }
+    });
+
+    // Sorting
+    if (sortConfig.key) {
+      const { key, direction } = sortConfig;
+      result = result.sort((a, b) => {
+        const aValue = a[key] || '';
+        const bValue = b[key] || '';
+        return (direction === 'asc' ? 1 : -1) * (aValue > bValue ? 1 : aValue < bValue ? -1 : 0);
+      });
+    }
+
+    return result;
+  }, [filieres, searchTerm, filters, sortConfig]);
+
+  // Handle sorting logic
   const handleSort = (key) => {
     setSortConfig((prev) => ({
       key,
@@ -43,36 +73,45 @@ export const useFilieresLogic = (filieres) => {
     }));
   };
 
+  // Handle search input change
   const handleSearch = (term) => {
     setSearchTerm(term);
   };
 
-  const handleSectorFilter = (sector) => {
-    setFilterSecteur(sector);
+  // Handle filter changes (e.g., sector filter)
+  const handleFilterChange = (key, value) => {
+    setFilters((prev) =>
+      prev.map((filter) => (filter.key === key ? { ...filter, value } : filter))
+    );
   };
 
+  // Open modal for editing or viewing filiere
   const handleModalOpen = (filiere, mode) => {
     setSelectedFiliere(filiere);
     setViewMode(mode === 'view');
     setIsModalOpen(true);
   };
 
+  // Close modal
   const handleModalClose = () => {
     setIsModalOpen(false);
     setSelectedFiliere(null);
     setViewMode(false);
   };
 
+  // Handle click on delete button
   const handleDeleteClick = (filiere) => {
     setFiliereToDelete(filiere);
     setIsDeleteModalOpen(true);
   };
 
+  // Cancel delete operation
   const handleDeleteCancel = () => {
     setIsDeleteModalOpen(false);
     setFiliereToDelete(null);
   };
 
+  // Confirm delete operation
   const handleDeleteConfirm = async () => {
     if (!filiereToDelete) return;
 
@@ -87,6 +126,7 @@ export const useFilieresLogic = (filieres) => {
     }
   };
 
+  // Save or edit filiere data
   const handleSave = async (filiereData) => {
     try {
       if (filiereData.id) {
@@ -101,6 +141,7 @@ export const useFilieresLogic = (filieres) => {
     }
   };
 
+  // Export filtered and sorted filieres to CSV
   const exportFilieres = () => {
     const headers = ['Code Filiere', 'Intitule Filiere', 'Secteur', 'Groupes'];
     const rows = filteredAndSortedFilieres.map((filiere) => [
@@ -125,12 +166,12 @@ export const useFilieresLogic = (filieres) => {
     viewMode,
     selectedFiliere,
     searchTerm,
-    filterSecteur,
+    filters,
     sortConfig,
     filteredAndSortedFilieres,
     handleSort,
     handleSearch,
-    handleSectorFilter,
+    handleFilterChange,
     handleModalOpen,
     handleModalClose,
     handleDeleteClick,

@@ -1,7 +1,9 @@
+import Courses from './Courses';
+
 const CoursesPage = () => {
   return (
     <div>
-      <h1>Courses Page</h1>
+      <Courses />
     </div>
   );
 };

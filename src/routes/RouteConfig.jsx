@@ -5,6 +5,7 @@ import ProtectedRoute from './ProtectedRoute';
 import DashboardLayout from '../layout/DashboardLayout';
 import LoginPage from '../features/auth/components/LoginForm';
 import SignupPage from '../features/auth/components/SignupForm';
+import DemandesPage from '../pages/Documents/DemandesPage';
 import {
   HomePage,
   NotFoundPage,
@@ -20,7 +21,19 @@ import {
   SchedulePage,
   TraineesPage,
   CompetencesPage,
-  Stagiaire
+
+  Stagiaire,
+
+  ModulesPage,
+  Course,
+  GroupesPage,
+  Formateur,
+  AllQuestions,
+  QuizQuestions,
+  TeacherQuizzes,
+  RoleBasedQuizRoute,
+  SecteursPage,
+
 } from '../pages';
 
 const RouteConfig = () => {
@@ -71,13 +84,14 @@ const RouteConfig = () => {
           }
         />
         <Route
-          path="/quizzes"
+          path="/courses/:id"
           element={
             <ProtectedRoute>
-              <QuizzesPage />
+              <Course />
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/quiz/:id"
           element={
@@ -112,6 +126,14 @@ const RouteConfig = () => {
           }
         />
         <Route
+          path="/demandes"
+          element={
+            <ProtectedRoute allowedRoles={['trainer', 'admin']}>
+              <DemandesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/schedule"
           element={
             <ProtectedRoute>
@@ -136,10 +158,26 @@ const RouteConfig = () => {
           }
         />
         <Route
+          path="/groups"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <GroupesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/competences"
           element={
             <ProtectedRoute allowedRoles={['admin']}>
               <CompetencesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/formateur"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <Formateur />
             </ProtectedRoute>
           }
         />
@@ -152,10 +190,50 @@ const RouteConfig = () => {
           }
         />
         <Route
+          path="/modules"
+          element={
+            <ProtectedRoute>
+              <ModulesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/settings"
           element={
             <ProtectedRoute>
               <SettingsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/quizzes"
+          element={
+            <ProtectedRoute>
+              <RoleBasedQuizRoute />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/quizzes/questions/:quizId"
+          element={
+            <ProtectedRoute allowedRoles={['trainer']}>
+              <QuizQuestions />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/quizzes/all-questions/:quizId"
+          element={
+            <ProtectedRoute allowedRoles={['trainer']}>
+              <AllQuestions />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/secteurs"
+          element={
+            <ProtectedRoute>
+              <SecteursPage />
             </ProtectedRoute>
           }
         />
