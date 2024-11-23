@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addStagiaireAPI } from './stagiaireSlice'; // Assurez-vous que ce chemin est correct
+import { addStagiaireAPI } from '../../features/Stagiaire/stagiaireSlice'; // Assurez-vous que ce chemin est correct
 
 const AddStagiaire = () => {
   const dispatch = useDispatch();

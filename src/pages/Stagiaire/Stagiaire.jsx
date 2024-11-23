@@ -125,6 +125,7 @@ const Stagiaire = () => {
     if (window.confirm('Êtes-vous sûr de vouloir supprimer ce stagiaire ?')) {
       try {
         await dispatch(deleteStagiaireAPI(cef)).unwrap();
+        console.log(cef);
       } catch (err) {
         console.error('Delete failed:', err);
       }
