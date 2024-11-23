@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+// import PropTypes from 'prop-types';
+// import Pagination from '../../components/shared/Pagination';
 import { fetchDemandes, editDemande, deleteDemande } from '../../features/documents/demandeSlice';
 import { Edit, Check, Trash } from 'lucide-react';
 
 const DemandesPage = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
   const { demandes, loading, error } = useSelector((state) => state.demandes);
 
   useEffect(() => {

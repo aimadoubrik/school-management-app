@@ -1,10 +1,8 @@
-// RouteConfig.jsx
 import { Routes, Route } from 'react-router-dom';
 import PublicRoute from './PublicRoute';
 import ProtectedRoute from './ProtectedRoute';
 import DashboardLayout from '../layout/DashboardLayout';
-import LoginPage from '../features/auth/components/LoginForm';
-import SignupPage from '../features/auth/components/SignupForm';
+import AuthPage from '../pages/Auth/AuthPage';
 import DemandesPage from '../pages/Documents/DemandesPage';
 import {
   HomePage,
@@ -37,21 +35,14 @@ const RouteConfig = () => {
     <Routes>
       {/* Public routes */}
       <Route
-        path="/login"
+        path="/auth"
         element={
           <PublicRoute>
-            <LoginPage />
+            <AuthPage />
           </PublicRoute>
         }
       />
-      <Route
-        path="/signup"
-        element={
-          <PublicRoute>
-            <SignupPage />
-          </PublicRoute>
-        }
-      />
+
 
       {/* Protected routes wrapped in DashboardLayout */}
       <Route element={<DashboardLayout />}>
@@ -84,6 +75,15 @@ const RouteConfig = () => {
           element={
             <ProtectedRoute>
               <Course />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/quizzes"
+          element={
+            <ProtectedRoute>
+              <QuizzesPage />
             </ProtectedRoute>
           }
         />
