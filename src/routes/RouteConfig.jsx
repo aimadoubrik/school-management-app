@@ -1,4 +1,3 @@
-// RouteConfig.jsx
 import { Routes, Route } from 'react-router-dom';
 import PublicRoute from './PublicRoute';
 import ProtectedRoute from './ProtectedRoute';
@@ -44,6 +43,7 @@ const RouteConfig = () => {
         }
       />
 
+
       {/* Protected routes wrapped in DashboardLayout */}
       <Route element={<DashboardLayout />}>
         <Route
@@ -78,11 +78,20 @@ const RouteConfig = () => {
             </ProtectedRoute>
           }
         />
-        
+
+        <Route
+          path="/quizzes"
+          element={
+            <ProtectedRoute>
+              <QuizzesPage />
+            </ProtectedRoute>
+          }
+        />
+
         <Route
           path="/quiz/:id"
           element={
-            <ProtectedRoute >
+            <ProtectedRoute>
               <Quiz />
             </ProtectedRoute>
           }
@@ -184,37 +193,37 @@ const RouteConfig = () => {
           }
         />
         <Route
-        path="/quizzes"
-        element={
-          <ProtectedRoute>
-            <RoleBasedQuizRoute />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/quizzes/questions/:quizId"
-        element={
-          <ProtectedRoute allowedRoles={['trainer']}>
-            <QuizQuestions />
-          </ProtectedRoute>
-        }
-      />
+          path="/quizzes"
+          element={
+            <ProtectedRoute>
+              <RoleBasedQuizRoute />
+            </ProtectedRoute>
+          }
+        />
         <Route
-        path="/quizzes/all-questions/:quizId"
-        element={
-          <ProtectedRoute allowedRoles={['trainer']}>
-            <AllQuestions />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/secteurs"
-        element={
-          <ProtectedRoute>
-            <SecteursPage />
-          </ProtectedRoute>
-        }
-      />
+          path="/quizzes/questions/:quizId"
+          element={
+            <ProtectedRoute allowedRoles={['trainer']}>
+              <QuizQuestions />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/quizzes/all-questions/:quizId"
+          element={
+            <ProtectedRoute allowedRoles={['trainer']}>
+              <AllQuestions />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/secteurs"
+          element={
+            <ProtectedRoute>
+              <SecteursPage />
+            </ProtectedRoute>
+          }
+        />
       </Route>
 
       {/* Error routes */}

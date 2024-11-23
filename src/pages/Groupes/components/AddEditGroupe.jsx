@@ -1,4 +1,3 @@
-// src/pages/Filieres/components/AddEditFiliere.jsx
 import { useState, useEffect } from 'react';
 import {
   Code,
@@ -30,16 +29,14 @@ const AddEditGroupe = ({ group, onClose, onSave, isEditMode }) => {
   useEffect(() => {
     if (group) {
       setFormData({
-        id: group.id,
+        id: group.id || '',
         codeGroupe: group.codeGroupe || '',
         niveau: group.niveau || '',
         intituleGroupe: group.intituleGroupe || '',
         filiere: group.filiere || '',
         modules: Array.isArray(group.modules) ? group.modules.join(', ') : '',
-        // modules: group.modules || '',
         emploiDuTemps: group.emploiDuTemps || '',
         liste: Array.isArray(group.liste) ? group.liste.join(', ') : '',
-        // liste: group.liste || '',
       });
     }
   }, [group]);
@@ -62,19 +59,19 @@ const AddEditGroupe = ({ group, onClose, onSave, isEditMode }) => {
   const validateForm = () => {
     const newErrors = {};
     if (!formData.codeGroupe.trim()) {
-      newErrors.code_filiere = 'Le code est requis';
+      newErrors.codeGroupe = 'Le code est requis';
     }
     if (!formData.niveau.trim()) {
-      newErrors.niveau = 'le niveau est requis';
+      newErrors.niveau = 'Le niveau est requis';
     }
     if (!formData.intituleGroupe.trim()) {
-      newErrors.intituleGroupe = "L'Intitulé Groupe est requis";
+      newErrors.intituleGroupe = "L'intitulé du groupe est requis";
     }
     if (!formData.filiere.trim()) {
-      newErrors.filiere = 'la filiere est requis';
+      newErrors.filiere = 'La filière est requise';
     }
     if (!formData.emploiDuTemps.trim()) {
-      newErrors.emploiDuTemps = "L'emploiDuTemps est requis";
+      newErrors.emploiDuTemps = "L'emploi du temps est requis";
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -88,10 +85,18 @@ const AddEditGroupe = ({ group, onClose, onSave, isEditMode }) => {
     try {
       const groupeData = {
         ...formData,
-        groupes: formData.groupes
-          .split(',')
-          .map((m) => m.trim())
-          .filter(Boolean),
+        modules: formData.modules
+          ? formData.modules
+              .split(',')
+              .map((m) => m.trim())
+              .filter(Boolean)
+          : [],
+        liste: formData.liste
+          ? formData.liste
+              .split(',')
+              .map((m) => m.trim())
+              .filter(Boolean)
+          : [],
       };
 
       if (isEditMode) {
@@ -115,43 +120,43 @@ const AddEditGroupe = ({ group, onClose, onSave, isEditMode }) => {
       id: 'codeGroupe',
       label: 'Code Groupe',
       icon: <Code className="w-4 h-4" />,
-      placeholder: 'Entrez le code du Groupe',
+      placeholder: 'Entrez le code du groupe',
     },
     {
       id: 'niveau',
       label: 'Niveau',
       icon: <SquareStack className="w-4 h-4" />,
-      placeholder: 'Entrez le niveau du Groupe',
+      placeholder: 'Entrez le niveau du groupe',
     },
     {
       id: 'intituleGroupe',
-      label: 'Intitulé Groupe ',
+      label: 'Intitulé Groupe',
       icon: <BookOpen className="w-4 h-4" />,
-      placeholder: "Entrez l'intitulé de la filière",
+      placeholder: "Entrez l'intitulé du groupe",
     },
     {
       id: 'filiere',
-      label: 'filiere',
+      label: 'Filière',
       icon: <Building2 className="w-4 h-4" />,
-      placeholder: 'Entrez Filiere',
+      placeholder: 'Entrez la filière',
     },
     {
       id: 'modules',
       label: 'Modules',
       icon: <Component className="w-4 h-4" />,
-      placeholder: 'Entrez les modules',
+      placeholder: 'Entrez les modules (séparés par des virgules)',
     },
     {
       id: 'emploiDuTemps',
-      label: 'emploi Du Temps',
+      label: "Emploi du temps",
       icon: <Clock className="w-4 h-4" />,
-      placeholder: "Entrez l'emploiDuTemp",
+      placeholder: "Entrez l'emploi du temps",
     },
     {
       id: 'liste',
-      label: 'liste',
+      label: 'Liste',
       icon: <Users className="w-4 h-4" />,
-      placeholder: 'Entrez la liste',
+      placeholder: 'Entrez la liste (séparée par des virgules)',
     },
   ];
 
@@ -216,7 +221,7 @@ const AddEditGroupe = ({ group, onClose, onSave, isEditMode }) => {
 AddEditGroupe.propTypes = {
   onSave: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
-  filiere: PropTypes.shape({
+  group: PropTypes.shape({
     id: PropTypes.string,
     codeGroupe: PropTypes.string,
     niveau: PropTypes.string,
@@ -226,6 +231,7 @@ AddEditGroupe.propTypes = {
     emploiDuTemps: PropTypes.string,
     liste: PropTypes.array,
   }),
+  isEditMode: PropTypes.bool,
 };
 
 export default AddEditGroupe;

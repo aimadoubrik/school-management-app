@@ -189,7 +189,8 @@ const Quiz = () => {
                 {calculateScore()}/{quizData.questionsSelected.length}
               </div>
               <div className="stat-desc text-sm">
-                Accuracy: {((calculateScore() / quizData.questionsSelected.length) * 100).toFixed(1)}%
+                Accuracy:{' '}
+                {((calculateScore() / quizData.questionsSelected.length) * 100).toFixed(1)}%
               </div>
             </div>
           </div>
