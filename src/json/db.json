@@ -5880,19 +5880,19 @@
   ],
   "modules": [
     {
-      "id": "2",
       "code": "M102_F01",
       "intitule": "M102",
       "masseHoraire": 50,
       "filiere": "Développement Logiciel",
       "niveau": "1A",
       "competences": "Programmation en C, Structures de données",
-      "etat": "Affecté",
       "secteur": "Digital",
-      "formateur": "Sophie Bernard"
+      "formateur": "Sophie Bernard",
+      "id": "2",
+      "etat": "Affecté"
     },
     {
-      "id": "4",
+      "id": "3",
       "code": "M104_F01",
       "intitule": "M104",
       "masseHoraire": 70,
@@ -6249,7 +6249,7 @@
       "competences": "Analyse des données marketing, Gestion de la marque",
       "etat": "Affecté",
       "secteur": "Marketing",
-      "formateur": "Jean Dupont"
+      "formateur": "Clara Dupuis"
     },
     {
       "id": "41",
@@ -6261,7 +6261,7 @@
       "competences": "Analyse des marchés financiers, Stratégies de fidélisation",
       "etat": "Affecté",
       "secteur": "Marketing",
-      "formateur": "Jean Dupont"
+      "formateur": "Clara Dupuis"
     },
     {
       "id": "42",
@@ -6273,7 +6273,7 @@
       "competences": "Branding, Gest Comportement du consommateur",
       "etat": "Affecté",
       "secteur": "Marketing",
-      "formateur": "Jean Dupont"
+      "formateur": "Clara Dupuis"
     },
     {
       "id": "43",
@@ -6297,7 +6297,7 @@
       "competences": "Marketing relationnel, Stratégies de fidélisation",
       "etat": "Affecté",
       "secteur": "Marketing",
-      "formateur": "Jean Dupont"
+      "formateur": "Clara Dupuis"
     },
     {
       "id": "45",
@@ -6333,7 +6333,7 @@
       "competences": "Publicité traditionnelle, Études de marché",
       "etat": "Affecté",
       "secteur": "Marketing",
-      "formateur": "Jean Dupont"
+      "formateur": "Pierre Lefevre"
     },
     {
       "id": "48",
@@ -6345,7 +6345,7 @@
       "competences": "Stratégies de fidélisation, Marketing d'influence",
       "etat": "Affecté",
       "secteur": "Marketing",
-      "formateur": "Jean Dupont"
+      "formateur": "Pierre Lefevre"
     },
     {
       "id": "49",
@@ -6586,6 +6586,20 @@
       "secteur": "Agro-ali",
       "formateur": "Laurent Boucher",
       "etat": "Affecté"
+    },
+    {
+      "id": "69",
+      "code": "",
+      "intitule": "",
+      "masseHoraire": "",
+      "filiere": "",
+      "niveau": "",
+      "competences": [
+        ""
+      ],
+      "secteur": "",
+      "formateur": "",
+      "etat": "Non Affecté"
     }
   ],
   "assignments": [
