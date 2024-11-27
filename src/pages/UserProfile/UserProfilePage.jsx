@@ -19,6 +19,7 @@ const UserProfilePage = () => {
   const [isDirty, setIsDirty] = useState(false);
   const [imageHovered, setImageHovered] = useState(false);
   const [editableUser, setEditableUser] = useState(null);
+  const [localPhoto, setLocalPhoto] = useState(null);
 
   useEffect(() => {
     const storedUserId = JSON.parse(
@@ -41,12 +42,20 @@ const UserProfilePage = () => {
   : new Date().toLocaleDateString();
 
 
- const handlePhotoUpload = (event) => {
+  const handlePhotoUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setEditableUser({ ...editableUser, photo: reader.result });
+        // Update local photo state immediately
+        setLocalPhoto(reader.result);
+        
+        // Update editable user with the new photo
+        setEditableUser(prev => ({
+          ...prev, 
+          photo: reader.result
+        }));
+        
         setIsDirty(true);
         showNotification('Photo uploaded successfully');
       };
@@ -55,7 +64,15 @@ const UserProfilePage = () => {
   };
 
   const handleDeletePhoto = () => {
-    setEditableUser({ ...editableUser, photo: defaultImage });
+    // Update local photo state immediately
+    setLocalPhoto(defaultImage);
+    
+    // Update editable user with default image
+    setEditableUser(prev => ({
+      ...prev, 
+      photo: defaultImage
+    }));
+    
     setIsDirty(true);
     showNotification('Photo removed successfully');
   };
@@ -65,16 +82,18 @@ const UserProfilePage = () => {
     setEditableUser({ ...editableUser, [name]: value });
     setIsDirty(true);
   };
+  const handleEdit = () => {
+    setEditableUser({ ...user }); 
+    setLocalPhoto(user?.photo || avatar); // Set initial local photo
+    setIsEditing(true);
+    setIsDirty(false);
+  };
+  
   const handleCancel = () => {
     setIsEditing(false);
     setIsDirty(false);
-    setEditableUser(null); // Discard local changes
-  };
-
-  const handleEdit = () => {
-    setEditableUser({ ...user }); // Copy current user data to editable state
-    setIsEditing(true);
-    setIsDirty(false);
+    setLocalPhoto(null); // Reset local photo
+    setEditableUser(null); 
   };
 
   const handleSave = async () => {
@@ -119,15 +138,21 @@ const UserProfilePage = () => {
                      onMouseEnter={() => setImageHovered(true)}
                      onMouseLeave={() => setImageHovered(false)}>
                   <div className={`w-36 rounded-full ring ring-primary ring-offset-base-100 ring-offset-4 shadow-xl transition-all duration-300 ${imageHovered ? 'ring-secondary' : ''}`}>
-                    <div className="relative">
+                    <div className="relative  mx-auto sm:mx-0 group">
+                    <div className="avatar w-36 h-36 rounded-full">
                       <img
-                        src={user?.photo || avatar}
+                        src={
+                          // Prioritize local photo during editing, then user photo, then default
+                          isEditing 
+                            ? (localPhoto || user?.photo || avatar)
+                            : (user?.photo || avatar)
+                        }
                         alt="Profile"
                         className={`object-cover transition-all duration-300 ${isLoading ? 'opacity-50' : ''} ${imageHovered ? 'scale-105' : ''}`}
                       />
                       {isEditing && imageHovered && (
                         <div className="absolute inset-0 bg-base-content/30 backdrop-blur-sm flex items-center justify-center rounded-full transition-all duration-300">
-                          <label className="btn btn-circle btn-ghost btn-lg glass hover:bg-primary/50 cursor-pointer">
+                          <label className="btn btn-circle m-10 btn-error btn-lg glass hover:bg-primary/50 cursor-pointer">
                             <Camera className="w-6 h-6 text-base-100" />
                             <input
                               type="file"
@@ -139,19 +164,11 @@ const UserProfilePage = () => {
                         </div>
                       )}
                     </div>
+                    </div>
                   </div>
                 </div>
                 {isEditing && (
                   <div className="absolute -bottom-2 right-0 flex gap-2 scale-90 opacity-90 hover:scale-100 hover:opacity-100 transition-all duration-200">
-                    <label className="btn btn-circle btn-primary btn-sm hover:btn-secondary tooltip tooltip-top" data-tip="Upload photo">
-                      <Camera className="w-4 m-auto mt-1" />
-                      <input
-                        type="file"
-                        accept="image/*"
-                        className="hidden"
-                        onChange={handlePhotoUpload}
-                      />
-                    </label>
                     {user?.photo && user.photo !== defaultImage && (
                       <button
                         className="btn btn-circle btn-error btn-sm hover:btn-secondary tooltip tooltip-top"
@@ -301,4 +318,5 @@ const UserProfilePage = () => {
 };
 
 export default UserProfilePage;
+
 
