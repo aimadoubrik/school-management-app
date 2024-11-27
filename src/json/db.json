@@ -731,7 +731,7 @@
       "status": "active"
     },
     {
-      "id": "f044",
+      "id": "a8d4",
       "courseName": "Introduction to Mathematics",
       "coursequizID": "105",
       "teacherName": "Jim Halpert",
@@ -756,7 +756,6 @@
             "4",
             "6",
             "8",
-
             "12",
             "14"
           ],
@@ -1072,8 +1071,7 @@
           ],
           "correctAnswer": "H2O"
         }
-      ],
-      "id": "a8d4"
+      ]
     },
     {
       "quizID": "a123",
@@ -1191,7 +1189,7 @@
             "4",
             "6",
             "8",
-           "12"
+            "12"
           ],
           "correctAnswer": "6"
         },
@@ -6935,7 +6933,7 @@
   ],
   "stagiaires": [
     {
-      "cef": "10078",
+      "cef": "100780",
       "nom": "najat",
       "prenom": "Hassan",
       "email": "fatima.hassan@example.com",
@@ -7032,17 +7030,6 @@
       "filiere": "Développement Digital",
       "groupe": "G102",
       "id": "3536"
-    },
-    {
-      "cef": "45665",
-      "nom": "Mariam",
-      "prenom": "Karim",
-      "email": "mariam@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Développement Digital",
-      "groupe": "G102",
-      "id": "0f76"
     },
     {
       "cef": "456788",
