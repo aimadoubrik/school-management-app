@@ -1451,14 +1451,6 @@
       "status": "active"
     },
     {
-      "id": "70b2",
-      "courseName": "Introduction to Physics",
-      "coursequizID": "PHYS101",
-      "teacherName": "Jim Halpert",
-      "Deadline": "2024-10-31T11:57",
-      "status": "draft"
-    },
-    {
       "id": "ffee",
       "courseName": "Principles of Economics",
       "coursequizID": "106",
@@ -2143,6 +2135,456 @@
             "Pascal"
           ],
           "correctAnswer": "Watt"
+        }
+      ]
+    },
+    {
+      "id": "ae42",
+      "courseName": "World History",
+      "coursequizID": "HIST201",
+      "teacherName": "Jim Halpert",
+      "Deadline": "2024-12-04T12:40",
+      "status": "draft",
+      "questions": [
+        {
+          "id": "1",
+          "question": "What is the atomic number of Carbon?",
+          "answers": [
+            "4",
+            "6",
+            "8",
+            "12"
+          ],
+          "correctAnswer": "6"
+        },
+        {
+          "id": "2",
+          "question": "Which planet is known as the Red Planet?",
+          "answers": [
+            "Venus",
+            "Mars",
+            "Jupiter",
+            "Saturn"
+          ],
+          "correctAnswer": "Mars"
+        },
+        {
+          "id": "3",
+          "question": "What is the chemical formula for water?",
+          "answers": [
+            "H2O",
+            "CO2",
+            "NaCl",
+            "O2"
+          ],
+          "correctAnswer": "H2O"
+        },
+        {
+          "id": "4",
+          "question": "Which vitamin is produced when skin is exposed to sunlight?",
+          "answers": [
+            "Vitamin A",
+            "Vitamin B",
+            "Vitamin C",
+            "Vitamin D"
+          ],
+          "correctAnswer": "Vitamin D"
+        },
+        {
+          "id": "5",
+          "question": "What is the largest organ in the human body?",
+          "answers": [
+            "Brain",
+            "Heart",
+            "Skin",
+            "Liver"
+          ],
+          "correctAnswer": "Skin"
+        },
+        {
+          "id": "6",
+          "question": "Which gas makes up the majority of Earth's atmosphere?",
+          "answers": [
+            "Oxygen",
+            "Carbon Dioxide",
+            "Nitrogen",
+            "Hydrogen"
+          ],
+          "correctAnswer": "Nitrogen"
+        },
+        {
+          "id": "7",
+          "question": "What is the speed of light in vacuum?",
+          "answers": [
+            "299792 km/s",
+            "300000 km/s",
+            "199792 km/s",
+            "200000 km/s"
+          ],
+          "correctAnswer": "299792 km/s"
+        },
+        {
+          "id": "8",
+          "question": "Which element has the chemical symbol 'Fe'?",
+          "answers": [
+            "Iron",
+            "Gold",
+            "Silver",
+            "Copper"
+          ],
+          "correctAnswer": "Iron"
+        },
+        {
+          "id": "9",
+          "question": "What is the unit of electrical resistance?",
+          "answers": [
+            "Volt",
+            "Ampere",
+            "Ohm",
+            "Watt"
+          ],
+          "correctAnswer": "Ohm"
+        },
+        {
+          "id": "10",
+          "question": "Which blood type is known as the universal donor?",
+          "answers": [
+            "A+",
+            "B+",
+            "AB+",
+            "O-"
+          ],
+          "correctAnswer": "O-"
+        },
+        {
+          "id": "11",
+          "question": "What is the smallest unit of life?",
+          "answers": [
+            "Cell",
+            "Atom",
+            "Molecule",
+            "Protein"
+          ],
+          "correctAnswer": "Cell"
+        },
+        {
+          "id": "12",
+          "question": "Which gas do plants release during photosynthesis?",
+          "answers": [
+            "Carbon Dioxide",
+            "Nitrogen",
+            "Oxygen",
+            "Hydrogen"
+          ],
+          "correctAnswer": "Oxygen"
+        },
+        {
+          "id": "13",
+          "question": "What is the normal human body temperature in Celsius?",
+          "answers": [
+            "35.5",
+            "36.6",
+            "37.5",
+            "38.5"
+          ],
+          "correctAnswer": "36.6"
+        },
+        {
+          "id": "14",
+          "question": "Which element is most abundant in the universe?",
+          "answers": [
+            "Oxygen",
+            "Helium",
+            "Carbon",
+            "Hydrogen"
+          ],
+          "correctAnswer": "Hydrogen"
+        },
+        {
+          "id": "15",
+          "question": "What is the hardest material on the Mohs scale?",
+          "answers": [
+            "Ruby",
+            "Diamond",
+            "Topaz",
+            "Quartz"
+          ],
+          "correctAnswer": "Diamond"
+        },
+        {
+          "id": "16",
+          "question": "Which planet is closest to the Sun?",
+          "answers": [
+            "Mercury",
+            "Venus",
+            "Earth",
+            "Mars"
+          ],
+          "correctAnswer": "Mercury"
+        },
+        {
+          "id": "17",
+          "question": "What is the main component of natural gas?",
+          "answers": [
+            "Methane",
+            "Ethane",
+            "Propane",
+            "Butane"
+          ],
+          "correctAnswer": "Methane"
+        },
+        {
+          "id": "18",
+          "question": "Which bone is the longest in the human body?",
+          "answers": [
+            "Skull",
+            "Femur",
+            "Tibia",
+            "Humerus"
+          ],
+          "correctAnswer": "Femur"
+        },
+        {
+          "id": "19",
+          "question": "What is the pH of pure water?",
+          "answers": [
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "correctAnswer": "7"
+        },
+        {
+          "id": "20",
+          "question": "Which galaxy contains our solar system?",
+          "answers": [
+            "Andromeda",
+            "Milky Way",
+            "Triangulum",
+            "Centaurus A"
+          ],
+          "correctAnswer": "Milky Way"
+        },
+        {
+          "id": "21",
+          "question": "What is the chemical symbol for silver?",
+          "answers": [
+            "Au",
+            "Ag",
+            "Cu",
+            "Pt"
+          ],
+          "correctAnswer": "Ag"
+        },
+        {
+          "id": "22",
+          "question": "Which element is essential for human blood?",
+          "answers": [
+            "Iron",
+            "Calcium",
+            "Potassium",
+            "Sodium"
+          ],
+          "correctAnswer": "Iron"
+        },
+        {
+          "id": "23",
+          "question": "What is the unit of force?",
+          "answers": [
+            "Pascal",
+            "Newton",
+            "Joule",
+            "Watt"
+          ],
+          "correctAnswer": "Newton"
+        },
+        {
+          "id": "24",
+          "question": "Which particle has a negative charge?",
+          "answers": [
+            "Proton",
+            "Neutron",
+            "Electron",
+            "Positron"
+          ],
+          "correctAnswer": "Electron"
+        },
+        {
+          "id": "25",
+          "question": "What is the largest organ inside the human body?",
+          "answers": [
+            "Heart",
+            "Liver",
+            "Lung",
+            "Brain"
+          ],
+          "correctAnswer": "Liver"
+        },
+        {
+          "id": "26",
+          "question": "Which gas is used in fire extinguishers?",
+          "answers": [
+            "Oxygen",
+            "Nitrogen",
+            "Carbon Dioxide",
+            "Helium"
+          ],
+          "correctAnswer": "Carbon Dioxide"
+        },
+        {
+          "id": "27",
+          "question": "What is the atomic number of oxygen?",
+          "answers": [
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          "correctAnswer": "8"
+        },
+        {
+          "id": "28",
+          "question": "Which vitamin is found abundantly in citrus fruits?",
+          "answers": [
+            "Vitamin A",
+            "Vitamin B",
+            "Vitamin C",
+            "Vitamin D"
+          ],
+          "correctAnswer": "Vitamin C"
+        },
+        {
+          "id": "29",
+          "question": "What is the chemical symbol for potassium?",
+          "answers": [
+            "P",
+            "K",
+            "Po",
+            "Ka"
+          ],
+          "correctAnswer": "K"
+        },
+        {
+          "id": "30",
+          "question": "Which blood type is the universal recipient?",
+          "answers": [
+            "A+",
+            "B+",
+            "AB+",
+            "O-"
+          ],
+          "correctAnswer": "AB+"
+        },
+        {
+          "id": "31",
+          "question": "What is the speed of sound in air?",
+          "answers": [
+            "330 m/s",
+            "343 m/s",
+            "350 m/s",
+            "360 m/s"
+          ],
+          "correctAnswer": "343 m/s"
+        },
+        {
+          "id": "32",
+          "question": "Which element is a noble gas?",
+          "answers": [
+            "Oxygen",
+            "Nitrogen",
+            "Neon",
+            "Hydrogen"
+          ],
+          "correctAnswer": "Neon"
+        },
+        {
+          "id": "33",
+          "question": "What is the unit of electric current?",
+          "answers": [
+            "Volt",
+            "Ampere",
+            "Ohm",
+            "Watt"
+          ],
+          "correctAnswer": "Ampere"
+        },
+        {
+          "id": "34",
+          "question": "Which planet has the most moons?",
+          "answers": [
+            "Jupiter",
+            "Saturn",
+            "Uranus",
+            "Neptune"
+          ],
+          "correctAnswer": "Saturn"
+        },
+        {
+          "id": "35",
+          "question": "What is the chemical formula for table salt?",
+          "answers": [
+            "NaCl",
+            "KCl",
+            "MgCl",
+            "CaCl"
+          ],
+          "correctAnswer": "NaCl"
+        },
+        {
+          "id": "36",
+          "question": "Which bone protects the brain?",
+          "answers": [
+            "Femur",
+            "Skull",
+            "Ribs",
+            "Spine"
+          ],
+          "correctAnswer": "Skull"
+        },
+        {
+          "id": "37",
+          "question": "What is the atomic number of gold?",
+          "answers": [
+            "77",
+            "79",
+            "81",
+            "83"
+          ],
+          "correctAnswer": "79"
+        },
+        {
+          "id": "38",
+          "question": "Which gas is responsible for the greenhouse effect?",
+          "answers": [
+            "Oxygen",
+            "Nitrogen",
+            "Carbon Dioxide",
+            "Helium"
+          ],
+          "correctAnswer": "Carbon Dioxide"
+        },
+        {
+          "id": "39",
+          "question": "What is the unit of power?",
+          "answers": [
+            "Joule",
+            "Newton",
+            "Watt",
+            "Pascal"
+          ],
+          "correctAnswer": "Watt"
+        },
+        {
+          "id": "40",
+          "question": "Which element is liquid at room temperature?",
+          "answers": [
+            "Iron",
+            "Mercury",
+            "Copper",
+            "Gold"
+          ],
+          "correctAnswer": "Mercury"
         }
       ]
     }
@@ -5875,7 +6317,7 @@
       ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
       "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
-      "status": "active"
+      "status": "completed"
     }
   ],
   "modules": [
@@ -7005,19 +7447,8 @@
   ],
   "stagiaires": [
     {
-      "cef": "100001",
-      "nom": "Mohammed",
-      "prenom": "Ahmed",
-      "email": "ahmed@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "infrastructure digital ",
-      "groupe": "G101",
-      "id": "8bc8"
-    },
-    {
-      "cef": "100009",
-      "nom": "Fatima",
+      "cef": "10078",
+      "nom": "najat",
       "prenom": "Hassan",
       "email": "fatima.hassan@example.com",
       "annee": "1A",
@@ -7091,17 +7522,6 @@
       "filiere": "dev digital",
       "groupe": "G101",
       "id": "0de6"
-    },
-    {
-      "cef": "100008",
-      "nom": "Mariam",
-      "prenom": "Karim",
-      "email": "mariam@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "dev digital",
-      "groupe": "G102",
-      "id": "9539"
     },
     {
       "cef": "565689",
@@ -7531,6 +7951,17 @@
       "filiere": "comptebilite",
       "groupe": "G102",
       "id": "c412"
+    },
+    {
+      "id": "e976",
+      "cef": "576890",
+      "nom": "yassmina",
+      "prenom": "abou",
+      "email": "yassmina@gmail.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "dev digital",
+      "groupe": "G101"
     }
   ],
   "scheduler": [

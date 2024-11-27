@@ -17,7 +17,7 @@ const config = {
       schedule: '/schedule',
       absentStudents: '/absentStudents',
       courses: '/courses',
-      stagiaires: '/stagiaires',
+      stagiaires: "/stagiaires",
       documents: '/documents',
       demandes: '/demandes',
       modules: '/modules',
