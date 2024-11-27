@@ -2262,8 +2262,19 @@
       "filiere": "Développement Digital",
       "modules": [
         {
+          "idModule": "m101",
           "nomModule": "HTML & CSS",
           "professeur": "Mme Laila"
+        },
+        {
+          "idModule": "m102",
+          "nomModule": "JavaScript",
+          "professeur": "M. Rachid"
+        },
+        {
+          "idModule": "m103",
+          "nomModule": "Développement Web",
+          "professeur": "Mme Zineb"
         }
       ],
       "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe1.pdf",
@@ -2286,8 +2297,19 @@
       "filiere": "Marketing Digital",
       "modules": [
         {
+          "idModule": "m201",
           "nomModule": "SEO & SEA",
           "professeur": "M. Youssef"
+        },
+        {
+          "idModule": "m202",
+          "nomModule": "Publicité en ligne",
+          "professeur": "Mme Khadija"
+        },
+        {
+          "idModule": "m203",
+          "nomModule": "Stratégies de contenu",
+          "professeur": "M. Walid"
         }
       ],
       "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe2.pdf",
@@ -2307,7 +2329,24 @@
       "codeGroupe": "3",
       "niveau": "GR103",
       "intituleGroupe": "Groupe 3",
-      "filiere": "Réseaux et Sécurité "
+      "filiere": "Réseaux et Sécurité",
+      "modules": [
+        {
+          "idModule": "m301",
+          "nomModule": "Sécurité des réseaux",
+          "professeur": "M. Hassan"
+        },
+        {
+          "idModule": "m302",
+          "nomModule": "Administration des systèmes",
+          "professeur": "Mme Jamila"
+        },
+        {
+          "idModule": "m303",
+          "nomModule": "Cryptographie",
+          "professeur": "M. Nabil"
+        }
+      ]
     },
     {
       "id": "2b67",
@@ -2317,8 +2356,19 @@
       "filiere": "Big Data et Intelligence Artificielle",
       "modules": [
         {
+          "idModule": "m401",
           "nomModule": "Data Science",
           "professeur": "M. Karim"
+        },
+        {
+          "idModule": "m402",
+          "nomModule": "Machine Learning",
+          "professeur": "Mme Salma"
+        },
+        {
+          "idModule": "m403",
+          "nomModule": "Analyse de données massives",
+          "professeur": "M. Anas"
         }
       ],
       "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe4.pdf",
@@ -2341,8 +2391,19 @@
       "filiere": "Gestion des Systèmes d'Information",
       "modules": [
         {
+          "idModule": "m501",
           "nomModule": "ERP & CRM",
           "professeur": "Mme Khadija"
+        },
+        {
+          "idModule": "m502",
+          "nomModule": "Gestion de projet",
+          "professeur": "M. Hassan"
+        },
+        {
+          "idModule": "m503",
+          "nomModule": "Bases de données",
+          "professeur": "Mme Latifa"
         }
       ],
       "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe5.pdf",
@@ -2365,8 +2426,19 @@
       "filiere": "Ingénierie Logicielle",
       "modules": [
         {
+          "idModule": "m601",
           "nomModule": "Architecture Logicielle",
           "professeur": "M. Anouar"
+        },
+        {
+          "idModule": "m602",
+          "nomModule": "Développement Java",
+          "professeur": "Mme Hanan"
+        },
+        {
+          "idModule": "m603",
+          "nomModule": "Analyse et conception logicielle",
+          "professeur": "M. Yassir"
         }
       ],
       "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe6.pdf",
@@ -2389,8 +2461,19 @@
       "filiere": "Commerce International",
       "modules": [
         {
+          "idModule": "m701",
           "nomModule": "Négociation Internationale",
           "professeur": "Mme Hajar"
+        },
+        {
+          "idModule": "m702",
+          "nomModule": "Logistique Internationale",
+          "professeur": "M. Ahmed"
+        },
+        {
+          "idModule": "m703",
+          "nomModule": "Marketing International",
+          "professeur": "Mme Rachida"
         }
       ],
       "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe7.pdf",
@@ -2410,17 +2493,108 @@
       "codeGroupe": "8",
       "niveau": "GR108",
       "intituleGroupe": "Groupe 8",
-      "filiere": "Multimédia et Design Graphique ",
+      "filiere": "Multimédia et Design Graphique",
       "modules": [
-        "[object Object]"
+        {
+          "idModule": "m801",
+          "nomModule": "Design graphique",
+          "professeur": "M. Tarik"
+        },
+        {
+          "idModule": "m802",
+          "nomModule": "Animation 3D",
+          "professeur": "Mme Leila"
+        },
+        {
+          "idModule": "m803",
+          "nomModule": "Photoshop et Illustrator",
+          "professeur": "M. Abdelkader"
+        }
       ],
       "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe8.pdf",
       "liste": [
-        "[object Object]",
-        "[object Object]"
+        {
+          "nomEtudiant": "Rachid Mansouri",
+          "idEtudiant": "202315"
+        },
+        {
+          "nomEtudiant": "Salma Kadi",
+          "idEtudiant": "202316"
+        }
+      ]
+    },
+    {
+      "id": "abc9",
+      "codeGroupe": "9",
+      "niveau": "GR109",
+      "intituleGroupe": "Groupe 9",
+      "filiere": "Intelligence Artificielle",
+      "modules": [
+        {
+          "idModule": "m901",
+          "nomModule": "Introduction à l'IA",
+          "professeur": "M. Rami"
+        },
+        {
+          "idModule": "m902",
+          "nomModule": "Deep Learning",
+          "professeur": "Mme Nadia"
+        },
+        {
+          "idModule": "m903",
+          "nomModule": "Robotique",
+          "professeur": "M. Fadi"
+        }
+      ],
+      "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe9.pdf",
+      "liste": [
+        {
+          "nomEtudiant": "Yassir Amrani",
+          "idEtudiant": "202317"
+        },
+        {
+          "nomEtudiant": "Leila Benali",
+          "idEtudiant": "202318"
+        }
+      ]
+    },
+    {
+      "id": "xyz8",
+      "codeGroupe": "10",
+      "niveau": "GR110",
+      "intituleGroupe": "Groupe 10",
+      "filiere": "Technologies de l'Information",
+      "modules": [
+        {
+          "idModule": "m1001",
+          "nomModule": "Cloud Computing",
+          "professeur": "M. Omar"
+        },
+        {
+          "idModule": "m1002",
+          "nomModule": "Blockchain",
+          "professeur": "Mme Zahra"
+        },
+        {
+          "idModule": "m1003",
+          "nomModule": "Programmation avancée",
+          "professeur": "M. Nizar"
+        }
+      ],
+      "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe10.pdf",
+      "liste": [
+        {
+          "nomEtudiant": "Ayman Laaroussi",
+          "idEtudiant": "202319"
+        },
+        {
+          "nomEtudiant": "Khalil Oufkir",
+          "idEtudiant": "202320"
+        }
       ]
     }
-  ],
+  ]
+,
   "competences": [
     {
       "id": "1",
