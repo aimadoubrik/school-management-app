@@ -4,6 +4,7 @@ import { FaRegFileExcel, FaFilePdf } from 'react-icons/fa';
 import { FaDownload } from 'react-icons/fa6';
 import { setFormateurs, setSelectedSecteur } from '../../features/formateur/formateurSlice';
 import jsPDF from 'jspdf';
+import Pagination from '../../components/shared/Pagination';
 import autoTable from 'jspdf-autotable';
 import * as XLSX from 'xlsx';
 
@@ -15,9 +16,10 @@ const Formateur = () => {
   const [selectedFormateur, setSelectedFormateur] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [modules, setModules] = useState([]);
+  
+  // Added missing state for pagination
   const [currentPage, setCurrentPage] = useState(1);
-
-  const itemsPerPage = 3;
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,6 +30,10 @@ const Formateur = () => {
         }
         const data = await response.json();
         dispatch(setFormateurs(data.formateurs));
+        
+        // Calculate total pages based on fetched formateurs
+        const itemsParPage = 21; 
+        setTotalPages(Math.ceil(data.formateurs.length / itemsParPage));
       } catch (error) {
         console.error('Error fetching data:', error.message);
         alert('Erreur lors du chargement des données des formateurs.');
@@ -40,20 +46,9 @@ const Formateur = () => {
     ? formateurs.filter((formateur) => formateur.secteur === selectedSecteur)
     : [];
 
-  const totalPages = Math.ceil(filteredFormateurs.length / itemsPerPage);
-
-  const paginatedFormateurs = filteredFormateurs.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
-
   const handleSecteurChange = (e) => {
     dispatch(setSelectedSecteur(e.target.value));
     setCurrentPage(1);
-  };
-
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
   };
 
   const handleToggleModal = (formateur) => {
@@ -99,6 +94,12 @@ const Formateur = () => {
     setShareMenuVisible(false);
   };
 
+  // Pagination logic
+  const itemsPerPage = 3;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentFormateurs = filteredFormateurs.slice(indexOfFirstItem, indexOfLastItem);
+
   return (
     <div className="p-4 mx-auto min-h-screen bg-white text-black">
       <h1 className="text-center text-xl font-bold">FORMATEURS :</h1>
@@ -108,7 +109,8 @@ const Formateur = () => {
           Secteur :
         </label>
         <select
-          value={selectedSecteur}
+          id="secteur"
+          value={selectedSecteur || ''}
           onChange={handleSecteurChange}
           className="block w-full px-3 py-2 border rounded-lg text-lg"
         >
@@ -138,7 +140,7 @@ const Formateur = () => {
               </tr>
             </thead>
             <tbody>
-              {paginatedFormateurs.map((formateur) => (
+              {currentFormateurs.map((formateur) => (
                 <tr key={formateur.id} className="bg-white text-gray-700">
                   <td className="px-6 py-3 border-b">{formateur.id}</td>
                   <td className="px-6 py-3 border-b">{formateur.nom}</td>
@@ -165,18 +167,11 @@ const Formateur = () => {
             </tbody>
           </table>
 
-          {/* Pagination */}
-          <div className="flex justify-center mt-4">
-            {Array.from({ length: totalPages }, (_, index) => (
-              <button
-                key={index}
-                onClick={() => handlePageChange(index + 1)}
-                className={`px-4 py-2 mx-1 rounded ${currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
-              >
-                {index + 1}
-              </button>
-            ))}
-          </div>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            setCurrentPage={setCurrentPage}
+          />
         </>
       )}
 
@@ -221,7 +216,7 @@ const Formateur = () => {
 
       {/* Share Menu */}
       {isShareMenuVisible && selectedFormateur && (
-        <div className="absolute right-10 top-1/4 bg-white shadow-md p-4 rounded-md w-48">
+        <div className="absolute right-10 top-1/4 bg-white shadow-md p-4 rounded-md w-48 z-50">
           <button
             onClick={() => handleExportOption('pdf')}
             className="flex items-center px-4 py-2 w-full text-black hover:bg-gray-200"
