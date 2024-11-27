@@ -1,37 +1,31 @@
-// This component is used to protect routes that require authentication and role-based access
-// It checks if the user is authenticated and has the required role to access the route
-// If the user is authenticated and has the required role, it renders the protected content
-
+import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+import { getUserFromStorage } from '../utils'
 
 const ProtectedRoute = ({ children, allowedRoles = [] }) => {
   const location = useLocation();
 
-  // Fetch authentication and user role from Redux state
+  // Fetch authentication state from Redux
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  // Get the user data from local storage
-  const user =
-    (localStorage.getItem('user') && JSON.parse(localStorage.getItem('user'))) ||
-    (sessionStorage.getItem('user') && JSON.parse(sessionStorage.getItem('user'))) ||
-    null;
+  // Get user data from storage
+  const user = getUserFromStorage('user');
+  const userRole = user?.role || null;
 
-  const userRole = user ? user.role : null;
-
-  // Redirect to login if not authenticated
+  // Handle unauthenticated access
   if (!isAuthenticated) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  // Redirect to unauthorized page if user's role is not allowed
+  // Handle unauthorized role access
   if (allowedRoles.length > 0 && !allowedRoles.includes(userRole)) {
     return <Navigate to="/unauthorized" replace />;
   }
 
-  // Render the protected content if authenticated and role is allowed
-  return children;
+  // Render children if authenticated and authorized
+  return <>{children}</>;
 };
 
 ProtectedRoute.propTypes = {

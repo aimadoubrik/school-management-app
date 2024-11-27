@@ -101,7 +101,7 @@ const RouteConfig = () => {
         <Route
           path="/attendance"
           element={
-            <ProtectedRoute allowedRoles={['trainer', 'admin']}>
+            <ProtectedRoute allowedRoles={['Trainer', 'Admin']}>
               <AttendancePage />
             </ProtectedRoute>
           }
@@ -118,7 +118,7 @@ const RouteConfig = () => {
         <Route
           path="/documents"
           element={
-            <ProtectedRoute allowedRoles={['trainer', 'admin']}>
+            <ProtectedRoute allowedRoles={['Trainer', 'Admin']}>
               <DocumentsPage />
             </ProtectedRoute>
           }
@@ -126,7 +126,7 @@ const RouteConfig = () => {
         <Route
           path="/demandes"
           element={
-            <ProtectedRoute allowedRoles={['trainer', 'admin']}>
+            <ProtectedRoute allowedRoles={['Trainer', 'Admin']}>
               <DemandesPage />
             </ProtectedRoute>
           }
@@ -150,7 +150,7 @@ const RouteConfig = () => {
         <Route
           path="/trainees"
           element={
-            <ProtectedRoute allowedRoles={['trainer', 'admin']}>
+            <ProtectedRoute allowedRoles={['Trainer', 'Admin']}>
               <TraineesPage />
             </ProtectedRoute>
           }
@@ -158,7 +158,7 @@ const RouteConfig = () => {
         <Route
           path="/specializations"
           element={
-            <ProtectedRoute allowedRoles={['admin']}>
+            <ProtectedRoute allowedRoles={['Admin']}>
               <FilieresPage />
             </ProtectedRoute>
           }
@@ -166,7 +166,7 @@ const RouteConfig = () => {
         <Route
           path="/groups"
           element={
-            <ProtectedRoute allowedRoles={['admin']}>
+            <ProtectedRoute allowedRoles={['Admin']}>
               <GroupesPage />
             </ProtectedRoute>
           }
@@ -174,7 +174,7 @@ const RouteConfig = () => {
         <Route
           path="/competences"
           element={
-            <ProtectedRoute allowedRoles={['admin']}>
+            <ProtectedRoute allowedRoles={['Admin']}>
               <CompetencesPage />
             </ProtectedRoute>
           }
@@ -182,7 +182,7 @@ const RouteConfig = () => {
         <Route
           path="/formateur"
           element={
-            <ProtectedRoute allowedRoles={['admin']}>
+            <ProtectedRoute allowedRoles={['Admin']}>
               <Formateur />
             </ProtectedRoute>
           }
@@ -222,7 +222,7 @@ const RouteConfig = () => {
         <Route
           path="/quizzes/questions/:quizId"
           element={
-            <ProtectedRoute allowedRoles={['trainer']}>
+            <ProtectedRoute allowedRoles={['Trainer']}>
               <QuizQuestions />
             </ProtectedRoute>
           }
@@ -230,7 +230,7 @@ const RouteConfig = () => {
         <Route
           path="/quizzes/all-questions/:quizId"
           element={
-            <ProtectedRoute allowedRoles={['trainer']}>
+            <ProtectedRoute allowedRoles={['Trainer']}>
               <AllQuestions />
             </ProtectedRoute>
           }
