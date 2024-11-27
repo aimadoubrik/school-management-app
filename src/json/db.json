@@ -5603,7 +5603,7 @@
       ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
       "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
-      "status": "completed"
+      "status": "active"
     },
     {
       "id": "2",
@@ -5639,7 +5639,7 @@
       ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
       "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
-      "status": "completed"
+      "status": "active"
     },
     {
       "id": "3",
@@ -5679,7 +5679,7 @@
     },
     {
       "id": "4",
-      "coursequizID": "104",
+      "coursequizID": "CHEM101",
       "courseName": "General Chemistry",
       "teacherId": "T004",
       "teacherName": "Dr. Emily Zhang",
@@ -5783,7 +5783,7 @@
       ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
       "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
-      "status": "active"
+      "status": "completed"
     }
   ],
   "modules": [
