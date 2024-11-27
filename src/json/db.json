@@ -6481,7 +6481,7 @@
       "code": "M115_F01",
       "intitule": "M115",
       "masseHoraire": 95,
-      "filiere": "FINANCE",
+      "filiere": "Finance",
       "niveau": "1A",
       "competences": "Architecture des ordinateurs, Organisation mémoire",
       "secteur": "Finance",
@@ -7453,7 +7453,7 @@
       "email": "fatima.hassan@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "infrastructure digital ",
+      "filiere": "Infrastructures Digitale ",
       "groupe": "G101",
       "id": "3ff4"
     },
@@ -7464,7 +7464,7 @@
       "email": "nadia.jamal@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "infrastructure digital ",
+      "filiere": "Infrastructures Digitale ",
       "groupe": "G101",
       "id": "b37a"
     },
@@ -7475,18 +7475,18 @@
       "email": "sara@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "infrastructure digital ",
+      "filiere": "Infrastructures Digitale ",
       "groupe": "G102",
       "id": "c6ec"
     },
     {
       "cef": "235466",
       "nom": "Sara",
-      "prenom": "Mohammed",
+      "prenom": "amine",
       "email": "sara@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "infrastructure digital ",
+      "filiere": "Infrastructures Digitale ",
       "groupe": "G102",
       "id": "882b"
     },
@@ -7497,7 +7497,7 @@
       "email": "youssef@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "dev digital",
+      "filiere": "Développement Digital",
       "groupe": "G101",
       "id": "e109"
     },
@@ -7508,7 +7508,7 @@
       "email": "khadija@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "dev digital",
+      "filiere": "Développement Digital",
       "groupe": "G101",
       "id": "a0fd"
     },
@@ -7519,7 +7519,7 @@
       "email": "omar@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "dev digital",
+      "filiere": "Développement Digital",
       "groupe": "G101",
       "id": "0de6"
     },
@@ -7530,7 +7530,7 @@
       "email": "ibrahim@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "dev digital",
+      "filiere": "Développement Digital",
       "groupe": "G102",
       "id": "24ac"
     },
@@ -7541,7 +7541,7 @@
       "email": "mariam@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "dev digital",
+      "filiere": "Développement Digital",
       "groupe": "G102",
       "id": "3536"
     },
@@ -7552,7 +7552,7 @@
       "email": "mariam@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "dev digital",
+      "filiere": "Développement Digital",
       "groupe": "G102",
       "id": "0f76"
     },
@@ -7563,7 +7563,7 @@
       "email": "iman@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "batiment",
+      "filiere": "Bâtiment",
       "groupe": "G101",
       "id": "e8cc"
     },
@@ -7574,7 +7574,7 @@
       "email": "leila.sami@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "batiment",
+      "filiere": "Bâtiment",
       "groupe": "G101",
       "id": "9167"
     },
@@ -7585,7 +7585,7 @@
       "email": "yassir.mounir@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "batiment",
+      "filiere": "Bâtiment",
       "groupe": "G101",
       "id": "d667"
     },
@@ -7596,7 +7596,7 @@
       "email": "kenza.amine@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "batiment",
+      "filiere": "Bâtiment",
       "groupe": "G101",
       "id": "97b5"
     },
@@ -7607,7 +7607,7 @@
       "email": "hassan.nadia@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "batiment",
+      "filiere": "Bâtiment",
       "groupe": "G102",
       "id": "4d8c"
     },
@@ -7618,7 +7618,7 @@
       "email": "salim.lina@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "batiment",
+      "filiere": "Bâtiment",
       "groupe": "G102",
       "id": "f5d8"
     },
@@ -7629,7 +7629,7 @@
       "email": "hassan.nadia@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "batiment",
+      "filiere": "Bâtiment",
       "groupe": "G102",
       "id": "7281"
     },
@@ -7640,7 +7640,7 @@
       "email": "salim.lina@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "batiment",
+      "filiere": "Bâtiment",
       "groupe": "G102",
       "id": "2f25"
     },
@@ -7651,7 +7651,7 @@
       "email": "hassan.nadia@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "batiment",
+      "filiere": "Bâtiment",
       "groupe": "G102",
       "id": "eadb"
     },
@@ -7662,7 +7662,7 @@
       "email": "salim.lina@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "batiment",
+      "filiere": "Bâtiment",
       "groupe": "G102",
       "id": "b36d"
     },
@@ -7673,7 +7673,7 @@
       "email": "maya.farid@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "commerce",
+      "filiere": "Commerce",
       "groupe": "G101",
       "id": "0eff"
     },
@@ -7684,7 +7684,7 @@
       "email": "imane.tariq@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "commerce",
+      "filiere": "Commerce",
       "groupe": "G101",
       "id": "0629"
     },
@@ -7695,7 +7695,7 @@
       "email": "rania.adil@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "commerce",
+      "filiere": "Commerce",
       "groupe": "G101",
       "id": "a1a8"
     },
@@ -7706,7 +7706,7 @@
       "email": "youssef.salwa@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "commerce",
+      "filiere": "Commerce",
       "groupe": "G101",
       "id": "3dda"
     },
@@ -7717,18 +7717,18 @@
       "email": "nour.ali@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "commerce",
+      "filiere": "Commerce",
       "groupe": "G102",
       "id": "d254"
     },
     {
-      "cef": "23456",
+      "cef": "234567",
       "nom": "Nour",
       "prenom": "Ali",
       "email": "nour.ali@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "commerce",
+      "filiere": "Commerce",
       "groupe": "G102",
       "id": "8424"
     },
@@ -7739,7 +7739,7 @@
       "email": "nour.ali@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "commerce",
+      "filiere": "Commerce",
       "groupe": "G102",
       "id": "009d"
     },
@@ -7750,7 +7750,7 @@
       "email": "nour.ali@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "commerce",
+      "filiere": "Commerce",
       "groupe": "G102",
       "id": "5081"
     },
@@ -7761,7 +7761,7 @@
       "email": "nour.ali@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "commerce",
+      "filiere": "Commerce",
       "groupe": "G102",
       "id": "4599"
     },
@@ -7860,7 +7860,7 @@
       "email": "amine.karim@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "comptebilite",
+      "filiere": "Comptabilité",
       "groupe": "G101",
       "id": "8e17"
     },
@@ -7871,7 +7871,7 @@
       "email": "lina.yasmine@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "comptebilite",
+      "filiere": "Comptabilité",
       "groupe": "G101",
       "id": "7b10"
     },
@@ -7882,7 +7882,7 @@
       "email": "khalil.ranya@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "comptebilite",
+      "filiere": "Comptabilité",
       "groupe": "G101",
       "id": "dab9"
     },
@@ -7893,7 +7893,7 @@
       "email": "samira.omar@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "comptebilite",
+      "filiere": "Comptabilité",
       "groupe": "G101",
       "id": "278f"
     },
@@ -7904,7 +7904,7 @@
       "email": "nabil.rima@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "comptebilite",
+      "filiere": "Comptabilité",
       "groupe": "G101",
       "id": "1c85"
     },
@@ -7915,7 +7915,7 @@
       "email": "zaynab.ali@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "comptebilite",
+      "filiere": "Comptabilité",
       "groupe": "G102",
       "id": "30ec"
     },
@@ -7926,7 +7926,7 @@
       "email": "anwar.siham@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "comptebilite",
+      "filiere": "Comptabilité",
       "groupe": "G102",
       "id": "fa64"
     },
@@ -7937,7 +7937,7 @@
       "email": "fatima.hassan@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "comptebilite",
+      "filiere": "Comptabilité",
       "groupe": "G102",
       "id": "41fa"
     },
@@ -7948,72 +7948,86 @@
       "email": "nadia.jamal@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "comptebilite",
+      "filiere": "Comptabilité",
       "groupe": "G102",
       "id": "c412"
     },
     {
-      "id": "0e99",
-      "cet": "12345",
-      "nom": "Doe",
-      "prenom": "John",
-      "email": "john.doe@example.com",
-      "filiere": "Infrastructures Digital",
-      "group": "G101"
+      "id": "e366",
+      "cef": "1111111",
+      "nom": "gtgt",
+      "prenom": "gtgt",
+      "email": "gtgt@gmail.com",
+      "annee": "1A",
+      "niveau": "T",
+      "filiere": "Développement Digital",
+      "groupe": "G102"
     },
     {
-      "id": "c5f1",
-      "cet": "12347",
-      "nom": "Johnson",
-      "prenom": "Michael",
-      "email": "michael.johnson@example.com",
-      "filiere": "Finance",
-      "group": "G101"
+      "id": "2763",
+      "cef": "123456789",
+      "nom": "Dupont",
+      "prenom": "Jean",
+      "email": "jean.dupont@example.com",
+      "annee": "2A",
+      "niveau": "T",
+      "filiere": "Développement Digital",
+      "groupe": "G101"
     },
     {
-      "id": "7546",
-      "cet": "12348",
-      "nom": "Lee",
-      "prenom": "Anna",
-      "email": "anna.lee@example.com",
-      "filiere": "Commerce",
-      "group": "G102"
-    },
-    {
-      "id": "429f",
-      "cet": "12349",
-      "nom": "Brown",
-      "prenom": "David",
-      "email": "david.brown@example.com",
-      "filiere": "Comptabilité",
-      "group": "G101"
-    },
-    {
-      "id": "cb95",
-      "cet": "12350",
-      "nom": "Wang",
-      "prenom": "Lily",
-      "email": "lily.wang@example.com",
+      "id": "35af",
+      "cef": "456789123",
+      "nom": "Durand",
+      "prenom": "Marc",
+      "email": "marc.durand@example.com",
+      "annee": "2A",
+      "niveau": "TS",
       "filiere": "Bâtiment",
-      "group": "G102"
+      "groupe": "G101"
     },
     {
-      "id": "cbff",
-      "cet": "12351",
-      "nom": "Nguyen",
-      "prenom": "Theo",
-      "email": "theo.nguyen@example.com",
-      "filiere": "Infrastructures Digital",
-      "group": "G101"
-    },
-    {
-      "id": "51ab",
-      "cet": "12352",
-      "nom": "Garcia",
+      "id": "3897",
+      "cef": "789123456",
+      "nom": "Lopez",
       "prenom": "Emma",
-      "email": "emma.garcia@example.com",
-      "filiere": "Dev Digital",
-      "group": "G102"
+      "email": "emma.lopez@example.com",
+      "annee": "2A",
+      "niveau": "TS",
+      "filiere": "Commerce",
+      "groupe": "G102"
+    },
+    {
+      "id": "f16e",
+      "cef": "654321987",
+      "nom": "Pierre",
+      "prenom": "Sophie",
+      "email": "sophie.pierre@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Finance",
+      "groupe": "G101"
+    },
+    {
+      "id": "d82d",
+      "cef": "321987654",
+      "nom": "Robert",
+      "prenom": "Lucie",
+      "email": "lucie.robert@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Comptabilité",
+      "groupe": "G102"
+    },
+    {
+      "id": "68b0",
+      "cef": "456680",
+      "nom": "abouzakaria",
+      "prenom": "yassmina",
+      "email": "yassmineabouzakaria@gmail.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Finance",
+      "groupe": "G101"
     }
   ],
   "scheduler": [

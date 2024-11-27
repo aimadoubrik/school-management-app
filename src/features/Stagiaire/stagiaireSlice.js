@@ -5,10 +5,10 @@ const BASE_URL = 'http://localhost:3000';
 
 const initialState = {
   stagiaires: [],
-  status: 'idle', 
+  status: 'idle',
   error: null,
   filiereFilter: null,
-  groupeFilter: null,  
+  groupeFilter: null,
 };
 
 export const fetchStagiaires = createAsyncThunk(
@@ -16,7 +16,7 @@ export const fetchStagiaires = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get(`${BASE_URL}/stagiaires`);
-      return response.data; // Return data if the request succeeds
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);
     }
@@ -47,7 +47,6 @@ export const updateStagiaireAPI = createAsyncThunk(
   }
 );
 
-
 export const deleteStagiaireAPI = createAsyncThunk(
   'stagiaires/deleteStagiaireAPI',
   async (id, { rejectWithValue }) => {
@@ -60,15 +59,14 @@ export const deleteStagiaireAPI = createAsyncThunk(
   }
 );
 
-// Redux slice
 const stagiairesSlice = createSlice({
   name: 'stagiaires',
   initialState,
   reducers: {
-    setFiliereFilter: (state, action) => {
+    setFiliereFilter(state, action) {
       state.filiereFilter = action.payload;
     },
-    setGroupeFilter: (state, action) => {
+    setGroupeFilter(state, action) {
       state.groupeFilter = action.payload;
     },
   },
@@ -79,28 +77,42 @@ const stagiairesSlice = createSlice({
       })
       .addCase(fetchStagiaires.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.stagiaires = action.payload; 
+        state.stagiaires = action.payload;
       })
       .addCase(fetchStagiaires.rejected, (state, action) => {
         state.status = 'failed';
-        state.error = action.payload || action.error.message;
+        state.error = action.payload;
       })
       .addCase(addStagiaireAPI.fulfilled, (state, action) => {
-        state.stagiaires.push(action.payload); 
+        state.stagiaires.push(action.payload);
+      })
+      .addCase(addStagiaireAPI.rejected, (state, action) => {
+        state.error = action.payload;
       })
       .addCase(updateStagiaireAPI.fulfilled, (state, action) => {
-        const index = state.stagiaires.findIndex((s) => s.id === action.payload.id);
+        const index = state.stagiaires.findIndex(
+          (stagiaire) => stagiaire.id === action.payload.id
+        );
         if (index !== -1) {
-          state.stagiaires[index] = action.payload; 
+          state.stagiaires[index] = action.payload;
         }
       })
+      .addCase(updateStagiaireAPI.rejected, (state, action) => {
+        state.error = action.payload;
+      })
       .addCase(deleteStagiaireAPI.fulfilled, (state, action) => {
-        state.stagiaires = state.stagiaires.filter((s) => s.id !== action.payload); 
+        state.stagiaires = state.stagiaires.filter(
+          (stagiaire) => stagiaire.id !== action.payload
+        );
+      })
+      .addCase(deleteStagiaireAPI.rejected, (state, action) => {
+        state.error = action.payload;
       });
   },
 });
 
 export const { setFiliereFilter, setGroupeFilter } = stagiairesSlice.actions;
+
 export const selectStagiaires = (state) => state.stagiaires.stagiaires;
 export const selectStatus = (state) => state.stagiaires.status;
 export const selectError = (state) => state.stagiaires.error;

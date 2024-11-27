@@ -95,14 +95,52 @@ const handleSubmit = async (e) => {
     XLSX.writeFile(wb, 'stagiaires.xlsx');
   };
 
-  const exportToPDF = () => {
+  const exportToPDF = async () => {
     const doc = new jsPDF();
-    doc.autoTable({
-      head: [['CEF', 'Nom', 'Prénom', 'Email', 'Année', 'Niveau', 'Filière', 'Groupe']],
-      body: stagiaires.map(s => [s.cef, s.nom, s.prenom, s.email, s.annee, s.niveau, s.filiere, s.groupe]),
-    });
-    doc.save('stagiaires.pdf');
+    const logoURL = 'https://th.bing.com/th/id/OIP.Sb1FiwDyjsY5DePGcoEAwwHaHa?rs=1&pid=ImgDetMain'; // Chemin vers le logo (assurez-vous qu'il est placé dans `public`)
+    const label = 'Liste des stagiaires';
+  
+    // Ajouter le logo
+    const img = new Image();
+    img.src = logoURL;
+  
+    img.onload = () => {
+      const imgWidth = 20; // Largeur de l'image dans le PDF
+      const imgHeight = (img.height * imgWidth) / img.width; // Calculer la hauteur proportionnelle
+  
+      doc.addImage(img, 'URL', 10, 10, imgWidth, imgHeight); // Ajouter le logo
+  
+      // Ajouter le label
+      doc.setFontSize(18);
+      doc.text(label, imgWidth + 30, 25);
+  
+      // Ajouter un espace avant le tableau
+      doc.setFontSize(12);
+      doc.autoTable({
+        startY: imgHeight + 20, // Positionner le tableau sous le logo et le label
+        head: [['CEF', 'Nom', 'Prénom', 'Email', 'Année', 'Niveau', 'Filière', 'Groupe']],
+        body: stagiaires.map((s) => [
+          s.cef,
+          s.nom,
+          s.prenom,
+          s.email,
+          s.annee,
+          s.niveau,
+          s.filiere,
+          s.groupe,
+        ]),
+      });
+  
+      // Enregistrer le PDF
+      doc.save('stagiaires.pdf');
+    };
+  
+    img.onerror = () => {
+      console.error('Erreur lors du chargement du logo. Vérifiez le chemin du fichier.');
+      setAlerts({ success: null, error: 'Erreur lors de la génération du PDF.' });
+    };
   };
+  
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
@@ -220,7 +258,7 @@ const handleSubmit = async (e) => {
           </button>
           <button
             onClick={() => document.getElementById('fileInput').click()}
-            className="btn btn-outline btn-success btn-sm gap-2 mr-2"
+            className="btn btn-outline btn-info mr-2 "
           >
             <Upload className="w-4 h-4" />
             Upload Stagiaires
@@ -316,20 +354,50 @@ const handleSubmit = async (e) => {
           <div className="bg-white p-6 rounded-lg w-96">
             <h2 className="text-xl font-bold mb-4">{modalState.stagiaire.id ? 'Edit' : 'Add'} Stagiaire</h2>
             <form onSubmit={handleSubmit}>
-              {Object.keys(INITIAL_STAGIAIRE).map((key) => (
-                <div key={key} className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700">{key}</label>
-                  <input
-                    type="text"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                    value={modalState.stagiaire[key]}
-                    onChange={(e) => setModalState({
-                      ...modalState,
-                      stagiaire: { ...modalState.stagiaire, [key]: e.target.value }
-                    })}
-                  />
-                </div>
-              ))}
+            {Object.keys(INITIAL_STAGIAIRE).map((key) => {
+    if (key === "filiere" || key === "groupe") {
+      const options = key === "filiere" ? uniqueFilieres : uniqueGroupes;
+      return (
+        <div key={key} className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">{key}</label>
+          <select
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            value={modalState.stagiaire[key]}
+            onChange={(e) =>
+              setModalState({
+                ...modalState,
+                stagiaire: { ...modalState.stagiaire, [key]: e.target.value },
+              })
+            }
+          >
+            <option value="">Sélectionnez {key}</option>
+            {options.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </div>
+      );
+  }
+  return (
+    <div key={key} className="mb-4">
+      <label className="block text-sm font-medium text-gray-700">{key}</label>
+      <input
+        type="text"
+        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        value={modalState.stagiaire[key]}
+        onChange={(e) =>
+          setModalState({
+            ...modalState,
+            stagiaire: { ...modalState.stagiaire, [key]: e.target.value },
+          })
+        }
+      />
+    </div>
+  );
+})}
+
               <div className="flex justify-end">
                 <button type="button" onClick={handleModalClose} className="btn btn-ghost mr-2">Cancel</button>
                 <button type="submit" className="btn btn-primary">Save</button>
