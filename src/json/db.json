@@ -7953,15 +7953,67 @@
       "id": "c412"
     },
     {
-      "id": "e976",
-      "cef": "576890",
-      "nom": "yassmina",
-      "prenom": "abou",
-      "email": "yassmina@gmail.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "dev digital",
-      "groupe": "G101"
+      "id": "0e99",
+      "cet": "12345",
+      "nom": "Doe",
+      "prenom": "John",
+      "email": "john.doe@example.com",
+      "filiere": "Infrastructures Digital",
+      "group": "G101"
+    },
+    {
+      "id": "c5f1",
+      "cet": "12347",
+      "nom": "Johnson",
+      "prenom": "Michael",
+      "email": "michael.johnson@example.com",
+      "filiere": "Finance",
+      "group": "G101"
+    },
+    {
+      "id": "7546",
+      "cet": "12348",
+      "nom": "Lee",
+      "prenom": "Anna",
+      "email": "anna.lee@example.com",
+      "filiere": "Commerce",
+      "group": "G102"
+    },
+    {
+      "id": "429f",
+      "cet": "12349",
+      "nom": "Brown",
+      "prenom": "David",
+      "email": "david.brown@example.com",
+      "filiere": "Comptabilité",
+      "group": "G101"
+    },
+    {
+      "id": "cb95",
+      "cet": "12350",
+      "nom": "Wang",
+      "prenom": "Lily",
+      "email": "lily.wang@example.com",
+      "filiere": "Bâtiment",
+      "group": "G102"
+    },
+    {
+      "id": "cbff",
+      "cet": "12351",
+      "nom": "Nguyen",
+      "prenom": "Theo",
+      "email": "theo.nguyen@example.com",
+      "filiere": "Infrastructures Digital",
+      "group": "G101"
+    },
+    {
+      "id": "51ab",
+      "cet": "12352",
+      "nom": "Garcia",
+      "prenom": "Emma",
+      "email": "emma.garcia@example.com",
+      "filiere": "Dev Digital",
+      "group": "G102"
     }
   ],
   "scheduler": [
