@@ -16,15 +16,15 @@ export default function FiltersAdmin({
   nom = '',
   prenom = '',
   selectedMonth = '',
-  onNiveauChange = () => { },
-  onFiliereChange = () => { },
-  onAnneeChange = () => { },
-  onGroupeChange = () => { },
-  onCinChange = () => { },
-  onCefChange = () => { },
-  onNomChange = () => { },
-  onPrenomChange = () => { },
-  onMonthChange = () => { },
+  onNiveauChange = () => {},
+  onFiliereChange = () => {},
+  onAnneeChange = () => {},
+  onGroupeChange = () => {},
+  onCinChange = () => {},
+  onCefChange = () => {},
+  onNomChange = () => {},
+  onPrenomChange = () => {},
+  onMonthChange = () => {},
   filteredStudents = [],
 }) {
   const [filteredFilieres, setFilteredFilieres] = useState([]);
@@ -132,15 +132,33 @@ export default function FiltersAdmin({
 
     doc.setFontSize(18);
     doc.text('Student Attendance and Discipline Report', pageWidth / 2, 20, { align: 'center' });
-    
+
     doc.setFontSize(12);
     doc.text(`Generated on: ${new Date().toLocaleDateString()}`, margin, 30);
-    
+
     doc.autoTable({
       startY: 40,
       tableWidth: tableWidth,
-      head: [['CEF', 'Nom Complet', 'Secteur', 'Niveau', 'Filière', 'Année', 'Groupe', 'AJ', 'ANJ', 'Retards', 'Sanctions Assiduité', 'Observations SA', 'Sanctions Comportement', 'Observations SC', 'Note Discipline']],
-      body: filteredStudents.map(student => [
+      head: [
+        [
+          'CEF',
+          'Nom Complet',
+          'Secteur',
+          'Niveau',
+          'Filière',
+          'Année',
+          'Groupe',
+          'AJ',
+          'ANJ',
+          'Retards',
+          'Sanctions Assiduité',
+          'Observations SA',
+          'Sanctions Comportement',
+          'Observations SC',
+          'Note Discipline',
+        ],
+      ],
+      body: filteredStudents.map((student) => [
         student.cef,
         student.fullname,
         student.secteur,
@@ -149,13 +167,13 @@ export default function FiltersAdmin({
         student.annee,
         student.groupe,
         student.aj || 0,
-        selectedMonth ? (student.anj[selectedMonth] || 0) : student.totalANJ,
+        selectedMonth ? student.anj[selectedMonth] || 0 : student.totalANJ,
         student.retards || 0,
         student.sanctionAssiduite || 'aucune',
         student.observationSA || '',
         student.sanctionComportement || 'aucune',
         student.observationSC || '',
-        student.disciplineNote || 15
+        student.disciplineNote || 15,
       ]),
       styles: { fontSize: 8, cellPadding: 2 },
       columnStyles: {
@@ -173,7 +191,7 @@ export default function FiltersAdmin({
         11: { cellWidth: 25 }, // Observations SA
         12: { cellWidth: 25 }, // Sanctions Comportement
         13: { cellWidth: 25 }, // Observations SC
-        14: { cellWidth: 20 }  // Note Discipline
+        14: { cellWidth: 20 }, // Note Discipline
       },
       headStyles: { fillColor: [41, 128, 185], textColor: 255, fontStyle: 'bold' },
       alternateRowStyles: { fillColor: [224, 224, 224] },
@@ -192,8 +210,24 @@ export default function FiltersAdmin({
   };
 
   const exportToCSV = () => {
-    const headers = ['CEF', 'Nom Complet', 'Secteur', 'Niveau', 'Filière', 'Année', 'Groupe', 'AJ', 'ANJ', 'Retards', 'Sanctions Assiduité', 'Observations SA', 'Sanctions Comportement', 'Observations SC', 'Note Discipline'];
-    const data = filteredStudents.map(student => [
+    const headers = [
+      'CEF',
+      'Nom Complet',
+      'Secteur',
+      'Niveau',
+      'Filière',
+      'Année',
+      'Groupe',
+      'AJ',
+      'ANJ',
+      'Retards',
+      'Sanctions Assiduité',
+      'Observations SA',
+      'Sanctions Comportement',
+      'Observations SC',
+      'Note Discipline',
+    ];
+    const data = filteredStudents.map((student) => [
       student.cef,
       student.fullname,
       student.secteur,
@@ -202,15 +236,15 @@ export default function FiltersAdmin({
       student.annee,
       student.groupe,
       student.aj || 0,
-      selectedMonth ? (student.anj[selectedMonth] || 0) : student.totalANJ,
+      selectedMonth ? student.anj[selectedMonth] || 0 : student.totalANJ,
       student.retards || 0,
       student.sanctionAssiduite || 'aucune',
       student.observationSA || '',
       student.sanctionComportement || 'aucune',
       student.observationSC || '',
-      student.disciplineNote || 15
+      student.disciplineNote || 15,
     ]);
-    const csvContent = [headers, ...data].map(row => row.join(',')).join('\n');
+    const csvContent = [headers, ...data].map((row) => row.join(',')).join('\n');
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     if (link.download !== undefined) {
@@ -281,13 +315,19 @@ export default function FiltersAdmin({
             <Download className="mr-2" size={16} />
             Exporter
           </label>
-          <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-            <li><a onClick={exportToPDF}>Exporter en PDF</a></li>
-            <li><a onClick={exportToCSV}>Exporter en CSV</a></li>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <a onClick={exportToPDF}>Exporter en PDF</a>
+            </li>
+            <li>
+              <a onClick={exportToCSV}>Exporter en CSV</a>
+            </li>
           </ul>
         </div>
       </div>
     </div>
   );
 }
-

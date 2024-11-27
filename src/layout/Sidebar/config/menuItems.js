@@ -48,7 +48,7 @@ const menuItems = [
   {
     label: 'Scheduler',
     icon: 'Calendar',
-    href: '/Scheduler'
+    href: '/Scheduler',
   },
 
   {
@@ -82,6 +82,12 @@ const menuItems = [
     count: 4,
   },
 
+  {
+    label: 'secteurs',
+    icon: 'FolderCog',
+    href: '/secteurs',
+  },
+
   { type: 'divider' },
   {
     label: 'Documents',
@@ -98,11 +104,6 @@ const menuItems = [
     label: 'Settings',
     icon: 'Settings',
     href: '/settings',
-  },
-  {
-    label: 'secteurs',
-    icon: 'FolderCog',
-    href: '/secteurs',
   },
 ];
 

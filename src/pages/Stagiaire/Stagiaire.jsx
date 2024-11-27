@@ -40,6 +40,31 @@ const Stagiaire = () => {
   useEffect(() => {
     if (status === 'idle') {
       dispatch(fetchStagiaires());
+      dispatch(fetchStagiaires());
+    return () => {
+      dispatch(clearError());
+    };
+  }, [dispatch]);
+
+  // Derived state
+  const filiereOptions = [...new Set(stagiaires.map((s) => s.filiere))];
+  const filteredStagiaires = getFilteredStagiaires(stagiaires, filters);
+  const totalPages = Math.ceil(filteredStagiaires.length / pagination.itemsPerPage);
+  const displayedStagiaires = filteredStagiaires.slice(
+    (pagination.currentPage - 1) * pagination.itemsPerPage,
+    pagination.currentPage * pagination.itemsPerPage
+  );
+
+  // Filter handlers
+  const handleFilterChange = (filterType, value) => {
+    const newFilters = { ...filters, [filterType]: value };
+    setFilters(newFilters);
+    setPagination((prev) => ({ ...prev, currentPage: 1 }));
+
+    if (filterType === 'filiere') {
+      dispatch(setFiliereFilter(value));
+    } else if (filterType === 'groupe') {
+      dispatch(setGroupeFilter(value));
     }
   }, [status, dispatch]);
 
@@ -62,6 +87,27 @@ const handleSubmit = async (e) => {
     if (isDuplicate) {
       setAlerts({ success: null, error: 'Un stagiaire avec ce CEF existe déjà.' });
       return;
+    const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setModalState((prev) => ({
+      ...prev,
+      stagiaire: { ...prev.stagiaire, [name]: value },
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { stagiaire } = modalState;
+
+    try {
+      if (stagiaire.cef) {
+        await dispatch(updateStagiaireAPI(stagiaire)).unwrap();
+      } else {
+        await dispatch(addStagiaireAPI(stagiaire)).unwrap();
+      }
+      handleModalClose();
+    } catch (err) {
+      console.error('Operation failed:', err);
     }
 
     if (stagiaire.id) {
@@ -100,6 +146,10 @@ const handleSubmit = async (e) => {
     doc.autoTable({
       head: [['CEF', 'Nom', 'Prénom', 'Email', 'Année', 'Niveau', 'Filière', 'Groupe']],
       body: stagiaires.map(s => [s.cef, s.nom, s.prenom, s.email, s.annee, s.niveau, s.filiere, s.groupe]),
+      doc.text('Liste des Stagiaires', 10, 10);
+    displayedStagiaires.forEach((stagiaire, index) => {
+      const text = `${stagiaire.cef} - ${stagiaire.nom} ${stagiaire.prenom}`;
+      doc.text(text, 10, 20 + index * 10);
     });
     doc.save('stagiaires.pdf');
   };
@@ -157,6 +207,9 @@ const handleSubmit = async (e) => {
       };
       reader.readAsText(file);
     }
+  // Pagination handlers
+  const handlePageChange = (page) => {
+    setPagination((prev) => ({ ...prev, currentPage: page }));
   };
 
   const filteredStagiaires = useMemo(() => {
@@ -204,6 +257,52 @@ const handleSubmit = async (e) => {
           <button onClick={() => setAlerts({ ...alerts, error: null })} className="btn btn-circle btn-outline btn-sm">
             <X className="w-4 h-4" />
           </button>
+    <div className="max-w-7xl mx-auto p-4 space-y-4">
+      {error &&
+        (console.error('Error:', error), alert("Une erreur s'est produite lors de l'opération."))}
+
+      {/* Header Actions */}
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+        <button
+          onClick={() => handleModalOpen()}
+          className="btn btn-primary flex items-center gap-2"
+        >
+          <Plus size={16} /> Ajouter Stagiaire
+        </button>
+
+        {/* Filters */}
+        <div className="flex flex-wrap gap-2">
+          <input
+            type="text"
+            placeholder="Rechercher"
+            className="input"
+            value={filters.searchTerm}
+            onChange={(e) => handleFilterChange('searchTerm', e.target.value)}
+          />
+          <select
+            value={filters.filiere}
+            onChange={(e) => handleFilterChange('filiere', e.target.value)}
+            className="input"
+          >
+            <option value="">Toutes les filières</option>
+            {filiereOptions.map((filiere) => (
+              <option key={filiere} value={filiere}>
+                {filiere}
+              </option>
+            ))}
+          </select>
+          <select
+            value={filters.groupe}
+            onChange={(e) => handleFilterChange('groupe', e.target.value)}
+            className="input"
+          >
+            <option value="">Tous les groupes</option>
+            {GROUP_OPTIONS.map((groupe) => (
+              <option key={groupe} value={groupe}>
+                {groupe}
+              </option>
+            ))}
+          </select>
         </div>
       )}
 
@@ -224,6 +323,13 @@ const handleSubmit = async (e) => {
           >
             <Upload className="w-4 h-4" />
             Upload Stagiaires
+        {/* Export buttons */}
+        <div className="flex gap-2">
+          <button onClick={exportToExcel} className="btn btn-outline flex items-center gap-2">
+            <FileSpreadsheet size={16} /> Excel
+          </button>
+          <button onClick={exportToPDF} className="btn btn-outline flex items-center gap-2">
+            <Download size={16} /> PDF
           </button>
           <input
             id="fileInput"
@@ -297,6 +403,21 @@ const handleSubmit = async (e) => {
                   </button>
                   <button onClick={() => handleDelete(stagiaire.id)} className="btn btn-ghost btn-xs">
                     <Trash2 className="w-4 h-4" />
+
+            {displayedStagiaires.map((stagiaire) => (
+              <tr key={stagiaire.cef} className="border-b hover:bg-gray-50">
+                <td className="px-4 py-2">{stagiaire.cef}</td>
+                <td className="px-4 py-2">{stagiaire.nom}</td>
+                <td className="px-4 py-2">{stagiaire.prenom}</td>
+                <td className="px-4 py-2">{stagiaire.email}</td>
+                <td className="px-4 py-2">{stagiaire.filiere}</td>
+                <td className="px-4 py-2">{stagiaire.groupe}</td>
+                <td className="px-4 py-2 space-x-2">
+                  <button onClick={() => handleModalOpen(stagiaire)} className="btn btn-warning">
+                    <Edit size={16} />
+                  </button>
+                  <button onClick={() => handleDelete(stagiaire.cef)} className="btn btn-danger">
+                    <Trash2 size={16} />
                   </button>
                 </td>
               </tr>
@@ -335,6 +456,29 @@ const handleSubmit = async (e) => {
                 <button type="submit" className="btn btn-primary">Save</button>
               </div>
             </form>
+          {['cef', 'nom', 'prenom', 'email', 'filiere', 'groupe'].map((field) => (
+            <div key={field} className="space-y-1">
+              <label className="block text-sm font-medium text-gray-700">
+                {field.charAt(0).toUpperCase() + field.slice(1)}
+              </label>
+              <input
+                type={field === 'email' ? 'email' : 'text'}
+                name={field}
+                value={modalState.stagiaire[field]}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2 border rounded-md"
+                required
+              />
+            </div>
+          ))}
+
+          <div className="flex justify-end space-x-2 mt-4">
+            <button type="button" onClick={handleModalClose} className="btn btn-secondary">
+              Annuler
+            </button>
+            <button type="submit" className="btn btn-primary">
+              {modalState.stagiaire.cef ? 'Modifier' : 'Ajouter'}
+            </button>
           </div>
         </div>
       )}
@@ -344,3 +488,17 @@ const handleSubmit = async (e) => {
 
 export default Stagiaire;
 
+// Utility function for filtering
+function getFilteredStagiaires(stagiaires, filters) {
+  return stagiaires.filter((stagiaire) => {
+    const isFiliereMatch = !filters.filiere || stagiaire.filiere === filters.filiere;
+    const isGroupeMatch = !filters.groupe || stagiaire.groupe === filters.groupe;
+    const isSearchMatch =
+      !filters.searchTerm ||
+      stagiaire.nom.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
+      stagiaire.prenom.toLowerCase().includes(filters.searchTerm.toLowerCase());
+    return isFiliereMatch && isGroupeMatch && isSearchMatch;
+  });
+}
+
+export default Stagiaire;

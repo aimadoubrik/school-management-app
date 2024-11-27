@@ -14,11 +14,11 @@ import {
 
 const UserProfilePage = () => {
   const dispatch = useDispatch();
-  const { user, isLoading, error } = useSelector((state) => state.profile);
+  const { user, isLoading} = useSelector((state) => state.profile);
   const [isEditing, setIsEditing] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
-  const [notification, setNotification] = useState(null);
   const [imageHovered, setImageHovered] = useState(false);
+  const [editableUser, setEditableUser] = useState(null);
 
   useEffect(() => {
     const storedUserId = JSON.parse(
@@ -40,17 +40,13 @@ const UserProfilePage = () => {
   ? new Date(user.joinedDate).toLocaleDateString()
   : new Date().toLocaleDateString();
 
-  const showNotification = (message, type = 'success') => {
-    setNotification({ message, type });
-    setTimeout(() => setNotification(null), 3000);
-  };
 
-  const handlePhotoUpload = (event) => {
+ const handlePhotoUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        dispatch(updateUserField({ photo: reader.result }));
+        setEditableUser({ ...editableUser, photo: reader.result });
         setIsDirty(true);
         showNotification('Photo uploaded successfully');
       };
@@ -59,27 +55,37 @@ const UserProfilePage = () => {
   };
 
   const handleDeletePhoto = () => {
-    dispatch(updateUserField({ photo: defaultImage }));
+    setEditableUser({ ...editableUser, photo: defaultImage });
     setIsDirty(true);
     showNotification('Photo removed successfully');
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    dispatch(updateUserField({ [name]: value }));
+    setEditableUser({ ...editableUser, [name]: value });
     setIsDirty(true);
+  };
+  const handleCancel = () => {
+    setIsEditing(false);
+    setIsDirty(false);
+    setEditableUser(null); // Discard local changes
+  };
+
+  const handleEdit = () => {
+    setEditableUser({ ...user }); // Copy current user data to editable state
+    setIsEditing(true);
+    setIsDirty(false);
   };
 
   const handleSave = async () => {
     try {
-      await dispatch(updateUserProfile(user)).unwrap();
+      await dispatch(updateUserProfile(editableUser)).unwrap();
       setIsEditing(false);
       setIsDirty(false);
       showNotification('Profile updated successfully');
     } catch (error) {
       showNotification('Error saving profile', 'error');
     }
-    window.location.reload();
   };
 
   if (isLoading && !user) {
@@ -167,7 +173,7 @@ const UserProfilePage = () => {
                       <input
                         type="text"
                         name="name"
-                        value={user?.name || ''}
+                        value={editableUser?.name || ''}
                         onChange={handleChange}
                         className="input input-bordered input-primary w-full max-w-xs text-2xl font-bold pe-10"
                         placeholder="Your name"
@@ -196,10 +202,7 @@ const UserProfilePage = () => {
                     <div className="join">
                       <button
                         className="btn btn-ghost join-item gap-2 hover:btn-error"
-                        onClick={() => {
-                          setIsEditing(false);
-                          setIsDirty(false);
-                        }}
+                        onClick={handleCancel}
                       >
                         <X className="w-4 h-4" />
                         Cancel
@@ -216,7 +219,7 @@ const UserProfilePage = () => {
                   ) : (
                     <button 
                       className="btn btn-primary gap-2 hover:btn-secondary transition-all duration-200" 
-                      onClick={() => setIsEditing(true)}
+                      onClick={handleEdit}
                     >
                       <Edit3 className="w-4 h-4" />
                       Edit Profile
@@ -232,10 +235,10 @@ const UserProfilePage = () => {
             <div className="p-8">
               <div className="grid gap-6 md:grid-cols-2">
                 {[
-                  { icon: Mail, label: 'Email', value: user?.email, name: 'email', type: 'email' },
-                  { icon: Phone, label: 'Phone', value: user?.phoneNumber, name: 'phoneNumber', type: 'tel' },
-                  { icon: MapPin, label: 'Location', value: user?.address?.city, name: 'address' },
-                  { icon: Globe, label: 'Website', value: user?.website, name: 'website', type: 'url' },
+                  { icon: Mail, label: 'Email', value: isEditing ? editableUser?.email : user?.email, name: 'email', type: 'email' },
+                  { icon: Phone, label: 'Phone', value: isEditing ? editableUser?.phoneNumber : user?.phoneNumber, name: 'phoneNumber', type: 'tel' },
+                  { icon: MapPin, label: 'Location', value: isEditing ? editableUser?.address?.city : user?.address?.city, name: 'address' },
+                  { icon: Globe, label: 'Website', value: isEditing ? editableUser?.website : user?.website, name: 'website', type: 'url' },
                 ].map(({ icon: Icon, label, value, name, type }) => (
                   <div key={name} className="form-control group">
                     <label className="label">
@@ -278,7 +281,7 @@ const UserProfilePage = () => {
                 {isEditing ? (
                   <textarea
                     name="bio"
-                    value={user?.bio || ''}
+                    value={editableUser?.bio || ''}
                     onChange={handleChange}
                     className="textarea textarea-bordered focus:textarea-primary min-h-32 transition-all duration-200 hover:border-primary"
                     placeholder="Tell us about yourself..."
@@ -298,3 +301,4 @@ const UserProfilePage = () => {
 };
 
 export default UserProfilePage;
+

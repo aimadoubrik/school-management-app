@@ -57,6 +57,24 @@ export const deleteStagiaireAPI = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);
     }
+// Async thunks using apiService
+export const fetchStagiaires = createAsyncThunk('stagiaires/fetchStagiaires', async () => {
+  return await apiService.get(STAGIAIRES_ENDPOINT);
+});
+
+export const addStagiaireAPI = createAsyncThunk('stagiaires/addStagiaireAPI', async (stagiaire) => {
+  return await apiService.post(STAGIAIRES_ENDPOINT, stagiaire);
+});
+
+export const deleteStagiaireAPI = createAsyncThunk('stagiaires/deleteStagiaireAPI', async (cef) => {
+  await apiService.delete(`${STAGIAIRES_ENDPOINT}/${cef}`);
+  return cef;
+});
+
+export const updateStagiaireAPI = createAsyncThunk(
+  'stagiaires/updateStagiaireAPI',
+  async (stagiaire) => {
+    return await apiService.put(`${STAGIAIRES_ENDPOINT}/${stagiaire.cef}`, stagiaire);
   }
 );
 
@@ -65,11 +83,26 @@ const stagiairesSlice = createSlice({
   name: 'stagiaires',
   initialState,
   reducers: {
+    addStagiaire: (state, action) => {
+      state.stagiaires.push(action.payload);
+    },
+    deleteStagiaire: (state, action) => {
+      state.stagiaires = state.stagiaires.filter((stagiaire) => stagiaire.cef !== action.payload);
+    },
     setFiliereFilter: (state, action) => {
       state.filiereFilter = action.payload;
     },
     setGroupeFilter: (state, action) => {
       state.groupeFilter = action.payload;
+    },
+    updateStagiaire: (state, action) => {
+      const index = state.stagiaires.findIndex((stagiaire) => stagiaire.cef === action.payload.cef);
+      if (index !== -1) {
+        state.stagiaires[index] = action.payload;
+      }
+    },
+    clearError: (state) => {
+      state.error = null;
     },
   },
   extraReducers: (builder) => {
@@ -87,6 +120,26 @@ const stagiairesSlice = createSlice({
       })
       .addCase(addStagiaireAPI.fulfilled, (state, action) => {
         state.stagiaires.push(action.payload); 
+        state.stagiaires.push(action.payload);
+        state.error = null;
+      })
+      .addCase(addStagiaireAPI.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+
+      .addCase(deleteStagiaireAPI.pending, (state) => {
+        state.error = null;
+      })
+      .addCase(deleteStagiaireAPI.fulfilled, (state, action) => {
+        state.stagiaires = state.stagiaires.filter((stagiaire) => stagiaire.cef !== action.payload);
+        state.error = null;
+      })
+      .addCase(deleteStagiaireAPI.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+
+      .addCase(updateStagiaireAPI.pending, (state) => {
+        state.error = null;
       })
       .addCase(updateStagiaireAPI.fulfilled, (state, action) => {
         const index = state.stagiaires.findIndex((s) => s.id === action.payload.id);
@@ -106,3 +159,4 @@ export const selectStatus = (state) => state.stagiaires.status;
 export const selectError = (state) => state.stagiaires.error;
 
 export default stagiairesSlice.reducer;
+export default stagiaireSlice.reducer;
