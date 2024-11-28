@@ -2470,8 +2470,7 @@
         }
       ]
     }
-  ]
-,
+  ],
   "competences": [
     {
       "id": "1",
@@ -7607,11 +7606,11 @@
       "id": "68b0",
       "cef": "456680",
       "nom": "abouzakaria",
-      "prenom": "yassmina",
+      "prenom": "yassmine",
       "email": "yassmineabouzakaria@gmail.com",
-      "annee": "1A",
+      "annee": "2A",
       "niveau": "TS",
-      "filiere": "Finance",
+      "filiere": "Développement Digital",
       "groupe": "G101"
     }
   ],
