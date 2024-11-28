@@ -79,7 +79,7 @@ const UserProfilePage = () => {
       const updatedUser = await updateUser(user.id, editableFields);
       if (updatedUser) {
         setEditableUser(updatedUser);
-        updateUserInStorage(updatedUser); // Synchronize local storage
+        updateUserInStorage(editableUser); // Synchronize local storage
         setIsEditing(false);
         setIsDirty(false);
         console.log('User updated successfully');
