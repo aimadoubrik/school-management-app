@@ -21,6 +21,5 @@ export { default as Formateur } from './formateur/formateur';
 export { default as AllQuestions } from './Quizzes/AllQuestions';
 export { default as QuizQuestions } from './Quizzes/QuizQuestions';
 export { default as TeacherQuizzes } from './Quizzes/TeacherQuizzes';
-export { default as RoleBasedQuizRoute } from './Quizzes/RoleBasedQuizRoute';
 export { default as SecteursPage } from './secteurs/SecteursPage';
 export { default as SchedulerPage } from './Scheduler/SchedulerPage';
