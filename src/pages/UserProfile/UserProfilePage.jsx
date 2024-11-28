@@ -3,12 +3,21 @@ import { updateUser } from '../../services/userService';
 import { uploadImage } from '../../services/uploadService';
 import { getUserFromStorage } from '../../utils';
 import {
-  Camera, Mail, Phone, Globe, MapPin, Building,
-  Check, X, Calendar, Trash2, User, Edit3
+  Camera,
+  Mail,
+  Phone,
+  Globe,
+  MapPin,
+  Building,
+  Check,
+  X,
+  Calendar,
+  Trash2,
+  User,
+  Edit3,
 } from 'lucide-react';
 
 const UserProfilePage = () => {
-
   const user = getUserFromStorage('user');
   const [isEditing, setIsEditing] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
@@ -30,7 +39,7 @@ const UserProfilePage = () => {
     if (file) {
       try {
         const imageUrl = await uploadImage(file);
-        setEditableUser( (u) => ({ ...u, profilePicture: imageUrl}));
+        setEditableUser((u) => ({ ...u, profilePicture: imageUrl }));
         setImageUrl(imageUrl);
         setIsDirty(true);
         console.log('Photo uploaded successfully');
@@ -74,7 +83,6 @@ const UserProfilePage = () => {
   };
 
   return (
-
     <div className="min-h-screen bg-base-200 transition-all duration-300 ">
       {/* Hero Banner */}
       <div className="relative bg-primary h-72 overflow-hidden rounded-t-md">
@@ -89,10 +97,14 @@ const UserProfilePage = () => {
               <div className="flex flex-col sm:flex-row gap-8">
                 {/* Avatar Section */}
                 <div className="relative mx-auto sm:mx-0 group">
-                  <div className="avatar"
+                  <div
+                    className="avatar"
                     onMouseEnter={() => setImageHovered(true)}
-                    onMouseLeave={() => setImageHovered(false)}>
-                    <div className={`w-36 rounded-full ring ring-primary ring-offset-base-100 ring-offset-4 shadow-xl transition-all duration-300 ${imageHovered ? 'ring-secondary' : ''}`}>
+                    onMouseLeave={() => setImageHovered(false)}
+                  >
+                    <div
+                      className={`w-36 rounded-full ring ring-primary ring-offset-base-100 ring-offset-4 shadow-xl transition-all duration-300 ${imageHovered ? 'ring-secondary' : ''}`}
+                    >
                       <div className="relative">
                         <img
                           src={imageUrl || ''}
@@ -146,7 +158,9 @@ const UserProfilePage = () => {
                         <User className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/60" />
                       </div>
                     ) : (
-                      <h2 className="text-2xl font-bold text-base-content tracking-tight">{user?.name}</h2>
+                      <h2 className="text-2xl font-bold text-base-content tracking-tight">
+                        {user?.name}
+                      </h2>
                     )}
                     <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
                       <div className="badge badge-primary gap-2 p-3 badge-lg">
@@ -155,7 +169,8 @@ const UserProfilePage = () => {
                       </div>
                       <div className="badge badge-ghost gap-2 p-3 badge-lg">
                         <Calendar className="w-4 h-4" />
-                        Joined {user.joinedAt ? new Date(user.joinedAt).toLocaleDateString() : 'N/A'}
+                        Joined{' '}
+                        {user.joinedAt ? new Date(user.joinedAt).toLocaleDateString() : 'N/A'}
                       </div>
                     </div>
                   </div>
@@ -200,10 +215,33 @@ const UserProfilePage = () => {
             <div className="p-8">
               <div className="grid gap-6 md:grid-cols-2">
                 {[
-                  { icon: Mail, label: 'Email', value: isEditing ? editableUser?.email : user?.email, name: 'email', type: 'email' },
-                  { icon: Phone, label: 'Phone', value: isEditing ? editableUser?.phoneNumber : user?.phoneNumber, name: 'phoneNumber', type: 'tel' },
-                  { icon: MapPin, label: 'Location', value: isEditing ? editableUser?.address?.city : user?.address?.city, name: 'address' },
-                  { icon: Globe, label: 'Website', value: isEditing ? editableUser?.website : user?.website, name: 'website', type: 'url' },
+                  {
+                    icon: Mail,
+                    label: 'Email',
+                    value: isEditing ? editableUser?.email : user?.email,
+                    name: 'email',
+                    type: 'email',
+                  },
+                  {
+                    icon: Phone,
+                    label: 'Phone',
+                    value: isEditing ? editableUser?.phoneNumber : user?.phoneNumber,
+                    name: 'phoneNumber',
+                    type: 'tel',
+                  },
+                  {
+                    icon: MapPin,
+                    label: 'Location',
+                    value: isEditing ? editableUser?.address?.city : user?.address?.city,
+                    name: 'address',
+                  },
+                  {
+                    icon: Globe,
+                    label: 'Website',
+                    value: isEditing ? editableUser?.website : user?.website,
+                    name: 'website',
+                    type: 'url',
+                  },
                 ].map(({ icon: Icon, label, value, name, type }) => (
                   <div key={name} className="form-control group">
                     <label className="label">
@@ -226,7 +264,11 @@ const UserProfilePage = () => {
                         />
                       ) : (
                         <div className="input input-bordered w-full pl-10 bg-base-200/50 text-base-content/80 flex items-center group-hover:text-primary group-hover:bg-base-200 transition-all duration-200">
-                          {value ? <span className="">{value}</span> : <span className="text-base-content/40">Not specified</span>}
+                          {value ? (
+                            <span className="">{value}</span>
+                          ) : (
+                            <span className="text-base-content/40">Not specified</span>
+                          )}
                         </div>
                       )}
                     </div>

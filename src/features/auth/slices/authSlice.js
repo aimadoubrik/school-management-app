@@ -181,7 +181,6 @@ export const login = createAsyncThunk('auth/login', async (credentials, { reject
       localStorage.removeItem(STORAGE_KEYS.USER);
     }
 
-
     // Prepare user data
     const userData = {
       id: user.id,

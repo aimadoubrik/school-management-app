@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import FiltersFormateur from './FiltersFormateur';
 import { Save, X, Edit } from 'lucide-react';
-import { BsPersonFillSlash } from "react-icons/bs";
+import { BsPersonFillSlash } from 'react-icons/bs';
 
 export default function AttendanceFormateur() {
   const [secteursData, setSecteursData] = useState([]);
@@ -21,9 +21,7 @@ export default function AttendanceFormateur() {
   const [itemsPerPage] = useState(10);
   const [checkboxDisabled, setCheckboxDisabled] = useState(false);
 
-  const timeSlots = [
-    '8:30->10:50', '10:50->13.30', '13.30->15.50', '15.50->18.30'
-  ];
+  const timeSlots = ['8:30->10:50', '10:50->13.30', '13.30->15.50', '15.50->18.30'];
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -52,10 +50,12 @@ export default function AttendanceFormateur() {
       const selectedSecteur = secteursData.find((s) => s.intitule_secteur === secteur);
       if (selectedSecteur) {
         const groupData = selectedSecteur.niveaux[niveau]?.filiere[filiere]?.[annee]?.[groupe];
-        setStudents(groupData?.map((student) => ({
-          ...student,
-          absentHours: timeSlots.reduce((acc, slot) => ({ ...acc, [slot]: false }), {})
-        })) || []);
+        setStudents(
+          groupData?.map((student) => ({
+            ...student,
+            absentHours: timeSlots.reduce((acc, slot) => ({ ...acc, [slot]: false }), {}),
+          })) || []
+        );
       }
     } else {
       setStudents([]);
@@ -69,20 +69,24 @@ export default function AttendanceFormateur() {
 
   const fetchAbsentStudents = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/absentStudents?date=${dateFilter}&niveau=${niveau}&filiere=${filiere}&annee=${annee}&groupe=${groupe}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      });
+      const response = await fetch(
+        `http://localhost:3000/absentStudents?date=${dateFilter}&niveau=${niveau}&filiere=${filiere}&annee=${annee}&groupe=${groupe}`,
+        {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
       if (!response.ok) throw new Error('Failed to fetch absent students');
       const data = await response.json();
       console.log('Fetched data:', data);
       // Find the matching record in the array
-      const matchingRecord = data.find(record =>
-        record.niveau === niveau &&
-        record.filiere === filiere &&
-        record.annee === annee &&
-        record.groupe === groupe &&
-        record.date === dateFilter
+      const matchingRecord = data.find(
+        (record) =>
+          record.niveau === niveau &&
+          record.filiere === filiere &&
+          record.annee === annee &&
+          record.groupe === groupe &&
+          record.date === dateFilter
       );
       setAbsentStudents(matchingRecord ? [matchingRecord] : []);
     } catch (error) {
@@ -118,7 +122,10 @@ export default function AttendanceFormateur() {
     setStudents((prev) =>
       prev.map((student) =>
         student.id === studentId
-          ? { ...student, absentHours: { ...student.absentHours, [timeSlot]: !student.absentHours[timeSlot] } }
+          ? {
+              ...student,
+              absentHours: { ...student.absentHours, [timeSlot]: !student.absentHours[timeSlot] },
+            }
           : student
       )
     );
@@ -189,9 +196,11 @@ export default function AttendanceFormateur() {
   return (
     <div className="">
       <div className="w-full p-4 mb-[-3%] flex flex-col items-end">
-        <div className='flex space-x-6 bg-base-200 p-3 rounded-t-3xl'>
+        <div className="flex space-x-6 bg-base-200 p-3 rounded-t-3xl">
           <h2 className="text-2xl font-semibold">Current Filiere :</h2>
-          <p className="text-2xl from-neutral-950">{filiere || '-'} {groupe || '-'}</p>
+          <p className="text-2xl from-neutral-950">
+            {filiere || '-'} {groupe || '-'}
+          </p>
         </div>
       </div>
       <div className="w-full p-4">
@@ -214,7 +223,7 @@ export default function AttendanceFormateur() {
         <div className="overflow-x-auto rounded-lg shadow-md mt-4">
           <table className="table table-zebra w-full hover">
             <thead className="bg-base-200">
-              <tr className='text-center font-bold text-black text-[15px]'>
+              <tr className="text-center font-bold text-black text-[15px]">
                 <th>ID</th>
                 <th>CEF</th>
                 <th>Full Name</th>
@@ -223,7 +232,7 @@ export default function AttendanceFormateur() {
                 ))}
               </tr>
             </thead>
-            <tbody className='text-center'>
+            <tbody className="text-center">
               {isDateInPast(dateFilter) ? (
                 absentStudents.length > 0 && absentStudents[0].students ? (
                   absentStudents[0].students.map((student) => (
@@ -234,17 +243,12 @@ export default function AttendanceFormateur() {
                       {timeSlots.map((slot) => (
                         <td key={slot} className="text-center">
                           {student.absentHours[slot] ? (
-                            <BsPersonFillSlash
-                              size={25}
-                              color="red"
-                              className="mx-auto"
-                            />
+                            <BsPersonFillSlash size={25} color="red" className="mx-auto" />
                           ) : (
                             '------'
                           )}
                         </td>
                       ))}
-
                     </tr>
                   ))
                 ) : (
@@ -310,7 +314,12 @@ export default function AttendanceFormateur() {
                 className="btn btn-secondary"
                 onClick={() => {
                   setEditing(false);
-                  setStudents((prev) => prev.map((student) => ({ ...student, absentHours: timeSlots.reduce((acc, slot) => ({ ...acc, [slot]: false }), {}) })));
+                  setStudents((prev) =>
+                    prev.map((student) => ({
+                      ...student,
+                      absentHours: timeSlots.reduce((acc, slot) => ({ ...acc, [slot]: false }), {}),
+                    }))
+                  );
                 }}
                 disabled={isSaving}
               >
@@ -332,9 +341,7 @@ export default function AttendanceFormateur() {
             </button>
           )}
         </div>
-
       </div>
     </div>
   );
 }
-
