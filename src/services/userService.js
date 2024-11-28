@@ -3,13 +3,16 @@ import { supabase } from './supabaseClient';
 
 // Update user
 export const updateUser = async (userId, updatedData) => {
-  const { data, error } = await supabase.from('users').update(updatedData).eq('id', userId);
+  const { data, error } = await supabase
+    .from('users')
+    .update(updatedData)
+    .eq('id', userId)
+    .select('*');
 
   if (error) {
-    console.error('Error updating user:', error);
-    return null;
+    throw new Error('Error updating user: ' + error.message);
   }
-  return data;
+  return data?.[0]; // Return the updated user object
 };
 
 // Delete user

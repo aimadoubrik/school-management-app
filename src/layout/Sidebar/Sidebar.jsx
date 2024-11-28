@@ -147,7 +147,7 @@ const SidebarContent = memo(({ menuItems, location, userData }) => (
       <UserProfile
         name={userData?.name ?? 'Guest'}
         role={userData?.role ?? 'User'}
-        profilePicture={userData?.profilePicture ?? ''}
+        profile_picture={userData?.profile_picture ?? ''}
       />
     </div>
   </>
