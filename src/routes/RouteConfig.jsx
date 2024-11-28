@@ -21,7 +21,6 @@ import {
   SchedulePage,
   TraineesPage,
   CompetencesPage,
-  Stagiaire,
   ModulesPage,
   Course,
   GroupesPage,
@@ -105,14 +104,6 @@ const RouteConfig = () => {
           element={
             <ProtectedRoute allowedRoles={['super user', 'trainer', 'admin']}>
               <AttendancePage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/stagiaire"
-          element={
-            <ProtectedRoute allowedRoles={['super user', 'trainer', 'admin']}>
-              <Stagiaire />
             </ProtectedRoute>
           }
         />
