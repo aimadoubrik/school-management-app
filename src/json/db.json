@@ -1746,19 +1746,7 @@
           "correctAnswer": "Mercury"
         }
       ],
-      "questionsSelected": [
-        {
-          "question": "dff",
-          "answers": [
-            "ff",
-            "fff",
-            "ff",
-            "ff"
-          ],
-          "correctAnswer": "fff",
-          "id": "1732647826453"
-        }
-      ]
+      "questionsSelected": []
     },
     {
       "id": "ae42",
@@ -1770,149 +1758,28 @@
       "questions": [
         {
           "id": "1",
-          "question": "Which of the following is NOT a core principle of object-oriented programming?",
+          "question": "Which empire is credited with the construction of the Great Wall of China?",
           "answers": [
-            "Encapsulation",
-            "Polymorphism",
-            "Sequential Processing",
-            "Inheritance"
+            "Qin",
+            "Han",
+            "Sui",
+            "Tang"
           ],
-          "correctAnswer": "Sequential Processing"
+          "correctAnswer": "Qin"
         },
         {
           "id": "2",
-          "question": "What does the acronym \"OOP\" stand for in the context of programming?",
+          "question": "The Renaissance is generally considered to have begun in which region of Europe?",
           "answers": [
-            "Out Of Place",
-            "Object-Oriented Programming",
-            "Open-ended Procedure",
-            "Ordered Output Protocol"
+            "Northern Europe",
+            "Iberian Peninsula",
+            "Italy",
+            "France"
           ],
-          "correctAnswer": "Object-Oriented Programming"
+          "correctAnswer": "Italy"
         },
         {
           "id": "3",
-          "question": "A class is defined as:",
-          "answers": [
-            "An instance of an object",
-            "A blueprint for creating objects",
-            "A specific type of data structure",
-            "A method within an object"
-          ],
-          "correctAnswer": "A blueprint for creating objects"
-        },
-        {
-          "id": "4",
-          "question": "What is method overloading?",
-          "answers": [
-            "Defining multiple methods with the same name but different return types.",
-            "Defining multiple methods with the same name and the same parameters.",
-            "Defining multiple methods with the same name but different parameter lists.",
-            "Defining multiple methods with different names but the same functionality."
-          ],
-          "correctAnswer": "Defining multiple methods with the same name but different parameter lists."
-        },
-        {
-          "id": "5",
-          "question": "Inheritance in OOP allows for:",
-          "answers": [
-            "Data hiding",
-            "Code reusability",
-            "Polymorphic errors",
-            "Overloading methods"
-          ],
-          "correctAnswer": "Code reusability"
-        },
-        {
-          "id": "6",
-          "question": "Encapsulation is achieved through:",
-          "answers": [
-            "Publicly accessible data members",
-            "Private and protected access modifiers",
-            "Inheritance mechanisms",
-            "Polymorphic functions"
-          ],
-          "correctAnswer": "Private and protected access modifiers"
-        },
-        {
-          "id": "7",
-          "question": "Polymorphism allows:",
-          "answers": [
-            "Objects of different classes to be treated as objects of a common type.",
-            "Objects to have multiple inheritance simultaneously.",
-            "Methods to have only one implementation.",
-            "Data to be freely accessed from any part of the program."
-          ],
-          "correctAnswer": "Objects of different classes to be treated as objects of a common type."
-        },
-        {
-          "id": "8",
-          "question": "What is an abstract class?",
-          "answers": [
-            "A class that cannot be instantiated.",
-            "A class that has only abstract methods.",
-            "A class that has no methods.",
-            "A class that cannot be inherited from."
-          ],
-          "correctAnswer": "A class that cannot be instantiated."
-        },
-        {
-          "id": "9",
-          "question": "What is the purpose of a constructor in a class?",
-          "answers": [
-            "To destroy an object",
-            "To initialize an object",
-            "To define the class's methods",
-            "To inherit from another class"
-          ],
-          "correctAnswer": "To initialize an object"
-        },
-        {
-          "id": "10",
-          "question": "Which concept describes the ability of a single method to handle different types of objects?",
-          "answers": [
-            "Encapsulation",
-            "Abstraction",
-            "Polymorphism",
-            "Inheritance"
-          ],
-          "correctAnswer": "Polymorphism"
-        },
-        {
-          "id": "11",
-          "question": "Which empire is credited with the construction of the Great Wall of China?",
-          "answers": [
-            "Qin Dynasty",
-            "Han Dynasty",
-            "Sui Dynasty",
-            "Tang Dynasty"
-          ],
-          "correctAnswer": "Qin Dynasty"
-        },
-        {
-          "id": "12",
-          "question": "The Renaissance is considered to have begun in which Italian city-state?",
-          "answers": [
-            "Venice",
-            "Florence",
-            "Rome",
-            "Milan"
-          ],
-          "correctAnswer": "Florence"
-        },
-        {
-          "id": "13",
-          "question": "The Protestant Reformation is most associated with which historical figure?",
-          "answers": [
-            "Leonardo da Vinci",
-            "Martin Luther",
-            "Michelangelo",
-            "Niccolò Machiavelli"
-          ],
-          "correctAnswer": "Martin Luther"
-        },
-        {
-          "id": "14",
           "question": "Which treaty officially ended World War I?",
           "answers": [
             "Treaty of Versailles",
@@ -1923,402 +1790,193 @@
           "correctAnswer": "Treaty of Versailles"
         },
         {
-          "id": "15",
+          "id": "4",
           "question": "The Cold War was primarily a geopolitical struggle between which two superpowers?",
           "answers": [
-            "United States and China",
-            "Soviet Union and Great Britain",
+            "United States and Britain",
+            "Soviet Union and Germany",
             "United States and Soviet Union",
-            "Great Britain and France"
+            "China and Japan"
           ],
           "correctAnswer": "United States and Soviet Union"
         },
         {
-          "id": "16",
-          "question": "The Neolithic Revolution is characterized by the development of:",
+          "id": "5",
+          "question": "The Neolithic Revolution is associated with the development of:",
           "answers": [
             "Metalworking",
-            "Writing systems",
             "Agriculture",
-            "Democracy"
+            "Writing",
+            "The wheel"
           ],
           "correctAnswer": "Agriculture"
         },
         {
-          "id": "17",
+          "id": "6",
           "question": "Which civilization developed the concept of zero?",
           "answers": [
             "Greek",
             "Roman",
             "Mayan",
-            "Gupta"
+            "Indian"
           ],
-          "correctAnswer": "Gupta"
+          "correctAnswer": "Indian"
         },
         {
-          "id": "18",
-          "question": "The Silk Road facilitated trade between which two major regions?",
+          "id": "7",
+          "question": "The Protestant Reformation was initiated by:",
           "answers": [
-            "Europe and Africa",
-            "Europe and Asia",
-            "Asia and the Americas",
-            "Africa and the Americas"
+            "Martin Luther",
+            "John Calvin",
+            "Henry VIII",
+            "Pope Leo X"
           ],
-          "correctAnswer": "Europe and Asia"
+          "correctAnswer": "Martin Luther"
         },
         {
-          "id": "19",
-          "question": "The invention of the printing press is most associated with:",
+          "id": "8",
+          "question": "The Opium Wars were fought between Britain and:",
           "answers": [
-            "Johannes Gutenberg",
-            "Leonardo da Vinci",
-            "Isaac Newton",
-            "Galileo Galilei"
+            "France",
+            "Russia",
+            "China",
+            "Japan"
           ],
-          "correctAnswer": "Johannes Gutenberg"
+          "correctAnswer": "China"
         },
         {
-          "id": "20",
-          "question": "Which event is widely considered to be the start of World War II?",
+          "id": "9",
+          "question": "Which event is widely considered the start of World War II?",
           "answers": [
-            "The assassination of Archduke Franz Ferdinand",
             "The invasion of Poland",
             "The bombing of Pearl Harbor",
+            "The assassination of Archduke Franz Ferdinand",
             "The signing of the Treaty of Versailles"
           ],
           "correctAnswer": "The invasion of Poland"
         },
         {
-          "id": "21",
-          "question": "Which of the following is NOT a core principle of object-oriented programming?",
+          "id": "10",
+          "question": "The Silk Road primarily facilitated trade between:",
           "answers": [
-            "a) Encapsulation",
-            "b) Polymorphism",
-            "c) Sequential Processing",
-            "d) Inheritance"
+            "Europe and the Americas",
+            "East Asia and the Mediterranean",
+            "Africa and South America",
+            "India and Australia"
           ],
-          "correctAnswer": "c) Sequential Processing"
-        },
-        {
-          "id": "22",
-          "question": "What does the acronym DRY stand for in software development principles?",
-          "answers": [
-            "a)  Develop Repeatedly, Yield",
-            "b)  Don't Repeat Yourself",
-            "c)  Define, Refactor, Yield",
-            "d)  Data Retrieval, Yield"
-          ],
-          "correctAnswer": "b) Don't Repeat Yourself"
-        },
-        {
-          "id": "23",
-          "question": "Which design pattern promotes loose coupling by using interfaces or abstract classes?",
-          "answers": [
-            "a)  Singleton",
-            "b)  Factory",
-            "c)  Observer",
-            "d)  Strategy"
-          ],
-          "correctAnswer": "d) Strategy"
-        },
-        {
-          "id": "24",
-          "question": "What is a common characteristic of a well-designed API?",
-          "answers": [
-            "a)  Complex implementation details exposed to the user",
-            "b)  Tight coupling between components",
-            "c)  Easy to understand and use",
-            "d)  Limited functionality"
-          ],
-          "correctAnswer": "c) Easy to understand and use"
-        },
-        {
-          "id": "25",
-          "question": "What is the purpose of version control systems like Git?",
-          "answers": [
-            "a)  To prevent software bugs",
-            "b)  To manage and track changes to code",
-            "c)  To compile code into executables",
-            "d)  To write documentation"
-          ],
-          "correctAnswer": "b) To manage and track changes to code"
-        },
-        {
-          "id": "26",
-          "question": "Which type of testing focuses on individual units of code?",
-          "answers": [
-            "a)  Integration testing",
-            "b)  System testing",
-            "c)  Unit testing",
-            "d)  Acceptance testing"
-          ],
-          "correctAnswer": "c) Unit testing"
-        },
-        {
-          "id": "27",
-          "question": "What does SOLID stand for in software design principles?",
-          "answers": [
-            "a)  Simple, Organized, Logical, Integrated, Dependable",
-            "b)  Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion",
-            "c)  Structured, Object-Oriented, Logical, Integrated, Data-driven",
-            "d)  Scalable, Organized, Lightweight, Integrated, Deployable"
-          ],
-          "correctAnswer": "b) Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion"
-        },
-        {
-          "id": "28",
-          "question": "What is a common use case for a queue data structure?",
-          "answers": [
-            "a)  Storing data in a key-value pair",
-            "b)  Managing tasks in a first-in, first-out (FIFO) manner",
-            "c)  Representing hierarchical relationships",
-            "d)  Storing data in sorted order"
-          ],
-          "correctAnswer": "b) Managing tasks in a first-in, first-out (FIFO) manner"
-        },
-        {
-          "id": "29",
-          "question": "Which programming paradigm emphasizes immutability and pure functions?",
-          "answers": [
-            "a)  Object-Oriented Programming",
-            "b)  Imperative Programming",
-            "c)  Functional Programming",
-            "d)  Procedural Programming"
-          ],
-          "correctAnswer": "c) Functional Programming"
-        },
-        {
-          "id": "30",
-          "question": "What is a potential benefit of using design patterns?",
-          "answers": [
-            "a)  Increased code complexity",
-            "b)  Reduced code reusability",
-            "c)  Improved code readability and maintainability",
-            "d)  Slower development time"
-          ],
-          "correctAnswer": "c) Improved code readability and maintainability"
+          "correctAnswer": "East Asia and the Mediterranean"
         }
       ],
       "questionsSelected": [
         {
           "id": "1",
-          "question": "Which of the following is NOT a core principle of object-oriented programming?",
+          "question": "Which empire is credited with the construction of the Great Wall of China?",
           "answers": [
-            "Encapsulation",
-            "Polymorphism",
-            "Sequential Processing",
-            "Inheritance"
+            "Qin",
+            "Han",
+            "Sui",
+            "Tang"
           ],
-          "correctAnswer": "Sequential Processing"
+          "correctAnswer": "Qin"
         },
         {
           "id": "2",
-          "question": "What does the acronym \"OOP\" stand for in the context of programming?",
+          "question": "The Renaissance is generally considered to have begun in which region of Europe?",
           "answers": [
-            "Out Of Place",
-            "Object-Oriented Programming",
-            "Open-ended Procedure",
-            "Ordered Output Protocol"
+            "Northern Europe",
+            "Iberian Peninsula",
+            "Italy",
+            "France"
           ],
-          "correctAnswer": "Object-Oriented Programming"
+          "correctAnswer": "Italy"
         },
         {
           "id": "3",
-          "question": "A class is defined as:",
+          "question": "Which treaty officially ended World War I?",
           "answers": [
-            "An instance of an object",
-            "A blueprint for creating objects",
-            "A specific type of data structure",
-            "A method within an object"
+            "Treaty of Versailles",
+            "Treaty of Tordesillas",
+            "Treaty of Paris",
+            "Treaty of Ghent"
           ],
-          "correctAnswer": "A blueprint for creating objects"
+          "correctAnswer": "Treaty of Versailles"
         },
         {
           "id": "4",
-          "question": "What is method overloading?",
-          "answers": [
-            "Defining multiple methods with the same name but different return types.",
-            "Defining multiple methods with the same name and the same parameters.",
-            "Defining multiple methods with the same name but different parameter lists.",
-            "Defining multiple methods with different names but the same functionality."
-          ],
-          "correctAnswer": "Defining multiple methods with the same name but different parameter lists."
-        },
-        {
-          "id": "5",
-          "question": "Inheritance in OOP allows for:",
-          "answers": [
-            "Data hiding",
-            "Code reusability",
-            "Polymorphic errors",
-            "Overloading methods"
-          ],
-          "correctAnswer": "Code reusability"
-        },
-        {
-          "id": "6",
-          "question": "Encapsulation is achieved through:",
-          "answers": [
-            "Publicly accessible data members",
-            "Private and protected access modifiers",
-            "Inheritance mechanisms",
-            "Polymorphic functions"
-          ],
-          "correctAnswer": "Private and protected access modifiers"
-        },
-        {
-          "id": "8",
-          "question": "What is an abstract class?",
-          "answers": [
-            "A class that cannot be instantiated.",
-            "A class that has only abstract methods.",
-            "A class that has no methods.",
-            "A class that cannot be inherited from."
-          ],
-          "correctAnswer": "A class that cannot be instantiated."
-        },
-        {
-          "id": "9",
-          "question": "What is the purpose of a constructor in a class?",
-          "answers": [
-            "To destroy an object",
-            "To initialize an object",
-            "To define the class's methods",
-            "To inherit from another class"
-          ],
-          "correctAnswer": "To initialize an object"
-        },
-        {
-          "id": "10",
-          "question": "Which concept describes the ability of a single method to handle different types of objects?",
-          "answers": [
-            "Encapsulation",
-            "Abstraction",
-            "Polymorphism",
-            "Inheritance"
-          ],
-          "correctAnswer": "Polymorphism"
-        },
-        {
-          "id": "11",
-          "question": "Which empire is credited with the construction of the Great Wall of China?",
-          "answers": [
-            "Qin Dynasty",
-            "Han Dynasty",
-            "Sui Dynasty",
-            "Tang Dynasty"
-          ],
-          "correctAnswer": "Qin Dynasty"
-        },
-        {
-          "id": "12",
-          "question": "The Renaissance is considered to have begun in which Italian city-state?",
-          "answers": [
-            "Venice",
-            "Florence",
-            "Rome",
-            "Milan"
-          ],
-          "correctAnswer": "Florence"
-        },
-        {
-          "id": "13",
-          "question": "The Protestant Reformation is most associated with which historical figure?",
-          "answers": [
-            "Leonardo da Vinci",
-            "Martin Luther",
-            "Michelangelo",
-            "Niccolò Machiavelli"
-          ],
-          "correctAnswer": "Martin Luther"
-        },
-        {
-          "id": "15",
           "question": "The Cold War was primarily a geopolitical struggle between which two superpowers?",
           "answers": [
-            "United States and China",
-            "Soviet Union and Great Britain",
+            "United States and Britain",
+            "Soviet Union and Germany",
             "United States and Soviet Union",
-            "Great Britain and France"
+            "China and Japan"
           ],
           "correctAnswer": "United States and Soviet Union"
         },
         {
-          "id": "16",
-          "question": "The Neolithic Revolution is characterized by the development of:",
+          "id": "5",
+          "question": "The Neolithic Revolution is associated with the development of:",
           "answers": [
             "Metalworking",
-            "Writing systems",
             "Agriculture",
-            "Democracy"
+            "Writing",
+            "The wheel"
           ],
           "correctAnswer": "Agriculture"
         },
         {
-          "id": "20",
-          "question": "Which event is widely considered to be the start of World War II?",
+          "id": "6",
+          "question": "Which civilization developed the concept of zero?",
           "answers": [
-            "The assassination of Archduke Franz Ferdinand",
+            "Greek",
+            "Roman",
+            "Mayan",
+            "Indian"
+          ],
+          "correctAnswer": "Indian"
+        },
+        {
+          "id": "7",
+          "question": "The Protestant Reformation was initiated by:",
+          "answers": [
+            "Martin Luther",
+            "John Calvin",
+            "Henry VIII",
+            "Pope Leo X"
+          ],
+          "correctAnswer": "Martin Luther"
+        },
+        {
+          "id": "8",
+          "question": "The Opium Wars were fought between Britain and:",
+          "answers": [
+            "France",
+            "Russia",
+            "China",
+            "Japan"
+          ],
+          "correctAnswer": "China"
+        },
+        {
+          "id": "9",
+          "question": "Which event is widely considered the start of World War II?",
+          "answers": [
             "The invasion of Poland",
             "The bombing of Pearl Harbor",
+            "The assassination of Archduke Franz Ferdinand",
             "The signing of the Treaty of Versailles"
           ],
           "correctAnswer": "The invasion of Poland"
         },
         {
-          "id": "22",
-          "question": "What does the acronym DRY stand for in software development principles?",
+          "id": "10",
+          "question": "The Silk Road primarily facilitated trade between:",
           "answers": [
-            "a)  Develop Repeatedly, Yield",
-            "b)  Don't Repeat Yourself",
-            "c)  Define, Refactor, Yield",
-            "d)  Data Retrieval, Yield"
+            "Europe and the Americas",
+            "East Asia and the Mediterranean",
+            "Africa and South America",
+            "India and Australia"
           ],
-          "correctAnswer": "b) Don't Repeat Yourself"
-        },
-        {
-          "id": "23",
-          "question": "Which design pattern promotes loose coupling by using interfaces or abstract classes?",
-          "answers": [
-            "a)  Singleton",
-            "b)  Factory",
-            "c)  Observer",
-            "d)  Strategy"
-          ],
-          "correctAnswer": "d) Strategy"
-        },
-        {
-          "id": "25",
-          "question": "What is the purpose of version control systems like Git?",
-          "answers": [
-            "a)  To prevent software bugs",
-            "b)  To manage and track changes to code",
-            "c)  To compile code into executables",
-            "d)  To write documentation"
-          ],
-          "correctAnswer": "b) To manage and track changes to code"
-        },
-        {
-          "id": "27",
-          "question": "What does SOLID stand for in software design principles?",
-          "answers": [
-            "a)  Simple, Organized, Logical, Integrated, Dependable",
-            "b)  Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion",
-            "c)  Structured, Object-Oriented, Logical, Integrated, Data-driven",
-            "d)  Scalable, Organized, Lightweight, Integrated, Deployable"
-          ],
-          "correctAnswer": "b) Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion"
-        },
-        {
-          "id": "29",
-          "question": "Which programming paradigm emphasizes immutability and pure functions?",
-          "answers": [
-            "a)  Object-Oriented Programming",
-            "b)  Imperative Programming",
-            "c)  Functional Programming",
-            "d)  Procedural Programming"
-          ],
-          "correctAnswer": "c) Functional Programming"
+          "correctAnswer": "East Asia and the Mediterranean"
         }
       ]
     }
