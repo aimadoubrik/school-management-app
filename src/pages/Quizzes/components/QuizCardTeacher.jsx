@@ -75,6 +75,7 @@ const QuizCardTeacher = ({ quiz, onDelete, onEdit, onViewDetails, onAddQuestions
 };
 
 export default QuizCardTeacher;
+//1
 
 
           
