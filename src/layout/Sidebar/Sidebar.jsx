@@ -26,9 +26,7 @@ const rolePermissions = {
   ],
   admin: [
     'Home',
-    'Courses',
     'Attendance',
-    'Schedule',
     'Documents',
     'Demandes',
     'Scheduler',
