@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const ChatbotIframe2 = ({ chatbotId }) => {
+const ChatlingBot = ({ chatbotId }) => {
   useEffect(() => {
     // Set the global configuration
     window.chtlConfig = { chatbotId: chatbotId };
@@ -27,4 +27,4 @@ const ChatbotIframe2 = ({ chatbotId }) => {
   return null; // This component doesn't render anything visible
 };
 
-export default ChatbotIframe2;
+export default ChatlingBot;
