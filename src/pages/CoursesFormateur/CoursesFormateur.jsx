@@ -42,7 +42,9 @@ const CoursesFormateur = () => {
               <th>#</th>
               <th>Module</th>
               <th>Title</th>
+              <th>Nom du formateur</th>
               <th>imageUrl</th>
+              <th>videoUrl</th>
               <th>Download</th>
               <th>Actions</th>
             </tr>
@@ -54,6 +56,7 @@ const CoursesFormateur = () => {
                   <td>{index + 1}</td>
                   <td>{course.Module}</td>
                   <td>{course.courseName}</td>
+                  <td>{course.teacherName}</td>
                   <td>
                     <img
                       src={course.imageUrl}
@@ -61,7 +64,8 @@ const CoursesFormateur = () => {
                       className="w-20 h-auto rounded"
                     />
                   </td>
-                  <td><a href={course.Courses_pdf} >Courses_pdf</a></td>
+                  <td><a href={course.videoLink} >videoUrl</a></td>
+                  <td><a href={course.pdfUrl} >pdfUrl</a></td>
                   <td className="flex gap-2">
                     <button
                       onClick={() => handleUpdateCourse(course.id)}

@@ -15,7 +15,7 @@ const UpdateCourse = () => {
     Module: '',
     courseName: '',
     imageUrl: '',
-    Courses_pdf: null,
+    pdfUrl: null,
   });
 
   const [pdfFile, setPdfFile] = useState(null);
@@ -37,7 +37,7 @@ const UpdateCourse = () => {
   const handleChange = (e) => {
     const { name, value, files } = e.target;
 
-    if (name === 'Courses_pdf' && files[0]) {
+    if (name === 'pdfUrl' && files[0]) {
       setPdfFile(files[0]); // Store file
       const reader = new FileReader();
       reader.onload = (event) => {
@@ -57,7 +57,7 @@ const UpdateCourse = () => {
       ...courseData,
       id: courseId, // Ensure the course ID is sent
       Module: courseData.Module,
-      Courses_pdf: pdfFile ? pdfFile.name : courseData.Courses_pdf, // File name or existing value
+      pdfUrl: pdfFile ? pdfFile.name : courseData.pdfUrl, // File name or existing value
     };
 
     dispatch(updateCourse({ id: courseId, updatedCourse }))
@@ -121,8 +121,8 @@ const UpdateCourse = () => {
           <label className="block font-semibold">Upload PDF</label>
           <input
             type="text"
-            name="Courses_pdf"
-            value={courseData.Courses_pdf}
+            name="pdfUrl"
+            value={courseData.pdfUrl}
             onChange={handleChange}
             className="w-full p-2 rounded border border-gray-300"
           />

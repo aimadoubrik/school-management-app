@@ -13,7 +13,7 @@ const AddCourse = () => {
     Module: '',
     courseName: '',
     imageUrl: '',
-    Courses_pdf: '',
+    pdfUrl: '',
   });
 
   const [pdfFile, setPdfFile] = useState(null);
@@ -51,10 +51,10 @@ const AddCourse = () => {
     doc.text(`Module: ${newCourse.Module}`, 10, 20);
     doc.text(`courseName: ${newCourse.courseName}`, 10, 30);
     doc.text(`imageUrl: ${newCourse.imageUrl}`, 10, 40);
-    doc.text(`Courses_pdf: ${newCourse.Courses_pdf}`, 10, 50);
+    doc.text(`pdfUrl: ${newCourse.pdfUrl}`, 10, 50);
 
     // Reset form and navigate to course list
-    setNewCourse({ courseId: '',Module: '',courseName: '',imageUrl: '',Courses_pdf: ''});
+    setNewCourse({ courseId: '',Module: '',courseName: '',imageUrl: '',pdfUrl: ''});
     setPdfFile(null);
     navigate('/CoursesFormateur');
   };
