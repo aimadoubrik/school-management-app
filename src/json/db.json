@@ -5985,43 +5985,19 @@
   "courses": [
     {
       "id": "1",
-      "coursequizID": "BIO101",
+      "Module":"M101",
       "courseName": "Introduction to Biology",
       "teacherId": "T001",
       "teacherName": "Dr. Alice Johnson",
       "courseDescription": "An introduction to the fundamental principles of biology, covering topics like cell biology, genetics, and ecology.",
-      "credits": 3,
       "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
-      "schedule": "Mon/Wed/Fri 10:00 AM - 11:30 AM",
-      "location": "Room 203, Science Building",
-      "materials": [
-        "Biology 101 Textbook",
-        "Lab Manual"
-      ],
-      "contentOfCourse": [
-        {
-          "contentId": "1",
-          "contentName": "Introduction to Biology",
-          "contentDescription": "An overview of the fundamental concepts of biology, including cell biology, genetics, and ecology."
-        },
-        {
-          "contentId": "2",
-          "contentName": "Lab Safety Guidelines",
-          "contentDescription": "Guidelines for safe and responsible use of laboratory equipment and materials."
-        },
-        {
-          "contentId": "3",
-          "contentName": "Lab Equipment Maintenance",
-          "contentDescription": "Instructions for maintaining and repairing laboratory equipment."
-        }
-      ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
       "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
-      "status": "completed"
     },
     {
       "id": "2",
       "coursequizID": "PHYS101",
+      "Module":"M102",
       "courseName": "Introduction to Physics",
       "teacherId": "T002",
       "teacherName": "Dr. Michael Smith",
@@ -6058,6 +6034,7 @@
     {
       "id": "3",
       "coursequizID": "HIST201",
+      "Module":"M103",
       "courseName": "World History",
       "teacherId": "T003",
       "teacherName": "Dr. Sarah Davis",
@@ -6094,6 +6071,7 @@
     {
       "id": "4",
       "coursequizID": "CHEM101",
+      "Module":"M104",
       "courseName": "General Chemistry",
       "teacherId": "T004",
       "teacherName": "Dr. Emily Zhang",
@@ -6130,6 +6108,7 @@
     {
       "id": "5",
       "coursequizID": "105",
+      "Module":"M105",
       "courseName": "Introduction to Mathematics",
       "teacherId": "T005",
       "teacherName": "Mr. William Lee",
@@ -6166,6 +6145,7 @@
     {
       "id": "6",
       "coursequizID": "106",
+      "Module":"M106",
       "courseName": "Principles of Economics",
       "teacherId": "T006",
       "teacherName": "Dr. Rachel Green",
