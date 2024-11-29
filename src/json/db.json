@@ -223,15 +223,114 @@
           "correctAnswer": "A company's assets, liabilities, and equity at a point in time"
         },
         {
-          "question": "ddd",
+          "id": "6",
+          "question": "What is the primary goal of financial management in a firm?",
           "answers": [
-            "dd",
-            "dd",
-            "ddd",
-            "ddd"
+            "Maximizing market share",
+            "Minimizing expenses",
+            "Maximizing shareholder wealth",
+            "Increasing employee satisfaction"
           ],
-          "correctAnswer": "dd",
-          "id": "1732647698249"
+          "correctAnswer": "Maximizing shareholder wealth"
+        },
+        {
+          "id": "7",
+          "question": "Which of the following is NOT a key area of finance?",
+          "answers": [
+            "Corporate finance",
+            "Investments",
+            "Behavioral finance",
+            "Econometrics"
+          ],
+          "correctAnswer": "Econometrics"
+        },
+        {
+          "id": "8",
+          "question": "The time value of money concept suggests that:",
+          "answers": [
+            "A dollar today is worth less than a dollar tomorrow.",
+            "A dollar today is worth more than a dollar tomorrow.",
+            "A dollar today is worth the same as a dollar tomorrow.",
+            "The value of a dollar fluctuates randomly."
+          ],
+          "correctAnswer": "A dollar today is worth more than a dollar tomorrow."
+        },
+        {
+          "id": "9",
+          "question": "What does the term \"liquidity\" refer to in finance?",
+          "answers": [
+            "The ability of an asset to be quickly converted into cash without significant loss of value.",
+            "The profitability of an asset.",
+            "The risk associated with an asset.",
+            "The growth potential of an asset."
+          ],
+          "correctAnswer": "The ability of an asset to be quickly converted into cash without significant loss of value."
+        },
+        {
+          "id": "10",
+          "question": "Which financial statement shows a company's financial position at a specific point in time?",
+          "answers": [
+            "Income Statement",
+            "Statement of Cash Flows",
+            "Balance Sheet",
+            "Statement of Retained Earnings"
+          ],
+          "correctAnswer": "Balance Sheet"
+        },
+        {
+          "id": "11",
+          "question": "What is the difference between a company's current assets and its current liabilities?",
+          "answers": [
+            "Net Working Capital",
+            "Total Equity",
+            "Long-term Debt",
+            "Gross Profit"
+          ],
+          "correctAnswer": "Net Working Capital"
+        },
+        {
+          "id": "12",
+          "question": "Which of these is a measure of a company's profitability?",
+          "answers": [
+            "Debt-to-Equity Ratio",
+            "Current Ratio",
+            "Return on Equity (ROE)",
+            "Quick Ratio"
+          ],
+          "correctAnswer": "Return on Equity (ROE)"
+        },
+        {
+          "id": "13",
+          "question": "What does NPV stand for in finance?",
+          "answers": [
+            "Net Present Value",
+            "Net Profit Value",
+            "Nominal Present Value",
+            "Net Past Value"
+          ],
+          "correctAnswer": "Net Present Value"
+        },
+        {
+          "id": "14",
+          "question": "Which type of risk is typically diversified away by holding a portfolio of investments?",
+          "answers": [
+            "Systematic Risk",
+            "Unsystematic Risk",
+            "Market Risk",
+            "Inflation Risk"
+          ],
+          "correctAnswer": "Unsystematic Risk"
+        },
+        {
+          "id": "15",
+          "question": "The weighted average cost of capital (WACC) represents:",
+          "answers": [
+            "The average cost of a company's financing.",
+            "The return on equity.",
+            "The return on assets.",
+            "The cost of debt only."
+          ],
+          "correctAnswer": "The average cost of a company's financing."
         }
       ],
       "questionsSelected": [
@@ -256,6 +355,94 @@
             "Reinvestment Option"
           ],
           "correctAnswer": "Return on Investment"
+        },
+        {
+          "id": "3c",
+          "question": "Which of the following is a liability?",
+          "answers": [
+            "Accounts receivable",
+            "Accounts payable",
+            "Cash",
+            "Inventory"
+          ],
+          "correctAnswer": "Accounts payable"
+        },
+        {
+          "id": "4d",
+          "question": "What is the formula for calculating net profit?",
+          "answers": [
+            "Revenue - Expenses",
+            "Revenue + Expenses",
+            "Revenue - Cost of Goods Sold",
+            "Total Assets - Liabilities"
+          ],
+          "correctAnswer": "Revenue - Expenses"
+        },
+        {
+          "id": "7",
+          "question": "Which of the following is NOT a key area of finance?",
+          "answers": [
+            "Corporate finance",
+            "Investments",
+            "Behavioral finance",
+            "Econometrics"
+          ],
+          "correctAnswer": "Econometrics"
+        },
+        {
+          "id": "9",
+          "question": "What does the term \"liquidity\" refer to in finance?",
+          "answers": [
+            "The ability of an asset to be quickly converted into cash without significant loss of value.",
+            "The profitability of an asset.",
+            "The risk associated with an asset.",
+            "The growth potential of an asset."
+          ],
+          "correctAnswer": "The ability of an asset to be quickly converted into cash without significant loss of value."
+        },
+        {
+          "id": "11",
+          "question": "What is the difference between a company's current assets and its current liabilities?",
+          "answers": [
+            "Net Working Capital",
+            "Total Equity",
+            "Long-term Debt",
+            "Gross Profit"
+          ],
+          "correctAnswer": "Net Working Capital"
+        },
+        {
+          "id": "12",
+          "question": "Which of these is a measure of a company's profitability?",
+          "answers": [
+            "Debt-to-Equity Ratio",
+            "Current Ratio",
+            "Return on Equity (ROE)",
+            "Quick Ratio"
+          ],
+          "correctAnswer": "Return on Equity (ROE)"
+        },
+        {
+          "id": "13",
+          "question": "What does NPV stand for in finance?",
+          "answers": [
+            "Net Present Value",
+            "Net Profit Value",
+            "Nominal Present Value",
+            "Net Past Value"
+          ],
+          "correctAnswer": "Net Present Value"
+        },
+        {
+          "id": "14",
+          "question": "Which type of risk is typically diversified away by holding a portfolio of investments?",
+          "answers": [
+            "Systematic Risk",
+            "Unsystematic Risk",
+            "Market Risk",
+            "Inflation Risk"
+          ],
+          "correctAnswer": "Unsystematic Risk"
         }
       ],
       "id": "f4dc"
@@ -1800,9 +1987,340 @@
             "The signing of the Treaty of Versailles"
           ],
           "correctAnswer": "The invasion of Poland"
+        },
+        {
+          "id": "21",
+          "question": "Which of the following is NOT a core principle of object-oriented programming?",
+          "answers": [
+            "a) Encapsulation",
+            "b) Polymorphism",
+            "c) Sequential Processing",
+            "d) Inheritance"
+          ],
+          "correctAnswer": "c) Sequential Processing"
+        },
+        {
+          "id": "22",
+          "question": "What does the acronym DRY stand for in software development principles?",
+          "answers": [
+            "a)  Develop Repeatedly, Yield",
+            "b)  Don't Repeat Yourself",
+            "c)  Define, Refactor, Yield",
+            "d)  Data Retrieval, Yield"
+          ],
+          "correctAnswer": "b) Don't Repeat Yourself"
+        },
+        {
+          "id": "23",
+          "question": "Which design pattern promotes loose coupling by using interfaces or abstract classes?",
+          "answers": [
+            "a)  Singleton",
+            "b)  Factory",
+            "c)  Observer",
+            "d)  Strategy"
+          ],
+          "correctAnswer": "d) Strategy"
+        },
+        {
+          "id": "24",
+          "question": "What is a common characteristic of a well-designed API?",
+          "answers": [
+            "a)  Complex implementation details exposed to the user",
+            "b)  Tight coupling between components",
+            "c)  Easy to understand and use",
+            "d)  Limited functionality"
+          ],
+          "correctAnswer": "c) Easy to understand and use"
+        },
+        {
+          "id": "25",
+          "question": "What is the purpose of version control systems like Git?",
+          "answers": [
+            "a)  To prevent software bugs",
+            "b)  To manage and track changes to code",
+            "c)  To compile code into executables",
+            "d)  To write documentation"
+          ],
+          "correctAnswer": "b) To manage and track changes to code"
+        },
+        {
+          "id": "26",
+          "question": "Which type of testing focuses on individual units of code?",
+          "answers": [
+            "a)  Integration testing",
+            "b)  System testing",
+            "c)  Unit testing",
+            "d)  Acceptance testing"
+          ],
+          "correctAnswer": "c) Unit testing"
+        },
+        {
+          "id": "27",
+          "question": "What does SOLID stand for in software design principles?",
+          "answers": [
+            "a)  Simple, Organized, Logical, Integrated, Dependable",
+            "b)  Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion",
+            "c)  Structured, Object-Oriented, Logical, Integrated, Data-driven",
+            "d)  Scalable, Organized, Lightweight, Integrated, Deployable"
+          ],
+          "correctAnswer": "b) Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion"
+        },
+        {
+          "id": "28",
+          "question": "What is a common use case for a queue data structure?",
+          "answers": [
+            "a)  Storing data in a key-value pair",
+            "b)  Managing tasks in a first-in, first-out (FIFO) manner",
+            "c)  Representing hierarchical relationships",
+            "d)  Storing data in sorted order"
+          ],
+          "correctAnswer": "b) Managing tasks in a first-in, first-out (FIFO) manner"
+        },
+        {
+          "id": "29",
+          "question": "Which programming paradigm emphasizes immutability and pure functions?",
+          "answers": [
+            "a)  Object-Oriented Programming",
+            "b)  Imperative Programming",
+            "c)  Functional Programming",
+            "d)  Procedural Programming"
+          ],
+          "correctAnswer": "c) Functional Programming"
+        },
+        {
+          "id": "30",
+          "question": "What is a potential benefit of using design patterns?",
+          "answers": [
+            "a)  Increased code complexity",
+            "b)  Reduced code reusability",
+            "c)  Improved code readability and maintainability",
+            "d)  Slower development time"
+          ],
+          "correctAnswer": "c) Improved code readability and maintainability"
         }
       ],
-      "questionsSelected": []
+      "questionsSelected": [
+        {
+          "id": "1",
+          "question": "Which of the following is NOT a core principle of object-oriented programming?",
+          "answers": [
+            "Encapsulation",
+            "Polymorphism",
+            "Sequential Processing",
+            "Inheritance"
+          ],
+          "correctAnswer": "Sequential Processing"
+        },
+        {
+          "id": "2",
+          "question": "What does the acronym \"OOP\" stand for in the context of programming?",
+          "answers": [
+            "Out Of Place",
+            "Object-Oriented Programming",
+            "Open-ended Procedure",
+            "Ordered Output Protocol"
+          ],
+          "correctAnswer": "Object-Oriented Programming"
+        },
+        {
+          "id": "3",
+          "question": "A class is defined as:",
+          "answers": [
+            "An instance of an object",
+            "A blueprint for creating objects",
+            "A specific type of data structure",
+            "A method within an object"
+          ],
+          "correctAnswer": "A blueprint for creating objects"
+        },
+        {
+          "id": "4",
+          "question": "What is method overloading?",
+          "answers": [
+            "Defining multiple methods with the same name but different return types.",
+            "Defining multiple methods with the same name and the same parameters.",
+            "Defining multiple methods with the same name but different parameter lists.",
+            "Defining multiple methods with different names but the same functionality."
+          ],
+          "correctAnswer": "Defining multiple methods with the same name but different parameter lists."
+        },
+        {
+          "id": "5",
+          "question": "Inheritance in OOP allows for:",
+          "answers": [
+            "Data hiding",
+            "Code reusability",
+            "Polymorphic errors",
+            "Overloading methods"
+          ],
+          "correctAnswer": "Code reusability"
+        },
+        {
+          "id": "6",
+          "question": "Encapsulation is achieved through:",
+          "answers": [
+            "Publicly accessible data members",
+            "Private and protected access modifiers",
+            "Inheritance mechanisms",
+            "Polymorphic functions"
+          ],
+          "correctAnswer": "Private and protected access modifiers"
+        },
+        {
+          "id": "8",
+          "question": "What is an abstract class?",
+          "answers": [
+            "A class that cannot be instantiated.",
+            "A class that has only abstract methods.",
+            "A class that has no methods.",
+            "A class that cannot be inherited from."
+          ],
+          "correctAnswer": "A class that cannot be instantiated."
+        },
+        {
+          "id": "9",
+          "question": "What is the purpose of a constructor in a class?",
+          "answers": [
+            "To destroy an object",
+            "To initialize an object",
+            "To define the class's methods",
+            "To inherit from another class"
+          ],
+          "correctAnswer": "To initialize an object"
+        },
+        {
+          "id": "10",
+          "question": "Which concept describes the ability of a single method to handle different types of objects?",
+          "answers": [
+            "Encapsulation",
+            "Abstraction",
+            "Polymorphism",
+            "Inheritance"
+          ],
+          "correctAnswer": "Polymorphism"
+        },
+        {
+          "id": "11",
+          "question": "Which empire is credited with the construction of the Great Wall of China?",
+          "answers": [
+            "Qin Dynasty",
+            "Han Dynasty",
+            "Sui Dynasty",
+            "Tang Dynasty"
+          ],
+          "correctAnswer": "Qin Dynasty"
+        },
+        {
+          "id": "12",
+          "question": "The Renaissance is considered to have begun in which Italian city-state?",
+          "answers": [
+            "Venice",
+            "Florence",
+            "Rome",
+            "Milan"
+          ],
+          "correctAnswer": "Florence"
+        },
+        {
+          "id": "13",
+          "question": "The Protestant Reformation is most associated with which historical figure?",
+          "answers": [
+            "Leonardo da Vinci",
+            "Martin Luther",
+            "Michelangelo",
+            "Niccolò Machiavelli"
+          ],
+          "correctAnswer": "Martin Luther"
+        },
+        {
+          "id": "15",
+          "question": "The Cold War was primarily a geopolitical struggle between which two superpowers?",
+          "answers": [
+            "United States and China",
+            "Soviet Union and Great Britain",
+            "United States and Soviet Union",
+            "Great Britain and France"
+          ],
+          "correctAnswer": "United States and Soviet Union"
+        },
+        {
+          "id": "16",
+          "question": "The Neolithic Revolution is characterized by the development of:",
+          "answers": [
+            "Metalworking",
+            "Writing systems",
+            "Agriculture",
+            "Democracy"
+          ],
+          "correctAnswer": "Agriculture"
+        },
+        {
+          "id": "20",
+          "question": "Which event is widely considered to be the start of World War II?",
+          "answers": [
+            "The assassination of Archduke Franz Ferdinand",
+            "The invasion of Poland",
+            "The bombing of Pearl Harbor",
+            "The signing of the Treaty of Versailles"
+          ],
+          "correctAnswer": "The invasion of Poland"
+        },
+        {
+          "id": "22",
+          "question": "What does the acronym DRY stand for in software development principles?",
+          "answers": [
+            "a)  Develop Repeatedly, Yield",
+            "b)  Don't Repeat Yourself",
+            "c)  Define, Refactor, Yield",
+            "d)  Data Retrieval, Yield"
+          ],
+          "correctAnswer": "b) Don't Repeat Yourself"
+        },
+        {
+          "id": "23",
+          "question": "Which design pattern promotes loose coupling by using interfaces or abstract classes?",
+          "answers": [
+            "a)  Singleton",
+            "b)  Factory",
+            "c)  Observer",
+            "d)  Strategy"
+          ],
+          "correctAnswer": "d) Strategy"
+        },
+        {
+          "id": "25",
+          "question": "What is the purpose of version control systems like Git?",
+          "answers": [
+            "a)  To prevent software bugs",
+            "b)  To manage and track changes to code",
+            "c)  To compile code into executables",
+            "d)  To write documentation"
+          ],
+          "correctAnswer": "b) To manage and track changes to code"
+        },
+        {
+          "id": "27",
+          "question": "What does SOLID stand for in software design principles?",
+          "answers": [
+            "a)  Simple, Organized, Logical, Integrated, Dependable",
+            "b)  Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion",
+            "c)  Structured, Object-Oriented, Logical, Integrated, Data-driven",
+            "d)  Scalable, Organized, Lightweight, Integrated, Deployable"
+          ],
+          "correctAnswer": "b) Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion"
+        },
+        {
+          "id": "29",
+          "question": "Which programming paradigm emphasizes immutability and pure functions?",
+          "answers": [
+            "a)  Object-Oriented Programming",
+            "b)  Imperative Programming",
+            "c)  Functional Programming",
+            "d)  Procedural Programming"
+          ],
+          "correctAnswer": "c) Functional Programming"
+        }
+      ]
     }
   ],
   "filieres": [
@@ -5499,7 +6017,7 @@
       ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
       "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
-      "status": "active"
+      "status": "completed"
     },
     {
       "id": "2",
