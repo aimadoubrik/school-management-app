@@ -67,12 +67,13 @@ const AllQuestions = () => {
     const selectedCount = selectedQuestions.length;
     if (selectedCount === 0) return;
 
-    const confirmationMessage = `Are you sure you want to delete ${selectedCount === 1
-      ? 'this question'
-      : selectedCount === questions.length
-        ? 'all questions'
-        : `these ${selectedCount} questions`
-      }?`;
+    const confirmationMessage = `Are you sure you want to delete ${
+      selectedCount === 1
+        ? 'this question'
+        : selectedCount === questions.length
+          ? 'all questions'
+          : `these ${selectedCount} questions`
+    }?`;
 
     if (!window.confirm(confirmationMessage)) return;
 
@@ -101,11 +102,12 @@ const AllQuestions = () => {
       setSelectAll(false);
 
       alert(
-        `Successfully deleted ${selectedCount === 1
-          ? 'the question'
-          : selectedCount === questions.length
-            ? 'all questions'
-            : `${selectedCount} questions`
+        `Successfully deleted ${
+          selectedCount === 1
+            ? 'the question'
+            : selectedCount === questions.length
+              ? 'all questions'
+              : `${selectedCount} questions`
         }`
       );
     } catch (error) {
@@ -356,4 +358,3 @@ const AllQuestions = () => {
 };
 
 export default AllQuestions;
-

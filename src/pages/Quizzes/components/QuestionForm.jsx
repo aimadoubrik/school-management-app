@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { PlusCircle, X } from 'lucide-react';
 
 const QuestionForm = ({ initialQuestion, onSubmit, onCancel }) => {
-  const [question, setQuestion] = useState(initialQuestion || {
-    question: '',
-    answers: ['', '', '', ''],
-    correctAnswer: '',
-  });
+  const [question, setQuestion] = useState(
+    initialQuestion || {
+      question: '',
+      answers: ['', '', '', ''],
+      correctAnswer: '',
+    }
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,7 +20,7 @@ const QuestionForm = ({ initialQuestion, onSubmit, onCancel }) => {
   const validateForm = () => {
     return (
       question.question.trim() !== '' &&
-      question.answers.every(answer => answer.trim() !== '') &&
+      question.answers.every((answer) => answer.trim() !== '') &&
       question.correctAnswer.trim() !== ''
     );
   };
@@ -65,11 +67,7 @@ const QuestionForm = ({ initialQuestion, onSubmit, onCancel }) => {
         <button type="button" onClick={onCancel} className="btn btn-ghost">
           Cancel
         </button>
-        <button
-          type="submit"
-          className="btn btn-primary"
-          disabled={!validateForm()}
-        >
+        <button type="submit" className="btn btn-primary" disabled={!validateForm()}>
           <PlusCircle className="w-4 h-4 mr-2" />
           {initialQuestion ? 'Update' : 'Add'} Question
         </button>
@@ -79,4 +77,3 @@ const QuestionForm = ({ initialQuestion, onSubmit, onCancel }) => {
 };
 
 export default QuestionForm;
-

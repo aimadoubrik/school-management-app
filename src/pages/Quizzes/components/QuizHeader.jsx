@@ -13,4 +13,3 @@ const QuizHeader = ({ courseName, quizId, Deadline }) => (
 );
 
 export default QuizHeader;
-

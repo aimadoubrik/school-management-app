@@ -8,12 +8,12 @@ const Tile = ({ tile, onClick }) => {
   const handleMouseLeave = () => setIsHovered(false);
 
   return (
-    <div 
+    <div
       className="perspective-500 w-full h-full"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div 
+      <div
         className={`
           relative 
           w-full 
@@ -27,7 +27,7 @@ const Tile = ({ tile, onClick }) => {
         `}
       >
         {/* Front of the card */}
-        <div 
+        <div
           className={`
             absolute 
             inset-0 
@@ -48,7 +48,7 @@ const Tile = ({ tile, onClick }) => {
             duration-300
           `}
         >
-          <div 
+          <div
             className={`
               p-3 
               rounded-full 
@@ -58,16 +58,13 @@ const Tile = ({ tile, onClick }) => {
               ${isHovered ? 'bg-primary text-primary-content' : 'bg-base-200 text-base-content'}
             `}
           >
-            <tile.Icon 
-              className="w-10 h-10 transition-transform duration-300"
-              strokeWidth={1.5} 
-            />
+            <tile.Icon className="w-10 h-10 transition-transform duration-300" strokeWidth={1.5} />
           </div>
           <h3 className="text-lg font-semibold">{tile.title}</h3>
         </div>
 
         {/* Back of the card */}
-        <div 
+        <div
           className={`
             absolute 
             inset-0 
@@ -89,10 +86,8 @@ const Tile = ({ tile, onClick }) => {
             duration-300
           `}
         >
-          <p className="text-base-content mb-4 line-clamp-3">
-            {tile.description}
-          </p>
-          <button 
+          <p className="text-base-content mb-4 line-clamp-3">{tile.description}</p>
+          <button
             className="btn btn-primary btn-sm"
             onClick={(e) => {
               e.stopPropagation();
@@ -112,9 +107,9 @@ Tile.propTypes = {
     title: PropTypes.string.isRequired,
     Icon: PropTypes.elementType.isRequired,
     description: PropTypes.string,
-    category: PropTypes.string
+    category: PropTypes.string,
   }).isRequired,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 
 Tile.defaultProps = {

@@ -77,10 +77,7 @@ const UploadQuestions = ({ quizId, onQuestionsUploaded }) => {
   };
 
   return (
-    <button
-      onClick={handleUploadQuestions}
-      className="btn btn-outline btn-success btn-sm gap-2"
-    >
+    <button onClick={handleUploadQuestions} className="btn btn-outline btn-success btn-sm gap-2">
       <Upload className="w-4 h-4" />
       Upload Questions
     </button>
@@ -88,4 +85,3 @@ const UploadQuestions = ({ quizId, onQuestionsUploaded }) => {
 };
 
 export default UploadQuestions;
-

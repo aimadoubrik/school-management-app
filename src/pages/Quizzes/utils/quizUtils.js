@@ -54,4 +54,3 @@ export const formatDeadline = (deadline) => {
     return 'Invalid date';
   }
 };
-

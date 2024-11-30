@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Brain } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { BASE_URL } from '../utils/quizUtils';
 
@@ -25,7 +25,7 @@ const AIQuestionGenerator = ({ quizId, onQuestionsGenerated }) => {
 
   const apiKey = 'AIzaSyAcdlS5nhIFfLN_hYjdk5g14ZwDgREmduI';
   const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
   const generateQuestionId = (index) => {
     return `${index + 1}`;
@@ -33,35 +33,36 @@ const AIQuestionGenerator = ({ quizId, onQuestionsGenerated }) => {
 
   const parseGeneratedText = (responseText) => {
     const questionBlocks = responseText.split('\n\n');
-    
-    return questionBlocks.map(block => {
-        const lines = block.split('\n').filter(line => line.trim());
+
+    return questionBlocks
+      .map((block) => {
+        const lines = block.split('\n').filter((line) => line.trim());
         if (lines.length < 6) return null;
-        
-        const question = lines[0]
-            .trim()
-            .replace(/^\d+\.\s*/, ''); 
-        
-        const answers = lines.slice(1, 5)
-            .map(line => line.trim())
-            .map(line => line.replace(/^[A-Z]\.\s*/i, '')) 
-            .filter(answer => answer !== '' && answer.length > 0);
-        
+
+        const question = lines[0].trim().replace(/^\d+\.\s*/, '');
+
+        const answers = lines
+          .slice(1, 5)
+          .map((line) => line.trim())
+          .map((line) => line.replace(/^[A-Z]\.\s*/i, ''))
+          .filter((answer) => answer !== '' && answer.length > 0);
+
         const correctAnswer = lines[5]
-            .trim()
-            .replace(/^Correct Answer:\s*/i, '')
-            .replace(/^[A-Z]\.\s*/i, ''); 
-        
+          .trim()
+          .replace(/^Correct Answer:\s*/i, '')
+          .replace(/^[A-Z]\.\s*/i, '');
+
         while (answers.length < 4) {
-            answers.push(`Option ${answers.length + 1}`);
+          answers.push(`Option ${answers.length + 1}`);
         }
-        
+
         return {
-            question,
-            answers: answers.slice(0, 4),
-            correctAnswer,
+          question,
+          answers: answers.slice(0, 4),
+          correctAnswer,
         };
-    }).filter(q => q !== null);
+      })
+      .filter((q) => q !== null);
   };
 
   const generateQuestions = async (e) => {
@@ -97,7 +98,7 @@ const AIQuestionGenerator = ({ quizId, onQuestionsGenerated }) => {
       const result = await chatSession.sendMessage(prompt);
       const responseText = await result.response.text();
 
-      console.log("API Response:", responseText);
+      console.log('API Response:', responseText);
 
       const parsedQuestions = parseGeneratedText(responseText);
 
@@ -125,7 +126,7 @@ const AIQuestionGenerator = ({ quizId, onQuestionsGenerated }) => {
 
         onQuestionsGenerated(updatedQuestions);
         console.log('Generated Questions:', newQuestions);
-        
+
         setTopic(quiz?.courseName || '');
       } else {
         setError('Failed to parse the generated text. Please try again.');
@@ -144,12 +145,10 @@ const AIQuestionGenerator = ({ quizId, onQuestionsGenerated }) => {
       className="btn btn-outline btn-secondary btn-sm gap-2"
       disabled={loading}
     >
-      <Brain className="w-4 h-4" />
+      <Sparkles className="w-4 h-4" />
       {loading ? 'Generating...' : 'Generate AI Questions'}
     </button>
   );
 };
 
 export default AIQuestionGenerator;
-
-

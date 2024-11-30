@@ -9,7 +9,7 @@ import {
   TrendingUp,
   HelpCircle,
   FilePlus,
-  Zap
+  Zap,
 } from 'lucide-react';
 import { getUserFromStorage } from '../../../utils';
 
@@ -25,125 +25,125 @@ const QuickActions = () => {
           category: 'management',
           title: 'Manage Users',
           Icon: Users,
-          description: 'Add, edit, or remove platform users'
+          description: 'Add, edit, or remove platform users',
         },
         {
           category: 'analytics',
           title: 'System Analytics',
           Icon: TrendingUp,
-          description: 'View comprehensive platform metrics'
+          description: 'View comprehensive platform metrics',
         },
         {
           category: 'content',
           title: 'Create Content',
           Icon: FilePlus,
-          description: 'Develop new training materials'
+          description: 'Develop new training materials',
         },
         {
           category: 'learning',
           title: 'Random Quiz',
           Icon: MessageCircleQuestion,
-          description: 'Generate a random knowledge check'
-        }
+          description: 'Generate a random knowledge check',
+        },
       ],
-      'admin': [
+      admin: [
         {
           category: 'management',
           title: 'User Management',
           Icon: UserPlus,
-          description: 'Manage team members and roles'
+          description: 'Manage team members and roles',
         },
         {
           category: 'learning',
           title: 'Course Library',
           Icon: BookOpen,
-          description: 'Browse and manage training courses'
+          description: 'Browse and manage training courses',
         },
         {
           category: 'tools',
           title: 'Search',
           Icon: Search,
-          description: 'Find users, courses, or resources'
+          description: 'Find users, courses, or resources',
         },
         {
           category: 'learning',
           title: 'Random Quiz',
           Icon: MessageCircleQuestion,
-          description: 'Generate a quick assessment'
-        }
+          description: 'Generate a quick assessment',
+        },
       ],
-      'trainer': [
+      trainer: [
         {
           category: 'content',
           title: 'Create Course',
           Icon: FilePlus,
-          description: 'Design a new training module'
+          description: 'Design a new training module',
         },
         {
           category: 'analytics',
           title: 'Track Progress',
           Icon: TrendingUp,
-          description: 'View learner performance'
+          description: 'View learner performance',
         },
         {
           category: 'learning',
           title: 'Random Quiz',
           Icon: MessageCircleQuestion,
-          description: 'Generate a knowledge check'
+          description: 'Generate a knowledge check',
         },
         {
           category: 'support',
           title: 'Help Center',
           Icon: HelpCircle,
-          description: 'Access trainer resources'
-        }
+          description: 'Access trainer resources',
+        },
       ],
-      'trainee': [
+      trainee: [
         {
           category: 'learning',
           title: 'My Courses',
           Icon: BookOpen,
-          description: 'Continue your learning path'
+          description: 'Continue your learning path',
         },
         {
           category: 'learning',
           title: 'Random Quiz',
           Icon: MessageCircleQuestion,
-          description: 'Test your knowledge'
+          description: 'Test your knowledge',
         },
         {
           category: 'tools',
           title: 'Search Courses',
           Icon: Search,
-          description: 'Find new learning opportunities'
+          description: 'Find new learning opportunities',
         },
         {
           category: 'support',
           title: 'Help Center',
           Icon: HelpCircle,
-          description: 'Get support and guidance'
-        }
+          description: 'Get support and guidance',
+        },
       ],
-      'default': [
+      default: [
         {
           category: 'learning',
           title: 'Random Quiz',
           Icon: MessageCircleQuestion,
-          description: 'Generate a quick challenge'
+          description: 'Generate a quick challenge',
         },
         {
           category: 'tools',
           title: 'Search',
           Icon: Search,
-          description: 'Find resources'
+          description: 'Find resources',
         },
         {
           category: 'support',
           title: 'Help Center',
           Icon: HelpCircle,
-          description: 'Get assistance'
-        }
-      ]
+          description: 'Get assistance',
+        },
+      ],
     };
 
     return roleTiles[role] || roleTiles['default'];

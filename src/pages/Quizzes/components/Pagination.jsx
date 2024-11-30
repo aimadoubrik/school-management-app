@@ -18,4 +18,3 @@ const Pagination = ({ currentPage, totalPages, onPrevious, onNext }) => (
 );
 
 export default Pagination;
-

@@ -3,13 +3,15 @@ import { BookOpen, User, Calendar, Settings } from 'lucide-react';
 
 const QuizForm = ({ initialQuiz, courses, onSubmit, onCancel }) => {
   const user = JSON.parse(localStorage.getItem('user') || sessionStorage.getItem('user') || '{}');
-  const [quiz, setQuiz] = useState(initialQuiz || {
-    courseName: '',
-    coursequizID: '',
-    teacherName: user?.name || '',
-    Deadline: '',
-    status: '',
-  });
+  const [quiz, setQuiz] = useState(
+    initialQuiz || {
+      courseName: '',
+      coursequizID: '',
+      teacherName: user?.name || '',
+      Deadline: '',
+      status: '',
+    }
+  );
 
   const [errors, setErrors] = useState({});
 
@@ -43,7 +45,7 @@ const QuizForm = ({ initialQuiz, courses, onSubmit, onCancel }) => {
         <select
           value={quiz.coursequizID}
           onChange={(e) => {
-            const selectedCourse = courses.find(course => course.coursequizID === e.target.value);
+            const selectedCourse = courses.find((course) => course.coursequizID === e.target.value);
             setQuiz({
               ...quiz,
               coursequizID: e.target.value,
@@ -75,11 +77,11 @@ const QuizForm = ({ initialQuiz, courses, onSubmit, onCancel }) => {
           </span>
         </label>
         <input
-    type="text"
-    value={initialQuiz ? initialQuiz.teacherName : user?.name || ''}
-    className={`input input-bordered w-full ${errors.teacherName ? 'input-error' : ''}`}
-    readOnly
-  />
+          type="text"
+          value={initialQuiz ? initialQuiz.teacherName : user?.name || ''}
+          className={`input input-bordered w-full ${errors.teacherName ? 'input-error' : ''}`}
+          readOnly
+        />
         {errors.teacherName && (
           <label className="label">
             <span className="label-text-alt text-error">{errors.teacherName}</span>
@@ -145,4 +147,3 @@ const QuizForm = ({ initialQuiz, courses, onSubmit, onCancel }) => {
 };
 
 export default QuizForm;
-

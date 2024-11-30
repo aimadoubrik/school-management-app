@@ -9,7 +9,6 @@ function HomePage() {
       <QuickActions />
       <ChatlingBot chatbotId="9718397947" />
     </div>
-    
   );
 }
 

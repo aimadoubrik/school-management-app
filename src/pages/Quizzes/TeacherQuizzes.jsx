@@ -205,4 +205,3 @@ const TeacherQuizzes = () => {
 };
 
 export default TeacherQuizzes;
-

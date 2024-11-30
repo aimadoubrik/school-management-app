@@ -167,4 +167,3 @@ const QuizQuestions = () => {
 };
 
 export default QuizQuestions;
-
