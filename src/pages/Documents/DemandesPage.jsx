@@ -65,7 +65,7 @@ const DemandesPage = () => {
         <div className="flex flex-col items-center bg-yellow-100 dark:bg-base-300 dark:text-yellow-100 text-yellow-600 p-6 rounded-xl shadow-lg hover:scale-105 transition-transform">
           <Clock className="h-8 w-8 mb-2" />
           <span className="font-semibold text-lg">Demandes en cours</span>
-          <span className="text-2xl font-bold">{demandes.filter((d) => d.status === 'encours').length}</span>
+          <span className="text-2xl font-bold">{demandes.filter((d) => d.status === 'en cours').length}</span>
         </div>
         <div className="flex flex-col items-center bg-red-100 dark:bg-red-600 dark:text-red-100 text-red-600 p-6 rounded-xl shadow-lg hover:scale-105 transition-transform">
           <X className="h-8 w-8 mb-2" />
@@ -75,7 +75,7 @@ const DemandesPage = () => {
         <div className="flex flex-col items-center bg-green-100 dark:bg-green-600 dark:text-green-100 text-green-600 p-6 rounded-xl shadow-lg hover:scale-105 transition-transform">
           <Check className="h-8 w-8 mb-2" />
           <span className="font-semibold text-lg">Demandes acceptées</span>
-          <span className="text-2xl font-bold">{demandes.filter((d) => d.status === 'accepter').length}</span>
+          <span className="text-2xl font-bold">{demandes.filter((d) => d.status === 'effectuer').length}</span>
         </div>
       </div>
 
@@ -192,8 +192,8 @@ const DemandesPage = () => {
               value={tempStatus}
               onChange={(e) => setTempStatus(e.target.value)}
             >
-              <option value="">Choisir le statut</option>
-              <option value="encours">En Cours</option>
+              <option value="" disabled selected>Choisir le statut</option>
+              <option value="en cours">En Cours</option>
               <option value="effectuer">Effectuer</option>
               <option value="rejeter">Rejeter</option>
             </select>
