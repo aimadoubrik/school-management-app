@@ -20,6 +20,7 @@ export { default as GroupesPage } from './Groupes/GroupesPage';
 export { default as Formateur } from './formateur/formateur';
 export { default as AllQuestions } from './Quizzes/AllQuestions';
 export { default as QuizQuestions } from './Quizzes/QuizQuestions';
+export { default as QuizAnalyze } from './Quizzes/QuizAnalyze';
 export { default as TeacherQuizzes } from './Quizzes/TeacherQuizzes';
 export { default as SecteursPage } from './secteurs/SecteursPage';
 export { default as SchedulerPage } from './Scheduler/SchedulerPage';
