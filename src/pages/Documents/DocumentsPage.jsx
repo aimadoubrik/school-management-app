@@ -25,35 +25,54 @@ const DocumentsPage = () => {
     const { demandes, loading: demandesLoading, error: demandesError } = useSelector((state) => state.demandes);
     const user = getUserFromStorage('user');
 
-    // Optimize state management
+    // State Management
     const [selectedDocument, setSelectedDocument] = useState(null);
     const [requestDate, setRequestDate] = useState('');
     const [files, setFiles] = useState([]);
     const [dateFilter, setDateFilter] = useState('');
+    const [searchFilter, setSearchFilter] = useState('');
+    const [statusFilter, setStatusFilter] = useState('');
     const [alerts, setAlerts] = useState({ success: false, error: null });
     const [dragActive, setDragActive] = useState(false);
     const [loading, setLoading] = useState(false);
     const [activeTab, setActiveTab] = useState('new-request');
+    const [viewModal, setViewModal] = useState({ isOpen: false, demande: null });
+    const [deleteModal, setDeleteModal] = useState({ isOpen: false, demandeId: null });
 
-    // Memoized filtered demandes to prevent unnecessary re-renders
+    // Memoized filtered demandes
     const filteredDemandes = useMemo(() => {
-        return demandes
-            ? demandes.filter((demande) => demande.user === user?.name)
-            : [];
-    }, [demandes, user?.name]);
+        let filtered = demandes ? demandes.filter((demande) => demande.user === user?.name) : [];
 
-    // Optimize dispatch calls with useCallback
+        if (searchFilter) {
+            filtered = filtered.filter(
+                (demande) =>
+                    demande.document.toLowerCase().includes(searchFilter.toLowerCase()) ||
+                    demande.description.toLowerCase().includes(searchFilter.toLowerCase())
+            );
+        }
+
+        if (dateFilter) {
+            filtered = filtered.filter((demande) => demande.requestDate === dateFilter);
+        }
+
+        if (statusFilter) {
+            filtered = filtered.filter((demande) => demande.status === statusFilter);
+        }
+
+        return filtered;
+    }, [demandes, user?.name, searchFilter, dateFilter, statusFilter]);
+
+    // Initialize page data
     const initializePage = useCallback(() => {
         dispatch(fetchDocuments());
         dispatch(fetchDemandes());
     }, [dispatch]);
 
-    // Use useEffect with proper dependency management
     useEffect(() => {
         initializePage();
     }, [initializePage]);
 
-    // Memoized file validation
+    // File validation
     const validateAndSetFiles = useCallback((selectedFiles) => {
         const validTypes = ['application/pdf', 'image/jpeg', 'image/png'];
         const validFiles = selectedFiles.filter(
@@ -70,11 +89,12 @@ const DocumentsPage = () => {
         setFiles(validFiles);
     }, []);
 
-    // Handlers with useCallback to prevent unnecessary re-renders
+    // Handlers
     const handleDocumentSelect = useCallback((doc) => {
         setSelectedDocument(doc);
         setFiles([]);
         setRequestDate('');
+        setAlerts({ success: false, error: null });
     }, []);
 
     const handleFileChange = useCallback((e) => {
@@ -88,6 +108,12 @@ const DocumentsPage = () => {
         setDragActive(true);
     }, []);
 
+    const handleDragLeave = useCallback((e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setDragActive(false);
+    }, []);
+
     const handleDrop = useCallback((e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -99,7 +125,10 @@ const DocumentsPage = () => {
 
     const handleSubmit = useCallback(async (e) => {
         e.preventDefault();
-        if (!selectedDocument) return;
+        if (!selectedDocument || !requestDate || files.length === 0) {
+            setAlerts((prev) => ({ ...prev, error: 'Please fill in all required fields and upload files.' }));
+            return;
+        }
 
         const newRequest = {
             document: selectedDocument.name,
@@ -117,6 +146,7 @@ const DocumentsPage = () => {
         };
 
         try {
+            setLoading(true);
             const response = await fetch('http://localhost:3000/demandes', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -132,14 +162,23 @@ const DocumentsPage = () => {
             dispatch(fetchDemandes());
         } catch (error) {
             setAlerts((prev) => ({ ...prev, error: error.message }));
+        } finally {
+            setLoading(false);
         }
     }, [selectedDocument, requestDate, files, user, dispatch]);
 
-    
-
-    const handleDelete = useCallback((demandeId) => {
-        dispatch(deleteDemande(demandeId));
-    }, [dispatch]);
+    const handleDelete = useCallback(async () => {
+        try {
+            setLoading(true);
+            await dispatch(deleteDemande(deleteModal.demandeId)).unwrap();
+            setDeleteModal({ isOpen: false, demandeId: null });
+            dispatch(fetchDemandes());
+        } catch (error) {
+            setAlerts((prev) => ({ ...prev, error: error.message }));
+        } finally {
+            setLoading(false);
+        }
+    }, [dispatch, deleteModal.demandeId]);
 
     const StatusBadge = ({ status }) => {
         const statusColors = {
@@ -156,278 +195,355 @@ const DocumentsPage = () => {
     };
 
     return (
-        <div className="min-h-screen p-8">
-            <div className="container mx-auto">
-                {/* Header */}
-                <div className="flex justify-between items-center mb-8">
-                    <h1 className="text-3xl font-bold flex items-center">
-                        <FileText className="mr-3 text-blue-600" size={32} />
-                        Document Requests
-                    </h1>
-                    <div className="flex space-x-4">
-                        <button
-                            onClick={() => setActiveTab('new-request')}
-                            className={`px-4 py-2 rounded-lg flex items-center ${activeTab === 'new-request'
-                                    ? 'bg-blue-600 text-white'
-                                    : 'bg-gray-200 text-gray-700  dark:bg-gray-800 dark:text-white'
-                                }`}
-                        >
-                            <FilePlus className="mr-2" size={20} />
-                            New Request
-                        </button>
-                        <button
-                            onClick={() => setActiveTab('my-requests')}
-                            className={`px-4 py-2 rounded-lg flex items-center ${activeTab === 'my-requests'
-                                    ? 'bg-blue-600 text-white'
-                                    : 'bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-white'
-                                }`}
-                        >
-                            <Calendar className="mr-2" size={20} />
-                            My Requests
-                        </button>
+        <div className="min-h-screen bg-base-100 text-base-content p-4">
+            <h1 className="mb-4 text-2xl font-bold text-center text-gray-500 shadow-lg py-4 rounded-lg ">Demande Documents</h1>
+
+            {/* Tabs */}
+            <div className="tabs mb-4">
+                <button
+                    className={`tab tab-lifted rounded-lg h-full px-4 py-2 transition-all duration-300 ${activeTab === 'new-request'
+                            ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg dark:bg-gradient-to-r dark:from-blue-500 dark:to-indigo-500 dark:text-white'
+                            : 'bg-base-200 text-gray-700 dark:text-gray-400'
+                        }`}
+                    onClick={() => setActiveTab('new-request')}
+                >
+                    New Request
+                </button>
+                <button
+                    className={`tab tab-lifted rounded-lg h-full px-4 py-2 transition-all duration-300 ${activeTab === 'my-requests'
+                            ? 'bg-gradient-to-r from-green-500 to-teal-500 text-white shadow-lg'
+                            : 'bg-base-200 text-gray-700 dark:text-gray-400'
+                        }`}
+                    onClick={() => setActiveTab('my-requests')}
+                >
+                    My Requests
+                </button>
+            </div>
+
+
+            {/* Tab Content */}
+            {activeTab === 'new-request' && (
+                <div className="mt-7 flex flex-col lg:flex-row gap-6">
+                    {/* Left Side - Documents List */}
+                    <div className="lg:w-1/2 w-full">
+                        <h2 className="text-xl text-center font-semibold mb-4">Available Documents</h2>
+                        {documentsLoading ? (
+                            <div className="flex justify-center items-center">
+                                <Loader2 className="animate-spin" />
+                            </div>
+                        ) : documentsError ? (
+                            <div className="alert alert-error">
+                                <AlertCircle className="w-6 h-6 mr-2" />
+                                {documentsError}
+                            </div>
+                        ) : (
+                            <ul className="space-y-4">
+                                {documents.map((doc) => (
+                                    <li
+                                        key={doc.id}
+                                        className={`flex items-center p-4 rounded-lg cursor-pointer border ${selectedDocument?.id === doc.id ? 'border-primary bg-primary/10' : 'border-base-300'
+                                            } hover:bg-primary/5 transition`}
+                                        onClick={() => handleDocumentSelect(doc)}
+                                    >
+                                        <FileText className="w-6 h-6 mr-3 text-primary" />
+                                        <div>
+                                            <h3 className="font-semibold">{doc.name}</h3>
+                                            <p className="text-sm text-gray-500">{doc.description}</p>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
+
+                    {/* Right Side - Request Form */}
+                    <div className="lg:w-1/2 w-full">
+                        <h2 className="text-xl text-center font-semibold mb-4">New Request</h2>
+                        {alerts.success && (
+                            <div className="alert alert-success mb-4">
+                                <CheckCircle className="w-6 h-6 mr-2" />
+                                Request submitted successfully!
+                            </div>
+                        )}
+                        {alerts.error && (
+                            <div className="alert alert-error mb-4">
+                                <AlertCircle className="w-6 h-6 mr-2" />
+                                {alerts.error}
+                            </div>
+                        )}
+                        <form onSubmit={handleSubmit} className="space-y-4">
+                            <div>
+                                <label className="label">
+                                    <span className="label-text">Document</span>
+                                </label>
+                                <div className="flex items-center space-x-2 bg-base-200 p-4 rounded-lg">
+                                    {!selectedDocument && (
+                                        <div className=" p-2 rounded-md">
+                                            <span className="text-sm">Please select one</span>
+                                        </div>
+                                    )}
+                                    {selectedDocument && (
+                                        <div className="flex items-center space-x-2 p-2 rounded-md">
+                                        <FileText className="w-5 h-5" />
+                                        <span>{selectedDocument.name}</span>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div>
+                                <label className="label">
+                                    <span className="label-text">Request Date</span>
+                                </label>
+                                <input
+                                    type="date"
+                                    className="input input-bordered w-full"
+                                    value={requestDate}
+                                    onChange={(e) => setRequestDate(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            {/* document attachment */}
+                            <div className="my-4">
+                                <label className="label">
+                                    <span>Attachments</span>
+                                </label>
+                                <div className="space-y-2 bg-base-100 dark:bg-gray-800 p-4 rounded-lg">
+                                {selectedDocument?.documentAttachment.map((attachment, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex items-center space-x-4 p-2 bg-gray-100 dark:bg-gray-700 rounded-md"
+                                    >
+                                        <FilePlus className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+                                        <span className="text-gray-800 dark:text-gray-300">{attachment}</span>
+                                    </div>
+                                ))}
+                                </div>
+                            </div>
+                            <div>
+                                <label className="label">
+                                    <span className="label-text">Upload Files</span>
+                                </label>
+                                <div
+                                    className={`border-dashed border-2 p-4 rounded-lg text-center cursor-pointer ${dragActive ? 'border-primary bg-primary/10' : 'border-base-300'
+                                        }`}
+                                    onDragOver={handleDrag}
+                                    onDragLeave={handleDragLeave}
+                                    onDrop={handleDrop}
+                                >
+                                    <Upload className="w-8 h-8 mx-auto mb-2 text-primary" />
+                                    <p>Drag & Drop files here or click to upload</p>
+                                    <input
+                                        type="file"
+                                        multiple
+                                        id="file-upload"
+                                        className="hidden"
+                                        onChange={handleFileChange}
+                                        required
+                                    />
+                                    <label htmlFor="file-upload" className="btn btn-secondary btn-sm mt-2">
+                                        Browse Files
+                                    </label>
+                                </div>
+                                {files.length > 0 && (
+                                    <ul className="mt-2 space-y-1 bg-gray-100 dark:bg-gray-800 p-1 rounded-lg">
+                                        {files.map((file, index) => (
+                                            <li key={index} className="flex items-center space-x-2 p-1 last:border-b-0">
+                                                <FilePlus className="w-5 h-5 text-blue-500 dark:text-blue-300" />
+                                                <span className="text-sm font-medium truncate text-gray-800 dark:text-gray-200">{file.name}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </div>
+                            <div className="mt-4">
+                                <button
+                                    type="submit"
+                                    className={`w-full btn btn-primary ${loading ? 'loading' : ''}`}
+                                    disabled={loading || !selectedDocument || !requestDate || files.length === 0}
+                                >
+                                    Submit Request
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
+            )}
 
-                {/* Alert Section */}
-                {alerts.error && (
-                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4 dark:bg-red-700 " role="alert">
-                        <AlertCircle className="inline-block mr-2 align-middle" size={20} />
-                        <span className="block sm:inline">{alerts.error}</span>
+            {activeTab === 'my-requests' && (
+                <div className="mt-7">
+                    {/* Filters */}
+                    <div className="flex flex-col lg:flex-row lg:justify-between gap-4 mb-4">
+                        <input
+                            type="text"
+                            placeholder="Search..."
+                            className="input input-bordered w-full lg:w-1/3"
+                            value={searchFilter}
+                            onChange={(e) => setSearchFilter(e.target.value)}
+                        />
+                        <input
+                            type="date"
+                            className="input input-bordered w-full lg:w-1/4"
+                            value={dateFilter}
+                            onChange={(e) => setDateFilter(e.target.value)}
+                        />
+                        <select
+                            className="select select-bordered w-full lg:w-1/4"
+                            value={statusFilter}
+                            onChange={(e) => setStatusFilter(e.target.value)}
+                        >
+                            <option value="">All Statuses</option>
+                            <option value="en cours">En cours</option>
+                            <option value="effectuer">Effectué</option>
+                            <option value="rejeter">Rejeté</option>
+                        </select>
                     </div>
-                )}
 
-                {alerts.success && (
-                    <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4 dark:bg-green-700 dark:border-green-800 dark:text-green-200" role="alert">
-                        <CheckCircle className="inline-block mr-2 align-middle" size={20} />
-                        <span className="block sm:inline">Request submitted successfully!</span>
-                    </div>
-                )}
+                    {/* Requests List */}
+                    {demandesLoading ? (
+                        <div className="flex justify-center items-center">
+                            <Loader2 className="animate-spin" />
+                        </div>
+                    ) : demandesError ? (
+                        <div className="alert alert-error">
+                            <AlertCircle className="w-6 h-6 mr-2" />
+                            {demandesError}
+                        </div>
+                    ) : (
+                        <div className="space-y-4">
+                            {/* Table for Large Screens */}
+                            <div className="hidden lg:block overflow-x-auto">
+                                <table className="table w-full">
+                                    <thead>
+                                        <tr>
+                                            <th>Document</th>
+                                            <th>Description</th>
+                                            <th>Request Date</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {filteredDemandes.map((demande) => (
+                                            <tr key={demande.id}>
+                                                <td>{demande.document}</td>
+                                                <td>{demande.description}</td>
+                                                <td>{demande.requestDate}</td>
+                                                <td>
+                                                    <StatusBadge status={demande.status} />
+                                                </td>
+                                                <td className="flex space-x-2">
+                                                    <button
+                                                        className="btn btn-sm btn-ghost"
+                                                        onClick={() => setViewModal({ isOpen: true, demande })}
+                                                    >
+                                                        <Info className="w-5 h-5" />
+                                                    </button>
+                                                    {demande.status !== 'effectuer' && demande.status !== 'rejeter' && (
+                                                        <button
+                                                            className="btn btn-sm btn-ghost text-red-500"
+                                                            onClick={() => setDeleteModal({ isOpen: true, demandeId: demande.id })}
+                                                        >
+                                                            <Trash className="w-5 h-5" />
+                                                        </button>
+                                                    )}
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
 
-                {/* Main Content */}
-                {activeTab === 'new-request' && (
-                    <div className="grid md:grid-cols-2 gap-8">
-                        {/* Documents List */}
-                        <div className="shadow-xl rounded-lg p-6 dark:bg-gray-800">
-                            <h2 className="text-xl font-semibold mb-4">Documents Disponible</h2>
-                            <hr className='h-px bg-base-200 border-0 my-3' />
-                            <div className="space-y-3">
-                                {documents.map((doc) => (
-                                    <div
-                                        key={doc.id}
-                                        onClick={() => handleDocumentSelect(doc)}
-                                        className={`p-4 rounded-lg cursor-pointer transition-all duration-300 ${selectedDocument?.id === doc.id
-                                                ? 'bg-blue-100 border-blue-500 border dark:bg-transparent dark:border-blue-300'
-                                                : 'bg-gray-100 border-gray-200 hover:bg-blue-50 hover:border-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:hover:bg-blue-800 dark:hover:border-blue-500'
-                                            }`}
-                                    >
-                                        <div className="flex justify-between items-center">
-                                            <div>
-                                                <h3 className="font-medium">{doc.name}</h3>
-                                                <p className="text-sm text-gray-500">{doc.description}</p>
+                            {/* Cards for Small Screens */}
+                            <div className="lg:hidden space-y-4">
+                                {filteredDemandes.map((demande) => (
+                                    <div key={demande.id} className="card shadow-sm">
+                                        <div className="card-body">
+                                            <h3 className="card-title flex justify-between">
+                                                {demande.document}
+                                                <StatusBadge status={demande.status} />
+                                            </h3>
+                                            <p>{demande.description}</p>
+                                            <div className="flex justify-between mt-2">
+                                                <span className="text-sm text-gray-500">Date: {demande.requestDate}</span>
+                                                <div className="flex space-x-2">
+                                                    <button
+                                                        className="btn btn-sm btn-ghost"
+                                                        onClick={() => setViewModal({ isOpen: true, demande })}
+                                                    >
+                                                        <Info className="w-5 h-5" />
+                                                    </button>
+                                                    {demande.status !== 'effectuer' && demande.status !== 'rejeter' && (
+                                                        <button
+                                                            className="btn btn-sm btn-ghost text-red-500"
+                                                            onClick={() => setDeleteModal({ isOpen: true, demandeId: demande.id })}
+                                                        >
+                                                            <Trash className="w-5 h-5" />
+                                                        </button>
+                                                    )}
+                                                </div>
                                             </div>
-                                            <Clock className="text-blue-500" size={20} />
                                         </div>
                                     </div>
                                 ))}
                             </div>
                         </div>
+                    )}
 
-                        {/* Request Form */}
-                        <div className="shadow-2xl rounded-lg p-6 dark:bg-gray-800 has-[data-theme=dark]:">
-                            <form onSubmit={handleSubmit}>
-                                <div className="mb-7">
-                                    <label className="block mb-4">Selected Document</label>
-                                    {selectedDocument ? (
-                                        <div className="bg-blue-50 p-6 rounded-lg flex items-center justify-between dark:bg-blue-950">
-                                            <div>
-                                                <h3 className="font-medium">{selectedDocument.name}</h3>
-                                                <p className="text-sm text-gray-500">{selectedDocument.description}</p>
-                                            </div>
-                                            <button
-                                                type="button"
-                                                onClick={() => setSelectedDocument(null)}
-                                                className="text-red-500 hover:bg-red-100 p-2 rounded-full"
-                                            >
-                                                <X size={20} />
-                                            </button>
-                                        </div>
-                                    ) : (
-                                        <div className="text-gray-500 bg-gray-100 p-3 rounded-lg text-center dark:bg-transparent dark:border dark:border-gray-600 dark:text-gray-400">
-                                            No document selected
-                                        </div>
-                                    )}
-                                </div>
-
-                                {/* document attachment */}
-                                {selectedDocument && (
-                                    <div className="mb-7">
-                                        <label className="block mb-4">Document Attachment</label>
-                                        <div className="space-y-3 mb-3 bg-slate-400 p-6 rounded-lg dark:bg-gray-700">
-                                            {selectedDocument.documentAttachment.map((attachment, index) => (
-                                                <div key={index} className="">
-                                                    <div className="">
-                                                        <div>
-                                                            <h3 className="font-medium">{attachment}</h3>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                    {/* View Modal */}
+                    {viewModal.isOpen && viewModal.demande && (
+                        <div className="modal modal-open">
+                            <div className="modal-box">
+                                <h3 className="font-bold text-lg">Request Details</h3>
+                                <div className="mt-4 space-y-2">
+                                    <p><strong>Document:</strong> {viewModal.demande.document}</p>
+                                    <p><strong>Description:</strong> {viewModal.demande.description}</p>
+                                    <p><strong>Request Date:</strong> {viewModal.demande.requestDate}</p>
+                                    <p><strong>Status:</strong> <StatusBadge status={viewModal.demande.status} /></p>
+                                    <p><strong>Submission Date:</strong> {viewModal.demande.submissionDate}</p>
+                                    <p><strong>Processing Time:</strong> {viewModal.demande.processingTime}</p>
+                                    <div>
+                                        <strong>Files:</strong>
+                                        <ul className="list-disc list-inside">
+                                            {viewModal.demande.files.map((file, index) => (
+                                                <li key={index}>
+                                                    <a href="#" className="text-blue-500 hover:underline">
+                                                        {file.name} ({(file.size / 1024).toFixed(2)} KB)
+                                                    </a>
+                                                </li>
                                             ))}
-                                        </div>
+                                        </ul>
                                     </div>
-                                )}
-
-                                {/* File Upload Section */}
-                                <div
-                                    onDragEnter={handleDrag}
-                                    onDragLeave={() => setDragActive(false)}
-                                    onDragOver={handleDrag}
-                                    onDrop={handleDrop}
-                                    className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors duration-300 ${dragActive ? 'bg-blue-50 border-blue-500 dark:bg-transparent dark:border-blue-300' : 'bg-gray-50 border-gray-300 dark:bg-transparent dark:border-gray-600'
-                                        }`}
-                                >
-                                    <input
-                                        type="file"
-                                        multiple
-                                        onChange={handleFileChange}
-                                        className="hidden"
-                                        id="file-upload"
-                                        accept=".pdf,.jpg,.png"
-                                    />
-                                    <label htmlFor="file-upload" className="cursor-pointer">
-                                        <Upload className="mx-auto mb-4 text-blue-500" size={40} />
-                                        <p className="">
-                                            Drag and drop files here or
-                                            <span className="text-blue-600 ml-1 font-semibold">Browse</span>
-                                        </p>
-                                        <p className="text-xs mt-2">
-                                            PDF, JPG, and PNG files. Max 5MB each.
-                                        </p>
-                                    </label>
                                 </div>
-
-                                {/* File List */}
-                                {files.length > 0 && (
-                                    <div className="mt-4">
-                                        <h4 className="text-sm font-medium mb-2">Uploaded Files</h4>
-                                        <div className="space-y-2">
-                                            {files.map((file, index) => (
-                                                <div
-                                                    key={index}
-                                                    className="bg-gray-100 p-3 rounded-lg flex items-center justify-between dark:bg-transparent dark:border dark:border-gray-600"
-                                                >
-                                                    <div className="flex items-center">
-                                                        <FileText className="mr-3 text-blue-500" size={20} />
-                                                        <div>
-                                                            <p className="text-sm">{file.name}</p>
-                                                            <p className="text-xs text-gray-500">
-                                                                {(file.size / 1024).toFixed(2)} KB
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <button
-                                                        type="button"
-                                                        onClick={() => setFiles(files.filter((f) => f !== file))}
-                                                        className="text-red-500 hover:bg-red-100 p-2 rounded-full"
-                                                    >
-                                                        <Trash size={20} />
-                                                    </button>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-
-                                {/* Additional Options */}
-                                <div className="mt-7">
-                                    <label className="block mb-2">Request Date</label>
-                                    <input
-                                        type="date"
-                                        value={requestDate}
-                                        onChange={(e) => setRequestDate(e.target.value)}
-                                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-transparent dark:border-gray-600 dark:text-gray-400"
-                                    />
+                                <div className="modal-action">
+                                    <button className="btn" onClick={() => setViewModal({ isOpen: false, demande: null })}>
+                                        Close
+                                    </button>
                                 </div>
-
-                                {/* Submit Button */}
-                                <button
-                                    type="submit"
-                                    disabled={!selectedDocument || files.length === 0}
-                                    className="dark:border dark:border-gray-600 dark:bg-transparent dark:text-gray-100 w-full mt-6 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed disabled:hover:bg-gray-300"
-                                >
-                                    {loading ? (
-                                        <Loader2 className="animate-spin mr-2" size={20} />
-                                    ) : (
-                                        <Upload className="mr-2" size={20} />
-                                    )}
-                                    Submit Request
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                )}
-
-                {/* My Requests Tab */}
-                {activeTab === 'my-requests' && (
-                    <div className=" shadow-md rounded-lg p-6">
-                        <h2 className="text-xl font-semibold mb-4 flex items-center">
-                            <Calendar className="mr-3 text-blue-600" size={24} />
-                            My Requests
-                        </h2>
-                        {filteredDemandes.length === 0 ? (
-                            <div className="text-center text-gray-500 py-8">
-                                <Info className="mx-auto mb-4 text-blue-500" size={40} />
-                                <p>You haven't made any document requests yet.</p>
                             </div>
-                        ) : (
-                            <table className="w-full table-auto">
-                                <thead>
-                                    <tr className="bg-gray-100 dark:bg-gray-700">
-                                        <th className="p-4 text-left">Document</th>
-                                        <th className="p-4 text-left">
-                                            Submission Date
-                                        </th>
-                                        <th className="p-4 text-left">Status</th>
-                                        <th className="p-4 text-right">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {filteredDemandes.map((demande) => (
-                                        <tr
-                                            key={demande.id}
-                                            className="hover:bg-gray-100 dark:hover:bg-gray-700"
-                                        >
-                                            <td className="p-4 border-t border-b border-gray-300 dark:border-gray-600">{demande.document}</td>
-                                            <td className="p-4 border-t border-b border-gray-300 dark:border-gray-600">{demande.submissionDate}</td>
-                                            <td className="p-4 border-t border-b border-gray-300 dark:border-gray-600"><StatusBadge status={demande.status} /></td>
-                                            <td className="p-4 border-t border-b border-gray-300 dark:border-gray-600 flex items-center justify-end space-x-2">
-                                                {demande.files && (
-                                                    <button
-                                                        className="text-blue-500 hover:bg-blue-100 p-2 rounded-full"
-                                                        title="Download Files"
-                                                    >
-                                                        <Download size={20} />
-                                                    </button>
-                                                )}
-                                                {demande.status === 'en cours' && (
-                                                    <button
-                                                        onClick={() => handleDelete(demande.id)}
-                                                        className="text-red-500 hover:bg-red-100 p-2 rounded-full"
-                                                        title="Cancel Request"
-                                                    >
-                                                        <Trash size={20} />
-                                                    </button>
-                                                )}
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        )}
-                    </div>
-                )}
-            </div>
+                        </div>
+                    )}
+
+                    {/* Delete Confirmation Modal */}
+                    {deleteModal.isOpen && (
+                        <div className="modal modal-open">
+                            <div className="modal-box">
+                                <h3 className="font-bold text-lg">Confirm Deletion</h3>
+                                <p className="py-4">Are you sure you want to delete this request?</p>
+                                <div className="modal-action">
+                                    <button className={`btn btn-error ${loading ? 'loading' : ''}`} onClick={handleDelete} disabled={loading}>
+                                        {loading ? 'Deleting...' : 'Delete'}
+                                    </button>
+                                    <button className="btn" onClick={() => setDeleteModal({ isOpen: false, demandeId: null })}>
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
-);
+    );
 };
 
 export default DocumentsPage;
