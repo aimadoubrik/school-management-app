@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchQuizzes } from '../../features/quizzes/quizzesSlice';
+import { fetchQuizzes, updateQuestionAnswers } from '../../features/quizzes/quizzesSlice';
 
 const Quiz = () => {
   const { id } = useParams(); // Get the quiz ID from the URL
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   // Access quizzes and status from Redux store
   const { quizzes, status, error } = useSelector((state) => state.quizzes);
   // Filter the quiz based on the ID from the URL
@@ -20,6 +20,9 @@ const Quiz = () => {
   const [isConfettiActive, setIsConfettiActive] = useState(false);
   const [retries, setRetries] = useState(0);
 
+  // New state to store the question and the student's answer
+  const [questionAnswers, setQuestionAnswers] = useState([]);
+
   // Fetch quizzes when the component mounts or the ID changes
   useEffect(() => {
     dispatch(fetchQuizzes());
@@ -32,6 +35,7 @@ const Quiz = () => {
       setCurrentQuestionIndex(0);
       setSelectedAnswers([]);
       setQuizFinished(false);
+      setQuestionAnswers([]); // Reset questionAnswers when quiz is reset
     }
   }, [id, retries, quizData]); // Run this effect when the quiz ID, retries, or quizData changes
 
@@ -64,11 +68,19 @@ const Quiz = () => {
     }
   };
 
-  // Update selected answer
+  // Update selected answer and save the question-answer pair in questionAnswers
   const handleAnswerChange = (answer) => {
     const updatedAnswers = [...selectedAnswers];
     updatedAnswers[currentQuestionIndex] = answer;
     setSelectedAnswers(updatedAnswers);
+
+    // Add the question and the selected answer to the questionAnswers state
+    const updatedQuestionAnswers = [...questionAnswers];
+    updatedQuestionAnswers[currentQuestionIndex] = {
+      question: quizData.questionsSelected[currentQuestionIndex].question,
+      answer: answer
+    };
+    setQuestionAnswers(updatedQuestionAnswers);
   };
 
   // Go to the next question
@@ -82,7 +94,10 @@ const Quiz = () => {
 
   // Retry quiz
   const handleRetryQuiz = () => {
-    setRetries((prev) => prev + 1);
+    // setRetries((prev) => prev + 1);
+    console.log(questionAnswers);
+    dispatch(updateQuestionAnswers(questionAnswers));
+    navigate('/quizanalyze');
   };
 
   // Loading or error state check
@@ -232,7 +247,7 @@ const Quiz = () => {
 
         <div className="text-center mt-8">
           <button className="btn btn-primary btn-wide" onClick={() => handleRetryQuiz()}>
-            Retry Quiz
+             See Analyze
           </button>
         </div>
       </div>
