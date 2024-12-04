@@ -31,7 +31,6 @@ import {
   TeacherQuizzes,
   SecteursPage,
   SchedulerPage,
-  QuizAnalyze,
 } from '../pages';
 
 const RouteConfig = () => {
@@ -98,14 +97,6 @@ const RouteConfig = () => {
           element={
             <ProtectedRoute allowedRoles={['super user', 'trainer', 'trainee']}>
               <Quiz />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/quizanalyze"
-          element={
-            <ProtectedRoute allowedRoles={['trainee']}>
-              <QuizAnalyze />
             </ProtectedRoute>
           }
         />
