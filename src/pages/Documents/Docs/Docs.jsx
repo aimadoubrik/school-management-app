@@ -1,11 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
-import Convocation from './TemplatesDoc/Convocation';
-import Diplome from './TemplatesDoc/Diplome';
+import Convocation from './TemplatesDocs/Convocation';
 import DocumentCard from './DocumentCard';
 import FormInput from './FormInput';
 import SelectionToggle from './SelectionToggle';
 import PrintWrapper from './PrintWrapper';
-import Listes from './TemplatesDoc/Listes';
 import ReactDOM from 'react-dom'; // Add this import at the top of your file
 import { FileText, GraduationCap, ClipboardList, User, Users } from 'lucide-react';
 
@@ -32,7 +30,7 @@ const Docs = () => {
         setGroupes(data);
 
         // Extract students' names from the fetched groups
-        const allStudents = data.flatMap(group => group.liste);
+        const allStudents = data.flatMap((group) => group.liste);
         setStudents(allStudents);
       } catch (error) {
         console.error(error);
@@ -42,74 +40,54 @@ const Docs = () => {
     fetchGroupesAndStudents();
   }, []);
 
-  const onPrint = async () => {
-    const originalMargin = document.body.style.margin;
-    const originalWidth = document.body.style.width;
-    const originalDisplay = document.querySelector('nav').style.display;
-
-    document.body.style.margin = "0";
-    document.body.style.width = "100%";
-    printRef.current.style.position = "fixed";
-    printRef.current.style.left = "0";
-    printRef.current.style.top = "0";
-    printRef.current.style.width = "100%";
-    document.querySelector('nav').style.display = "none";
+  const onPrint = () => {
+    const originalDisplay = document.querySelector('.navbar')?.style.display;
+    const printContainer = document.createElement('div');
+    printContainer.style.position = 'absolute';
+    printContainer.style.top = '0';
+    printContainer.style.left = '0';
+    printContainer.style.width = '100%';
+    document.body.appendChild(printContainer);
 
     if (isParGroupSelected && form.group) {
-      const selectedGroup = groupes.find(
-        (groupe) => groupe.niveau === form.group
-      );
+      const selectedGroup = groupes.find((groupe) => groupe.niveau === form.group);
       if (!selectedGroup) return;
 
-      const documents = selectedGroup.liste.map((student) => {
+      const convocations = selectedGroup.liste.map((student) => {
         const container = document.createElement('div');
         container.style.pageBreakAfter = 'always';
         ReactDOM.render(
-          form.type === "convocation" ? (
-            <Convocation
-              key={student.idEtudiant}
-              name={student.nomEtudiant}
-              group={form.group}
-              date={form.date}
-            />
-          ) : form.type === "diplome" ? (
-            <Diplome
-              key={student.idEtudiant}
-            />
-          ) : (
-            <Listes
-              key={student.idEtudiant}
-            />
-          ),
+          <Convocation
+            key={student.idEtudiant}
+            name={student.nomEtudiant}
+            group={form.group}
+            date={form.date}
+          />,
           container
         );
         return container;
       });
 
-      const printContainer = document.createElement('div');
-      printContainer.style.position = 'absolute';
-      printContainer.style.top = '0';
-      printContainer.style.left = '0';
-      printContainer.style.width = '100%';
-      document.body.appendChild(printContainer);
-
-      documents.forEach((document) => {
-        printContainer.appendChild(document);
+      convocations.forEach((convocation) => {
+        printContainer.appendChild(convocation);
       });
-
-      window.print();
-      document.body.removeChild(printContainer);
     } else {
-      window.print();
+      ReactDOM.render(
+        <Convocation name={form.name} group={form.group} date={form.date} />,
+        printContainer
+      );
     }
-    
-    document.body.style.margin = originalMargin;
-    document.body.style.width = originalWidth;
-    printRef.current.style.position = "";
-    printRef.current.style.left = "";
-    printRef.current.style.top = "";
-    printRef.current.style.width = "";
-    document.querySelector('nav').style.display = originalDisplay;
+
+    // Hide the navbar before printing
+    const navbar = document.querySelector('.navbar');
+    if (navbar) navbar.style.display = 'none';
+
+    window.print();
+
+    // Restore the navbar display after printing
+    if (navbar) navbar.style.display = originalDisplay;
+
+    document.body.removeChild(printContainer);
   };
 
   const handleSubmit = (event) => {
@@ -129,7 +107,7 @@ const Docs = () => {
   const documentTypes = [
     { type: 'convocation', icon: FileText, label: 'Convocation' },
     { type: 'diplome', icon: GraduationCap, label: 'Diplome' },
-    { type: 'listes', icon: ClipboardList, label: 'Listes' }
+    { type: 'listes', icon: ClipboardList, label: 'Listes' },
   ];
 
   const renderDocument = () => {
@@ -137,9 +115,9 @@ const Docs = () => {
       case 'convocation':
         return <Convocation {...form} />;
       case 'diplome':
-        return <Diplome {...form} />;
+        return <div>Diplome</div>;
       case 'listes':
-        return <Listes {...form} />;
+        return <div>Listes</div>;
       default:
         return null;
     }
@@ -191,13 +169,7 @@ const Docs = () => {
           onChange={handleChange}
           placeholder="Group"
         />
-        <FormInput
-          label="Date"
-          type="date"
-          name="date"
-          value={form.date}
-          onChange={handleChange}
-        />
+        <FormInput label="Date" type="date" name="date" value={form.date} onChange={handleChange} />
       </div>
     );
   };
@@ -209,9 +181,7 @@ const Docs = () => {
           <h1 className="text-3xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             Documents
           </h1>
-          <p className="">
-            Cette page vous permet de générer des documents.
-          </p>
+          <p className="">Cette page vous permet de générer des documents.</p>
         </div>
 
         <div className="grid grid-cols-3 gap-4 mb-8">
@@ -249,16 +219,11 @@ const Docs = () => {
         </form>
       </div>
 
-      <PrintWrapper
-        ref={printRef}
-        onPrint={onPrint}
-        className=" w-full h-full"
-      >
+      <PrintWrapper ref={printRef} onPrint={onPrint} className=" w-full h-full">
         <div id="convocation" className="w-full h-full flex items-center justify-center">
           {renderDocument()}
         </div>
       </PrintWrapper>
-
     </div>
   );
 };

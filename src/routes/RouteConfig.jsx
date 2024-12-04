@@ -120,6 +120,14 @@ const RouteConfig = () => {
           }
         />
         <Route
+          path="/docs" 
+          element={
+            <ProtectedRoute allowedRoles={['super user', 'admin']}>
+              <Docs />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/documents"
           element={
             <ProtectedRoute allowedRoles={['super user', 'admin', 'trainer', 'trainee']}>
@@ -132,14 +140,6 @@ const RouteConfig = () => {
           element={
             <ProtectedRoute allowedRoles={['super user', 'admin']}>
               <DemandesPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/docs"
-          element={
-            <ProtectedRoute allowedRoles={['super user', 'admin']}>
-              <Docs />
             </ProtectedRoute>
           }
         />
