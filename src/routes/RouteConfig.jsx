@@ -7,6 +7,7 @@ import LoginPage from '../features/auth/components/LoginForm';
 import SignupPage from '../features/auth/components/SignupForm';
 import DemandesPage from '../pages/Documents/DemandesPage';
 import Docs from '../pages/Documents/Docs/Docs';
+import AddCourse from '../pages/CoursesFormateur/AddCourse';
 import {
   HomePage,
   NotFoundPage,
@@ -31,7 +32,7 @@ import {
   QuizQuestions,
   TeacherQuizzes,
   SecteursPage,
-  SchedulerPage,
+  SchedulerPage
 } from '../pages';
 
 const RouteConfig = () => {
@@ -83,11 +84,20 @@ const RouteConfig = () => {
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/courses/:id"
           element={
             <ProtectedRoute allowedRoles={['super user', 'trainer', 'trainee']}>
               <Course />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/CoursesFormateur/addCourse"
+          element={
+            <ProtectedRoute allowedRoles={['super user', 'trainer']}>
+              <AddCourse />
             </ProtectedRoute>
           }
         />
