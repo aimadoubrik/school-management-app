@@ -25,7 +25,7 @@ const TeacherQuizzes = () => {
       const data = await response.json();
       const quizzesWithUniqueIds = data.map((quiz, index) => ({
         ...quiz,
-        id: quiz.id || `quiz-${Date.now()}-${index}`
+        id: quiz.id || `quiz-${Date.now()}-${index}`,
       }));
       setQuizzes(quizzesWithUniqueIds);
     } catch (error) {
