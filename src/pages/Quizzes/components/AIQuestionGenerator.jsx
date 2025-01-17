@@ -23,7 +23,7 @@ const AIQuestionGenerator = ({ quizId, onQuestionsGenerated }) => {
     setTopic(quiz?.courseName || '');
   }, [quiz]);
 
-  const apiKey = 'AIzaSyAcdlS5nhIFfLN_hYjdk5g14ZwDgREmduI';
+  const apiKey = 'AIzaSyB9-iKGvCcu2VrsbGHJkIQ28HqxrRWgbLs';
   const genAI = new GoogleGenerativeAI(apiKey);
   const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
