@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Mail, Lock, User, AlertCircle, Loader2, GraduationCap } from 'lucide-react';
 import { signup, clearError } from '../../auth/slices/authSlice';

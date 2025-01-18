@@ -43,7 +43,7 @@ const RoleBasedCourses = ({ role }) => {
 };
 
 const RoleBasedQuizzes = ({ role }) => {
-  return role === ROLES.TRAINER ? <TeacherQuizzes /> : <QuizzesPage />;
+  return role === ROLES.TRAINER ? <QuizzesPage /> : <TeacherQuizzes /> ;
 };
 
 // Route definitions with their access control
