@@ -168,169 +168,114 @@
       "status": "draft",
       "questions": [
         {
-          "id": "1a",
-          "question": "What is the basic unit of life?",
+          "id": "1",
+          "question": "Quelle est l'unité fondamentale de la vie ?",
           "answers": [
-            "Atom",
-            "Molecule",
-            "Cell",
-            "Tissue"
+            "a) L'atome",
+            "b) La molécule",
+            "c) La cellule",
+            "d) L'organe"
           ],
-          "correctAnswer": "Cell"
+          "correctAnswer": "c) La cellule"
         },
         {
-          "id": "2b",
-          "question": "Which macromolecule is the main source of energy for living organisms?",
+          "id": "2",
+          "question": "Laquelle de ces affirmations concernant la photosynthèse est FAUSSE ?",
           "answers": [
-            "Lipids",
-            "Proteins",
-            "Carbohydrates",
-            "Nucleic acids"
+            "a) Elle utilise l'énergie solaire.",
+            "b) Elle produit du dioxyde de carbone.",
+            "c) Elle produit du glucose.",
+            "d) Elle se produit dans les chloroplastes des plantes."
           ],
-          "correctAnswer": "Carbohydrates"
+          "correctAnswer": "b) Elle produit du dioxyde de carbone"
         },
         {
-          "id": "3c",
-          "question": "What is the process by which plants convert sunlight into chemical energy?",
+          "id": "3",
+          "question": "Quel processus biologique produit de l'ATP ?",
           "answers": [
-            "Respiration",
-            "Fermentation",
-            "Photosynthesis",
-            "Digestion"
+            "a) Photosynthèse uniquement",
+            "b) Respiration cellulaire uniquement",
+            "c) Photosynthèse et respiration cellulaire",
+            "d) Ni la photosynthèse ni la respiration cellulaire"
           ],
-          "correctAnswer": "Photosynthesis"
+          "correctAnswer": "c) Photosynthèse et respiration cellulaire"
         },
         {
-          "id": "4d",
-          "question": "Which organelle is known as the powerhouse of the cell?",
+          "id": "4",
+          "question": "Qu'est-ce que l'ADN ?",
           "answers": [
-            "Nucleus",
-            "Chloroplast",
-            "Mitochondria",
-            "Ribosome"
+            "a) Une source d'énergie",
+            "b) Une molécule porteuse d'information génétique",
+            "c) Une protéine structurale",
+            "d) Un type de lipide"
           ],
-          "correctAnswer": "Mitochondria"
+          "correctAnswer": "b) Une molécule porteuse d'information génétique"
         },
         {
-          "id": "5e",
-          "question": "Which molecule carries genetic information in most living organisms?",
+          "id": "5",
+          "question": "Lequel de ces termes décrit le processus par lequel les organismes maintiennent un environnement interne stable ?",
           "answers": [
-            "RNA",
-            "DNA",
-            "Protein",
-            "ATP"
+            "a) Métabolisme",
+            "b) Homéostasie",
+            "c) Reproduction",
+            "d) Croissance"
           ],
-          "correctAnswer": "A company's assets, liabilities, and equity at a point in time"
+          "correctAnswer": "b) Homéostasie"
         },
         {
           "id": "6",
-          "question": "What is the primary goal of financial management in a firm?",
+          "question": "Quelle est la différence principale entre la mitose et la méiose ?",
           "answers": [
-            "Maximizing market share",
-            "Minimizing expenses",
-            "Maximizing shareholder wealth",
-            "Increasing employee satisfaction"
+            "a) La mitose produit des cellules haploïdes, la méiose produit des cellules diploïdes.",
+            "b) La mitose produit des cellules diploïdes, la méiose produit des cellules haploïdes.",
+            "c) La mitose ne produit que des cellules somatiques, la méiose produit uniquement des gamètes.",
+            "d) La mitose est un processus asexué, la méiose est un processus sexué."
           ],
-          "correctAnswer": "Maximizing shareholder wealth"
+          "correctAnswer": "b) La mitose produit des cellules diploïdes, la méiose produit des cellules haploïdes."
         },
         {
           "id": "7",
-          "question": "Which of the following is NOT a key area of finance?",
+          "question": "Que sont les enzymes ?",
           "answers": [
-            "Corporate finance",
-            "Investments",
-            "Behavioral finance",
-            "Econometrics"
+            "a) Des lipides",
+            "b) Des glucides",
+            "c) Des protéines qui catalysent les réactions biochimiques",
+            "d) Des acides nucléiques"
           ],
-          "correctAnswer": "Econometrics"
+          "correctAnswer": "c) Des protéines qui catalysent les réactions biochimiques"
         },
         {
           "id": "8",
-          "question": "The time value of money concept suggests that:",
+          "question": "Quel est le rôle principal du système circulatoire ?",
           "answers": [
-            "A dollar today is worth less than a dollar tomorrow.",
-            "A dollar today is worth more than a dollar tomorrow.",
-            "A dollar today is worth the same as a dollar tomorrow.",
-            "The value of a dollar fluctuates randomly."
+            "a) La digestion des aliments",
+            "b) Le transport de substances dans le corps",
+            "c) La production d'hormones",
+            "d) La protection contre les maladies"
           ],
-          "correctAnswer": "A dollar today is worth more than a dollar tomorrow."
+          "correctAnswer": "b) Le transport de substances dans le corps"
         },
         {
           "id": "9",
-          "question": "What does the term \"liquidity\" refer to in finance?",
+          "question": "Quel est le nom du processus par lequel les organismes produisent des descendants ?",
           "answers": [
-            "The ability of an asset to be quickly converted into cash without significant loss of value.",
-            "The profitability of an asset.",
-            "The risk associated with an asset.",
-            "The growth potential of an asset."
+            "a) Métabolisme",
+            "b) Croissance",
+            "c) Reproduction",
+            "d) Adaptation"
           ],
-          "correctAnswer": "The ability of an asset to be quickly converted into cash without significant loss of value."
+          "correctAnswer": "c) Reproduction"
         },
         {
           "id": "10",
-          "question": "Which financial statement shows a company's financial position at a specific point in time?",
+          "question": "Laquelle de ces affirmations concernant l'évolution est VRAIE ?",
           "answers": [
-            "Income Statement",
-            "Statement of Cash Flows",
-            "Balance Sheet",
-            "Statement of Retained Earnings"
+            "a) L'évolution est un processus rapide et observable en quelques générations.",
+            "b) L'évolution se produit toujours vers une complexité accrue.",
+            "c) L'évolution est le changement des caractéristiques héréditaires d'une population au fil du temps.",
+            "d) L'évolution est un processus dirigé vers un but précis."
           ],
-          "correctAnswer": "Balance Sheet"
-        },
-        {
-          "id": "11",
-          "question": "What is the difference between a company's current assets and its current liabilities?",
-          "answers": [
-            "Net Working Capital",
-            "Total Equity",
-            "Long-term Debt",
-            "Gross Profit"
-          ],
-          "correctAnswer": "Net Working Capital"
-        },
-        {
-          "id": "12",
-          "question": "Which of these is a measure of a company's profitability?",
-          "answers": [
-            "Debt-to-Equity Ratio",
-            "Current Ratio",
-            "Return on Equity (ROE)",
-            "Quick Ratio"
-          ],
-          "correctAnswer": "Return on Equity (ROE)"
-        },
-        {
-          "id": "13",
-          "question": "What does NPV stand for in finance?",
-          "answers": [
-            "Net Present Value",
-            "Net Profit Value",
-            "Nominal Present Value",
-            "Net Past Value"
-          ],
-          "correctAnswer": "Net Present Value"
-        },
-        {
-          "id": "14",
-          "question": "Which type of risk is typically diversified away by holding a portfolio of investments?",
-          "answers": [
-            "Systematic Risk",
-            "Unsystematic Risk",
-            "Market Risk",
-            "Inflation Risk"
-          ],
-          "correctAnswer": "Unsystematic Risk"
-        },
-        {
-          "id": "15",
-          "question": "The weighted average cost of capital (WACC) represents:",
-          "answers": [
-            "The average cost of a company's financing.",
-            "The return on equity.",
-            "The return on assets.",
-            "The cost of debt only."
-          ],
-          "correctAnswer": "The average cost of a company's financing."
+          "correctAnswer": "c) L'évolution est le changement des caractéristiques héréditaires d'une population au fil du temps."
         }
       ],
       "questionsSelected": [
@@ -355,94 +300,6 @@
             "Nucleic acids"
           ],
           "correctAnswer": "Return on Investment"
-        },
-        {
-          "id": "3c",
-          "question": "Which of the following is a liability?",
-          "answers": [
-            "Accounts receivable",
-            "Accounts payable",
-            "Cash",
-            "Inventory"
-          ],
-          "correctAnswer": "Accounts payable"
-        },
-        {
-          "id": "4d",
-          "question": "What is the formula for calculating net profit?",
-          "answers": [
-            "Revenue - Expenses",
-            "Revenue + Expenses",
-            "Revenue - Cost of Goods Sold",
-            "Total Assets - Liabilities"
-          ],
-          "correctAnswer": "Revenue - Expenses"
-        },
-        {
-          "id": "7",
-          "question": "Which of the following is NOT a key area of finance?",
-          "answers": [
-            "Corporate finance",
-            "Investments",
-            "Behavioral finance",
-            "Econometrics"
-          ],
-          "correctAnswer": "Econometrics"
-        },
-        {
-          "id": "9",
-          "question": "What does the term \"liquidity\" refer to in finance?",
-          "answers": [
-            "The ability of an asset to be quickly converted into cash without significant loss of value.",
-            "The profitability of an asset.",
-            "The risk associated with an asset.",
-            "The growth potential of an asset."
-          ],
-          "correctAnswer": "The ability of an asset to be quickly converted into cash without significant loss of value."
-        },
-        {
-          "id": "11",
-          "question": "What is the difference between a company's current assets and its current liabilities?",
-          "answers": [
-            "Net Working Capital",
-            "Total Equity",
-            "Long-term Debt",
-            "Gross Profit"
-          ],
-          "correctAnswer": "Net Working Capital"
-        },
-        {
-          "id": "12",
-          "question": "Which of these is a measure of a company's profitability?",
-          "answers": [
-            "Debt-to-Equity Ratio",
-            "Current Ratio",
-            "Return on Equity (ROE)",
-            "Quick Ratio"
-          ],
-          "correctAnswer": "Return on Equity (ROE)"
-        },
-        {
-          "id": "13",
-          "question": "What does NPV stand for in finance?",
-          "answers": [
-            "Net Present Value",
-            "Net Profit Value",
-            "Nominal Present Value",
-            "Net Past Value"
-          ],
-          "correctAnswer": "Net Present Value"
-        },
-        {
-          "id": "14",
-          "question": "Which type of risk is typically diversified away by holding a portfolio of investments?",
-          "answers": [
-            "Systematic Risk",
-            "Unsystematic Risk",
-            "Market Risk",
-            "Inflation Risk"
-          ],
-          "correctAnswer": "Unsystematic Risk"
         }
       ],
       "id": "f4dc"
