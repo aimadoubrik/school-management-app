@@ -1,6 +1,6 @@
 const BacWithdrawalFormRow = ({ name, group, date, index, details }) => {
     return (
-      <div className="border border-black mb-4 p-4">
+      <div className="border border-black mb-4 p-8 h-1/2">
         {/* Header Section */}
         <div className="border-b border-black pb-2 mb-2">
           <h2 className="text-center font-bold uppercase text-sm">
@@ -77,7 +77,7 @@ const BacWithdrawalFormRow = ({ name, group, date, index, details }) => {
   const BacWithdrawalForm = ({ name, group, date, details }) => {
     return (
       <div className="bg-white p-8 w-[210mm] h-[297mm] mx-auto max-w-4xl">
-        {[...Array(3)].map((_, index) => (
+        {[...Array(2)].map((_, index) => (
           <BacWithdrawalFormRow 
             key={index} 
             name={name} 
