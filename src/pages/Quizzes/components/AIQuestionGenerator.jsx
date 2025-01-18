@@ -78,7 +78,7 @@ const AIQuestionGenerator = ({ quizId, onQuestionsGenerated }) => {
         maxOutputTokens: 8192,
       };
 
-      const prompt = `Generate a concise multiple-choice of 10 questions about ${topic}. 
+      const prompt = `Generate a concise multiple-choice of 10 questions  about ${topic}. 
           Ensure the question is clear, professional, and suitable for an academic quiz.
           Format the response with:
           [Your question here]
@@ -88,7 +88,7 @@ const AIQuestionGenerator = ({ quizId, onQuestionsGenerated }) => {
           [Fourth option]
           Correct Answer: [Correct option text, matching one of the above options exactly]
 
-          Separate each question with a blank line.`;
+          Separate each question with a blank line and use french language.`;
 
       const chatSession = model.startChat({
         generationConfig,
