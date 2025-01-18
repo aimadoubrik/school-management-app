@@ -4,6 +4,7 @@ import QuizCardTeacher from './components/QuizCardTeacher';
 import QuizForm from './components/QuizForm';
 import { getTimeStatus, BASE_URL } from './utils/quizUtils';
 import GreetingHeader from '../Home/components/GreetingHeader';
+import Pagination from './components/Pagination'; 
 
 const TeacherQuizzes = () => {
   const user = JSON.parse(localStorage.getItem('user') || sessionStorage.getItem('user') || '{}');
@@ -13,6 +14,10 @@ const TeacherQuizzes = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState('');
   const [editingQuiz, setEditingQuiz] = useState(null);
+
+  
+  const [currentPage, setCurrentPage] = useState(1);
+  const quizzesPerPage = 8; 
 
   useEffect(() => {
     fetchQuizzes();
@@ -25,7 +30,7 @@ const TeacherQuizzes = () => {
       const data = await response.json();
       const quizzesWithUniqueIds = data.map((quiz, index) => ({
         ...quiz,
-        id: quiz.id || `quiz-${Date.now()}-${index}`,
+        id: quiz.id || `quiz-${Date.now()}-${index}`
       }));
       setQuizzes(quizzesWithUniqueIds);
     } catch (error) {
@@ -120,6 +125,13 @@ const TeacherQuizzes = () => {
   const filteredQuizzes = selectedCourse
     ? quizzes.filter((quiz) => quiz.coursequizID === selectedCourse)
     : quizzes;
+    
+  const indexOfLastQuiz = currentPage * quizzesPerPage;
+  const indexOfFirstQuiz = indexOfLastQuiz - quizzesPerPage;
+  const currentQuizzes = filteredQuizzes.slice(indexOfFirstQuiz, indexOfLastQuiz);
+
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="bg-base-100">
@@ -149,7 +161,7 @@ const TeacherQuizzes = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {filteredQuizzes.map((quiz, index) => (
+          {currentQuizzes.map((quiz, index) => (
             <div key={`quiz-card-${quiz.id}-${index}`}>
               <QuizCardTeacher
                 quiz={quiz}
@@ -161,6 +173,14 @@ const TeacherQuizzes = () => {
             </div>
           ))}
         </div>
+
+        {/* Pagination  */}
+        <Pagination
+          currentPage={currentPage}
+          totalPages={Math.ceil(filteredQuizzes.length / quizzesPerPage)}
+          onPrevious={() => paginate(currentPage - 1)}
+          onNext={() => paginate(currentPage + 1)}
+        />
 
         {isAddModalOpen && (
           <div className="modal modal-open">

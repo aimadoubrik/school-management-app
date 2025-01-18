@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Eye, Edit, Trash2, Users, AlertCircle } from 'lucide-react';
 import DataTable from '../../../components/shared/DataTable'; // Adjust the import path accordingly
 

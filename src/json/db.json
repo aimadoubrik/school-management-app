@@ -1547,14 +1547,6 @@
       "questionsSelected": []
     },
     {
-      "id": "b979",
-      "courseName": "General Chemistry",
-      "coursequizID": "CHEM101",
-      "teacherName": "khba",
-      "Deadline": "2024-11-14T23:26",
-      "status": "active"
-    },
-    {
       "id": "70b2",
       "courseName": "Introduction to Physics",
       "coursequizID": "PHYS101",

@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Clock, PlayCircle, User, BookOpen } from 'lucide-react';
 import PropTypes from 'prop-types';
 
