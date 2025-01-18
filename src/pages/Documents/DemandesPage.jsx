@@ -151,8 +151,11 @@ const DemandesPage = () => {
         <table className="min-w-full divide-y divide-gray-200 text-sm text-left">
           <thead className="text-xs text-gray-700 dark:text-gray-300 uppercase bg-gray-200 dark:bg-gray-800">
             <tr>
-              <th className="px-4 py-2">Doc</th>
+              <th className="px-4 py-2">Document</th>
               <th className="px-6 py-2">Stagiaire</th>
+              <th className="px-6 py-2">CEF</th>
+              <th className="px-6 py-2">Group</th>
+              <th className="px-6 py-2">Date</th>
               <th className="px-6 py-2">Statut</th>
               <th className="px-6 py-2">Actions</th>
             </tr>
@@ -164,6 +167,9 @@ const DemandesPage = () => {
                 <tr key={demande.id} className="">
                   <td className="px-4 py-4">{demande.document}</td>
                   <td className="px-6 py-4">{demande.user}</td>
+                  <td className="px-6 py-4">CEF</td>
+                  <td className="px-6 py-4">Group</td>
+                  <td className="px-6 py-4">{demande.requestDate}</td>
                   <td className="px-6 py-4">{demande.status}</td>
                   <td className="px-6 py-4">
                     <button
