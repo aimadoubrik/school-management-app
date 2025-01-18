@@ -30,6 +30,8 @@ import {
   SchedulerPage,
 } from '../pages';
 
+import { getUserFromStorage } from '../utils';
+
 const ROLES = {
   SUPER_USER: 'super user',
   ADMIN: 'admin',
@@ -37,13 +39,18 @@ const ROLES = {
   TRAINEE: 'trainee',
 };
 
+const getUserRole = () => getUserFromStorage('user')?.role;
+
+
 // Components that need role-based rendering
-const RoleBasedCourses = ({ role }) => {
+const RoleBasedCourses = () => {
+  const role = getUserRole();
   return role === ROLES.TRAINER ? <CoursesFormateur /> : <CoursesPage />;
 };
 
-const RoleBasedQuizzes = ({ role }) => {
-  return role === ROLES.TRAINER ? <QuizzesPage /> : <TeacherQuizzes /> ;
+const RoleBasedQuizzes = () => {
+  const role = getUserRole();
+  return role === ROLES.TRAINER ? <TeacherQuizzes /> : <QuizzesPage />;
 };
 
 // Route definitions with their access control
