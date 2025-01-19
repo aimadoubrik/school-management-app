@@ -41,16 +41,15 @@ const ROLES = {
 
 const getUserRole = () => getUserFromStorage('user')?.role;
 
-
 // Components that need role-based rendering
 const RoleBasedCourses = () => {
   const role = getUserRole();
-  return role === ROLES.TRAINER ? <CoursesFormateur /> : <CoursesPage />;
+  return role === (ROLES.TRAINER || ROLES.SUPER_USER) ? <CoursesFormateur /> : <CoursesPage />;
 };
 
 const RoleBasedQuizzes = () => {
   const role = getUserRole();
-  return role === ROLES.TRAINER ? <TeacherQuizzes /> : <QuizzesPage />;
+  return role === (ROLES.TRAINER || ROLES.SUPER_USER) ? <TeacherQuizzes /> : <QuizzesPage />;
 };
 
 // Route definitions with their access control

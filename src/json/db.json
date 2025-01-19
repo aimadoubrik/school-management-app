@@ -164,7 +164,7 @@
       "courseName": "Introduction to Biology",
       "teacherId": "T001",
       "teacherName": "Dr. Alice Johnson",
-      "Deadline": "2024-11-30T23:59:59Z",
+      "deadline": "2024-11-30T23:59:59Z",
       "status": "draft",
       "questions": [
         {
@@ -310,7 +310,7 @@
       "courseName": "Principles of Marketing",
       "teacherId": "T002",
       "teacherName": "Prof. Emily Green",
-      "Deadline": "2024-12-05T22:00",
+      "deadline": "2024-12-05T22:00",
       "status": "active",
       "questions": [
         {
@@ -643,7 +643,7 @@
       "courseName": "World History",
       "teacherId": "T003",
       "teacherName": "Dr. Sarah Davis",
-      "Deadline": "2024-11-17T22:31",
+      "deadline": "2024-11-17T22:31",
       "status": "active",
       "questions": [
         {
@@ -887,7 +887,7 @@
       "courseName": "World History",
       "coursequizID": "HIST201",
       "teacherName": "werek",
-      "Deadline": "2024-11-16T09:41",
+      "deadline": "2024-11-16T09:41",
       "status": "active",
       "questions": [
         {
@@ -977,7 +977,7 @@
       "courseName": "General Chemistry",
       "coursequizID": "CHEM101",
       "teacherName": "qqqqq",
-      "Deadline": "2024-11-13T01:59",
+      "deadline": "2024-11-13T01:59",
       "status": "active",
       "questions": [
         {
@@ -1331,7 +1331,7 @@
       "courseName": "Introduction to Physics",
       "coursequizID": "PHYS101",
       "teacherName": "Dr. Michael Smith",
-      "Deadline": "2024-11-20T23:59",
+      "deadline": "2024-11-20T23:59",
       "status": "draft",
       "questions": [
         {
@@ -1397,7 +1397,7 @@
       "courseName": "Principles of Economics",
       "coursequizID": "ECON101",
       "teacherName": "Dr. Emily Johnson",
-      "Deadline": "2024-12-13T23:59",
+      "deadline": "2024-12-13T23:59",
       "status": "draft",
       "questions": [],
       "id": "f11a",
@@ -1408,7 +1408,7 @@
       "courseName": "Introduction to Physics",
       "coursequizID": "PHYS101",
       "teacherName": "Jim Halpert",
-      "Deadline": "2024-10-31T11:57",
+      "deadline": "2024-10-31T11:57",
       "status": "draft"
     },
     {
@@ -1416,7 +1416,7 @@
       "courseName": "Principles of Economics",
       "coursequizID": "106",
       "teacherName": "Jim Halpert",
-      "Deadline": "2024-12-05T12:02",
+      "deadline": "2024-12-05T12:02",
       "status": "active"
     },
     {
@@ -1424,7 +1424,7 @@
       "courseName": "Introduction to Mathematics",
       "coursequizID": "105",
       "teacherName": "Jim Halpert",
-      "Deadline": "2024-11-24T12:05",
+      "deadline": "2024-11-24T12:05",
       "status": "active"
     },
     {
@@ -1432,7 +1432,7 @@
       "courseName": "General Chemistry",
       "coursequizID": "104",
       "teacherName": "Jim Halpert",
-      "Deadline": "2024-12-07T12:09",
+      "deadline": "2024-12-07T12:09",
       "status": "active",
       "questions": [
         {
@@ -1775,7 +1775,7 @@
       "courseName": "Introduction to Physics",
       "coursequizID": "PHYS101",
       "teacherName": "Dr. Michael Smith",
-      "Deadline": "2024-11-20T23:59",
+      "deadline": "2024-11-20T23:59",
       "status": "draft",
       "questions": [
         {
@@ -1841,7 +1841,7 @@
       "courseName": "Principles of Economics",
       "coursequizID": "ECON101",
       "teacherName": "Dr. Emily Johnson",
-      "Deadline": "2024-12-13T23:59",
+      "deadline": "2024-12-13T23:59",
       "status": "draft",
       "questions": [],
       "id": "f11a",
@@ -1852,7 +1852,7 @@
       "courseName": "General Chemistry",
       "coursequizID": "CHEM101",
       "teacherName": "khba",
-      "Deadline": "2024-11-14T23:26",
+      "deadline": "2024-11-14T23:26",
       "status": "active"
     },
     {
@@ -1860,7 +1860,7 @@
       "courseName": "Principles of Economics",
       "coursequizID": "106",
       "teacherName": "Jim Halpert",
-      "Deadline": "2024-12-05T12:02",
+      "deadline": "2024-12-05T12:02",
       "status": "active"
     },
     {
@@ -1868,15 +1868,15 @@
       "courseName": "Introduction to Mathematics",
       "coursequizID": "105",
       "teacherName": "Jim Halpert",
-      "Deadline": "2024-11-24T12:05",
+      "deadline": "2024-11-24T12:05",
       "status": "active"
     },
     {
-      "id": "199a",
+      "id": "198z",
       "courseName": "General Chemistry",
       "coursequizID": "104",
       "teacherName": "Jim Halpert",
-      "Deadline": "2024-12-07T12:09",
+      "deadline": "2024-12-07T12:09",
       "status": "active",
       "questions": [
         {
@@ -2339,7 +2339,7 @@
       "courseName": "World History",
       "coursequizID": "HIST201",
       "teacherName": "Jim Halpert",
-      "Deadline": "2024-12-04T12:40",
+      "deadline": "2024-12-04T12:40",
       "status": "draft",
       "questions": [],
       "questionsSelected": []
@@ -2349,7 +2349,7 @@
       "courseName": "Introduction to Biology",
       "coursequizID": "BIO101",
       "teacherName": "Carlos Martinez",
-      "Deadline": "2025-01-02T23:31",
+      "deadline": "2025-01-02T23:31",
       "status": "active"
     },
     {
@@ -2357,7 +2357,7 @@
       "courseName": "Introduction to Mathematics",
       "coursequizID": "105",
       "teacherName": "Carlos Martinez",
-      "Deadline": "2025-01-17T23:42",
+      "deadline": "2025-01-17T23:42",
       "status": "active",
       "questions": [
         {
