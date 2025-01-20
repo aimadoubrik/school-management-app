@@ -7,7 +7,7 @@ import { getUserFromStorage } from '../../utils';
 
 // Role permissions configuration
 const ROLE_PERMISSIONS = {
-  'super user': [
+  'super user': new Set([
     'Home',
     'Courses',
     'Quizzes',
@@ -25,8 +25,8 @@ const ROLE_PERMISSIONS = {
     'Settings',
     'Trainees',
     'Formateurs',
-  ],
-  admin: [
+  ]),
+  admin: new Set([
     'Home',
     'Attendance',
     'Documents',
@@ -39,43 +39,41 @@ const ROLE_PERMISSIONS = {
     'Modules',
     'Trainees',
     'Formateurs',
-  ],
-  trainer: ['Home', 'Courses', 'Quizzes', 'Trainees', 'Attendance', 'Schedule', 'Documents'],
-  trainee: ['Home', 'Courses', 'Quizzes', 'Schedule', 'Documents'],
+  ]),
+  trainer: new Set([
+    'Home',
+    'Courses',
+    'Quizzes',
+    'Trainees',
+    'Attendance',
+    'Schedule',
+    'Documents',
+  ]),
+  trainee: new Set(['Home', 'Courses', 'Quizzes', 'Schedule', 'Documents']),
 };
 
+// Filters menu items based on user role
 const getFilteredMenuItems = (role, items) => {
-  const allowedLabels = ROLE_PERMISSIONS[role] || [];
-
-  return items.reduce((acc, item, index) => {
+  const allowedLabels = ROLE_PERMISSIONS[role] || new Set();
+  return items.filter((item, index, arr) => {
     if (item.type === 'divider') {
-      const prevItem = acc[acc.length - 1];
-      if (prevItem && !prevItem.type) {
-        acc.push(item);
-      }
-      return acc;
+      return index > 0 && arr[index - 1].type !== 'divider';
     }
-
-    if (item.label && allowedLabels.includes(item.label)) {
-      acc.push(item);
-    }
-
-    return acc;
-  }, []);
+    return item.label && allowedLabels.has(item.label);
+  });
 };
 
+// Handles closing the sidebar when clicking outside or pressing Escape
 const useSidebarCloseHandlers = (sidebarRef, isSidebarOpen, setIsSidebarOpen, isMobile) => {
   const location = useLocation();
 
   const handleClickOutside = useCallback(
     (event) => {
       if (!isMobile) return;
-
-      const target = event.target;
-      const isOutside =
-        !sidebarRef.current?.contains(target) && !target.closest('[data-sidebar-toggle]');
-
-      if (isOutside) {
+      if (
+        !sidebarRef.current?.contains(event.target) &&
+        !event.target.closest('[data-sidebar-toggle]')
+      ) {
         setIsSidebarOpen(false);
       }
     },
@@ -93,10 +91,8 @@ const useSidebarCloseHandlers = (sidebarRef, isSidebarOpen, setIsSidebarOpen, is
 
   useEffect(() => {
     if (!isSidebarOpen) return;
-
     document.addEventListener('mousedown', handleClickOutside, true);
     document.addEventListener('keydown', handleEscKey, true);
-
     return () => {
       document.removeEventListener('mousedown', handleClickOutside, true);
       document.removeEventListener('keydown', handleEscKey, true);
@@ -110,36 +106,37 @@ const useSidebarCloseHandlers = (sidebarRef, isSidebarOpen, setIsSidebarOpen, is
   }, [location.pathname, isMobile, setIsSidebarOpen]);
 };
 
+// Sidebar overlay for mobile view
 const SidebarOverlay = memo(({ isVisible, onClose }) => (
   <div
-    className={`fixed inset-0 bg-black/20 backdrop-blur-sm z-20 transition-opacity duration-300 ${
+    className={`fixed inset-0 bg-black/30 backdrop-blur-sm z-20 transition-opacity duration-300 ${
       isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
     }`}
     onClick={onClose}
-    onKeyDown={(e) => e.key === 'Enter' && onClose()}
     role="button"
     tabIndex={isVisible ? 0 : -1}
     aria-hidden={!isVisible}
   />
 ));
-
 SidebarOverlay.displayName = 'SidebarOverlay';
 
+// Sidebar menu content
 const SidebarContent = memo(({ menuItems, userData, isSidebarOpen }) => (
   <>
     <nav className="flex-1 px-4 py-6 overflow-y-auto scrollbar-thin scrollbar-thumb-base-300">
       <ul className="space-y-1" role="menu">
-        {menuItems.map((item, index) => {
-          if (item.type === 'divider') {
-            return <Divider key={`divider-${index}`} />;
-          }
-          return <MenuItem key={item.href || `item-${index}`} item={item} />;
-        })}
+        {menuItems.map((item, index) =>
+          item.type === 'divider' ? (
+            <Divider key={`divider-${index}`} />
+          ) : (
+            <MenuItem key={item.href || `item-${index}`} item={item} />
+          )
+        )}
       </ul>
     </nav>
 
     <div
-      className={`transition-all duration-300 ease-in-out overflow-hidden ${isSidebarOpen ? 'max-h-24 opacity-100' : 'max-h-0 w-0 opacity-0'}`}
+      className={`transition-all duration-300 overflow-hidden ${isSidebarOpen ? 'max-h-24 opacity-100' : 'max-h-0 opacity-0'}`}
     >
       <div className="p-4 border-t border-base-200">
         <UserProfile
@@ -151,9 +148,9 @@ const SidebarContent = memo(({ menuItems, userData, isSidebarOpen }) => (
     </div>
   </>
 ));
-
 SidebarContent.displayName = 'SidebarContent';
 
+// Main Sidebar Component
 const Sidebar = memo(() => {
   const sidebarRef = useRef(null);
   const { isSidebarOpen, setIsSidebarOpen, isMobile } = useContext(LayoutContext);
@@ -166,28 +163,10 @@ const Sidebar = memo(() => {
 
   useSidebarCloseHandlers(sidebarRef, isSidebarOpen, setIsSidebarOpen, isMobile);
 
-  // Separate classes for mobile and desktop
-  const baseClasses = `
-    rounded-2xl
-    bg-base-100
-    transition-all
-    duration-300
-    ease-in-out
-    z-30
-  `.trim();
-
-  const mobileClasses = `
-    shadow-lg
-    ${isSidebarOpen ? 'w-64' : '-translate-x-[16.5rem] w-0'}
-  `.trim();
-
-  const desktopClasses = `
-    ${isSidebarOpen ? 'w-64' : 'w-auto'}
-  `.trim();
-
+  // Sidebar styling
   const sidebarClasses = `
-    ${baseClasses}
-    ${isMobile ? mobileClasses : desktopClasses}
+    rounded-2xl bg-base-100 transition-all duration-300 ease-in-out z-30
+    ${isMobile ? (isSidebarOpen ? 'w-64 shadow-lg' : '-translate-x-[16.5rem] w-0') : isSidebarOpen ? 'w-64' : 'w-20'}
   `.trim();
 
   return (
@@ -215,7 +194,6 @@ const Sidebar = memo(() => {
     </>
   );
 });
-
 Sidebar.displayName = 'Sidebar';
 
 export default Sidebar;

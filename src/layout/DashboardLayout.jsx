@@ -25,13 +25,6 @@ const DashboardContent = () => {
             bg-base-100 
             rounded-2xl
             transition-all duration-300 ease-in-out
-            ${
-              isMobile
-                ? `left-2 ${isSidebarOpen ? 'opacity-50' : 'opacity-100'}`
-                : isSidebarOpen
-                  ? 'left-[17rem]'
-                  : ''
-            }
           `}
         >
           {/* Main Outlet */}
