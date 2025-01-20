@@ -1,9 +1,7 @@
-// scheduler.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { apiService } from '../../api/config';
 import dayjs from 'dayjs';
 
-// Helper for async thunks
 const createApiThunk = (typePrefix, apiCall) => {
   return createAsyncThunk(typePrefix, async (args, { rejectWithValue }) => {
     try {
@@ -14,7 +12,6 @@ const createApiThunk = (typePrefix, apiCall) => {
   });
 };
 
-// Thunks
 export const fetchAssignments = createApiThunk('scheduler/fetchAssignments', () =>
   apiService.get('/scheduler')
 );

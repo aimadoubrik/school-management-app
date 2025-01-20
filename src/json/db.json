@@ -8022,7 +8022,7 @@
   "scheduler": [
     {
       "id": "3",
-      "title": "History Class",
+      "title": "Modern History Lecture",
       "formateur": {
         "matricule": "H2345",
         "nom": "Ms. Davis",
@@ -8031,19 +8031,19 @@
       },
       "groupe": {
         "codeGroupe": "HIST201",
-        "intituleGroupe": "Histoire Générale",
+        "intituleGroupe": "Histoire Moderne",
         "filiere": "Humanities",
         "secteur": "social sciences"
       },
       "salle": "Room 103",
       "day": "2024-11-15",
-      "startTime": "09:30",
-      "endTime": "10:00",
-      "durée": "30"
+      "startTime": "09:00",
+      "endTime": "10:30",
+      "durée": "90"
     },
     {
       "id": "5",
-      "title": "Art Class",
+      "title": "Introduction to Painting",
       "formateur": {
         "matricule": "A5432",
         "nom": "Ms. Green",
@@ -8052,19 +8052,19 @@
       },
       "groupe": {
         "codeGroupe": "ART102",
-        "intituleGroupe": "Arts Visuels",
+        "intituleGroupe": "Peinture de Base",
         "filiere": "Fine Arts",
         "secteur": "arts"
       },
       "salle": "Room 105",
       "day": "2024-11-15",
-      "startTime": "10:30",
-      "endTime": "11:00",
-      "durée": "30"
+      "startTime": "11:00",
+      "endTime": "12:30",
+      "durée": "90"
     },
     {
       "id": "7",
-      "title": "Physics Class",
+      "title": "Quantum Mechanics",
       "formateur": {
         "matricule": "P6789",
         "nom": "Dr. Adams",
@@ -8072,20 +8072,20 @@
         "secteur": "sciences"
       },
       "groupe": {
-        "codeGroupe": "PHY101",
-        "intituleGroupe": "Sciences Physiques",
-        "filiere": "Sciences",
+        "codeGroupe": "PHY301",
+        "intituleGroupe": "Physique Quantique",
+        "filiere": "Physics",
         "secteur": "sciences"
       },
       "salle": "Room 107",
       "day": "2024-11-16",
       "startTime": "09:00",
-      "endTime": "09:30",
-      "durée": "30"
+      "endTime": "10:30",
+      "durée": "90"
     },
     {
       "id": "9",
-      "title": "Geography Class",
+      "title": "World Geography Workshop",
       "formateur": {
         "matricule": "G1234",
         "nom": "Mr. Black",
@@ -8094,19 +8094,19 @@
       },
       "groupe": {
         "codeGroupe": "GEO202",
-        "intituleGroupe": "Géographie Appliquée",
+        "intituleGroupe": "Géographie Mondiale",
         "filiere": "Geosciences",
         "secteur": "social sciences"
       },
       "salle": "Room 109",
       "day": "2024-11-16",
-      "startTime": "10:00",
-      "endTime": "10:30",
-      "durée": "30"
+      "startTime": "11:00",
+      "endTime": "12:30",
+      "durée": "90"
     },
     {
       "id": "11",
-      "title": "Biology Class",
+      "title": "Cell Biology Seminar",
       "formateur": {
         "matricule": "B4321",
         "nom": "Dr. Carter",
@@ -8115,19 +8115,19 @@
       },
       "groupe": {
         "codeGroupe": "BIO301",
-        "intituleGroupe": "Biologie Avancée",
+        "intituleGroupe": "Biologie Cellulaire",
         "filiere": "Life Sciences",
         "secteur": "sciences"
       },
       "salle": "Room 111",
       "day": "2024-11-17",
       "startTime": "08:30",
-      "endTime": "09:00",
-      "durée": "30"
+      "endTime": "10:00",
+      "durée": "90"
     },
     {
       "id": "13",
-      "title": "Philosophy Class",
+      "title": "Ethics and Philosophy",
       "formateur": {
         "matricule": "PH5678",
         "nom": "Mr. Harris",
@@ -8136,19 +8136,19 @@
       },
       "groupe": {
         "codeGroupe": "PHILO101",
-        "intituleGroupe": "Introduction à la Philosophie",
+        "intituleGroupe": "Éthique et Philosophie",
         "filiere": "Philosophy",
         "secteur": "humanities"
       },
       "salle": "Room 113",
       "day": "2024-11-17",
-      "startTime": "09:30",
-      "endTime": "10:00",
-      "durée": "30"
+      "startTime": "10:30",
+      "endTime": "12:00",
+      "durée": "90"
     },
     {
       "id": "15",
-      "title": "Political Science",
+      "title": "Advanced Political Theories",
       "formateur": {
         "matricule": "PS7890",
         "nom": "Ms. Miller",
@@ -8157,19 +8157,19 @@
       },
       "groupe": {
         "codeGroupe": "POLSCI301",
-        "intituleGroupe": "Science Politique Avancée",
+        "intituleGroupe": "Théories Politiques Avancées",
         "filiere": "Political Studies",
         "secteur": "social sciences"
       },
       "salle": "Room 115",
       "day": "2024-11-17",
-      "startTime": "10:30",
-      "endTime": "11:00",
-      "durée": "30"
+      "startTime": "13:30",
+      "endTime": "15:00",
+      "durée": "90"
     },
     {
       "id": "16",
-      "title": "French Class",
+      "title": "French Grammar Workshop",
       "formateur": {
         "matricule": "F0987",
         "nom": "Mr. Wilson",
@@ -8178,19 +8178,19 @@
       },
       "groupe": {
         "codeGroupe": "FR101",
-        "intituleGroupe": "Français Langue Étrangère",
-        "filiere": "Semantics",
-        "secteur": "linguistics"
+        "intituleGroupe": "Atelier de Grammaire Française",
+        "filiere": "Linguistics",
+        "secteur": "languages"
       },
       "salle": "Room 116",
       "day": "2024-11-18",
-      "startTime": "08:30",
-      "endTime": "09:00",
-      "durée": "30"
+      "startTime": "09:00",
+      "endTime": "10:30",
+      "durée": "90"
     },
     {
       "id": "17",
-      "title": "German Class",
+      "title": "German Culture and Language",
       "formateur": {
         "matricule": "G5678",
         "nom": "Ms. King",
@@ -8199,19 +8199,19 @@
       },
       "groupe": {
         "codeGroupe": "GER201",
-        "intituleGroupe": "Allemand Intermédiaire",
-        "filiere": "Historical linguistics",
-        "secteur": "linguistics"
+        "intituleGroupe": "Culture Allemande",
+        "filiere": "Linguistics",
+        "secteur": "languages"
       },
       "salle": "Room 117",
       "day": "2024-11-18",
-      "startTime": "09:00",
-      "endTime": "09:30",
-      "durée": "30"
+      "startTime": "11:00",
+      "endTime": "12:30",
+      "durée": "90"
     },
     {
       "id": "19",
-      "title": "Computer Science",
+      "title": "Introduction to Programming",
       "formateur": {
         "matricule": "C1234",
         "nom": "Ms. Wright",
@@ -8220,15 +8220,15 @@
       },
       "groupe": {
         "codeGroupe": "CS101",
-        "intituleGroupe": "Informatique de Base",
+        "intituleGroupe": "Programmation de Base",
         "filiere": "Information Technology",
         "secteur": "technology"
       },
       "salle": "Room 119",
       "day": "2024-11-18",
-      "startTime": "10:00",
-      "endTime": "10:30",
-      "durée": "30"
+      "startTime": "13:00",
+      "endTime": "14:30",
+      "durée": "90"
     }
-  ]
+  ]  
 }

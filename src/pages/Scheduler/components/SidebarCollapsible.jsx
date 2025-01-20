@@ -85,7 +85,7 @@ export function SidebarItem({ icon, text, children, id }) {
           transition-all duration-200
           bg-base-100 z-10
           ${isOpen 
-            ? 'bg-white text-[#57a9ad] shadow-sm' 
+            ? 'bg-primary/10 text-primary text-[#57a9ad] shadow-sm' 
             : 'text-gray-600 hover:bg-white/60'
           }
         `}
