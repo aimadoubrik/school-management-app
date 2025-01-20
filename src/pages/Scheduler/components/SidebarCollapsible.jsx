@@ -17,44 +17,43 @@ export default function SidebarCollapsible({ children }) {
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
-    
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
     <aside
       ref={sidebarRef}
-      className={`
-        fixed right-2 top-[80px] z-50
-        rounded-lg border
-        h-[690px]
-        ${expanded ? "w-72" : "w-14"}
+      className={`fixed right-4 top-[5.5rem] z-50 
+        ${expanded ? "w-80" : "w-16"} 
+        h-[calc(100vh-6.5rem)] 
         transition-all duration-300 ease-in-out
-        bg-base-100 border-l border-gray-200
-        flex flex-col
-        shadow-lg
-      `}
+        bg-base-100
+        rounded-2xl
+        border border-base-300
+        shadow-lg backdrop-blur-sm
+        overflow-hidden`}
     >
-      <nav className="h-full flex flex-col w-full">
-        <div className="p-3 pb-2 flex justify-start items-center border-b border-gray-200 bg-base-100 z-20">
+      <nav className="h-full flex flex-col">
+        <div className={`p-4 flex ${!expanded ? "justify-center" : "justify-between"} items-center border-b border-base-300`}>
+          <div className={`flex items-center ${!expanded && "scale-0 w-0"} transition-transform duration-300`}>
+            <span className="text-lg font-semibold text-base-content">Menu</span>
+          </div>
           <button
             onClick={() => setExpanded((curr) => !curr)}
-            className="p-1.5 rounded-lg hover:bg-gray-100 transition-colors"
+            className="p-2 rounded-lg hover:bg-base-200
+              transition-colors duration-300"
           >
-            {expanded ? <ChevronLast className="text-gray-600" /> : <ChevronFirst className="text-gray-600" />}
+            {expanded ? (
+              <ChevronLast className="text-base-content" />
+            ) : (
+              <ChevronFirst className="text-base-content" />
+            )}
           </button>
         </div>
-        <SidebarContext.Provider 
-          value={{ 
-            expanded, 
-            reset: !expanded,
-            activeSection,
-            setActiveSection 
-          }}
-        >
-          <ul className="flex-1 px-2 py-2 space-y-1 overflow-y-hidden">{children}</ul>
+        <SidebarContext.Provider value={{ expanded, reset: !expanded, activeSection, setActiveSection }}>
+          <ul className="flex-1 px-3 py-3 space-y-1.5 overflow-y-auto scrollbar-thin scrollbar-thumb-base-300">
+            {children}
+          </ul>
         </SidebarContext.Provider>
       </nav>
     </aside>
@@ -63,7 +62,6 @@ export default function SidebarCollapsible({ children }) {
 
 export function SidebarItem({ icon, text, children, id }) {
   const { expanded, reset, activeSection, setActiveSection } = useContext(SidebarContext);
-  
   const isOpen = activeSection === id;
 
   const handleToggle = () => {
@@ -77,37 +75,33 @@ export function SidebarItem({ icon, text, children, id }) {
   }
 
   return (
-    <li className="relative">
+    <li className="relative group">
       <div
-        className={`
-          flex items-center py-2 px-2.5
-          font-medium rounded-md cursor-pointer
-          transition-all duration-200
-          bg-base-100 z-10
+        className={`flex justify-center items-center py-3 px-3 rounded-lg cursor-pointer
+          transition-all duration-300 group-hover:shadow-md
           ${isOpen 
-            ? 'bg-primary/10 text-primary text-[#57a9ad] shadow-sm' 
-            : 'text-gray-600 hover:bg-white/60'
-          }
-        `}
+            ? 'bg-primary/15 text-primary shadow-md' 
+            : 'text-base-content hover:bg-base-200'
+          }`}
         onClick={handleToggle}
       >
-        <div className="min-w-[24px]">
+        <div className="w-auto transition-transform group-hover:scale-110">
           {React.cloneElement(icon, {
             size: 20,
-            className: `transition-colors ${isOpen ? 'text-[#57a9ad]' : 'text-gray-500'}`
+            className: `transition-colors ${isOpen ? 'text-primary' : ''}`
           })}
         </div>
         <span
-          className={`
-            overflow-hidden transition-all duration-300
-            ${expanded ? "w-52 ml-3 opacity-100" : "w-0 opacity-0"}
-          `}
+          className={`overflow-hidden transition-all duration-300
+            ${expanded ? "w-52 ml-4 opacity-100" : "w-0 opacity-0"}`}
         >
           {text}
         </span>
       </div>
       {isOpen && expanded && (
-        <div className="mt-2 px-2 py-1">
+        <div className="mt-2 mx-2 px-4 py-3 text-sm text-base-content/80
+          bg-base-200/50 rounded-lg
+          animate-fadeIn">
           {children}
         </div>
       )}
