@@ -5,6 +5,7 @@ import {
   setSelectedGroupe,
 } from '../../../features/scheduler/schedulerSlice';
 import { User, Users } from 'lucide-react';
+import SidebarCollapsible, { SidebarItem } from './SidebarCollapsible';
 
 function Sidebar() {
   const selectedGroupe = useSelector((state) => state.scheduler.selectedGroupe);
@@ -110,109 +111,109 @@ function Sidebar() {
   };
 
   return (
-    <div className="w-full bg-50 max-w-sm">
-      {/* Groups Section */}
-      <h3 className="text-lg font-semibold text-[#57a9ad] mb-3 flex items-center gap-2">
-        <Users className="w-5 h-5" /> Groups
-      </h3>
-
-      {/* Group Filters */}
-      <div className="space-y-3">
-        <select
-          value={selectedSecteur}
-          onChange={(e) => {
-            setSelectedSecteur(e.target.value);
-            setSelectedFiliere('');
-          }}
-          className="select select-bordered w-full"
-        >
-          <option value="">All Secteurs</option>
-          {secteurs.map((secteur) => (
-            <option key={secteur} value={secteur}>
-              {secteur}
-            </option>
-          ))}
-        </select>
-
-        <select
-          value={selectedFiliere}
-          onChange={(e) => setSelectedFiliere(e.target.value)}
-          className="select select-bordered w-full"
-        >
-          <option value="">All Filieres</option>
-          {filteredFilieres.map((filiere, index) => (
-            <option key={index} value={filiere}>
-              {filiere}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* Group List */}
-      <div className="mt-4 max-h-40 overflow-y-auto space-y-2">
-        {filteredGroups.length > 0 ? (
-          filteredGroups.map((group, index) => (
-            <div
-              key={index}
-              className={`p-3 rounded-lg border ${
-                selectedGroupe === group.codeGroupe
-                  ? 'bg-primary text-primary-content hover:bg-primary/90'
-                  : 'hover:bg-gray-100'
-              } cursor-pointer`}
-              onClick={() => handleSelectGroupe(group.codeGroupe)}
+    <SidebarCollapsible>
+      <SidebarItem icon={<Users size={20}/>} text="Groups" id="groups">
+        <div className="flex flex-col max-h-[400px] overflow-hidden">
+          <div className="space-y-3">
+            <select
+              value={selectedSecteur}
+              onChange={(e) => {
+                setSelectedSecteur(e.target.value);
+                setSelectedFiliere('');
+              }}
+              className="select select-bordered w-full"
             >
-              <h4 className="text-sm font-medium">{group.intituleGroupe}</h4>
-              <p className="text-xs text-gray-600">{group.filiere}</p>
-            </div>
-          ))
-        ) : (
-          <p className="text-center text-gray-500">No groups found.</p>
-        )}
-      </div>
+              <option value="">All Secteurs</option>
+              {secteurs.map((secteur) => (
+                <option key={secteur} value={secteur}>
+                  {secteur}
+                </option>
+              ))}
+            </select>
 
-      {/* Formateurs Section */}
-      <h3 className="text-lg font-semibold text-[#57a9ad] mt-6 flex items-center gap-2">
-        <User className="w-5 h-5" /> Formateurs
-      </h3>
-
-      {/* Formateur Filters */}
-      <div className="space-y-3 mt-3">
-        <select
-          value={selectedFormateurSecteur}
-          onChange={(e) => setSelectedFormateurSecteur(e.target.value)}
-          className="select select-bordered w-full"
-        >
-          <option value="">All Secteurs</option>
-          {secteurs.map((secteur) => (
-            <option key={secteur} value={secteur}>
-              {secteur}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* Formateur List */}
-      <div className="mt-4 max-h-40 overflow-y-auto space-y-2">
-        {filteredFormateurs.length > 0 ? (
-          filteredFormateurs.map((formateur, index) => (
-            <div
-              key={index}
-              className={`p-3 rounded-lg border ${
-                selectedFormateur === formateur.matricule
-                  ? 'bg-primary text-primary-content hover:bg-primary/90'
-                  : 'hover:bg-gray-100'
-              } cursor-pointer`}
-              onClick={() => handleSelectFormateur(formateur.matricule)}
+            <select
+              value={selectedFiliere}
+              onChange={(e) => setSelectedFiliere(e.target.value)}
+              className="select select-bordered w-full"
             >
-              <h4 className="text-sm font-medium">{formateur.nom}</h4>
-              <p className="text-xs text-gray-600">{formateur.email}</p>
+              <option value="">All Filieres</option>
+              {filteredFilieres.map((filiere, index) => (
+                <option key={index} value={filiere}>
+                  {filiere}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Group List with contained scrolling */}
+          <div className="mt-4 overflow-y-auto flex-1">
+            <div className="space-y-2 pr-2">
+              {filteredGroups.length > 0 ? (
+                filteredGroups.map((group, index) => (
+                  <div
+                    key={index}
+                    className={`p-3 rounded-lg border ${
+                      selectedGroupe === group.codeGroupe
+                        ? 'bg-primary text-primary-content hover:bg-primary/90'
+                        : 'hover:bg-gray-100'
+                    } cursor-pointer`}
+                    onClick={() => handleSelectGroupe(group.codeGroupe)}
+                  >
+                    <h4 className="text-sm font-medium">{group.intituleGroupe}</h4>
+                    <p className="text-xs text-gray-600">{group.filiere}</p>
+                  </div>
+                ))
+              ) : (
+                <p className="text-center text-gray-500">No groups found.</p>
+              )}
             </div>
-          ))
-        ) : (
-          <p className="text-center text-gray-500">No formateurs found.</p>
-        )}
-      </div>
-    </div>
+          </div>
+        </div>
+      </SidebarItem>
+
+      <SidebarItem icon={<User size={20}/>} text="Formateurs" id="formateurs">
+        <div className="flex flex-col max-h-[400px] overflow-hidden">
+          <div className="space-y-3">
+            <select
+              value={selectedFormateurSecteur}
+              onChange={(e) => setSelectedFormateurSecteur(e.target.value)}
+              className="select select-bordered w-full"
+            >
+              <option value="">All Secteurs</option>
+              {secteurs.map((secteur) => (
+                <option key={secteur} value={secteur}>
+                  {secteur}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Formateur List with contained scrolling */}
+          <div className="mt-4 overflow-y-auto flex-1">
+            <div className="space-y-2 pr-2">
+              {filteredFormateurs.length > 0 ? (
+                filteredFormateurs.map((formateur, index) => (
+                  <div
+                    key={index}
+                    className={`p-3 rounded-lg border ${
+                      selectedFormateur === formateur.matricule
+                        ? 'bg-primary text-primary-content hover:bg-primary/90'
+                        : 'hover:bg-gray-100'
+                    } cursor-pointer`}
+                    onClick={() => handleSelectFormateur(formateur.matricule)}
+                  >
+                    <h4 className="text-sm font-medium">{formateur.nom}</h4>
+                    <p className="text-xs text-gray-600">{formateur.email}</p>
+                  </div>
+                ))
+              ) : (
+                <p className="text-center text-gray-500">No formateurs found.</p>
+              )}
+            </div>
+          </div>
+        </div>
+      </SidebarItem>
+    </SidebarCollapsible>
   );
 }
 
