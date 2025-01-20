@@ -21,7 +21,7 @@ export default function AssignmentModal() {
     assignments,
     selectedGroupe,
     selectedFormateur,
-    isEditingMode,
+    salles
   } = useSelector((state) => state.scheduler);
 
   const timeSlots = hours.flatMap((hour) => hour.subHours);
@@ -339,12 +339,19 @@ export default function AssignmentModal() {
                 Salle
               </span>
             </label>
-            <input
-              type="text"
+            <select
               value={assignmentData.salle}
               onChange={(e) => setAssignmentData({ ...assignmentData, salle: e.target.value })}
-              className="input input-bordered w-full"
-            />
+              className="select select-bordered w-full"
+              required
+            >
+              <option value="">Select la salle</option>
+              {salles.map((salle, index) => (
+                <option key={index} value={salle}>
+                  {salle}
+                </option>
+                ))}
+          </select>
           </div>
           <div className="flex justify-between items-center mt-4">
             <button type="submit" className="btn btn-primary" aria-label="Save Assignment">

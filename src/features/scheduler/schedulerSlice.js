@@ -79,7 +79,9 @@ const initialState = {
   selectedStartTime: '',
   selectedEndTime: '',
   selectedGroupe: null,
+  selectedFormateur: null,
   isAddAssignmentButtonClicked: false,
+  salles: ["info 01", "info 02", "info 03", "salle de dessin", "salle 1", "salle 2", "salle 3", "salle 4", "salle 5", "salle 6", "salle 7", "salle 8", "salle 9"]
 };
 
 const schedulerSlice = createSlice({
@@ -104,7 +106,7 @@ const schedulerSlice = createSlice({
     setShowAddAssignmentModal: (state, action) => {
       state.showAddAssignmentModal = action.payload;
       if (!action.payload) {
-        state.isEditingMode = false; // Reset editing mode when modal closes
+        state.isEditingMode = false; 
       }
     },
     setSelectedGroupe: (state, action) => {
