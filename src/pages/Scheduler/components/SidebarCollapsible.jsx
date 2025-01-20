@@ -1,28 +1,44 @@
 import React from "react";
 import { ChevronLast, ChevronFirst } from "lucide-react";
-import { useContext, createContext, useState } from "react";
+import { useContext, createContext, useState, useEffect, useRef } from "react";
 
 const SidebarContext = createContext();
 
 export default function SidebarCollapsible({ children }) {
   const [expanded, setExpanded] = useState(false);
   const [activeSection, setActiveSection] = useState(null);
+  const sidebarRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setExpanded(false);
+        setActiveSection(null);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <aside
+      ref={sidebarRef}
       className={`
         fixed right-2 top-[80px] z-50
         rounded-lg border
-        h-[660px]
+        h-[690px]
         ${expanded ? "w-72" : "w-14"}
         transition-all duration-300 ease-in-out
-        bg-[#F9F7F5] border-l border-gray-200
+        bg-base-100 border-l border-gray-200
         flex flex-col
         shadow-lg
       `}
     >
       <nav className="h-full flex flex-col w-full">
-        <div className="p-3 pb-2 flex justify-start items-center border-b border-gray-200  sticky top-0 z-10">
+        <div className="p-3 pb-2 flex justify-start items-center border-b border-gray-200 bg-base-100 z-20">
           <button
             onClick={() => setExpanded((curr) => !curr)}
             className="p-1.5 rounded-lg hover:bg-gray-100 transition-colors"
@@ -38,7 +54,7 @@ export default function SidebarCollapsible({ children }) {
             setActiveSection 
           }}
         >
-          <ul className="flex-1 px-2 py-2 space-y-1 overflow-y-auto">{children}</ul>
+          <ul className="flex-1 px-2 py-2 space-y-1 overflow-y-hidden">{children}</ul>
         </SidebarContext.Provider>
       </nav>
     </aside>
@@ -67,7 +83,7 @@ export function SidebarItem({ icon, text, children, id }) {
           flex items-center py-2 px-2.5
           font-medium rounded-md cursor-pointer
           transition-all duration-200
-          sticky top-0 bg-[#F9F7F5] z-10
+          bg-base-100 z-10
           ${isOpen 
             ? 'bg-white text-[#57a9ad] shadow-sm' 
             : 'text-gray-600 hover:bg-white/60'
@@ -91,7 +107,7 @@ export function SidebarItem({ icon, text, children, id }) {
         </span>
       </div>
       {isOpen && expanded && (
-        <div className="mt-2 px-2 py-1 space-y-3 max-h-[calc(100vh-460px)]">
+        <div className="mt-2 px-2 py-1">
           {children}
         </div>
       )}
