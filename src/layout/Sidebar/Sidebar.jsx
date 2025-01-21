@@ -165,7 +165,7 @@ const Sidebar = memo(() => {
 
   // Sidebar styling
   const sidebarClasses = `
-    rounded-2xl bg-base-100 transition-all duration-300 ease-in-out z-30
+    rounded-2xl bg-base-100 transition-all duration-300 ease-in-out z-30 shadow-md
     ${isMobile ? (isSidebarOpen ? 'w-64 shadow-lg' : '-translate-x-[16.5rem] w-0') : isSidebarOpen ? 'w-64' : 'w-20'}
   `.trim();
 

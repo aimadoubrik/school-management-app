@@ -24,7 +24,7 @@ const MenuItem = ({ item }) => {
           <>
             {/* Icon with fixed width to prevent flickering */}
             <span className="min-w-6 flex justify-center">
-              <IconComponent className="transition-colors duration-300 text-base-content" />
+              <IconComponent className="transition-colors duration-300 ease-in-out text-base" />
             </span>
 
             {/* Label - Only visible when sidebar is open */}

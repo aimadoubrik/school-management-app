@@ -22,7 +22,8 @@ const DashboardContent = () => {
             flex-1
             overflow-y-auto
             p-8
-            bg-base-100 
+            bg-base-100
+            shadow-md
             rounded-2xl
             transition-all duration-300 ease-in-out
           `}
