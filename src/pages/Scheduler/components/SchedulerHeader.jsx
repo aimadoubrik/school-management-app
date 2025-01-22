@@ -31,15 +31,24 @@ export default function SchedulerHeader() {
         </button>
       </div>
       <div className="flex items-center px-5 pt-5 mx-5">
-        {assignments.map((assignment) => (
-          <p key={assignment.id}>
-            {assignment.groupe.codeGroupe === selectedGroupe
-              ? assignment.groupe.intituleGroupe
-              : assignment.formateur.matricule === selectedFormateur
-              ? assignment.formateur.nom 
-              : null}
-          </p>
-        ))}
+        {(() => {
+          const firstMatch = assignments.find(
+            assignment => 
+              assignment.groupe.codeGroupe === selectedGroupe ||
+              assignment.formateur.matricule === selectedFormateur
+          );
+          
+          if (firstMatch) {
+            return (
+              <p>
+                {firstMatch.groupe.codeGroupe === selectedGroupe
+                  ? firstMatch.groupe.intituleGroupe
+                  : firstMatch.formateur.nom}
+              </p>
+            );
+          }
+          return null;
+        })()}
       </div>
       <div className="flex items-center pt-5 mx-5">
         <button
