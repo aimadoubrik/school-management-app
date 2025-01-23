@@ -31,15 +31,6 @@ const DashboardContent = () => {
           {/* Main Outlet */}
           <Outlet />
         </main>
-
-        {/* Mobile Overlay */}
-        {isMobile && isSidebarOpen && (
-          <div
-            className="fixed inset-0 bg-black/50 z-20"
-            onClick={() => setIsSidebarOpen(false)}
-            aria-hidden="true"
-          />
-        )}
       </div>
     </div>
   );
