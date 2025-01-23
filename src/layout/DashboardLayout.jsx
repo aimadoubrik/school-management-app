@@ -8,7 +8,7 @@ const DashboardContent = () => {
   const { isMobile, isSidebarOpen } = useContext(LayoutContext);
 
   return (
-    <div className="container">
+    <>
       {/* Navbar */}
       <Navbar />
 
@@ -34,7 +34,7 @@ const DashboardContent = () => {
         {/* Main Outlet */}
         <Outlet />
       </main>
-    </div>
+    </>
   );
 };
 
