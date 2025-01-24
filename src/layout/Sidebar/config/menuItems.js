@@ -1,88 +1,86 @@
-// Add your menu items here, they will be rendered in the sidebar, in the order you add them.
-// Make sure to write the icon name correctly, you can find the icon names here: https://lucide.dev/icons.
-
 const menuItems = [
+  // Dashboard
   {
-    label: 'Home',
+    label: 'Accueil',
     icon: 'Home',
     href: '/home',
   },
-  {
-    label: 'Courses',
-    icon: 'BookOpenText',
-    href: '/courses',
-    count: 24,
-    badge: 'New',
-  },
-  {
-    label: 'Quizzes',
-    icon: 'MessageCircleQuestion',
-    href: '/quizzes',
-    count: 24,
-    badge: 'New',
-  },
-  {
-    label: 'Trainees',
-    icon: 'Users',
-    href: '/trainees',
-    count: 892,
-  },
-  {
-    label: 'Attendance',
-    icon: 'ClipboardCheck',
-    href: '/attendance',
-    count: 12,
-  },
-  {
-    label: 'Schedule',
-    icon: 'Calendar',
-    href: '/schedule',
-    count: 12,
-  },
-  {
-    label: 'Student',
-    icon: 'User',
-    href: '/Stagiaire',
-    count: 65,
-  },
-  {
-    label: 'Scheduler',
-    icon: 'Calendar',
-    href: '/Scheduler',
-  },
 
+  { type: 'divider' },
+
+  // Educational Structure
   {
-    label: 'Specializations',
+    label: 'Filières',
     icon: 'BookMarked',
     href: '/specializations',
-    count: 4,
-  },
-  {
-    label: 'Groupes',
-    icon: 'Users',
-    href: '/groups',
-    count: 8,
-  },
-  {
-    label: 'Competences',
-    icon: 'BookMarked',
-    href: '/competences',
-    count: 4,
   },
   {
     label: 'Modules',
     icon: 'BookOpen',
     href: '/modules',
-    count: 64,
   },
+  {
+    label: 'Cours',
+    icon: 'BookOpenText',
+    href: '/courses',
+  },
+  {
+    label: 'Compétences',
+    icon: 'BookMarked',
+    href: '/competences',
+  },
+
+  { type: 'divider' },
+
+  // People & Groups
   {
     label: 'Formateurs',
     icon: 'UserRound',
     href: '/formateur',
-    count: 4,
+  },
+  {
+    label: 'Stagiaires',
+    icon: 'Users',
+    href: '/trainees',
+  },
+  {
+    label: 'Groupes',
+    icon: 'Users',
+    href: '/groups',
   },
 
   { type: 'divider' },
+
+  // Planning & Monitoring
+  {
+    label: 'Emploi du temps',
+    icon: 'Calendar',
+    href: '/schedule',
+  },
+  {
+    label: 'Planificateur',
+    icon: 'Calendar',
+    href: '/Scheduler',
+  },
+  {
+    label: 'Présence',
+    icon: 'ClipboardCheck',
+    href: '/attendance',
+  },
+  {
+    label: 'Quiz',
+    icon: 'MessageCircleQuestion',
+    href: '/quizzes',
+  },
+
+  { type: 'divider' },
+
+  // Documentation & Requests
+  {
+    label: 'Générer documents',
+    icon: 'Stars',
+    href: '/docs',
+  },
   {
     label: 'Documents',
     icon: 'FileText',
@@ -93,16 +91,19 @@ const menuItems = [
     icon: 'FileStack',
     href: '/demandes',
   },
+
   { type: 'divider' },
+
+  // Administration
   {
-    label: 'Settings',
-    icon: 'Settings',
-    href: '/settings',
-  },
-  {
-    label: 'secteurs',
+    label: 'Secteurs',
     icon: 'FolderCog',
     href: '/secteurs',
+  },
+  {
+    label: 'Paramètres',
+    icon: 'Settings',
+    href: '/settings',
   },
 ];
 

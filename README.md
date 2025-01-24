@@ -40,3 +40,20 @@ To learn more about the tools used in this project:
 - [Vite](https://vitejs.dev/)
 - [React](https://react.dev/)
 - [tailwind](https://tailwind.com)
+
+## Accounts for testing
+### Super User
+Email: amina.smaili@example.com
+Password: SuperUser123!
+
+### Admin
+Email: boubker.el-jouhari@example.com
+Password: AdminSecure456!
+
+### Trainer
+Email: khalid.merzouki@example.com
+Password: Trainer789!
+
+### Trainee
+Email: dalila.lahlou@example.com
+Password: Trainee101!

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { Eye, Edit, Trash2, Users, AlertCircle } from 'lucide-react';
 import { DataTable } from '../../../components';
 
@@ -40,7 +40,7 @@ const GroupesTable = ({ groups, sortConfig, onSort, onView, onEdit, onDelete }) 
       label: 'Modules',
       render: (row) => (
         <Link to={`/groups/modules/${row.codeGroupe}`} className="btn btn-ghost btn-xs gap-2">
-          {Array.isArray(row.groupes) ? row.modules.length : 5} modules
+          {Array.isArray(row.modules) ? row.modules.length : 0} modules
         </Link>
       ),
     },

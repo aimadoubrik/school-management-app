@@ -1,437 +1,415 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDocuments } from '../../features/documents/documentSlice';
 import { fetchDemandes, deleteDemande } from '../../features/documents/demandeSlice';
+import { getUserFromStorage } from '../../utils';
 import {
-  CheckCircle,
-  FileText,
-  Upload,
-  AlertCircle,
-  Clock,
-  Trash,
-  Calendar,
-  Loader2,
-  X,
-  Download,
+    FileText, Upload, Trash, Calendar, Loader2, X, Download,
+    FilePlus, Info, Check, AlertTriangle, Clock, User,
+    Users, Building, FolderOpen, FileQuestion, Shield,
+    ArrowUpCircle, BadgeCheck, FileWarning
 } from 'lucide-react';
-import axios from 'axios';
 
 const DocumentsPage = () => {
-  const dispatch = useDispatch();
-  const { documents, loading, error } = useSelector((state) => state.documents);
-  const { demandes } = useSelector((state) => state.demandes);
+    const dispatch = useDispatch();
+    const { documents, loading: documentsLoading } = useSelector((state) => state.documents);
+    const { demandes, loading: demandesLoading } = useSelector((state) => state.demandes);
+    const user = getUserFromStorage('user');
 
-  const [selectedDocument, setSelectedDocument] = useState(null);
-  const [requestDate, setRequestDate] = useState('');
-  const [files, setFiles] = useState([]);
-  const [userData, setUserData] = useState(null);
-  const [alerts, setAlerts] = useState({ success: false, error: null });
-  const [dragActive, setDragActive] = useState(false);
-  const [filteredDemandes, setFilteredDemandes] = useState([]);
+    const [selectedDocument, setSelectedDocument] = useState(null);
+    const [requestDate, setRequestDate] = useState('');
+    const [files, setFiles] = useState([]);
+    const [alerts, setAlerts] = useState({ success: false, error: null });
+    const [dragActive, setDragActive] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [activeTab, setActiveTab] = useState('new-request');
 
-  useEffect(() => {
-    dispatch(fetchDocuments());
-  }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(fetchDemandes());
-  }, [dispatch]);
+    useEffect(() => {
+        dispatch(fetchDocuments());
+        dispatch(fetchDemandes());
+    }, [dispatch]);
 
-  useEffect(() => {
-    if (alerts.success) {
-      const timer = setTimeout(() => {
-        setAlerts((prev) => ({ ...prev, success: false }));
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [alerts.success]);
+    const validateAndSetFiles = useCallback((selectedFiles) => {
+        const validTypes = ['application/pdf', 'image/jpeg', 'image/png'];
+        const validFiles = Array.from(selectedFiles).filter(
+            (file) => validTypes.includes(file.type) && file.size <= 5 * 1024 * 1024
+        );
 
-  const handleDocumentSelect = (doc) => {
-    setSelectedDocument(doc);
-    setFiles([]);
-    setRequestDate('');
-  };
-
-  const handleFileChange = (e) => {
-    const selectedFiles = Array.from(e.target.files);
-    validateAndSetFiles(selectedFiles);
-  };
-
-  const validateAndSetFiles = (selectedFiles) => {
-    const validTypes = ['application/pdf', 'image/jpeg', 'image/png'];
-    const validFiles = selectedFiles.filter(
-      (file) => validTypes.includes(file.type) && file.size <= 5 * 1024 * 1024
-    );
-
-    if (validFiles.length !== selectedFiles.length) {
-      setAlerts((prev) => ({
-        ...prev,
-        error:
-          'Certains fichiers ont été rejetés. Veuillez utiliser uniquement des fichiers PDF, JPG ou PNG de moins de 5 Mo.',
-      }));
-    }
-
-    setFiles(validFiles);
-  };
-
-  const handleDrag = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (e.type === 'dragenter' || e.type === 'dragover') {
-      setDragActive(true);
-    } else {
-      setDragActive(false);
-    }
-  };
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setDragActive(false);
-
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      validateAndSetFiles(Array.from(e.dataTransfer.files));
-    }
-  };
-
-  const userId =
-    (localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).id) ||
-    (sessionStorage.getItem('user') && JSON.parse(sessionStorage.getItem('user')).id) ||
-    null;
-
-  useEffect(() => {
-    if (userId) {
-      const fetchUser = async () => {
-        try {
-          const response = await axios.get('http://localhost:3000/users');
-          const user = response.data.find((u) => u.id === userId);
-          setUserData(user);
-        } catch (error) {
-          console.error('Error fetching user data:', error);
+        if (validFiles.length !== selectedFiles.length) {
+            setAlerts({
+                success: false,
+                error: 'Only PDF, JPG, or PNG files under 5MB are allowed.'
+            });
         }
-      };
 
-      fetchUser();
-    }
-  }, [userId]);
+        setFiles(validFiles);
+    }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+    const handleSubmit = useCallback(async (e) => {
+        e.preventDefault();
+        if (!selectedDocument) return;
 
-    const newRequest = {
-      document: selectedDocument.name,
-      description: selectedDocument.description,
-      requestDate,
-      files: files.map((file) => ({
-        name: file.name,
-        size: file.size,
-        type: file.type,
-      })),
-      user: userData?.name || 'Inconnu',
-      status: 'en cours',
-      submissionDate: new Date().toLocaleDateString(),
-      processingTime: selectedDocument.processingTime,
+        const newRequest = {
+            document: selectedDocument.name,
+            description: selectedDocument.description,
+            cef: user.id || "CEF-Unknown",
+            group: user.group || "Unknown",
+            requestDate,
+            files: files.map((file) => ({
+                name: file.name,
+                size: file.size,
+                type: file.type
+            })),
+            user: user?.name || 'Unknown',
+            status: 'en cours',
+            submissionDate: new Date().toLocaleDateString(),
+            processingTime: selectedDocument.processingTime
+        };
+
+        try {
+            const response = await fetch('http://localhost:3000/demandes', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newRequest)
+            });
+
+            if (!response.ok) throw new Error('Failed to submit request');
+
+            setAlerts({ success: true, error: null });
+            setSelectedDocument(null);
+            setFiles([]);
+            setRequestDate('');
+            dispatch(fetchDemandes());
+        } catch (error) {
+            setAlerts((prev) => ({ ...prev, error: error.message }));
+        }
+    }, [selectedDocument, requestDate, files, user, dispatch]);
+
+    const handleDelete = (demande) => {
+        dispatch(deleteDemande(demande.id));
+        const newDemandes = demandes.filter((d) => d.id !== demande.id);
+        dispatch(fetchDemandes(newDemandes));
     };
 
-    try {
-      const response = await fetch('http://localhost:3000/demandes', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newRequest),
-      });
+    const StatusBadge = ({ status }) => {
+        const statusConfig = {
+            'en cours': {
+                class: 'badge-warning',
+                icon: <Clock className="w-4 h-4 mr-1" />
+            },
+            'effectuer': {
+                class: 'badge-success',
+                icon: <Check className="w-4 h-4 mr-1" />
+            },
+            'rejeter': {
+                class: 'badge-error',
+                icon: <AlertTriangle className="w-4 h-4 mr-1" />
+            }
+        };
 
-      if (!response.ok) {
-        throw new Error('Failed to submit request');
-      }
+        const config = statusConfig[status] || {
+            class: 'badge-ghost',
+            icon: <FileQuestion className="w-4 h-4 mr-1" />
+        };
 
-      setAlerts({ success: true, error: null });
-      setSelectedDocument(null);
-      setFiles([]);
-      setRequestDate('');
-    } catch (error) {
-      setAlerts((prev) => ({ ...prev, error: error.message }));
-    }
-  };
+        return (
+            <div className={`badge ${config.class} gap-1`}>
+                {config.icon}
+                {status}
+            </div>
+        );
+    };
 
-  useEffect(() => {
-    if (userData && demandes) {
-      const filtered = demandes.filter((demande) => demande.user === userData?.name);
-      setFilteredDemandes(filtered);
-    }
-  }, [userData, demandes]);
-
-  const handleDelete = (demandeId) => {
-    dispatch(deleteDemande(demandeId));
-    const newDemandes = documents.filter((d) => d.id !== demandeId);
-    dispatch(fetchDocuments(newDemandes));
-  };
-
-  const isFormValid = selectedDocument && requestDate && files.length > 0;
-
-  if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <Loader2 className="w-8 h-8 animate-spin" />
-      </div>
-    );
-  }
-
-  if (error) {
-    return <div>Error fetching demandes: {error}</div>;
-  }
-
-  return (
-    <div className="container mx-auto p-4 max-w-6xl">
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold mb-2">Demande de Documents</h1>
-        <p className="text-gray-600 text-lg">Portail de demande de documents administratifs</p>
-      </div>
-
-      <hr className="h-px bg-gray-200 border-0 my-4" />
-
-      {alerts.success && (
-        <div className="alert alert-success mb-6">
-          <CheckCircle className="w-5 h-5" />
-          <span>
-            Votre demande a été soumise avec succès. Vous pouvez suivre son état ci-dessous.
-          </span>
-        </div>
-      )}
-
-      {alerts.error && (
-        <div className="alert alert-error mb-6">
-          <AlertCircle className="w-5 h-5" />
-          <span>{alerts.error}</span>
-          <button
-            onClick={() => setAlerts((prev) => ({ ...prev, error: null }))}
-            className="btn btn-circle btn-ghost btn-sm absolute right-2 top-2"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        </div>
-      )}
-
-      <div className="grid md:grid-cols-5 gap-6">
-        {/* Document Selection */}
-        <div className="md:col-span-2">
-          <div className="card bg-base-100 shadow-xl border border-gray-400 rounded">
-            <div className="card-body">
-              <h2 className="card-title flex items-center gap-2 my-3">
-                <FileText className="w-5 h-5" />
-                Documents Disponibles
-              </h2>
-              <div className="space-y-3">
-                {(documents || []).map((doc) => (
-                  <button
-                    key={doc.id}
-                    onClick={() => handleDocumentSelect(doc)}
-                    className={`w-full text-left transition-all ${
-                      selectedDocument?.id === doc.id
-                        ? 'bg-primary/10 border-primary'
-                        : 'hover:bg-base-200 border-base-300'
-                    } border border-gray-400 rounded-lg p-3 focus:outline-none`}
-                  >
-                    <div className="flex items-start gap-3">
-                      <FileText
-                        className={`w-5 h-5 mt-1 ${
-                          selectedDocument?.id === doc.id ? 'text-primary' : 'text-base-content/60'
-                        }`}
-                      />
-                      <div>
-                        <h3 className="font-medium">{doc.name}</h3>
-                        <p className="text-sm text-base-content/60 mt-1">{doc.description}</p>
-                        <div className="flex items-center gap-2 mt-2 text-sm text-base-content/60">
-                          <Clock className="w-4 h-4" />
-                          {doc.processingTime}
-                        </div>
-                      </div>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Request Form */}
-        <div className="md:col-span-3">
-          <div className="card bg-base-100 shadow-xl border border-gray-400 rounded">
-            <div className="card-body">
-              {selectedDocument ? (
-                selectedDocument.documentLink ? (
-                  <a
-                    href={selectedDocument.documentLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn btn-primary btn-block"
-                  >
-                    <Download className="w-5 h-5 mr-2" />
-                    Telecharger
-                  </a>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                      <h2 className="text-xl font-semibold flex items-center gap-2">
-                        <FileText className="w-5 h-5" />
-                        {selectedDocument.name}
-                      </h2>
-                      <p className="text-base-content/60 mt-1">{selectedDocument.description}</p>
-                    </div>
-
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">Date de demande</span>
-                      </label>
-                      <div className="relative">
-                        <input
-                          type="date"
-                          value={requestDate}
-                          onChange={(e) => setRequestDate(e.target.value)}
-                          className="input input-bordered w-full pr-10"
-                          min={new Date().toISOString().split('T')[0]}
-                        />
-                        <Calendar className="absolute right-3 top-3 w-5 h-5 text-base-content/40" />
-                      </div>
-                    </div>
-
-                    <div className="alert alert-info">
-                      <AlertCircle className="w-5 h-5" />
-                      <div>
-                        <h3 className="font-medium">Documents requis :</h3>
-                        <ul className="mt-2 space-y-1 ml-6 list-disc">
-                          {selectedDocument.documentAttachment.map((doc, index) => (
-                            <li key={index}>{doc}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div
-                      className={`border-2 border-dashed rounded-lg p-6 transition-colors ${
-                        dragActive ? 'border-primary bg-primary/5' : 'border-base-300'
-                      }`}
-                      onDragEnter={handleDrag}
-                      onDragLeave={handleDrag}
-                      onDragOver={handleDrag}
-                      onDrop={handleDrop}
-                    >
-                      <div className="text-center">
-                        <Upload className="mx-auto w-8 h-8 text-base-content/40" />
-                        <p className="mt-2 text-sm">
-                          Glissez-déposez vos fichiers ici ou
-                          <label className="link link-primary mx-1 cursor-pointer">
-                            parcourez
-                            <input
-                              type="file"
-                              multiple
-                              onChange={handleFileChange}
-                              accept=".pdf,.jpg,.jpeg,.png"
-                              className="hidden"
-                            />
-                          </label>
-                        </p>
-                        <p className="text-xs text-base-content/60 mt-1">
-                          PDF, JPG ou PNG (max. 5 Mo)
-                        </p>
-                      </div>
-                    </div>
-
-                    {files.length > 0 && (
-                      <div className="space-y-2">
-                        {files.map((file, index) => (
-                          <div
-                            key={index}
-                            className="flex items-center justify-between p-2 bg-base-200 rounded-lg"
-                          >
-                            <div className="flex items-center gap-2">
-                              <FileText className="w-5 h-5" />
-                              <span className="text-sm">{file.name}</span>
-                            </div>
-                            <button
-                              type="button"
-                              onClick={() => setFiles(files.filter((_, i) => i !== index))}
-                              className="btn btn-ghost btn-circle btn-sm"
-                            >
-                              <X className="w-4 h-4" />
-                            </button>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    <button
-                      type="submit"
-                      disabled={!isFormValid}
-                      className="btn btn-primary w-full"
-                    >
-                      <Upload className="w-4 h-4 mr-2" />
-                      Soumettre la demande
-                    </button>
-                  </form>
-                )
-              ) : (
-                <div className="alert alert-info">
-                  <AlertCircle className="w-5 h-5" />
-                  <span>Veuillez choisir un document pour soumettre une demande.</span>
+        <div className="container p-4 mx-auto">
+            {/* Alerts */}
+            {alerts.success && (
+                <div className="mb-4 alert alert-success">
+                    <BadgeCheck className="w-6 h-6" />
+                    <span>Request submitted successfully!</span>
                 </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
+            )}
 
-      <hr className="my-4" />
+            {alerts.error && (
+                <div className="mb-4 alert alert-error">
+                    <FileWarning className="w-6 h-6" />
+                    <span>{alerts.error}</span>
+                </div>
+            )}
 
-      {/* Demands Section */}
-      <div>
-        <h1 className="text-2xl font-bold mb-4 text-center">Vos Demandes</h1>
-        {filteredDemandes.length === 0 ? (
-          <p>Aucune demande trouvée.</p>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {filteredDemandes.map((demande) => (
-              <div key={demande.id} className="relative">
-                <span
-                  className={`absolute z-10 px-2 py-1 -left-2 -top-2 rounded-lg -rotate-[10deg] border ${
-                    demande.status === 'en cours'
-                      ? 'border-yellow-500 text-yellow-500 bg-white dark:bg-gray-800'
-                      : demande.status === 'effectuer'
-                        ? 'border-green-500 text-green-500 bg-white dark:bg-gray-800'
-                        : 'border-red-500 text-red-500 bg-white dark:bg-gray-800'
-                  }`}
+            {/* Tabs */}
+            <div className="mb-6 tabs tabs-boxed">
+                <button
+                    className={`tab tab-lg gap-2 ${activeTab === 'new-request' ? 'tab-active' : ''}`}
+                    onClick={() => setActiveTab('new-request')}
                 >
-                  {demande.status}
-                </span>
+                    <FilePlus className="w-5 h-5" />
+                    New Request
+                </button>
+                <button
+                    className={`tab tab-lg gap-2 ${activeTab === 'my-requests' ? 'tab-active' : ''}`}
+                    onClick={() => setActiveTab('my-requests')}
+                >
+                    <FolderOpen className="w-5 h-5" />
+                    My Requests
+                </button>
+            </div>
 
-                <div className="p-6 border border-gray-400 rounded-xl bg-white dark:bg-gray-800 h-full">
-                  <div className="space-y-4">
-                    <div>
-                      <h2 className="font-semibold">{demande.document}</h2>
-                      <p className="text-sm text-gray-500 mt-3">Date: {demande.requestDate}</p>
+            {activeTab === 'new-request' ? (
+                <div className="grid gap-6 lg:grid-cols-2">
+                    {/* Available Documents */}
+                    <div className="shadow-xl card bg-base-100">
+                        <div className="card-body">
+                            <h2 className="flex gap-2 card-title">
+                                <Shield className="w-6 h-6 text-primary" />
+                                Available Documents
+                            </h2>
+                            <div className="divider"></div>
+                            <div className="space-y-4">
+                                {documents.map((doc) => (
+                                    <div
+                                        key={doc.id}
+                                        className={`card bg-base-200 cursor-pointer transition-all hover:bg-base-300 ${selectedDocument?.id === doc.id ? 'ring-2 ring-primary' : ''
+                                            }`}
+                                        onClick={() => setSelectedDocument(doc)}
+                                    >
+                                        <div className="p-4 card-body">
+                                            <h3 className="flex items-center gap-2 font-medium">
+                                                <FileText className="w-5 h-5 text-primary" />
+                                                {doc.name}
+                                            </h3>
+                                            <p className="text-sm opacity-70">{doc.description}</p>
+                                            <div className="flex items-center gap-2 mt-2 text-sm opacity-70">
+                                                <Clock className="w-4 h-4" />
+                                                Processing time: {doc.processingTime}
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="flex justify-end items-center space-x-2">
-                      {demande.status !== 'effectuer' && demande.status !== 'rejeter' && (
-                        <button
-                          onClick={() => handleDelete(demande.id)}
-                          className="p-1 hover:text-red-500 transition-colors"
-                          title="Supprimer la demande"
-                        >
-                          <Trash className="w-4 h-4" />
-                        </button>
-                      )}
+                    {/* Request Form */}
+                    <div className="shadow-xl card bg-base-100">
+                        <div className="card-body">
+                            <h2 className="flex gap-2 card-title">
+                                <ArrowUpCircle className="w-6 h-6 text-primary" />
+                                Submit Request
+                            </h2>
+                            <div className="divider"></div>
+
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                {/* Selected Document Display */}
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Selected Document</span>
+                                    </label>
+                                    {selectedDocument ? (
+                                        <div className="flex items-center justify-between p-4 bg-base-200">
+                                            <div>
+                                                <h3 className="font-bold">{selectedDocument.name}</h3>
+                                                <p className="text-sm">{selectedDocument.description}</p>
+                                            </div>
+                                            <button
+                                                type="button"
+                                                className="btn btn-ghost btn-circle"
+                                                onClick={() => setSelectedDocument(null)}
+                                            >
+                                                <X className="w-5 h-5" />
+                                            </button>
+                                        </div>
+                                    ) : (
+                                        <div className="alert alert-warning">
+                                            <FileQuestion className="w-5 h-5" />
+                                            <span>Please select a document from the list</span>
+                                        </div>
+                                    )}
+                                </div>
+
+                                {/* Required Documents */}
+                                {selectedDocument && (
+                                    <div className="form-control">
+                                        <label className="label">
+                                            <span className="label-text">Required Documents</span>
+                                        </label>
+                                        <div className="p-4 bg-base-200 rounded-md">
+                                            <ul className="list-disc list-inside">
+                                                {selectedDocument.documentAttachment.map((doc, index) => (
+                                                    <li key={index} className="flex items-center gap-2">
+                                                        <FileText className="w-4 h-4" />
+                                                        {doc}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* File Upload */}
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Upload Files</span>
+                                    </label>
+                                    <div
+                                        className={`border-2 border-dashed rounded-box p-8 text-center transition-colors ${dragActive ? 'border-primary bg-primary/10' : 'border-base-300'
+                                            }`}
+                                        onDragEnter={(e) => {
+                                            e.preventDefault();
+                                            setDragActive(true);
+                                        }}
+                                        onDragLeave={() => setDragActive(false)}
+                                        onDragOver={(e) => e.preventDefault()}
+                                        onDrop={(e) => {
+                                            e.preventDefault();
+                                            setDragActive(false);
+                                            validateAndSetFiles(e.dataTransfer.files);
+                                        }}
+                                    >
+                                        <input
+                                            type="file"
+                                            multiple
+                                            id="file-upload"
+                                            className="hidden"
+                                            onChange={(e) => validateAndSetFiles(e.target.files)}
+                                            accept=".pdf,.jpg,.png"
+                                        />
+                                        <label htmlFor="file-upload" className="cursor-pointer">
+                                            <Upload className="w-12 h-12 mx-auto mb-4 text-primary" />
+                                            <p className="mb-2 text-lg">
+                                                Drag and drop files here or <span className="text-primary">browse</span>
+                                            </p>
+                                            <p className="text-sm opacity-70">PDF, JPG, and PNG files (max 5MB each)</p>
+                                        </label>
+                                    </div>
+
+                                    {/* File List */}
+                                    {files.length > 0 && (
+                                        <div className="mt-4 space-y-2">
+                                            {files.map((file, index) => (
+                                                <div key={index} className="flex items-center justify-between p-4 bg-base-200">
+                                                    <div className="flex items-center gap-2">
+                                                        <FileText className="w-5 h-5" />
+                                                        <div>
+                                                            <p className="font-medium">{file.name}</p>
+                                                            <p className="text-sm opacity-70">
+                                                                {(file.size / 1024 / 1024).toFixed(2)} MB
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <button
+                                                        type="button"
+                                                        className="btn btn-ghost btn-circle"
+                                                        onClick={() => setFiles(files.filter((_, i) => i !== index))}
+                                                    >
+                                                        <Trash className="w-5 h-5" />
+                                                    </button>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+
+                                {/* Request Date */}
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Request Date</span>
+                                    </label>
+                                    <input
+                                        type="date"
+                                        className="input input-bordered"
+                                        value={requestDate}
+                                        onChange={(e) => setRequestDate(e.target.value)}
+                                        required
+                                    />
+                                </div>
+
+                                {/* Submit Button */}
+                                <button
+                                    type="submit"
+                                    className={`btn btn-primary w-full ${loading ? 'loading' : ''}`}
+                                    disabled={!selectedDocument || files.length === 0 || !requestDate || loading}
+                                >
+                                    {loading ? (
+                                        <Loader2 className="w-5 h-5 animate-spin" />
+                                    ) : (
+                                        <ArrowUpCircle className="w-5 h-5" />
+                                    )}
+                                    Submit Request
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
+            ) : (
+                /* My Requests Tab */
+                <div className="shadow-xl card bg-base-100">
+                    <div className="card-body">
+                        <h2 className="flex gap-2 card-title">
+                            <FolderOpen className="w-6 h-6 text-primary" />
+                            My Requests
+                        </h2>
+                        <div className="divider"></div>
+
+                        {demandes.filter(d => d.user === user?.name).length === 0 ? (
+                            <div className="py-12 text-center">
+                                <Info className="w-16 h-16 mx-auto mb-4 text-primary" />
+                                <h3 className="text-lg font-medium">No Requests Found</h3>
+                                <p className="text-sm opacity-70">You haven't made any document requests yet.</p>
+                            </div>
+                        ) : (
+                            <div className="overflow-x-auto">
+                                <table className="table w-full">
+                                    <thead>
+                                        <tr>
+                                            <th>Document</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                            <th>Processing Time</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {demandes
+                                            .filter(d => d.user === user?.name)
+                                            .map((demande) => (
+                                                <tr key={demande.id}>
+                                                    <td>
+                                                        <div className="flex items-center gap-2">
+                                                            <FileText className="w-5 h-5 text-primary" />
+                                                            {demande.document}
+                                                        </div>
+                                                    </td>
+                                                    <td>{demande.submissionDate}</td>
+                                                    <td>
+                                                        <StatusBadge status={demande.status} />
+                                                    </td>
+                                                    <td>{demande.processingTime}</td>
+                                                    <td>
+                                                        <div className="flex gap-2">
+                                                            <button className="btn btn-ghost btn-circle">
+                                                                <Download className="w-5 h-5" />
+                                                            </button>
+                                                            <button
+                                                                className="btn btn-ghost btn-circle"
+                                                                onClick={() => handleDelete(demande)}
+                                                            >
+                                                                <Trash className="w-5 h-5" />
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+}
 
 export default DocumentsPage;

@@ -14,7 +14,7 @@ const DataTable = ({
     description: 'No records to display',
   },
   rowKeyField = 'id',
-  itemsPerPage = 7,
+  itemsPerPage = 9,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -57,6 +57,7 @@ const DataTable = ({
       <table className="table table-zebra w-full">
         <thead className="bg-base-200">
           <tr>
+            <th className="w-16">#</th>
             {columns.map((column) => (
               <th
                 key={column.key}
@@ -76,8 +77,9 @@ const DataTable = ({
           </tr>
         </thead>
         <tbody>
-          {paginatedData.map((row) => (
+          {paginatedData.map((row, index) => (
             <tr key={row[rowKeyField]} className="hover">
+              <td>{(currentPage - 1) * itemsPerPage + index + 1}</td>
               {columns.map((column) => (
                 <td key={column.key} className={column.className}>
                   {column.render ? column.render(row) : row[column.key]}

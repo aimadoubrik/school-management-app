@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { updateUser } from '../../services/userService';
+import { uploadImage } from '../../services/uploadService';
+import { getUserFromStorage, updateUserInStorage } from '../../utils'; // Add updateUserInStorage
 import {
   Camera,
   Mail,
@@ -14,94 +16,78 @@ import {
   User,
   Edit3,
 } from 'lucide-react';
-import avatar from '../../assets/avatar.png';
-import defaultImage from '../../assets/default.png';
-import {
-  fetchUserProfile,
-  updateUserProfile,
-  updateUserField,
-} from '../../features/userProfile/profileSlice';
 
 const UserProfilePage = () => {
-  const dispatch = useDispatch();
-  const { user, isLoading, error } = useSelector((state) => state.profile);
+  const user = getUserFromStorage('user');
   const [isEditing, setIsEditing] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
-  const [notification, setNotification] = useState(null);
   const [imageHovered, setImageHovered] = useState(false);
+  const [editableUser, setEditableUser] = useState(user);
+  const [imageUrl, setImageUrl] = useState(user.profile_picture);
 
-  useEffect(() => {
-    const storedUserId = JSON.parse(
-      localStorage.getItem('user') || sessionStorage.getItem('user')
-    )?.id;
-    if (storedUserId) {
-      dispatch(fetchUserProfile(storedUserId));
-    }
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (user && !user.joinedDate) {
-      dispatch(updateUserField({ joinedDate: new Date().toISOString() }));
-      setIsDirty(true);
-    }
-  }, [user, dispatch]);
-
-  const formattedJoinedDate = user?.joinedDate
-    ? new Date(user.joinedDate).toLocaleDateString()
-    : new Date().toLocaleDateString();
-
-  const showNotification = (message, type = 'success') => {
-    setNotification({ message, type });
-    setTimeout(() => setNotification(null), 3000);
-  };
-
-  const handlePhotoUpload = (event) => {
-    const file = event.target.files[0];
+  const handlePhotoUpload = async (e) => {
+    const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        dispatch(updateUserField({ photo: reader.result }));
+      try {
+        const uploadedImageUrl = await uploadImage(file);
+        setEditableUser((prev) => ({ ...prev, profile_picture: uploadedImageUrl }));
+        setImageUrl(uploadedImageUrl);
         setIsDirty(true);
-        showNotification('Photo uploaded successfully');
-      };
-      reader.readAsDataURL(file);
+        console.log('Photo uploaded successfully');
+      } catch (error) {
+        console.error('Error uploading photo', error);
+      }
     }
   };
 
   const handleDeletePhoto = () => {
-    dispatch(updateUserField({ photo: defaultImage }));
+    setEditableUser((prev) => ({ ...prev, profile_picture: null }));
+    setImageUrl(null);
     setIsDirty(true);
-    showNotification('Photo removed successfully');
+    console.log('Photo removed successfully');
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    dispatch(updateUserField({ [name]: value }));
+    if (name.startsWith('address.')) {
+      const field = name.split('.')[1];
+      setEditableUser((prev) => ({
+        ...prev,
+        address: { ...prev.address, [field]: value },
+      }));
+    } else {
+      setEditableUser((prev) => ({ ...prev, [name]: value }));
+    }
     setIsDirty(true);
+  };
+
+  const handleCancel = () => {
+    setIsEditing(false);
+    setIsDirty(false);
+    setEditableUser(user);
+    setImageUrl(user.profile_picture);
+  };
+
+  const handleEdit = () => {
+    setIsEditing(true);
+    setIsDirty(false);
   };
 
   const handleSave = async () => {
     try {
-      await dispatch(updateUserProfile(user)).unwrap();
-      setIsEditing(false);
-      setIsDirty(false);
-      showNotification('Profile updated successfully');
+      const { id, role, ...editableFields } = editableUser;
+      const updatedUser = await updateUser(user.id, editableFields);
+      if (updatedUser) {
+        setEditableUser(updatedUser);
+        updateUserInStorage(editableUser); // Synchronize local storage
+        setIsEditing(false);
+        setIsDirty(false);
+        console.log('User updated successfully');
+      }
     } catch (error) {
-      showNotification('Error saving profile', 'error');
+      console.error('Error updating user:', error);
     }
-    window.location.reload();
   };
-
-  if (isLoading && !user) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-base-200">
-        <div className="flex flex-col items-center gap-4">
-          <span className="loading loading-spinner loading-lg text-primary"></span>
-          <p className="text-base-content/60 animate-pulse">Loading profile...</p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-base-200 transition-all duration-300 ">
@@ -128,9 +114,9 @@ const UserProfilePage = () => {
                     >
                       <div className="relative">
                         <img
-                          src={user?.photo || avatar}
+                          src={imageUrl || ''}
                           alt="Profile"
-                          className={`object-cover transition-all duration-300 ${isLoading ? 'opacity-50' : ''} ${imageHovered ? 'scale-105' : ''}`}
+                          className={`object-cover transition-all duration-300 ${imageHovered ? 'scale-105' : ''}`}
                         />
                         {isEditing && imageHovered && (
                           <div className="absolute inset-0 bg-base-content/30 backdrop-blur-sm flex items-center justify-center rounded-full transition-all duration-300">
@@ -150,22 +136,10 @@ const UserProfilePage = () => {
                   </div>
                   {isEditing && (
                     <div className="absolute -bottom-2 right-0 flex gap-2 scale-90 opacity-90 hover:scale-100 hover:opacity-100 transition-all duration-200">
-                      <label
-                        className="btn btn-circle btn-primary btn-sm hover:btn-secondary tooltip tooltip-top"
-                        data-tip="Upload photo"
-                      >
-                        <Camera className="w-4 m-auto mt-1" />
-                        <input
-                          type="file"
-                          accept="image/*"
-                          className="hidden"
-                          onChange={handlePhotoUpload}
-                        />
-                      </label>
-                      {user?.photo && user.photo !== defaultImage && (
+                      {user?.profile_picture && (
                         <button
                           className="btn btn-circle btn-error btn-sm hover:btn-secondary tooltip tooltip-top"
-                          data-tip="Remove photo"
+                          data-tip="Remove profile picture"
                           onClick={handleDeletePhoto}
                         >
                           <Trash2 className="w-4 m-auto " />
@@ -183,7 +157,7 @@ const UserProfilePage = () => {
                         <input
                           type="text"
                           name="name"
-                          value={user?.name || ''}
+                          value={editableUser?.name || ''}
                           onChange={handleChange}
                           className="input input-bordered input-primary w-full max-w-xs text-2xl font-bold pe-10"
                           placeholder="Your name"
@@ -202,7 +176,8 @@ const UserProfilePage = () => {
                       </div>
                       <div className="badge badge-ghost gap-2 p-3 badge-lg">
                         <Calendar className="w-4 h-4" />
-                        Joined {formattedJoinedDate}
+                        Joined{' '}
+                        {user.created_at ? new Date(user.created_at).toLocaleDateString() : 'N/A'}
                       </div>
                     </div>
                   </div>
@@ -214,10 +189,7 @@ const UserProfilePage = () => {
                     <div className="join">
                       <button
                         className="btn btn-ghost join-item gap-2 hover:btn-error"
-                        onClick={() => {
-                          setIsEditing(false);
-                          setIsDirty(false);
-                        }}
+                        onClick={handleCancel}
                       >
                         <X className="w-4 h-4" />
                         Cancel
@@ -225,7 +197,7 @@ const UserProfilePage = () => {
                       <button
                         className="btn btn-primary join-item gap-2 hover:btn-secondary"
                         onClick={handleSave}
-                        disabled={!isDirty || isLoading}
+                        disabled={!isDirty}
                       >
                         <Check className="w-4 h-4" />
                         Save Changes
@@ -234,7 +206,7 @@ const UserProfilePage = () => {
                   ) : (
                     <button
                       className="btn btn-primary gap-2 hover:btn-secondary transition-all duration-200"
-                      onClick={() => setIsEditing(true)}
+                      onClick={handleEdit}
                     >
                       <Edit3 className="w-4 h-4" />
                       Edit Profile
@@ -250,19 +222,30 @@ const UserProfilePage = () => {
             <div className="p-8">
               <div className="grid gap-6 md:grid-cols-2">
                 {[
-                  { icon: Mail, label: 'Email', value: user?.email, name: 'email', type: 'email' },
+                  {
+                    icon: Mail,
+                    label: 'Email',
+                    value: isEditing ? editableUser?.email : user?.email,
+                    name: 'email',
+                    type: 'email',
+                  },
                   {
                     icon: Phone,
                     label: 'Phone',
-                    value: user?.phoneNumber,
-                    name: 'phoneNumber',
+                    value: isEditing ? editableUser?.phone_number : user?.phone_number,
+                    name: 'phone_number',
                     type: 'tel',
                   },
-                  { icon: MapPin, label: 'Location', value: user?.address?.city, name: 'address' },
+                  {
+                    icon: MapPin,
+                    label: 'Location',
+                    value: isEditing ? editableUser?.address?.city : user?.address?.city,
+                    name: 'address',
+                  },
                   {
                     icon: Globe,
                     label: 'Website',
-                    value: user?.website,
+                    value: isEditing ? editableUser?.website : user?.website,
                     name: 'website',
                     type: 'url',
                   },
@@ -312,7 +295,7 @@ const UserProfilePage = () => {
                 {isEditing ? (
                   <textarea
                     name="bio"
-                    value={user?.bio || ''}
+                    value={editableUser?.bio || ''}
                     onChange={handleChange}
                     className="textarea textarea-bordered focus:textarea-primary min-h-32 transition-all duration-200 hover:border-primary"
                     placeholder="Tell us about yourself..."

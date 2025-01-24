@@ -2,13 +2,13 @@ import { useContext } from 'react';
 import { LayoutProvider, LayoutContext } from './context/LayoutContext';
 import Navbar from './Navbar/Navbar';
 import Sidebar from './Sidebar/Sidebar';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router';
 
 const DashboardContent = () => {
-  const { isMobile, isSidebarOpen, setIsSidebarOpen } = useContext(LayoutContext);
+  const { isMobile, isSidebarOpen } = useContext(LayoutContext);
 
   return (
-    <div className="min-h-screen bg-base-200">
+    <>
       {/* Navbar */}
       <Navbar />
 
@@ -18,27 +18,23 @@ const DashboardContent = () => {
       {/* Main Content */}
       <main
         className={`
-          fixed overflow-y-auto
-          h-[calc(100vh-5.5rem)] 
-          top-20 right-2 p-2
-          bg-base-100 rounded-lg
-          transition-all duration-300 ease-in-out
-          ${isMobile ? `left-2 ${isSidebarOpen ? 'opacity-50' : 'opacity-100'}` : 'left-[17rem]'}
-        `}
+            fixed
+            top-20
+            right-2
+            bottom-2
+            ${isMobile ? 'left-2' : isSidebarOpen ? 'left-[17rem]' : 'left-24'}
+            overflow-y-auto
+            p-8
+            bg-base-100
+            shadow-md
+            rounded-2xl
+            transition-all duration-300 ease-in-out
+          `}
       >
         {/* Main Outlet */}
         <Outlet />
       </main>
-
-      {/* Mobile Overlay */}
-      {isMobile && isSidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 z-20"
-          onClick={() => setIsSidebarOpen(false)}
-          aria-hidden="true"
-        />
-      )}
-    </div>
+    </>
   );
 };
 
