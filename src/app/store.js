@@ -2,7 +2,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import {
   notificationsReducer,
-  themeReducer,
   quizzesReducer,
   filieresReducer,
   authReducer,
@@ -13,7 +12,6 @@ import {
   traineesReducer,
   documentsReducer,
   moduleReducer,
-  secteursReducer,
   GroupesSlice,
   demandesReducer,
   formateurReducer,
@@ -22,7 +20,6 @@ import {
 
 const rootReducer = combineReducers({
   notifications: notificationsReducer,
-  theme: themeReducer,
   quizzes: quizzesReducer,
   filieres: filieresReducer,
   groups: GroupesSlice,
@@ -34,7 +31,6 @@ const rootReducer = combineReducers({
   trainees: traineesReducer,
   documents: documentsReducer,
   modules: moduleReducer,
-  secteur: secteursReducer,
   demandes: demandesReducer,
   formateurs: formateurReducer,
   scheduler: schedulerReducer,

@@ -1,14 +1,14 @@
 import React from 'react';
 import { RefreshCw, Download, Plus, Search } from 'lucide-react';
 
-const SecteursHeader = ({ onRefresh, onExport, onAdd, onSearch, onFilterChange }) => {
+const SecteursHeader = ({ onRefresh, onExport, onAdd, onSearch }) => {
   return (
     <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
       <div className="flex-1 w-full md:w-auto">
         <div className="relative">
           <input
             type="text"
-            placeholder="Rechercher..."
+            placeholder="Recherche par intitulé..."
             onChange={(e) => onSearch(e.target.value)}
             className="input input-bordered w-full pl-10"
           />
