@@ -17,10 +17,9 @@ import {
     Users,
     Building,
     AlertTriangle,
-    Download,
-    Mail,
-    Printer,
-    Share2
+    Table,
+    Grid,
+    Columns,
 } from 'lucide-react';
 
 const DemandesPage = () => {
@@ -230,58 +229,24 @@ const DemandesPage = () => {
             </div>
 
             {/* Enhanced Toolbar */}
-            <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-lg bg-base-200">
-                {/* View Mode Toggles */}
-                <div className="join">
-                    <button
-                        className={`join-item btn ${viewMode === 'table' ? 'btn-active' : ''}`}
-                        onClick={() => setViewMode('table')}
-                    >
-                        Table
-                    </button>
-                    <button
-                        className={`join-item btn ${viewMode === 'grid' ? 'btn-active' : ''}`}
-                        onClick={() => setViewMode('grid')}
-                    >
-                        Grid
-                    </button>
-                    <button
-                        className={`join-item btn ${viewMode === 'kanban' ? 'btn-active' : ''}`}
-                        onClick={() => setViewMode('kanban')}
-                    >
-                        Kanban
-                    </button>
-                </div>
-
-                {/* Bulk Actions */}
-                <div className="join">
-                    <button
-                        className="join-item btn btn-ghost"
-                        onClick={() => handleBulkAction('export')}
-                        disabled={selectedItems.length === 0}
-                    >
-                        <Download className="w-4 h-4" />
-                    </button>
-                    <button
-                        className="join-item btn btn-ghost"
-                        onClick={handlePrint}
-                    >
-                        <Printer className="w-4 h-4" />
-                    </button>
-                    <button
-                        className="join-item btn btn-ghost"
-                        onClick={() => handleBulkAction('share')}
-                        disabled={selectedItems.length === 0}
-                    >
-                        <Share2 className="w-4 h-4" />
-                    </button>
-                    <button
-                        className="join-item btn btn-ghost text-error"
-                        onClick={() => handleBulkAction('delete')}
-                        disabled={selectedItems.length === 0}
-                    >
-                        <Trash className="w-4 h-4" />
-                    </button>
+            <div className="flex items-center justify-end w-full p-2">
+                <div className="join shadow-md rounded-lg border border-base-300">
+                    {[
+                        { mode: 'table', Icon: Table, label: 'Table' },
+                        { mode: 'grid', Icon: Grid, label: 'Grid' },
+                        { mode: 'kanban', Icon: Columns, label: 'Kanban' }
+                    ].map(({ mode, Icon, label }) => (
+                        <button
+                            key={mode}
+                            className={`join-item btn btn-sm 
+                   ${viewMode === mode ? 'btn-primary text-primary-content' : 'btn-ghost'}
+                   hover:bg-base-200 transition-colors duration-200 gap-2`}
+                            onClick={() => setViewMode(mode)}
+                        >
+                            <Icon className="w-4 h-4" />
+                            {label}
+                        </button>
+                    ))}
                 </div>
             </div>
 
@@ -371,19 +336,6 @@ const DemandesPage = () => {
                             <table className="table w-full">
                                 <thead>
                                     <tr>
-                                        <th>
-                                            <input
-                                                type="checkbox"
-                                                className="checkbox"
-                                                onChange={(e) => {
-                                                    if (e.target.checked) {
-                                                        setSelectedItems(sortedDemandes.map(d => d.id));
-                                                    } else {
-                                                        setSelectedItems([]);
-                                                    }
-                                                }}
-                                            />
-                                        </th>
                                         <th onClick={() => handleSort('document')} className="cursor-pointer">
                                             Document {sortConfig.key === 'document' && (sortConfig.direction === 'ascending' ? '↑' : '↓')}
                                         </th>
@@ -405,20 +357,7 @@ const DemandesPage = () => {
                                         .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
                                         .map((demande) => (
                                             <tr key={demande.id} className="hover:bg-base-200">
-                                                <td>
-                                                    <input
-                                                        type="checkbox"
-                                                        className="checkbox"
-                                                        checked={selectedItems.includes(demande.id)}
-                                                        onChange={(e) => {
-                                                            if (e.target.checked) {
-                                                                setSelectedItems([...selectedItems, demande.id]);
-                                                            } else {
-                                                                setSelectedItems(selectedItems.filter(id => id !== demande.id));
-                                                            }
-                                                        }}
-                                                    />
-                                                </td>
+
                                                 <td className="flex items-center gap-2">
                                                     <FileText className="w-4 h-4" />
                                                     {demande.document}
@@ -432,13 +371,13 @@ const DemandesPage = () => {
                                                 <td>
                                                     <div className="flex items-center gap-2">
                                                         <Building className="w-4 h-4" />
-                                                        {demande.cef}
+                                                        {demande.matriculeEtudiant}
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div className="flex items-center gap-2">
                                                         <Users className="w-4 h-4" />
-                                                        {demande.group}
+                                                        {demande.codeDiplome}
                                                     </div>
                                                 </td>
                                                 <td>
@@ -551,11 +490,11 @@ const DemandesPage = () => {
                                                 </div>
                                                 <div className="flex items-center gap-2">
                                                     <Building className="w-4 h-4" />
-                                                    <span className="font-semibold">CEF:</span> {demande.cef}
+                                                    <span className="font-semibold">CEF : </span> {demande.matriculeEtudiant}
                                                 </div>
                                                 <div className="flex items-center gap-2">
                                                     <Users className="w-4 h-4" />
-                                                    <span className="font-semibold">Groupe:</span> {demande.group}
+                                                    <span className="font-semibold">Groupe : </span> {demande.codeDiplome}
                                                 </div>
                                                 <div className="flex items-center gap-2">
                                                     <Calendar className="w-4 h-4" />
@@ -613,7 +552,7 @@ const DemandesPage = () => {
                                             </div>
                                             <div className="flex items-center gap-2">
                                                 <Building className="w-4 h-4" />
-                                                <span>{demande.cef}</span>
+                                                <span>{demande.matriculeEtudiant}</span>
                                             </div>
                                             <div className="flex items-center gap-2">
                                                 <Calendar className="w-4 h-4" />
@@ -716,15 +655,15 @@ const DemandesPage = () => {
                             <div className="flex items-center gap-3">
                                 <Building className="w-5 h-5" />
                                 <div>
-                                    <p className="text-sm opacity-70">CEF</p>
-                                    <p className="font-medium">{selectedDemande.cef}</p>
+                                    <p className="text-sm opacity-70">matriculeEtudiant</p>
+                                    <p className="font-medium">{selectedDemande.matriculeEtudiant}</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">
                                 <Users className="w-5 h-5" />
                                 <div>
-                                    <p className="text-sm opacity-70">Groupe</p>
-                                    <p className="font-medium">{selectedDemande.group}</p>
+                                    <p className="text-sm opacity-70">codeDiplomee</p>
+                                    <p className="font-medium">{selectedDemande.codeDiplome}</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">

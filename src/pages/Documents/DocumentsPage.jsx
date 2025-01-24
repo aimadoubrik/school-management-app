@@ -2,7 +2,6 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDocuments } from '../../features/documents/documentSlice';
 import { fetchDemandes, deleteDemande } from '../../features/documents/demandeSlice';
-import { getUserFromStorage } from '../../utils';
 import {
     FileText, Upload, Trash, Calendar, Loader2, X, Download,
     FilePlus, Info, Check, AlertTriangle, Clock, User,
@@ -14,7 +13,6 @@ const DocumentsPage = () => {
     const dispatch = useDispatch();
     const { documents, loading: documentsLoading } = useSelector((state) => state.documents);
     const { demandes, loading: demandesLoading } = useSelector((state) => state.demandes);
-    const user = getUserFromStorage('user');
 
     const [selectedDocument, setSelectedDocument] = useState(null);
     const [requestDate, setRequestDate] = useState('');
@@ -23,12 +21,28 @@ const DocumentsPage = () => {
     const [dragActive, setDragActive] = useState(false);
     const [loading, setLoading] = useState(false);
     const [activeTab, setActiveTab] = useState('new-request');
-
+    const [stagiaires, setStagiaires] = useState([]);
+    const [nom, setNom] = useState('');
+    const [prenom, setPrenom] = useState('');
+    const [codeDiplome, setCodeDiplome] = useState('');
+    const [matriculeEtudiant, setMatriculeEtudiant] = useState('');
 
     useEffect(() => {
         dispatch(fetchDocuments());
         dispatch(fetchDemandes());
+        fetchStagiaires();
     }, [dispatch]);
+
+    const fetchStagiaires = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/stagiaires');
+            if (!response.ok) throw new Error('Failed to fetch stagiaires');
+            const data = await response.json();
+            setStagiaires(data);
+        } catch (error) {
+            console.error('Error fetching stagiaires:', error);
+        }
+    };
 
     const validateAndSetFiles = useCallback((selectedFiles) => {
         const validTypes = ['application/pdf', 'image/jpeg', 'image/png'];
@@ -48,20 +62,20 @@ const DocumentsPage = () => {
 
     const handleSubmit = useCallback(async (e) => {
         e.preventDefault();
-        if (!selectedDocument) return;
+        if (!selectedDocument || !nom || !prenom || !codeDiplome || !matriculeEtudiant) return;
 
         const newRequest = {
             document: selectedDocument.name,
             description: selectedDocument.description,
-            cef: user.id || "CEF-Unknown",
-            group: user.group || "Unknown",
+            matriculeEtudiant,
+            codeDiplome,
             requestDate,
             files: files.map((file) => ({
                 name: file.name,
                 size: file.size,
                 type: file.type
             })),
-            user: user?.name || 'Unknown',
+            user: `${nom} ${prenom}`,
             status: 'en cours',
             submissionDate: new Date().toLocaleDateString(),
             processingTime: selectedDocument.processingTime
@@ -80,11 +94,15 @@ const DocumentsPage = () => {
             setSelectedDocument(null);
             setFiles([]);
             setRequestDate('');
+            setNom('');
+            setPrenom('');
+            setCodeDiplome('');
+            setMatriculeEtudiant('');
             dispatch(fetchDemandes());
         } catch (error) {
             setAlerts((prev) => ({ ...prev, error: error.message }));
         }
-    }, [selectedDocument, requestDate, files, user, dispatch]);
+    }, [selectedDocument, nom, prenom, codeDiplome, matriculeEtudiant, requestDate, files, dispatch]);
 
     const handleDelete = (demande) => {
         dispatch(deleteDemande(demande.id));
@@ -121,6 +139,9 @@ const DocumentsPage = () => {
         );
     };
 
+    // Get unique CodeDiplome values
+    const uniqueCodeDiplomes = [...new Set(stagiaires.map(stagiaire => stagiaire.CodeDiplome))];
+
     return (
         <div className="container p-4 mx-auto">
             {/* Alerts */}
@@ -145,7 +166,7 @@ const DocumentsPage = () => {
                     onClick={() => setActiveTab('new-request')}
                 >
                     <FilePlus className="w-5 h-5" />
-                    Neauvelle Demande
+                    Nouvelle Demande
                 </button>
                 <button
                     className={`tab tab-lg gap-2 ${activeTab === 'my-requests' ? 'tab-active' : ''}`}
@@ -232,32 +253,71 @@ const DocumentsPage = () => {
                                     )}
                                 </div>
 
-                                {/* User Information */}
+                                {/* Nom Input */}
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Informations Utilisateur</span>
+                                        <span className="label-text">Nom</span>
                                     </label>
-                                    <div className="">
-                                        <input
-                                            type="text"
-                                            placeholder="Nom"
-                                            defaultValue={user.name}
-                                            className="input input-bordered w-full"
-                                        />
-                                        <select
-                                            className="select select-bordered w-full mt-2"
-                                        >
-                                            <option value="" selected>
-                                                Choisir un Group....
+                                    <input
+                                        type="text"
+                                        placeholder="Nom"
+                                        value={nom}
+                                        onChange={(e) => setNom(e.target.value)}
+                                        className="input input-bordered w-full"
+                                        required
+                                    />
+                                </div>
+
+                                {/* Prenom Input */}
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Prénom</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        placeholder="Prénom"
+                                        value={prenom}
+                                        onChange={(e) => setPrenom(e.target.value)}
+                                        className="input input-bordered w-full"
+                                        required
+                                    />
+                                </div>
+
+                                {/* CodeDiplome Select */}
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Groupe</span>
+                                    </label>
+                                    <select
+                                        className="select select-bordered w-full"
+                                        value={codeDiplome}
+                                        onChange={(e) => setCodeDiplome(e.target.value)}
+                                        required
+                                    >
+                                        <option value="" disabled>
+                                            Choisir un groupe...
+                                        </option>
+                                        {uniqueCodeDiplomes.map((code, index) => (
+                                            <option key={index} value={code}>
+                                                {code}
                                             </option>
-                                            <option value="efe">
-                                                EFE
-                                            </option>
-                                            <option value="formateur">
-                                                Formateur
-                                            </option>
-                                        </select>
-                                    </div>
+                                        ))}
+                                    </select>
+                                </div>
+
+                                {/* MatriculeEtudiant Input */}
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">CEF</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        placeholder="Matricule Étudiant"
+                                        value={matriculeEtudiant}
+                                        onChange={(e) => setMatriculeEtudiant(e.target.value)}
+                                        className="input input-bordered w-full"
+                                        required
+                                    />
                                 </div>
 
                                 {/* Required Documents */}
@@ -367,7 +427,7 @@ const DocumentsPage = () => {
                                 <button
                                     type="submit"
                                     className={`btn btn-primary w-full ${loading ? 'loading' : ''}`}
-                                    disabled={!selectedDocument || files.length === 0 || !requestDate || loading}
+                                    disabled={!selectedDocument || !nom || !prenom || !codeDiplome || !matriculeEtudiant || files.length === 0 || !requestDate || loading}
                                 >
                                     {loading ? (
                                         <Loader2 className="w-5 h-5 animate-spin" />
@@ -390,7 +450,7 @@ const DocumentsPage = () => {
                         </h2>
                         <div className="divider"></div>
 
-                        {demandes.filter(d => d.user === user?.name).length === 0 ? (
+                        {demandes.filter(d => d.user === `${nom} ${prenom}`).length === 0 ? (
                             <div className="py-12 text-center">
                                 <Info className="w-16 h-16 mx-auto mb-4 text-primary" />
                                 <h3 className="text-lg font-medium">
@@ -416,7 +476,7 @@ const DocumentsPage = () => {
                                         </thead>
                                         <tbody>
                                             {demandes
-                                                .filter(d => d.user === user?.name)
+                                                .filter(d => d.user === `${nom} ${prenom}`)
                                                 .map((demande) => (
                                                     <tr key={demande.id}>
                                                         <td>
@@ -452,7 +512,7 @@ const DocumentsPage = () => {
                                 {/* Cards for medium and small screens */}
                                 <div className="lg:hidden">
                                     {demandes
-                                        .filter(d => d.user === user?.name)
+                                        .filter(d => d.user === `${nom} ${prenom}`)
                                         .map((demande) => (
                                             <div key={demande.id} className="card bg-base-200 shadow-md mb-4">
                                                 <div className="card-body">
