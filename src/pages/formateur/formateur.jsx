@@ -7,7 +7,6 @@ import jsPDF from 'jspdf';
 import Pagination from '../../components/shared/Pagination';
 import autoTable from 'jspdf-autotable';
 import * as XLSX from 'xlsx';
-
 const Formateur = () => {
   const dispatch = useDispatch();
   const { formateurs, selectedSecteur } = useSelector((state) => state.formateurs);
