@@ -3447,6 +3447,226 @@
           }
         }
       ]
+    },
+    {
+      "id": "1ce8",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2025-01-25",
+      "month": "January",
+      "registrationTime": "2025-01-19T20:34:38.732Z",
+      "students": [
+        {
+          "studentId": "2",
+          "studentCef": "10002",
+          "studentName": "Alice Brown",
+          "studentCin": "CS1002",
+          "absentHours": {
+            "13.30->15.50": true,
+            "15.50->18.30": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "71cf",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "2nd Year",
+      "groupe": "Group 1",
+      "date": "2025-01-19",
+      "month": "January",
+      "registrationTime": "2025-01-19T20:49:06.537Z",
+      "students": [
+        {
+          "studentId": "5",
+          "studentCef": "10005",
+          "studentName": "William Clark",
+          "studentCin": "CS2001",
+          "absentHours": {
+            "13.30->15.50": true,
+            "15.50->18.30": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "4a04",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "2nd Year",
+      "groupe": "Group 1",
+      "date": "2025-01-19",
+      "month": "January",
+      "registrationTime": "2025-01-19T20:49:37.689Z",
+      "students": [
+        {
+          "studentId": "5",
+          "studentCef": "10005",
+          "studentName": "William Clark",
+          "studentCin": "CS2001",
+          "absentHours": {
+            "13.30->15.50": true,
+            "15.50->18.30": true
+          }
+        },
+        {
+          "studentId": "6",
+          "studentCef": "10006",
+          "studentName": "Sophia Wilson",
+          "studentCin": "CS2002",
+          "absentHours": {
+            "13.30->15.50": true,
+            "15.50->18.30": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "3f94",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2025-01-19",
+      "month": "January",
+      "registrationTime": "2025-01-19T20:51:46.637Z",
+      "students": [
+        {
+          "studentId": "2",
+          "studentCef": "10002",
+          "studentName": "Alice Brown",
+          "studentCin": "CS1002",
+          "absentHours": {
+            "8:30->10:50": false,
+            "10:50->13.30": false,
+            "13.30->15.50": true,
+            "15.50->18.30": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "1bd4",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2025-01-19",
+      "month": "January",
+      "registrationTime": "2025-01-19T20:52:58.263Z",
+      "students": [
+        {
+          "studentId": "2",
+          "studentCef": "10002",
+          "studentName": "Alice Brown",
+          "studentCin": "CS1002",
+          "absentHours": {
+            "8:30->10:50": false,
+            "10:50->13.30": false,
+            "13.30->15.50": true,
+            "15.50->18.30": true
+          }
+        },
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentCin": "CS1001",
+          "absentHours": {
+            "8:30->10:50": false,
+            "10:50->13.30": false,
+            "13.30->15.50": true,
+            "15.50->18.30": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "c422",
+      "niveau": "Qualifant",
+      "filiere": "Gestion Hôtelière",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2025-01-19",
+      "month": "January",
+      "registrationTime": "2025-01-19T20:54:40.120Z",
+      "students": [
+        {
+          "studentId": "17",
+          "studentCef": "30001",
+          "studentName": "James Carter",
+          "studentCin": "GH3001",
+          "absentHours": {
+            "8:30->10:50": false,
+            "10:50->13.30": false,
+            "13.30->15.50": true,
+            "15.50->18.30": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "0010",
+      "niveau": "Qualifant",
+      "filiere": "Gestion Hôtelière",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2025-01-19",
+      "month": "January",
+      "registrationTime": "2025-01-19T20:55:35.658Z",
+      "students": [
+        {
+          "studentId": "17",
+          "studentCef": "30001",
+          "studentName": "James Carter",
+          "studentCin": "GH3001",
+          "absentHours": {
+            "8:30->10:50": false,
+            "10:50->13.30": false,
+            "13.30->15.50": true,
+            "15.50->18.30": false
+          }
+        },
+        {
+          "studentId": "18",
+          "studentCef": "30002",
+          "studentName": "Sophia Lopez",
+          "studentCin": "GH3002",
+          "absentHours": {
+            "8:30->10:50": false,
+            "10:50->13.30": false,
+            "13.30->15.50": true,
+            "15.50->18.30": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "c7f8",
+      "niveau": "Specialisation",
+      "filiere": "Biology",
+      "annee": "1st Year",
+      "groupe": "Group 2",
+      "date": "2025-01-19",
+      "month": "January",
+      "registrationTime": "2025-01-19T20:56:54.724Z",
+      "students": [
+        {
+          "studentId": "11",
+          "studentCef": "20003",
+          "studentName": "Mason Hall",
+          "studentCin": "BIO2003",
+          "absentHours": {
+            "8:30->10:50": false,
+            "10:50->13.30": false,
+            "13.30->15.50": true,
+            "15.50->18.30": true
+          }
+        }
+      ]
     }
   ],
   "studentDiscipline": [
@@ -8082,6 +8302,17 @@
       "annee": "2A",
       "niveau": "TS",
       "filiere": "Développement Digital",
+      "groupe": "G101"
+    },
+    {
+      "id": "025d",
+      "cef": "155478",
+      "nom": "adam",
+      "prenom": "adam",
+      "email": "adam@adam.com",
+      "annee": "2005",
+      "niveau": "TS",
+      "filiere": "Infrastructures Digitale ",
       "groupe": "G101"
     }
   ],
