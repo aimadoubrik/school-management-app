@@ -90,13 +90,13 @@ const DemandesPage = () => {
         const matchesDocument = !filters.document || demande.document === filters.document;
         const matchesStatus = !filters.status || demande.status === filters.status;
         const matchesPriority = !filters.priority || demande.priority === filters.priority;
-        
+
         // Date range filtering
         const demandeDate = new Date(demande.requestDate);
         const startDate = selectedDateRange.start ? new Date(selectedDateRange.start) : null;
         const endDate = selectedDateRange.end ? new Date(selectedDateRange.end) : null;
-        const matchesDateRange = (!startDate || demandeDate >= startDate) && 
-                               (!endDate || demandeDate <= endDate);
+        const matchesDateRange = (!startDate || demandeDate >= startDate) &&
+            (!endDate || demandeDate <= endDate);
 
         return matchesSearch && matchesDocument && matchesStatus && matchesPriority && matchesDateRange;
     });
@@ -104,10 +104,10 @@ const DemandesPage = () => {
     // Sorting functionality
     const sortedDemandes = [...filteredDemandes].sort((a, b) => {
         if (!sortConfig.key) return 0;
-        
+
         const aValue = a[sortConfig.key];
         const bValue = b[sortConfig.key];
-        
+
         if (sortConfig.direction === 'ascending') {
             return aValue > bValue ? 1 : -1;
         } else {
@@ -146,7 +146,7 @@ const DemandesPage = () => {
 
     const handleBulkAction = (action) => {
         if (selectedItems.length === 0) return;
-        
+
         switch (action) {
             case 'delete':
                 if (window.confirm(`Supprimer ${selectedItems.length} demandes ?`)) {
@@ -216,8 +216,8 @@ const DemandesPage = () => {
             {/* Stats Cards with hover effects */}
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
                 {stats.map((stat, index) => (
-                    <div key={index} 
-                         className={`card transition-all duration-300 hover:shadow-lg hover:scale-105 ${stat.color}`}>
+                    <div key={index}
+                        className={`card transition-all duration-300 hover:shadow-lg hover:scale-105 ${stat.color}`}>
                         <div className="flex flex-row items-center justify-between card-body">
                             <div>
                                 <h2 className="text-lg card-title">{stat.title}</h2>
@@ -233,19 +233,19 @@ const DemandesPage = () => {
             <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-lg bg-base-200">
                 {/* View Mode Toggles */}
                 <div className="join">
-                    <button 
+                    <button
                         className={`join-item btn ${viewMode === 'table' ? 'btn-active' : ''}`}
                         onClick={() => setViewMode('table')}
                     >
                         Table
                     </button>
-                    <button 
+                    <button
                         className={`join-item btn ${viewMode === 'grid' ? 'btn-active' : ''}`}
                         onClick={() => setViewMode('grid')}
                     >
                         Grid
                     </button>
-                    <button 
+                    <button
                         className={`join-item btn ${viewMode === 'kanban' ? 'btn-active' : ''}`}
                         onClick={() => setViewMode('kanban')}
                     >
@@ -255,27 +255,27 @@ const DemandesPage = () => {
 
                 {/* Bulk Actions */}
                 <div className="join">
-                    <button 
+                    <button
                         className="join-item btn btn-ghost"
                         onClick={() => handleBulkAction('export')}
                         disabled={selectedItems.length === 0}
                     >
                         <Download className="w-4 h-4" />
                     </button>
-                    <button 
+                    <button
                         className="join-item btn btn-ghost"
                         onClick={handlePrint}
                     >
                         <Printer className="w-4 h-4" />
                     </button>
-                    <button 
+                    <button
                         className="join-item btn btn-ghost"
                         onClick={() => handleBulkAction('share')}
                         disabled={selectedItems.length === 0}
                     >
                         <Share2 className="w-4 h-4" />
                     </button>
-                    <button 
+                    <button
                         className="join-item btn btn-ghost text-error"
                         onClick={() => handleBulkAction('delete')}
                         disabled={selectedItems.length === 0}
@@ -353,7 +353,7 @@ const DemandesPage = () => {
                             }}
                         >
                             <RefreshCcw className="w-5 h-5" />
-                            <span className="hidden sm:inline">Réinitialiser</span>
+                            <span className="hidden sm:inline">Réinitialiser le filtre</span>
                         </button>
                     </div>
                 </div>
@@ -366,44 +366,144 @@ const DemandesPage = () => {
                 <>
                     {/* Table View */}
                     <div className={`${viewMode === 'table' ? 'block' : 'hidden'} overflow-x-auto`}>
-                        <table className="table w-full">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <input
-                                            type="checkbox"
-                                            className="checkbox"
-                                            onChange={(e) => {
-                                                if (e.target.checked) {
-                                                    setSelectedItems(sortedDemandes.map(d => d.id));
-                                                } else {
-                                                    setSelectedItems([]);
-                                                }
-                                            }}
-                                        />
-                                    </th>
-                                    <th onClick={() => handleSort('document')} className="cursor-pointer">
-                                        Document {sortConfig.key === 'document' && (sortConfig.direction === 'ascending' ? '↑' : '↓')}
-                                    </th>
-                                    <th>Stagiaire</th>
-                                    <th>CEF</th>
-                                    <th>Groupe</th>
-                                    <th onClick={() => handleSort('requestDate')} className="cursor-pointer">
-                                        Date {sortConfig.key === 'requestDate' && (sortConfig.direction === 'ascending' ? '↑' : '↓')}
-                                    </th>
-                                    <th onClick={() => handleSort('status')} className="cursor-pointer">
-                                        Statut {sortConfig.key === 'status' && (sortConfig.direction === 'ascending' ? '↑' : '↓')}
-                                    </th>
-                                    <th>Fichiers</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                        {/* Table View for Large Screens */}
+                        <div className="hidden lg:block">
+                            <table className="table w-full">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <input
+                                                type="checkbox"
+                                                className="checkbox"
+                                                onChange={(e) => {
+                                                    if (e.target.checked) {
+                                                        setSelectedItems(sortedDemandes.map(d => d.id));
+                                                    } else {
+                                                        setSelectedItems([]);
+                                                    }
+                                                }}
+                                            />
+                                        </th>
+                                        <th onClick={() => handleSort('document')} className="cursor-pointer">
+                                            Document {sortConfig.key === 'document' && (sortConfig.direction === 'ascending' ? '↑' : '↓')}
+                                        </th>
+                                        <th>Stagiaire</th>
+                                        <th>CEF</th>
+                                        <th>Groupe</th>
+                                        <th onClick={() => handleSort('requestDate')} className="cursor-pointer">
+                                            Date {sortConfig.key === 'requestDate' && (sortConfig.direction === 'ascending' ? '↑' : '↓')}
+                                        </th>
+                                        <th onClick={() => handleSort('status')} className="cursor-pointer">
+                                            Statut {sortConfig.key === 'status' && (sortConfig.direction === 'ascending' ? '↑' : '↓')}
+                                        </th>
+                                        <th>Fichiers</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {sortedDemandes
+                                        .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+                                        .map((demande) => (
+                                            <tr key={demande.id} className="hover:bg-base-200">
+                                                <td>
+                                                    <input
+                                                        type="checkbox"
+                                                        className="checkbox"
+                                                        checked={selectedItems.includes(demande.id)}
+                                                        onChange={(e) => {
+                                                            if (e.target.checked) {
+                                                                setSelectedItems([...selectedItems, demande.id]);
+                                                            } else {
+                                                                setSelectedItems(selectedItems.filter(id => id !== demande.id));
+                                                            }
+                                                        }}
+                                                    />
+                                                </td>
+                                                <td className="flex items-center gap-2">
+                                                    <FileText className="w-4 h-4" />
+                                                    {demande.document}
+                                                </td>
+                                                <td>
+                                                    <div className="flex items-center gap-2">
+                                                        <User className="w-4 h-4" />
+                                                        {demande.user}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div className="flex items-center gap-2">
+                                                        <Building className="w-4 h-4" />
+                                                        {demande.cef}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div className="flex items-center gap-2">
+                                                        <Users className="w-4 h-4" />
+                                                        {demande.group}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div className="flex items-center gap-2">
+                                                        <Calendar className="w-4 h-4" />
+                                                        {demande.requestDate}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div className={`badge ${statusColors[demande.status]} gap-1`}>
+                                                        {demande.status === 'en cours' && <Clock className="w-3 h-3" />}
+                                                        {demande.status === 'effectuer' && <CheckCircle className="w-3 h-3" />}
+                                                        {demande.status === 'rejeter' && <AlertTriangle className="w-3 h-3" />}
+                                                        {demande.status}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div className="flex flex-col gap-1">
+                                                        {demande.files.map((file, index) => (
+                                                            <div key={index} className="badge badge-sm badge-secondary gap-1">
+                                                                <FileText className="w-3 h-3" />
+                                                                {file.name}
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div className="flex gap-1">
+                                                        <button
+                                                            onClick={() => handleView(demande)}
+                                                            className="btn btn-ghost btn-xs tooltip"
+                                                            data-tip="Voir"
+                                                        >
+                                                            <Eye className="w-4 h-4" />
+                                                        </button>
+                                                        <button
+                                                            onClick={() => handleEdit(demande)}
+                                                            className="btn btn-ghost btn-xs tooltip"
+                                                            data-tip="Modifier"
+                                                        >
+                                                            <Edit className="w-4 h-4" />
+                                                        </button>
+                                                        <button
+                                                            onClick={() => handleDelete(demande)}
+                                                            className="btn btn-ghost btn-xs text-error tooltip"
+                                                            data-tip="Supprimer"
+                                                        >
+                                                            <Trash className="w-4 h-4" />
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        {/* Card View for Medium and Small Screens */}
+                        <div className="lg:hidden">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {sortedDemandes
                                     .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
                                     .map((demande) => (
-                                        <tr key={demande.id} className="hover:bg-base-200">
-                                            <td>
+                                        <div key={demande.id} className="card bg-base-200 shadow-md p-4">
+                                            <div className="flex justify-between items-center mb-4">
                                                 <input
                                                     type="checkbox"
                                                     className="checkbox"
@@ -416,55 +516,7 @@ const DemandesPage = () => {
                                                         }
                                                     }}
                                                 />
-                                            </td>
-                                            <td className="flex items-center gap-2">
-                                                <FileText className="w-4 h-4" />
-                                                {demande.document}
-                                            </td>
-                                            <td>
-                                                <div className="flex items-center gap-2">
-                                                    <User className="w-4 h-4" />
-                                                    {demande.user}
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div className="flex items-center gap-2">
-                                                    <Building className="w-4 h-4" />
-                                                    {demande.cef}
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div className="flex items-center gap-2">
-                                                    <Users className="w-4 h-4" />
-                                                    {demande.group}
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div className="flex items-center gap-2">
-                                                    <Calendar className="w-4 h-4" />
-                                                    {demande.requestDate}
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div className={`badge ${statusColors[demande.status]} gap-1`}>
-                                                    {demande.status === 'en cours' && <Clock className="w-3 h-3" />}
-                                                    {demande.status === 'effectuer' && <CheckCircle className="w-3 h-3" />}
-                                                    {demande.status === 'rejeter' && <AlertTriangle className="w-3 h-3" />}
-                                                    {demande.status}
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div className="flex flex-col gap-1">
-                                                    {demande.files.map((file, index) => (
-                                                        <div key={index} className="badge badge-sm badge-secondary gap-1">
-                                                            <FileText className="w-3 h-3" />
-                                                            {file.name}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div className="flex gap-1">
+                                                <div className="flex gap-2">
                                                     <button
                                                         onClick={() => handleView(demande)}
                                                         className="btn btn-ghost btn-xs tooltip"
@@ -487,15 +539,55 @@ const DemandesPage = () => {
                                                         <Trash className="w-4 h-4" />
                                                     </button>
                                                 </div>
-                                            </td>
-                                        </tr>
+                                            </div>
+                                            <div className="space-y-2">
+                                                <div className="flex items-center gap-2">
+                                                    <FileText className="w-4 h-4" />
+                                                    <span className="font-semibold">Document:</span> {demande.document}
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <User className="w-4 h-4" />
+                                                    <span className="font-semibold">Stagiaire:</span> {demande.user}
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <Building className="w-4 h-4" />
+                                                    <span className="font-semibold">CEF:</span> {demande.cef}
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <Users className="w-4 h-4" />
+                                                    <span className="font-semibold">Groupe:</span> {demande.group}
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <Calendar className="w-4 h-4" />
+                                                    <span className="font-semibold">Date:</span> {demande.requestDate}
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <span className="font-semibold">Statut:</span>
+                                                    <div className={`badge ${statusColors[demande.status]} gap-1`}>
+                                                        {demande.status === 'en cours' && <Clock className="w-3 h-3" />}
+                                                        {demande.status === 'effectuer' && <CheckCircle className="w-3 h-3" />}
+                                                        {demande.status === 'rejeter' && <AlertTriangle className="w-3 h-3" />}
+                                                        {demande.status}
+                                                    </div>
+                                                </div>
+                                                <div className="flex flex-col gap-1">
+                                                    <span className="font-semibold">Fichiers:</span>
+                                                    {demande.files.map((file, index) => (
+                                                        <div key={index} className="badge badge-sm badge-secondary gap-1">
+                                                            <FileText className="w-3 h-3" />
+                                                            {file.name}
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
                                     ))}
-                            </tbody>
-                        </table>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Grid View */}
-                    <div className={`${viewMode === 'grid' ? 'grid' : 'hidden'} grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4`}>
+                    <div className={`${viewMode === 'grid' ? 'block' : 'hidden'} grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4`}>
                         {sortedDemandes
                             .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
                             .map((demande) => (
@@ -513,7 +605,7 @@ const DemandesPage = () => {
                                                 {demande.status}
                                             </div>
                                         </div>
-                                        
+
                                         <div className="space-y-3 mt-4">
                                             <div className="flex items-center gap-2">
                                                 <User className="w-4 h-4" />
@@ -527,7 +619,7 @@ const DemandesPage = () => {
                                                 <Calendar className="w-4 h-4" />
                                                 <span>{demande.requestDate}</span>
                                             </div>
-                                            
+
                                             <div className="flex flex-wrap gap-2">
                                                 {demande.files.map((file, index) => (
                                                     <div key={index} className="badge badge-sm badge-secondary gap-1">
@@ -537,7 +629,7 @@ const DemandesPage = () => {
                                                 ))}
                                             </div>
                                         </div>
-                                        
+
                                         <div className="card-actions justify-end mt-4">
                                             <button
                                                 onClick={() => handleView(demande)}
@@ -578,7 +670,7 @@ const DemandesPage = () => {
                     >
                         «
                     </button>
-                    
+
                     {Array.from({ length: Math.ceil(filteredDemandes.length / itemsPerPage) }).map((_, index) => (
                         <button
                             key={index}
@@ -588,10 +680,10 @@ const DemandesPage = () => {
                             {index + 1}
                         </button>
                     ))}
-                    
+
                     <button
                         className="join-item btn"
-                        onClick={() => setCurrentPage(prev => 
+                        onClick={() => setCurrentPage(prev =>
                             Math.min(prev + 1, Math.ceil(filteredDemandes.length / itemsPerPage))
                         )}
                         disabled={currentPage === Math.ceil(filteredDemandes.length / itemsPerPage)}
@@ -735,76 +827,6 @@ const DemandesPage = () => {
                     </div>
                 </div>
             )}
-
-            {/* Quick Actions Menu (Fixed) */}
-            <div className="fixed bottom-6 right-6">
-                <div className="flex flex-col gap-2">
-                    <div className="dropdown dropdown-top dropdown-end">
-                        <label tabIndex={0} className="btn btn-circle btn-primary">
-                            <Filter className="w-5 h-5" />
-                        </label>
-                        <div tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                            <div className="p-2">
-                                <h6 className="font-medium mb-2">Trier par</h6>
-                                <ul className="space-y-1">
-                                    <li>
-                                        <a onClick={() => handleSort('requestDate')} 
-                                           className={sortConfig.key === 'requestDate' ? 'active' : ''}>
-                                            Date
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a onClick={() => handleSort('status')}
-                                           className={sortConfig.key === 'status' ? 'active' : ''}>
-                                            Statut
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a onClick={() => handleSort('document')}
-                                           className={sortConfig.key === 'document' ? 'active' : ''}>
-                                            Document
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="dropdown dropdown-top dropdown-end">
-                        <label tabIndex={0} className="btn btn-circle btn-primary">
-                            <Mail className="w-5 h-5" />
-                        </label>
-                        <div tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                            <div className="p-2 space-y-2">
-                                <button className="btn btn-sm btn-block" onClick={() => handleBulkAction('email')}>
-                                    Envoyer notification
-                                </button>
-                                <button className="btn btn-sm btn-block" onClick={() => handleBulkAction('reminder')}>
-                                    Envoyer rappel
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button 
-                        className="btn btn-circle btn-primary" 
-                        onClick={() => {
-                            dispatch(fetchDemandes());
-                            setSearchTerm('');
-                            setFilters({
-                                document: '',
-                                status: '',
-                                date: '',
-                                priority: ''
-                            });
-                            setSelectedDateRange({ start: '', end: '' });
-                            setSortConfig({ key: '', direction: '' });
-                        }}
-                    >
-                        <RefreshCcw className="w-5 h-5" />
-                    </button>
-                </div>
-            </div>
         </div>
     );
 };

@@ -145,14 +145,14 @@ const DocumentsPage = () => {
                     onClick={() => setActiveTab('new-request')}
                 >
                     <FilePlus className="w-5 h-5" />
-                    New Request
+                    Neauvelle Demande
                 </button>
                 <button
                     className={`tab tab-lg gap-2 ${activeTab === 'my-requests' ? 'tab-active' : ''}`}
                     onClick={() => setActiveTab('my-requests')}
                 >
                     <FolderOpen className="w-5 h-5" />
-                    My Requests
+                    Mes Demandes
                 </button>
             </div>
 
@@ -163,7 +163,7 @@ const DocumentsPage = () => {
                         <div className="card-body">
                             <h2 className="flex gap-2 card-title">
                                 <Shield className="w-6 h-6 text-primary" />
-                                Available Documents
+                                Les Documents Disponibles
                             </h2>
                             <div className="divider"></div>
                             <div className="space-y-4">
@@ -182,7 +182,7 @@ const DocumentsPage = () => {
                                             <p className="text-sm opacity-70">{doc.description}</p>
                                             <div className="flex items-center gap-2 mt-2 text-sm opacity-70">
                                                 <Clock className="w-4 h-4" />
-                                                Processing time: {doc.processingTime}
+                                                Date de Traitement: {doc.processingTime}
                                             </div>
                                         </div>
                                     </div>
@@ -196,7 +196,7 @@ const DocumentsPage = () => {
                         <div className="card-body">
                             <h2 className="flex gap-2 card-title">
                                 <ArrowUpCircle className="w-6 h-6 text-primary" />
-                                Submit Request
+                                Formulaire de Demande
                             </h2>
                             <div className="divider"></div>
 
@@ -204,7 +204,9 @@ const DocumentsPage = () => {
                                 {/* Selected Document Display */}
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Selected Document</span>
+                                        <span className="label-text">
+                                            Document Selectionné
+                                        </span>
                                     </label>
                                     {selectedDocument ? (
                                         <div className="flex items-center justify-between p-4 bg-base-200">
@@ -223,16 +225,48 @@ const DocumentsPage = () => {
                                     ) : (
                                         <div className="alert alert-warning">
                                             <FileQuestion className="w-5 h-5" />
-                                            <span>Please select a document from the list</span>
+                                            <span>
+                                                Vous devez choisir un document avant de soumettre la demande
+                                            </span>
                                         </div>
                                     )}
+                                </div>
+
+                                {/* User Information */}
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Informations Utilisateur</span>
+                                    </label>
+                                    <div className="">
+                                        <input
+                                            type="text"
+                                            placeholder="Nom"
+                                            defaultValue={user.name}
+                                            className="input input-bordered w-full"
+                                        />
+                                        <select
+                                            className="select select-bordered w-full mt-2"
+                                        >
+                                            <option value="" selected>
+                                                Choisir un Group....
+                                            </option>
+                                            <option value="efe">
+                                                EFE
+                                            </option>
+                                            <option value="formateur">
+                                                Formateur
+                                            </option>
+                                        </select>
+                                    </div>
                                 </div>
 
                                 {/* Required Documents */}
                                 {selectedDocument && (
                                     <div className="form-control">
                                         <label className="label">
-                                            <span className="label-text">Required Documents</span>
+                                            <span className="label-text">
+                                                Fichiers requis
+                                            </span>
                                         </label>
                                         <div className="p-4 bg-base-200 rounded-md">
                                             <ul className="list-disc list-inside">
@@ -250,7 +284,9 @@ const DocumentsPage = () => {
                                 {/* File Upload */}
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Upload Files</span>
+                                        <span className="label-text">
+                                            Uploader les Fichiers
+                                        </span>
                                     </label>
                                     <div
                                         className={`border-2 border-dashed rounded-box p-8 text-center transition-colors ${dragActive ? 'border-primary bg-primary/10' : 'border-base-300'
@@ -314,7 +350,9 @@ const DocumentsPage = () => {
                                 {/* Request Date */}
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Request Date</span>
+                                        <span className="label-text">
+                                            Date de Demande
+                                        </span>
                                     </label>
                                     <input
                                         type="date"
@@ -336,7 +374,7 @@ const DocumentsPage = () => {
                                     ) : (
                                         <ArrowUpCircle className="w-5 h-5" />
                                     )}
-                                    Submit Request
+                                    Envoyer la Demande
                                 </button>
                             </form>
                         </div>
@@ -348,45 +386,81 @@ const DocumentsPage = () => {
                     <div className="card-body">
                         <h2 className="flex gap-2 card-title">
                             <FolderOpen className="w-6 h-6 text-primary" />
-                            My Requests
+                            Mes Demandes
                         </h2>
                         <div className="divider"></div>
 
                         {demandes.filter(d => d.user === user?.name).length === 0 ? (
                             <div className="py-12 text-center">
                                 <Info className="w-16 h-16 mx-auto mb-4 text-primary" />
-                                <h3 className="text-lg font-medium">No Requests Found</h3>
-                                <p className="text-sm opacity-70">You haven't made any document requests yet.</p>
+                                <h3 className="text-lg font-medium">
+                                    Aucune Demande de Document
+                                </h3>
+                                <p className="text-sm opacity-70">
+                                    Vous n'avez pas encore soumis de Demande de Document
+                                </p>
                             </div>
                         ) : (
-                            <div className="overflow-x-auto">
-                                <table className="table w-full">
-                                    <thead>
-                                        <tr>
-                                            <th>Document</th>
-                                            <th>Date</th>
-                                            <th>Status</th>
-                                            <th>Processing Time</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {demandes
-                                            .filter(d => d.user === user?.name)
-                                            .map((demande) => (
-                                                <tr key={demande.id}>
-                                                    <td>
+                            <>
+                                {/* Table for large screens */}
+                                <div className="overflow-x-auto hidden lg:block">
+                                    <table className="table w-full">
+                                        <thead>
+                                            <tr>
+                                                <th>Document</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                                <th>Temps de Traitement</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {demandes
+                                                .filter(d => d.user === user?.name)
+                                                .map((demande) => (
+                                                    <tr key={demande.id}>
+                                                        <td>
+                                                            <div className="flex items-center gap-2">
+                                                                <FileText className="w-5 h-5 text-primary" />
+                                                                {demande.document}
+                                                            </div>
+                                                        </td>
+                                                        <td>{demande.submissionDate}</td>
+                                                        <td>
+                                                            <StatusBadge status={demande.status} />
+                                                        </td>
+                                                        <td>{demande.processingTime}</td>
+                                                        <td>
+                                                            <div className="flex gap-2">
+                                                                <button className="btn btn-ghost btn-circle">
+                                                                    <Download className="w-5 h-5" />
+                                                                </button>
+                                                                <button
+                                                                    className="btn btn-ghost btn-circle"
+                                                                    onClick={() => handleDelete(demande)}
+                                                                >
+                                                                    <Trash className="w-5 h-5" />
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                {/* Cards for medium and small screens */}
+                                <div className="lg:hidden">
+                                    {demandes
+                                        .filter(d => d.user === user?.name)
+                                        .map((demande) => (
+                                            <div key={demande.id} className="card bg-base-200 shadow-md mb-4">
+                                                <div className="card-body">
+                                                    <div className="flex justify-between items-center">
                                                         <div className="flex items-center gap-2">
                                                             <FileText className="w-5 h-5 text-primary" />
-                                                            {demande.document}
+                                                            <span className="font-medium">{demande.document}</span>
                                                         </div>
-                                                    </td>
-                                                    <td>{demande.submissionDate}</td>
-                                                    <td>
-                                                        <StatusBadge status={demande.status} />
-                                                    </td>
-                                                    <td>{demande.processingTime}</td>
-                                                    <td>
                                                         <div className="flex gap-2">
                                                             <button className="btn btn-ghost btn-circle">
                                                                 <Download className="w-5 h-5" />
@@ -398,12 +472,17 @@ const DocumentsPage = () => {
                                                                 <Trash className="w-5 h-5" />
                                                             </button>
                                                         </div>
-                                                    </td>
-                                                </tr>
-                                            ))}
-                                    </tbody>
-                                </table>
-                            </div>
+                                                    </div>
+                                                    <div className="mt-2">
+                                                        <p><strong>Date:</strong> {demande.submissionDate}</p>
+                                                        <p><strong>Status:</strong> <StatusBadge status={demande.status} /></p>
+                                                        <p><strong>Temps de Traitement:</strong> {demande.processingTime}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                </div>
+                            </>
                         )}
                     </div>
                 </div>
