@@ -43,7 +43,7 @@ To learn more about the tools used in this project:
 
 ## Accounts for testing
 ### Super User
-Email: amina.smaïli@example.com
+Email: amina.smaili@example.com
 Password: SuperUser123!
 
 ### Admin
