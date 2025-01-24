@@ -29,8 +29,8 @@ const MenuItem = ({ item }) => {
 
             {/* Label - Only visible when sidebar is open */}
             <span
-              className={`whitespace-nowrap overflow-hidden transition-all duration-300 ease-in-out leading-none
-                          ${isSidebarOpen ? 'opacity-100 scale-100 w-24' : 'opacity-0 scale-95 w-0'}
+              className={`whitespace-nowrap overflow-hidden transition-all duration-300 ease-in-out
+                          ${isSidebarOpen ? 'opacity-100 scale-100 w-full' : 'opacity-0 scale-95 w-0'}
                         `}
             >
               {item.label}

@@ -4,53 +4,8 @@ import { LayoutContext } from '../context/LayoutContext';
 import { MenuItem, Divider, UserProfile } from './components';
 import menuItems from './config/menuItems';
 import { getUserFromStorage } from '../../utils';
+import { ROLE_PERMISSIONS } from '../Sidebar/config/rolePermissions';
 
-// Role permissions configuration
-const ROLE_PERMISSIONS = {
-  'super user': new Set([
-    'Home',
-    'Courses',
-    'Quizzes',
-    'Attendance',
-    'Schedule',
-    'Generate Documents',
-    'Documents',
-    'Demandes',
-    'Scheduler',
-    'Specializations',
-    'Competences',
-    'Secteurs',
-    'Groups',
-    'Modules',
-    'Settings',
-    'Trainees',
-    'Formateurs',
-  ]),
-  admin: new Set([
-    'Home',
-    'Attendance',
-    'Documents',
-    'Demandes',
-    'Scheduler',
-    'Specializations',
-    'Competences',
-    'Secteurs',
-    'Groups',
-    'Modules',
-    'Trainees',
-    'Formateurs',
-  ]),
-  trainer: new Set([
-    'Home',
-    'Courses',
-    'Quizzes',
-    'Trainees',
-    'Attendance',
-    'Schedule',
-    'Documents',
-  ]),
-  trainee: new Set(['Home', 'Courses', 'Quizzes', 'Schedule', 'Documents']),
-};
 
 // Filters menu items based on user role
 const getFilteredMenuItems = (role, items) => {
@@ -109,7 +64,7 @@ const useSidebarCloseHandlers = (sidebarRef, isSidebarOpen, setIsSidebarOpen, is
 // Sidebar overlay for mobile view
 const SidebarOverlay = memo(({ isVisible, onClose }) => (
   <div
-    className={`fixed inset-0 bg-black/30 backdrop-blur-sm z-20 transition-opacity duration-300 ${
+    className={`fixed inset-0 bg-black/30 backdrop-blur-sm z-10 transition-opacity duration-300 ${
       isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
     }`}
     onClick={onClose}
@@ -165,7 +120,7 @@ const Sidebar = memo(() => {
 
   // Sidebar styling
   const sidebarClasses = `
-    rounded-2xl bg-base-100 transition-all duration-300 ease-in-out z-30 shadow-md
+    fixed left-2 top-20 bottom-2 rounded-2xl bg-base-100 transition-all duration-300 ease-in-out z-20 shadow-md
     ${isMobile ? (isSidebarOpen ? 'w-64 shadow-lg' : '-translate-x-[16.5rem] w-0') : isSidebarOpen ? 'w-64' : 'w-20'}
   `.trim();
 

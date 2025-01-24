@@ -1,12 +1,12 @@
-import { useState, useMemo, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { deletesecteur, editsecteur, addsecteur } from '../../../features/secteur/secteurslice';
+import { useState, useEffect } from 'react';
+import { SecteursService } from '../../../services/supabaseService';
 
-export const useSecteursLogic = (Secteurs) => {
-  const dispatch = useDispatch();
+export const useSecteursLogic = () => {
+  const [secteurs, setSecteurs] = useState([]);
+  const [filteredSecteurs, setFilteredSecteurs] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [SecteurToDelete, setSecteurToDelete] = useState(null);
+  const [secteurToDelete, setSecteurToDelete] = useState(null);
   const [viewMode, setViewMode] = useState(false);
   const [selectedSecteur, setSelectedSecteur] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -18,139 +18,156 @@ export const useSecteursLogic = (Secteurs) => {
       options: [],
     },
   ]);
-  const [sortConfig, setSortConfig] = useState({ key: 'code_Secteur', direction: 'asc' });
+  const [sortConfig, setSortConfig] = useState({ key: 'intitule', direction: 'asc' });
 
-  // Update filter options whenever `Secteurs` changes
   useEffect(() => {
-    if (Secteurs && Secteurs.length > 0) {
-      setFilters((prevFilters) => [
-        {
-          ...prevFilters[0], // Spread the existing filter config (if any)
-          options: [...new Set(Secteurs.map((f) => f.secteur))], // Get unique secteurs
-        },
-      ]);
+    loadSecteurs();
+    const unsubscribe = SecteursService.subscribeToChanges(() => {
+      loadSecteurs();
+    });
+    return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    applyFiltersAndSorting();
+  }, [secteurs, searchTerm, filters, sortConfig]);
+
+  const loadSecteurs = async () => {
+    try {
+      const data = await SecteursService.getAll();
+      setSecteurs(data);
+      updateFilterOptions(data);
+    } catch (error) {
+      console.error('Failed to load secteurs:', error);
     }
-  }, [Secteurs]);
+  };
 
-  // Memoized filtered and sorted Secteurs
-  const filteredAndSortedSecteurs = useMemo(() => {
-    let result = [...Secteurs]; // Create a shallow copy of the Secteurs array
+  const updateFilterOptions = (data) => {
+    if (data?.length > 0) {
+      setFilters(prev => [{
+        ...prev[0],
+        options: [...new Set(data.map(f => f.secteur))],
+      }]);
+    }
+  };
 
-    // Search filter
+  const applyFiltersAndSorting = () => {
+    let result = [...secteurs];
+
+    // Apply search filter
     if (searchTerm) {
-      result = result.filter(
-        (Secteur) =>
-          Secteur.code_Secteur?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          Secteur.intitule_Secteur?.toLowerCase().includes(searchTerm.toLowerCase())
+      result = result.filter(secteur =>
+        secteur.intitule?.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
-    // Dynamic filters
-    filters.forEach((filter) => {
+    // Apply additional filters
+    filters.forEach(filter => {
       if (filter.value) {
-        result = result.filter((Secteur) => Secteur[filter.key] === filter.value);
+        result = result.filter(secteur => secteur[filter.key] === filter.value);
       }
     });
 
-    // Sorting
-    if (sortConfig.key) {
-      const { key, direction } = sortConfig;
-      result = result.sort((a, b) => {
-        const aValue = a[key] || '';
-        const bValue = b[key] || '';
-        return (direction === 'asc' ? 1 : -1) * (aValue > bValue ? 1 : aValue < bValue ? -1 : 0);
-      });
-    }
+    // Apply sorting
+    result.sort((a, b) => {
+      const valueA = a[sortConfig.key]?.toLowerCase() || '';
+      const valueB = b[sortConfig.key]?.toLowerCase() || '';
+      if (sortConfig.direction === 'asc') {
+        return valueA.localeCompare(valueB);
+      } else if (sortConfig.direction === 'desc') {
+        return valueB.localeCompare(valueA);
+      }
+      return 0;
+    });
 
-    return result;
-  }, [Secteurs, searchTerm, filters, sortConfig]);
+    setFilteredSecteurs(result);
+  };
 
-  // Handle sorting logic
-  const handleSort = (key) => {
-    setSortConfig((prev) => ({
-      key,
-      direction: prev.key === key && prev.direction === 'asc' ? 'desc' : 'asc',
+  const handleSort = (column) => {
+    setSortConfig(prev => ({
+      key: column,
+      direction: prev.key === column && prev.direction === 'asc' ? 'desc' : 'asc',
     }));
   };
 
-  // Handle search input change
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (searchTerm.length >= 3) {
+        SecteursService.search('intitule', searchTerm).then(setSecteurs);
+      } else if (searchTerm.length === 0) {
+        loadSecteurs();
+      }
+    }, 300); // Debounce search
+
+    return () => clearTimeout(timeoutId);
+  }, [searchTerm]);
+
   const handleSearch = (term) => {
     setSearchTerm(term);
   };
 
-  // Handle filter changes (e.g., sector filter)
   const handleFilterChange = (key, value) => {
-    setFilters((prev) =>
-      prev.map((filter) => (filter.key === key ? { ...filter, value } : filter))
+    setFilters(prev =>
+      prev.map(filter => filter.key === key ? { ...filter, value } : filter)
     );
   };
 
-  // Open modal for editing or viewing Secteur
-  const handleModalOpen = (Secteur, mode) => {
-    setSelectedSecteur(Secteur);
+  const handleModalOpen = (secteur, mode) => {
+    setSelectedSecteur(secteur);
     setViewMode(mode === 'view');
     setIsModalOpen(true);
   };
 
-  // Close modal
   const handleModalClose = () => {
     setIsModalOpen(false);
     setSelectedSecteur(null);
     setViewMode(false);
   };
 
-  // Handle click on delete button
-  const handleDeleteClick = (Secteur) => {
-    setSecteurToDelete(Secteur);
+  const handleDeleteClick = (secteur) => {
+    setSecteurToDelete(secteur);
     setIsDeleteModalOpen(true);
   };
 
-  // Cancel delete operation
   const handleDeleteCancel = () => {
     setIsDeleteModalOpen(false);
     setSecteurToDelete(null);
   };
 
-  // Confirm delete operation
   const handleDeleteConfirm = async () => {
-    if (!SecteurToDelete) return;
+    if (!secteurToDelete) return;
 
     try {
-      await dispatch(deletesecteur(SecteurToDelete.id)).unwrap();
+      await SecteursService.delete(secteurToDelete.id);
       setIsDeleteModalOpen(false);
       setSecteurToDelete(null);
-      handleModalClose(); // Close the view modal if open
+      handleModalClose();
+      loadSecteurs();
     } catch (error) {
-      console.error('Failed to delete Secteur:', error);
-      alert('Erreur lors de la suppression de la secteur');
+      console.error('Failed to delete secteur:', error);
+      alert('Erreur lors de la suppression du secteur');
     }
   };
 
-  // Save or edit Secteur data
-  const handleSave = async (SecteurData) => {
+  const handleSave = async (secteurData) => {
     try {
-      if (SecteurData.id) {
-        await dispatch(editsecteur(SecteurData)).unwrap();
+      if (secteurData.id) {
+        await SecteursService.update(secteurData.id, secteurData);
       } else {
-        await dispatch(addsecteur(SecteurData)).unwrap();
+        await SecteursService.create(secteurData);
       }
       handleModalClose();
+      loadSecteurs();
     } catch (error) {
-      console.error('Failed to save Secteur:', error);
-      throw new Error("Erreur lors de l'enregistrement de la secteur");
+      console.error('Failed to save secteur:', error);
+      throw new Error("Erreur lors de l'enregistrement du secteur");
     }
   };
 
-  // Export filtered and sorted Secteurs to CSV
   const exportSecteurs = () => {
-    const headers = ['Code Secteur', 'Intitule Secteur', 'Secteur', 'Groupes'];
-    const rows = filteredAndSortedSecteurs.map((Secteur) => [
-      Secteur.code_secteur,
-      Secteur.intitule_secteur,
-      Array.isArray(Secteur.niveaux) ? Secteur.niveaux.join(';') : '',
-    ]);
-
-    const csvContent = [headers.join(','), ...rows.map((row) => row.join(','))].join('\n');
+    const headers = ['Intitulé'];
+    const rows = filteredSecteurs.map(secteur => [`"${secteur.intitule.replace(/"/g, '""')}"`]);
+    const csvContent = [headers.join(','), ...rows.map(row => row.join(','))].join('\n');
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
@@ -159,15 +176,15 @@ export const useSecteursLogic = (Secteurs) => {
   };
 
   return {
+    secteurs: filteredSecteurs,
     isModalOpen,
     isDeleteModalOpen,
-    SecteurToDelete,
+    secteurToDelete,
     viewMode,
     selectedSecteur,
     searchTerm,
     filters,
     sortConfig,
-    filteredAndSortedSecteurs,
     handleSort,
     handleSearch,
     handleFilterChange,

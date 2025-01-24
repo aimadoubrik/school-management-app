@@ -1,23 +1,19 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchsecteurs } from '../../features/secteur/secteurslice';
+import React from 'react';
 import SecteursTable from './components/SecteursTable';
 import SecteursHeader from './components/SecteursHeader';
 import SecteursModal from './components/SecteursModal';
 import { useSecteursLogic } from './hooks/useSecteursLogic';
+import { LoadingSpinner, ErrorAlert } from '../../components';
 
 const SecteursPage = () => {
-  const dispatch = useDispatch();
-  const secteurs = useSelector((state) => state.secteur.secteurs);
-  const loading = useSelector((state) => state.secteur.loading);
-  const error = useSelector((state) => state.secteur.error);
-
   const {
-    secteurToDelete,
-    isDeleteModalOpen,
+    secteurs,
     isModalOpen,
+    isDeleteModalOpen,
     selectedSecteur,
     viewMode,
+    loading,
+    error,
     handleModalOpen,
     handleModalClose,
     handleDeleteClick,
@@ -29,60 +25,27 @@ const SecteursPage = () => {
     sortConfig,
     handleFilterChange,
     exportSecteurs,
-    filteredAndSortedSecteurs,
-  } = useSecteursLogic(secteurs);
+    loadSecteurs, // Function to refresh data
+  } = useSecteursLogic();
 
-  useEffect(() => {
-    dispatch(fetchsecteurs());
-  }, [dispatch]);
+  if (loading) return <LoadingSpinner />;
 
-  const handleRefresh = () => {
-    dispatch(fetchsecteurs());
-  };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <span className="loading loading-spinner loading-lg text-primary"></span>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="alert alert-error max-w-md">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="stroke-current shrink-0 h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-          <span>{error}</span>
-        </div>
-      </div>
-    );
-  }
+  if (error) return <ErrorAlert message={error} />;
 
   return (
     <div className="container mx-auto p-4 space-y-4">
+      {/* Header Controls */}
       <SecteursHeader
-        onRefresh={handleRefresh}
+        onRefresh={loadSecteurs}
         onExport={exportSecteurs}
-        onAdd={() => handleModalOpen(null, 'edit')}
+        onAdd={() => handleModalOpen(null, 'add')}
         onSearch={handleSearch}
         onFilterChange={handleFilterChange}
       />
 
+      {/* Table */}
       <SecteursTable
-        secteurs={filteredAndSortedSecteurs}
+        secteurs={secteurs}
         onSort={handleSort}
         sortConfig={sortConfig}
         onView={(secteur) => handleModalOpen(secteur, 'view')}
@@ -90,9 +53,10 @@ const SecteursPage = () => {
         onDelete={handleDeleteClick}
       />
 
+      {/* Modal for Adding/Editing/View */}
       <SecteursModal
         isOpen={isModalOpen}
-        mode={viewMode ? 'view' : 'edit'}
+        mode={selectedSecteur === null ? 'create' : (viewMode ? 'view' : 'edit')}
         secteur={selectedSecteur}
         onClose={handleModalClose}
         onSave={handleSave}
@@ -105,7 +69,7 @@ const SecteursPage = () => {
           <div className="modal-box">
             <h3 className="font-bold text-lg">Confirmer la suppression</h3>
             <p className="py-4">
-              Êtes-vous sûr de vouloir supprimer ce secteur ? Cette action est irréversible.
+              Êtes-vous sûr de vouloir supprimer ce secteur? Cette action est irréversible.
             </p>
             <div className="modal-action">
               <button onClick={handleDeleteCancel} className="btn">
