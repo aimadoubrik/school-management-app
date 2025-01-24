@@ -8,6 +8,7 @@ import {
     Users, Building, FolderOpen, FileQuestion, Shield,
     ArrowUpCircle, BadgeCheck, FileWarning
 } from 'lucide-react';
+import { getUserFromStorage } from '../../utils';
 
 const DocumentsPage = () => {
     const dispatch = useDispatch();
@@ -26,6 +27,8 @@ const DocumentsPage = () => {
     const [prenom, setPrenom] = useState('');
     const [codeDiplome, setCodeDiplome] = useState('');
     const [matriculeEtudiant, setMatriculeEtudiant] = useState('');
+
+    const user = getUserFromStorage('user');
 
     useEffect(() => {
         dispatch(fetchDocuments());
@@ -260,10 +263,10 @@ const DocumentsPage = () => {
                                     </label>
                                     <input
                                         type="text"
-                                        placeholder="Nom"
+                                        placeholder="Khalil"
                                         value={nom}
                                         onChange={(e) => setNom(e.target.value)}
-                                        className="input input-bordered w-full"
+                                        className="w-full input input-bordered"
                                         required
                                     />
                                 </div>
@@ -275,10 +278,10 @@ const DocumentsPage = () => {
                                     </label>
                                     <input
                                         type="text"
-                                        placeholder="Prénom"
+                                        placeholder="Ali"
                                         value={prenom}
                                         onChange={(e) => setPrenom(e.target.value)}
-                                        className="input input-bordered w-full"
+                                        className="w-full input input-bordered"
                                         required
                                     />
                                 </div>
@@ -289,7 +292,7 @@ const DocumentsPage = () => {
                                         <span className="label-text">Groupe</span>
                                     </label>
                                     <select
-                                        className="select select-bordered w-full"
+                                        className="w-full select select-bordered"
                                         value={codeDiplome}
                                         onChange={(e) => setCodeDiplome(e.target.value)}
                                         required
@@ -315,7 +318,7 @@ const DocumentsPage = () => {
                                         placeholder="Matricule Étudiant"
                                         value={matriculeEtudiant}
                                         onChange={(e) => setMatriculeEtudiant(e.target.value)}
-                                        className="input input-bordered w-full"
+                                        className="w-full input input-bordered"
                                         required
                                     />
                                 </div>
@@ -328,7 +331,7 @@ const DocumentsPage = () => {
                                                 Fichiers requis
                                             </span>
                                         </label>
-                                        <div className="p-4 bg-base-200 rounded-md">
+                                        <div className="p-4 rounded-md bg-base-200">
                                             <ul className="list-disc list-inside">
                                                 {selectedDocument.documentAttachment.map((doc, index) => (
                                                     <li key={index} className="flex items-center gap-2">
@@ -450,7 +453,7 @@ const DocumentsPage = () => {
                         </h2>
                         <div className="divider"></div>
 
-                        {demandes.filter(d => d.user === `${nom} ${prenom}`).length === 0 ? (
+                        {demandes.filter(d => d.user === user.name).length === 0 ? (
                             <div className="py-12 text-center">
                                 <Info className="w-16 h-16 mx-auto mb-4 text-primary" />
                                 <h3 className="text-lg font-medium">
@@ -463,7 +466,7 @@ const DocumentsPage = () => {
                         ) : (
                             <>
                                 {/* Table for large screens */}
-                                <div className="overflow-x-auto hidden lg:block">
+                                <div className="hidden overflow-x-auto lg:block">
                                     <table className="table w-full">
                                         <thead>
                                             <tr>
@@ -476,7 +479,7 @@ const DocumentsPage = () => {
                                         </thead>
                                         <tbody>
                                             {demandes
-                                                .filter(d => d.user === `${nom} ${prenom}`)
+                                                .filter(d => d.user === user.name) // Use the `user` constant here
                                                 .map((demande) => (
                                                     <tr key={demande.id}>
                                                         <td>
@@ -512,11 +515,11 @@ const DocumentsPage = () => {
                                 {/* Cards for medium and small screens */}
                                 <div className="lg:hidden">
                                     {demandes
-                                        .filter(d => d.user === `${nom} ${prenom}`)
+                                        .filter(d => d.user === user.name) // Use the `user` constant here
                                         .map((demande) => (
-                                            <div key={demande.id} className="card bg-base-200 shadow-md mb-4">
+                                            <div key={demande.id} className="mb-4 shadow-md card bg-base-200">
                                                 <div className="card-body">
-                                                    <div className="flex justify-between items-center">
+                                                    <div className="flex items-center justify-between">
                                                         <div className="flex items-center gap-2">
                                                             <FileText className="w-5 h-5 text-primary" />
                                                             <span className="font-medium">{demande.document}</span>
