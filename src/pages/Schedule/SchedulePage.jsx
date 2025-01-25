@@ -7,8 +7,8 @@ const SchedulePage = () => {
   const [selectedGroup, setSelectedGroup] = useState('all');
   const [selectedSecteur, setSelectedSecteur] = useState('all');
   const [selectedFiliere, setSelectedFiliere] = useState('all');
-  const [secteurGroups, setSecteurGroups] = useState([]);
   const [secteurFilieres, setSecteurFilieres] = useState([]);
+  const [secteurGroups, setSecteurGroups] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -27,18 +27,16 @@ const SchedulePage = () => {
 
   // Get unique secteurs
   const uniqueSecteurs = useMemo(
-    () => [...new Set(secteurs.map((secteur) => secteur.Secteur))],
-    [secteurs]
+    () => [...new Set(assignments.map((assignment) => assignment.formateur.secteur))],
+    [assignments]
   );
 
   // Fetch data on component mount
   useEffect(() => {
     const fetchAssignments = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/assignments');
+        const response = await axios.get('http://localhost:3000/scheduler');
         setAssignments(response.data);
-        const secteursResponse = await axios.get('http://localhost:3000/secteurs');
-        setSecteurs(secteursResponse.data);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -56,24 +54,32 @@ const SchedulePage = () => {
       setSelectedFiliere('all');
       setSelectedGroup('all');
     } else {
-      const selectedFilieres = secteurs.filter((secteur) => secteur.Secteur === selectedSecteur);
-      if (selectedFilieres) {
-        
-        setSecteurFilieres(selectedFilieres || []);
-        setSecteurGroups(selectedFilieres || []);
-      } else {
-        setSecteurFilieres([]);
-        setSecteurGroups([]);
-      }
+      const filteredFilieres = [
+        ...new Set(
+          assignments
+            .filter((a) => a.formateur.secteur === selectedSecteur)
+            .map((a) => a.groupe.filiere)
+        ),
+      ];
+      setSecteurFilieres(filteredFilieres);
+
+      const filteredGroups = [
+        ...new Set(
+          assignments
+            .filter((a) => a.formateur.secteur === selectedSecteur && a.groupe.filiere === selectedFiliere)
+            .map((a) => a.groupe.codeGroupe)
+        ),
+      ];
+      setSecteurGroups(filteredGroups);
     }
-  }, [selectedSecteur, secteurs, selectedFiliere , selectedGroup]);
+  }, [selectedSecteur, selectedFiliere, assignments]);
 
   // Filter assignments based on selected filters
   const filteredAssignments = useMemo(() => {
     return assignments.filter((a) => {
-      const matchesSecteur = selectedSecteur === 'all' || a.secteur === selectedSecteur;
-      const matchesFiliere = selectedFiliere === 'all' || a.filiere === selectedFiliere;
-      const matchesGroup = selectedGroup === 'all' || a.groupe === selectedGroup;
+      const matchesSecteur = selectedSecteur === 'all' || a.formateur.secteur === selectedSecteur;
+      const matchesFiliere = selectedFiliere === 'all' || a.groupe.filiere === selectedFiliere;
+      const matchesGroup = selectedGroup === 'all' || a.groupe.codeGroupe === selectedGroup;
       return matchesSecteur && matchesFiliere && matchesGroup;
     });
   }, [assignments, selectedSecteur, selectedFiliere, selectedGroup]);
@@ -135,13 +141,11 @@ const SchedulePage = () => {
           disabled={!selectedSecteur || selectedSecteur === 'all'}
         >
           <option value="all">All Filière</option>
-          {Array.from(new Set(secteurFilieres.map((filiere) => filiere.Filière || filiere))).map(
-            (filiere, index) => (
-              <option key={index} value={filiere}>
-                {filiere}
-              </option>
-            )
-          )}
+          {secteurFilieres.map((filiere, index) => (
+            <option key={index} value={filiere}>
+              {filiere}
+            </option>
+          ))}
         </select>
 
         {/* Group Filter */}
@@ -156,12 +160,11 @@ const SchedulePage = () => {
           disabled={!selectedSecteur || selectedSecteur === 'all'}
         >
           <option value="all">All Groups</option>
-             {new Array(2).fill(0).map((_, index) => (
-            <option key={index} value={index + 1}>
-               {index + 1} Année 
+          {secteurGroups.map((group, index) => (
+            <option key={index} value={group}>
+              {group}
             </option>
-          )
-             )}
+          ))}
         </select>
       </div>
 
@@ -205,7 +208,7 @@ const SchedulePage = () => {
                         >
                           <div
                             className="bg-gray-400 text-black p-2 rounded shadow-lg absolute inset-1 overflow-hidden text-base-100 transition-all duration-300"
-                            title={`${classForSlot.title}\nInstructor: ${classForSlot.formateur}\nRoom: ${classForSlot.salle}\nTime: ${classForSlot.startTime} - ${classForSlot.endTime}`}
+                            title={`${classForSlot.title}\nInstructor: ${classForSlot.formateur.nom}\nRoom: ${classForSlot.salle}\nTime: ${classForSlot.startTime} - ${classForSlot.endTime}`}
                           >
                             <div className="flex flex-col gap-2 justify-center h-full">
                               <div className="flex items-center justify-center gap-2">
@@ -213,7 +216,7 @@ const SchedulePage = () => {
                                   {classForSlot.title}
                                 </div>
                                 <span className="">|</span>
-                                <div className="text-xs font-medium">{classForSlot.formateur}</div>
+                                <div className="text-xs font-medium">{classForSlot.formateur.nom}</div>
                               </div>
                               <div className="text-xs text-secondary-content rounded-md py-1 px-2 mx-auto">
                                 {classForSlot.salle}
