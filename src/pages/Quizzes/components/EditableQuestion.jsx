@@ -35,11 +35,18 @@ const EditableQuestion = ({
     setIsEditing(false);
     onEditEnd();
   };
+
   const handleEditClick = () => {
     if (!editingQuestionId) {
       onEditStart(question.id);
       setIsEditing(true);
     }
+  };
+
+  const handleCancel = () => {
+    setIsEditing(false);
+    setEditedQuestion({ ...question });
+    onEditEnd();
   };
 
   return (
@@ -79,7 +86,9 @@ const EditableQuestion = ({
                   />
                 </li>
               ))
-            : editedQuestion.answers.map((answer) => <li key={`answer-${answer}`}>{answer}</li>)}
+            : editedQuestion.answers.map((answer) => (
+                <li key={`answer-${answer}`}>{answer}</li>
+              ))}
         </ul>
       </td>
       <td>
@@ -110,7 +119,7 @@ const EditableQuestion = ({
               <button onClick={handleSave} className="btn btn-outline btn-success">
                 Save
               </button>
-              <button onClick={() => setIsEditing(false)} className="btn btn-outline btn-error">
+              <button onClick={handleCancel} className="btn btn-outline btn-error">
                 Cancel
               </button>
             </>
@@ -131,3 +140,4 @@ const EditableQuestion = ({
 };
 
 export default EditableQuestion;
+
