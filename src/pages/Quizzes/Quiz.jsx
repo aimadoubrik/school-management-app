@@ -20,8 +20,8 @@ const Quiz = () => {
   const [isConfettiActive, setIsConfettiActive] = useState(false);
   const [retries, setRetries] = useState(0);
 
-  // New state to store the question and the student's answer
-  const [questionAnswers, setQuestionAnswers] = useState([]);
+    // New state to store the question and the student's answer
+    const [questionAnswers, setQuestionAnswers] = useState([]);
 
   // Fetch quizzes when the component mounts or the ID changes
   useEffect(() => {
@@ -68,11 +68,13 @@ const Quiz = () => {
     }
   };
 
-  // Update selected answer and save the question-answer pair in questionAnswers
+  // Update selected answer
   const handleAnswerChange = (answer) => {
     const updatedAnswers = [...selectedAnswers];
     updatedAnswers[currentQuestionIndex] = answer;
     setSelectedAnswers(updatedAnswers);
+
+    console.log(quizData.questionsSelected[1],selectedAnswers)
 
     // Add the question and the selected answer to the questionAnswers state
     const updatedQuestionAnswers = [...questionAnswers];
@@ -142,7 +144,7 @@ const Quiz = () => {
       <div className="card-body">
         <h2 className="card-title text-2xl">{quizData.courseName}</h2>
         <div className="flex flex-col gap-1">
-          <p className="text-sm opacity-70">Quiz ID: {quizData.quizID}</p>
+          <p className="text-sm opacity-70">competence: {quizData.competence}</p>
           <p className="text-sm opacity-70">
             Due: {new Date(quizData.Deadline).toLocaleDateString()}
           </p>
@@ -247,7 +249,7 @@ const Quiz = () => {
 
         <div className="text-center mt-8">
           <button className="btn btn-primary btn-wide" onClick={() => handleRetryQuiz()}>
-            See Analyze
+             See Analyze
           </button>
         </div>
       </div>
