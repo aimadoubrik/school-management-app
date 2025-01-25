@@ -165,7 +165,7 @@
       "competence": "HTML/CSS",
       "teacherName": "Amina Smaïli",
       "Deadline": "2025-02-08T02:55",
-      "status": "draft",
+      "status": "active",
       "questions": [
         {
           "id": "1",
@@ -286,7 +286,231 @@
       "competence": "Introduction au web",
       "teacherName": "Amina Smaïli",
       "Deadline": "2025-03-14T09:02",
-      "status": "active"
+      "status": "active",
+      "questions": [
+        {
+          "id": "1",
+          "question": "Quel protocole est principalement utilisé pour le transfert de données sur le Web ?",
+          "answers": [
+            "FTP",
+            "SMTP",
+            "HTTP",
+            "POP3"
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "id": "2",
+          "question": "Le langage de balisage utilisé pour structurer le contenu d'une page web est :",
+          "answers": [
+            "CSS",
+            "JavaScript",
+            "HTML",
+            "PHP"
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "id": "3",
+          "question": "Quel rôle joue le CSS dans le développement web ?",
+          "answers": [
+            "Gestion du contenu dynamique",
+            "Programmation côté serveur",
+            "Mise en forme et style des pages web",
+            "Stockage des données utilisateur"
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "id": "4",
+          "question": "JavaScript est principalement un langage de programmation :",
+          "answers": [
+            "Côté serveur",
+            "Côté client",
+            "De base de données",
+            "De conception graphique"
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "id": "5",
+          "question": "Une URL (Uniform Resource Locator) indique :",
+          "answers": [
+            "L'adresse email d'un site web",
+            "L'adresse physique d'un serveur",
+            "L'adresse d'une ressource sur le web",
+            "Le nom du créateur du site web"
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "id": "6",
+          "question": "Qu'est-ce qu'un domaine de premier niveau (TLD) ?",
+          "answers": [
+            "Le nom de serveur web",
+            "L'extension du nom de domaine (ex: .com, .fr)",
+            "Le nom d'utilisateur",
+            "L'adresse IP du serveur"
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "id": "7",
+          "question": "Le protocole HTTPS assure :",
+          "answers": [
+            "Une connexion plus rapide",
+            "Une meilleure compatibilité entre navigateurs",
+            "Une connexion sécurisée",
+            "Un accès anonyme au serveur"
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "id": "8",
+          "question": "Qu'est-ce qu'un cookie ?",
+          "answers": [
+            "Un type de fichier image",
+            "Un petit fichier texte stocké sur l'ordinateur de l'utilisateur",
+            "Un langage de programmation",
+            "Un protocole de communication"
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "id": "9",
+          "question": "Un serveur web a pour fonction principale de :",
+          "answers": [
+            "Naviguer sur internet",
+            "Stocker les emails",
+            "Fournir des pages web aux navigateurs",
+            "Créer des programmes informatiques"
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "id": "10",
+          "question": "Quel langage est souvent utilisé pour la programmation côté serveur ?",
+          "answers": [
+            "HTML",
+            "CSS",
+            "JavaScript (Node.js)",
+            "PHP"
+          ],
+          "correctAnswer": "D"
+        }
+      ],
+      "questionsSelected": [
+        {
+          "id": "1",
+          "question": "Quel protocole est principalement utilisé pour le transfert de données sur le Web ?",
+          "answers": [
+            "FTP",
+            "SMTP",
+            "HTTP",
+            "POP3"
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "id": "2",
+          "question": "Le langage de balisage utilisé pour structurer le contenu d'une page web est :",
+          "answers": [
+            "CSS",
+            "JavaScript",
+            "HTML",
+            "PHP"
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "id": "3",
+          "question": "Quel rôle joue le CSS dans le développement web ?",
+          "answers": [
+            "Gestion du contenu dynamique",
+            "Programmation côté serveur",
+            "Mise en forme et style des pages web",
+            "Stockage des données utilisateur"
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "id": "4",
+          "question": "JavaScript est principalement un langage de programmation :",
+          "answers": [
+            "Côté serveur",
+            "Côté client",
+            "De base de données",
+            "De conception graphique"
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "id": "5",
+          "question": "Une URL (Uniform Resource Locator) indique :",
+          "answers": [
+            "L'adresse email d'un site web",
+            "L'adresse physique d'un serveur",
+            "L'adresse d'une ressource sur le web",
+            "Le nom du créateur du site web"
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "id": "6",
+          "question": "Qu'est-ce qu'un domaine de premier niveau (TLD) ?",
+          "answers": [
+            "Le nom de serveur web",
+            "L'extension du nom de domaine (ex: .com, .fr)",
+            "Le nom d'utilisateur",
+            "L'adresse IP du serveur"
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "id": "7",
+          "question": "Le protocole HTTPS assure :",
+          "answers": [
+            "Une connexion plus rapide",
+            "Une meilleure compatibilité entre navigateurs",
+            "Une connexion sécurisée",
+            "Un accès anonyme au serveur"
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "id": "8",
+          "question": "Qu'est-ce qu'un cookie ?",
+          "answers": [
+            "Un type de fichier image",
+            "Un petit fichier texte stocké sur l'ordinateur de l'utilisateur",
+            "Un langage de programmation",
+            "Un protocole de communication"
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "id": "9",
+          "question": "Un serveur web a pour fonction principale de :",
+          "answers": [
+            "Naviguer sur internet",
+            "Stocker les emails",
+            "Fournir des pages web aux navigateurs",
+            "Créer des programmes informatiques"
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "id": "10",
+          "question": "Quel langage est souvent utilisé pour la programmation côté serveur ?",
+          "answers": [
+            "HTML",
+            "CSS",
+            "JavaScript (Node.js)",
+            "PHP"
+          ],
+          "correctAnswer": "D"
+        }
+      ]
     },
     {
       "id": "ce15",
