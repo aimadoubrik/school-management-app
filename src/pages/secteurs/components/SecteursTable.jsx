@@ -11,6 +11,12 @@ const SecteursTable = ({ secteurs, sortConfig, onSort, onView, onEdit, onDelete 
   // Memoized columns to prevent re-renders
   const columns = useMemo(() => [
     {
+      key: 'code',
+      label: 'Code',
+      sortable: true,
+      mobileTruncate: true,
+    },
+    {
       key: 'intitule',
       label: 'Intitulé',
       sortable: true,
