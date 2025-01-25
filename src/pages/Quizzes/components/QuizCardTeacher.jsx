@@ -10,6 +10,9 @@ import {
   CheckCircle,
   XCircle,
   AlertCircle,
+  Code,
+  Building2,
+  HelpCircle,
 } from 'lucide-react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx'; // Ensure clsx is installed for class concatenation
@@ -140,10 +143,12 @@ const QuizCardTeacher = ({ quiz, onDelete, onEdit, onViewDetails, onAddQuestions
 
             {/* Info Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
-              <InfoRow icon={User} label="Instructor" value={teacherName} />
               <InfoRow icon={BookOpen} label="Module ID" value={code} />
+              <InfoRow icon={Building2} label="Competence" value={competence} />
               <InfoRow icon={Clock} label="Deadline" value={formattedDeadline} />
+              <InfoRow icon={User} label="Instructor" value={teacherName} />
               <div className="flex items-center gap-2 text-base-content/70">
+                <HelpCircle className="w-4 h-4" />
                 <span className="font-medium">Questions:</span>
                 <span
                   className={clsx(
@@ -152,12 +157,6 @@ const QuizCardTeacher = ({ quiz, onDelete, onEdit, onViewDetails, onAddQuestions
                   )}
                 >
                   {questions.length || 'No questions'}
-                </span>
-              </div>
-              <div className="flex items-center gap-2 text-base-content/70">
-                <span className="font-medium">Competence:</span>
-                <span className="text-base-content">
-                  {competence || 'N/A'}
                 </span>
               </div>
             </div>
@@ -199,3 +198,4 @@ QuizCardTeacher.propTypes = {
 };
 
 export default QuizCardTeacher;
+

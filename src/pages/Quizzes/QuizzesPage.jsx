@@ -10,7 +10,7 @@ const QuizzesPage = () => {
   const quizData = useSelector((state) =>
     state.quizzes.quizzes
       ? state.quizzes.quizzes.filter(
-          (quiz) => quiz.status === 'active' && quiz.questions?.length > 0
+          (quiz) => quiz.status === 'active' && quiz.questions?.length > 0 && quiz.questionsSelected?.length > 0
         )
       : []
   );
