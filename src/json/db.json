@@ -2471,6 +2471,14 @@
           "correctAnswer": "Differentiation"
         }
       ]
+    },
+    {
+      "id": "71c3",
+      "courseName": "Introduction to Physics",
+      "coursequizID": "PHYS101",
+      "teacherName": "Amina Smaïli",
+      "Deadline": "2025-02-07T08:48",
+      "status": "active"
     }
   ],
   "filieres": [
