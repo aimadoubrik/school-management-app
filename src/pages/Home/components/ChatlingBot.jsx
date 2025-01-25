@@ -1,30 +1,26 @@
-import React, { useEffect } from 'react';
+import { useEffect } from "react";
 
-const ChatlingBot = ({ chatbotId }) => {
+const ChatlingBot=({ chatbotId } ) => {
   useEffect(() => {
-    // Set the global configuration
-    window.chtlConfig = { chatbotId: chatbotId };
+    // Set the chatbot configuration
+    window.chtlConfig = { chatbotId };
 
-    // Create script element
-    const script = document.createElement('script');
-    script.id = 'chatling-embed-script';
-    script.src = 'https://chatling.ai/js/embed.js';
+    // Create the script element
+    const script = document.createElement("script");
     script.async = true;
-    script.setAttribute('data-id', chatbotId);
-
-    // Append script to the document
+    script.type = "text/javascript";
+    script.id = "chatling-embed-script";
+    script.src = "https://chatling.ai/js/embed.js";
     document.body.appendChild(script);
 
-    // Cleanup function to remove the script when component unmounts
+    // Cleanup on component unmount
     return () => {
-      const existingScript = document.getElementById('chatling-embed-script');
-      if (existingScript) {
-        document.body.removeChild(existingScript);
-      }
+      document.body.removeChild(script);
+      delete window.chtlConfig;
     };
-  }, [chatbotId]);
+  }, []);
 
-  return null; // This component doesn't render anything visible
+  return null;
 };
 
 export default ChatlingBot;
