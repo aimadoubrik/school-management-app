@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const ChatbotFormateur = ( { chatbotId } ) => {
+const ChatlingBot=({ chatbotId } ) => {
   useEffect(() => {
     // Set the chatbot configuration
     window.chtlConfig = { chatbotId };
@@ -23,4 +23,4 @@ const ChatbotFormateur = ( { chatbotId } ) => {
   return null;
 };
 
-export default ChatbotFormateur;
+export default ChatlingBot;
