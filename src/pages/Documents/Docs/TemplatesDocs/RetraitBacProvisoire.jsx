@@ -1,4 +1,4 @@
-const BacWithdrawalNotice = ({ name, filiere, date, cin, birthdate, group, reason }) => {
+const BacWithdrawalNotice = ({ name, filiere, date, cin, birthdate, group, reason, level }) => {
   return (
     <div className="bg-white p-8 w-[210mm] h-[297mm] mx-auto">
       <div className="max-w-3xl mx-auto space-y-8">
@@ -57,12 +57,7 @@ const BacWithdrawalNotice = ({ name, filiere, date, cin, birthdate, group, reaso
 
                 <span className="font-semibold w-48">Niveau :</span>
 
-                {['TS', 'T', 'S'].map((level, index) => (
-                  <div key={index} className="flex items-center space-x-4 p-3 rounded-lg">
-                    <input type="checkbox" className="w-4 h-4 mr-3" />
-                    <span className="flex-1">{level}</span>
-                  </div>
-                ))}
+                <span className="flex-1">{level}</span>
 
               </div>
 
