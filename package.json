@@ -25,6 +25,7 @@
     "cors": "^2.8.5",
     "date-fns": "^4.1.0",
     "dayjs": "^1.11.13",
+    "dotenv": "^16.4.7",
     "express": "^4.21.1",
     "jspdf": "^2.5.2",
     "jspdf-autotable": "^3.8.4",
