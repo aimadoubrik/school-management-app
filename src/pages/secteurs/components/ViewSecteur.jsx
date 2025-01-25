@@ -14,6 +14,16 @@ const ViewSecteur = ({ secteur, onClose, onDelete }) => {
           <label className="label">
             <span className="label-text">
               <Album color="red" size={15} />
+              Code
+            </span>
+          </label>
+          <div className="text-sm">{secteur.code}</div>
+        </div>
+
+        <div>
+          <label className="label">
+            <span className="label-text">
+              <Album color="red" size={15} />
               Intitulé
             </span>
           </label>
