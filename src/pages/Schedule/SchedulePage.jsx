@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 
 const SchedulePage = () => {
@@ -6,7 +6,9 @@ const SchedulePage = () => {
   const [secteurs, setSecteurs] = useState([]);
   const [selectedGroup, setSelectedGroup] = useState('all');
   const [selectedSecteur, setSelectedSecteur] = useState('all');
+  const [selectedFiliere, setSelectedFiliere] = useState('all');
   const [secteurGroups, setSecteurGroups] = useState([]);
+  const [secteurFilieres, setSecteurFilieres] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -23,39 +25,72 @@ const SchedulePage = () => {
     '17:30 - 18:30',
   ];
 
+  // Get unique secteurs
+  const uniqueSecteurs = useMemo(
+    () => [...new Set(secteurs.map((secteur) => secteur.Secteur))],
+    [secteurs]
+  );
+
+  // Fetch data on component mount
   useEffect(() => {
     const fetchAssignments = async () => {
-      const response = await axios.get('http://localhost:3000/assignments');
-      setAssignments(response.data);
-      const secteursresponse = await axios.get('http://localhost:3000/filieres');
-      setSecteurs(secteursresponse.data);
-      setLoading(false);
+      try {
+        const response = await axios.get('http://localhost:3000/assignments');
+        setAssignments(response.data);
+        const secteursResponse = await axios.get('http://localhost:3000/secteurs');
+        setSecteurs(secteursResponse.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
     };
     fetchAssignments();
   }, []);
 
-  const uniqueGroups = [...new Set(assignments.map((a) => a.groupe))].sort();
-  const filteredAssignments =
-    selectedGroup === 'all' ? assignments : assignments.filter((a) => a.groupe === selectedGroup);
+  // Update secteurFilieres and secteurGroups when selectedSecteur changes
+  useEffect(() => {
+    if (selectedSecteur === 'all') {
+      setSecteurFilieres([]);
+      setSecteurGroups([]);
+      setSelectedFiliere('all');
+      setSelectedGroup('all');
+    } else {
+      const selectedFilieres = secteurs.filter((secteur) => secteur.Secteur === selectedSecteur);
+      if (selectedFilieres) {
+        
+        setSecteurFilieres(selectedFilieres || []);
+        setSecteurGroups(selectedFilieres || []);
+      } else {
+        setSecteurFilieres([]);
+        setSecteurGroups([]);
+      }
+    }
+  }, [selectedSecteur, secteurs, selectedFiliere , selectedGroup]);
 
+  // Filter assignments based on selected filters
+  const filteredAssignments = useMemo(() => {
+    return assignments.filter((a) => {
+      const matchesSecteur = selectedSecteur === 'all' || a.secteur === selectedSecteur;
+      const matchesFiliere = selectedFiliere === 'all' || a.filiere === selectedFiliere;
+      const matchesGroup = selectedGroup === 'all' || a.groupe === selectedGroup;
+      return matchesSecteur && matchesFiliere && matchesGroup;
+    });
+  }, [assignments, selectedSecteur, selectedFiliere, selectedGroup]);
+
+  // Helper functions
   const getDayName = (dateStr) => {
     const date = new Date(dateStr);
-    return days[date.getDay() - 1];
+    return days[date.getDay()];
   };
 
   const getTimeSlotIndex = (time) => {
     return timeSlots.findIndex((slot) => slot.startsWith(time));
   };
-  useEffect(() => {
-    const secteurgroupes = secteurs.find((secteur) => secteur.id == selectedSecteur)?.groupes;
-    setSecteurGroups(secteurgroupes);
-  }, [selectedSecteur]);
 
   const calculateColspan = (startTime, endTime) => {
     const startIndex = getTimeSlotIndex(startTime);
-    const endTime2 = endTime.split(':');
-    const endTimeFormatted = `${endTime2[0]}:${endTime2[1]}`;
-    const endIndex = timeSlots.findIndex((slot) => slot.startsWith(endTimeFormatted));
+    const endIndex = getTimeSlotIndex(endTime);
     return Math.max(1, endIndex - startIndex) || 1;
   };
 
@@ -70,6 +105,7 @@ const SchedulePage = () => {
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-4">
+        {/* Secteur Filter */}
         <label htmlFor="secteur-filter" className="label">
           Filter by Secteur:
         </label>
@@ -80,12 +116,35 @@ const SchedulePage = () => {
           className="select select-primary w-full max-w-md"
         >
           <option value="all">All Secteur</option>
-          {secteurs.map((secteur) => (
-            <option key={secteur.id} value={secteur.id}>
-              {secteur.secteur}
+          {uniqueSecteurs.map((secteurName, index) => (
+            <option key={index} value={secteurName}>
+              {secteurName}
             </option>
           ))}
         </select>
+
+        {/* Filière Filter */}
+        <label htmlFor="filiere-filter" className="label">
+          Filter by Filière:
+        </label>
+        <select
+          id="filiere-filter"
+          value={selectedFiliere}
+          onChange={(e) => setSelectedFiliere(e.target.value)}
+          className="select select-primary w-full max-w-md"
+          disabled={!selectedSecteur || selectedSecteur === 'all'}
+        >
+          <option value="all">All Filière</option>
+          {Array.from(new Set(secteurFilieres.map((filiere) => filiere.Filière || filiere))).map(
+            (filiere, index) => (
+              <option key={index} value={filiere}>
+                {filiere}
+              </option>
+            )
+          )}
+        </select>
+
+        {/* Group Filter */}
         <label htmlFor="group-filter" className="label">
           Filter by Group:
         </label>
@@ -94,22 +153,19 @@ const SchedulePage = () => {
           value={selectedGroup}
           onChange={(e) => setSelectedGroup(e.target.value)}
           className="select select-primary w-full max-w-md"
+          disabled={!selectedSecteur || selectedSecteur === 'all'}
         >
           <option value="all">All Groups</option>
-          {!secteurGroups
-            ? uniqueGroups.map((group) => (
-                <option key={group} value={group}>
-                  {group}
-                </option>
-              ))
-            : secteurGroups.map((group) => (
-                <option key={group.id} value={group.nom}>
-                  {group.nom}
-                </option>
-              ))}
+             {new Array(2).fill(0).map((_, index) => (
+            <option key={index} value={index + 1}>
+               {index + 1} Année 
+            </option>
+          )
+             )}
         </select>
       </div>
 
+      {/* Schedule Table */}
       <div className="overflow-x-auto">
         <table className="w-full border-collapse">
           <thead>
@@ -147,9 +203,8 @@ const SchedulePage = () => {
                           colSpan={colspan}
                           className="border p-2 relative h-20"
                         >
-                          <h2 className="text-2xl font-bold mb-4 text-center">Class Schedule</h2>
                           <div
-                            className="bg-gray-400 text-black  p-2 rounded shadow-lg absolute inset-1 overflow-hidden text-base-100 transition-all duration-300"
+                            className="bg-gray-400 text-black p-2 rounded shadow-lg absolute inset-1 overflow-hidden text-base-100 transition-all duration-300"
                             title={`${classForSlot.title}\nInstructor: ${classForSlot.formateur}\nRoom: ${classForSlot.salle}\nTime: ${classForSlot.startTime} - ${classForSlot.endTime}`}
                           >
                             <div className="flex flex-col gap-2 justify-center h-full">
@@ -158,9 +213,9 @@ const SchedulePage = () => {
                                   {classForSlot.title}
                                 </div>
                                 <span className="">|</span>
-                                <div className="text-xs font-medium ">{classForSlot.formateur}</div>
+                                <div className="text-xs font-medium">{classForSlot.formateur}</div>
                               </div>
-                              <div className="text-xs text-secondary-content  rounded-md py-1 px-2 mx-auto">
+                              <div className="text-xs text-secondary-content rounded-md py-1 px-2 mx-auto">
                                 {classForSlot.salle}
                               </div>
                             </div>
@@ -184,6 +239,4 @@ const SchedulePage = () => {
   );
 };
 
-const App = () => <SchedulePage />;
-
-export default App;
+export default SchedulePage;
