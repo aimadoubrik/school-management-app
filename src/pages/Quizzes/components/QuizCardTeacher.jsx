@@ -25,23 +25,23 @@ const QuizCardTeacher = ({ quiz, onDelete, onEdit, onViewDetails, onAddQuestions
           <div className={`badge ${timeColor} px-3 py-2 `}>{timeStatus}</div>
         </div>
         {/* Content Section - Flexible Height */}
-        <div className="flex-grow space-y-2 text-sm sm:text-base">
+        <div className="grow space-y-2 text-sm sm:text-base">
           <div className="flex items-center gap-2 text-base-content/70">
-            <User className="w-4 h-4 flex-shrink-0" />
+            <User className="w-4 h-4 shrink-0" />
             <span className="font-medium whitespace-nowrap">Instructor:</span>
             <span className="text-base-content truncate" title={quiz.teacherName || 'Unknown'}>
               {quiz.teacherName || 'Unknown'}
             </span>
           </div>
           <div className="flex items-center gap-2 text-base-content/70">
-            <BookOpen className="w-4 h-4 flex-shrink-0" />
+            <BookOpen className="w-4 h-4 shrink-0" />
             <span className="font-medium whitespace-nowrap">Course ID:</span>
             <span className="text-base-content truncate" title={quiz.coursequizID || 'N/A'}>
               {quiz.coursequizID || 'N/A'}
             </span>
           </div>
           <div className="flex items-center gap-2 text-base-content/70">
-            <Clock className="w-4 h-4 flex-shrink-0" />
+            <Clock className="w-4 h-4 shrink-0" />
             <span className="font-medium whitespace-nowrap">Deadline:</span>
             <span
               className="text-base-content truncate"

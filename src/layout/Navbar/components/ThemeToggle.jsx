@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-import "@theme-toggles/react/css/Around.css";
-import { Around } from "@theme-toggles/react";
-
+import '@theme-toggles/react/css/Around.css';
+import { Around } from '@theme-toggles/react';
 
 const DEFAULT_THEME = 'cupcake';
-const DARK_THEME = 'dark';
+const DARK_THEME = 'night';
 
 const ThemeToggle = () => {
   const [theme, setTheme] = useState(DEFAULT_THEME);
@@ -15,11 +14,11 @@ const ThemeToggle = () => {
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
     const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
+
     const initialTheme = savedTheme || (systemDark ? DARK_THEME : DEFAULT_THEME);
     setTheme(initialTheme);
     setIsMounted(true);
-    
+
     // Set initial color scheme meta
     document.documentElement.style.colorScheme = initialTheme === DARK_THEME ? 'dark' : 'light';
   }, []);
@@ -53,7 +52,7 @@ const ThemeToggle = () => {
 
   const handleToggle = () => {
     setIsManualOverride(true);
-    setTheme(current => {
+    setTheme((current) => {
       const newTheme = current === DEFAULT_THEME ? DARK_THEME : DEFAULT_THEME;
       document.documentElement.style.colorScheme = newTheme === DARK_THEME ? 'dark' : 'light';
       return newTheme;

@@ -129,7 +129,7 @@ const QuizzesPage = () => {
 
         {/* Stats Section */}
         {status === 'succeeded' && (
-          <div className="stats w-full shadow mt-6">
+          <div className="stats w-full shadow-sm mt-6">
             <div className="stat text-center">
               <div className="stat-title">Total Quizzes</div>
               <div className="stat-value">{quizData.length}</div>

@@ -27,7 +27,9 @@ const ViewGroupes = ({ group, onClose, onDelete }) => {
       key: 'modules',
       label: 'Modules',
       icon: <Users className="w-5 h-5" />,
-      render: (data) =>Array.isArray(data.modules)? data.modules.map((module) => module.nomModule).join(', ')
+      render: (data) =>
+        Array.isArray(data.modules)
+          ? data.modules.map((module) => module.nomModule).join(', ')
           : 'Aucun module',
     },
   ];

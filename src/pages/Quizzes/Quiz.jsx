@@ -78,7 +78,7 @@ const Quiz = () => {
     const updatedQuestionAnswers = [...questionAnswers];
     updatedQuestionAnswers[currentQuestionIndex] = {
       question: quizData.questionsSelected[currentQuestionIndex].question,
-      answer: answer
+      answer: answer,
     };
     setQuestionAnswers(updatedQuestionAnswers);
   };
@@ -214,7 +214,7 @@ const Quiz = () => {
         <div className="divider text-lg">📜 Question Review</div>
         <div className="space-y-6">
           {quizData.questionsSelected.map((question, index) => (
-            <div key={index} className="border border-base-200 rounded-lg p-4 shadow-sm">
+            <div key={index} className="border border-base-200 rounded-lg p-4 shadow-xs">
               <p className="font-medium mb-2">
                 <span className="text-primary">{index + 1}.</span> {question.question}
               </p>

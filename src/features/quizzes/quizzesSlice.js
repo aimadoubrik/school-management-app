@@ -41,8 +41,8 @@ const quizzesSlice = createSlice({
     },
     // Add a new action to update questionAnswers
     updateQuestionAnswers: (state, action) => {
-        // Directly replace the current questionAnswers array with the new one
-        state.questionAnswers = action.payload;
+      // Directly replace the current questionAnswers array with the new one
+      state.questionAnswers = action.payload;
     },
     // Add an action to clear the question answers (e.g., for retrying the quiz)
     clearQuestionAnswers: (state) => {
@@ -62,8 +62,8 @@ const quizzesSlice = createSlice({
       .addCase(fetchQuizzes.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload;
-      })
-      // Other reducers like addQuiz, deleteQuiz, etc.
+      });
+    // Other reducers like addQuiz, deleteQuiz, etc.
   },
 });
 

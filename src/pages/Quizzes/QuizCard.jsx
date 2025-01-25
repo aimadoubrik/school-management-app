@@ -67,14 +67,14 @@ export const getTimeStatus = (deadline) => {
 const QuizCardSkeleton = () => (
   <div className="card bg-base-100 shadow-lg animate-pulse h-[280px] w-full">
     <div className="card-body">
-      <div className="h-6 bg-base-300 rounded w-3/4 mb-4" />
-      <div className="h-4 bg-base-300 rounded w-1/4 mb-2" />
+      <div className="h-6 bg-base-300 rounded-sm w-3/4 mb-4" />
+      <div className="h-4 bg-base-300 rounded-sm w-1/4 mb-2" />
       <div className="space-y-2">
-        <div className="h-4 bg-base-300 rounded w-1/2" />
-        <div className="h-4 bg-base-300 rounded w-2/3" />
-        <div className="h-4 bg-base-300 rounded w-3/4" />
+        <div className="h-4 bg-base-300 rounded-sm w-1/2" />
+        <div className="h-4 bg-base-300 rounded-sm w-2/3" />
+        <div className="h-4 bg-base-300 rounded-sm w-3/4" />
       </div>
-      <div className="mt-auto h-10 bg-base-300 rounded w-full" />
+      <div className="mt-auto h-10 bg-base-300 rounded-sm w-full" />
     </div>
   </div>
 );
@@ -134,9 +134,9 @@ const QuizCard = ({ quiz, onQuizStart, className = '', loading = false }) => {
         </div>
 
         {/* Content Section - Flexible Height */}
-        <div className="flex-grow space-y-2 text-sm sm:text-base">
+        <div className="grow space-y-2 text-sm sm:text-base">
           <div className="flex items-center gap-2 text-base-content/70">
-            <User className="w-4 h-4 flex-shrink-0" />
+            <User className="w-4 h-4 shrink-0" />
             <span className="font-medium whitespace-nowrap">Instructor:</span>
             <span className="text-base-content truncate" title={teacherName || 'Unknown'}>
               {teacherName || 'Unknown'}
@@ -144,7 +144,7 @@ const QuizCard = ({ quiz, onQuizStart, className = '', loading = false }) => {
           </div>
 
           <div className="flex items-center gap-2 text-base-content/70">
-            <BookOpen className="w-4 h-4 flex-shrink-0" />
+            <BookOpen className="w-4 h-4 shrink-0" />
             <span className="font-medium whitespace-nowrap">Course ID:</span>
             <span className="text-base-content truncate" title={courseId || 'N/A'}>
               {courseId || 'N/A'}
@@ -152,7 +152,7 @@ const QuizCard = ({ quiz, onQuizStart, className = '', loading = false }) => {
           </div>
 
           <div className="flex items-center gap-2 text-base-content/70">
-            <Clock className="w-4 h-4 flex-shrink-0" />
+            <Clock className="w-4 h-4 shrink-0" />
             <span className="font-medium whitespace-nowrap">Deadline:</span>
             <span className="text-base-content truncate" title={formattedDeadline}>
               {formattedDeadline}

@@ -154,7 +154,10 @@ function ModulesPage() {
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
         <h2 className="text-2xl font-bold text-gray-80">Liste des Modules</h2>
         <div className="flex gap-2">
-          <button onClick={() => dispatch(fetchModules())} className="btn btn-outline btn-sm border-gray-300 hover:bg-gray-200">
+          <button
+            onClick={() => dispatch(fetchModules())}
+            className="btn btn-outline btn-sm border-gray-300 hover:bg-gray-200"
+          >
             <RefreshCcw className="w-4 h-4 text-gray-600" />
           </button>
           <button onClick={handleUpdateModule} className="btn btn-primary btn-sm gap-2 shadow-md">
@@ -163,7 +166,7 @@ function ModulesPage() {
           </button>
         </div>
       </div>
- 
+
       {/* Filters Section */}
       <div className="flex flex-col sm:flex-row gap-4 py-4">
         <div className="relative flex-1">
@@ -197,7 +200,7 @@ function ModulesPage() {
           <option value="2A">2ème année</option>
         </select>
       </div>
- 
+
       {/* Modules Table */}
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
@@ -225,7 +228,9 @@ function ModulesPage() {
                 <td className="hover">
                   <div
                     className={`inline-block px-2 py-1 text-xs font-semibold rounded-full ${
-                      module.etat === 'Affecté' ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'
+                      module.etat === 'Affecté'
+                        ? 'bg-green-100 text-green-600'
+                        : 'bg-red-100 text-red-600'
                     }`}
                   >
                     {module.etat}
@@ -250,7 +255,7 @@ function ModulesPage() {
           </tbody>
         </table>
       </div>
- 
+
       {/* Pagination Controls */}
       <Pagination
         currentPage={currentPage}

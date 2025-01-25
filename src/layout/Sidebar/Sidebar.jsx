@@ -6,20 +6,19 @@ import menuItems from './config/menuItems';
 import { getUserFromStorage } from '../../utils';
 import { ROLE_PERMISSIONS } from '../Sidebar/config/rolePermissions';
 
-
 // Filters menu items based on user role
 const getFilteredMenuItems = (role, items) => {
   const allowed = ROLE_PERMISSIONS[role] || new Set();
 
   return items
-    .filter(item => item.type === 'divider' || (item.label && allowed.has(item.label)))
-    .filter((item, i, arr) =>
-      item.type !== 'divider' || (
-        i > 0 &&
-        i < arr.length - 1 &&
-        arr[i - 1].type !== 'divider' &&
-        arr[i + 1]?.type !== 'divider'
-      )
+    .filter((item) => item.type === 'divider' || (item.label && allowed.has(item.label)))
+    .filter(
+      (item, i, arr) =>
+        item.type !== 'divider' ||
+        (i > 0 &&
+          i < arr.length - 1 &&
+          arr[i - 1].type !== 'divider' &&
+          arr[i + 1]?.type !== 'divider')
     );
 };
 
@@ -69,8 +68,9 @@ const useSidebarCloseHandlers = (sidebarRef, isSidebarOpen, setIsSidebarOpen, is
 // Sidebar overlay for mobile view
 const SidebarOverlay = memo(({ isVisible, onClose }) => (
   <div
-    className={`fixed inset-0 bg-black/30 backdrop-blur-sm z-10 transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
-      }`}
+    className={`fixed inset-0 bg-black/30 backdrop-blur-xs z-10 transition-opacity duration-300 ${
+      isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+    }`}
     onClick={onClose}
     role="button"
     tabIndex={isVisible ? 0 : -1}
