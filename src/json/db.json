@@ -159,2087 +159,646 @@
   },
   "quizzes": [
     {
-      "quizID": "QZ101",
-      "coursequizID": "BIO101",
-      "courseName": "Introduction to Biology",
-      "teacherId": "T001",
-      "teacherName": "Dr. Alice Johnson",
-      "Deadline": "2024-11-30T23:59:59Z",
-      "status": "draft",
+      "id": "f8a2",
+      "intitule": "M102",
+      "code": "M102_F01",
+      "competence": "Structures de données",
+      "teacherName": "Amina Smaïli",
+      "Deadline": "2034-07-27T03:38",
+      "status": "active",
       "questions": [
         {
           "id": "1",
-          "question": "Quelle est l'unité fondamentale de la vie ?",
+          "question": "Quelle structure de données est la plus appropriée pour implémenter une file d'attente ?",
           "answers": [
-            "a) L'atome",
-            "b) La molécule",
-            "c) La cellule",
-            "d) L'organe"
+            "A) Arbre binaire",
+            "B) Liste chaînée",
+            "C) Pile",
+            "D) File"
           ],
-          "correctAnswer": "c) La cellule"
+          "correctAnswer": "D) File"
         },
         {
           "id": "2",
-          "question": "Laquelle de ces affirmations concernant la photosynthèse est FAUSSE ?",
+          "question": "Quelle est la complexité temporelle de la recherche d'un élément dans un tableau trié ?",
           "answers": [
-            "a) Elle utilise l'énergie solaire.",
-            "b) Elle produit du dioxyde de carbone.",
-            "c) Elle produit du glucose.",
-            "d) Elle se produit dans les chloroplastes des plantes."
+            "A) O(n)",
+            "B) O(log n)",
+            "C) O(1)",
+            "D) O(n²)"
           ],
-          "correctAnswer": "b) Elle produit du dioxyde de carbone"
+          "correctAnswer": "B) O(log n)"
         },
         {
           "id": "3",
-          "question": "Quel processus biologique produit de l'ATP ?",
+          "question": "Quelle structure de données utilise le principe \"premier arrivé, premier servi\" (FIFO) ?",
           "answers": [
-            "a) Photosynthèse uniquement",
-            "b) Respiration cellulaire uniquement",
-            "c) Photosynthèse et respiration cellulaire",
-            "d) Ni la photosynthèse ni la respiration cellulaire"
+            "A) Pile",
+            "B) File",
+            "C) Arbre",
+            "D) Graphe"
           ],
-          "correctAnswer": "c) Photosynthèse et respiration cellulaire"
+          "correctAnswer": "B) File"
         },
         {
           "id": "4",
-          "question": "Qu'est-ce que l'ADN ?",
+          "question": "Quelle structure de données utilise le principe \"dernier arrivé, premier servi\" (LIFO) ?",
           "answers": [
-            "a) Une source d'énergie",
-            "b) Une molécule porteuse d'information génétique",
-            "c) Une protéine structurale",
-            "d) Un type de lipide"
+            "A) File",
+            "B) Pile",
+            "C) Liste chaînée",
+            "D) Tableau"
           ],
-          "correctAnswer": "b) Une molécule porteuse d'information génétique"
+          "correctAnswer": "B) Pile"
         },
         {
           "id": "5",
-          "question": "Lequel de ces termes décrit le processus par lequel les organismes maintiennent un environnement interne stable ?",
+          "question": "Un arbre binaire de recherche (ABR) est équilibré pour :",
           "answers": [
-            "a) Métabolisme",
-            "b) Homéostasie",
-            "c) Reproduction",
-            "d) Croissance"
+            "A) Optimiser la recherche uniquement.",
+            "B) Optimiser l'insertion uniquement.",
+            "C) Optimiser la suppression uniquement.",
+            "D) Optimiser la recherche, l'insertion et la suppression."
           ],
-          "correctAnswer": "b) Homéostasie"
+          "correctAnswer": "D) Optimiser la recherche, l'insertion et la suppression."
         },
         {
           "id": "6",
-          "question": "Quelle est la différence principale entre la mitose et la méiose ?",
+          "question": "Quelle structure de données est idéale pour représenter des relations hiérarchiques ?",
           "answers": [
-            "a) La mitose produit des cellules haploïdes, la méiose produit des cellules diploïdes.",
-            "b) La mitose produit des cellules diploïdes, la méiose produit des cellules haploïdes.",
-            "c) La mitose ne produit que des cellules somatiques, la méiose produit uniquement des gamètes.",
-            "d) La mitose est un processus asexué, la méiose est un processus sexué."
+            "A) Tableau",
+            "B) Liste chaînée",
+            "C) Arbre",
+            "D) File"
           ],
-          "correctAnswer": "b) La mitose produit des cellules diploïdes, la méiose produit des cellules haploïdes."
+          "correctAnswer": "C) Arbre"
         },
         {
           "id": "7",
-          "question": "Que sont les enzymes ?",
+          "question": "La complexité spatiale d'une liste chaînée est :",
           "answers": [
-            "a) Des lipides",
-            "b) Des glucides",
-            "c) Des protéines qui catalysent les réactions biochimiques",
-            "d) Des acides nucléiques"
+            "A) O(1)",
+            "B) O(log n)",
+            "C) O(n)",
+            "D) O(n²)"
           ],
-          "correctAnswer": "c) Des protéines qui catalysent les réactions biochimiques"
+          "correctAnswer": "C) O(n)"
         },
         {
           "id": "8",
-          "question": "Quel est le rôle principal du système circulatoire ?",
+          "question": "Quel algorithme de tri est souvent utilisé avec les tas (heaps) ?",
           "answers": [
-            "a) La digestion des aliments",
-            "b) Le transport de substances dans le corps",
-            "c) La production d'hormones",
-            "d) La protection contre les maladies"
+            "A) Tri à bulles",
+            "B) Tri par insertion",
+            "C) Tri par fusion",
+            "D) Tri par tas"
           ],
-          "correctAnswer": "b) Le transport de substances dans le corps"
+          "correctAnswer": "D) Tri par tas"
         },
         {
           "id": "9",
-          "question": "Quel est le nom du processus par lequel les organismes produisent des descendants ?",
+          "question": "Un graphe orienté est caractérisé par :",
           "answers": [
-            "a) Métabolisme",
-            "b) Croissance",
-            "c) Reproduction",
-            "d) Adaptation"
+            "A) Des arêtes non orientées.",
+            "B) Des arêtes orientées.",
+            "C) Des nœuds sans arêtes.",
+            "D) Des nœuds connectés uniquement à un seul autre nœud."
           ],
-          "correctAnswer": "c) Reproduction"
+          "correctAnswer": "B) Des arêtes orientées."
         },
         {
           "id": "10",
-          "question": "Laquelle de ces affirmations concernant l'évolution est VRAIE ?",
+          "question": "Quelle structure de données est particulièrement efficace pour gérer des ensembles d'éléments uniques ?",
           "answers": [
-            "a) L'évolution est un processus rapide et observable en quelques générations.",
-            "b) L'évolution se produit toujours vers une complexité accrue.",
-            "c) L'évolution est le changement des caractéristiques héréditaires d'une population au fil du temps.",
-            "d) L'évolution est un processus dirigé vers un but précis."
+            "A) Liste chaînée",
+            "B) Tableau",
+            "C) Ensemble (Set)",
+            "D) Pile"
           ],
-          "correctAnswer": "c) L'évolution est le changement des caractéristiques héréditaires d'une population au fil du temps."
-        }
-      ],
-      "questionsSelected": [
-        {
-          "id": "8h",
-          "question": "What is the main pigment involved in photosynthesis?",
-          "answers": [
-            "Chlorophyll",
-            "Carotene",
-            "Xanthophyll",
-            "Hemoglobin"
-          ],
-          "correctAnswer": "Chlorophyll"
-        },
-        {
-          "id": "9i",
-          "question": "Which biological molecule is primarily responsible for catalyzing reactions in cells?",
-          "answers": [
-            "Lipids",
-            "Proteins",
-            "Carbohydrates",
-            "Nucleic acids"
-          ],
-          "correctAnswer": "Return on Investment"
-        }
-      ],
-      "id": "f4dc"
-    },
-    {
-      "quizID": "QZ202",
-      "coursequizID": "MKT201",
-      "courseName": "Principles of Marketing",
-      "teacherId": "T002",
-      "teacherName": "Prof. Emily Green",
-      "Deadline": "2025-01-30T12:24",
-      "status": "active",
-      "questions": [
-        {
-          "id": "12l",
-          "question": "What type of bond forms between two water molecules?",
-          "answers": [
-            "Ionic bond",
-            "Covalent bond",
-            "Hydrogen bond",
-            "Peptide bond"
-          ],
-          "correctAnswer": "Hydrogen bond"
-        },
-        {
-          "id": "13m",
-          "question": "What is the primary function of ribosomes?",
-          "answers": [
-            "Energy production",
-            "Protein synthesis",
-            "DNA replication",
-            "Transport of molecules"
-          ],
-          "correctAnswer": "Protein synthesis"
-        },
-        {
-          "id": "14n",
-          "question": "Which domain of life includes humans?",
-          "answers": [
-            "Bacteria",
-            "Archaea",
-            "Eukarya",
-            "Prokaryota"
-          ],
-          "correctAnswer": "Eukarya"
-        },
-        {
-          "id": "15o",
-          "question": "Which process results in two identical daughter cells?",
-          "answers": [
-            "Meiosis",
-            "Mitosis",
-            "Binary fission",
-            "Budding"
-          ],
-          "correctAnswer": "Mitosis"
-        },
-        {
-          "id": "16p",
-          "question": "What is the building block of proteins?",
-          "answers": [
-            "Nucleotides",
-            "Fatty acids",
-            "Amino acids",
-            "Monosaccharides"
-          ],
-          "correctAnswer": "Amino acids"
-        },
-        {
-          "id": "17q",
-          "question": "What is the term for organisms that produce their own food?",
-          "answers": [
-            "Heterotrophs",
-            "Autotrophs",
-            "Decomposers",
-            "Parasites"
-          ],
-          "correctAnswer": "Autotrophs"
-        },
-        {
-          "id": "18r",
-          "question": "Which type of RNA carries the genetic code from DNA to the ribosome?",
-          "answers": [
-            "tRNA",
-            "mRNA",
-            "rRNA",
-            "snRNA"
-          ],
-          "correctAnswer": "mRNA"
-        },
-        {
-          "id": "19s",
-          "question": "Which organ system is responsible for transporting nutrients and oxygen to cells?",
-          "answers": [
-            "Digestive system",
-            "Nervous system",
-            "Circulatory system",
-            "Respiratory system"
-          ],
-          "correctAnswer": "Circulatory system"
-        },
-        {
-          "id": "20t",
-          "question": "What is the main component of the cell membrane?",
-          "answers": [
-            "Proteins",
-            "Carbohydrates",
-            "Lipids",
-            "Nucleic acids"
-          ],
-          "correctAnswer": "Lipids"
-        }
-      ],
-      "id": "ecb9",
-      "questionsSelected": [
-        {
-          "id": "5e",
-          "question": "Which molecule carries genetic information in most living organisms?",
-          "answers": [
-            "RNA",
-            "DNA",
-            "Protein",
-            "ATP"
-          ],
-          "correctAnswer": "DNA"
-        },
-        {
-          "id": "6f",
-          "question": "What is the term for a group of similar cells that perform a specific function?",
-          "answers": [
-            "Organ",
-            "Tissue",
-            "System",
-            "Organism"
-          ],
-          "correctAnswer": "Tissue"
-        },
-        {
-          "id": "7g",
-          "question": "Which process describes the movement of water across a selectively permeable membrane?",
-          "answers": [
-            "Diffusion",
-            "Osmosis",
-            "Active transport",
-            "Endocytosis"
-          ],
-          "correctAnswer": "Osmosis"
-        },
-        {
-          "id": "8h",
-          "question": "What is the main pigment involved in photosynthesis?",
-          "answers": [
-            "Chlorophyll",
-            "Carotene",
-            "Xanthophyll",
-            "Hemoglobin"
-          ],
-          "correctAnswer": "Chlorophyll"
-        },
-        {
-          "id": "9i",
-          "question": "Which biological molecule is primarily responsible for catalyzing reactions in cells?",
-          "answers": [
-            "Lipids",
-            "Proteins",
-            "Carbohydrates",
-            "Nucleic acids"
-          ],
-          "correctAnswer": "Proteins"
-        },
-        {
-          "id": "10j",
-          "question": "Which level of biological organization comes immediately after 'organism'?",
-          "answers": [
-            "Population",
-            "Community",
-            "Ecosystem",
-            "Biosphere"
-          ],
-          "correctAnswer": "Population"
-        },
-        {
-          "id": "11k",
-          "question": "What is the term for the process by which organisms maintain a stable internal environment?",
-          "answers": [
-            "Evolution",
-            "Homeostasis",
-            "Adaptation",
-            "Metabolism"
-          ],
-          "correctAnswer": "Homeostasis"
-        },
-        {
-          "id": "12l",
-          "question": "What type of bond forms between two water molecules?",
-          "answers": [
-            "Ionic bond",
-            "Covalent bond",
-            "Hydrogen bond",
-            "Peptide bond"
-          ],
-          "correctAnswer": "Hydrogen bond"
-        },
-        {
-          "id": "13m",
-          "question": "What is the primary function of ribosomes?",
-          "answers": [
-            "Energy production",
-            "Protein synthesis",
-            "DNA replication",
-            "Transport of molecules"
-          ],
-          "correctAnswer": "Protein synthesis"
-        },
-        {
-          "id": "14n",
-          "question": "Which domain of life includes humans?",
-          "answers": [
-            "Bacteria",
-            "Archaea",
-            "Eukarya",
-            "Prokaryota"
-          ],
-          "correctAnswer": "Eukarya"
-        },
-        {
-          "id": "15o",
-          "question": "Which process results in two identical daughter cells?",
-          "answers": [
-            "Meiosis",
-            "Mitosis",
-            "Binary fission",
-            "Budding"
-          ],
-          "correctAnswer": "Mitosis"
-        },
-        {
-          "id": "16p",
-          "question": "What is the building block of proteins?",
-          "answers": [
-            "Nucleotides",
-            "Fatty acids",
-            "Amino acids",
-            "Monosaccharides"
-          ],
-          "correctAnswer": "Amino acids"
-        },
-        {
-          "id": "17q",
-          "question": "What is the term for organisms that produce their own food?",
-          "answers": [
-            "Heterotrophs",
-            "Autotrophs",
-            "Decomposers",
-            "Parasites"
-          ],
-          "correctAnswer": "Autotrophs"
-        },
-        {
-          "id": "18r",
-          "question": "Which type of RNA carries the genetic code from DNA to the ribosome?",
-          "answers": [
-            "tRNA",
-            "mRNA",
-            "rRNA",
-            "snRNA"
-          ],
-          "correctAnswer": "mRNA"
-        },
-        {
-          "id": "19s",
-          "question": "Which organ system is responsible for transporting nutrients and oxygen to cells?",
-          "answers": [
-            "Digestive system",
-            "Nervous system",
-            "Circulatory system",
-            "Respiratory system"
-          ],
-          "correctAnswer": "Circulatory system"
-        },
-        {
-          "id": "20t",
-          "question": "What is the main component of the cell membrane?",
-          "answers": [
-            "Proteins",
-            "Carbohydrates",
-            "Lipids",
-            "Nucleic acids"
-          ],
-          "correctAnswer": "Lipids"
-        },
-        {
-          "id": "1a",
-          "question": "What is the basic unit of life?",
-          "answers": [
-            "Atom",
-            "Molecule",
-            "Cell",
-            "Tissue"
-          ],
-          "correctAnswer": "Cell"
-        },
-        {
-          "id": "2b",
-          "question": "Which macromolecule is the main source of energy for living organisms?",
-          "answers": [
-            "Lipids",
-            "Proteins",
-            "Carbohydrates",
-            "Nucleic acids"
-          ],
-          "correctAnswer": "Carbohydrates"
-        },
-        {
-          "id": "3c",
-          "question": "What is the process by which plants convert sunlight into chemical energy?",
-          "answers": [
-            "Respiration",
-            "Fermentation",
-            "Photosynthesis",
-            "Digestion"
-          ],
-          "correctAnswer": "Photosynthesis"
-        },
-        {
-          "id": "4d",
-          "question": "Which organelle is known as the powerhouse of the cell?",
-          "answers": [
-            "Nucleus",
-            "Chloroplast",
-            "Mitochondria",
-            "Ribosome"
-          ],
-          "correctAnswer": "Mitochondria"
-        }
-      ]
-    },
-    {
-      "quizID": "QZ103",
-      "coursequizID": "HIST201",
-      "courseName": "World History",
-      "teacherId": "T003",
-      "teacherName": "Dr. Sarah Davis",
-      "Deadline": "2024-11-17T22:31",
-      "status": "active",
-      "questions": [
-        {
-          "id": "1a",
-          "question": "What was the primary goal of the Silk Road?",
-          "answers": [
-            "Religious conversion",
-            "Trade and cultural exchange",
-            "Military expansion",
-            "Agricultural development"
-          ],
-          "correctAnswer": "Trade and cultural exchange"
-        },
-        {
-          "id": "2b",
-          "question": "Which empire was known for building an extensive road system in South America?",
-          "answers": [
-            "Aztec Empire",
-            "Inca Empire",
-            "Mayan Empire",
-            "Olmec Civilization"
-          ],
-          "correctAnswer": "Inca Empire"
-        },
-        {
-          "id": "3c",
-          "question": "Who was the leader of the Mongol Empire at its peak?",
-          "answers": [
-            "Kublai Khan",
-            "Genghis Khan",
-            "Timur",
-            "Attila the Hun"
-          ],
-          "correctAnswer": "Genghis Khan"
-        },
-        {
-          "id": "4d",
-          "question": "What was the primary cause of the fall of the Roman Empire?",
-          "answers": [
-            "Economic instability and invasions",
-            "Overpopulation",
-            "Discovery of the New World",
-            "Rise of the Ottoman Empire"
-          ],
-          "correctAnswer": "Economic instability and invasions"
-        },
-        {
-          "id": "5e",
-          "question": "Which event marked the beginning of the French Revolution?",
-          "answers": [
-            "Storming of the Bastille",
-            "Reign of Terror",
-            "Execution of Louis XVI",
-            "Napoleon's rise to power"
-          ],
-          "correctAnswer": "Storming of the Bastille"
-        },
-        {
-          "id": "6f",
-          "question": "Which treaty ended World War I?",
-          "answers": [
-            "Treaty of Versailles",
-            "Treaty of Tordesillas",
-            "Treaty of Paris",
-            "Treaty of Ghent"
-          ],
-          "correctAnswer": "Treaty of Versailles"
-        },
-        {
-          "id": "7g",
-          "question": "Who was the first emperor of unified China?",
-          "answers": [
-            "Liu Bang",
-            "Wu Zetian",
-            "Qin Shi Huang",
-            "Confucius"
-          ],
-          "correctAnswer": "Qin Shi Huang"
-        },
-        {
-          "id": "8h",
-          "question": "Which event initiated the Protestant Reformation?",
-          "answers": [
-            "Council of Trent",
-            "The posting of the 95 Theses",
-            "English Civil War",
-            "Establishment of the Anglican Church"
-          ],
-          "correctAnswer": "The posting of the 95 Theses"
-        },
-        {
-          "id": "9i",
-          "question": "What was the primary goal of the Marshall Plan after World War II?",
-          "answers": [
-            "To prevent the spread of communism",
-            "To rebuild Europe's economy",
-            "To establish NATO",
-            "To create the European Union"
-          ],
-          "correctAnswer": "To rebuild Europe's economy"
-        },
-        {
-          "id": "10j",
-          "question": "Which civilization is credited with creating the first known system of writing?",
-          "answers": [
-            "Ancient Egyptians",
-            "Sumerians",
-            "Indus Valley Civilization",
-            "Phoenicians"
-          ],
-          "correctAnswer": "Sumerians"
-        }
-      ],
-      "questionsSelected": [
-        {
-          "id": "1a",
-          "question": "What was the primary goal of the Silk Road?",
-          "answers": [
-            "Religious conversion",
-            "Trade and cultural exchange",
-            "Military expansion",
-            "Agricultural development"
-          ],
-          "correctAnswer": "Trade and cultural exchange"
-        },
-        {
-          "id": "2b",
-          "question": "Which empire was known for building an extensive road system in South America?",
-          "answers": [
-            "Aztec Empire",
-            "Inca Empire",
-            "Mayan Empire",
-            "Olmec Civilization"
-          ],
-          "correctAnswer": "Inca Empire"
-        },
-        {
-          "id": "3c",
-          "question": "Who was the leader of the Mongol Empire at its peak?",
-          "answers": [
-            "Kublai Khan",
-            "Genghis Khan",
-            "Timur",
-            "Attila the Hun"
-          ],
-          "correctAnswer": "Genghis Khan"
-        },
-        {
-          "id": "4d",
-          "question": "What was the primary cause of the fall of the Roman Empire?",
-          "answers": [
-            "Economic instability and invasions",
-            "Overpopulation",
-            "Discovery of the New World",
-            "Rise of the Ottoman Empire"
-          ],
-          "correctAnswer": "Economic instability and invasions"
-        },
-        {
-          "id": "6f",
-          "question": "Which treaty ended World War I?",
-          "answers": [
-            "Treaty of Versailles",
-            "Treaty of Tordesillas",
-            "Treaty of Paris",
-            "Treaty of Ghent"
-          ],
-          "correctAnswer": "Treaty of Versailles"
-        },
-        {
-          "id": "7g",
-          "question": "Who was the first emperor of unified China?",
-          "answers": [
-            "Liu Bang",
-            "Wu Zetian",
-            "Qin Shi Huang",
-            "Confucius"
-          ],
-          "correctAnswer": "Qin Shi Huang"
-        },
-        {
-          "id": "8h",
-          "question": "Which event initiated the Protestant Reformation?",
-          "answers": [
-            "Council of Trent",
-            "The posting of the 95 Theses",
-            "English Civil War",
-            "Establishment of the Anglican Church"
-          ],
-          "correctAnswer": "The posting of the 95 Theses"
-        },
-        {
-          "id": "9i",
-          "question": "What was the primary goal of the Marshall Plan after World War II?",
-          "answers": [
-            "To prevent the spread of communism",
-            "To rebuild Europe's economy",
-            "To establish NATO",
-            "To create the European Union"
-          ],
-          "correctAnswer": "To rebuild Europe's economy"
-        },
-        {
-          "id": "10j",
-          "question": "Which civilization is credited with creating the first known system of writing?",
-          "answers": [
-            "Ancient Egyptians",
-            "Sumerians",
-            "Indus Valley Civilization",
-            "Phoenicians"
-          ],
-          "correctAnswer": "Sumerians"
-        },
-        {
-          "id": "1a",
-          "question": "What was the primary goal of the Silk Road?",
-          "answers": [
-            "Religious conversion",
-            "Trade and cultural exchange",
-            "Military expansion",
-            "Agricultural development"
-          ],
-          "correctAnswer": "Trade and cultural exchange"
-        },
-        {
-          "id": "2b",
-          "question": "Which empire was known for building an extensive road system in South America?",
-          "answers": [
-            "Aztec Empire",
-            "Inca Empire",
-            "Mayan Empire",
-            "Olmec Civilization"
-          ],
-          "correctAnswer": "Inca Empire"
-        }
-      ],
-      "id": "f5dc"
-    },
-    {
-      "quizID": "b906",
-      "courseName": "World History",
-      "coursequizID": "HIST201",
-      "teacherName": "werek",
-      "Deadline": "2024-11-16T09:41",
-      "status": "active",
-      "questions": [
-        {
-          "id": "6f",
-          "question": "Which treaty ended World War I?",
-          "answers": [
-            "Treaty of Versailles",
-            "Treaty of Tordesillas",
-            "Treaty of Paris",
-            "Treaty of Ghent"
-          ],
-          "correctAnswer": "Treaty of Versailles"
-        },
-        {
-          "id": "7g",
-          "question": "Who was the first emperor of unified China?",
-          "answers": [
-            "Liu Bang",
-            "Wu Zetian",
-            "Qin Shi Huang",
-            "Confucius"
-          ],
-          "correctAnswer": "Qin Shi Huang"
-        },
-        {
-          "id": "8h",
-          "question": "Which event initiated the Protestant Reformation?",
-          "answers": [
-            "Council of Trent",
-            "The posting of the 95 Theses",
-            "English Civil War",
-            "Establishment of the Anglican Church"
-          ],
-          "correctAnswer": "The posting of the 95 Theses"
-        },
-        {
-          "id": "9i",
-          "question": "What was the primary goal of the Marshall Plan after World War II?",
-          "answers": [
-            "To prevent the spread of communism",
-            "To rebuild Europe's economy",
-            "To establish NATO",
-            "To create the European Union"
-          ],
-          "correctAnswer": "To rebuild Europe's economy"
-        }
-      ],
-      "id": "3951",
-      "questionsSelected": [
-        {
-          "id": "7g",
-          "question": "Who was the first emperor of unified China?",
-          "answers": [
-            "Liu Bang",
-            "Wu Zetian",
-            "Qin Shi Huang",
-            "Confucius"
-          ],
-          "correctAnswer": "Qin Shi Huang"
-        },
-        {
-          "id": "8h",
-          "question": "Which event initiated the Protestant Reformation?",
-          "answers": [
-            "Council of Trent",
-            "The posting of the 95 Theses",
-            "English Civil War",
-            "Establishment of the Anglican Church"
-          ],
-          "correctAnswer": "The posting of the 95 Theses"
-        },
-        {
-          "id": "9i",
-          "question": "What was the primary goal of the Marshall Plan after World War II?",
-          "answers": [
-            "To prevent the spread of communism",
-            "To rebuild Europe's economy",
-            "To establish NATO",
-            "To create the European Union"
-          ],
-          "correctAnswer": "To rebuild Europe's economy"
-        }
-      ]
-    },
-    {
-      "quizID": "6db7",
-      "courseName": "General Chemistry",
-      "coursequizID": "CHEM101",
-      "teacherName": "qqqqq",
-      "Deadline": "2024-11-13T01:59",
-      "status": "active",
-      "questions": [
-        {
-          "id": "1a",
-          "question": "What is the smallest unit of an element that retains its chemical properties?",
-          "answers": [
-            "Atom",
-            "Molecule",
-            "Ion",
-            "Proton"
-          ],
-          "correctAnswer": "Atom"
-        },
-        {
-          "id": "2b",
-          "question": "What is the chemical symbol for gold?",
-          "answers": [
-            "Au",
-            "Ag",
-            "Go",
-            "Gd"
-          ],
-          "correctAnswer": "Au"
-        },
-        {
-          "id": "3c",
-          "question": "What is the atomic number of carbon?",
-          "answers": [
-            "6",
-            "8",
-            "12",
-            "14"
-          ],
-          "correctAnswer": "6"
-        },
-        {
-          "id": "4d",
-          "question": "What is the main type of bond in sodium chloride (NaCl)?",
-          "answers": [
-            "Ionic bond",
-            "Covalent bond",
-            "Hydrogen bond",
-            "Metallic bond"
-          ],
-          "correctAnswer": "Ionic bond"
-        },
-        {
-          "id": "5e",
-          "question": "What is the chemical formula for water?",
-          "answers": [
-            "H2O",
-            "O2H",
-            "H2O2",
-            "HO2"
-          ],
-          "correctAnswer": "H2O"
-        },
-        {
-          "id": "6f",
-          "question": "What is the pH of a neutral solution at 25°C?",
-          "answers": [
-            "7",
-            "0",
-            "14",
-            "1"
-          ],
-          "correctAnswer": "7"
-        },
-        {
-          "id": "7g",
-          "question": "Which gas is most abundant in the Earth's atmosphere?",
-          "answers": [
-            "Oxygen",
-            "Nitrogen",
-            "Carbon dioxide",
-            "Hydrogen"
-          ],
-          "correctAnswer": "Nitrogen"
-        },
-        {
-          "id": "8h",
-          "question": "What is the name of the process by which a liquid turns into a gas?",
-          "answers": [
-            "Melting",
-            "Condensation",
-            "Evaporation",
-            "Sublimation"
-          ],
-          "correctAnswer": "Evaporation"
-        },
-        {
-          "id": "9i",
-          "question": "Which of the following is an example of a covalent compound?",
-          "answers": [
-            "NaCl",
-            "H2O",
-            "CaO",
-            "MgBr2"
-          ],
-          "correctAnswer": "H2O"
-        },
-        {
-          "id": "10j",
-          "question": "What is the term for a reaction that absorbs heat?",
-          "answers": [
-            "Exothermic",
-            "Endothermic",
-            "Combustion",
-            "Neutralization"
-          ],
-          "correctAnswer": "Endothermic"
-        },
-        {
-          "id": "11k",
-          "question": "What is Avogadro's number?",
-          "answers": [
-            "6.022 × 10^23",
-            "3.14",
-            "9.8 m/s^2",
-            "1.6 × 10^-19"
-          ],
-          "correctAnswer": "6.022 × 10^23"
-        },
-        {
-          "id": "12l",
-          "question": "Which element is a noble gas?",
-          "answers": [
-            "Oxygen",
-            "Neon",
-            "Nitrogen",
-            "Hydrogen"
-          ],
-          "correctAnswer": "Neon"
-        },
-        {
-          "id": "13m",
-          "question": "What is the molar mass of H2O?",
-          "answers": [
-            "16 g/mol",
-            "18 g/mol",
-            "20 g/mol",
-            "24 g/mol"
-          ],
-          "correctAnswer": "18 g/mol"
-        },
-        {
-          "id": "14n",
-          "question": "What is the shape of a methane (CH4) molecule?",
-          "answers": [
-            "Linear",
-            "Bent",
-            "Tetrahedral",
-            "Trigonal planar"
-          ],
-          "correctAnswer": "Tetrahedral"
-        },
-        {
-          "id": "15o",
-          "question": "What is the oxidation state of oxygen in most compounds?",
-          "answers": [
-            "-1",
-            "-2",
-            "+1",
-            "+2"
-          ],
-          "correctAnswer": "-2"
-        },
-        {
-          "id": "16p",
-          "question": "What is the term for the ability of an atom to attract electrons in a bond?",
-          "answers": [
-            "Ionization energy",
-            "Electronegativity",
-            "Atomic radius",
-            "Electron affinity"
-          ],
-          "correctAnswer": "Electronegativity"
-        },
-        {
-          "id": "17q",
-          "question": "What is the process of a solid turning directly into a gas?",
-          "answers": [
-            "Condensation",
-            "Sublimation",
-            "Melting",
-            "Deposition"
-          ],
-          "correctAnswer": "Sublimation"
-        },
-        {
-          "id": "18r",
-          "question": "What is the term for a substance that speeds up a chemical reaction without being consumed?",
-          "answers": [
-            "Solvent",
-            "Catalyst",
-            "Reactant",
-            "Inhibitor"
-          ],
-          "correctAnswer": "Catalyst"
-        },
-        {
-          "id": "19s",
-          "question": "Which law states that pressure and volume of a gas are inversely proportional?",
-          "answers": [
-            "Charles's Law",
-            "Boyle's Law",
-            "Avogadro's Law",
-            "Ideal Gas Law"
-          ],
-          "correctAnswer": "Boyle's Law"
-        },
-        {
-          "id": "20t",
-          "question": "What is the product of a neutralization reaction?",
-          "answers": [
-            "Salt and water",
-            "Gas and salt",
-            "Acid and base",
-            "Heat and gas"
-          ],
-          "correctAnswer": "Salt and water"
-        },
-        {
-          "id": "21u",
-          "question": "Which subatomic particle has a positive charge?",
-          "answers": [
-            "Proton",
-            "Neutron",
-            "Electron",
-            "Photon"
-          ],
-          "correctAnswer": "Proton"
-        },
-        {
-          "id": "22v",
-          "question": "Which element is the most abundant in the Earth's crust?",
-          "answers": [
-            "Oxygen",
-            "Silicon",
-            "Aluminum",
-            "Iron"
-          ],
-          "correctAnswer": "Oxygen"
-        },
-        {
-          "id": "23w",
-          "question": "What is the main component of an acid?",
-          "answers": [
-            "Hydroxide ions",
-            "Hydrogen ions",
-            "Chloride ions",
-            "Carbonate ions"
-          ],
-          "correctAnswer": "Hydrogen ions"
-        },
-        {
-          "id": "24x",
-          "question": "What is the standard temperature in Kelvin for STP?",
-          "answers": [
-            "0 K",
-            "273 K",
-            "298 K",
-            "100 K"
-          ],
-          "correctAnswer": "273 K"
-        },
-        {
-          "id": "25y",
-          "question": "What is the common name for HCl in aqueous form?",
-          "answers": [
-            "Sulfuric acid",
-            "Hydrochloric acid",
-            "Nitric acid",
-            "Acetic acid"
-          ],
-          "correctAnswer": "Hydrochloric acid"
-        }
-      ],
-      "questionsSelected": [
-        {
-          "id": "21u",
-          "question": "Which subatomic particle has a positive charge?",
-          "answers": [
-            "Proton",
-            "Neutron",
-            "Electron",
-            "Photon"
-          ],
-          "correctAnswer": "Proton"
-        },
-        {
-          "id": "1a",
-          "question": "What is the smallest unit of an element that retains its chemical properties?",
-          "answers": [
-            "Atom",
-            "Molecule",
-            "Ion",
-            "Proton"
-          ],
-          "correctAnswer": "Atom"
-        },
-        {
-          "id": "2b",
-          "question": "What is the chemical symbol for gold?",
-          "answers": [
-            "Au",
-            "Ag",
-            "Go",
-            "Gd"
-          ],
-          "correctAnswer": "Au"
-        },
-        {
-          "id": "3c",
-          "question": "What is the atomic number of carbon?",
-          "answers": [
-            "6",
-            "8",
-            "12",
-            "14"
-          ],
-          "correctAnswer": "6"
-        },
-        {
-          "id": "4d",
-          "question": "What is the main type of bond in sodium chloride (NaCl)?",
-          "answers": [
-            "Ionic bond",
-            "Covalent bond",
-            "Hydrogen bond",
-            "Metallic bond"
-          ],
-          "correctAnswer": "Ionic bond"
-        },
-        {
-          "id": "5e",
-          "question": "What is the chemical formula for water?",
-          "answers": [
-            "H2O",
-            "O2H",
-            "H2O2",
-            "HO2"
-          ],
-          "correctAnswer": "H2O"
-        }
-      ],
-      "id": "a8d4"
-    },
-    {
-      "quizID": "a123",
-      "courseName": "Introduction to Physics",
-      "coursequizID": "PHYS101",
-      "teacherName": "Dr. Michael Smith",
-      "Deadline": "2024-11-20T23:59",
-      "status": "draft",
-      "questions": [
-        {
-          "id": "1abdd",
-          "question": "What is the SI unit of force?",
-          "answers": [
-            "Newton",
-            "Pascal",
-            "Joule",
-            "Watt"
-          ],
-          "correctAnswer": "Newton"
-        },
-        {
-          "id": "2bbbbbsb",
-          "question": "What is the acceleration due to gravity on Earth?",
-          "answers": [
-            "9.8 m/s²",
-            "10 m/s²",
-            "9.8 m/s",
-            "10 m/s"
-          ],
-          "correctAnswer": "9.8 m/s²"
-        },
-        {
-          "id": "3cccz",
-          "question": "What is the formula for velocity?",
-          "answers": [
-            "Distance ÷ Time",
-            "Force ÷ Mass",
-            "Mass × Acceleration",
-            "Work ÷ Distance"
-          ],
-          "correctAnswer": "Distance ÷ Time"
-        },
-        {
-          "id": "4dddddd",
-          "question": "Which law states that an object in motion stays in motion unless acted upon?",
-          "answers": [
-            "Newton's First Law",
-            "Newton's Second Law",
-            "Newton's Third Law",
-            "Law of Gravitation"
-          ],
-          "correctAnswer": "Newton's First Law"
-        },
-        {
-          "id": "5eeeeeeee",
-          "question": "What is the kinetic energy formula?",
-          "answers": [
-            "1/2 mv²",
-            "mgh",
-            "mv²",
-            "1/2 gh"
-          ],
-          "correctAnswer": "1/2 mv²"
-        }
-      ],
-      "id": "238b"
-    },
-    {
-      "quizID": "c345",
-      "courseName": "Principles of Economics",
-      "coursequizID": "ECON101",
-      "teacherName": "Dr. Emily Johnson",
-      "Deadline": "2024-12-13T23:59",
-      "status": "draft",
-      "questions": [],
-      "id": "f11a",
-      "questionsSelected": []
-    },
-    {
-      "id": "70b2",
-      "courseName": "Introduction to Physics",
-      "coursequizID": "PHYS101",
-      "teacherName": "Jim Halpert",
-      "Deadline": "2024-10-31T11:57",
-      "status": "draft"
-    },
-    {
-      "id": "ffee",
-      "courseName": "Principles of Economics",
-      "coursequizID": "106",
-      "teacherName": "Jim Halpert",
-      "Deadline": "2024-12-05T12:02",
-      "status": "active"
-    },
-    {
-      "id": "a8d4",
-      "courseName": "Introduction to Mathematics",
-      "coursequizID": "105",
-      "teacherName": "Jim Halpert",
-      "Deadline": "2024-11-24T12:05",
-      "status": "active"
-    },
-    {
-      "id": "199a",
-      "courseName": "General Chemistry",
-      "coursequizID": "104",
-      "teacherName": "Jim Halpert",
-      "Deadline": "2024-12-07T12:09",
-      "status": "active",
-      "questions": [
-        {
-          "question": "dff",
-          "answers": [
-            "ff",
-            "fff",
-            "ff",
-            "ff"
-          ],
-          "correctAnswer": "fff",
-          "id": "1732647826453"
+          "correctAnswer": "C) Ensemble (Set)"
         },
         {
           "id": "1",
-          "question": "What is the atomic number of Carbon?",
+          "question": "Quel est le rôle principal du système nerveux central ?",
           "answers": [
-            "4",
-            "6",
-            "8",
-            "12",
-            "14"
+            "Contrôle des mouvements volontaires uniquement",
+            "Régulation des fonctions corporelles et traitement de l'information",
+            "Production d'hormones pour la croissance",
+            "Transport de l'oxygène dans le corps"
           ],
-          "correctAnswer": "6"
-        },
-        {
-          "id": "4d",
-          "question": "What is the main type of bond in sodium chloride (NaCl)?",
-          "answers": [
-            "Ionic bond",
-            "Covalent bond",
-            "Hydrogen bond",
-            "Metallic bond"
-          ],
-          "correctAnswer": "Ionic bond"
-        },
-        {
-          "id": "5e",
-          "question": "What is the chemical formula for water?",
-          "answers": [
-            "H2O",
-            "O2H",
-            "H2O2",
-            "HO2"
-          ],
-          "correctAnswer": "H2O"
-        },
-        {
-          "id": "6f",
-          "question": "What is the pH of a neutral solution at 25°C?",
-          "answers": [
-            "7",
-            "0",
-            "14",
-            "1"
-          ],
-          "correctAnswer": "7"
-        },
-        {
-          "id": "7g",
-          "question": "Which gas is most abundant in the Earth's atmosphere?",
-          "answers": [
-            "Oxygen",
-            "Nitrogen",
-            "Carbon dioxide",
-            "Hydrogen"
-          ],
-          "correctAnswer": "Nitrogen"
-        },
-        {
-          "id": "8h",
-          "question": "What is the name of the process by which a liquid turns into a gas?",
-          "answers": [
-            "Melting",
-            "Condensation",
-            "Evaporation",
-            "Sublimation"
-          ],
-          "correctAnswer": "Evaporation"
-        },
-        {
-          "id": "9i",
-          "question": "Which of the following is an example of a covalent compound?",
-          "answers": [
-            "NaCl",
-            "H2O",
-            "CaO",
-            "MgBr2"
-          ],
-          "correctAnswer": "H2O"
-        },
-        {
-          "id": "10j",
-          "question": "What is the term for a reaction that absorbs heat?",
-          "answers": [
-            "Exothermic",
-            "Endothermic",
-            "Combustion",
-            "Neutralization"
-          ],
-          "correctAnswer": "Endothermic"
-        },
-        {
-          "id": "11k",
-          "question": "What is Avogadro's number?",
-          "answers": [
-            "6.022 × 10^23",
-            "3.14",
-            "9.8 m/s^2",
-            "1.6 × 10^-19"
-          ],
-          "correctAnswer": "6.022 × 10^23"
-        },
-        {
-          "id": "12l",
-          "question": "Which element is a noble gas?",
-          "answers": [
-            "Oxygen",
-            "Neon",
-            "Nitrogen",
-            "Hydrogen"
-          ],
-          "correctAnswer": "Neon"
-        },
-        {
-          "id": "13m",
-          "question": "What is the molar mass of H2O?",
-          "answers": [
-            "16 g/mol",
-            "18 g/mol",
-            "20 g/mol",
-            "24 g/mol"
-          ],
-          "correctAnswer": "18 g/mol"
-        },
-        {
-          "id": "14n",
-          "question": "What is the shape of a methane (CH4) molecule?",
-          "answers": [
-            "Linear",
-            "Bent",
-            "Tetrahedral",
-            "Trigonal planar"
-          ],
-          "correctAnswer": "Tetrahedral"
-        },
-        {
-          "id": "15o",
-          "question": "What is the oxidation state of oxygen in most compounds?",
-          "answers": [
-            "-1",
-            "-2",
-            "+1",
-            "+2"
-          ],
-          "correctAnswer": "-2"
-        },
-        {
-          "id": "16p",
-          "question": "What is the term for the ability of an atom to attract electrons in a bond?",
-          "answers": [
-            "Ionization energy",
-            "Electronegativity",
-            "Atomic radius",
-            "Electron affinity"
-          ],
-          "correctAnswer": "Electronegativity"
-        },
-        {
-          "id": "17q",
-          "question": "What is the process of a solid turning directly into a gas?",
-          "answers": [
-            "Condensation",
-            "Sublimation",
-            "Melting",
-            "Deposition"
-          ],
-          "correctAnswer": "Sublimation"
-        },
-        {
-          "id": "18r",
-          "question": "What is the term for a substance that speeds up a chemical reaction without being consumed?",
-          "answers": [
-            "Solvent",
-            "Catalyst",
-            "Reactant",
-            "Inhibitor"
-          ],
-          "correctAnswer": "Catalyst"
-        },
-        {
-          "id": "19s",
-          "question": "Which law states that pressure and volume of a gas are inversely proportional?",
-          "answers": [
-            "Charles's Law",
-            "Boyle's Law",
-            "Avogadro's Law",
-            "Ideal Gas Law"
-          ],
-          "correctAnswer": "Boyle's Law"
-        },
-        {
-          "id": "20t",
-          "question": "What is the product of a neutralization reaction?",
-          "answers": [
-            "Salt and water",
-            "Gas and salt",
-            "Acid and base",
-            "Heat and gas"
-          ],
-          "correctAnswer": "Salt and water"
-        },
-        {
-          "id": "21u",
-          "question": "Which subatomic particle has a positive charge?",
-          "answers": [
-            "Proton",
-            "Neutron",
-            "Electron",
-            "Photon"
-          ],
-          "correctAnswer": "Proton"
-        },
-        {
-          "id": "22v",
-          "question": "Which element is the most abundant in the Earth's crust?",
-          "answers": [
-            "Oxygen",
-            "Silicon",
-            "Aluminum",
-            "Iron"
-          ],
-          "correctAnswer": "Oxygen"
-        },
-        {
-          "id": "23w",
-          "question": "What is the main component of an acid?",
-          "answers": [
-            "Hydroxide ions",
-            "Hydrogen ions",
-            "Chloride ions",
-            "Carbonate ions"
-          ],
-          "correctAnswer": "Hydrogen ions"
-        },
-        {
-          "id": "24x",
-          "question": "What is the standard temperature in Kelvin for STP?",
-          "answers": [
-            "0 K",
-            "273 K",
-            "298 K",
-            "100 K"
-          ],
-          "correctAnswer": "273 K"
-        },
-        {
-          "id": "25y",
-          "question": "What is the common name for HCl in aqueous form?",
-          "answers": [
-            "Sulfuric acid",
-            "Hydrochloric acid",
-            "Nitric acid",
-            "Acetic acid"
-          ],
-          "correctAnswer": "Hydrochloric acid"
-        }
-      ],
-      "questionsSelected": [
-        {
-          "id": "21u",
-          "question": "Which subatomic particle has a positive charge?",
-          "answers": [
-            "Proton",
-            "Neutron",
-            "Electron",
-            "Photon"
-          ],
-          "correctAnswer": "Proton"
-        },
-        {
-          "id": "1a",
-          "question": "What is the smallest unit of an element that retains its chemical properties?",
-          "answers": [
-            "Atom",
-            "Molecule",
-            "Ion",
-            "Proton"
-          ],
-          "correctAnswer": "Atom"
-        },
-        {
-          "id": "2b",
-          "question": "What is the chemical symbol for gold?",
-          "answers": [
-            "Au",
-            "Ag",
-            "Go",
-            "Gd"
-          ],
-          "correctAnswer": "Au"
-        },
-        {
-          "id": "3c",
-          "question": "What is the atomic number of carbon?",
-          "answers": [
-            "6",
-            "8",
-            "12",
-            "14"
-          ],
-          "correctAnswer": "6"
-        },
-        {
-          "id": "4d",
-          "question": "What is the main type of bond in sodium chloride (NaCl)?",
-          "answers": [
-            "Ionic bond",
-            "Covalent bond",
-            "Hydrogen bond",
-            "Metallic bond"
-          ],
-          "correctAnswer": "Ionic bond"
-        },
-        {
-          "id": "5e",
-          "question": "What is the chemical formula for water?",
-          "answers": [
-            "H2O",
-            "O2H",
-            "H2O2",
-            "HO2"
-          ],
-          "correctAnswer": "H2O"
-        }
-      ]
-    },
-    {
-      "quizID": "a123",
-      "courseName": "Introduction to Physics",
-      "coursequizID": "PHYS101",
-      "teacherName": "Dr. Michael Smith",
-      "deadline": "2024-11-20T23:59",
-      "status": "draft",
-      "questions": [
-        {
-          "id": "1abdd",
-          "question": "What is the SI unit of force?",
-          "answers": [
-            "Newton",
-            "Pascal",
-            "Joule",
-            "Watt"
-          ],
-          "correctAnswer": "Newton"
-        },
-        {
-          "id": "2bbbbbsb",
-          "question": "What is the acceleration due to gravity on Earth?",
-          "answers": [
-            "9.8 m/s²",
-            "10 m/s²",
-            "9.8 m/s",
-            "10 m/s"
-          ],
-          "correctAnswer": "9.8 m/s²"
-        },
-        {
-          "id": "3cccz",
-          "question": "What is the formula for velocity?",
-          "answers": [
-            "Distance ÷ Time",
-            "Force ÷ Mass",
-            "Mass × Acceleration",
-            "Work ÷ Distance"
-          ],
-          "correctAnswer": "Distance ÷ Time"
-        },
-        {
-          "id": "4dddddd",
-          "question": "Which law states that an object in motion stays in motion unless acted upon?",
-          "answers": [
-            "Newton's First Law",
-            "Newton's Second Law",
-            "Newton's Third Law",
-            "Law of Gravitation"
-          ],
-          "correctAnswer": "Newton's First Law"
-        },
-        {
-          "id": "5eeeeeeee",
-          "question": "What is the kinetic energy formula?",
-          "answers": [
-            "1/2 mv²",
-            "mgh",
-            "mv²",
-            "1/2 gh"
-          ],
-          "correctAnswer": "1/2 mv²"
-        }
-      ],
-      "id": "238b"
-    },
-    {
-      "quizID": "c345",
-      "courseName": "Principles of Economics",
-      "coursequizID": "ECON101",
-      "teacherName": "Dr. Emily Johnson",
-      "Deadline": "2024-12-13T23:59",
-      "status": "draft",
-      "questions": [],
-      "id": "f11a",
-      "questionsSelected": []
-    },
-    {
-      "id": "b979",
-      "courseName": "General Chemistry",
-      "coursequizID": "CHEM101",
-      "teacherName": "khba",
-      "Deadline": "2024-11-14T23:26",
-      "status": "active"
-    },
-    {
-      "id": "ffee",
-      "courseName": "Principles of Economics",
-      "coursequizID": "106",
-      "teacherName": "Jim Halpert",
-      "Deadline": "2024-12-05T12:02",
-      "status": "active"
-    },
-    {
-      "id": "8381",
-      "courseName": "Introduction to Mathematics",
-      "coursequizID": "105",
-      "teacherName": "Jim Halpert",
-      "Deadline": "2024-11-24T12:05",
-      "status": "active"
-    },
-    {
-      "id": "ae42",
-      "courseName": "World History",
-      "coursequizID": "HIST201",
-      "teacherName": "Jim Halpert",
-      "Deadline": "2024-12-04T12:40",
-      "status": "draft",
-      "questions": [],
-      "questionsSelected": []
-    },
-    {
-      "id": "80a8",
-      "courseName": "Introduction to Biology",
-      "coursequizID": "BIO101",
-      "teacherName": "Carlos Martinez",
-      "Deadline": "2025-01-02T23:31",
-      "status": "active"
-    },
-    {
-      "id": "8193",
-      "courseName": "Introduction to Mathematics",
-      "coursequizID": "105",
-      "teacherName": "Carlos Martinez",
-      "Deadline": "2025-01-17T23:42",
-      "status": "active",
-      "questions": [
-        {
-          "id": "1",
-          "question": "Which of the following is NOT a fundamental branch of mathematics?",
-          "answers": [
-            "Algebra",
-            "Geometry",
-            "Astrology",
-            "Calculus"
-          ],
-          "correctAnswer": "Astrology"
+          "correctAnswer": "B"
         },
         {
           "id": "2",
-          "question": "What is the result of 2² + 3²?",
+          "question": "Quelle partie du cerveau est responsable du raisonnement et de la planification ?",
           "answers": [
-            "13",
-            "25",
-            "10",
-            "36"
+            "Le cervelet",
+            "Le tronc cérébral",
+            "Le cortex préfrontal",
+            "L'hypothalamus"
           ],
-          "correctAnswer": "13"
+          "correctAnswer": "C"
         },
         {
           "id": "3",
-          "question": "What does the term \"commutative\" refer to in mathematics?",
+          "question": "Qu'est-ce qu'un neurone ?",
           "answers": [
-            "The order of operations",
-            "The ability to switch the order of operands without changing the result",
-            "The distribution of numbers",
-            "The inverse of an operation"
+            "Une cellule musculaire",
+            "Une cellule nerveuse",
+            "Une cellule osseuse",
+            "Une cellule sanguine"
           ],
-          "correctAnswer": "The ability to switch the order of operands without changing the result"
+          "correctAnswer": "B"
         },
         {
           "id": "4",
-          "question": "What type of number is π (pi)?",
+          "question": "Quelle est la fonction principale de la myéline ?",
           "answers": [
-            "Integer",
-            "Rational",
-            "Irrational",
-            "Complex"
+            "Ralentir la transmission des impulsions nerveuses",
+            "Accélérer la transmission des impulsions nerveuses",
+            "Produire des neurotransmetteurs",
+            "Stocker l'énergie pour les neurones"
           ],
-          "correctAnswer": "Irrational"
+          "correctAnswer": "B"
         },
         {
           "id": "5",
-          "question": "Which number system uses only the digits 0 and 1?",
+          "question": "Qu'est-ce qu'une synapse ?",
           "answers": [
-            "Decimal",
-            "Binary",
-            "Hexadecimal",
-            "Octal"
+            "L'espace entre deux os",
+            "L'espace entre deux neurones",
+            "Une cellule gliale",
+            "Un type de neurotransmetteur"
           ],
-          "correctAnswer": "Binary"
+          "correctAnswer": "B"
         },
         {
           "id": "6",
-          "question": "What is the name given to a polygon with three sides?",
+          "question": "Quel neurotransmetteur est principalement associé à la sensation de plaisir et de récompense ?",
           "answers": [
-            "Quadrilateral",
-            "Pentagon",
-            "Triangle",
-            "Hexagon"
+            "La sérotonine",
+            "La dopamine",
+            "L'acétylcholine",
+            "Le GABA"
           ],
-          "correctAnswer": "Triangle"
+          "correctAnswer": "B"
         },
         {
           "id": "7",
-          "question": "What is the value of 0! (zero factorial)?",
+          "question": "Le système nerveux périphérique est composé de :",
           "answers": [
-            "0",
-            "1",
-            "Undefined",
-            "-1"
+            "Seul le cerveau",
+            "Seule la moelle épinière",
+            "Nerfs crâniens et nerfs spinaux",
+            "Seulement les ganglions nerveux"
           ],
-          "correctAnswer": "1"
+          "correctAnswer": "C"
         },
         {
           "id": "8",
-          "question": "What does the symbol ∞ represent?",
+          "question": "Quelle est la fonction principale du cervelet ?",
           "answers": [
-            "A very large number",
-            "Infinity",
-            "Zero",
-            "A very small number"
+            "Contrôle des fonctions vitales comme la respiration",
+            "Coordination des mouvements et équilibre",
+            "Traitement des émotions",
+            "Régulation de la température corporelle"
           ],
-          "correctAnswer": "Infinity"
+          "correctAnswer": "B"
         },
         {
           "id": "9",
-          "question": "Which mathematical concept deals with the size, shape, and relative position of figures?",
+          "question": "Quel est le rôle de l'hypothalamus ?",
           "answers": [
-            "Algebra",
-            "Calculus",
-            "Geometry",
-            "Statistics"
+            "Contrôle de la vision",
+            "Régulation du système endocrinien et du système nerveux autonome",
+            "Traitement du langage",
+            "Contrôle des mouvements volontaires"
           ],
-          "correctAnswer": "Geometry"
+          "correctAnswer": "B"
         },
         {
           "id": "10",
-          "question": "What is the process of finding the derivative of a function called?",
+          "question": "Qu'est-ce qu'un réflexe ?",
           "answers": [
-            "Integration",
-            "Differentiation",
-            "Simplification",
-            "Substitution"
+            "Une réponse volontaire et consciente à un stimulus",
+            "Une réponse involontaire et inconsciente à un stimulus",
+            "Un processus de pensée complexe",
+            "Une action purement cognitive"
           ],
-          "correctAnswer": "Differentiation"
-        }
-      ]
-    },
-    {
-      "id": "ef5f",
-      "courseName": "World History",
-      "coursequizID": "HIST201",
-      "teacherName": "Carlos Martinez",
-      "Deadline": "2025-01-23T12:25",
-      "status": "active",
-      "questions": [
+          "correctAnswer": "B"
+        },
         {
           "id": "1",
-          "question": "Quel événement marque traditionnellement le début de la Première Guerre mondiale ?",
+          "question": "Quelle structure de données utilise le principe \"premier arrivé, premier servi\" (FIFO) ?",
           "answers": [
-            "L'assassinat de l'archiduc François-Ferdinand",
-            "La déclaration de guerre de l'Allemagne à la Russie",
-            "Le naufrage du Titanic",
-            "La signature du traité de Versailles"
+            "Pile",
+            "File",
+            "Arbre binaire",
+            "Liste chaînée"
           ],
-          "correctAnswer": "L'assassinat de l'archiduc François-Ferdinand"
+          "correctAnswer": "File"
         },
         {
           "id": "2",
-          "question": "Qui a dirigé la révolution russe de 1917 ?",
+          "question": "Quelle complexité temporelle a l'insertion d'un élément dans une liste chaînée simplement liée au début de la liste ?",
           "answers": [
-            "Léon Trotski",
-            "Nicolas II",
-            "Vladimir Lénine",
-            "Joseph Staline"
+            "O(n)",
+            "O(log n)",
+            "O(1)",
+            "O(n^2)"
           ],
-          "correctAnswer": "Vladimir Lénine"
+          "correctAnswer": "O(1)"
         },
         {
           "id": "3",
-          "question": "Quelle civilisation a construit les pyramides d'Égypte ?",
+          "question": "Un arbre binaire de recherche (ABR) est :",
           "answers": [
-            "La civilisation minoenne",
-            "La civilisation sumérienne",
-            "La civilisation égyptienne",
-            "La civilisation romaine"
+            "Un arbre non ordonné.",
+            "Un arbre où chaque nœud a au plus deux enfants.",
+            "Un arbre où chaque nœud a exactement deux enfants.",
+            "Un arbre où la valeur de chaque nœud est supérieure à celle de tous ses descendants."
           ],
-          "correctAnswer": "La civilisation égyptienne"
+          "correctAnswer": "Un arbre où chaque nœud a au plus deux enfants."
         },
         {
           "id": "4",
-          "question": "En quelle année Christophe Colomb a-t-il atteint les Amériques ?",
+          "question": "Quelle structure de données est la plus appropriée pour implémenter un dictionnaire ?",
           "answers": [
-            "1492",
-            "1522",
-            "1607",
-            "1776"
+            "Pile",
+            "File",
+            "Tableau haché",
+            "Liste triée"
           ],
-          "correctAnswer": "1492"
+          "correctAnswer": "Tableau haché"
         },
         {
           "id": "5",
-          "question": "Quel empire a conquis la majeure partie de l'Europe au début du 19ème siècle ?",
+          "question": "Quelle est la complexité temporelle moyenne de la recherche d'un élément dans un tableau haché avec une bonne fonction de hachage ?",
           "answers": [
-            "L'Empire Ottoman",
-            "L'Empire Français",
-            "L'Empire Britannique",
-            "L'Empire Russe"
+            "O(n)",
+            "O(log n)",
+            "O(1)",
+            "O(n^2)"
           ],
-          "correctAnswer": "L'Empire Français"
+          "correctAnswer": "O(1)"
         },
         {
           "id": "6",
-          "question": "Quelle était la cause principale de la Guerre Froide ?",
+          "question": "Une pile est une structure de données :",
           "answers": [
-            "Des différends commerciaux",
-            "Des conflits religieux",
-            "Des idéologies politiques opposées",
-            "Une compétition sportive intense"
+            "LIFO (Last-In, First-Out)",
+            "FIFO (First-In, First-Out)",
+            "Ordonnée",
+            "Non ordonnée"
           ],
-          "correctAnswer": "Des idéologies politiques opposées"
+          "correctAnswer": "LIFO (Last-In, First-Out)"
         },
         {
           "id": "7",
-          "question": "Qui a peint la Joconde ?",
+          "question": "Qu'est-ce qu'un graphe orienté ?",
           "answers": [
-            "Michel-Ange",
-            "Raphaël",
-            "Léonard de Vinci",
-            "Donatello"
+            "Un graphe où les arêtes n'ont pas de direction.",
+            "Un graphe où les arêtes ont une direction.",
+            "Un graphe cyclique.",
+            "Un graphe acyclique."
           ],
-          "correctAnswer": "Léonard de Vinci"
+          "correctAnswer": "Un graphe où les arêtes ont une direction."
         },
         {
           "id": "8",
-          "question": "Laquelle de ces inventions a révolutionné le monde au 15ème siècle ?",
+          "question": "Dans un arbre binaire, un nœud feuille est :",
           "answers": [
-            "L'automobile",
-            "L'électricité",
-            "L'imprimerie",
-            "L'ordinateur"
+            "Un nœud ayant un seul enfant.",
+            "Un nœud n'ayant aucun enfant.",
+            "Un nœud ayant deux enfants.",
+            "La racine de l'arbre."
           ],
-          "correctAnswer": "L'imprimerie"
+          "correctAnswer": "Un nœud n'ayant aucun enfant."
         },
         {
           "id": "9",
-          "question": "Le mur de Berlin est tombé en :",
+          "question": "Le parcours en profondeur d'un arbre utilise généralement :",
           "answers": [
-            "1989",
-            "1991",
-            "1961",
-            "1945"
+            "Une pile",
+            "Une file",
+            "Un tableau trié",
+            "Une liste chaînée non triée"
           ],
-          "correctAnswer": "1989"
+          "correctAnswer": "Une pile"
         },
         {
           "id": "10",
-          "question": "Qui a écrit \"Le Capital\" ?",
+          "question": "La complexité spatiale d'un tableau de taille n est :",
           "answers": [
-            "Karl Marx",
-            "Friedrich Engels",
-            "Adam Smith",
-            "John Maynard Keynes"
+            "O(log n)",
+            "O(1)",
+            "O(n)",
+            "O(n^2)"
           ],
-          "correctAnswer": "Karl Marx"
+          "correctAnswer": "O(n)"
         }
       ],
       "questionsSelected": [
         {
           "id": "1",
-          "question": "Quel événement marque traditionnellement le début de la Première Guerre mondiale ?",
+          "question": "Quelle structure de données est la plus appropriée pour implémenter une file d'attente ?",
           "answers": [
-            "L'assassinat de l'archiduc François-Ferdinand",
-            "La déclaration de guerre de l'Allemagne à la Russie",
-            "Le naufrage du Titanic",
-            "La signature du traité de Versailles"
+            "A) Arbre binaire",
+            "B) Liste chaînée",
+            "C) Pile",
+            "D) File"
           ],
-          "correctAnswer": "L'assassinat de l'archiduc François-Ferdinand"
+          "correctAnswer": "D) File"
         },
         {
           "id": "2",
-          "question": "Qui a dirigé la révolution russe de 1917 ?",
+          "question": "Quelle est la complexité temporelle de la recherche d'un élément dans un tableau trié ?",
           "answers": [
-            "Léon Trotski",
-            "Nicolas II",
-            "Vladimir Lénine",
-            "Joseph Staline"
+            "A) O(n)",
+            "B) O(log n)",
+            "C) O(1)",
+            "D) O(n²)"
           ],
-          "correctAnswer": "Vladimir Lénine"
+          "correctAnswer": "B) O(log n)"
         },
         {
           "id": "3",
-          "question": "Quelle civilisation a construit les pyramides d'Égypte ?",
+          "question": "Quelle structure de données utilise le principe \"premier arrivé, premier servi\" (FIFO) ?",
           "answers": [
-            "La civilisation minoenne",
-            "La civilisation sumérienne",
-            "La civilisation égyptienne",
-            "La civilisation romaine"
+            "A) Pile",
+            "B) File",
+            "C) Arbre",
+            "D) Graphe"
           ],
-          "correctAnswer": "La civilisation égyptienne"
+          "correctAnswer": "B) File"
         },
         {
           "id": "4",
-          "question": "En quelle année Christophe Colomb a-t-il atteint les Amériques ?",
+          "question": "Quelle structure de données utilise le principe \"dernier arrivé, premier servi\" (LIFO) ?",
           "answers": [
-            "1492",
-            "1522",
-            "1607",
-            "1776"
+            "A) File",
+            "B) Pile",
+            "C) Liste chaînée",
+            "D) Tableau"
           ],
-          "correctAnswer": "1492"
-        },
-        {
-          "id": "5",
-          "question": "Quel empire a conquis la majeure partie de l'Europe au début du 19ème siècle ?",
-          "answers": [
-            "L'Empire Ottoman",
-            "L'Empire Français",
-            "L'Empire Britannique",
-            "L'Empire Russe"
-          ],
-          "correctAnswer": "L'Empire Français"
-        },
-        {
-          "id": "6",
-          "question": "Quelle était la cause principale de la Guerre Froide ?",
-          "answers": [
-            "Des différends commerciaux",
-            "Des conflits religieux",
-            "Des idéologies politiques opposées",
-            "Une compétition sportive intense"
-          ],
-          "correctAnswer": "Des idéologies politiques opposées"
+          "correctAnswer": "B) Pile"
         },
         {
           "id": "7",
-          "question": "Qui a peint la Joconde ?",
+          "question": "La complexité spatiale d'une liste chaînée est :",
           "answers": [
-            "Michel-Ange",
-            "Raphaël",
-            "Léonard de Vinci",
-            "Donatello"
+            "A) O(1)",
+            "B) O(log n)",
+            "C) O(n)",
+            "D) O(n²)"
           ],
-          "correctAnswer": "Léonard de Vinci"
+          "correctAnswer": "C) O(n)"
         },
         {
           "id": "8",
-          "question": "Laquelle de ces inventions a révolutionné le monde au 15ème siècle ?",
+          "question": "Quel algorithme de tri est souvent utilisé avec les tas (heaps) ?",
           "answers": [
-            "L'automobile",
-            "L'électricité",
-            "L'imprimerie",
-            "L'ordinateur"
+            "A) Tri à bulles",
+            "B) Tri par insertion",
+            "C) Tri par fusion",
+            "D) Tri par tas"
           ],
-          "correctAnswer": "L'imprimerie"
+          "correctAnswer": "D) Tri par tas"
         },
         {
           "id": "9",
-          "question": "Le mur de Berlin est tombé en :",
+          "question": "Un graphe orienté est caractérisé par :",
           "answers": [
-            "1989",
-            "1991",
-            "1961",
-            "1945"
+            "A) Des arêtes non orientées.",
+            "B) Des arêtes orientées.",
+            "C) Des nœuds sans arêtes.",
+            "D) Des nœuds connectés uniquement à un seul autre nœud."
           ],
-          "correctAnswer": "1989"
+          "correctAnswer": "B) Des arêtes orientées."
+        },
+        {
+          "id": "1",
+          "question": "Quel est le rôle principal du système nerveux central ?",
+          "answers": [
+            "Contrôle des mouvements volontaires uniquement",
+            "Régulation des fonctions corporelles et traitement de l'information",
+            "Production d'hormones pour la croissance",
+            "Transport de l'oxygène dans le corps"
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "id": "2",
+          "question": "Quelle partie du cerveau est responsable du raisonnement et de la planification ?",
+          "answers": [
+            "Le cervelet",
+            "Le tronc cérébral",
+            "Le cortex préfrontal",
+            "L'hypothalamus"
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "id": "3",
+          "question": "Qu'est-ce qu'un neurone ?",
+          "answers": [
+            "Une cellule musculaire",
+            "Une cellule nerveuse",
+            "Une cellule osseuse",
+            "Une cellule sanguine"
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "id": "4",
+          "question": "Quelle est la fonction principale de la myéline ?",
+          "answers": [
+            "Ralentir la transmission des impulsions nerveuses",
+            "Accélérer la transmission des impulsions nerveuses",
+            "Produire des neurotransmetteurs",
+            "Stocker l'énergie pour les neurones"
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "id": "7",
+          "question": "Le système nerveux périphérique est composé de :",
+          "answers": [
+            "Seul le cerveau",
+            "Seule la moelle épinière",
+            "Nerfs crâniens et nerfs spinaux",
+            "Seulement les ganglions nerveux"
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "id": "8",
+          "question": "Quelle est la fonction principale du cervelet ?",
+          "answers": [
+            "Contrôle des fonctions vitales comme la respiration",
+            "Coordination des mouvements et équilibre",
+            "Traitement des émotions",
+            "Régulation de la température corporelle"
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "id": "9",
+          "question": "Quel est le rôle de l'hypothalamus ?",
+          "answers": [
+            "Contrôle de la vision",
+            "Régulation du système endocrinien et du système nerveux autonome",
+            "Traitement du langage",
+            "Contrôle des mouvements volontaires"
+          ],
+          "correctAnswer": "B"
+        }
+      ]
+    },
+    {
+      "id": "3259",
+      "intitule": "M106",
+      "code": "M106_F01",
+      "competence": "Introduction au web",
+      "teacherName": "Amina Smaïli",
+      "Deadline": "2025-02-08T15:23",
+      "status": "active",
+      "questions": [
+        {
+          "id": "1",
+          "question": "Quelle protocole est principalement utilisé pour le transfert de données sur le Web ?",
+          "answers": [
+            "F",
+            "SMTP",
+            "HTTP",
+            "SSH"
+          ],
+          "correctAnswer": "HTTP"
+        },
+        {
+          "id": "2",
+          "question": "Le langage de balisage utilisé pour structurer le contenu d'une page web est :",
+          "answers": [
+            "JavaScript",
+            "CSS",
+            "HTML",
+            "Python"
+          ],
+          "correctAnswer": "HTML"
+        },
+        {
+          "id": "3",
+          "question": "Quel langage de style est utilisé pour définir la présentation visuelle d'une page web ?",
+          "answers": [
+            "HTML",
+            "JavaScript",
+            "CSS",
+            "PHP"
+          ],
+          "correctAnswer": "CSS"
+        },
+        {
+          "id": "4",
+          "question": "Un URL (Uniform Resource Locator) indique :",
+          "answers": [
+            "La vitesse de connexion internet",
+            "L'adresse d'une ressource sur le web",
+            "Le type de navigateur utilisé",
+            "Le système d'exploitation du serveur"
+          ],
+          "correctAnswer": "L'adresse d'une ressource sur le web"
+        },
+        {
+          "id": "5",
+          "question": "Qu'est-ce qu'un DNS (Domain Name System) ?",
+          "answers": [
+            "Un langage de programmation web",
+            "Un système de sécurité internet",
+            "Un système de traduction des noms de domaine en adresses IP",
+            "Un protocole de transfert de fichiers"
+          ],
+          "correctAnswer": "Un système de traduction des noms de domaine en adresses IP"
+        },
+        {
+          "id": "6",
+          "question": "Le langage JavaScript est principalement utilisé pour :",
+          "answers": [
+            "La conception de bases de données",
+            "L'interaction côté client dans une page web",
+            "La création de serveur web",
+            "Le design graphique"
+          ],
+          "correctAnswer": "L'interaction côté client dans une page web"
+        },
+        {
+          "id": "7",
+          "question": "Qu'est-ce qu'un cookie ?",
+          "answers": [
+            "Un fichier texte stocké sur le serveur web",
+            "Un type de navigateur web",
+            "Un fichier texte stocké sur l'ordinateur de l'utilisateur",
+            "Un langage de programmation web"
+          ],
+          "correctAnswer": "Un fichier texte stocké sur l'ordinateur de l'utilisateur"
+        },
+        {
+          "id": "8",
+          "question": "Quel est le rôle d'un serveur web ?",
+          "answers": [
+            "Afficher des pages web aux utilisateurs",
+            "Protéger les ordinateurs des virus",
+            "Créer des pages web",
+            "Transmettre des emails"
+          ],
+          "correctAnswer": "Afficher des pages web aux utilisateurs"
+        },
+        {
+          "id": "9",
+          "question": "Que signifie HTTP ?",
+          "answers": [
+            "HyperText Transfer Protocol",
+            "HyperText Transfer Program",
+            "Hyperlink Transfer Protocol",
+            "HyperText Transmission Protocol"
+          ],
+          "correctAnswer": "HyperText Transfer Protocol"
         },
         {
           "id": "10",
-          "question": "Qui a écrit \"Le Capital\" ?",
+          "question": "Un fichier avec l'extension \".php\" est généralement associé à quel langage ?",
           "answers": [
-            "Karl Marx",
-            "Friedrich Engels",
-            "Adam Smith",
-            "John Maynard Keynes"
+            "JavaScript",
+            "HTML",
+            "CSS",
+            "PHP"
           ],
-          "correctAnswer": "Karl Marx"
+          "correctAnswer": "PHP"
         }
-      ]
+      ],
+      "questionsSelected": [
+        {
+          "id": "1",
+          "question": "Quelle protocole est principalement utilisé pour le transfert de données sur le Web ?",
+          "answers": [
+            "F",
+            "SMTP",
+            "HTTP",
+            "SSH"
+          ],
+          "correctAnswer": "HTTP"
+        },
+        {
+          "id": "2",
+          "question": "Le langage de balisage utilisé pour structurer le contenu d'une page web est :",
+          "answers": [
+            "JavaScript",
+            "CSS",
+            "HTML",
+            "Python"
+          ],
+          "correctAnswer": "HTML"
+        }
+      ],
     }
   ],
   "filieres": [
