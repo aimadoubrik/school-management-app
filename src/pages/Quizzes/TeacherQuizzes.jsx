@@ -3,7 +3,6 @@ import { Plus, X } from 'lucide-react';
 import QuizCardTeacher from './components/QuizCardTeacher';
 import QuizForm from './components/QuizForm';
 import { getTimeStatus, BASE_URL } from './utils/quizUtils';
-import GreetingHeader from '../Home/components/GreetingHeader';
 
 const TeacherQuizzes = () => {
   const user = JSON.parse(localStorage.getItem('user') || sessionStorage.getItem('user') || '{}');
@@ -119,7 +118,6 @@ const TeacherQuizzes = () => {
 
   return (
     <div className="bg-base-100">
-      <GreetingHeader />
       <div className="container mx-auto px-4 py-8">
         <h3 className="text-3xl font-bold text-center mb-2">Available Quizzes</h3>
         <p className="text-center text-base-content/70 mb-6">Our collection of quizzes</p>
