@@ -1,6 +1,5 @@
 <!doctype html>
-<html lang="en" class="bg-base-200">
-
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/school-management-app/favicon.svg"/>
@@ -8,18 +7,22 @@
   <title>School Management App</title>
 
   <script>
-    (function () {
-      const savedTheme = localStorage.getItem("theme") || "cupcake";
-      document.documentElement.setAttribute("data-theme", savedTheme);
+    (function() {
+      // Check localStorage first, then system preference
+      const savedTheme = localStorage.getItem("theme");
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const initialTheme = savedTheme || (systemDark ? 'dark' : 'cupcake');
+      
+      // Set both data-theme and color-scheme for better compatibility
+      document.documentElement.setAttribute("data-theme", initialTheme);
+      document.documentElement.style.colorScheme = initialTheme === 'dark' ? 'dark' : 'light';
     })();
   </script>
-  
-  <script type="module" crossorigin src="/school-management-app/assets/index-CeJDKLwD.js"></script>
-  <link rel="stylesheet" crossorigin href="/school-management-app/assets/index-D-adbYX-.css">
+  <script type="module" crossorigin src="/school-management-app/assets/index-C4iafvch.js"></script>
+  <link rel="stylesheet" crossorigin href="/school-management-app/assets/index-Eomy9VaL.css">
 </head>
 
-<body>
+<body class="bg-base-200"> <!-- Move bg class to body -->
   <div id="root"></div>
 </body>
-
 </html>
