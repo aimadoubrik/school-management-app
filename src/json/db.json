@@ -159,12 +159,158 @@
   },
   "quizzes": [
     {
+      "quizID": "QZ101",
+      "coursequizID": "BIO101",
+      "courseName": "Introduction to Biology",
+      "teacherId": "T001",
+      "teacherName": "Dr. Alice Johnson",
+      "Deadline": "2024-11-30T23:59:59Z",
+      "status": "draft",
+      "questions": [
+        {
+          "id": "1",
+          "question": "Quelle est l'unité fondamentale de la vie ?",
+          "answers": [
+            "a) L'atome",
+            "b) La molécule",
+            "c) La cellule",
+            "d) L'organe"
+          ],
+          "correctAnswer": "c) La cellule"
+        },
+        {
+          "id": "2",
+          "question": "Laquelle de ces affirmations concernant la photosynthèse est FAUSSE ?",
+          "answers": [
+            "a) Elle utilise l'énergie solaire.",
+            "b) Elle produit du dioxyde de carbone.",
+            "c) Elle produit du glucose.",
+            "d) Elle se produit dans les chloroplastes des plantes."
+          ],
+          "correctAnswer": "b) Elle produit du dioxyde de carbone"
+        },
+        {
+          "id": "3",
+          "question": "Quel processus biologique produit de l'ATP ?",
+          "answers": [
+            "a) Photosynthèse uniquement",
+            "b) Respiration cellulaire uniquement",
+            "c) Photosynthèse et respiration cellulaire",
+            "d) Ni la photosynthèse ni la respiration cellulaire"
+          ],
+          "correctAnswer": "c) Photosynthèse et respiration cellulaire"
+        },
+        {
+          "id": "4",
+          "question": "Qu'est-ce que l'ADN ?",
+          "answers": [
+            "a) Une source d'énergie",
+            "b) Une molécule porteuse d'information génétique",
+            "c) Une protéine structurale",
+            "d) Un type de lipide"
+          ],
+          "correctAnswer": "b) Une molécule porteuse d'information génétique"
+        },
+        {
+          "id": "5",
+          "question": "Lequel de ces termes décrit le processus par lequel les organismes maintiennent un environnement interne stable ?",
+          "answers": [
+            "a) Métabolisme",
+            "b) Homéostasie",
+            "c) Reproduction",
+            "d) Croissance"
+          ],
+          "correctAnswer": "b) Homéostasie"
+        },
+        {
+          "id": "6",
+          "question": "Quelle est la différence principale entre la mitose et la méiose ?",
+          "answers": [
+            "a) La mitose produit des cellules haploïdes, la méiose produit des cellules diploïdes.",
+            "b) La mitose produit des cellules diploïdes, la méiose produit des cellules haploïdes.",
+            "c) La mitose ne produit que des cellules somatiques, la méiose produit uniquement des gamètes.",
+            "d) La mitose est un processus asexué, la méiose est un processus sexué."
+          ],
+          "correctAnswer": "b) La mitose produit des cellules diploïdes, la méiose produit des cellules haploïdes."
+        },
+        {
+          "id": "7",
+          "question": "Que sont les enzymes ?",
+          "answers": [
+            "a) Des lipides",
+            "b) Des glucides",
+            "c) Des protéines qui catalysent les réactions biochimiques",
+            "d) Des acides nucléiques"
+          ],
+          "correctAnswer": "c) Des protéines qui catalysent les réactions biochimiques"
+        },
+        {
+          "id": "8",
+          "question": "Quel est le rôle principal du système circulatoire ?",
+          "answers": [
+            "a) La digestion des aliments",
+            "b) Le transport de substances dans le corps",
+            "c) La production d'hormones",
+            "d) La protection contre les maladies"
+          ],
+          "correctAnswer": "b) Le transport de substances dans le corps"
+        },
+        {
+          "id": "9",
+          "question": "Quel est le nom du processus par lequel les organismes produisent des descendants ?",
+          "answers": [
+            "a) Métabolisme",
+            "b) Croissance",
+            "c) Reproduction",
+            "d) Adaptation"
+          ],
+          "correctAnswer": "c) Reproduction"
+        },
+        {
+          "id": "10",
+          "question": "Laquelle de ces affirmations concernant l'évolution est VRAIE ?",
+          "answers": [
+            "a) L'évolution est un processus rapide et observable en quelques générations.",
+            "b) L'évolution se produit toujours vers une complexité accrue.",
+            "c) L'évolution est le changement des caractéristiques héréditaires d'une population au fil du temps.",
+            "d) L'évolution est un processus dirigé vers un but précis."
+          ],
+          "correctAnswer": "c) L'évolution est le changement des caractéristiques héréditaires d'une population au fil du temps."
+        }
+      ],
+      "questionsSelected": [
+        {
+          "id": "8h",
+          "question": "What is the main pigment involved in photosynthesis?",
+          "answers": [
+            "Chlorophyll",
+            "Carotene",
+            "Xanthophyll",
+            "Hemoglobin"
+          ],
+          "correctAnswer": "Chlorophyll"
+        },
+        {
+          "id": "9i",
+          "question": "Which biological molecule is primarily responsible for catalyzing reactions in cells?",
+          "answers": [
+            "Lipids",
+            "Proteins",
+            "Carbohydrates",
+            "Nucleic acids"
+          ],
+          "correctAnswer": "Return on Investment"
+        }
+      ],
+      "id": "f4dc"
+    },
+    {
       "quizID": "QZ202",
       "coursequizID": "MKT201",
       "courseName": "Principles of Marketing",
       "teacherId": "T002",
       "teacherName": "Prof. Emily Green",
-      "deadline": "2024-12-05T22:00",
+      "Deadline": "2024-12-05T22:00",
       "status": "active",
       "questions": [
         {
@@ -498,7 +644,7 @@
       "courseName": "World History",
       "teacherId": "T003",
       "teacherName": "Dr. Sarah Davis",
-      "deadline": "2024-11-17T22:31",
+      "Deadline": "2024-11-17T22:31",
       "status": "active",
       "questions": [
         {
@@ -742,7 +888,7 @@
       "courseName": "World History",
       "coursequizID": "HIST201",
       "teacherName": "werek",
-      "deadline": "2024-11-16T09:41",
+      "Deadline": "2024-11-16T09:41",
       "status": "active",
       "questions": [
         {
@@ -832,7 +978,7 @@
       "courseName": "General Chemistry",
       "coursequizID": "CHEM101",
       "teacherName": "qqqqq",
-      "deadline": "2024-11-13T01:59",
+      "Deadline": "2024-11-13T01:59",
       "status": "active",
       "questions": [
         {
@@ -1186,7 +1332,7 @@
       "courseName": "Introduction to Physics",
       "coursequizID": "PHYS101",
       "teacherName": "Dr. Michael Smith",
-      "deadline": "2024-11-20T23:59",
+      "Deadline": "2024-11-20T23:59",
       "status": "draft",
       "questions": [
         {
@@ -1252,7 +1398,7 @@
       "courseName": "Principles of Economics",
       "coursequizID": "ECON101",
       "teacherName": "Dr. Emily Johnson",
-      "deadline": "2024-12-13T23:59",
+      "Deadline": "2024-12-13T23:59",
       "status": "draft",
       "questions": [],
       "id": "f11a",
@@ -1263,7 +1409,7 @@
       "courseName": "Introduction to Physics",
       "coursequizID": "PHYS101",
       "teacherName": "Jim Halpert",
-      "deadline": "2024-10-31T11:57",
+      "Deadline": "2024-10-31T11:57",
       "status": "draft"
     },
     {
@@ -1271,16 +1417,15 @@
       "courseName": "Principles of Economics",
       "coursequizID": "106",
       "teacherName": "Jim Halpert",
-      "deadline": "2024-12-05T12:02",
-      "status": "draft",
-      "Deadline": "2025-01-30T12:25"
+      "Deadline": "2024-12-05T12:02",
+      "status": "active"
     },
     {
       "id": "a8d4",
       "courseName": "Introduction to Mathematics",
       "coursequizID": "105",
       "teacherName": "Jim Halpert",
-      "deadline": "2024-11-24T12:05",
+      "Deadline": "2024-11-24T12:05",
       "status": "active"
     },
     {
@@ -1288,7 +1433,7 @@
       "courseName": "General Chemistry",
       "coursequizID": "104",
       "teacherName": "Jim Halpert",
-      "deadline": "2024-12-07T12:09",
+      "Deadline": "2024-12-07T12:09",
       "status": "active",
       "questions": [
         {
@@ -1697,7 +1842,7 @@
       "courseName": "Principles of Economics",
       "coursequizID": "ECON101",
       "teacherName": "Dr. Emily Johnson",
-      "deadline": "2024-12-13T23:59",
+      "Deadline": "2024-12-13T23:59",
       "status": "draft",
       "questions": [],
       "id": "f11a",
@@ -1708,7 +1853,7 @@
       "courseName": "General Chemistry",
       "coursequizID": "CHEM101",
       "teacherName": "khba",
-      "deadline": "2024-11-14T23:26",
+      "Deadline": "2024-11-14T23:26",
       "status": "active"
     },
     {
@@ -1716,7 +1861,7 @@
       "courseName": "Principles of Economics",
       "coursequizID": "106",
       "teacherName": "Jim Halpert",
-      "deadline": "2024-12-05T12:02",
+      "Deadline": "2024-12-05T12:02",
       "status": "active"
     },
     {
@@ -1724,478 +1869,15 @@
       "courseName": "Introduction to Mathematics",
       "coursequizID": "105",
       "teacherName": "Jim Halpert",
-      "deadline": "2024-11-24T12:05",
+      "Deadline": "2024-11-24T12:05",
       "status": "active"
-    },
-    {
-      "id": "198z",
-      "courseName": "General Chemistry",
-      "coursequizID": "104",
-      "teacherName": "Jim Halpert",
-      "deadline": "2024-12-07T12:09",
-      "status": "active",
-      "questions": [
-        {
-          "id": "1",
-          "question": "What is the atomic number of Carbon?",
-          "answers": [
-            "4",
-            "6",
-            "8",
-            "12"
-          ],
-          "correctAnswer": "6"
-        },
-        {
-          "id": "2",
-          "question": "Which planet is known as the Red Planet?",
-          "answers": [
-            "Venus",
-            "Mars",
-            "Jupiter",
-            "Saturn"
-          ],
-          "correctAnswer": "Mars"
-        },
-        {
-          "id": "3",
-          "question": "What is the chemical formula for water?",
-          "answers": [
-            "H2O",
-            "CO2",
-            "NaCl",
-            "O2"
-          ],
-          "correctAnswer": "H2O"
-        },
-        {
-          "id": "4",
-          "question": "Which vitamin is produced when skin is exposed to sunlight?",
-          "answers": [
-            "Vitamin A",
-            "Vitamin B",
-            "Vitamin C",
-            "Vitamin D"
-          ],
-          "correctAnswer": "Vitamin D"
-        },
-        {
-          "id": "5",
-          "question": "What is the largest organ in the human body?",
-          "answers": [
-            "Brain",
-            "Heart",
-            "Skin",
-            "Liver"
-          ],
-          "correctAnswer": "Skin"
-        },
-        {
-          "id": "6",
-          "question": "Which gas makes up the majority of Earth's atmosphere?",
-          "answers": [
-            "Oxygen",
-            "Carbon Dioxide",
-            "Nitrogen",
-            "Hydrogen"
-          ],
-          "correctAnswer": "Nitrogen"
-        },
-        {
-          "id": "7",
-          "question": "What is the speed of light in vacuum?",
-          "answers": [
-            "299792 km/s",
-            "300000 km/s",
-            "199792 km/s",
-            "200000 km/s"
-          ],
-          "correctAnswer": "299792 km/s"
-        },
-        {
-          "id": "8",
-          "question": "Which element has the chemical symbol 'Fe'?",
-          "answers": [
-            "Iron",
-            "Gold",
-            "Silver",
-            "Copper"
-          ],
-          "correctAnswer": "Iron"
-        },
-        {
-          "id": "9",
-          "question": "What is the unit of electrical resistance?",
-          "answers": [
-            "Volt",
-            "Ampere",
-            "Ohm",
-            "Watt"
-          ],
-          "correctAnswer": "Ohm"
-        },
-        {
-          "id": "10",
-          "question": "Which blood type is known as the universal donor?",
-          "answers": [
-            "A+",
-            "B+",
-            "AB+",
-            "O-"
-          ],
-          "correctAnswer": "O-"
-        },
-        {
-          "id": "11",
-          "question": "What is the smallest unit of life?",
-          "answers": [
-            "Cell",
-            "Atom",
-            "Molecule",
-            "Protein"
-          ],
-          "correctAnswer": "Cell"
-        },
-        {
-          "id": "12",
-          "question": "Which gas do plants release during photosynthesis?",
-          "answers": [
-            "Carbon Dioxide",
-            "Nitrogen",
-            "Oxygen",
-            "Hydrogen"
-          ],
-          "correctAnswer": "Oxygen"
-        },
-        {
-          "id": "13",
-          "question": "What is the normal human body temperature in Celsius?",
-          "answers": [
-            "35.5",
-            "36.6",
-            "37.5",
-            "38.5"
-          ],
-          "correctAnswer": "36.6"
-        },
-        {
-          "id": "14",
-          "question": "Which element is most abundant in the universe?",
-          "answers": [
-            "Oxygen",
-            "Helium",
-            "Carbon",
-            "Hydrogen"
-          ],
-          "correctAnswer": "Hydrogen"
-        },
-        {
-          "id": "15",
-          "question": "What is the hardest material on the Mohs scale?",
-          "answers": [
-            "Ruby",
-            "Diamond",
-            "Topaz",
-            "Quartz"
-          ],
-          "correctAnswer": "Diamond"
-        },
-        {
-          "id": "16",
-          "question": "Which planet is closest to the Sun?",
-          "answers": [
-            "Mercury",
-            "Venus",
-            "Earth",
-            "Mars"
-          ],
-          "correctAnswer": "Mercury"
-        },
-        {
-          "id": "17",
-          "question": "What is the main component of natural gas?",
-          "answers": [
-            "Methane",
-            "Ethane",
-            "Propane",
-            "Butane"
-          ],
-          "correctAnswer": "Methane"
-        },
-        {
-          "id": "18",
-          "question": "Which bone is the longest in the human body?",
-          "answers": [
-            "Skull",
-            "Femur",
-            "Tibia",
-            "Humerus"
-          ],
-          "correctAnswer": "Femur"
-        },
-        {
-          "id": "19",
-          "question": "What is the pH of pure water?",
-          "answers": [
-            "5",
-            "6",
-            "7",
-            "8"
-          ],
-          "correctAnswer": "7"
-        },
-        {
-          "id": "20",
-          "question": "Which galaxy contains our solar system?",
-          "answers": [
-            "Andromeda",
-            "Milky Way",
-            "Triangulum",
-            "Centaurus A"
-          ],
-          "correctAnswer": "Milky Way"
-        },
-        {
-          "id": "21",
-          "question": "What is the chemical symbol for silver?",
-          "answers": [
-            "Au",
-            "Ag",
-            "Cu",
-            "Pt"
-          ],
-          "correctAnswer": "Ag"
-        },
-        {
-          "id": "22",
-          "question": "Which element is essential for human blood?",
-          "answers": [
-            "Iron",
-            "Calcium",
-            "Potassium",
-            "Sodium"
-          ],
-          "correctAnswer": "Iron"
-        },
-        {
-          "id": "23",
-          "question": "What is the unit of force?",
-          "answers": [
-            "Pascal",
-            "Newton",
-            "Joule",
-            "Watt"
-          ],
-          "correctAnswer": "Newton"
-        },
-        {
-          "id": "24",
-          "question": "Which particle has a negative charge?",
-          "answers": [
-            "Proton",
-            "Neutron",
-            "Electron",
-            "Positron"
-          ],
-          "correctAnswer": "Electron"
-        },
-        {
-          "id": "25",
-          "question": "What is the largest organ inside the human body?",
-          "answers": [
-            "Heart",
-            "Liver",
-            "Lung",
-            "Brain"
-          ],
-          "correctAnswer": "Liver"
-        },
-        {
-          "id": "26",
-          "question": "Which gas is used in fire extinguishers?",
-          "answers": [
-            "Oxygen",
-            "Nitrogen",
-            "Carbon Dioxide",
-            "Helium"
-          ],
-          "correctAnswer": "Carbon Dioxide"
-        },
-        {
-          "id": "27",
-          "question": "What is the atomic number of oxygen?",
-          "answers": [
-            "6",
-            "7",
-            "8",
-            "9"
-          ],
-          "correctAnswer": "8"
-        },
-        {
-          "id": "28",
-          "question": "Which vitamin is found abundantly in citrus fruits?",
-          "answers": [
-            "Vitamin A",
-            "Vitamin B",
-            "Vitamin C",
-            "Vitamin D"
-          ],
-          "correctAnswer": "Vitamin C"
-        },
-        {
-          "id": "29",
-          "question": "What is the chemical symbol for potassium?",
-          "answers": [
-            "P",
-            "K",
-            "Po",
-            "Ka"
-          ],
-          "correctAnswer": "K"
-        },
-        {
-          "id": "30",
-          "question": "Which blood type is the universal recipient?",
-          "answers": [
-            "A+",
-            "B+",
-            "AB+",
-            "O-"
-          ],
-          "correctAnswer": "AB+"
-        },
-        {
-          "id": "31",
-          "question": "What is the speed of sound in air?",
-          "answers": [
-            "330 m/s",
-            "343 m/s",
-            "350 m/s",
-            "360 m/s"
-          ],
-          "correctAnswer": "343 m/s"
-        },
-        {
-          "id": "32",
-          "question": "Which element is a noble gas?",
-          "answers": [
-            "Oxygen",
-            "Nitrogen",
-            "Neon",
-            "Hydrogen"
-          ],
-          "correctAnswer": "Neon"
-        },
-        {
-          "id": "33",
-          "question": "What is the unit of electric current?",
-          "answers": [
-            "Volt",
-            "Ampere",
-            "Ohm",
-            "Watt"
-          ],
-          "correctAnswer": "Ampere"
-        },
-        {
-          "id": "34",
-          "question": "Which planet has the most moons?",
-          "answers": [
-            "Jupiter",
-            "Saturn",
-            "Uranus",
-            "Neptune"
-          ],
-          "correctAnswer": "Saturn"
-        },
-        {
-          "id": "35",
-          "question": "What is the chemical formula for table salt?",
-          "answers": [
-            "NaCl",
-            "KCl",
-            "MgCl",
-            "CaCl"
-          ],
-          "correctAnswer": "NaCl"
-        },
-        {
-          "id": "36",
-          "question": "Which bone protects the brain?",
-          "answers": [
-            "Femur",
-            "Skull",
-            "Ribs",
-            "Spine"
-          ],
-          "correctAnswer": "Skull"
-        },
-        {
-          "id": "37",
-          "question": "What is the atomic number of gold?",
-          "answers": [
-            "77",
-            "79",
-            "81",
-            "83"
-          ],
-          "correctAnswer": "79"
-        },
-        {
-          "id": "38",
-          "question": "Which gas is responsible for the greenhouse effect?",
-          "answers": [
-            "Oxygen",
-            "Nitrogen",
-            "Carbon Dioxide",
-            "Helium"
-          ],
-          "correctAnswer": "Carbon Dioxide"
-        },
-        {
-          "id": "39",
-          "question": "What is the unit of power?",
-          "answers": [
-            "Joule",
-            "Newton",
-            "Watt",
-            "Pascal"
-          ],
-          "correctAnswer": "Watt"
-        },
-        {
-          "id": "40",
-          "question": "Which element is liquid at room temperature?",
-          "answers": [
-            "Iron",
-            "Mercury",
-            "Copper",
-            "Gold"
-          ],
-          "correctAnswer": "Mercury"
-        }
-      ],
-      "questionsSelected": [
-        {
-          "id": "1732647826453",
-          "question": "What is the chemical formula for water?",
-          "answers": [
-            "ff",
-            "fff",
-            "ff",
-            "ff"
-          ],
-          "correctAnswer": "fff"
-        }
-      ]
     },
     {
       "id": "ae42",
       "courseName": "World History",
       "coursequizID": "HIST201",
       "teacherName": "Jim Halpert",
-      "deadline": "2024-12-04T12:40",
+      "Deadline": "2024-12-04T12:40",
       "status": "draft",
       "questions": [],
       "questionsSelected": []
@@ -2205,7 +1887,7 @@
       "courseName": "Introduction to Biology",
       "coursequizID": "BIO101",
       "teacherName": "Carlos Martinez",
-      "deadline": "2025-01-02T23:31",
+      "Deadline": "2025-01-02T23:31",
       "status": "active"
     },
     {
@@ -2213,7 +1895,7 @@
       "courseName": "Introduction to Mathematics",
       "coursequizID": "105",
       "teacherName": "Carlos Martinez",
-      "deadline": "2025-01-17T23:42",
+      "Deadline": "2025-01-17T23:42",
       "status": "active",
       "questions": [
         {
@@ -3008,159 +2690,93 @@
       ]
     }
   ],
-  "competences": [
+
+  "absentStudents": [
     {
-      "id": "1",
-      "code_competence": 1,
-      "code_module": "M101_F01",
-      "intitule_module": "M101",
-      "intitule_competence": [
-        "Analyse de données",
-        "Algorithmes de base"
-      ],
-      "filiere": "Informatique",
-      "cours": "https://fake-link.com/cours/M101",
-      "quiz": "https://fake-link.com/quiz/M101"
+      "id": "082d",
+      "niveau": "Specialisation",
+      "filiere": "Développement Web",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2025-01-20",
+      "month": "January",
+      "registrationTime": "2025-01-20T11:42:12.796Z",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "Mohamed El Amrani",
+          "studentCin": "CS1001",
+          "absentHours": {
+            "8:30->10:50": false,
+            "10:50->13.30": false,
+            "13.30->15.50": true,
+            "15.50->18.30": false
+          }
+        },
+        {
+          "studentId": "2",
+          "studentCef": "10002",
+          "studentName": "Fatima Zahra Benhaddou",
+          "studentCin": "CS1002",
+          "absentHours": {
+            "8:30->10:50": false,
+            "10:50->13.30": false,
+            "13.30->15.50": true,
+            "15.50->18.30": true
+          }
+        }
+      ]
     },
     {
-      "id": "2",
-      "code_competence": 2,
-      "code_module": "M102_F01",
-      "intitule_module": "M102",
-      "intitule_competence": [
-        "Programmation en C",
-        "Structures de données"
-      ],
-      "filiere": "Informatique",
-      "cours": "https://fake-link.com/cours/M102",
-      "quiz": "https://fake-link.com/quiz/M102"
-    },
-    {
-      "id": "3",
-      "code_competence": 3,
-      "code_module": "M103_F01",
-      "intitule_module": "M103",
-      "intitule_competence": [
-        "Introduction à la gestion",
-        "Organisation des entreprises"
-      ],
-      "filiere": "Gestion",
-      "cours": "https://fake-link.com/cours/M103",
-      "quiz": "https://fake-link.com/quiz/M103"
-    },
-    {
-      "id": "5",
-      "code_competence": 5,
-      "code_module": "M105_F01",
-      "intitule_module": "M105",
-      "intitule_competence": [
-        "Programmation en JavaScript",
-        "DOM manipulation"
-      ],
-      "filiere": "Informatique",
-      "cours": "https://fake-link.com/cours/M105",
-      "quiz": "https://fake-link.com/quiz/M105"
-    },
-    {
-      "id": "6",
-      "code_competence": 6,
-      "code_module": "M106_F01",
-      "intitule_module": "M106",
-      "intitule_competence": [
-        "Introduction au web",
-        "HTML/CSS"
-      ],
-      "filiere": "Informatique",
-      "cours": "https://fake-link.com/cours/M106",
-      "quiz": "https://fake-link.com/quiz/M106"
-    },
-    {
-      "id": "7",
-      "code_competence": 7,
-      "code_module": "M107_F01",
-      "intitule_module": "M107",
-      "intitule_competence": [
-        "Réseaux de base",
-        "Modèle OSI"
-      ],
-      "filiere": "Informatique",
-      "cours": "https://fake-link.com/cours/M107",
-      "quiz": "https://fake-link.com/quiz/M107"
-    },
-    {
-      "id": "8",
-      "code_competence": 8,
-      "code_module": "M108_F01",
-      "intitule_module": "M108",
-      "intitule_competence": [
-        "Sécurité informatique",
-        "Cryptographie"
-      ],
-      "filiere": "Informatique",
-      "cours": "https://fake-link.com/cours/M108",
-      "quiz": "https://fake-link.com/quiz/M108"
-    },
-    {
-      "id": "9",
-      "code_competence": 9,
-      "code_module": "M109_F01",
-      "intitule_module": "M109",
-      "intitule_competence": [
-        "Design UX/UI",
-        "Prototypage"
-      ],
-      "filiere": "Design",
-      "cours": "https://fake-link.com/cours/M109",
-      "quiz": "https://fake-link.com/quiz/M109"
-    },
-    {
-      "id": "10",
-      "code_competence": 10,
-      "code_module": "M110_F01",
-      "intitule_module": "M110",
-      "intitule_competence": [
-        "Introduction à l'intelligence artificielle",
-        "Machine learning"
-      ],
-      "filiere": "IA",
-      "cours": "https://fake-link.com/cours/M110",
-      "quiz": "https://fake-link.com/quiz/M110"
-    },
-    {
-      "id": "84be",
-      "code_competence": "11",
-      "intitule_competence": [
-        "communication"
-      ],
-      "filiere": "Soft Skills",
-      "intitule_module": "softskills",
-      "cours": [
-        "https:/softskills.com"
-      ],
-      "quiz": [
-        "https:/softskills.com"
+      "id": "2db3",
+      "niveau": "Specialisation",
+      "filiere": "Développement Web",
+      "annee": "1st Year",
+      "groupe": "Group 1",
+      "date": "2025-01-25",
+      "month": "January",
+      "registrationTime": "2025-01-25T11:43:59.499Z",
+      "students": [
+        {
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "Mohamed El Amrani",
+          "studentCin": "CS1001",
+          "absentHours": {
+            "13.30->15.50": true,
+            "15.50->18.30": false
+          }
+        },
+        {
+          "studentId": "2",
+          "studentCef": "10002",
+          "studentName": "Fatima Zahra Benhaddou",
+          "studentCin": "CS1002",
+          "absentHours": {
+            "13.30->15.50": true,
+            "15.50->18.30": false
+          }
+        }
       ]
     }
   ],
+  "studentDiscipline": [],
   "secteurs": [
     {
       "id_secteur": "1",
       "code_secteur": "S01",
-      "intitule_secteur": "Sciences",
-      "filieres": [
-        "Math",
-        "Physic"
-      ],
+      "intitule_secteur": "Informatique",
       "niveaux": {
         "Specialisation": {
           "filiere": {
-            "Physics": {
+            "Développement Web": {
               "1st Year": {
                 "Group 1": [
                   {
                     "id": "1",
                     "cef": "10001",
-                    "fullname": "John Smith",
+                    "fullname": "Mohamed El Amrani",
                     "dateNaissance": "2000-03-01",
                     "cin": "CS1001",
                     "selected": false
@@ -3168,7 +2784,7 @@
                   {
                     "id": "2",
                     "cef": "10002",
-                    "fullname": "Alice Brown",
+                    "fullname": "Fatima Zahra Benhaddou",
                     "dateNaissance": "2000-04-15",
                     "cin": "CS1002",
                     "selected": false
@@ -3178,7 +2794,7 @@
                   {
                     "id": "3",
                     "cef": "10003",
-                    "fullname": "Bob Lee",
+                    "fullname": "Youssef Ouhaddou",
                     "dateNaissance": "2000-05-20",
                     "cin": "CS1003",
                     "selected": false
@@ -3186,67 +2802,29 @@
                   {
                     "id": "4",
                     "cef": "10004",
-                    "fullname": "Emma Davis",
+                    "fullname": "Khadija Laaroussi",
                     "dateNaissance": "2000-06-10",
                     "cin": "CS1004",
                     "selected": false
                   }
                 ]
-              },
-              "2nd Year": {
-                "Group 1": [
-                  {
-                    "id": "5",
-                    "cef": "10005",
-                    "fullname": "William Clark",
-                    "dateNaissance": "1999-07-18",
-                    "cin": "CS2001",
-                    "selected": false
-                  },
-                  {
-                    "id": "6",
-                    "cef": "10006",
-                    "fullname": "Sophia Wilson",
-                    "dateNaissance": "1999-08-22",
-                    "cin": "CS2002",
-                    "selected": false
-                  }
-                ],
-                "Group 2": [
-                  {
-                    "id": "7",
-                    "cef": "10007",
-                    "fullname": "Henry Adams",
-                    "dateNaissance": "1999-09-05",
-                    "cin": "CS2003",
-                    "selected": false
-                  },
-                  {
-                    "id": "8",
-                    "cef": "10008",
-                    "fullname": "Olivia Clark",
-                    "dateNaissance": "1999-10-14",
-                    "cin": "CS2004",
-                    "selected": false
-                  }
-                ]
               }
             },
-            "Biology": {
+            "Réseauteur": {
               "1st Year": {
                 "Group 1": [
                   {
-                    "id": "9",
+                    "id": "5",
                     "cef": "20001",
-                    "fullname": "Sophia Turner",
+                    "fullname": "Omar Lahlou",
                     "dateNaissance": "1999-09-10",
                     "cin": "BIO2001",
                     "selected": false
                   },
                   {
-                    "id": "10",
+                    "id": "6",
                     "cef": "20002",
-                    "fullname": "Liam Walker",
+                    "fullname": "Meryem El Faris",
                     "dateNaissance": "1999-10-05",
                     "cin": "BIO2002",
                     "selected": false
@@ -3254,57 +2832,19 @@
                 ],
                 "Group 2": [
                   {
-                    "id": "11",
+                    "id": "7",
                     "cef": "20003",
-                    "fullname": "Mason Hall",
+                    "fullname": "Reda Boudlal",
                     "dateNaissance": "1999-11-12",
                     "cin": "BIO2003",
                     "selected": false
                   },
                   {
-                    "id": "12",
+                    "id": "8",
                     "cef": "20004",
-                    "fullname": "Isabella Scott",
+                    "fullname": "Nadia Tazi",
                     "dateNaissance": "1999-12-01",
                     "cin": "BIO2004",
-                    "selected": false
-                  }
-                ]
-              },
-              "2nd Year": {
-                "Group 1": [
-                  {
-                    "id": "13",
-                    "cef": "20005",
-                    "fullname": "Charlotte Johnson",
-                    "dateNaissance": "1998-01-10",
-                    "cin": "BIO2005",
-                    "selected": false
-                  },
-                  {
-                    "id": "14",
-                    "cef": "20006",
-                    "fullname": "Noah Davis",
-                    "dateNaissance": "1998-02-20",
-                    "cin": "BIO2006",
-                    "selected": false
-                  }
-                ],
-                "Group 2": [
-                  {
-                    "id": "15",
-                    "cef": "20007",
-                    "fullname": "Lucas Brown",
-                    "dateNaissance": "1998-03-25",
-                    "cin": "BIO2007",
-                    "selected": false
-                  },
-                  {
-                    "id": "16",
-                    "cef": "20008",
-                    "fullname": "Emma White",
-                    "dateNaissance": "1998-04-30",
-                    "cin": "BIO2008",
                     "selected": false
                   }
                 ]
@@ -3312,93 +2852,90 @@
             }
           }
         }
-      },
-      "id": "f66d"
+      }
     },
     {
       "id_secteur": "2",
       "code_secteur": "S02",
-      "intitule_secteur": "Tourisme",
-      "filieres": [
-        "Hôtelière",
-        "Francais"
-      ],
+      "intitule_secteur": "Commerce",
       "niveaux": {
-        "Qualifant": {
+        "Specialisation": {
           "filiere": {
-            "Gestion Hôtelière": {
+            "Marketing": {
               "1st Year": {
                 "Group 1": [
                   {
-                    "id": "17",
+                    "id": "9",
                     "cef": "30001",
-                    "fullname": "James Carter",
-                    "dateNaissance": "1998-05-11",
-                    "cin": "GH3001",
+                    "fullname": "Ahmed El Ouardi",
+                    "dateNaissance": "1998-01-10",
+                    "cin": "ENGL3001",
                     "selected": false
                   },
                   {
-                    "id": "18",
+                    "id": "10",
                     "cef": "30002",
-                    "fullname": "Sophia Lopez",
-                    "dateNaissance": "1998-07-20",
-                    "cin": "GH3002",
+                    "fullname": "Imane Kabbaj",
+                    "dateNaissance": "1998-02-20",
+                    "cin": "ENGL3002",
                     "selected": false
                   }
                 ],
                 "Group 2": [
                   {
-                    "id": "19",
+                    "id": "11",
                     "cef": "30003",
-                    "fullname": "Ethan White",
-                    "dateNaissance": "1998-08-14",
-                    "cin": "GH3003",
+                    "fullname": "Samir Alami",
+                    "dateNaissance": "1998-03-25",
+                    "cin": "ENGL3003",
                     "selected": false
                   },
                   {
-                    "id": "20",
+                    "id": "12",
                     "cef": "30004",
-                    "fullname": "Emma Martinez",
-                    "dateNaissance": "1998-09-25",
-                    "cin": "GH3004",
+                    "fullname": "Sanaa Khalil",
+                    "dateNaissance": "1998-04-30",
+                    "cin": "ENGL3004",
                     "selected": false
                   }
                 ]
-              },
-              "2nd Year": {
+              }
+            },
+            "Comptabilité": {
+              "1st Year": {
                 "Group 1": [
                   {
                     "id": "21",
-                    "cef": "30005",
-                    "fullname": "Lucas Smith",
-                    "dateNaissance": "1997-10-10",
-                    "cin": "GH4001",
+                    "cef": "40005",
+                    "fullname": "Hassan Hammad",
+                    "dateNaissance": "1997-11-12",
+                    "cin": "CPT4001",
                     "selected": false
                   },
                   {
                     "id": "22",
-                    "cef": "30006",
-                    "fullname": "Emma Jones",
-                    "dateNaissance": "1997-11-15",
-                    "cin": "GH4002",
+                    "cef": "40006",
+                    "fullname": "Meriem Berrada",
+                    "dateNaissance": "1997-12-05",
+                    "cin": "CPT4002",
                     "selected": false
                   }
                 ],
                 "Group 2": [
                   {
                     "id": "23",
-                    "cef": "30007",
-                    "fullname": "Noah Brown",
-                    "dateNaissance": "1997-12-20",
-                    "cin": "GH4003",
+                    "cef": "40007",
+                    "fullname": "Zayd Alami",
+                    "dateNaissance": "1997-01-14",
+                    "cin": "CPT4003",
                     "selected": false
                   },
                   {
                     "id": "24",
-                    "cef": "30008",
-                    "fullname": "Sophia Green",
-                    "dateNaissance": "1998-01-05",
-                    "cin": "GH4004",
+                    "cef": "40008",
+                    "fullname": "Yasmina Bennis",
+                    "dateNaissance": "1997-02-22",
+                    "cin": "CPT4004",
                     "selected": false
                   }
                 ]
@@ -3406,2820 +2943,207 @@
             }
           }
         }
-      },
-      "id": "731d"
+      }
     },
     {
-      "id": "b29c",
-      "id_secteur": "",
+      "id_secteur": "3",
       "code_secteur": "S03",
-      "intitule_secteur": "Économie",
-      "filieres": [
-        "Microéconomie",
-        "Finance",
-        "Anglais"
-      ]
-    },
-    {
-      "id": "7df9",
-      "id_secteur": "",
-      "code_secteur": "S04",
-      "intitule_secteur": "Santé",
-      "filieres": [
-        "Médecine",
-        "Pharmacie",
-        "Infirmier"
-      ]
-    },
-    {
-      "id": "057e",
-      "id_secteur": "",
-      "code_secteur": "S05",
-      "intitule_secteur": "Arts",
-      "filieres": [
-        "Peinture",
-        "Sculpture",
-        "Photographie"
-      ]
-    },
-    {
-      "id": "fcf7",
-      "id_secteur": "",
-      "code_secteur": "S06",
-      "intitule_secteur": "Informatique",
-      "filieres": [
-        "Développement",
-        "Web",
-        "Data Science",
-        "Sécurité Informatique"
-      ]
-    },
-    {
-      "id": "1b6f",
-      "id_secteur": "",
-      "code_secteur": "S07",
-      "intitule_secteur": "Génie Civil",
-      "filieres": [
-        "Génie Civil",
-        "Génie Structure",
-        "Urbanisme",
-        "Génie Géotechnique"
-      ]
+      "intitule_secteur": "Médecine",
+      "niveaux": {
+        "Specialisation": {
+          "filiere": {
+            "Médecine Générale": {
+              "1st Year": {
+                "Group 1": [
+                  {
+                    "id": "25",
+                    "cef": "50001",
+                    "fullname": "Ibrahim Benhaddou",
+                    "dateNaissance": "1996-05-15",
+                    "cin": "MD5001",
+                    "selected": false
+                  },
+                  {
+                    "id": "26",
+                    "cef": "50002",
+                    "fullname": "Amina Oulamine",
+                    "dateNaissance": "1996-06-12",
+                    "cin": "MD5002",
+                    "selected": false
+                  }
+                ],
+                "Group 2": [
+                  {
+                    "id": "27",
+                    "cef": "50003",
+                    "fullname": "Anas Zian",
+                    "dateNaissance": "1996-07-22",
+                    "cin": "MD5003",
+                    "selected": false
+                  },
+                  {
+                    "id": "28",
+                    "cef": "50004",
+                    "fullname": "Lina Boussif",
+                    "dateNaissance": "1996-08-30",
+                    "cin": "MD5004",
+                    "selected": false
+                  }
+                ]
+              }
+            },
+            "Pharmacie": {
+              "1st Year": {
+                "Group 1": [
+                  {
+                    "id": "29",
+                    "cef": "60001",
+                    "fullname": "Othman Lahmid",
+                    "dateNaissance": "1995-03-25",
+                    "cin": "PH6001",
+                    "selected": false
+                  },
+                  {
+                    "id": "30",
+                    "cef": "60002",
+                    "fullname": "Leila Benarous",
+                    "dateNaissance": "1995-04-10",
+                    "cin": "PH6002",
+                    "selected": false
+                  }
+                ],
+                "Group 2": [
+                  {
+                    "id": "31",
+                    "cef": "60003",
+                    "fullname": "Karim Amrani",
+                    "dateNaissance": "1995-05-15",
+                    "cin": "PH6003",
+                    "selected": false
+                  },
+                  {
+                    "id": "32",
+                    "cef": "60004",
+                    "fullname": "Sabrina Benaissa",
+                    "dateNaissance": "1995-06-02",
+                    "cin": "PH6004",
+                    "selected": false
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
     }
   ],
-  "absentStudents": [
+  "filieres": [
     {
-      "id": "aa89",
-      "niveau": "Specialisation",
-      "filiere": "Physics",
-      "annee": "1st Year",
-      "groupe": "Group 2",
-      "date": "2024-11-25",
-      "month": "November",
-      "registrationTime": "2024-11-25T19:57:39.614Z",
-      "students": [
+      "id": "611e",
+      "code_filiere": "F01",
+      "intitule_filiere": "Informatique",
+      "secteur": "Technologie",
+      "groupes": [
         {
-          "studentId": "4",
-          "studentCef": "10004",
-          "studentName": "Emma Davis",
-          "absentHours": {
-            "8:30->10:50": true,
-            "10:50->13.30": false,
-            "13.30->15.50": true,
-            "15.50->18.30": false
-          }
+          "id": 1,
+          "nom": "DEV101",
+          "annee": "1ère année"
         },
         {
-          "studentId": "3",
-          "studentCef": "10003",
-          "studentName": "Bob Lee",
-          "absentHours": {
-            "8:30->10:50": false,
-            "10:50->13.30": false,
-            "13.30->15.50": true,
-            "15.50->18.30": false
-          }
+          "id": 2,
+          "nom": "DEVOWFS201",
+          "annee": "2ème année"
         }
       ]
     },
     {
-      "id": "22f5",
-      "niveau": "Specialisation",
-      "filiere": "Physics",
-      "annee": "1st Year",
-      "groupe": "Group 2",
-      "date": "2024-11-26",
-      "month": "November",
-      "registrationTime": "2024-11-26T19:58:35.137Z",
-      "students": [
+      "id": "dcb8",
+      "code_filiere": "F02",
+      "intitule_filiere": "Réseaux et Télécommu",
+      "secteur": "Technologie",
+      "groupes": [
         {
-          "studentId": "4",
-          "studentCef": "10004",
-          "studentName": "Emma Davis",
-          "absentHours": {
-            "8:30->10:50": true,
-            "10:50->13.30": true,
-            "13.30->15.50": false,
-            "15.50->18.30": false
-          }
-        },
-        {
-          "studentId": "3",
-          "studentCef": "10003",
-          "studentName": "Bob Lee",
-          "absentHours": {
-            "8:30->10:50": false,
-            "10:50->13.30": false,
-            "13.30->15.50": true,
-            "15.50->18.30": false
-          }
+          "id": 4,
+          "nom": "DEV201",
+          "annee": "2ème année"
         }
+      ]
+    },
+    {
+      "id": "ff07",
+      "code_filiere": "F03",
+      "intitule_filiere": "Management",
+      "secteur": "Business",
+      "groupes": [
+        {
+          "id": 3,
+          "nom": "MAN101",
+          "annee": "1ère année"
+        }
+      ]
+    },
+    {
+      "id": "5d96",
+      "code_filiere": "F04",
+      "intitule_filiere": "Design Graphique",
+      "secteur": "Arts",
+      "groupes": [
+        {
+          "id": 5,
+          "nom": "DES101",
+          "annee": "1ère année"
+        }
+      ]
+    },
+    {
+      "id": "7912",
+      "code_filiere": "F05",
+      "intitule_filiere": "Photographie",
+      "secteur": "Arts",
+      "groupes": [
+        {
+          "id": 6,
+          "nom": "PHO101",
+          "annee": "1ère année"
+        }
+      ]
+    },
+    {
+      "id": "791d",
+      "code_filiere": "F06",
+      "intitule_filiere": "Sciences de la Vie",
+      "secteur": "Sciences",
+      "groupes": [
+        {
+          "id": 7,
+          "nom": "SCI101",
+          "annee": "1ère année"
+        }
+      ]
+    },
+    {
+      "ordre": 11,
+      "code_filiere": "F11",
+      "intitule_filiere": "Biotechnologie",
+      "secteur": "Sciences",
+      "groupes": [
+        "4"
+      ],
+      "id": "df6b"
+    },
+    {
+      "id": "5896",
+      "code_filiere": "F15",
+      "intitule_filiere": "Something",
+      "secteur": "Something",
+      "groupes": [
+        "1",
+        "2",
+        "3"
       ]
     }
   ],
-  "studentDiscipline": [
-    {
-      "0": {
-        "id": "1",
-        "cef": "10001",
-        "fullname": "John Smith",
-        "dateNaissance": "2000-03-01",
-        "cin": "CS1001",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 2,
-        "anj": {
-          "November": 8
-        },
-        "totalANJ": 8,
-        "retards": 1,
-        "sanction": "exclusion temporaire"
-      },
-      "1": {
-        "id": "2",
-        "cef": "10002",
-        "fullname": "Alice Brown",
-        "dateNaissance": "2000-04-15",
-        "cin": "CS1002",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {
-          "November": 1
-        },
-        "totalANJ": 1,
-        "retards": 0,
-        "sanction": "aucune"
-      },
-      "id": "d230"
-    },
-    {
-      "0": {
-        "id": "1",
-        "cef": "10001",
-        "fullname": "John Smith",
-        "dateNaissance": "2000-03-01",
-        "cin": "CS1001",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {
-          "November": 7
-        },
-        "totalANJ": 7,
-        "retards": 0,
-        "sanction": "exclusion temporaire",
-        "noteDiscipline": 15,
-        "observations": "vvv"
-      },
-      "1": {
-        "id": "2",
-        "cef": "10002",
-        "fullname": "Alice Brown",
-        "dateNaissance": "2000-04-15",
-        "cin": "CS1002",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {
-          "November": 1
-        },
-        "totalANJ": 1,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "2": {
-        "id": "3",
-        "cef": "10003",
-        "fullname": "Bob Lee",
-        "dateNaissance": "2000-05-20",
-        "cin": "CS1003",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "3": {
-        "id": "4",
-        "cef": "10004",
-        "fullname": "Emma Davis",
-        "dateNaissance": "2000-06-10",
-        "cin": "CS1004",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "4": {
-        "id": "5",
-        "cef": "10005",
-        "fullname": "William Clark",
-        "dateNaissance": "1999-07-18",
-        "cin": "CS2001",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "5": {
-        "id": "6",
-        "cef": "10006",
-        "fullname": "Sophia Wilson",
-        "dateNaissance": "1999-08-22",
-        "cin": "CS2002",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "6": {
-        "id": "7",
-        "cef": "10007",
-        "fullname": "Henry Adams",
-        "dateNaissance": "1999-09-05",
-        "cin": "CS2003",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "7": {
-        "id": "8",
-        "cef": "10008",
-        "fullname": "Olivia Clark",
-        "dateNaissance": "1999-10-14",
-        "cin": "CS2004",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "8": {
-        "id": "9",
-        "cef": "20001",
-        "fullname": "Sophia Turner",
-        "dateNaissance": "1999-09-10",
-        "cin": "BIO2001",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {
-          "November": 1
-        },
-        "totalANJ": 1,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "9": {
-        "id": "10",
-        "cef": "20002",
-        "fullname": "Liam Walker",
-        "dateNaissance": "1999-10-05",
-        "cin": "BIO2002",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "10": {
-        "id": "11",
-        "cef": "20003",
-        "fullname": "Mason Hall",
-        "dateNaissance": "1999-11-12",
-        "cin": "BIO2003",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "11": {
-        "id": "12",
-        "cef": "20004",
-        "fullname": "Isabella Scott",
-        "dateNaissance": "1999-12-01",
-        "cin": "BIO2004",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "12": {
-        "id": "13",
-        "cef": "20005",
-        "fullname": "Charlotte Johnson",
-        "dateNaissance": "1998-01-10",
-        "cin": "BIO2005",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "13": {
-        "id": "14",
-        "cef": "20006",
-        "fullname": "Noah Davis",
-        "dateNaissance": "1998-02-20",
-        "cin": "BIO2006",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "14": {
-        "id": "15",
-        "cef": "20007",
-        "fullname": "Lucas Brown",
-        "dateNaissance": "1998-03-25",
-        "cin": "BIO2007",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "15": {
-        "id": "16",
-        "cef": "20008",
-        "fullname": "Emma White",
-        "dateNaissance": "1998-04-30",
-        "cin": "BIO2008",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "16": {
-        "id": "17",
-        "cef": "30001",
-        "fullname": "James Carter",
-        "dateNaissance": "1998-05-11",
-        "cin": "GH3001",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "17": {
-        "id": "18",
-        "cef": "30002",
-        "fullname": "Sophia Lopez",
-        "dateNaissance": "1998-07-20",
-        "cin": "GH3002",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "18": {
-        "id": "19",
-        "cef": "30003",
-        "fullname": "Ethan White",
-        "dateNaissance": "1998-08-14",
-        "cin": "GH3003",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "19": {
-        "id": "20",
-        "cef": "30004",
-        "fullname": "Emma Martinez",
-        "dateNaissance": "1998-09-25",
-        "cin": "GH3004",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "20": {
-        "id": "21",
-        "cef": "30005",
-        "fullname": "Lucas Smith",
-        "dateNaissance": "1997-10-10",
-        "cin": "GH4001",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "21": {
-        "id": "22",
-        "cef": "30006",
-        "fullname": "Emma Jones",
-        "dateNaissance": "1997-11-15",
-        "cin": "GH4002",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "22": {
-        "id": "23",
-        "cef": "30007",
-        "fullname": "Noah Brown",
-        "dateNaissance": "1997-12-20",
-        "cin": "GH4003",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "23": {
-        "id": "24",
-        "cef": "30008",
-        "fullname": "Sophia Green",
-        "dateNaissance": "1998-01-05",
-        "cin": "GH4004",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanction": "aucune",
-        "noteDiscipline": 15,
-        "observations": ""
-      },
-      "id": "6896"
-    },
-    {
-      "0": {
-        "id": "1",
-        "cef": "10001",
-        "fullname": "John Smith",
-        "dateNaissance": "2000-03-01",
-        "cin": "CS1001",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {
-          "November": 7,
-          "Janvier": 3
-        },
-        "totalANJ": 7,
-        "retards": 0,
-        "sanctionAssiduite": "1ere mise en garde",
-        "sanctionComportement": "aucune",
-        "observationSA": "hhhhh",
-        "observationSC": "",
-        "disciplineNote": 14
-      },
-      "1": {
-        "id": "2",
-        "cef": "10002",
-        "fullname": "Alice Brown",
-        "dateNaissance": "2000-04-15",
-        "cin": "CS1002",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {
-          "November": 1
-        },
-        "totalANJ": 1,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "2": {
-        "id": "3",
-        "cef": "10003",
-        "fullname": "Bob Lee",
-        "dateNaissance": "2000-05-20",
-        "cin": "CS1003",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "3": {
-        "id": "4",
-        "cef": "10004",
-        "fullname": "Emma Davis",
-        "dateNaissance": "2000-06-10",
-        "cin": "CS1004",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "4": {
-        "id": "5",
-        "cef": "10005",
-        "fullname": "William Clark",
-        "dateNaissance": "1999-07-18",
-        "cin": "CS2001",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "5": {
-        "id": "6",
-        "cef": "10006",
-        "fullname": "Sophia Wilson",
-        "dateNaissance": "1999-08-22",
-        "cin": "CS2002",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "6": {
-        "id": "7",
-        "cef": "10007",
-        "fullname": "Henry Adams",
-        "dateNaissance": "1999-09-05",
-        "cin": "CS2003",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "7": {
-        "id": "8",
-        "cef": "10008",
-        "fullname": "Olivia Clark",
-        "dateNaissance": "1999-10-14",
-        "cin": "CS2004",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "8": {
-        "id": "9",
-        "cef": "20001",
-        "fullname": "Sophia Turner",
-        "dateNaissance": "1999-09-10",
-        "cin": "BIO2001",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {
-          "November": 1
-        },
-        "totalANJ": 1,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "9": {
-        "id": "10",
-        "cef": "20002",
-        "fullname": "Liam Walker",
-        "dateNaissance": "1999-10-05",
-        "cin": "BIO2002",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "10": {
-        "id": "11",
-        "cef": "20003",
-        "fullname": "Mason Hall",
-        "dateNaissance": "1999-11-12",
-        "cin": "BIO2003",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "11": {
-        "id": "12",
-        "cef": "20004",
-        "fullname": "Isabella Scott",
-        "dateNaissance": "1999-12-01",
-        "cin": "BIO2004",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "12": {
-        "id": "13",
-        "cef": "20005",
-        "fullname": "Charlotte Johnson",
-        "dateNaissance": "1998-01-10",
-        "cin": "BIO2005",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "13": {
-        "id": "14",
-        "cef": "20006",
-        "fullname": "Noah Davis",
-        "dateNaissance": "1998-02-20",
-        "cin": "BIO2006",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "14": {
-        "id": "15",
-        "cef": "20007",
-        "fullname": "Lucas Brown",
-        "dateNaissance": "1998-03-25",
-        "cin": "BIO2007",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "15": {
-        "id": "16",
-        "cef": "20008",
-        "fullname": "Emma White",
-        "dateNaissance": "1998-04-30",
-        "cin": "BIO2008",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "16": {
-        "id": "17",
-        "cef": "30001",
-        "fullname": "James Carter",
-        "dateNaissance": "1998-05-11",
-        "cin": "GH3001",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "17": {
-        "id": "18",
-        "cef": "30002",
-        "fullname": "Sophia Lopez",
-        "dateNaissance": "1998-07-20",
-        "cin": "GH3002",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "18": {
-        "id": "19",
-        "cef": "30003",
-        "fullname": "Ethan White",
-        "dateNaissance": "1998-08-14",
-        "cin": "GH3003",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "19": {
-        "id": "20",
-        "cef": "30004",
-        "fullname": "Emma Martinez",
-        "dateNaissance": "1998-09-25",
-        "cin": "GH3004",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "20": {
-        "id": "21",
-        "cef": "30005",
-        "fullname": "Lucas Smith",
-        "dateNaissance": "1997-10-10",
-        "cin": "GH4001",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "21": {
-        "id": "22",
-        "cef": "30006",
-        "fullname": "Emma Jones",
-        "dateNaissance": "1997-11-15",
-        "cin": "GH4002",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "22": {
-        "id": "23",
-        "cef": "30007",
-        "fullname": "Noah Brown",
-        "dateNaissance": "1997-12-20",
-        "cin": "GH4003",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "23": {
-        "id": "24",
-        "cef": "30008",
-        "fullname": "Sophia Green",
-        "dateNaissance": "1998-01-05",
-        "cin": "GH4004",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "id": "cda2"
-    },
-    {
-      "0": {
-        "id": "1",
-        "cef": "10001",
-        "fullname": "John Smith",
-        "dateNaissance": "2000-03-01",
-        "cin": "CS1001",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {
-          "November": 7
-        },
-        "totalANJ": 7,
-        "retards": 0,
-        "sanctionAssiduite": "2eme avertissement",
-        "sanctionComportement": "exclusion 2j",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 7
-      },
-      "1": {
-        "id": "2",
-        "cef": "10002",
-        "fullname": "Alice Brown",
-        "dateNaissance": "2000-04-15",
-        "cin": "CS1002",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {
-          "November": 1
-        },
-        "totalANJ": 1,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "2": {
-        "id": "3",
-        "cef": "10003",
-        "fullname": "Bob Lee",
-        "dateNaissance": "2000-05-20",
-        "cin": "CS1003",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "3": {
-        "id": "4",
-        "cef": "10004",
-        "fullname": "Emma Davis",
-        "dateNaissance": "2000-06-10",
-        "cin": "CS1004",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "4": {
-        "id": "5",
-        "cef": "10005",
-        "fullname": "William Clark",
-        "dateNaissance": "1999-07-18",
-        "cin": "CS2001",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "5": {
-        "id": "6",
-        "cef": "10006",
-        "fullname": "Sophia Wilson",
-        "dateNaissance": "1999-08-22",
-        "cin": "CS2002",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "6": {
-        "id": "7",
-        "cef": "10007",
-        "fullname": "Henry Adams",
-        "dateNaissance": "1999-09-05",
-        "cin": "CS2003",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "7": {
-        "id": "8",
-        "cef": "10008",
-        "fullname": "Olivia Clark",
-        "dateNaissance": "1999-10-14",
-        "cin": "CS2004",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "8": {
-        "id": "9",
-        "cef": "20001",
-        "fullname": "Sophia Turner",
-        "dateNaissance": "1999-09-10",
-        "cin": "BIO2001",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {
-          "November": 1
-        },
-        "totalANJ": 1,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "9": {
-        "id": "10",
-        "cef": "20002",
-        "fullname": "Liam Walker",
-        "dateNaissance": "1999-10-05",
-        "cin": "BIO2002",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "10": {
-        "id": "11",
-        "cef": "20003",
-        "fullname": "Mason Hall",
-        "dateNaissance": "1999-11-12",
-        "cin": "BIO2003",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "11": {
-        "id": "12",
-        "cef": "20004",
-        "fullname": "Isabella Scott",
-        "dateNaissance": "1999-12-01",
-        "cin": "BIO2004",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "12": {
-        "id": "13",
-        "cef": "20005",
-        "fullname": "Charlotte Johnson",
-        "dateNaissance": "1998-01-10",
-        "cin": "BIO2005",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "13": {
-        "id": "14",
-        "cef": "20006",
-        "fullname": "Noah Davis",
-        "dateNaissance": "1998-02-20",
-        "cin": "BIO2006",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "14": {
-        "id": "15",
-        "cef": "20007",
-        "fullname": "Lucas Brown",
-        "dateNaissance": "1998-03-25",
-        "cin": "BIO2007",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "15": {
-        "id": "16",
-        "cef": "20008",
-        "fullname": "Emma White",
-        "dateNaissance": "1998-04-30",
-        "cin": "BIO2008",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "16": {
-        "id": "17",
-        "cef": "30001",
-        "fullname": "James Carter",
-        "dateNaissance": "1998-05-11",
-        "cin": "GH3001",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "17": {
-        "id": "18",
-        "cef": "30002",
-        "fullname": "Sophia Lopez",
-        "dateNaissance": "1998-07-20",
-        "cin": "GH3002",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "18": {
-        "id": "19",
-        "cef": "30003",
-        "fullname": "Ethan White",
-        "dateNaissance": "1998-08-14",
-        "cin": "GH3003",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "19": {
-        "id": "20",
-        "cef": "30004",
-        "fullname": "Emma Martinez",
-        "dateNaissance": "1998-09-25",
-        "cin": "GH3004",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "20": {
-        "id": "21",
-        "cef": "30005",
-        "fullname": "Lucas Smith",
-        "dateNaissance": "1997-10-10",
-        "cin": "GH4001",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "21": {
-        "id": "22",
-        "cef": "30006",
-        "fullname": "Emma Jones",
-        "dateNaissance": "1997-11-15",
-        "cin": "GH4002",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "22": {
-        "id": "23",
-        "cef": "30007",
-        "fullname": "Noah Brown",
-        "dateNaissance": "1997-12-20",
-        "cin": "GH4003",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "23": {
-        "id": "24",
-        "cef": "30008",
-        "fullname": "Sophia Green",
-        "dateNaissance": "1998-01-05",
-        "cin": "GH4004",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "id": "77d4"
-    },
-    {
-      "0": {
-        "id": "1",
-        "cef": "10001",
-        "fullname": "John Smith",
-        "dateNaissance": "2000-03-01",
-        "cin": "CS1001",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {
-          "November": 7
-        },
-        "totalANJ": 7,
-        "retards": 0,
-        "sanctionAssiduite": "1ere mise en garde",
-        "sanctionComportement": "blame",
-        "observationSA": "hhhhhhhhhhhhhhhhhhhhhhh",
-        "observationSC": "",
-        "disciplineNote": 11
-      },
-      "1": {
-        "id": "2",
-        "cef": "10002",
-        "fullname": "Alice Brown",
-        "dateNaissance": "2000-04-15",
-        "cin": "CS1002",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {
-          "November": 1
-        },
-        "totalANJ": 1,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "2": {
-        "id": "3",
-        "cef": "10003",
-        "fullname": "Bob Lee",
-        "dateNaissance": "2000-05-20",
-        "cin": "CS1003",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "3": {
-        "id": "4",
-        "cef": "10004",
-        "fullname": "Emma Davis",
-        "dateNaissance": "2000-06-10",
-        "cin": "CS1004",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "4": {
-        "id": "5",
-        "cef": "10005",
-        "fullname": "William Clark",
-        "dateNaissance": "1999-07-18",
-        "cin": "CS2001",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "5": {
-        "id": "6",
-        "cef": "10006",
-        "fullname": "Sophia Wilson",
-        "dateNaissance": "1999-08-22",
-        "cin": "CS2002",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "6": {
-        "id": "7",
-        "cef": "10007",
-        "fullname": "Henry Adams",
-        "dateNaissance": "1999-09-05",
-        "cin": "CS2003",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "7": {
-        "id": "8",
-        "cef": "10008",
-        "fullname": "Olivia Clark",
-        "dateNaissance": "1999-10-14",
-        "cin": "CS2004",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "8": {
-        "id": "9",
-        "cef": "20001",
-        "fullname": "Sophia Turner",
-        "dateNaissance": "1999-09-10",
-        "cin": "BIO2001",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {
-          "November": 1
-        },
-        "totalANJ": 1,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "9": {
-        "id": "10",
-        "cef": "20002",
-        "fullname": "Liam Walker",
-        "dateNaissance": "1999-10-05",
-        "cin": "BIO2002",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "10": {
-        "id": "11",
-        "cef": "20003",
-        "fullname": "Mason Hall",
-        "dateNaissance": "1999-11-12",
-        "cin": "BIO2003",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "11": {
-        "id": "12",
-        "cef": "20004",
-        "fullname": "Isabella Scott",
-        "dateNaissance": "1999-12-01",
-        "cin": "BIO2004",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "12": {
-        "id": "13",
-        "cef": "20005",
-        "fullname": "Charlotte Johnson",
-        "dateNaissance": "1998-01-10",
-        "cin": "BIO2005",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "13": {
-        "id": "14",
-        "cef": "20006",
-        "fullname": "Noah Davis",
-        "dateNaissance": "1998-02-20",
-        "cin": "BIO2006",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "14": {
-        "id": "15",
-        "cef": "20007",
-        "fullname": "Lucas Brown",
-        "dateNaissance": "1998-03-25",
-        "cin": "BIO2007",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "15": {
-        "id": "16",
-        "cef": "20008",
-        "fullname": "Emma White",
-        "dateNaissance": "1998-04-30",
-        "cin": "BIO2008",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "16": {
-        "id": "17",
-        "cef": "30001",
-        "fullname": "James Carter",
-        "dateNaissance": "1998-05-11",
-        "cin": "GH3001",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "17": {
-        "id": "18",
-        "cef": "30002",
-        "fullname": "Sophia Lopez",
-        "dateNaissance": "1998-07-20",
-        "cin": "GH3002",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "18": {
-        "id": "19",
-        "cef": "30003",
-        "fullname": "Ethan White",
-        "dateNaissance": "1998-08-14",
-        "cin": "GH3003",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "19": {
-        "id": "20",
-        "cef": "30004",
-        "fullname": "Emma Martinez",
-        "dateNaissance": "1998-09-25",
-        "cin": "GH3004",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "20": {
-        "id": "21",
-        "cef": "30005",
-        "fullname": "Lucas Smith",
-        "dateNaissance": "1997-10-10",
-        "cin": "GH4001",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "21": {
-        "id": "22",
-        "cef": "30006",
-        "fullname": "Emma Jones",
-        "dateNaissance": "1997-11-15",
-        "cin": "GH4002",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "22": {
-        "id": "23",
-        "cef": "30007",
-        "fullname": "Noah Brown",
-        "dateNaissance": "1997-12-20",
-        "cin": "GH4003",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "23": {
-        "id": "24",
-        "cef": "30008",
-        "fullname": "Sophia Green",
-        "dateNaissance": "1998-01-05",
-        "cin": "GH4004",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "id": "7863"
-    },
-    {
-      "0": {
-        "id": "1",
-        "cef": "10001",
-        "fullname": "John Smith",
-        "dateNaissance": "2000-03-01",
-        "cin": "CS1001",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {
-          "November": 7
-        },
-        "totalANJ": 7,
-        "retards": 0,
-        "sanctionAssiduite": "2eme mise en garde",
-        "sanctionComportement": "exclusion 2j",
-        "observationSA": "jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",
-        "observationSC": "",
-        "disciplineNote": 9
-      },
-      "1": {
-        "id": "2",
-        "cef": "10002",
-        "fullname": "Alice Brown",
-        "dateNaissance": "2000-04-15",
-        "cin": "CS1002",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {
-          "November": 1
-        },
-        "totalANJ": 1,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "2": {
-        "id": "3",
-        "cef": "10003",
-        "fullname": "Bob Lee",
-        "dateNaissance": "2000-05-20",
-        "cin": "CS1003",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "3": {
-        "id": "4",
-        "cef": "10004",
-        "fullname": "Emma Davis",
-        "dateNaissance": "2000-06-10",
-        "cin": "CS1004",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "4": {
-        "id": "5",
-        "cef": "10005",
-        "fullname": "William Clark",
-        "dateNaissance": "1999-07-18",
-        "cin": "CS2001",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "5": {
-        "id": "6",
-        "cef": "10006",
-        "fullname": "Sophia Wilson",
-        "dateNaissance": "1999-08-22",
-        "cin": "CS2002",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "6": {
-        "id": "7",
-        "cef": "10007",
-        "fullname": "Henry Adams",
-        "dateNaissance": "1999-09-05",
-        "cin": "CS2003",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "7": {
-        "id": "8",
-        "cef": "10008",
-        "fullname": "Olivia Clark",
-        "dateNaissance": "1999-10-14",
-        "cin": "CS2004",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Physics",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "8": {
-        "id": "9",
-        "cef": "20001",
-        "fullname": "Sophia Turner",
-        "dateNaissance": "1999-09-10",
-        "cin": "BIO2001",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {
-          "November": 1
-        },
-        "totalANJ": 1,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "9": {
-        "id": "10",
-        "cef": "20002",
-        "fullname": "Liam Walker",
-        "dateNaissance": "1999-10-05",
-        "cin": "BIO2002",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "10": {
-        "id": "11",
-        "cef": "20003",
-        "fullname": "Mason Hall",
-        "dateNaissance": "1999-11-12",
-        "cin": "BIO2003",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "11": {
-        "id": "12",
-        "cef": "20004",
-        "fullname": "Isabella Scott",
-        "dateNaissance": "1999-12-01",
-        "cin": "BIO2004",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "12": {
-        "id": "13",
-        "cef": "20005",
-        "fullname": "Charlotte Johnson",
-        "dateNaissance": "1998-01-10",
-        "cin": "BIO2005",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "13": {
-        "id": "14",
-        "cef": "20006",
-        "fullname": "Noah Davis",
-        "dateNaissance": "1998-02-20",
-        "cin": "BIO2006",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "14": {
-        "id": "15",
-        "cef": "20007",
-        "fullname": "Lucas Brown",
-        "dateNaissance": "1998-03-25",
-        "cin": "BIO2007",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "15": {
-        "id": "16",
-        "cef": "20008",
-        "fullname": "Emma White",
-        "dateNaissance": "1998-04-30",
-        "cin": "BIO2008",
-        "selected": false,
-        "niveau": "Specialisation",
-        "filiere": "Biology",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Sciences",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "16": {
-        "id": "17",
-        "cef": "30001",
-        "fullname": "James Carter",
-        "dateNaissance": "1998-05-11",
-        "cin": "GH3001",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "17": {
-        "id": "18",
-        "cef": "30002",
-        "fullname": "Sophia Lopez",
-        "dateNaissance": "1998-07-20",
-        "cin": "GH3002",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "1st Year",
-        "groupe": "Group 1",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "18": {
-        "id": "19",
-        "cef": "30003",
-        "fullname": "Ethan White",
-        "dateNaissance": "1998-08-14",
-        "cin": "GH3003",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "19": {
-        "id": "20",
-        "cef": "30004",
-        "fullname": "Emma Martinez",
-        "dateNaissance": "1998-09-25",
-        "cin": "GH3004",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "1st Year",
-        "groupe": "Group 2",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "20": {
-        "id": "21",
-        "cef": "30005",
-        "fullname": "Lucas Smith",
-        "dateNaissance": "1997-10-10",
-        "cin": "GH4001",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "21": {
-        "id": "22",
-        "cef": "30006",
-        "fullname": "Emma Jones",
-        "dateNaissance": "1997-11-15",
-        "cin": "GH4002",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "2nd Year",
-        "groupe": "Group 1",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "22": {
-        "id": "23",
-        "cef": "30007",
-        "fullname": "Noah Brown",
-        "dateNaissance": "1997-12-20",
-        "cin": "GH4003",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "23": {
-        "id": "24",
-        "cef": "30008",
-        "fullname": "Sophia Green",
-        "dateNaissance": "1998-01-05",
-        "cin": "GH4004",
-        "selected": false,
-        "niveau": "Qualifant",
-        "filiere": "Gestion Hôtelière",
-        "annee": "2nd Year",
-        "groupe": "Group 2",
-        "secteur": "Tourisme",
-        "aj": 0,
-        "anj": {},
-        "totalANJ": 0,
-        "retards": 0,
-        "sanctionAssiduite": "aucune",
-        "sanctionComportement": "aucune",
-        "observationSA": "",
-        "observationSC": "",
-        "disciplineNote": 15
-      },
-      "id": "d77b"
-    }
-  ],
+
   "courses": [
     {
       "id": "1",
@@ -6481,6 +3405,730 @@
         }
       ],
       "teacherName": "Carlos Martinez"
+    }
+  ],
+  "modules": [
+    {
+      "code": "M102_F01",
+      "intitule": "M102",
+      "masseHoraire": 50,
+      "filiere": "Développement Logiciel",
+      "niveau": "1A",
+      "competences": "Programmation en C, Structures de données",
+      "secteur": "Digital",
+      "formateur": "Sophie Bernard",
+      "id": "2",
+      "etat": "Affecté"
+    },
+    {
+      "id": "3",
+      "code": "M104_F01",
+      "intitule": "M104",
+      "masseHoraire": 70,
+      "filiere": "Base de Données",
+      "niveau": "1A",
+      "competences": "Bases de données SQL, Conception de schémas",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Michel Dubois"
+    },
+    {
+      "id": "4",
+      "code": "M104_F01",
+      "intitule": "M104",
+      "masseHoraire": 70,
+      "filiere": "Base de Données",
+      "niveau": "1A",
+      "competences": "Bases de données SQL, Conception de schémas",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Michel Dubois"
+    },
+    {
+      "id": "5",
+      "code": "M105_F01",
+      "intitule": "M105",
+      "masseHoraire": 90,
+      "filiere": "Développement Frontend",
+      "niveau": "1A",
+      "competences": "Programmation en JavaScript, DOM manipulation",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Clara Dupuis"
+    },
+    {
+      "id": "6",
+      "code": "M106_F01",
+      "intitule": "M106",
+      "masseHoraire": 100,
+      "filiere": "Développement Web",
+      "niveau": "1A",
+      "competences": "Introduction au web, HTML/CSS",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Nicolas Leroy"
+    },
+    {
+      "id": "7",
+      "code": "M107_F01",
+      "intitule": "M107",
+      "masseHoraire": 40,
+      "filiere": "Réseaux Informatiques",
+      "niveau": "1A",
+      "competences": "Réseaux de base, Modèle OSI",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Juliette Moreau"
+    },
+    {
+      "id": "8",
+      "code": "M108_F01",
+      "intitule": "M108",
+      "masseHoraire": 60,
+      "filiere": "Sécurité Informatique",
+      "niveau": "2A",
+      "competences": "Sécurité informatique, Cryptographie",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Vincent Lefevre"
+    },
+    {
+      "id": "9",
+      "code": "M109_F01",
+      "intitule": "M109",
+      "masseHoraire": 55,
+      "filiere": "Design UX/UI",
+      "niveau": "2A",
+      "competences": "Design UX/UI, Prototypage",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Emilie Martin"
+    },
+    {
+      "id": "10",
+      "code": "M110_F01",
+      "intitule": "M110",
+      "masseHoraire": 45,
+      "filiere": "Intelligence Artificielle",
+      "niveau": "2A",
+      "competences": "Introduction à l'intelligence artificielle",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Louis Petit"
+    },
+    {
+      "id": "11",
+      "code": "M111_F01",
+      "intitule": "M111",
+      "masseHoraire": 30,
+      "filiere": "Gestion de Projet",
+      "niveau": "2A",
+      "competences": "Gestion de projet, Méthodes agiles",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Claire Robert"
+    },
+    {
+      "id": "12",
+      "code": "M112_F01",
+      "intitule": "M112",
+      "masseHoraire": 65,
+      "filiere": "Systèmes Embarqués",
+      "niveau": "2A",
+      "competences": "Systèmes embarqués, Microcontrôleurs",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Hugo Durand"
+    },
+    {
+      "id": "13",
+      "code": "M113_F01",
+      "intitule": "M113",
+      "masseHoraire": 75,
+      "filiere": "Développement Python",
+      "niveau": "2A",
+      "competences": "Programmation en Python, Scripts automatiques",
+      "etat": "Affecté",
+      "secteur": "Digital",
+      "formateur": "Camille Lefevre"
+    },
+    {
+      "id": "14",
+      "code": "M114_F01",
+      "intitule": "M114",
+      "masseHoraire": 80,
+      "filiere": "Mathématiques Appliquées",
+      "niveau": "2A",
+      "competences": "Calculs avancés, Mathématiques appliquées",
+      "etat": "Non affecté",
+      "secteur": "",
+      "formateur": ""
+    },
+    {
+      "code": "M115_F01",
+      "intitule": "M115",
+      "masseHoraire": 95,
+      "filiere": "Finance",
+      "niveau": "1A",
+      "competences": "Architecture des ordinateurs, Organisation mémoire",
+      "secteur": "Finance",
+      "formateur": "Alex Martin",
+      "id": "15",
+      "etat": "Affecté"
+    },
+    {
+      "id": "16",
+      "code": "M115_F02",
+      "intitule": "M115",
+      "masseHoraire": 100,
+      "filiere": "Gestion Financière",
+      "niveau": "1A",
+      "competences": "Introduction à la gestion financière",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Marc Durand"
+    },
+    {
+      "id": "17",
+      "code": "M115_F03",
+      "intitule": "M115",
+      "masseHoraire": 90,
+      "filiere": "Analyse Financière",
+      "niveau": "1A",
+      "competences": "Analyse financière de base, Prévisions financières",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Claire Martin"
+    },
+    {
+      "id": "21",
+      "code": "M115_F07",
+      "intitule": "M115",
+      "masseHoraire": 105,
+      "filiere": "Investissement",
+      "niveau": "1A",
+      "competences": "Investissements immobiliers",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Luc Bernard"
+    },
+    {
+      "id": "22",
+      "code": "M115_F08",
+      "intitule": "M115",
+      "masseHoraire": 95,
+      "filiere": "Gestion de Trésorerie",
+      "niveau": "1A",
+      "competences": "Planification financière",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Nathalie Moreau"
+    },
+    {
+      "id": "23",
+      "code": "M115_F09",
+      "intitule": "M115",
+      "masseHoraire": 100,
+      "filiere": "Évaluation d'Entreprise",
+      "niveau": "2A",
+      "competences": "Évaluation des entreprises, Analyse des investissements",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Pierre Lefevre"
+    },
+    {
+      "id": "24",
+      "code": "M115_F10",
+      "intitule": "M115",
+      "masseHoraire": 90,
+      "filiere": "Finance Internationale",
+      "niveau": "1A",
+      "competences": "Financement international, Stratégies de diversification",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Sophie Petit"
+    },
+    {
+      "id": "27",
+      "code": "M115_F13",
+      "intitule": "M115",
+      "masseHoraire": 115,
+      "filiere": "Modélisation Financière",
+      "niveau": "1A",
+      "competences": "Modélisation financière avancée",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Thomas Leroy"
+    },
+    {
+      "id": "28",
+      "code": "M115_F14",
+      "intitule": "M115",
+      "masseHoraire": 120,
+      "filiere": "Analyse de Risques",
+      "niveau": "1A",
+      "competences": "Évaluation des actifs, Analyse quantitative des risques",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Julie Richard"
+    },
+    {
+      "id": "29",
+      "code": "M115_F15",
+      "intitule": "M115",
+      "masseHoraire": 130,
+      "filiere": "Stratégies de Financement",
+      "niveau": "2A",
+      "competences": "Gestion des fusions et acquisitions",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Gabriel Morel"
+    },
+    {
+      "id": "32",
+      "code": "M115_F18",
+      "intitule": "M115",
+      "masseHoraire": 115,
+      "filiere": "Analyse Financière Internationale",
+      "niveau": "2A",
+      "competences": "Analyse financière internationale, Marchés émergents",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Amélie Dupuis"
+    },
+    {
+      "id": "33",
+      "code": "M115_F19",
+      "intitule": "M115",
+      "masseHoraire": 120,
+      "filiere": "Gestion des Risques",
+      "niveau": "2A",
+      "competences": "Gestion des risques systémiques",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Olivier Durand"
+    },
+    {
+      "id": "34",
+      "code": "M115_F20",
+      "intitule": "M115",
+      "masseHoraire": 125,
+      "filiere": "Marchés Financiers",
+      "niveau": "2A",
+      "competences": "Analyse des marchés financiers",
+      "etat": "Affecté",
+      "secteur": "Finance",
+      "formateur": "Laura Martel"
+    },
+    {
+      "id": "36",
+      "code": "M117_F20",
+      "intitule": "M117",
+      "masseHoraire": 135,
+      "filiere": "Marketing Digital",
+      "niveau": "1A",
+      "competences": "Gest Comportement du consommateur",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Jean Dupont"
+    },
+    {
+      "id": "37",
+      "code": "M118_F20",
+      "intitule": "M118",
+      "masseHoraire": 140,
+      "filiere": "Marketing Stratégique",
+      "niveau": "1A",
+      "competences": "Marketing de contenu, SEO et SEM",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Jean Dupont"
+    },
+    {
+      "id": "38",
+      "code": "M119_F20",
+      "intitule": "M119",
+      "masseHoraire": 145,
+      "filiere": "Marketing de Produits",
+      "niveau": "1A",
+      "competences": "Publicité en ligne, Analyse des données marketing",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Jean Dupont"
+    },
+    {
+      "id": "39",
+      "code": "M120_F20",
+      "intitule": "M120",
+      "masseHoraire": 150,
+      "filiere": "Marketing International",
+      "niveau": "1A",
+      "competences": "Analyse des données marketing, Gestion de la marque",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Jean Dupont"
+    },
+    {
+      "id": "40",
+      "code": "M121_F20",
+      "intitule": "M121",
+      "masseHoraire": 155,
+      "filiere": "Marketing de Services",
+      "niveau": "1A",
+      "competences": "Analyse des données marketing, Gestion de la marque",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Clara Dupuis"
+    },
+    {
+      "id": "41",
+      "code": "M122_F20",
+      "intitule": "M122",
+      "masseHoraire": 160,
+      "filiere": "Marketing de Produits",
+      "niveau": "1A",
+      "competences": "Analyse des marchés financiers, Stratégies de fidélisation",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Clara Dupuis"
+    },
+    {
+      "id": "42",
+      "code": "M123_F20",
+      "intitule": "M123",
+      "masseHoraire": 165,
+      "filiere": "Marketing Digital",
+      "niveau": "1A",
+      "competences": "Branding, Gest Comportement du consommateur",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Clara Dupuis"
+    },
+    {
+      "id": "43",
+      "code": "M124_F20",
+      "intitule": "M124",
+      "masseHoraire": 170,
+      "filiere": "Marketing International",
+      "niveau": "2A",
+      "competences": "SEO et SEM, Analyse des données marketing",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Jean Dupont"
+    },
+    {
+      "id": "44",
+      "code": "M125_F20",
+      "intitule": "M125",
+      "masseHoraire": 175,
+      "filiere": "Marketing Stratégique",
+      "niveau": "2A",
+      "competences": "Marketing relationnel, Stratégies de fidélisation",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Clara Dupuis"
+    },
+    {
+      "id": "45",
+      "code": "M126_F20",
+      "intitule": "M126",
+      "masseHoraire": 180,
+      "filiere": "Marketing Digital",
+      "niveau": "2A",
+      "competences": "Analyse des marchés financier, Marketing relationnel",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Jean Dupont"
+    },
+    {
+      "id": "46",
+      "code": "M127_F20",
+      "intitule": "M127",
+      "masseHoraire": 185,
+      "filiere": "Marketing de Produits",
+      "niveau": "2A",
+      "competences": "Comportement du consommateur, Marketing de contenu",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Jean Dupont"
+    },
+    {
+      "id": "47",
+      "code": "M128_F20",
+      "intitule": "M128",
+      "masseHoraire": 190,
+      "filiere": "Marketing International",
+      "niveau": "2A",
+      "competences": "Publicité traditionnelle, Études de marché",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Pierre Lefevre"
+    },
+    {
+      "id": "48",
+      "code": "M129_F20",
+      "intitule": "M129",
+      "masseHoraire": 195,
+      "filiere": "Marketing de Services",
+      "niveau": "2A",
+      "competences": "Stratégies de fidélisation, Marketing d'influence",
+      "etat": "Affecté",
+      "secteur": "Marketing",
+      "formateur": "Pierre Lefevre"
+    },
+    {
+      "id": "49",
+      "code": "M102_A10",
+      "intitule": "102",
+      "masseHoraire": "120",
+      "filiere": "Technologie des aliments",
+      "niveau": "1A",
+      "competences": "Gestion de la production alimentaire",
+      "secteur": "Agro-ali",
+      "formateur": "Emilie Martin",
+      "etat": "Affecté"
+    },
+    {
+      "id": "50",
+      "code": "M103_A11",
+      "intitule": "103",
+      "masseHoraire": "100",
+      "filiere": "Transformation alimentaire",
+      "niveau": "1A",
+      "competences": "Transformation des produits alimentaires",
+      "secteur": "Agro-ali",
+      "formateur": "Léa Dupont",
+      "etat": "Affecté"
+    },
+    {
+      "id": "51",
+      "code": "M104_A12",
+      "intitule": "104",
+      "masseHoraire": "110",
+      "filiere": "Gestion de la production alimentaire",
+      "niveau": "1A",
+      "competences": "Optimisation des processus, Contrôle de qualité",
+      "secteur": "Agro-ali",
+      "formateur": "Marc Robert",
+      "etat": "Affecté"
+    },
+    {
+      "id": "52",
+      "code": "M105_A13",
+      "intitule": "105",
+      "masseHoraire": "130",
+      "filiere": "Contrôle qualité alimentaire",
+      "niveau": "1A",
+      "competences": "Contrôle qualité, Sécurité alimentaire",
+      "secteur": "Agro-ali",
+      "formateur": "Sophie Dufresne",
+      "etat": "Affecté"
+    },
+    {
+      "id": "53",
+      "code": "M106_A14",
+      "intitule": "106",
+      "masseHoraire": "140",
+      "filiere": "Nutrition et diététique",
+      "niveau": "1A",
+      "competences": "Nutrition, Diététique, Équilibre alimentaire",
+      "secteur": "Agro-ali",
+      "formateur": "Chantal Durand",
+      "etat": "Affecté"
+    },
+    {
+      "id": "54",
+      "code": "M107_A15",
+      "intitule": "107",
+      "masseHoraire": "120",
+      "filiere": "Sécurité alimentaire",
+      "niveau": "1A",
+      "competences": "Réglementation sur la sécurité alimentaire",
+      "secteur": "Agro-ali",
+      "formateur": "Thomas Lefevre",
+      "etat": "Affecté"
+    },
+    {
+      "id": "55",
+      "code": "M108_A16",
+      "intitule": "108",
+      "masseHoraire": "110",
+      "filiere": "Agronomie et production agricole",
+      "niveau": "1A",
+      "competences": "Production agricole, Techniques agricoles",
+      "secteur": "Agro-ali",
+      "formateur": "Pierre Lefevre",
+      "etat": "Affecté"
+    },
+    {
+      "id": "56",
+      "code": "M109_A17",
+      "intitule": "109",
+      "masseHoraire": "115",
+      "filiere": "Logistique et chaîne du froid",
+      "niveau": "1A",
+      "competences": "Distribution des produits alimentaires",
+      "secteur": "Agro-ali",
+      "formateur": "Elise Moreau",
+      "etat": "Affecté"
+    },
+    {
+      "id": "57",
+      "code": "M110_A18",
+      "intitule": "110",
+      "masseHoraire": "125",
+      "filiere": "Marketing Agro-ali",
+      "niveau": "1A",
+      "competences": "Stratégies de marketing, Communication Agro-ali",
+      "secteur": "Agro-ali",
+      "formateur": "Jean-Paul Lemoine",
+      "etat": "Affecté"
+    },
+    {
+      "id": "58",
+      "code": "M111_A19",
+      "intitule": "111",
+      "masseHoraire": "135",
+      "filiere": "Biotechnologies alimentaires",
+      "niveau": "1A",
+      "competences": "Innovation dans l'Agro-ali",
+      "secteur": "Agro-ali",
+      "formateur": "Laurent Boucher",
+      "etat": "Affecté"
+    },
+    {
+      "id": "59",
+      "code": "M201_A20",
+      "intitule": "201",
+      "masseHoraire": "130",
+      "filiere": "Technologie des aliments",
+      "niveau": "2A",
+      "competences": "Techniques avancées de transformation",
+      "secteur": "Agro-ali",
+      "formateur": "Emilie Martin",
+      "etat": "Affecté"
+    },
+    {
+      "id": "60",
+      "code": "M202_A21",
+      "intitule": "202",
+      "masseHoraire": "120",
+      "filiere": "Transformation alimentaire",
+      "niveau": "2A",
+      "competences": "Procédés de transformation, Conservation des aliments",
+      "secteur": "Agro-ali",
+      "formateur": "Léa Dupont",
+      "etat": "Affecté"
+    },
+    {
+      "id": "61",
+      "code": "M203_A22",
+      "intitule": "203",
+      "masseHoraire": "115",
+      "filiere": "Gestion de la production alimentaire",
+      "niveau": "2A",
+      "competences": "Planification de la production, Gestion des ressources",
+      "secteur": "Agro-ali",
+      "formateur": "Marc Robert",
+      "etat": "Affecté"
+    },
+    {
+      "id": "62",
+      "code": "M204_A23",
+      "intitule": "204",
+      "masseHoraire": "125",
+      "filiere": "Contrôle qualité alimentaire",
+      "niveau": "2A",
+      "competences": "Normes HACCP, Sécurité alimentaire",
+      "secteur": "Agro-ali",
+      "formateur": "Sophie Dufresne",
+      "etat": "Affecté"
+    },
+    {
+      "id": "63",
+      "code": "M205_A24",
+      "intitule": "205",
+      "masseHoraire": "135",
+      "filiere": "Nutrition et diététique",
+      "niveau": "2A",
+      "competences": "Nutrition clinique, Régimes alimentaires",
+      "secteur": "Agro-ali",
+      "formateur": "Chantal Durand",
+      "etat": "Affecté"
+    },
+    {
+      "id": "64",
+      "code": "M206_A25",
+      "intitule": "206",
+      "masseHoraire": "140",
+      "filiere": "Sécurité alimentaire",
+      "niveau": "2A",
+      "competences": "Analyse des risques, Législation en sécurité alimentaire",
+      "secteur": "Agro-ali",
+      "formateur": "Thomas Lefevre",
+      "etat": "Affecté"
+    },
+    {
+      "id": "65",
+      "code": "M207_A26",
+      "intitule": "207",
+      "masseHoraire": "110",
+      "filiere": "Agronomie et production agricole",
+      "niveau": "2A",
+      "competences": "Agriculture durable,Techniques de culture avancées",
+      "secteur": "Agro-ali",
+      "formateur": "Pierre Lefevre",
+      "etat": "Affecté"
+    },
+    {
+      "id": "66",
+      "code": "M208_A27",
+      "intitule": "208",
+      "masseHoraire": "120",
+      "filiere": "Logistique et chaîne du froid",
+      "niveau": "2A",
+      "competences": "Gestion logistique avancée, Chaîne du froid internationale",
+      "secteur": "Agro-ali",
+      "formateur": "Elise Moreau",
+      "etat": "Affecté"
+    },
+    {
+      "id": "67",
+      "code": "M209_A28",
+      "intitule": "209",
+      "masseHoraire": "125",
+      "filiere": "Marketing Agro-ali",
+      "niveau": "2A",
+      "competences": "Stratégies de vente, Marketing de produits Agro-alis",
+      "secteur": "Agro-ali",
+      "formateur": "Jean-Paul Lemoine",
+      "etat": "Affecté"
+    },
+    {
+      "id": "68",
+      "code": "M210_A29",
+      "intitule": "210",
+      "masseHoraire": "130",
+      "filiere": "Biotechnologies alimentaires",
+      "niveau": "2A",
+      "competences": "Biotechnologie de la fermentation, Probiotiques",
+      "secteur": "Agro-ali",
+      "formateur": "Laurent Boucher",
+      "etat": "Affecté"
+    },
+    {
+      "id": "69",
+      "code": "",
+      "intitule": "",
+      "masseHoraire": "",
+      "filiere": "",
+      "niveau": "",
+      "competences": [
+        ""
+      ],
+      "secteur": "",
+      "formateur": "",
+      "etat": "Non Affecté"
     }
   ],
   "modules": [
@@ -7576,6 +5224,580 @@
       "status": "en cours",
       "submissionDate": "03/12/2024",
       "processingTime": "3-5 jours"
+    }
+  ],
+  "trainees": [
+    {
+      "cef": "100780",
+      "nom": "najat",
+      "prenom": "Hassan",
+      "email": "fatima.hassan@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Infrastructures Digitale ",
+      "groupe": "G101",
+      "id": "3ff4"
+    },
+    {
+      "cef": "100010",
+      "nom": "Nadia",
+      "prenom": "Jamal",
+      "email": "nadia.jamal@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Infrastructures Digitale ",
+      "groupe": "G101",
+      "id": "b37a"
+    },
+    {
+      "cef": "352555",
+      "nom": "Sara",
+      "prenom": "Mohammed",
+      "email": "sara@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Infrastructures Digitale ",
+      "groupe": "G102",
+      "id": "c6ec"
+    },
+    {
+      "cef": "235466",
+      "nom": "Sara",
+      "prenom": "amine",
+      "email": "sara@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Infrastructures Digitale ",
+      "groupe": "G102",
+      "id": "882b"
+    },
+    {
+      "cef": "646745",
+      "nom": "Youssef",
+      "prenom": "Salem",
+      "email": "youssef@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Développement Digital",
+      "groupe": "G101",
+      "id": "e109"
+    },
+    {
+      "cef": "100006",
+      "nom": "Khadija",
+      "prenom": "Imad",
+      "email": "khadija@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Développement Digital",
+      "groupe": "G101",
+      "id": "a0fd"
+    },
+    {
+      "cef": "865435",
+      "nom": "Omar",
+      "prenom": "Ayman",
+      "email": "omar@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Développement Digital",
+      "groupe": "G101",
+      "id": "0de6"
+    },
+    {
+      "cef": "565689",
+      "nom": "Ibrahim",
+      "prenom": "Zine El Abidine",
+      "email": "ibrahim@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Développement Digital",
+      "groupe": "G102",
+      "id": "24ac"
+    },
+    {
+      "cef": "634324",
+      "nom": "Mariam",
+      "prenom": "Karim",
+      "email": "mariam@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Développement Digital",
+      "groupe": "G102",
+      "id": "3536"
+    },
+    {
+      "cef": "456788",
+      "nom": "Imane",
+      "prenom": "Reda",
+      "email": "iman@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Bâtiment",
+      "groupe": "G101",
+      "id": "e8cc"
+    },
+    {
+      "cef": "768454",
+      "nom": "Leila",
+      "prenom": "Sami",
+      "email": "leila.sami@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Bâtiment",
+      "groupe": "G101",
+      "id": "9167"
+    },
+    {
+      "cef": "100002",
+      "nom": "Yassir",
+      "prenom": "Mounir",
+      "email": "yassir.mounir@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Bâtiment",
+      "groupe": "G101",
+      "id": "d667"
+    },
+    {
+      "cef": "54634",
+      "nom": "Kenza",
+      "prenom": "Amine",
+      "email": "kenza.amine@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Bâtiment",
+      "groupe": "G101",
+      "id": "97b5"
+    },
+    {
+      "cef": "4680876",
+      "nom": "Hassan",
+      "prenom": "Nadia",
+      "email": "hassan.nadia@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Bâtiment",
+      "groupe": "G102",
+      "id": "4d8c"
+    },
+    {
+      "cef": "4533456",
+      "nom": "Salim",
+      "prenom": "Lina",
+      "email": "salim.lina@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Bâtiment",
+      "groupe": "G102",
+      "id": "f5d8"
+    },
+    {
+      "cef": "345366",
+      "nom": "Hassan",
+      "prenom": "Nadia",
+      "email": "hassan.nadia@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Bâtiment",
+      "groupe": "G102",
+      "id": "7281"
+    },
+    {
+      "cef": "3445667",
+      "nom": "Salim",
+      "prenom": "Lina",
+      "email": "salim.lina@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Bâtiment",
+      "groupe": "G102",
+      "id": "2f25"
+    },
+    {
+      "cef": "3444789",
+      "nom": "Hassan",
+      "prenom": "Nadia",
+      "email": "hassan.nadia@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Bâtiment",
+      "groupe": "G102",
+      "id": "eadb"
+    },
+    {
+      "cef": "68754",
+      "nom": "Salim",
+      "prenom": "Lina",
+      "email": "salim.lina@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Bâtiment",
+      "groupe": "G102",
+      "id": "b36d"
+    },
+    {
+      "cef": "345678",
+      "nom": "Maya",
+      "prenom": "Farid",
+      "email": "maya.farid@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Commerce",
+      "groupe": "G101",
+      "id": "0eff"
+    },
+    {
+      "cef": "100007",
+      "nom": "Imane",
+      "prenom": "Tariq",
+      "email": "imane.tariq@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Commerce",
+      "groupe": "G101",
+      "id": "0629"
+    },
+    {
+      "cef": "98780",
+      "nom": "Rania",
+      "prenom": "Adil",
+      "email": "rania.adil@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Commerce",
+      "groupe": "G101",
+      "id": "a1a8"
+    },
+    {
+      "cef": "4557688",
+      "nom": "Youssef",
+      "prenom": "Salwa",
+      "email": "youssef.salwa@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Commerce",
+      "groupe": "G101",
+      "id": "3dda"
+    },
+    {
+      "cef": "345679",
+      "nom": "Nour",
+      "prenom": "Ali",
+      "email": "nour.ali@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Commerce",
+      "groupe": "G102",
+      "id": "d254"
+    },
+    {
+      "cef": "234567",
+      "nom": "Nour",
+      "prenom": "Ali",
+      "email": "nour.ali@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Commerce",
+      "groupe": "G102",
+      "id": "8424"
+    },
+    {
+      "cef": "34567",
+      "nom": "Nour",
+      "prenom": "Ali",
+      "email": "nour.ali@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Commerce",
+      "groupe": "G102",
+      "id": "009d"
+    },
+    {
+      "cef": "344657",
+      "nom": "Nour",
+      "prenom": "Ali",
+      "email": "nour.ali@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Commerce",
+      "groupe": "G102",
+      "id": "5081"
+    },
+    {
+      "cef": "64533",
+      "nom": "Nour",
+      "prenom": "Ali",
+      "email": "nour.ali@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Commerce",
+      "groupe": "G102",
+      "id": "4599"
+    },
+    {
+      "cef": "6575434",
+      "nom": "Sofia",
+      "prenom": "Zohra",
+      "email": "sofia.zohra@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Finance",
+      "groupe": "G101",
+      "id": "80f1"
+    },
+    {
+      "cef": "2344535",
+      "nom": "Sofia",
+      "prenom": "Zohra",
+      "email": "sofia.zohra@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Finance",
+      "groupe": "G101",
+      "id": "82f6"
+    },
+    {
+      "cef": "3456589",
+      "nom": "Sofia",
+      "prenom": "Zohra",
+      "email": "sofia.zohra@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Finance",
+      "groupe": "G101",
+      "id": "00c4"
+    },
+    {
+      "cef": "454657",
+      "nom": "Sofia",
+      "prenom": "Zohra",
+      "email": "sofia.zohra@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Finance",
+      "groupe": "G101",
+      "id": "3215"
+    },
+    {
+      "cef": "235665",
+      "nom": "Sofia",
+      "prenom": "Zohra",
+      "email": "sofia.zohra@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Finance",
+      "groupe": "G102",
+      "id": "2674"
+    },
+    {
+      "cef": "7645645",
+      "nom": "Sofia",
+      "prenom": "Zohra",
+      "email": "sofia.zohra@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Finance",
+      "groupe": "G102",
+      "id": "e92b"
+    },
+    {
+      "cef": "234535",
+      "nom": "Sofia",
+      "prenom": "Zohra",
+      "email": "sofia.zohra@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Finance",
+      "groupe": "G102",
+      "id": "1e5a"
+    },
+    {
+      "cef": "445678",
+      "nom": "Sofia",
+      "prenom": "Zohra",
+      "email": "sofia.zohra@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Finance",
+      "groupe": "G102",
+      "id": "edec"
+    },
+    {
+      "cef": "6456457",
+      "nom": "Amine",
+      "prenom": "Karim",
+      "email": "amine.karim@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Comptabilité",
+      "groupe": "G101",
+      "id": "8e17"
+    },
+    {
+      "cef": "54634",
+      "nom": "Lina",
+      "prenom": "Yasmine",
+      "email": "lina.yasmine@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Comptabilité",
+      "groupe": "G101",
+      "id": "7b10"
+    },
+    {
+      "cef": "6576879",
+      "nom": "Khalil",
+      "prenom": "Ranya",
+      "email": "khalil.ranya@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Comptabilité",
+      "groupe": "G101",
+      "id": "dab9"
+    },
+    {
+      "cef": "100005",
+      "nom": "Samira",
+      "prenom": "Omar",
+      "email": "samira.omar@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Comptabilité",
+      "groupe": "G101",
+      "id": "278f"
+    },
+    {
+      "cef": "4567890",
+      "nom": "Nabil",
+      "prenom": "Rima",
+      "email": "nabil.rima@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Comptabilité",
+      "groupe": "G101",
+      "id": "1c85"
+    },
+    {
+      "cef": "100007",
+      "nom": "Zaynab",
+      "prenom": "Ali",
+      "email": "zaynab.ali@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Comptabilité",
+      "groupe": "G102",
+      "id": "30ec"
+    },
+    {
+      "cef": "8967876",
+      "nom": "Anwar",
+      "prenom": "Siham",
+      "email": "anwar.siham@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Comptabilité",
+      "groupe": "G102",
+      "id": "fa64"
+    },
+    {
+      "cef": "233556",
+      "nom": "Fatima",
+      "prenom": "Hassan",
+      "email": "fatima.hassan@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Comptabilité",
+      "groupe": "G102",
+      "id": "41fa"
+    },
+    {
+      "cef": "455678",
+      "nom": "Nadia",
+      "prenom": "Jamal",
+      "email": "nadia.jamal@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Comptabilité",
+      "groupe": "G102",
+      "id": "c412"
+    },
+    {
+      "id": "e366",
+      "cef": "1111111",
+      "nom": "gtgt",
+      "prenom": "gtgt",
+      "email": "gtgt@gmail.com",
+      "annee": "1A",
+      "niveau": "T",
+      "filiere": "Développement Digital",
+      "groupe": "G102"
+    },
+    {
+      "id": "2763",
+      "cef": "123456789",
+      "nom": "Dupont",
+      "prenom": "Jean",
+      "email": "jean.dupont@example.com",
+      "annee": "2A",
+      "niveau": "T",
+      "filiere": "Développement Digital",
+      "groupe": "G101"
+    },
+    {
+      "id": "35af",
+      "cef": "456789123",
+      "nom": "Durand",
+      "prenom": "Marc",
+      "email": "marc.durand@example.com",
+      "annee": "2A",
+      "niveau": "TS",
+      "filiere": "Bâtiment",
+      "groupe": "G101"
+    },
+    {
+      "id": "3897",
+      "cef": "789123456",
+      "nom": "Lopez",
+      "prenom": "Emma",
+      "email": "emma.lopez@example.com",
+      "annee": "2A",
+      "niveau": "TS",
+      "filiere": "Commerce",
+      "groupe": "G102"
+    },
+    {
+      "id": "f16e",
+      "cef": "654321987",
+      "nom": "Pierre",
+      "prenom": "Sophie",
+      "email": "sophie.pierre@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Finance",
+      "groupe": "G101"
+    },
+    {
+      "id": "d82d",
+      "cef": "321987654",
+      "nom": "Robert",
+      "prenom": "Lucie",
+      "email": "lucie.robert@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Comptabilité",
+      "groupe": "G102"
+    },
+    {
+      "id": "68b0",
+      "cef": "456680",
+      "nom": "abouzakaria",
+      "prenom": "yassmine",
+      "email": "yassmineabouzakaria@gmail.com",
+      "annee": "2A",
+      "niveau": "TS",
+      "filiere": "Développement Digital",
+      "groupe": "G101"
     }
   ],
   "trainees": [
