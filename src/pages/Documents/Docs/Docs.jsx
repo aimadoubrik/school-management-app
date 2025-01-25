@@ -5,11 +5,12 @@ import {
     FileBadge, FileType2, Scale, Users, User, Printer
 } from 'lucide-react';
 import Convocation from "./TemplatesDocs/Convocation";
-import RetraitBacProvisoire from "./TemplatesDocs/RetraitBacProvisoire";
+import MiseEnGardeForm from "./TemplatesDocs/MiseEnGarde";
 import ReprimandNotice from "./TemplatesDocs/ReprimandNotice";
-import BacWithdrawalNotice from "./TemplatesDocs/BacWithdrawalNotice";
+import BacWithdrawalNotice from "./TemplatesDocs/RetraitBacProvisoire";
 import WarningNotice from "./TemplatesDocs/WarningNotice";
 import FormInput from "./FormInput";
+import RetraitBacDéfinitif from "./TemplatesDocs/RetraitBacDéfinitif";
 
 import DocumentCard from "./DocumentCard";
 
@@ -22,31 +23,31 @@ const DOCUMENT_TYPES = [
         theme: "primary"
     },
     {
-        type: "retrait-bac",
+        type: "mise-en-garde",
         icon: Award,
-        label: "Retrait Bac Provisoire",
-        component: RetraitBacProvisoire,
+        label: "Mise en Garde",
+        component: MiseEnGardeForm,
         theme: "secondary"
     },
     {
         type: "rebuke",
         icon: AlertTriangle,
-        label: "Reprimand Notice",
+        label: "Avis de Réprimande & Avertissement",
         components: { ReprimandNotice, WarningNotice },
         theme: "warning"
     },
     {
-        type: "bac-withdrawal",
+        type: "bac-withdrawal-temprory",
         icon: FileBadge,
-        label: "Bac Withdrawal Notice",
+        label: "Retrait Bac Provisoire",
         component: BacWithdrawalNotice,
         theme: "error"
     },
     {
-        type: "WarningNotice",
-        icon: Scale,
-        label: "Warning Notice",
-        component: WarningNotice,
+        type: "bac-withdrawal-definitive",
+        icon: GraduationCap,
+        label: "Retrait Bac Definitif",
+        component: RetraitBacDéfinitif,
         theme: "info"
     }
 ];
@@ -56,8 +57,16 @@ const DOCUMENT_TYPES = [
 const Docs = () => {
     const [form, setForm] = useState({
         name: "",
+        filiere: "",
         group: "",
         date: "",
+        birthdate: "",
+        level : [
+            "TS", "T" , "S"
+        ],
+        year : [
+            "1A", "2A", "3A"
+        ],
         type: "convocation",
         reason: [],
         resen1: "",
@@ -72,18 +81,20 @@ const Docs = () => {
     const [groupes, setGroupes] = useState([]);
     const printRef = useRef(null);
     const [error, setError] = useState("")
+    const [stagiaires, setStagiaires] = useState([]);
+
+    const fetchStagiaires = async () => {
+        try {
+            const response = await fetch("http://localhost:3000/stagiaires");
+            const data = await response.json();
+            setStagiaires(data || []);
+        } catch (error) {
+            console.error("Failed to fetch stagiaires:", error);
+        }
+    };
 
     useEffect(() => {
-        const fetchGroups = async () => {
-            try {
-                const response = await fetch("http://localhost:3000/groups");
-                const data = await response.json();
-                setGroupes(data || []);
-            } catch (error) {
-                console.error("Failed to fetch groups:", error);
-            }
-        };
-        fetchGroups();
+        fetchStagiaires();
     }, []);
 
     const validateForm = () => {
@@ -119,6 +130,7 @@ const Docs = () => {
             padding: 0;
             height: 100%;
             box-sizing: border-box;
+            position: relative; // Ensure z-index works
         `;
 
         let documentProps = {
@@ -150,6 +162,7 @@ const Docs = () => {
 
         // Store original styles
         const originalDisplay = document.querySelector(".navbar")?.style.display;
+        const originalSidebarDisplay = document.querySelector(".sidebar")?.style.display;
         const originalOverflow = document.body.style.overflow;
 
         // Create print container with specific print styles
@@ -162,6 +175,7 @@ const Docs = () => {
             width: 100%;
             margin: 0;
             padding: 0;
+            z-index: 1000; // Ensure it's on top
         `;
 
         // Add print-specific styles to the document
@@ -186,10 +200,19 @@ const Docs = () => {
                     box-sizing: border-box;
                     page-break-after: always;
                     page-break-inside: avoid;
+                    position: relative; // Ensure z-index works
                 }
                 
                 .print-container {
                     width: 100%;
+                }
+    
+                .navbar, .sidebar {
+                    display: none !important; // Hide navbar and sidebar
+                }
+    
+                .print-page * {
+                    z-index: 1000; // Ensure all elements inside print-page are on top
                 }
             }
         `;
@@ -231,9 +254,11 @@ const Docs = () => {
                 printContainer.appendChild(container);
             }
 
-            // Hide navbar and set body overflow
+            // Hide navbar and sidebar, set body overflow
             const navbar = document.querySelector(".navbar");
             if (navbar) navbar.style.display = "none";
+            const sidebar = document.querySelector(".sidebar");
+            if (sidebar) sidebar.style.display = "none";
             document.body.style.overflow = "visible";
 
             window.print();
@@ -244,17 +269,23 @@ const Docs = () => {
             // Cleanup
             const navbar = document.querySelector(".navbar");
             if (navbar) navbar.style.display = originalDisplay;
+            const sidebar = document.querySelector(".sidebar");
+            if (sidebar) sidebar.style.display = originalSidebarDisplay;
             document.body.style.overflow = originalOverflow;
             document.body.removeChild(printContainer);
             document.head.removeChild(styleSheet);
         }
     };
 
+    const uniqueCodeDiplomes = [...new Set(stagiaires.map(stagiaire => stagiaire.CodeDiplome))];
+    const uniqueLibelleLongs = [...new Set(stagiaires.map(stagiaire => stagiaire.LibelleLong))];
+
+
     const renderDocumentForm = () => (
         <div className="form-control w-full gap-4">
             {!isParGroupSelected && (
                 <FormInput
-                    label="Nom"
+                    label="Nom et prenom"
                     name="name"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -263,17 +294,44 @@ const Docs = () => {
             )}
 
             <div className="form-control">
-                <label className="label">
-                    <span className="label-text">Groupe</span>
+                <label className="text-lg font-semibold text-gray-400">
+                    Filiere
                 </label>
                 <select
-                    className="select select-bordered w-full"
+                    className="w-full select select-bordered"
+                    value={form.filiere}
+                    onChange={(e) => setForm({ ...form, filiere: e.target.value })}
+                    required
+                >
+                    <option value="" disabled>
+                        Choisir un Filiere...
+                    </option>
+                    {uniqueLibelleLongs.map((liblelle, index) => (
+                        <option key={index} value={liblelle}>
+                            {liblelle}
+                        </option>
+                    ))}
+                </select>
+            </div>
+
+
+            <div className="form-control">
+                <label className="text-lg font-semibold text-gray-400">
+                    Groupe
+                </label>
+                <select
+                    className="w-full select select-bordered"
                     value={form.group}
                     onChange={(e) => setForm({ ...form, group: e.target.value })}
+                    required
                 >
-                    <option value="">Sélectionnez un groupe</option>
-                    {groupes.map(({ id, niveau }) => (
-                        <option key={id} value={niveau}>{niveau}</option>
+                    <option value="" disabled>
+                        Choisir un groupe...
+                    </option>
+                    {uniqueCodeDiplomes.map((code, index) => (
+                        <option key={index} value={code}>
+                            {code}
+                        </option>
                     ))}
                 </select>
             </div>
@@ -294,13 +352,13 @@ const Docs = () => {
                             className={`tab ${selectedRebuke === "ReprimandNotice" ? "tab-active" : ""}`}
                             onClick={() => setSelectedRebuke("ReprimandNotice")}
                         >
-                            Reprimand
+                            Avis de Réprimande
                         </button>
                         <button
                             className={`tab ${selectedRebuke === "WarningNotice" ? "tab-active" : ""}`}
                             onClick={() => setSelectedRebuke("WarningNotice")}
                         >
-                            Warning
+                            Avertissement
                         </button>
                     </div>
 
@@ -328,6 +386,64 @@ const Docs = () => {
                     </div>
                 </div>
             )}
+            {
+                selectedCard === "mise-en-garde" ? (
+                    <>
+                        <label htmlFor="details" className="text-lg font-semibold text-gray-400">
+                            Details
+                        </label>
+                        <textarea name="details" value={form.details} onChange={(e) => setForm({ ...form, details: e.target.value })} className="textarea textarea-bordered" placeholder="Details"/>
+                    </>
+                ): null
+            }
+            {
+                selectedCard === "bac-withdrawal-temprory" || selectedCard === "bac-withdrawal-definitive" ? (
+                    <FormInput
+                        label="CIN"
+                        name="cin"
+                        value={form.cin}
+                        onChange={(e) => setForm({ ...form, cin: e.target.value })}
+                        className="input input-bordered w-full"
+                    />
+                ): null
+            }
+            
+            {
+                selectedCard === "bac-withdrawal-temprory"  || selectedCard === "bac-withdrawal-definitive" ? (
+                    <>
+                    <FormInput
+                        label="Date de Naaissance"
+                        name="birthdate"
+                        type="date"
+                        value={form.birthdate}
+                        onChange={(e) => setForm({ ...form, birthdate: e.target.value })}
+                        className="input input-bordered w-full"
+                    />
+                    <div>
+                        <label className="label">
+                            <span className="label-text">Reasons</span>
+                        </label>
+                        {["Absence non justifiée", "Retard répété", "Comportement inapproprié", "Non-respect du règlement"]
+                            .map((reason) => (
+                                <label key={reason} className="label cursor-pointer">
+                                    <span className="label-text">{reason}</span>
+                                    <input
+                                        type="checkbox"
+                                        className="checkbox"
+                                        checked={form.reason.includes(reason)}
+                                        onChange={(e) => {
+                                            const newReasons = e.target.checked
+                                                ? [...form.reason, reason]
+                                                : form.reason.filter(r => r !== reason);
+                                            setForm({ ...form, reason: newReasons });
+                                        }}
+                                    />
+                                </label>
+                            ))}
+                    </div>
+                    </>
+                ) : null
+            }
         </div>
     );
 
