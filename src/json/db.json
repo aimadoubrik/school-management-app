@@ -159,2086 +159,633 @@
   },
   "quizzes": [
     {
-      "quizID": "QZ101",
-      "coursequizID": "BIO101",
-      "courseName": "Introduction to Biology",
-      "teacherId": "T001",
-      "teacherName": "Dr. Alice Johnson",
-      "Deadline": "2024-11-30T23:59:59Z",
-      "status": "draft",
+      "id": "f8a2",
+      "intitule": "M102",
+      "code": "M102_F01",
+      "competence": "Structures de données",
+      "teacherName": "Amina Smaïli",
+      "Deadline": "2034-07-27T03:38",
+      "status": "active",
       "questions": [
         {
           "id": "1",
-          "question": "Quelle est l'unité fondamentale de la vie ?",
+          "question": "Quelle structure de données est la plus appropriée pour implémenter une file d'attente ?",
           "answers": [
-            "a) L'atome",
-            "b) La molécule",
-            "c) La cellule",
-            "d) L'organe"
+            "A) Arbre binaire",
+            "B) Liste chaînée",
+            "C) Pile",
+            "D) File"
           ],
-          "correctAnswer": "c) La cellule"
+          "correctAnswer": "D) File"
         },
         {
           "id": "2",
-          "question": "Laquelle de ces affirmations concernant la photosynthèse est FAUSSE ?",
+          "question": "Quelle est la complexité temporelle de la recherche d'un élément dans un tableau trié ?",
           "answers": [
-            "a) Elle utilise l'énergie solaire.",
-            "b) Elle produit du dioxyde de carbone.",
-            "c) Elle produit du glucose.",
-            "d) Elle se produit dans les chloroplastes des plantes."
+            "A) O(n)",
+            "B) O(log n)",
+            "C) O(1)",
+            "D) O(n²)"
           ],
-          "correctAnswer": "b) Elle produit du dioxyde de carbone"
+          "correctAnswer": "B) O(log n)"
         },
         {
           "id": "3",
-          "question": "Quel processus biologique produit de l'ATP ?",
+          "question": "Quelle structure de données utilise le principe \"premier arrivé, premier servi\" (FIFO) ?",
           "answers": [
-            "a) Photosynthèse uniquement",
-            "b) Respiration cellulaire uniquement",
-            "c) Photosynthèse et respiration cellulaire",
-            "d) Ni la photosynthèse ni la respiration cellulaire"
+            "A) Pile",
+            "B) File",
+            "C) Arbre",
+            "D) Graphe"
           ],
-          "correctAnswer": "c) Photosynthèse et respiration cellulaire"
+          "correctAnswer": "B) File"
         },
         {
           "id": "4",
-          "question": "Qu'est-ce que l'ADN ?",
+          "question": "Quelle structure de données utilise le principe \"dernier arrivé, premier servi\" (LIFO) ?",
           "answers": [
-            "a) Une source d'énergie",
-            "b) Une molécule porteuse d'information génétique",
-            "c) Une protéine structurale",
-            "d) Un type de lipide"
+            "A) File",
+            "B) Pile",
+            "C) Liste chaînée",
+            "D) Tableau"
           ],
-          "correctAnswer": "b) Une molécule porteuse d'information génétique"
+          "correctAnswer": "B) Pile"
         },
         {
           "id": "5",
-          "question": "Lequel de ces termes décrit le processus par lequel les organismes maintiennent un environnement interne stable ?",
+          "question": "Un arbre binaire de recherche (ABR) est équilibré pour :",
           "answers": [
-            "a) Métabolisme",
-            "b) Homéostasie",
-            "c) Reproduction",
-            "d) Croissance"
+            "A) Optimiser la recherche uniquement.",
+            "B) Optimiser l'insertion uniquement.",
+            "C) Optimiser la suppression uniquement.",
+            "D) Optimiser la recherche, l'insertion et la suppression."
           ],
-          "correctAnswer": "b) Homéostasie"
+          "correctAnswer": "D) Optimiser la recherche, l'insertion et la suppression."
         },
         {
           "id": "6",
-          "question": "Quelle est la différence principale entre la mitose et la méiose ?",
+          "question": "Quelle structure de données est idéale pour représenter des relations hiérarchiques ?",
           "answers": [
-            "a) La mitose produit des cellules haploïdes, la méiose produit des cellules diploïdes.",
-            "b) La mitose produit des cellules diploïdes, la méiose produit des cellules haploïdes.",
-            "c) La mitose ne produit que des cellules somatiques, la méiose produit uniquement des gamètes.",
-            "d) La mitose est un processus asexué, la méiose est un processus sexué."
+            "A) Tableau",
+            "B) Liste chaînée",
+            "C) Arbre",
+            "D) File"
           ],
-          "correctAnswer": "b) La mitose produit des cellules diploïdes, la méiose produit des cellules haploïdes."
+          "correctAnswer": "C) Arbre"
         },
         {
           "id": "7",
-          "question": "Que sont les enzymes ?",
+          "question": "La complexité spatiale d'une liste chaînée est :",
           "answers": [
-            "a) Des lipides",
-            "b) Des glucides",
-            "c) Des protéines qui catalysent les réactions biochimiques",
-            "d) Des acides nucléiques"
+            "A) O(1)",
+            "B) O(log n)",
+            "C) O(n)",
+            "D) O(n²)"
           ],
-          "correctAnswer": "c) Des protéines qui catalysent les réactions biochimiques"
+          "correctAnswer": "C) O(n)"
         },
         {
           "id": "8",
-          "question": "Quel est le rôle principal du système circulatoire ?",
+          "question": "Quel algorithme de tri est souvent utilisé avec les tas (heaps) ?",
           "answers": [
-            "a) La digestion des aliments",
-            "b) Le transport de substances dans le corps",
-            "c) La production d'hormones",
-            "d) La protection contre les maladies"
+            "A) Tri à bulles",
+            "B) Tri par insertion",
+            "C) Tri par fusion",
+            "D) Tri par tas"
           ],
-          "correctAnswer": "b) Le transport de substances dans le corps"
+          "correctAnswer": "D) Tri par tas"
         },
         {
           "id": "9",
-          "question": "Quel est le nom du processus par lequel les organismes produisent des descendants ?",
+          "question": "Un graphe orienté est caractérisé par :",
           "answers": [
-            "a) Métabolisme",
-            "b) Croissance",
-            "c) Reproduction",
-            "d) Adaptation"
+            "A) Des arêtes non orientées.",
+            "B) Des arêtes orientées.",
+            "C) Des nœuds sans arêtes.",
+            "D) Des nœuds connectés uniquement à un seul autre nœud."
           ],
-          "correctAnswer": "c) Reproduction"
+          "correctAnswer": "B) Des arêtes orientées."
         },
         {
           "id": "10",
-          "question": "Laquelle de ces affirmations concernant l'évolution est VRAIE ?",
+          "question": "Quelle structure de données est particulièrement efficace pour gérer des ensembles d'éléments uniques ?",
           "answers": [
-            "a) L'évolution est un processus rapide et observable en quelques générations.",
-            "b) L'évolution se produit toujours vers une complexité accrue.",
-            "c) L'évolution est le changement des caractéristiques héréditaires d'une population au fil du temps.",
-            "d) L'évolution est un processus dirigé vers un but précis."
+            "A) Liste chaînée",
+            "B) Tableau",
+            "C) Ensemble (Set)",
+            "D) Pile"
           ],
-          "correctAnswer": "c) L'évolution est le changement des caractéristiques héréditaires d'une population au fil du temps."
+          "correctAnswer": "C) Ensemble (Set)"
+        },
+        {
+          "id": "1",
+          "question": "Quel est le rôle principal du système nerveux central ?",
+          "answers": [
+            "Contrôle des mouvements volontaires uniquement",
+            "Régulation des fonctions corporelles et traitement de l'information",
+            "Production d'hormones pour la croissance",
+            "Transport de l'oxygène dans le corps"
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "id": "2",
+          "question": "Quelle partie du cerveau est responsable du raisonnement et de la planification ?",
+          "answers": [
+            "Le cervelet",
+            "Le tronc cérébral",
+            "Le cortex préfrontal",
+            "L'hypothalamus"
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "id": "3",
+          "question": "Qu'est-ce qu'un neurone ?",
+          "answers": [
+            "Une cellule musculaire",
+            "Une cellule nerveuse",
+            "Une cellule osseuse",
+            "Une cellule sanguine"
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "id": "4",
+          "question": "Quelle est la fonction principale de la myéline ?",
+          "answers": [
+            "Ralentir la transmission des impulsions nerveuses",
+            "Accélérer la transmission des impulsions nerveuses",
+            "Produire des neurotransmetteurs",
+            "Stocker l'énergie pour les neurones"
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "id": "5",
+          "question": "Qu'est-ce qu'une synapse ?",
+          "answers": [
+            "L'espace entre deux os",
+            "L'espace entre deux neurones",
+            "Une cellule gliale",
+            "Un type de neurotransmetteur"
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "id": "6",
+          "question": "Quel neurotransmetteur est principalement associé à la sensation de plaisir et de récompense ?",
+          "answers": [
+            "La sérotonine",
+            "La dopamine",
+            "L'acétylcholine",
+            "Le GABA"
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "id": "7",
+          "question": "Le système nerveux périphérique est composé de :",
+          "answers": [
+            "Seul le cerveau",
+            "Seule la moelle épinière",
+            "Nerfs crâniens et nerfs spinaux",
+            "Seulement les ganglions nerveux"
+          ],
+          "correctAnswer": "C"
+        },
+        {
+          "id": "8",
+          "question": "Quelle est la fonction principale du cervelet ?",
+          "answers": [
+            "Contrôle des fonctions vitales comme la respiration",
+            "Coordination des mouvements et équilibre",
+            "Traitement des émotions",
+            "Régulation de la température corporelle"
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "id": "9",
+          "question": "Quel est le rôle de l'hypothalamus ?",
+          "answers": [
+            "Contrôle de la vision",
+            "Régulation du système endocrinien et du système nerveux autonome",
+            "Traitement du langage",
+            "Contrôle des mouvements volontaires"
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "id": "10",
+          "question": "Qu'est-ce qu'un réflexe ?",
+          "answers": [
+            "Une réponse volontaire et consciente à un stimulus",
+            "Une réponse involontaire et inconsciente à un stimulus",
+            "Un processus de pensée complexe",
+            "Une action purement cognitive"
+          ],
+          "correctAnswer": "B"
+        },
+        {
+          "id": "1",
+          "question": "Quelle structure de données utilise le principe \"premier arrivé, premier servi\" (FIFO) ?",
+          "answers": [
+            "Pile",
+            "File",
+            "Arbre binaire",
+            "Liste chaînée"
+          ],
+          "correctAnswer": "File"
+        },
+        {
+          "id": "2",
+          "question": "Quelle complexité temporelle a l'insertion d'un élément dans une liste chaînée simplement liée au début de la liste ?",
+          "answers": [
+            "O(n)",
+            "O(log n)",
+            "O(1)",
+            "O(n^2)"
+          ],
+          "correctAnswer": "O(1)"
+        },
+        {
+          "id": "3",
+          "question": "Un arbre binaire de recherche (ABR) est :",
+          "answers": [
+            "Un arbre non ordonné.",
+            "Un arbre où chaque nœud a au plus deux enfants.",
+            "Un arbre où chaque nœud a exactement deux enfants.",
+            "Un arbre où la valeur de chaque nœud est supérieure à celle de tous ses descendants."
+          ],
+          "correctAnswer": "Un arbre où chaque nœud a au plus deux enfants."
+        },
+        {
+          "id": "4",
+          "question": "Quelle structure de données est la plus appropriée pour implémenter un dictionnaire ?",
+          "answers": [
+            "Pile",
+            "File",
+            "Tableau haché",
+            "Liste triée"
+          ],
+          "correctAnswer": "Tableau haché"
+        },
+        {
+          "id": "5",
+          "question": "Quelle est la complexité temporelle moyenne de la recherche d'un élément dans un tableau haché avec une bonne fonction de hachage ?",
+          "answers": [
+            "O(n)",
+            "O(log n)",
+            "O(1)",
+            "O(n^2)"
+          ],
+          "correctAnswer": "O(1)"
+        },
+        {
+          "id": "6",
+          "question": "Une pile est une structure de données :",
+          "answers": [
+            "LIFO (Last-In, First-Out)",
+            "FIFO (First-In, First-Out)",
+            "Ordonnée",
+            "Non ordonnée"
+          ],
+          "correctAnswer": "LIFO (Last-In, First-Out)"
+        },
+        {
+          "id": "7",
+          "question": "Qu'est-ce qu'un graphe orienté ?",
+          "answers": [
+            "Un graphe où les arêtes n'ont pas de direction.",
+            "Un graphe où les arêtes ont une direction.",
+            "Un graphe cyclique.",
+            "Un graphe acyclique."
+          ],
+          "correctAnswer": "Un graphe où les arêtes ont une direction."
+        },
+        {
+          "id": "8",
+          "question": "Dans un arbre binaire, un nœud feuille est :",
+          "answers": [
+            "Un nœud ayant un seul enfant.",
+            "Un nœud n'ayant aucun enfant.",
+            "Un nœud ayant deux enfants.",
+            "La racine de l'arbre."
+          ],
+          "correctAnswer": "Un nœud n'ayant aucun enfant."
+        },
+        {
+          "id": "9",
+          "question": "Le parcours en profondeur d'un arbre utilise généralement :",
+          "answers": [
+            "Une pile",
+            "Une file",
+            "Un tableau trié",
+            "Une liste chaînée non triée"
+          ],
+          "correctAnswer": "Une pile"
+        },
+        {
+          "id": "10",
+          "question": "La complexité spatiale d'un tableau de taille n est :",
+          "answers": [
+            "O(log n)",
+            "O(1)",
+            "O(n)",
+            "O(n^2)"
+          ],
+          "correctAnswer": "O(n)"
         }
       ],
       "questionsSelected": [
         {
-          "id": "8h",
-          "question": "What is the main pigment involved in photosynthesis?",
+          "id": "1",
+          "question": "Quelle structure de données est la plus appropriée pour implémenter une file d'attente ?",
           "answers": [
-            "Chlorophyll",
-            "Carotene",
-            "Xanthophyll",
-            "Hemoglobin"
+            "A) Arbre binaire",
+            "B) Liste chaînée",
+            "C) Pile",
+            "D) File"
           ],
-          "correctAnswer": "Chlorophyll"
+          "correctAnswer": "D) File"
         },
         {
-          "id": "9i",
-          "question": "Which biological molecule is primarily responsible for catalyzing reactions in cells?",
+          "id": "2",
+          "question": "Quelle est la complexité temporelle de la recherche d'un élément dans un tableau trié ?",
           "answers": [
-            "Lipids",
-            "Proteins",
-            "Carbohydrates",
-            "Nucleic acids"
+            "A) O(n)",
+            "B) O(log n)",
+            "C) O(1)",
+            "D) O(n²)"
           ],
-          "correctAnswer": "Return on Investment"
-        }
-      ],
-      "id": "f4dc"
-    },
-    {
-      "quizID": "QZ202",
-      "coursequizID": "MKT201",
-      "courseName": "Principles of Marketing",
-      "teacherId": "T002",
-      "teacherName": "Prof. Emily Green",
-      "Deadline": "2024-12-05T22:00",
-      "status": "active",
-      "questions": [
-        {
-          "id": "12l",
-          "question": "What type of bond forms between two water molecules?",
-          "answers": [
-            "Ionic bond",
-            "Covalent bond",
-            "Hydrogen bond",
-            "Peptide bond"
-          ],
-          "correctAnswer": "Hydrogen bond"
+          "correctAnswer": "B) O(log n)"
         },
         {
-          "id": "13m",
-          "question": "What is the primary function of ribosomes?",
+          "id": "3",
+          "question": "Quelle structure de données utilise le principe \"premier arrivé, premier servi\" (FIFO) ?",
           "answers": [
-            "Energy production",
-            "Protein synthesis",
-            "DNA replication",
-            "Transport of molecules"
+            "A) Pile",
+            "B) File",
+            "C) Arbre",
+            "D) Graphe"
           ],
-          "correctAnswer": "Protein synthesis"
+          "correctAnswer": "B) File"
         },
         {
-          "id": "14n",
-          "question": "Which domain of life includes humans?",
+          "id": "4",
+          "question": "Quelle structure de données utilise le principe \"dernier arrivé, premier servi\" (LIFO) ?",
           "answers": [
-            "Bacteria",
-            "Archaea",
-            "Eukarya",
-            "Prokaryota"
+            "A) File",
+            "B) Pile",
+            "C) Liste chaînée",
+            "D) Tableau"
           ],
-          "correctAnswer": "Eukarya"
+          "correctAnswer": "B) Pile"
         },
         {
-          "id": "15o",
-          "question": "Which process results in two identical daughter cells?",
+          "id": "7",
+          "question": "La complexité spatiale d'une liste chaînée est :",
           "answers": [
-            "Meiosis",
-            "Mitosis",
-            "Binary fission",
-            "Budding"
+            "A) O(1)",
+            "B) O(log n)",
+            "C) O(n)",
+            "D) O(n²)"
           ],
-          "correctAnswer": "Mitosis"
+          "correctAnswer": "C) O(n)"
         },
         {
-          "id": "16p",
-          "question": "What is the building block of proteins?",
+          "id": "8",
+          "question": "Quel algorithme de tri est souvent utilisé avec les tas (heaps) ?",
           "answers": [
-            "Nucleotides",
-            "Fatty acids",
-            "Amino acids",
-            "Monosaccharides"
+            "A) Tri à bulles",
+            "B) Tri par insertion",
+            "C) Tri par fusion",
+            "D) Tri par tas"
           ],
-          "correctAnswer": "Amino acids"
+          "correctAnswer": "D) Tri par tas"
         },
         {
-          "id": "17q",
-          "question": "What is the term for organisms that produce their own food?",
+          "id": "9",
+          "question": "Un graphe orienté est caractérisé par :",
           "answers": [
-            "Heterotrophs",
-            "Autotrophs",
-            "Decomposers",
-            "Parasites"
+            "A) Des arêtes non orientées.",
+            "B) Des arêtes orientées.",
+            "C) Des nœuds sans arêtes.",
+            "D) Des nœuds connectés uniquement à un seul autre nœud."
           ],
-          "correctAnswer": "Autotrophs"
+          "correctAnswer": "B) Des arêtes orientées."
         },
         {
-          "id": "18r",
-          "question": "Which type of RNA carries the genetic code from DNA to the ribosome?",
+          "id": "1",
+          "question": "Quel est le rôle principal du système nerveux central ?",
           "answers": [
-            "tRNA",
-            "mRNA",
-            "rRNA",
-            "snRNA"
+            "Contrôle des mouvements volontaires uniquement",
+            "Régulation des fonctions corporelles et traitement de l'information",
+            "Production d'hormones pour la croissance",
+            "Transport de l'oxygène dans le corps"
           ],
-          "correctAnswer": "mRNA"
+          "correctAnswer": "B"
         },
         {
-          "id": "19s",
-          "question": "Which organ system is responsible for transporting nutrients and oxygen to cells?",
+          "id": "2",
+          "question": "Quelle partie du cerveau est responsable du raisonnement et de la planification ?",
           "answers": [
-            "Digestive system",
-            "Nervous system",
-            "Circulatory system",
-            "Respiratory system"
+            "Le cervelet",
+            "Le tronc cérébral",
+            "Le cortex préfrontal",
+            "L'hypothalamus"
           ],
-          "correctAnswer": "Circulatory system"
+          "correctAnswer": "C"
         },
         {
-          "id": "20t",
-          "question": "What is the main component of the cell membrane?",
+          "id": "3",
+          "question": "Qu'est-ce qu'un neurone ?",
           "answers": [
-            "Proteins",
-            "Carbohydrates",
-            "Lipids",
-            "Nucleic acids"
+            "Une cellule musculaire",
+            "Une cellule nerveuse",
+            "Une cellule osseuse",
+            "Une cellule sanguine"
           ],
-          "correctAnswer": "Lipids"
-        }
-      ],
-      "id": "ecb9",
-      "questionsSelected": [
-        {
-          "id": "5e",
-          "question": "Which molecule carries genetic information in most living organisms?",
-          "answers": [
-            "RNA",
-            "DNA",
-            "Protein",
-            "ATP"
-          ],
-          "correctAnswer": "DNA"
+          "correctAnswer": "B"
         },
         {
-          "id": "6f",
-          "question": "What is the term for a group of similar cells that perform a specific function?",
+          "id": "4",
+          "question": "Quelle est la fonction principale de la myéline ?",
           "answers": [
-            "Organ",
-            "Tissue",
-            "System",
-            "Organism"
+            "Ralentir la transmission des impulsions nerveuses",
+            "Accélérer la transmission des impulsions nerveuses",
+            "Produire des neurotransmetteurs",
+            "Stocker l'énergie pour les neurones"
           ],
-          "correctAnswer": "Tissue"
+          "correctAnswer": "B"
         },
         {
-          "id": "7g",
-          "question": "Which process describes the movement of water across a selectively permeable membrane?",
+          "id": "7",
+          "question": "Le système nerveux périphérique est composé de :",
           "answers": [
-            "Diffusion",
-            "Osmosis",
-            "Active transport",
-            "Endocytosis"
+            "Seul le cerveau",
+            "Seule la moelle épinière",
+            "Nerfs crâniens et nerfs spinaux",
+            "Seulement les ganglions nerveux"
           ],
-          "correctAnswer": "Osmosis"
+          "correctAnswer": "C"
         },
         {
-          "id": "8h",
-          "question": "What is the main pigment involved in photosynthesis?",
+          "id": "8",
+          "question": "Quelle est la fonction principale du cervelet ?",
           "answers": [
-            "Chlorophyll",
-            "Carotene",
-            "Xanthophyll",
-            "Hemoglobin"
+            "Contrôle des fonctions vitales comme la respiration",
+            "Coordination des mouvements et équilibre",
+            "Traitement des émotions",
+            "Régulation de la température corporelle"
           ],
-          "correctAnswer": "Chlorophyll"
+          "correctAnswer": "B"
         },
         {
-          "id": "9i",
-          "question": "Which biological molecule is primarily responsible for catalyzing reactions in cells?",
+          "id": "9",
+          "question": "Quel est le rôle de l'hypothalamus ?",
           "answers": [
-            "Lipids",
-            "Proteins",
-            "Carbohydrates",
-            "Nucleic acids"
+            "Contrôle de la vision",
+            "Régulation du système endocrinien et du système nerveux autonome",
+            "Traitement du langage",
+            "Contrôle des mouvements volontaires"
           ],
-          "correctAnswer": "Proteins"
-        },
-        {
-          "id": "10j",
-          "question": "Which level of biological organization comes immediately after 'organism'?",
-          "answers": [
-            "Population",
-            "Community",
-            "Ecosystem",
-            "Biosphere"
-          ],
-          "correctAnswer": "Population"
-        },
-        {
-          "id": "11k",
-          "question": "What is the term for the process by which organisms maintain a stable internal environment?",
-          "answers": [
-            "Evolution",
-            "Homeostasis",
-            "Adaptation",
-            "Metabolism"
-          ],
-          "correctAnswer": "Homeostasis"
-        },
-        {
-          "id": "12l",
-          "question": "What type of bond forms between two water molecules?",
-          "answers": [
-            "Ionic bond",
-            "Covalent bond",
-            "Hydrogen bond",
-            "Peptide bond"
-          ],
-          "correctAnswer": "Hydrogen bond"
-        },
-        {
-          "id": "13m",
-          "question": "What is the primary function of ribosomes?",
-          "answers": [
-            "Energy production",
-            "Protein synthesis",
-            "DNA replication",
-            "Transport of molecules"
-          ],
-          "correctAnswer": "Protein synthesis"
-        },
-        {
-          "id": "14n",
-          "question": "Which domain of life includes humans?",
-          "answers": [
-            "Bacteria",
-            "Archaea",
-            "Eukarya",
-            "Prokaryota"
-          ],
-          "correctAnswer": "Eukarya"
-        },
-        {
-          "id": "15o",
-          "question": "Which process results in two identical daughter cells?",
-          "answers": [
-            "Meiosis",
-            "Mitosis",
-            "Binary fission",
-            "Budding"
-          ],
-          "correctAnswer": "Mitosis"
-        },
-        {
-          "id": "16p",
-          "question": "What is the building block of proteins?",
-          "answers": [
-            "Nucleotides",
-            "Fatty acids",
-            "Amino acids",
-            "Monosaccharides"
-          ],
-          "correctAnswer": "Amino acids"
-        },
-        {
-          "id": "17q",
-          "question": "What is the term for organisms that produce their own food?",
-          "answers": [
-            "Heterotrophs",
-            "Autotrophs",
-            "Decomposers",
-            "Parasites"
-          ],
-          "correctAnswer": "Autotrophs"
-        },
-        {
-          "id": "18r",
-          "question": "Which type of RNA carries the genetic code from DNA to the ribosome?",
-          "answers": [
-            "tRNA",
-            "mRNA",
-            "rRNA",
-            "snRNA"
-          ],
-          "correctAnswer": "mRNA"
-        },
-        {
-          "id": "19s",
-          "question": "Which organ system is responsible for transporting nutrients and oxygen to cells?",
-          "answers": [
-            "Digestive system",
-            "Nervous system",
-            "Circulatory system",
-            "Respiratory system"
-          ],
-          "correctAnswer": "Circulatory system"
-        },
-        {
-          "id": "20t",
-          "question": "What is the main component of the cell membrane?",
-          "answers": [
-            "Proteins",
-            "Carbohydrates",
-            "Lipids",
-            "Nucleic acids"
-          ],
-          "correctAnswer": "Lipids"
-        },
-        {
-          "id": "1a",
-          "question": "What is the basic unit of life?",
-          "answers": [
-            "Atom",
-            "Molecule",
-            "Cell",
-            "Tissue"
-          ],
-          "correctAnswer": "Cell"
-        },
-        {
-          "id": "2b",
-          "question": "Which macromolecule is the main source of energy for living organisms?",
-          "answers": [
-            "Lipids",
-            "Proteins",
-            "Carbohydrates",
-            "Nucleic acids"
-          ],
-          "correctAnswer": "Carbohydrates"
-        },
-        {
-          "id": "3c",
-          "question": "What is the process by which plants convert sunlight into chemical energy?",
-          "answers": [
-            "Respiration",
-            "Fermentation",
-            "Photosynthesis",
-            "Digestion"
-          ],
-          "correctAnswer": "Photosynthesis"
-        },
-        {
-          "id": "4d",
-          "question": "Which organelle is known as the powerhouse of the cell?",
-          "answers": [
-            "Nucleus",
-            "Chloroplast",
-            "Mitochondria",
-            "Ribosome"
-          ],
-          "correctAnswer": "Mitochondria"
-        }
-      ],
-      "Deadline": "2025-01-30T12:24"
-    },
-    {
-      "quizID": "QZ103",
-      "coursequizID": "HIST201",
-      "courseName": "World History",
-      "teacherId": "T003",
-      "teacherName": "Dr. Sarah Davis",
-      "Deadline": "2024-11-17T22:31",
-      "status": "active",
-      "questions": [
-        {
-          "id": "1a",
-          "question": "What was the primary goal of the Silk Road?",
-          "answers": [
-            "Religious conversion",
-            "Trade and cultural exchange",
-            "Military expansion",
-            "Agricultural development"
-          ],
-          "correctAnswer": "Trade and cultural exchange"
-        },
-        {
-          "id": "2b",
-          "question": "Which empire was known for building an extensive road system in South America?",
-          "answers": [
-            "Aztec Empire",
-            "Inca Empire",
-            "Mayan Empire",
-            "Olmec Civilization"
-          ],
-          "correctAnswer": "Inca Empire"
-        },
-        {
-          "id": "3c",
-          "question": "Who was the leader of the Mongol Empire at its peak?",
-          "answers": [
-            "Kublai Khan",
-            "Genghis Khan",
-            "Timur",
-            "Attila the Hun"
-          ],
-          "correctAnswer": "Genghis Khan"
-        },
-        {
-          "id": "4d",
-          "question": "What was the primary cause of the fall of the Roman Empire?",
-          "answers": [
-            "Economic instability and invasions",
-            "Overpopulation",
-            "Discovery of the New World",
-            "Rise of the Ottoman Empire"
-          ],
-          "correctAnswer": "Economic instability and invasions"
-        },
-        {
-          "id": "5e",
-          "question": "Which event marked the beginning of the French Revolution?",
-          "answers": [
-            "Storming of the Bastille",
-            "Reign of Terror",
-            "Execution of Louis XVI",
-            "Napoleon's rise to power"
-          ],
-          "correctAnswer": "Storming of the Bastille"
-        },
-        {
-          "id": "6f",
-          "question": "Which treaty ended World War I?",
-          "answers": [
-            "Treaty of Versailles",
-            "Treaty of Tordesillas",
-            "Treaty of Paris",
-            "Treaty of Ghent"
-          ],
-          "correctAnswer": "Treaty of Versailles"
-        },
-        {
-          "id": "7g",
-          "question": "Who was the first emperor of unified China?",
-          "answers": [
-            "Liu Bang",
-            "Wu Zetian",
-            "Qin Shi Huang",
-            "Confucius"
-          ],
-          "correctAnswer": "Qin Shi Huang"
-        },
-        {
-          "id": "8h",
-          "question": "Which event initiated the Protestant Reformation?",
-          "answers": [
-            "Council of Trent",
-            "The posting of the 95 Theses",
-            "English Civil War",
-            "Establishment of the Anglican Church"
-          ],
-          "correctAnswer": "The posting of the 95 Theses"
-        },
-        {
-          "id": "9i",
-          "question": "What was the primary goal of the Marshall Plan after World War II?",
-          "answers": [
-            "To prevent the spread of communism",
-            "To rebuild Europe's economy",
-            "To establish NATO",
-            "To create the European Union"
-          ],
-          "correctAnswer": "To rebuild Europe's economy"
-        },
-        {
-          "id": "10j",
-          "question": "Which civilization is credited with creating the first known system of writing?",
-          "answers": [
-            "Ancient Egyptians",
-            "Sumerians",
-            "Indus Valley Civilization",
-            "Phoenicians"
-          ],
-          "correctAnswer": "Sumerians"
-        }
-      ],
-      "questionsSelected": [
-        {
-          "id": "1a",
-          "question": "What was the primary goal of the Silk Road?",
-          "answers": [
-            "Religious conversion",
-            "Trade and cultural exchange",
-            "Military expansion",
-            "Agricultural development"
-          ],
-          "correctAnswer": "Trade and cultural exchange"
-        },
-        {
-          "id": "2b",
-          "question": "Which empire was known for building an extensive road system in South America?",
-          "answers": [
-            "Aztec Empire",
-            "Inca Empire",
-            "Mayan Empire",
-            "Olmec Civilization"
-          ],
-          "correctAnswer": "Inca Empire"
-        },
-        {
-          "id": "3c",
-          "question": "Who was the leader of the Mongol Empire at its peak?",
-          "answers": [
-            "Kublai Khan",
-            "Genghis Khan",
-            "Timur",
-            "Attila the Hun"
-          ],
-          "correctAnswer": "Genghis Khan"
-        },
-        {
-          "id": "4d",
-          "question": "What was the primary cause of the fall of the Roman Empire?",
-          "answers": [
-            "Economic instability and invasions",
-            "Overpopulation",
-            "Discovery of the New World",
-            "Rise of the Ottoman Empire"
-          ],
-          "correctAnswer": "Economic instability and invasions"
-        },
-        {
-          "id": "6f",
-          "question": "Which treaty ended World War I?",
-          "answers": [
-            "Treaty of Versailles",
-            "Treaty of Tordesillas",
-            "Treaty of Paris",
-            "Treaty of Ghent"
-          ],
-          "correctAnswer": "Treaty of Versailles"
-        },
-        {
-          "id": "7g",
-          "question": "Who was the first emperor of unified China?",
-          "answers": [
-            "Liu Bang",
-            "Wu Zetian",
-            "Qin Shi Huang",
-            "Confucius"
-          ],
-          "correctAnswer": "Qin Shi Huang"
-        },
-        {
-          "id": "8h",
-          "question": "Which event initiated the Protestant Reformation?",
-          "answers": [
-            "Council of Trent",
-            "The posting of the 95 Theses",
-            "English Civil War",
-            "Establishment of the Anglican Church"
-          ],
-          "correctAnswer": "The posting of the 95 Theses"
-        },
-        {
-          "id": "9i",
-          "question": "What was the primary goal of the Marshall Plan after World War II?",
-          "answers": [
-            "To prevent the spread of communism",
-            "To rebuild Europe's economy",
-            "To establish NATO",
-            "To create the European Union"
-          ],
-          "correctAnswer": "To rebuild Europe's economy"
-        },
-        {
-          "id": "10j",
-          "question": "Which civilization is credited with creating the first known system of writing?",
-          "answers": [
-            "Ancient Egyptians",
-            "Sumerians",
-            "Indus Valley Civilization",
-            "Phoenicians"
-          ],
-          "correctAnswer": "Sumerians"
-        },
-        {
-          "id": "1a",
-          "question": "What was the primary goal of the Silk Road?",
-          "answers": [
-            "Religious conversion",
-            "Trade and cultural exchange",
-            "Military expansion",
-            "Agricultural development"
-          ],
-          "correctAnswer": "Trade and cultural exchange"
-        },
-        {
-          "id": "2b",
-          "question": "Which empire was known for building an extensive road system in South America?",
-          "answers": [
-            "Aztec Empire",
-            "Inca Empire",
-            "Mayan Empire",
-            "Olmec Civilization"
-          ],
-          "correctAnswer": "Inca Empire"
-        }
-      ],
-      "id": "f5dc"
-    },
-    {
-      "quizID": "b906",
-      "courseName": "World History",
-      "coursequizID": "HIST201",
-      "teacherName": "werek",
-      "Deadline": "2024-11-16T09:41",
-      "status": "active",
-      "questions": [
-        {
-          "id": "6f",
-          "question": "Which treaty ended World War I?",
-          "answers": [
-            "Treaty of Versailles",
-            "Treaty of Tordesillas",
-            "Treaty of Paris",
-            "Treaty of Ghent"
-          ],
-          "correctAnswer": "Treaty of Versailles"
-        },
-        {
-          "id": "7g",
-          "question": "Who was the first emperor of unified China?",
-          "answers": [
-            "Liu Bang",
-            "Wu Zetian",
-            "Qin Shi Huang",
-            "Confucius"
-          ],
-          "correctAnswer": "Qin Shi Huang"
-        },
-        {
-          "id": "8h",
-          "question": "Which event initiated the Protestant Reformation?",
-          "answers": [
-            "Council of Trent",
-            "The posting of the 95 Theses",
-            "English Civil War",
-            "Establishment of the Anglican Church"
-          ],
-          "correctAnswer": "The posting of the 95 Theses"
-        },
-        {
-          "id": "9i",
-          "question": "What was the primary goal of the Marshall Plan after World War II?",
-          "answers": [
-            "To prevent the spread of communism",
-            "To rebuild Europe's economy",
-            "To establish NATO",
-            "To create the European Union"
-          ],
-          "correctAnswer": "To rebuild Europe's economy"
-        }
-      ],
-      "id": "3951",
-      "questionsSelected": [
-        {
-          "id": "7g",
-          "question": "Who was the first emperor of unified China?",
-          "answers": [
-            "Liu Bang",
-            "Wu Zetian",
-            "Qin Shi Huang",
-            "Confucius"
-          ],
-          "correctAnswer": "Qin Shi Huang"
-        },
-        {
-          "id": "8h",
-          "question": "Which event initiated the Protestant Reformation?",
-          "answers": [
-            "Council of Trent",
-            "The posting of the 95 Theses",
-            "English Civil War",
-            "Establishment of the Anglican Church"
-          ],
-          "correctAnswer": "The posting of the 95 Theses"
-        },
-        {
-          "id": "9i",
-          "question": "What was the primary goal of the Marshall Plan after World War II?",
-          "answers": [
-            "To prevent the spread of communism",
-            "To rebuild Europe's economy",
-            "To establish NATO",
-            "To create the European Union"
-          ],
-          "correctAnswer": "To rebuild Europe's economy"
+          "correctAnswer": "B"
         }
       ]
     },
     {
-      "quizID": "6db7",
-      "courseName": "General Chemistry",
-      "coursequizID": "CHEM101",
-      "teacherName": "qqqqq",
-      "Deadline": "2024-11-13T01:59",
-      "status": "active",
-      "questions": [
-        {
-          "id": "1a",
-          "question": "What is the smallest unit of an element that retains its chemical properties?",
-          "answers": [
-            "Atom",
-            "Molecule",
-            "Ion",
-            "Proton"
-          ],
-          "correctAnswer": "Atom"
-        },
-        {
-          "id": "2b",
-          "question": "What is the chemical symbol for gold?",
-          "answers": [
-            "Au",
-            "Ag",
-            "Go",
-            "Gd"
-          ],
-          "correctAnswer": "Au"
-        },
-        {
-          "id": "3c",
-          "question": "What is the atomic number of carbon?",
-          "answers": [
-            "6",
-            "8",
-            "12",
-            "14"
-          ],
-          "correctAnswer": "6"
-        },
-        {
-          "id": "4d",
-          "question": "What is the main type of bond in sodium chloride (NaCl)?",
-          "answers": [
-            "Ionic bond",
-            "Covalent bond",
-            "Hydrogen bond",
-            "Metallic bond"
-          ],
-          "correctAnswer": "Ionic bond"
-        },
-        {
-          "id": "5e",
-          "question": "What is the chemical formula for water?",
-          "answers": [
-            "H2O",
-            "O2H",
-            "H2O2",
-            "HO2"
-          ],
-          "correctAnswer": "H2O"
-        },
-        {
-          "id": "6f",
-          "question": "What is the pH of a neutral solution at 25°C?",
-          "answers": [
-            "7",
-            "0",
-            "14",
-            "1"
-          ],
-          "correctAnswer": "7"
-        },
-        {
-          "id": "7g",
-          "question": "Which gas is most abundant in the Earth's atmosphere?",
-          "answers": [
-            "Oxygen",
-            "Nitrogen",
-            "Carbon dioxide",
-            "Hydrogen"
-          ],
-          "correctAnswer": "Nitrogen"
-        },
-        {
-          "id": "8h",
-          "question": "What is the name of the process by which a liquid turns into a gas?",
-          "answers": [
-            "Melting",
-            "Condensation",
-            "Evaporation",
-            "Sublimation"
-          ],
-          "correctAnswer": "Evaporation"
-        },
-        {
-          "id": "9i",
-          "question": "Which of the following is an example of a covalent compound?",
-          "answers": [
-            "NaCl",
-            "H2O",
-            "CaO",
-            "MgBr2"
-          ],
-          "correctAnswer": "H2O"
-        },
-        {
-          "id": "10j",
-          "question": "What is the term for a reaction that absorbs heat?",
-          "answers": [
-            "Exothermic",
-            "Endothermic",
-            "Combustion",
-            "Neutralization"
-          ],
-          "correctAnswer": "Endothermic"
-        },
-        {
-          "id": "11k",
-          "question": "What is Avogadro's number?",
-          "answers": [
-            "6.022 × 10^23",
-            "3.14",
-            "9.8 m/s^2",
-            "1.6 × 10^-19"
-          ],
-          "correctAnswer": "6.022 × 10^23"
-        },
-        {
-          "id": "12l",
-          "question": "Which element is a noble gas?",
-          "answers": [
-            "Oxygen",
-            "Neon",
-            "Nitrogen",
-            "Hydrogen"
-          ],
-          "correctAnswer": "Neon"
-        },
-        {
-          "id": "13m",
-          "question": "What is the molar mass of H2O?",
-          "answers": [
-            "16 g/mol",
-            "18 g/mol",
-            "20 g/mol",
-            "24 g/mol"
-          ],
-          "correctAnswer": "18 g/mol"
-        },
-        {
-          "id": "14n",
-          "question": "What is the shape of a methane (CH4) molecule?",
-          "answers": [
-            "Linear",
-            "Bent",
-            "Tetrahedral",
-            "Trigonal planar"
-          ],
-          "correctAnswer": "Tetrahedral"
-        },
-        {
-          "id": "15o",
-          "question": "What is the oxidation state of oxygen in most compounds?",
-          "answers": [
-            "-1",
-            "-2",
-            "+1",
-            "+2"
-          ],
-          "correctAnswer": "-2"
-        },
-        {
-          "id": "16p",
-          "question": "What is the term for the ability of an atom to attract electrons in a bond?",
-          "answers": [
-            "Ionization energy",
-            "Electronegativity",
-            "Atomic radius",
-            "Electron affinity"
-          ],
-          "correctAnswer": "Electronegativity"
-        },
-        {
-          "id": "17q",
-          "question": "What is the process of a solid turning directly into a gas?",
-          "answers": [
-            "Condensation",
-            "Sublimation",
-            "Melting",
-            "Deposition"
-          ],
-          "correctAnswer": "Sublimation"
-        },
-        {
-          "id": "18r",
-          "question": "What is the term for a substance that speeds up a chemical reaction without being consumed?",
-          "answers": [
-            "Solvent",
-            "Catalyst",
-            "Reactant",
-            "Inhibitor"
-          ],
-          "correctAnswer": "Catalyst"
-        },
-        {
-          "id": "19s",
-          "question": "Which law states that pressure and volume of a gas are inversely proportional?",
-          "answers": [
-            "Charles's Law",
-            "Boyle's Law",
-            "Avogadro's Law",
-            "Ideal Gas Law"
-          ],
-          "correctAnswer": "Boyle's Law"
-        },
-        {
-          "id": "20t",
-          "question": "What is the product of a neutralization reaction?",
-          "answers": [
-            "Salt and water",
-            "Gas and salt",
-            "Acid and base",
-            "Heat and gas"
-          ],
-          "correctAnswer": "Salt and water"
-        },
-        {
-          "id": "21u",
-          "question": "Which subatomic particle has a positive charge?",
-          "answers": [
-            "Proton",
-            "Neutron",
-            "Electron",
-            "Photon"
-          ],
-          "correctAnswer": "Proton"
-        },
-        {
-          "id": "22v",
-          "question": "Which element is the most abundant in the Earth's crust?",
-          "answers": [
-            "Oxygen",
-            "Silicon",
-            "Aluminum",
-            "Iron"
-          ],
-          "correctAnswer": "Oxygen"
-        },
-        {
-          "id": "23w",
-          "question": "What is the main component of an acid?",
-          "answers": [
-            "Hydroxide ions",
-            "Hydrogen ions",
-            "Chloride ions",
-            "Carbonate ions"
-          ],
-          "correctAnswer": "Hydrogen ions"
-        },
-        {
-          "id": "24x",
-          "question": "What is the standard temperature in Kelvin for STP?",
-          "answers": [
-            "0 K",
-            "273 K",
-            "298 K",
-            "100 K"
-          ],
-          "correctAnswer": "273 K"
-        },
-        {
-          "id": "25y",
-          "question": "What is the common name for HCl in aqueous form?",
-          "answers": [
-            "Sulfuric acid",
-            "Hydrochloric acid",
-            "Nitric acid",
-            "Acetic acid"
-          ],
-          "correctAnswer": "Hydrochloric acid"
-        }
-      ],
-      "questionsSelected": [
-        {
-          "id": "21u",
-          "question": "Which subatomic particle has a positive charge?",
-          "answers": [
-            "Proton",
-            "Neutron",
-            "Electron",
-            "Photon"
-          ],
-          "correctAnswer": "Proton"
-        },
-        {
-          "id": "1a",
-          "question": "What is the smallest unit of an element that retains its chemical properties?",
-          "answers": [
-            "Atom",
-            "Molecule",
-            "Ion",
-            "Proton"
-          ],
-          "correctAnswer": "Atom"
-        },
-        {
-          "id": "2b",
-          "question": "What is the chemical symbol for gold?",
-          "answers": [
-            "Au",
-            "Ag",
-            "Go",
-            "Gd"
-          ],
-          "correctAnswer": "Au"
-        },
-        {
-          "id": "3c",
-          "question": "What is the atomic number of carbon?",
-          "answers": [
-            "6",
-            "8",
-            "12",
-            "14"
-          ],
-          "correctAnswer": "6"
-        },
-        {
-          "id": "4d",
-          "question": "What is the main type of bond in sodium chloride (NaCl)?",
-          "answers": [
-            "Ionic bond",
-            "Covalent bond",
-            "Hydrogen bond",
-            "Metallic bond"
-          ],
-          "correctAnswer": "Ionic bond"
-        },
-        {
-          "id": "5e",
-          "question": "What is the chemical formula for water?",
-          "answers": [
-            "H2O",
-            "O2H",
-            "H2O2",
-            "HO2"
-          ],
-          "correctAnswer": "H2O"
-        }
-      ],
-      "id": "a8d4"
-    },
-    {
-      "quizID": "a123",
-      "courseName": "Introduction to Physics",
-      "coursequizID": "PHYS101",
-      "teacherName": "Dr. Michael Smith",
-      "Deadline": "2024-11-20T23:59",
-      "status": "draft",
-      "questions": [
-        {
-          "id": "1abdd",
-          "question": "What is the SI unit of force?",
-          "answers": [
-            "Newton",
-            "Pascal",
-            "Joule",
-            "Watt"
-          ],
-          "correctAnswer": "Newton"
-        },
-        {
-          "id": "2bbbbbsb",
-          "question": "What is the acceleration due to gravity on Earth?",
-          "answers": [
-            "9.8 m/s²",
-            "10 m/s²",
-            "9.8 m/s",
-            "10 m/s"
-          ],
-          "correctAnswer": "9.8 m/s²"
-        },
-        {
-          "id": "3cccz",
-          "question": "What is the formula for velocity?",
-          "answers": [
-            "Distance ÷ Time",
-            "Force ÷ Mass",
-            "Mass × Acceleration",
-            "Work ÷ Distance"
-          ],
-          "correctAnswer": "Distance ÷ Time"
-        },
-        {
-          "id": "4dddddd",
-          "question": "Which law states that an object in motion stays in motion unless acted upon?",
-          "answers": [
-            "Newton's First Law",
-            "Newton's Second Law",
-            "Newton's Third Law",
-            "Law of Gravitation"
-          ],
-          "correctAnswer": "Newton's First Law"
-        },
-        {
-          "id": "5eeeeeeee",
-          "question": "What is the kinetic energy formula?",
-          "answers": [
-            "1/2 mv²",
-            "mgh",
-            "mv²",
-            "1/2 gh"
-          ],
-          "correctAnswer": "1/2 mv²"
-        }
-      ],
-      "id": "238b"
-    },
-    {
-      "quizID": "c345",
-      "courseName": "Principles of Economics",
-      "coursequizID": "ECON101",
-      "teacherName": "Dr. Emily Johnson",
-      "Deadline": "2024-12-13T23:59",
-      "status": "draft",
-      "questions": [],
-      "id": "f11a",
-      "questionsSelected": []
-    },
-    {
-      "id": "70b2",
-      "courseName": "Introduction to Physics",
-      "coursequizID": "PHYS101",
-      "teacherName": "Jim Halpert",
-      "Deadline": "2024-10-31T11:57",
-      "status": "draft"
-    },
-    {
-      "id": "ffee",
-      "courseName": "Principles of Economics",
-      "coursequizID": "106",
-      "teacherName": "Jim Halpert",
-      "Deadline": "2024-12-05T12:02",
-      "status": "active"
-    },
-    {
-      "id": "a8d4",
-      "courseName": "Introduction to Mathematics",
-      "coursequizID": "105",
-      "teacherName": "Jim Halpert",
-      "Deadline": "2024-11-24T12:05",
-      "status": "active"
-    },
-    {
-      "id": "199a",
-      "courseName": "General Chemistry",
-      "coursequizID": "104",
-      "teacherName": "Jim Halpert",
-      "Deadline": "2024-12-07T12:09",
-      "status": "active",
-      "questions": [
-        {
-          "question": "dff",
-          "answers": [
-            "ff",
-            "fff",
-            "ff",
-            "ff"
-          ],
-          "correctAnswer": "fff",
-          "id": "1732647826453"
-        },
-        {
-          "id": "1",
-          "question": "What is the atomic number of Carbon?",
-          "answers": [
-            "4",
-            "6",
-            "8",
-            "12",
-            "14"
-          ],
-          "correctAnswer": "6"
-        },
-        {
-          "id": "4d",
-          "question": "What is the main type of bond in sodium chloride (NaCl)?",
-          "answers": [
-            "Ionic bond",
-            "Covalent bond",
-            "Hydrogen bond",
-            "Metallic bond"
-          ],
-          "correctAnswer": "Ionic bond"
-        },
-        {
-          "id": "5e",
-          "question": "What is the chemical formula for water?",
-          "answers": [
-            "H2O",
-            "O2H",
-            "H2O2",
-            "HO2"
-          ],
-          "correctAnswer": "H2O"
-        },
-        {
-          "id": "6f",
-          "question": "What is the pH of a neutral solution at 25°C?",
-          "answers": [
-            "7",
-            "0",
-            "14",
-            "1"
-          ],
-          "correctAnswer": "7"
-        },
-        {
-          "id": "7g",
-          "question": "Which gas is most abundant in the Earth's atmosphere?",
-          "answers": [
-            "Oxygen",
-            "Nitrogen",
-            "Carbon dioxide",
-            "Hydrogen"
-          ],
-          "correctAnswer": "Nitrogen"
-        },
-        {
-          "id": "8h",
-          "question": "What is the name of the process by which a liquid turns into a gas?",
-          "answers": [
-            "Melting",
-            "Condensation",
-            "Evaporation",
-            "Sublimation"
-          ],
-          "correctAnswer": "Evaporation"
-        },
-        {
-          "id": "9i",
-          "question": "Which of the following is an example of a covalent compound?",
-          "answers": [
-            "NaCl",
-            "H2O",
-            "CaO",
-            "MgBr2"
-          ],
-          "correctAnswer": "H2O"
-        },
-        {
-          "id": "10j",
-          "question": "What is the term for a reaction that absorbs heat?",
-          "answers": [
-            "Exothermic",
-            "Endothermic",
-            "Combustion",
-            "Neutralization"
-          ],
-          "correctAnswer": "Endothermic"
-        },
-        {
-          "id": "11k",
-          "question": "What is Avogadro's number?",
-          "answers": [
-            "6.022 × 10^23",
-            "3.14",
-            "9.8 m/s^2",
-            "1.6 × 10^-19"
-          ],
-          "correctAnswer": "6.022 × 10^23"
-        },
-        {
-          "id": "12l",
-          "question": "Which element is a noble gas?",
-          "answers": [
-            "Oxygen",
-            "Neon",
-            "Nitrogen",
-            "Hydrogen"
-          ],
-          "correctAnswer": "Neon"
-        },
-        {
-          "id": "13m",
-          "question": "What is the molar mass of H2O?",
-          "answers": [
-            "16 g/mol",
-            "18 g/mol",
-            "20 g/mol",
-            "24 g/mol"
-          ],
-          "correctAnswer": "18 g/mol"
-        },
-        {
-          "id": "14n",
-          "question": "What is the shape of a methane (CH4) molecule?",
-          "answers": [
-            "Linear",
-            "Bent",
-            "Tetrahedral",
-            "Trigonal planar"
-          ],
-          "correctAnswer": "Tetrahedral"
-        },
-        {
-          "id": "15o",
-          "question": "What is the oxidation state of oxygen in most compounds?",
-          "answers": [
-            "-1",
-            "-2",
-            "+1",
-            "+2"
-          ],
-          "correctAnswer": "-2"
-        },
-        {
-          "id": "16p",
-          "question": "What is the term for the ability of an atom to attract electrons in a bond?",
-          "answers": [
-            "Ionization energy",
-            "Electronegativity",
-            "Atomic radius",
-            "Electron affinity"
-          ],
-          "correctAnswer": "Electronegativity"
-        },
-        {
-          "id": "17q",
-          "question": "What is the process of a solid turning directly into a gas?",
-          "answers": [
-            "Condensation",
-            "Sublimation",
-            "Melting",
-            "Deposition"
-          ],
-          "correctAnswer": "Sublimation"
-        },
-        {
-          "id": "18r",
-          "question": "What is the term for a substance that speeds up a chemical reaction without being consumed?",
-          "answers": [
-            "Solvent",
-            "Catalyst",
-            "Reactant",
-            "Inhibitor"
-          ],
-          "correctAnswer": "Catalyst"
-        },
-        {
-          "id": "19s",
-          "question": "Which law states that pressure and volume of a gas are inversely proportional?",
-          "answers": [
-            "Charles's Law",
-            "Boyle's Law",
-            "Avogadro's Law",
-            "Ideal Gas Law"
-          ],
-          "correctAnswer": "Boyle's Law"
-        },
-        {
-          "id": "20t",
-          "question": "What is the product of a neutralization reaction?",
-          "answers": [
-            "Salt and water",
-            "Gas and salt",
-            "Acid and base",
-            "Heat and gas"
-          ],
-          "correctAnswer": "Salt and water"
-        },
-        {
-          "id": "21u",
-          "question": "Which subatomic particle has a positive charge?",
-          "answers": [
-            "Proton",
-            "Neutron",
-            "Electron",
-            "Photon"
-          ],
-          "correctAnswer": "Proton"
-        },
-        {
-          "id": "22v",
-          "question": "Which element is the most abundant in the Earth's crust?",
-          "answers": [
-            "Oxygen",
-            "Silicon",
-            "Aluminum",
-            "Iron"
-          ],
-          "correctAnswer": "Oxygen"
-        },
-        {
-          "id": "23w",
-          "question": "What is the main component of an acid?",
-          "answers": [
-            "Hydroxide ions",
-            "Hydrogen ions",
-            "Chloride ions",
-            "Carbonate ions"
-          ],
-          "correctAnswer": "Hydrogen ions"
-        },
-        {
-          "id": "24x",
-          "question": "What is the standard temperature in Kelvin for STP?",
-          "answers": [
-            "0 K",
-            "273 K",
-            "298 K",
-            "100 K"
-          ],
-          "correctAnswer": "273 K"
-        },
-        {
-          "id": "25y",
-          "question": "What is the common name for HCl in aqueous form?",
-          "answers": [
-            "Sulfuric acid",
-            "Hydrochloric acid",
-            "Nitric acid",
-            "Acetic acid"
-          ],
-          "correctAnswer": "Hydrochloric acid"
-        }
-      ],
-      "questionsSelected": [
-        {
-          "id": "21u",
-          "question": "Which subatomic particle has a positive charge?",
-          "answers": [
-            "Proton",
-            "Neutron",
-            "Electron",
-            "Photon"
-          ],
-          "correctAnswer": "Proton"
-        },
-        {
-          "id": "1a",
-          "question": "What is the smallest unit of an element that retains its chemical properties?",
-          "answers": [
-            "Atom",
-            "Molecule",
-            "Ion",
-            "Proton"
-          ],
-          "correctAnswer": "Atom"
-        },
-        {
-          "id": "2b",
-          "question": "What is the chemical symbol for gold?",
-          "answers": [
-            "Au",
-            "Ag",
-            "Go",
-            "Gd"
-          ],
-          "correctAnswer": "Au"
-        },
-        {
-          "id": "3c",
-          "question": "What is the atomic number of carbon?",
-          "answers": [
-            "6",
-            "8",
-            "12",
-            "14"
-          ],
-          "correctAnswer": "6"
-        },
-        {
-          "id": "4d",
-          "question": "What is the main type of bond in sodium chloride (NaCl)?",
-          "answers": [
-            "Ionic bond",
-            "Covalent bond",
-            "Hydrogen bond",
-            "Metallic bond"
-          ],
-          "correctAnswer": "Ionic bond"
-        },
-        {
-          "id": "5e",
-          "question": "What is the chemical formula for water?",
-          "answers": [
-            "H2O",
-            "O2H",
-            "H2O2",
-            "HO2"
-          ],
-          "correctAnswer": "H2O"
-        }
-      ]
-    },
-    {
-      "quizID": "a123",
-      "courseName": "Introduction to Physics",
-      "coursequizID": "PHYS101",
-      "teacherName": "Dr. Michael Smith",
-      "deadline": "2024-11-20T23:59",
-      "status": "draft",
-      "questions": [
-        {
-          "id": "1abdd",
-          "question": "What is the SI unit of force?",
-          "answers": [
-            "Newton",
-            "Pascal",
-            "Joule",
-            "Watt"
-          ],
-          "correctAnswer": "Newton"
-        },
-        {
-          "id": "2bbbbbsb",
-          "question": "What is the acceleration due to gravity on Earth?",
-          "answers": [
-            "9.8 m/s²",
-            "10 m/s²",
-            "9.8 m/s",
-            "10 m/s"
-          ],
-          "correctAnswer": "9.8 m/s²"
-        },
-        {
-          "id": "3cccz",
-          "question": "What is the formula for velocity?",
-          "answers": [
-            "Distance ÷ Time",
-            "Force ÷ Mass",
-            "Mass × Acceleration",
-            "Work ÷ Distance"
-          ],
-          "correctAnswer": "Distance ÷ Time"
-        },
-        {
-          "id": "4dddddd",
-          "question": "Which law states that an object in motion stays in motion unless acted upon?",
-          "answers": [
-            "Newton's First Law",
-            "Newton's Second Law",
-            "Newton's Third Law",
-            "Law of Gravitation"
-          ],
-          "correctAnswer": "Newton's First Law"
-        },
-        {
-          "id": "5eeeeeeee",
-          "question": "What is the kinetic energy formula?",
-          "answers": [
-            "1/2 mv²",
-            "mgh",
-            "mv²",
-            "1/2 gh"
-          ],
-          "correctAnswer": "1/2 mv²"
-        }
-      ],
-      "id": "238b"
-    },
-    {
-      "quizID": "c345",
-      "courseName": "Principles of Economics",
-      "coursequizID": "ECON101",
-      "teacherName": "Dr. Emily Johnson",
-      "Deadline": "2024-12-13T23:59",
-      "status": "draft",
-      "questions": [],
-      "id": "f11a",
-      "questionsSelected": []
-    },
-    {
-      "id": "b979",
-      "courseName": "General Chemistry",
-      "coursequizID": "CHEM101",
-      "teacherName": "khba",
-      "Deadline": "2024-11-14T23:26",
-      "status": "active"
-    },
-    {
-      "id": "ffee",
-      "courseName": "Principles of Economics",
-      "coursequizID": "106",
-      "teacherName": "Jim Halpert",
-      "Deadline": "2024-12-05T12:02",
-      "status": "active"
-    },
-    {
-      "id": "8381",
-      "courseName": "Introduction to Mathematics",
-      "coursequizID": "105",
-      "teacherName": "Jim Halpert",
-      "Deadline": "2024-11-24T12:05",
-      "status": "active"
-    },
-    {
-      "id": "ae42",
-      "courseName": "World History",
-      "coursequizID": "HIST201",
-      "teacherName": "Jim Halpert",
-      "Deadline": "2024-12-04T12:40",
-      "status": "draft",
-      "questions": [],
-      "questionsSelected": []
-    },
-    {
-      "id": "80a8",
-      "courseName": "Introduction to Biology",
-      "coursequizID": "BIO101",
-      "teacherName": "Carlos Martinez",
-      "Deadline": "2025-01-02T23:31",
-      "status": "active"
-    },
-    {
-      "id": "8193",
-      "courseName": "Introduction to Mathematics",
-      "coursequizID": "105",
-      "teacherName": "Carlos Martinez",
-      "Deadline": "2025-01-17T23:42",
+      "id": "3259",
+      "intitule": "M106",
+      "code": "M106_F01",
+      "competence": "Introduction au web",
+      "teacherName": "Amina Smaïli",
+      "Deadline": "2025-02-08T15:23",
       "status": "active",
       "questions": [
         {
           "id": "1",
-          "question": "Which of the following is NOT a fundamental branch of mathematics?",
+          "question": "Quel protocole est principalement utilisé pour le transfert de données sur le Web ?",
           "answers": [
-            "Algebra",
-            "Geometry",
-            "Astrology",
-            "Calculus"
+            "FTP",
+            "SMTP",
+            "HTTP",
+            "SSH"
           ],
-          "correctAnswer": "Astrology"
+          "correctAnswer": "HTTP"
         },
         {
           "id": "2",
-          "question": "What is the result of 2² + 3²?",
+          "question": "Le langage de balisage utilisé pour structurer le contenu d'une page web est :",
           "answers": [
-            "13",
-            "25",
-            "10",
-            "36"
+            "JavaScript",
+            "CSS",
+            "HTML",
+            "Python"
           ],
-          "correctAnswer": "13"
+          "correctAnswer": "HTML"
         },
         {
           "id": "3",
-          "question": "What does the term \"commutative\" refer to in mathematics?",
+          "question": "Quel langage de style est utilisé pour définir la présentation visuelle d'une page web ?",
           "answers": [
-            "The order of operations",
-            "The ability to switch the order of operands without changing the result",
-            "The distribution of numbers",
-            "The inverse of an operation"
+            "HTML",
+            "JavaScript",
+            "CSS",
+            "PHP"
           ],
-          "correctAnswer": "The ability to switch the order of operands without changing the result"
+          "correctAnswer": "CSS"
         },
         {
           "id": "4",
-          "question": "What type of number is π (pi)?",
+          "question": "Un URL (Uniform Resource Locator) indique :",
           "answers": [
-            "Integer",
-            "Rational",
-            "Irrational",
-            "Complex"
+            "La vitesse de connexion internet",
+            "L'adresse d'une ressource sur le web",
+            "Le type de navigateur utilisé",
+            "Le système d'exploitation du serveur"
           ],
-          "correctAnswer": "Irrational"
+          "correctAnswer": "L'adresse d'une ressource sur le web"
         },
         {
           "id": "5",
-          "question": "Which number system uses only the digits 0 and 1?",
+          "question": "Qu'est-ce qu'un DNS (Domain Name System) ?",
           "answers": [
-            "Decimal",
-            "Binary",
-            "Hexadecimal",
-            "Octal"
+            "Un langage de programmation web",
+            "Un système de sécurité internet",
+            "Un système de traduction des noms de domaine en adresses IP",
+            "Un protocole de transfert de fichiers"
           ],
-          "correctAnswer": "Binary"
+          "correctAnswer": "Un système de traduction des noms de domaine en adresses IP"
         },
         {
           "id": "6",
-          "question": "What is the name given to a polygon with three sides?",
+          "question": "Le langage JavaScript est principalement utilisé pour :",
           "answers": [
-            "Quadrilateral",
-            "Pentagon",
-            "Triangle",
-            "Hexagon"
+            "La conception de bases de données",
+            "L'interaction côté client dans une page web",
+            "La création de serveur web",
+            "Le design graphique"
           ],
-          "correctAnswer": "Triangle"
+          "correctAnswer": "L'interaction côté client dans une page web"
         },
         {
           "id": "7",
-          "question": "What is the value of 0! (zero factorial)?",
+          "question": "Qu'est-ce qu'un cookie ?",
           "answers": [
-            "0",
-            "1",
-            "Undefined",
-            "-1"
+            "Un fichier texte stocké sur le serveur web",
+            "Un type de navigateur web",
+            "Un fichier texte stocké sur l'ordinateur de l'utilisateur",
+            "Un langage de programmation web"
           ],
-          "correctAnswer": "1"
+          "correctAnswer": "Un fichier texte stocké sur l'ordinateur de l'utilisateur"
         },
         {
           "id": "8",
-          "question": "What does the symbol ∞ represent?",
+          "question": "Quel est le rôle d'un serveur web ?",
           "answers": [
-            "A very large number",
-            "Infinity",
-            "Zero",
-            "A very small number"
+            "Afficher des pages web aux utilisateurs",
+            "Protéger les ordinateurs des virus",
+            "Créer des pages web",
+            "Transmettre des emails"
           ],
-          "correctAnswer": "Infinity"
+          "correctAnswer": "Afficher des pages web aux utilisateurs"
         },
         {
           "id": "9",
-          "question": "Which mathematical concept deals with the size, shape, and relative position of figures?",
+          "question": "Que signifie HTTP ?",
           "answers": [
-            "Algebra",
-            "Calculus",
-            "Geometry",
-            "Statistics"
+            "HyperText Transfer Protocol",
+            "HyperText Transfer Program",
+            "Hyperlink Transfer Protocol",
+            "HyperText Transmission Protocol"
           ],
-          "correctAnswer": "Geometry"
+          "correctAnswer": "HyperText Transfer Protocol"
         },
         {
           "id": "10",
-          "question": "What is the process of finding the derivative of a function called?",
+          "question": "Un fichier avec l'extension \".php\" est généralement associé à quel langage ?",
           "answers": [
-            "Integration",
-            "Differentiation",
-            "Simplification",
-            "Substitution"
+            "JavaScript",
+            "HTML",
+            "CSS",
+            "PHP"
           ],
-          "correctAnswer": "Differentiation"
-        }
-      ]
-    },
-    {
-      "id": "ef5f",
-      "courseName": "World History",
-      "coursequizID": "HIST201",
-      "teacherName": "Carlos Martinez",
-      "Deadline": "2025-01-23T12:25",
-      "status": "active",
-      "questions": [
-        {
-          "id": "1",
-          "question": "Quel événement marque traditionnellement le début de la Première Guerre mondiale ?",
-          "answers": [
-            "L'assassinat de l'archiduc François-Ferdinand",
-            "La déclaration de guerre de l'Allemagne à la Russie",
-            "Le naufrage du Titanic",
-            "La signature du traité de Versailles"
-          ],
-          "correctAnswer": "L'assassinat de l'archiduc François-Ferdinand"
-        },
-        {
-          "id": "2",
-          "question": "Qui a dirigé la révolution russe de 1917 ?",
-          "answers": [
-            "Léon Trotski",
-            "Nicolas II",
-            "Vladimir Lénine",
-            "Joseph Staline"
-          ],
-          "correctAnswer": "Vladimir Lénine"
-        },
-        {
-          "id": "3",
-          "question": "Quelle civilisation a construit les pyramides d'Égypte ?",
-          "answers": [
-            "La civilisation minoenne",
-            "La civilisation sumérienne",
-            "La civilisation égyptienne",
-            "La civilisation romaine"
-          ],
-          "correctAnswer": "La civilisation égyptienne"
-        },
-        {
-          "id": "4",
-          "question": "En quelle année Christophe Colomb a-t-il atteint les Amériques ?",
-          "answers": [
-            "1492",
-            "1522",
-            "1607",
-            "1776"
-          ],
-          "correctAnswer": "1492"
-        },
-        {
-          "id": "5",
-          "question": "Quel empire a conquis la majeure partie de l'Europe au début du 19ème siècle ?",
-          "answers": [
-            "L'Empire Ottoman",
-            "L'Empire Français",
-            "L'Empire Britannique",
-            "L'Empire Russe"
-          ],
-          "correctAnswer": "L'Empire Français"
-        },
-        {
-          "id": "6",
-          "question": "Quelle était la cause principale de la Guerre Froide ?",
-          "answers": [
-            "Des différends commerciaux",
-            "Des conflits religieux",
-            "Des idéologies politiques opposées",
-            "Une compétition sportive intense"
-          ],
-          "correctAnswer": "Des idéologies politiques opposées"
-        },
-        {
-          "id": "7",
-          "question": "Qui a peint la Joconde ?",
-          "answers": [
-            "Michel-Ange",
-            "Raphaël",
-            "Léonard de Vinci",
-            "Donatello"
-          ],
-          "correctAnswer": "Léonard de Vinci"
-        },
-        {
-          "id": "8",
-          "question": "Laquelle de ces inventions a révolutionné le monde au 15ème siècle ?",
-          "answers": [
-            "L'automobile",
-            "L'électricité",
-            "L'imprimerie",
-            "L'ordinateur"
-          ],
-          "correctAnswer": "L'imprimerie"
-        },
-        {
-          "id": "9",
-          "question": "Le mur de Berlin est tombé en :",
-          "answers": [
-            "1989",
-            "1991",
-            "1961",
-            "1945"
-          ],
-          "correctAnswer": "1989"
-        },
-        {
-          "id": "10",
-          "question": "Qui a écrit \"Le Capital\" ?",
-          "answers": [
-            "Karl Marx",
-            "Friedrich Engels",
-            "Adam Smith",
-            "John Maynard Keynes"
-          ],
-          "correctAnswer": "Karl Marx"
+          "correctAnswer": "PHP"
         }
       ],
       "questionsSelected": [
         {
           "id": "1",
-          "question": "Quel événement marque traditionnellement le début de la Première Guerre mondiale ?",
+          "question": "Quel protocole est principalement utilisé pour le transfert de données sur le Web ?",
           "answers": [
-            "L'assassinat de l'archiduc François-Ferdinand",
-            "La déclaration de guerre de l'Allemagne à la Russie",
-            "Le naufrage du Titanic",
-            "La signature du traité de Versailles"
+            "FTP",
+            "SMTP",
+            "HTTP",
+            "SSH"
           ],
-          "correctAnswer": "L'assassinat de l'archiduc François-Ferdinand"
-        },
-        {
-          "id": "2",
-          "question": "Qui a dirigé la révolution russe de 1917 ?",
-          "answers": [
-            "Léon Trotski",
-            "Nicolas II",
-            "Vladimir Lénine",
-            "Joseph Staline"
-          ],
-          "correctAnswer": "Vladimir Lénine"
-        },
-        {
-          "id": "3",
-          "question": "Quelle civilisation a construit les pyramides d'Égypte ?",
-          "answers": [
-            "La civilisation minoenne",
-            "La civilisation sumérienne",
-            "La civilisation égyptienne",
-            "La civilisation romaine"
-          ],
-          "correctAnswer": "La civilisation égyptienne"
-        },
-        {
-          "id": "4",
-          "question": "En quelle année Christophe Colomb a-t-il atteint les Amériques ?",
-          "answers": [
-            "1492",
-            "1522",
-            "1607",
-            "1776"
-          ],
-          "correctAnswer": "1492"
-        },
-        {
-          "id": "5",
-          "question": "Quel empire a conquis la majeure partie de l'Europe au début du 19ème siècle ?",
-          "answers": [
-            "L'Empire Ottoman",
-            "L'Empire Français",
-            "L'Empire Britannique",
-            "L'Empire Russe"
-          ],
-          "correctAnswer": "L'Empire Français"
-        },
-        {
-          "id": "6",
-          "question": "Quelle était la cause principale de la Guerre Froide ?",
-          "answers": [
-            "Des différends commerciaux",
-            "Des conflits religieux",
-            "Des idéologies politiques opposées",
-            "Une compétition sportive intense"
-          ],
-          "correctAnswer": "Des idéologies politiques opposées"
-        },
-        {
-          "id": "7",
-          "question": "Qui a peint la Joconde ?",
-          "answers": [
-            "Michel-Ange",
-            "Raphaël",
-            "Léonard de Vinci",
-            "Donatello"
-          ],
-          "correctAnswer": "Léonard de Vinci"
-        },
-        {
-          "id": "8",
-          "question": "Laquelle de ces inventions a révolutionné le monde au 15ème siècle ?",
-          "answers": [
-            "L'automobile",
-            "L'électricité",
-            "L'imprimerie",
-            "L'ordinateur"
-          ],
-          "correctAnswer": "L'imprimerie"
-        },
-        {
-          "id": "9",
-          "question": "Le mur de Berlin est tombé en :",
-          "answers": [
-            "1989",
-            "1991",
-            "1961",
-            "1945"
-          ],
-          "correctAnswer": "1989"
-        },
-        {
-          "id": "10",
-          "question": "Qui a écrit \"Le Capital\" ?",
-          "answers": [
-            "Karl Marx",
-            "Friedrich Engels",
-            "Adam Smith",
-            "John Maynard Keynes"
-          ],
-          "correctAnswer": "Karl Marx"
+          "correctAnswer": "HTTP"
         }
       ]
     }
@@ -2690,7 +1237,140 @@
       ]
     }
   ],
-
+  "competences": [
+    {
+      "id": "1",
+      "code_competence": 1,
+      "code_module": "M101_F01",
+      "intitule_module": "M101",
+      "intitule_competence": [
+        "Analyse de données",
+        "Algorithmes de base"
+      ],
+      "filiere": "Informatique",
+      "cours": "https://fake-link.com/cours/M101",
+      "quiz": "https://fake-link.com/quiz/M101"
+    },
+    {
+      "id": "2",
+      "code_competence": 2,
+      "code_module": "M102_F01",
+      "intitule_module": "M102",
+      "intitule_competence": [
+        "Programmation en C",
+        "Structures de données"
+      ],
+      "filiere": "Informatique",
+      "cours": "https://fake-link.com/cours/M102",
+      "quiz": "https://fake-link.com/quiz/M102"
+    },
+    {
+      "id": "3",
+      "code_competence": 3,
+      "code_module": "M103_F01",
+      "intitule_module": "M103",
+      "intitule_competence": [
+        "Introduction à la gestion",
+        "Organisation des entreprises"
+      ],
+      "filiere": "Gestion",
+      "cours": "https://fake-link.com/cours/M103",
+      "quiz": "https://fake-link.com/quiz/M103"
+    },
+    {
+      "id": "5",
+      "code_competence": 5,
+      "code_module": "M105_F01",
+      "intitule_module": "M105",
+      "intitule_competence": [
+        "Programmation en JavaScript",
+        "DOM manipulation"
+      ],
+      "filiere": "Informatique",
+      "cours": "https://fake-link.com/cours/M105",
+      "quiz": "https://fake-link.com/quiz/M105"
+    },
+    {
+      "id": "6",
+      "code_competence": 6,
+      "code_module": "M106_F01",
+      "intitule_module": "M106",
+      "intitule_competence": [
+        "Introduction au web",
+        "HTML/CSS"
+      ],
+      "filiere": "Informatique",
+      "cours": "https://fake-link.com/cours/M106",
+      "quiz": "https://fake-link.com/quiz/M106"
+    },
+    {
+      "id": "7",
+      "code_competence": 7,
+      "code_module": "M107_F01",
+      "intitule_module": "M107",
+      "intitule_competence": [
+        "Réseaux de base",
+        "Modèle OSI"
+      ],
+      "filiere": "Informatique",
+      "cours": "https://fake-link.com/cours/M107",
+      "quiz": "https://fake-link.com/quiz/M107"
+    },
+    {
+      "id": "8",
+      "code_competence": 8,
+      "code_module": "M108_F01",
+      "intitule_module": "M108",
+      "intitule_competence": [
+        "Sécurité informatique",
+        "Cryptographie"
+      ],
+      "filiere": "Informatique",
+      "cours": "https://fake-link.com/cours/M108",
+      "quiz": "https://fake-link.com/quiz/M108"
+    },
+    {
+      "id": "9",
+      "code_competence": 9,
+      "code_module": "M109_F01",
+      "intitule_module": "M109",
+      "intitule_competence": [
+        "Design UX/UI",
+        "Prototypage"
+      ],
+      "filiere": "Design",
+      "cours": "https://fake-link.com/cours/M109",
+      "quiz": "https://fake-link.com/quiz/M109"
+    },
+    {
+      "id": "10",
+      "code_competence": 10,
+      "code_module": "M110_F01",
+      "intitule_module": "M110",
+      "intitule_competence": [
+        "Introduction à l'intelligence artificielle",
+        "Machine learning"
+      ],
+      "filiere": "IA",
+      "cours": "https://fake-link.com/cours/M110",
+      "quiz": "https://fake-link.com/quiz/M110"
+    },
+    {
+      "id": "84be",
+      "code_competence": "11",
+      "intitule_competence": [
+        "communication"
+      ],
+      "filiere": "Soft Skills",
+      "intitule_module": "softskills",
+      "cours": [
+        "https:/softskills.com"
+      ],
+      "quiz": [
+        "https:/softskills.com"
+      ]
+    }
+  ],
   "absentStudents": [
     {
       "id": "082d",
@@ -3037,113 +1717,6 @@
       }
     }
   ],
-  "filieres": [
-    {
-      "id": "611e",
-      "code_filiere": "F01",
-      "intitule_filiere": "Informatique",
-      "secteur": "Technologie",
-      "groupes": [
-        {
-          "id": 1,
-          "nom": "DEV101",
-          "annee": "1ère année"
-        },
-        {
-          "id": 2,
-          "nom": "DEVOWFS201",
-          "annee": "2ème année"
-        }
-      ]
-    },
-    {
-      "id": "dcb8",
-      "code_filiere": "F02",
-      "intitule_filiere": "Réseaux et Télécommu",
-      "secteur": "Technologie",
-      "groupes": [
-        {
-          "id": 4,
-          "nom": "DEV201",
-          "annee": "2ème année"
-        }
-      ]
-    },
-    {
-      "id": "ff07",
-      "code_filiere": "F03",
-      "intitule_filiere": "Management",
-      "secteur": "Business",
-      "groupes": [
-        {
-          "id": 3,
-          "nom": "MAN101",
-          "annee": "1ère année"
-        }
-      ]
-    },
-    {
-      "id": "5d96",
-      "code_filiere": "F04",
-      "intitule_filiere": "Design Graphique",
-      "secteur": "Arts",
-      "groupes": [
-        {
-          "id": 5,
-          "nom": "DES101",
-          "annee": "1ère année"
-        }
-      ]
-    },
-    {
-      "id": "7912",
-      "code_filiere": "F05",
-      "intitule_filiere": "Photographie",
-      "secteur": "Arts",
-      "groupes": [
-        {
-          "id": 6,
-          "nom": "PHO101",
-          "annee": "1ère année"
-        }
-      ]
-    },
-    {
-      "id": "791d",
-      "code_filiere": "F06",
-      "intitule_filiere": "Sciences de la Vie",
-      "secteur": "Sciences",
-      "groupes": [
-        {
-          "id": 7,
-          "nom": "SCI101",
-          "annee": "1ère année"
-        }
-      ]
-    },
-    {
-      "ordre": 11,
-      "code_filiere": "F11",
-      "intitule_filiere": "Biotechnologie",
-      "secteur": "Sciences",
-      "groupes": [
-        "4"
-      ],
-      "id": "df6b"
-    },
-    {
-      "id": "5896",
-      "code_filiere": "F15",
-      "intitule_filiere": "Something",
-      "secteur": "Something",
-      "groupes": [
-        "1",
-        "2",
-        "3"
-      ]
-    }
-  ],
-
   "courses": [
     {
       "id": "1",
@@ -3179,7 +1752,7 @@
       ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
       "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
-      "status": "active",
+      "status": "completed",
       "Module": "ergerg"
     },
     {
@@ -3405,730 +1978,6 @@
         }
       ],
       "teacherName": "Carlos Martinez"
-    }
-  ],
-  "modules": [
-    {
-      "code": "M102_F01",
-      "intitule": "M102",
-      "masseHoraire": 50,
-      "filiere": "Développement Logiciel",
-      "niveau": "1A",
-      "competences": "Programmation en C, Structures de données",
-      "secteur": "Digital",
-      "formateur": "Sophie Bernard",
-      "id": "2",
-      "etat": "Affecté"
-    },
-    {
-      "id": "3",
-      "code": "M104_F01",
-      "intitule": "M104",
-      "masseHoraire": 70,
-      "filiere": "Base de Données",
-      "niveau": "1A",
-      "competences": "Bases de données SQL, Conception de schémas",
-      "etat": "Affecté",
-      "secteur": "Digital",
-      "formateur": "Michel Dubois"
-    },
-    {
-      "id": "4",
-      "code": "M104_F01",
-      "intitule": "M104",
-      "masseHoraire": 70,
-      "filiere": "Base de Données",
-      "niveau": "1A",
-      "competences": "Bases de données SQL, Conception de schémas",
-      "etat": "Affecté",
-      "secteur": "Digital",
-      "formateur": "Michel Dubois"
-    },
-    {
-      "id": "5",
-      "code": "M105_F01",
-      "intitule": "M105",
-      "masseHoraire": 90,
-      "filiere": "Développement Frontend",
-      "niveau": "1A",
-      "competences": "Programmation en JavaScript, DOM manipulation",
-      "etat": "Affecté",
-      "secteur": "Digital",
-      "formateur": "Clara Dupuis"
-    },
-    {
-      "id": "6",
-      "code": "M106_F01",
-      "intitule": "M106",
-      "masseHoraire": 100,
-      "filiere": "Développement Web",
-      "niveau": "1A",
-      "competences": "Introduction au web, HTML/CSS",
-      "etat": "Affecté",
-      "secteur": "Digital",
-      "formateur": "Nicolas Leroy"
-    },
-    {
-      "id": "7",
-      "code": "M107_F01",
-      "intitule": "M107",
-      "masseHoraire": 40,
-      "filiere": "Réseaux Informatiques",
-      "niveau": "1A",
-      "competences": "Réseaux de base, Modèle OSI",
-      "etat": "Affecté",
-      "secteur": "Digital",
-      "formateur": "Juliette Moreau"
-    },
-    {
-      "id": "8",
-      "code": "M108_F01",
-      "intitule": "M108",
-      "masseHoraire": 60,
-      "filiere": "Sécurité Informatique",
-      "niveau": "2A",
-      "competences": "Sécurité informatique, Cryptographie",
-      "etat": "Affecté",
-      "secteur": "Digital",
-      "formateur": "Vincent Lefevre"
-    },
-    {
-      "id": "9",
-      "code": "M109_F01",
-      "intitule": "M109",
-      "masseHoraire": 55,
-      "filiere": "Design UX/UI",
-      "niveau": "2A",
-      "competences": "Design UX/UI, Prototypage",
-      "etat": "Affecté",
-      "secteur": "Digital",
-      "formateur": "Emilie Martin"
-    },
-    {
-      "id": "10",
-      "code": "M110_F01",
-      "intitule": "M110",
-      "masseHoraire": 45,
-      "filiere": "Intelligence Artificielle",
-      "niveau": "2A",
-      "competences": "Introduction à l'intelligence artificielle",
-      "etat": "Affecté",
-      "secteur": "Digital",
-      "formateur": "Louis Petit"
-    },
-    {
-      "id": "11",
-      "code": "M111_F01",
-      "intitule": "M111",
-      "masseHoraire": 30,
-      "filiere": "Gestion de Projet",
-      "niveau": "2A",
-      "competences": "Gestion de projet, Méthodes agiles",
-      "etat": "Affecté",
-      "secteur": "Digital",
-      "formateur": "Claire Robert"
-    },
-    {
-      "id": "12",
-      "code": "M112_F01",
-      "intitule": "M112",
-      "masseHoraire": 65,
-      "filiere": "Systèmes Embarqués",
-      "niveau": "2A",
-      "competences": "Systèmes embarqués, Microcontrôleurs",
-      "etat": "Affecté",
-      "secteur": "Digital",
-      "formateur": "Hugo Durand"
-    },
-    {
-      "id": "13",
-      "code": "M113_F01",
-      "intitule": "M113",
-      "masseHoraire": 75,
-      "filiere": "Développement Python",
-      "niveau": "2A",
-      "competences": "Programmation en Python, Scripts automatiques",
-      "etat": "Affecté",
-      "secteur": "Digital",
-      "formateur": "Camille Lefevre"
-    },
-    {
-      "id": "14",
-      "code": "M114_F01",
-      "intitule": "M114",
-      "masseHoraire": 80,
-      "filiere": "Mathématiques Appliquées",
-      "niveau": "2A",
-      "competences": "Calculs avancés, Mathématiques appliquées",
-      "etat": "Non affecté",
-      "secteur": "",
-      "formateur": ""
-    },
-    {
-      "code": "M115_F01",
-      "intitule": "M115",
-      "masseHoraire": 95,
-      "filiere": "Finance",
-      "niveau": "1A",
-      "competences": "Architecture des ordinateurs, Organisation mémoire",
-      "secteur": "Finance",
-      "formateur": "Alex Martin",
-      "id": "15",
-      "etat": "Affecté"
-    },
-    {
-      "id": "16",
-      "code": "M115_F02",
-      "intitule": "M115",
-      "masseHoraire": 100,
-      "filiere": "Gestion Financière",
-      "niveau": "1A",
-      "competences": "Introduction à la gestion financière",
-      "etat": "Affecté",
-      "secteur": "Finance",
-      "formateur": "Marc Durand"
-    },
-    {
-      "id": "17",
-      "code": "M115_F03",
-      "intitule": "M115",
-      "masseHoraire": 90,
-      "filiere": "Analyse Financière",
-      "niveau": "1A",
-      "competences": "Analyse financière de base, Prévisions financières",
-      "etat": "Affecté",
-      "secteur": "Finance",
-      "formateur": "Claire Martin"
-    },
-    {
-      "id": "21",
-      "code": "M115_F07",
-      "intitule": "M115",
-      "masseHoraire": 105,
-      "filiere": "Investissement",
-      "niveau": "1A",
-      "competences": "Investissements immobiliers",
-      "etat": "Affecté",
-      "secteur": "Finance",
-      "formateur": "Luc Bernard"
-    },
-    {
-      "id": "22",
-      "code": "M115_F08",
-      "intitule": "M115",
-      "masseHoraire": 95,
-      "filiere": "Gestion de Trésorerie",
-      "niveau": "1A",
-      "competences": "Planification financière",
-      "etat": "Affecté",
-      "secteur": "Finance",
-      "formateur": "Nathalie Moreau"
-    },
-    {
-      "id": "23",
-      "code": "M115_F09",
-      "intitule": "M115",
-      "masseHoraire": 100,
-      "filiere": "Évaluation d'Entreprise",
-      "niveau": "2A",
-      "competences": "Évaluation des entreprises, Analyse des investissements",
-      "etat": "Affecté",
-      "secteur": "Finance",
-      "formateur": "Pierre Lefevre"
-    },
-    {
-      "id": "24",
-      "code": "M115_F10",
-      "intitule": "M115",
-      "masseHoraire": 90,
-      "filiere": "Finance Internationale",
-      "niveau": "1A",
-      "competences": "Financement international, Stratégies de diversification",
-      "etat": "Affecté",
-      "secteur": "Finance",
-      "formateur": "Sophie Petit"
-    },
-    {
-      "id": "27",
-      "code": "M115_F13",
-      "intitule": "M115",
-      "masseHoraire": 115,
-      "filiere": "Modélisation Financière",
-      "niveau": "1A",
-      "competences": "Modélisation financière avancée",
-      "etat": "Affecté",
-      "secteur": "Finance",
-      "formateur": "Thomas Leroy"
-    },
-    {
-      "id": "28",
-      "code": "M115_F14",
-      "intitule": "M115",
-      "masseHoraire": 120,
-      "filiere": "Analyse de Risques",
-      "niveau": "1A",
-      "competences": "Évaluation des actifs, Analyse quantitative des risques",
-      "etat": "Affecté",
-      "secteur": "Finance",
-      "formateur": "Julie Richard"
-    },
-    {
-      "id": "29",
-      "code": "M115_F15",
-      "intitule": "M115",
-      "masseHoraire": 130,
-      "filiere": "Stratégies de Financement",
-      "niveau": "2A",
-      "competences": "Gestion des fusions et acquisitions",
-      "etat": "Affecté",
-      "secteur": "Finance",
-      "formateur": "Gabriel Morel"
-    },
-    {
-      "id": "32",
-      "code": "M115_F18",
-      "intitule": "M115",
-      "masseHoraire": 115,
-      "filiere": "Analyse Financière Internationale",
-      "niveau": "2A",
-      "competences": "Analyse financière internationale, Marchés émergents",
-      "etat": "Affecté",
-      "secteur": "Finance",
-      "formateur": "Amélie Dupuis"
-    },
-    {
-      "id": "33",
-      "code": "M115_F19",
-      "intitule": "M115",
-      "masseHoraire": 120,
-      "filiere": "Gestion des Risques",
-      "niveau": "2A",
-      "competences": "Gestion des risques systémiques",
-      "etat": "Affecté",
-      "secteur": "Finance",
-      "formateur": "Olivier Durand"
-    },
-    {
-      "id": "34",
-      "code": "M115_F20",
-      "intitule": "M115",
-      "masseHoraire": 125,
-      "filiere": "Marchés Financiers",
-      "niveau": "2A",
-      "competences": "Analyse des marchés financiers",
-      "etat": "Affecté",
-      "secteur": "Finance",
-      "formateur": "Laura Martel"
-    },
-    {
-      "id": "36",
-      "code": "M117_F20",
-      "intitule": "M117",
-      "masseHoraire": 135,
-      "filiere": "Marketing Digital",
-      "niveau": "1A",
-      "competences": "Gest Comportement du consommateur",
-      "etat": "Affecté",
-      "secteur": "Marketing",
-      "formateur": "Jean Dupont"
-    },
-    {
-      "id": "37",
-      "code": "M118_F20",
-      "intitule": "M118",
-      "masseHoraire": 140,
-      "filiere": "Marketing Stratégique",
-      "niveau": "1A",
-      "competences": "Marketing de contenu, SEO et SEM",
-      "etat": "Affecté",
-      "secteur": "Marketing",
-      "formateur": "Jean Dupont"
-    },
-    {
-      "id": "38",
-      "code": "M119_F20",
-      "intitule": "M119",
-      "masseHoraire": 145,
-      "filiere": "Marketing de Produits",
-      "niveau": "1A",
-      "competences": "Publicité en ligne, Analyse des données marketing",
-      "etat": "Affecté",
-      "secteur": "Marketing",
-      "formateur": "Jean Dupont"
-    },
-    {
-      "id": "39",
-      "code": "M120_F20",
-      "intitule": "M120",
-      "masseHoraire": 150,
-      "filiere": "Marketing International",
-      "niveau": "1A",
-      "competences": "Analyse des données marketing, Gestion de la marque",
-      "etat": "Affecté",
-      "secteur": "Marketing",
-      "formateur": "Jean Dupont"
-    },
-    {
-      "id": "40",
-      "code": "M121_F20",
-      "intitule": "M121",
-      "masseHoraire": 155,
-      "filiere": "Marketing de Services",
-      "niveau": "1A",
-      "competences": "Analyse des données marketing, Gestion de la marque",
-      "etat": "Affecté",
-      "secteur": "Marketing",
-      "formateur": "Clara Dupuis"
-    },
-    {
-      "id": "41",
-      "code": "M122_F20",
-      "intitule": "M122",
-      "masseHoraire": 160,
-      "filiere": "Marketing de Produits",
-      "niveau": "1A",
-      "competences": "Analyse des marchés financiers, Stratégies de fidélisation",
-      "etat": "Affecté",
-      "secteur": "Marketing",
-      "formateur": "Clara Dupuis"
-    },
-    {
-      "id": "42",
-      "code": "M123_F20",
-      "intitule": "M123",
-      "masseHoraire": 165,
-      "filiere": "Marketing Digital",
-      "niveau": "1A",
-      "competences": "Branding, Gest Comportement du consommateur",
-      "etat": "Affecté",
-      "secteur": "Marketing",
-      "formateur": "Clara Dupuis"
-    },
-    {
-      "id": "43",
-      "code": "M124_F20",
-      "intitule": "M124",
-      "masseHoraire": 170,
-      "filiere": "Marketing International",
-      "niveau": "2A",
-      "competences": "SEO et SEM, Analyse des données marketing",
-      "etat": "Affecté",
-      "secteur": "Marketing",
-      "formateur": "Jean Dupont"
-    },
-    {
-      "id": "44",
-      "code": "M125_F20",
-      "intitule": "M125",
-      "masseHoraire": 175,
-      "filiere": "Marketing Stratégique",
-      "niveau": "2A",
-      "competences": "Marketing relationnel, Stratégies de fidélisation",
-      "etat": "Affecté",
-      "secteur": "Marketing",
-      "formateur": "Clara Dupuis"
-    },
-    {
-      "id": "45",
-      "code": "M126_F20",
-      "intitule": "M126",
-      "masseHoraire": 180,
-      "filiere": "Marketing Digital",
-      "niveau": "2A",
-      "competences": "Analyse des marchés financier, Marketing relationnel",
-      "etat": "Affecté",
-      "secteur": "Marketing",
-      "formateur": "Jean Dupont"
-    },
-    {
-      "id": "46",
-      "code": "M127_F20",
-      "intitule": "M127",
-      "masseHoraire": 185,
-      "filiere": "Marketing de Produits",
-      "niveau": "2A",
-      "competences": "Comportement du consommateur, Marketing de contenu",
-      "etat": "Affecté",
-      "secteur": "Marketing",
-      "formateur": "Jean Dupont"
-    },
-    {
-      "id": "47",
-      "code": "M128_F20",
-      "intitule": "M128",
-      "masseHoraire": 190,
-      "filiere": "Marketing International",
-      "niveau": "2A",
-      "competences": "Publicité traditionnelle, Études de marché",
-      "etat": "Affecté",
-      "secteur": "Marketing",
-      "formateur": "Pierre Lefevre"
-    },
-    {
-      "id": "48",
-      "code": "M129_F20",
-      "intitule": "M129",
-      "masseHoraire": 195,
-      "filiere": "Marketing de Services",
-      "niveau": "2A",
-      "competences": "Stratégies de fidélisation, Marketing d'influence",
-      "etat": "Affecté",
-      "secteur": "Marketing",
-      "formateur": "Pierre Lefevre"
-    },
-    {
-      "id": "49",
-      "code": "M102_A10",
-      "intitule": "102",
-      "masseHoraire": "120",
-      "filiere": "Technologie des aliments",
-      "niveau": "1A",
-      "competences": "Gestion de la production alimentaire",
-      "secteur": "Agro-ali",
-      "formateur": "Emilie Martin",
-      "etat": "Affecté"
-    },
-    {
-      "id": "50",
-      "code": "M103_A11",
-      "intitule": "103",
-      "masseHoraire": "100",
-      "filiere": "Transformation alimentaire",
-      "niveau": "1A",
-      "competences": "Transformation des produits alimentaires",
-      "secteur": "Agro-ali",
-      "formateur": "Léa Dupont",
-      "etat": "Affecté"
-    },
-    {
-      "id": "51",
-      "code": "M104_A12",
-      "intitule": "104",
-      "masseHoraire": "110",
-      "filiere": "Gestion de la production alimentaire",
-      "niveau": "1A",
-      "competences": "Optimisation des processus, Contrôle de qualité",
-      "secteur": "Agro-ali",
-      "formateur": "Marc Robert",
-      "etat": "Affecté"
-    },
-    {
-      "id": "52",
-      "code": "M105_A13",
-      "intitule": "105",
-      "masseHoraire": "130",
-      "filiere": "Contrôle qualité alimentaire",
-      "niveau": "1A",
-      "competences": "Contrôle qualité, Sécurité alimentaire",
-      "secteur": "Agro-ali",
-      "formateur": "Sophie Dufresne",
-      "etat": "Affecté"
-    },
-    {
-      "id": "53",
-      "code": "M106_A14",
-      "intitule": "106",
-      "masseHoraire": "140",
-      "filiere": "Nutrition et diététique",
-      "niveau": "1A",
-      "competences": "Nutrition, Diététique, Équilibre alimentaire",
-      "secteur": "Agro-ali",
-      "formateur": "Chantal Durand",
-      "etat": "Affecté"
-    },
-    {
-      "id": "54",
-      "code": "M107_A15",
-      "intitule": "107",
-      "masseHoraire": "120",
-      "filiere": "Sécurité alimentaire",
-      "niveau": "1A",
-      "competences": "Réglementation sur la sécurité alimentaire",
-      "secteur": "Agro-ali",
-      "formateur": "Thomas Lefevre",
-      "etat": "Affecté"
-    },
-    {
-      "id": "55",
-      "code": "M108_A16",
-      "intitule": "108",
-      "masseHoraire": "110",
-      "filiere": "Agronomie et production agricole",
-      "niveau": "1A",
-      "competences": "Production agricole, Techniques agricoles",
-      "secteur": "Agro-ali",
-      "formateur": "Pierre Lefevre",
-      "etat": "Affecté"
-    },
-    {
-      "id": "56",
-      "code": "M109_A17",
-      "intitule": "109",
-      "masseHoraire": "115",
-      "filiere": "Logistique et chaîne du froid",
-      "niveau": "1A",
-      "competences": "Distribution des produits alimentaires",
-      "secteur": "Agro-ali",
-      "formateur": "Elise Moreau",
-      "etat": "Affecté"
-    },
-    {
-      "id": "57",
-      "code": "M110_A18",
-      "intitule": "110",
-      "masseHoraire": "125",
-      "filiere": "Marketing Agro-ali",
-      "niveau": "1A",
-      "competences": "Stratégies de marketing, Communication Agro-ali",
-      "secteur": "Agro-ali",
-      "formateur": "Jean-Paul Lemoine",
-      "etat": "Affecté"
-    },
-    {
-      "id": "58",
-      "code": "M111_A19",
-      "intitule": "111",
-      "masseHoraire": "135",
-      "filiere": "Biotechnologies alimentaires",
-      "niveau": "1A",
-      "competences": "Innovation dans l'Agro-ali",
-      "secteur": "Agro-ali",
-      "formateur": "Laurent Boucher",
-      "etat": "Affecté"
-    },
-    {
-      "id": "59",
-      "code": "M201_A20",
-      "intitule": "201",
-      "masseHoraire": "130",
-      "filiere": "Technologie des aliments",
-      "niveau": "2A",
-      "competences": "Techniques avancées de transformation",
-      "secteur": "Agro-ali",
-      "formateur": "Emilie Martin",
-      "etat": "Affecté"
-    },
-    {
-      "id": "60",
-      "code": "M202_A21",
-      "intitule": "202",
-      "masseHoraire": "120",
-      "filiere": "Transformation alimentaire",
-      "niveau": "2A",
-      "competences": "Procédés de transformation, Conservation des aliments",
-      "secteur": "Agro-ali",
-      "formateur": "Léa Dupont",
-      "etat": "Affecté"
-    },
-    {
-      "id": "61",
-      "code": "M203_A22",
-      "intitule": "203",
-      "masseHoraire": "115",
-      "filiere": "Gestion de la production alimentaire",
-      "niveau": "2A",
-      "competences": "Planification de la production, Gestion des ressources",
-      "secteur": "Agro-ali",
-      "formateur": "Marc Robert",
-      "etat": "Affecté"
-    },
-    {
-      "id": "62",
-      "code": "M204_A23",
-      "intitule": "204",
-      "masseHoraire": "125",
-      "filiere": "Contrôle qualité alimentaire",
-      "niveau": "2A",
-      "competences": "Normes HACCP, Sécurité alimentaire",
-      "secteur": "Agro-ali",
-      "formateur": "Sophie Dufresne",
-      "etat": "Affecté"
-    },
-    {
-      "id": "63",
-      "code": "M205_A24",
-      "intitule": "205",
-      "masseHoraire": "135",
-      "filiere": "Nutrition et diététique",
-      "niveau": "2A",
-      "competences": "Nutrition clinique, Régimes alimentaires",
-      "secteur": "Agro-ali",
-      "formateur": "Chantal Durand",
-      "etat": "Affecté"
-    },
-    {
-      "id": "64",
-      "code": "M206_A25",
-      "intitule": "206",
-      "masseHoraire": "140",
-      "filiere": "Sécurité alimentaire",
-      "niveau": "2A",
-      "competences": "Analyse des risques, Législation en sécurité alimentaire",
-      "secteur": "Agro-ali",
-      "formateur": "Thomas Lefevre",
-      "etat": "Affecté"
-    },
-    {
-      "id": "65",
-      "code": "M207_A26",
-      "intitule": "207",
-      "masseHoraire": "110",
-      "filiere": "Agronomie et production agricole",
-      "niveau": "2A",
-      "competences": "Agriculture durable,Techniques de culture avancées",
-      "secteur": "Agro-ali",
-      "formateur": "Pierre Lefevre",
-      "etat": "Affecté"
-    },
-    {
-      "id": "66",
-      "code": "M208_A27",
-      "intitule": "208",
-      "masseHoraire": "120",
-      "filiere": "Logistique et chaîne du froid",
-      "niveau": "2A",
-      "competences": "Gestion logistique avancée, Chaîne du froid internationale",
-      "secteur": "Agro-ali",
-      "formateur": "Elise Moreau",
-      "etat": "Affecté"
-    },
-    {
-      "id": "67",
-      "code": "M209_A28",
-      "intitule": "209",
-      "masseHoraire": "125",
-      "filiere": "Marketing Agro-ali",
-      "niveau": "2A",
-      "competences": "Stratégies de vente, Marketing de produits Agro-alis",
-      "secteur": "Agro-ali",
-      "formateur": "Jean-Paul Lemoine",
-      "etat": "Affecté"
-    },
-    {
-      "id": "68",
-      "code": "M210_A29",
-      "intitule": "210",
-      "masseHoraire": "130",
-      "filiere": "Biotechnologies alimentaires",
-      "niveau": "2A",
-      "competences": "Biotechnologie de la fermentation, Probiotiques",
-      "secteur": "Agro-ali",
-      "formateur": "Laurent Boucher",
-      "etat": "Affecté"
-    },
-    {
-      "id": "69",
-      "code": "",
-      "intitule": "",
-      "masseHoraire": "",
-      "filiere": "",
-      "niveau": "",
-      "competences": [
-        ""
-      ],
-      "secteur": "",
-      "formateur": "",
-      "etat": "Non Affecté"
     }
   ],
   "modules": [
@@ -5224,580 +3073,6 @@
       "status": "en cours",
       "submissionDate": "03/12/2024",
       "processingTime": "3-5 jours"
-    }
-  ],
-  "trainees": [
-    {
-      "cef": "100780",
-      "nom": "najat",
-      "prenom": "Hassan",
-      "email": "fatima.hassan@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Infrastructures Digitale ",
-      "groupe": "G101",
-      "id": "3ff4"
-    },
-    {
-      "cef": "100010",
-      "nom": "Nadia",
-      "prenom": "Jamal",
-      "email": "nadia.jamal@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Infrastructures Digitale ",
-      "groupe": "G101",
-      "id": "b37a"
-    },
-    {
-      "cef": "352555",
-      "nom": "Sara",
-      "prenom": "Mohammed",
-      "email": "sara@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Infrastructures Digitale ",
-      "groupe": "G102",
-      "id": "c6ec"
-    },
-    {
-      "cef": "235466",
-      "nom": "Sara",
-      "prenom": "amine",
-      "email": "sara@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Infrastructures Digitale ",
-      "groupe": "G102",
-      "id": "882b"
-    },
-    {
-      "cef": "646745",
-      "nom": "Youssef",
-      "prenom": "Salem",
-      "email": "youssef@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Développement Digital",
-      "groupe": "G101",
-      "id": "e109"
-    },
-    {
-      "cef": "100006",
-      "nom": "Khadija",
-      "prenom": "Imad",
-      "email": "khadija@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Développement Digital",
-      "groupe": "G101",
-      "id": "a0fd"
-    },
-    {
-      "cef": "865435",
-      "nom": "Omar",
-      "prenom": "Ayman",
-      "email": "omar@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Développement Digital",
-      "groupe": "G101",
-      "id": "0de6"
-    },
-    {
-      "cef": "565689",
-      "nom": "Ibrahim",
-      "prenom": "Zine El Abidine",
-      "email": "ibrahim@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Développement Digital",
-      "groupe": "G102",
-      "id": "24ac"
-    },
-    {
-      "cef": "634324",
-      "nom": "Mariam",
-      "prenom": "Karim",
-      "email": "mariam@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Développement Digital",
-      "groupe": "G102",
-      "id": "3536"
-    },
-    {
-      "cef": "456788",
-      "nom": "Imane",
-      "prenom": "Reda",
-      "email": "iman@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Bâtiment",
-      "groupe": "G101",
-      "id": "e8cc"
-    },
-    {
-      "cef": "768454",
-      "nom": "Leila",
-      "prenom": "Sami",
-      "email": "leila.sami@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Bâtiment",
-      "groupe": "G101",
-      "id": "9167"
-    },
-    {
-      "cef": "100002",
-      "nom": "Yassir",
-      "prenom": "Mounir",
-      "email": "yassir.mounir@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Bâtiment",
-      "groupe": "G101",
-      "id": "d667"
-    },
-    {
-      "cef": "54634",
-      "nom": "Kenza",
-      "prenom": "Amine",
-      "email": "kenza.amine@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Bâtiment",
-      "groupe": "G101",
-      "id": "97b5"
-    },
-    {
-      "cef": "4680876",
-      "nom": "Hassan",
-      "prenom": "Nadia",
-      "email": "hassan.nadia@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Bâtiment",
-      "groupe": "G102",
-      "id": "4d8c"
-    },
-    {
-      "cef": "4533456",
-      "nom": "Salim",
-      "prenom": "Lina",
-      "email": "salim.lina@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Bâtiment",
-      "groupe": "G102",
-      "id": "f5d8"
-    },
-    {
-      "cef": "345366",
-      "nom": "Hassan",
-      "prenom": "Nadia",
-      "email": "hassan.nadia@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Bâtiment",
-      "groupe": "G102",
-      "id": "7281"
-    },
-    {
-      "cef": "3445667",
-      "nom": "Salim",
-      "prenom": "Lina",
-      "email": "salim.lina@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Bâtiment",
-      "groupe": "G102",
-      "id": "2f25"
-    },
-    {
-      "cef": "3444789",
-      "nom": "Hassan",
-      "prenom": "Nadia",
-      "email": "hassan.nadia@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Bâtiment",
-      "groupe": "G102",
-      "id": "eadb"
-    },
-    {
-      "cef": "68754",
-      "nom": "Salim",
-      "prenom": "Lina",
-      "email": "salim.lina@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Bâtiment",
-      "groupe": "G102",
-      "id": "b36d"
-    },
-    {
-      "cef": "345678",
-      "nom": "Maya",
-      "prenom": "Farid",
-      "email": "maya.farid@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Commerce",
-      "groupe": "G101",
-      "id": "0eff"
-    },
-    {
-      "cef": "100007",
-      "nom": "Imane",
-      "prenom": "Tariq",
-      "email": "imane.tariq@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Commerce",
-      "groupe": "G101",
-      "id": "0629"
-    },
-    {
-      "cef": "98780",
-      "nom": "Rania",
-      "prenom": "Adil",
-      "email": "rania.adil@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Commerce",
-      "groupe": "G101",
-      "id": "a1a8"
-    },
-    {
-      "cef": "4557688",
-      "nom": "Youssef",
-      "prenom": "Salwa",
-      "email": "youssef.salwa@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Commerce",
-      "groupe": "G101",
-      "id": "3dda"
-    },
-    {
-      "cef": "345679",
-      "nom": "Nour",
-      "prenom": "Ali",
-      "email": "nour.ali@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Commerce",
-      "groupe": "G102",
-      "id": "d254"
-    },
-    {
-      "cef": "234567",
-      "nom": "Nour",
-      "prenom": "Ali",
-      "email": "nour.ali@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Commerce",
-      "groupe": "G102",
-      "id": "8424"
-    },
-    {
-      "cef": "34567",
-      "nom": "Nour",
-      "prenom": "Ali",
-      "email": "nour.ali@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Commerce",
-      "groupe": "G102",
-      "id": "009d"
-    },
-    {
-      "cef": "344657",
-      "nom": "Nour",
-      "prenom": "Ali",
-      "email": "nour.ali@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Commerce",
-      "groupe": "G102",
-      "id": "5081"
-    },
-    {
-      "cef": "64533",
-      "nom": "Nour",
-      "prenom": "Ali",
-      "email": "nour.ali@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Commerce",
-      "groupe": "G102",
-      "id": "4599"
-    },
-    {
-      "cef": "6575434",
-      "nom": "Sofia",
-      "prenom": "Zohra",
-      "email": "sofia.zohra@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Finance",
-      "groupe": "G101",
-      "id": "80f1"
-    },
-    {
-      "cef": "2344535",
-      "nom": "Sofia",
-      "prenom": "Zohra",
-      "email": "sofia.zohra@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Finance",
-      "groupe": "G101",
-      "id": "82f6"
-    },
-    {
-      "cef": "3456589",
-      "nom": "Sofia",
-      "prenom": "Zohra",
-      "email": "sofia.zohra@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Finance",
-      "groupe": "G101",
-      "id": "00c4"
-    },
-    {
-      "cef": "454657",
-      "nom": "Sofia",
-      "prenom": "Zohra",
-      "email": "sofia.zohra@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Finance",
-      "groupe": "G101",
-      "id": "3215"
-    },
-    {
-      "cef": "235665",
-      "nom": "Sofia",
-      "prenom": "Zohra",
-      "email": "sofia.zohra@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Finance",
-      "groupe": "G102",
-      "id": "2674"
-    },
-    {
-      "cef": "7645645",
-      "nom": "Sofia",
-      "prenom": "Zohra",
-      "email": "sofia.zohra@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Finance",
-      "groupe": "G102",
-      "id": "e92b"
-    },
-    {
-      "cef": "234535",
-      "nom": "Sofia",
-      "prenom": "Zohra",
-      "email": "sofia.zohra@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Finance",
-      "groupe": "G102",
-      "id": "1e5a"
-    },
-    {
-      "cef": "445678",
-      "nom": "Sofia",
-      "prenom": "Zohra",
-      "email": "sofia.zohra@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Finance",
-      "groupe": "G102",
-      "id": "edec"
-    },
-    {
-      "cef": "6456457",
-      "nom": "Amine",
-      "prenom": "Karim",
-      "email": "amine.karim@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Comptabilité",
-      "groupe": "G101",
-      "id": "8e17"
-    },
-    {
-      "cef": "54634",
-      "nom": "Lina",
-      "prenom": "Yasmine",
-      "email": "lina.yasmine@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Comptabilité",
-      "groupe": "G101",
-      "id": "7b10"
-    },
-    {
-      "cef": "6576879",
-      "nom": "Khalil",
-      "prenom": "Ranya",
-      "email": "khalil.ranya@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Comptabilité",
-      "groupe": "G101",
-      "id": "dab9"
-    },
-    {
-      "cef": "100005",
-      "nom": "Samira",
-      "prenom": "Omar",
-      "email": "samira.omar@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Comptabilité",
-      "groupe": "G101",
-      "id": "278f"
-    },
-    {
-      "cef": "4567890",
-      "nom": "Nabil",
-      "prenom": "Rima",
-      "email": "nabil.rima@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Comptabilité",
-      "groupe": "G101",
-      "id": "1c85"
-    },
-    {
-      "cef": "100007",
-      "nom": "Zaynab",
-      "prenom": "Ali",
-      "email": "zaynab.ali@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Comptabilité",
-      "groupe": "G102",
-      "id": "30ec"
-    },
-    {
-      "cef": "8967876",
-      "nom": "Anwar",
-      "prenom": "Siham",
-      "email": "anwar.siham@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Comptabilité",
-      "groupe": "G102",
-      "id": "fa64"
-    },
-    {
-      "cef": "233556",
-      "nom": "Fatima",
-      "prenom": "Hassan",
-      "email": "fatima.hassan@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Comptabilité",
-      "groupe": "G102",
-      "id": "41fa"
-    },
-    {
-      "cef": "455678",
-      "nom": "Nadia",
-      "prenom": "Jamal",
-      "email": "nadia.jamal@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Comptabilité",
-      "groupe": "G102",
-      "id": "c412"
-    },
-    {
-      "id": "e366",
-      "cef": "1111111",
-      "nom": "gtgt",
-      "prenom": "gtgt",
-      "email": "gtgt@gmail.com",
-      "annee": "1A",
-      "niveau": "T",
-      "filiere": "Développement Digital",
-      "groupe": "G102"
-    },
-    {
-      "id": "2763",
-      "cef": "123456789",
-      "nom": "Dupont",
-      "prenom": "Jean",
-      "email": "jean.dupont@example.com",
-      "annee": "2A",
-      "niveau": "T",
-      "filiere": "Développement Digital",
-      "groupe": "G101"
-    },
-    {
-      "id": "35af",
-      "cef": "456789123",
-      "nom": "Durand",
-      "prenom": "Marc",
-      "email": "marc.durand@example.com",
-      "annee": "2A",
-      "niveau": "TS",
-      "filiere": "Bâtiment",
-      "groupe": "G101"
-    },
-    {
-      "id": "3897",
-      "cef": "789123456",
-      "nom": "Lopez",
-      "prenom": "Emma",
-      "email": "emma.lopez@example.com",
-      "annee": "2A",
-      "niveau": "TS",
-      "filiere": "Commerce",
-      "groupe": "G102"
-    },
-    {
-      "id": "f16e",
-      "cef": "654321987",
-      "nom": "Pierre",
-      "prenom": "Sophie",
-      "email": "sophie.pierre@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Finance",
-      "groupe": "G101"
-    },
-    {
-      "id": "d82d",
-      "cef": "321987654",
-      "nom": "Robert",
-      "prenom": "Lucie",
-      "email": "lucie.robert@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "Comptabilité",
-      "groupe": "G102"
-    },
-    {
-      "id": "68b0",
-      "cef": "456680",
-      "nom": "abouzakaria",
-      "prenom": "yassmine",
-      "email": "yassmineabouzakaria@gmail.com",
-      "annee": "2A",
-      "niveau": "TS",
-      "filiere": "Développement Digital",
-      "groupe": "G101"
     }
   ],
   "trainees": [
