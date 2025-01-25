@@ -3,6 +3,7 @@ import SignupPage from '../features/auth/components/SignupForm';
 import DemandesPage from '../pages/Documents/DemandesPage';
 import Docs from '../pages/Documents/Docs/Docs';
 import AddCourse from '../pages/CoursesFormateur/AddCourse';
+import QuizAnalyze from '../pages/Quizzes/QuizAnalyze';
 import {
   HomePage,
   NotFoundPage,
@@ -116,7 +117,11 @@ const routes = [
     element: AllQuestions,
     allowedRoles: [ROLES.SUPER_USER, ROLES.TRAINER],
   },
-
+  {
+    path: '/quizanalyze',
+    element: QuizAnalyze,
+    allowedRoles: [ROLES.SUPER_USER, ROLES.TRAINEE],
+  },
   // Administrative routes
   {
     path: '/attendance',
