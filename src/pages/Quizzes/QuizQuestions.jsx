@@ -89,7 +89,7 @@ const QuizQuestions = () => {
     <>
       <div className="container mx-auto p-4">
         <h1 className="text-3xl font-bold text-center mb-2">Quiz Questions</h1>
-        <QuizHeader competence={quiz.competence} quizId={quiz.quizId} Deadline={quiz.Deadline}/>
+        <QuizHeader {...quiz} />
         {selectedQuestions.length > 0 && (
           <button onClick={handleDeleteQuestions} className="btn btn-error flex items-center">
             <Trash2 className="mr-2" />

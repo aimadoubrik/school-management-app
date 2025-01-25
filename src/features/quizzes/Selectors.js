@@ -28,8 +28,8 @@ export const selectQuizQuestions = createSelector(
   (quizzesState, quizId) => quizzesState.questions[quizId] || []
 );
 
-// Select modules
-export const selectModules = createSelector(
+// Select courses
+export const selectCourses = createSelector(
   [selectQuizzesState],
-  (quizzesState) => quizzesState.modules
+  (quizzesState) => quizzesState.courses
 );

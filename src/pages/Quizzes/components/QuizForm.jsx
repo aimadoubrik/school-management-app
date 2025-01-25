@@ -1,57 +1,23 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState } from 'react';
 import { BookOpen, User, Calendar, Settings } from 'lucide-react';
-import { apiService } from '../../../api/config';
-const QuizForm = ({ initialQuiz, modules, onSubmit, onCancel }) => {
+
+const QuizForm = ({ initialQuiz, courses, onSubmit, onCancel }) => {
   const user = JSON.parse(localStorage.getItem('user') || sessionStorage.getItem('user') || '{}');
   const [quiz, setQuiz] = useState(
     initialQuiz || {
-      intitule: '',
-      code: '',
-      competence: '',
+      courseName: '',
+      coursequizID: '',
       teacherName: user?.name || '',
       Deadline: '',
       status: '',
     }
   );
-  const [competences, setCompetences] = useState([]);
+
   const [errors, setErrors] = useState({});
-
-  useEffect(() => {
-    const fetchCompetences = async () => {
-      try {
-        if (quiz.code) { // Only fetch if a module is selected
-          const response = await apiService.get('/competences');
-          const filteredData = response.filter(
-            (competence) => competence.code_module === quiz.code
-          );
-
-          // Flatten the intitule_competence arrays of the filtered data:
-          const flattenedCompetences = filteredData.reduce((acc, competence) => {
-            return acc.concat(
-              competence.intitule_competence.map((intitule) => ({
-                ...competence,
-                intitule_competence: intitule,
-              }))
-            );
-          }, []);
-
-          setCompetences(flattenedCompetences);
-        } else { }
-      } catch (error) {
-        console.error('Error fetching competences:', error);
-      }
-    };
-
-    fetchCompetences();
-  }, [quiz.code]);
-  const filteredCompetences = useMemo(() => {
-    if (!quiz.code) return [];
-    return competences.filter((competence) => competence.code_module === quiz.code);
-  }, [competences, quiz.code]);
 
   const validateForm = () => {
     const newErrors = {};
-    if (!quiz.code) newErrors.code = 'Module is required';
+    if (!quiz.coursequizID) newErrors.coursequizID = 'Course is required';
     if (!quiz.teacherName) newErrors.teacherName = 'Instructor name is required';
     if (!quiz.Deadline) newErrors.Deadline = 'Deadline is required';
     if (!quiz.status) newErrors.status = 'Status is required';
@@ -63,7 +29,8 @@ const QuizForm = ({ initialQuiz, modules, onSubmit, onCancel }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      onSubmit({ ...quiz, competence: quiz.competence });     }
+      onSubmit(quiz);
+    }
   };
 
   return (
@@ -72,65 +39,36 @@ const QuizForm = ({ initialQuiz, modules, onSubmit, onCancel }) => {
         <label className="label">
           <span className="label-text flex items-center gap-2">
             <BookOpen size={18} />
-            Module
+            Course
           </span>
         </label>
         <select
-          value={quiz.code}
+          value={quiz.coursequizID}
           onChange={(e) => {
-            const selectedModule = modules.find((module) => module.code === e.target.value);
+            const selectedCourse = courses.find((course) => course.coursequizID === e.target.value);
             setQuiz({
               ...quiz,
-              code: e.target.value,
-              intitule: selectedModule ? selectedModule.intitule : '',
+              coursequizID: e.target.value,
+              courseName: selectedCourse ? selectedCourse.courseName : '',
             });
-            setErrors({ ...errors, code: '' });
+            setErrors({ ...errors, coursequizID: '' });
           }}
-          className={`select select-bordered w-full ${errors.code ? 'select-error' : ''}`}
+          className={`select select-bordered w-full ${errors.coursequizID ? 'select-error' : ''}`}
         >
-          <option value="">Select Module</option>
-          {modules.map((module) => (
-            <option key={module.code} value={module.code}>
-              {module.intitule}
+          <option value="">Select Course</option>
+          {courses.map((course) => (
+            <option key={course.coursequizID} value={course.coursequizID}>
+              {course.courseName}
             </option>
           ))}
         </select>
-        {errors.code && (
+        {errors.coursequizID && (
           <label className="label">
-            <span className="label-text-alt text-error">{errors.code}</span>
+            <span className="label-text-alt text-error">{errors.coursequizID}</span>
           </label>
         )}
       </div>
-      {quiz.code && ( // Only show if a module is selected
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text flex items-center gap-2">
-              <BookOpen size={18} />
-              Competence
-            </span>
-          </label>
-          <select
-            value={quiz.competence}
-            onChange={(e) => {
-              setQuiz({ ...quiz, competence: e.target.value });
-            }}
-            className={`select select-bordered w-full ${errors.competence ? 'select-error' : ''
-              }`}
-          >
-            <option value="">Select Competence</option>
-            {competences.map((competence, index) => (
-              <option key={index} value={competence.intitule_competence}>
-                {competence.intitule_competence}
-              </option>
-            ))}
-          </select>
-          {errors.competence && (
-            <label className="label">
-              <span className="label-text-alt text-error">{errors.competence}</span>
-            </label>
-          )}
-        </div>
-      )}
+
       <div className="form-control">
         <label className="label">
           <span className="label-text flex items-center gap-2">
