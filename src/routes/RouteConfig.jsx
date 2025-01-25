@@ -9,7 +9,7 @@ import LandingPage from '../pages/Landing/LandingPage';
 const RouteConfig = () => {
   return (
     <Routes>
-      <Route path="/" element={<LandingPage />}/>
+      <Route path="/" element={<LandingPage />} />
       {routes.map(({ path, element: Element, isPublic, allowedRoles }) => {
         if (isPublic) {
           return (

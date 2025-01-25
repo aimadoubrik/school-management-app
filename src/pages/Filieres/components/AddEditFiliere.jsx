@@ -171,7 +171,7 @@ const AddEditFiliere = ({ filiere, onClose, onSave, isEditMode }) => {
                 value={formData.groupes.map((groupe) => groupe.id)}
                 onChange={handleChange}
                 multiple
-                className={`input input-bordered w-full h-20 ${errors[field.id] ? 'input-error' : ''} rounded-md p-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                className={`input input-bordered w-full h-20 ${errors[field.id] ? 'input-error' : ''} rounded-md p-2 border border-gray-300 focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
                 disabled={isSubmitting}
               >
                 {loading ? (

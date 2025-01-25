@@ -66,12 +66,14 @@ const MiseEnGardeFormRow = ({ name, group, filiere, date, index, details }) => {
 
           {/* Date & Signature */}
           <tr>
-            <td  className="border border-black p-2 font-bold">Date</td>
+            <td className="border border-black p-2 font-bold">Date</td>
             <td colSpan={2} className="border border-black p-2">
               {date || '........................................'}
             </td>
             <td className="border border-black p-2 font-bold">Signature</td>
-            <td colSpan={2} className="border border-black p-2">........................................</td>
+            <td colSpan={2} className="border border-black p-2">
+              ........................................
+            </td>
           </tr>
         </tbody>
       </table>

@@ -45,7 +45,11 @@ const getUserRole = () => getUserFromStorage('user')?.role;
 // Components that need role-based rendering
 const RoleBasedCourses = () => {
   const role = getUserRole();
-  return role === ROLES.TRAINER || role === ROLES.SUPER_USER ? <CoursesFormateur /> : <CoursesPage />;
+  return role === ROLES.TRAINER || role === ROLES.SUPER_USER ? (
+    <CoursesFormateur />
+  ) : (
+    <CoursesPage />
+  );
 };
 
 const RoleBasedQuizzes = () => {

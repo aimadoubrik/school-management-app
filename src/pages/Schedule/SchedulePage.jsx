@@ -66,7 +66,9 @@ const SchedulePage = () => {
       const filteredGroups = [
         ...new Set(
           assignments
-            .filter((a) => a.formateur.secteur === selectedSecteur && a.groupe.filiere === selectedFiliere)
+            .filter(
+              (a) => a.formateur.secteur === selectedSecteur && a.groupe.filiere === selectedFiliere
+            )
             .map((a) => a.groupe.codeGroupe)
         ),
       ];
@@ -207,7 +209,7 @@ const SchedulePage = () => {
                           className="border p-2 relative h-20"
                         >
                           <div
-                            className="bg-gray-400 text-black p-2 rounded shadow-lg absolute inset-1 overflow-hidden text-base-100 transition-all duration-300"
+                            className="bg-gray-400 text-black p-2 rounded-sm shadow-lg absolute inset-1 overflow-hidden text-base-100 transition-all duration-300"
                             title={`${classForSlot.title}\nInstructor: ${classForSlot.formateur.nom}\nRoom: ${classForSlot.salle}\nTime: ${classForSlot.startTime} - ${classForSlot.endTime}`}
                           >
                             <div className="flex flex-col gap-2 justify-center h-full">
@@ -216,7 +218,9 @@ const SchedulePage = () => {
                                   {classForSlot.title}
                                 </div>
                                 <span className="">|</span>
-                                <div className="text-xs font-medium">{classForSlot.formateur.nom}</div>
+                                <div className="text-xs font-medium">
+                                  {classForSlot.formateur.nom}
+                                </div>
                               </div>
                               <div className="text-xs text-secondary-content rounded-md py-1 px-2 mx-auto">
                                 {classForSlot.salle}

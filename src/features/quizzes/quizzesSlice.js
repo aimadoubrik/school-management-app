@@ -1,4 +1,3 @@
-// src/features/quizzes/quizzesSlice.js
 import { createSelector, createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { apiService } from '../../api/config';
 

@@ -1,9 +1,3 @@
-
-
-// -install ai depancies
-// -build chatsession
-
-
 import {GoogleGenerativeAI} from '@google/generative-ai'
 
   
@@ -39,4 +33,3 @@ import {GoogleGenerativeAI} from '@google/generative-ai'
         },
       ],
     });
-    

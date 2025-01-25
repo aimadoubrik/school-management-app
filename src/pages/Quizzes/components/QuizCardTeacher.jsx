@@ -198,4 +198,3 @@ QuizCardTeacher.propTypes = {
 };
 
 export default QuizCardTeacher;
-

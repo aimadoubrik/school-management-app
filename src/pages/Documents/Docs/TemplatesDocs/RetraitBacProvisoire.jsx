@@ -20,8 +20,8 @@ const BacWithdrawalNotice = ({ name, filiere, date, cin, birthdate, group, reaso
 
         <div className="space-y-4">
           <p className="text-xl font-semibold text-gray-900">
-            Je soussigné(e), {name?.toUpperCase()}, déclare avoir procédé au retrait temporaire de mon Bac de
-            l'ISTA AIT MELLOUL pour les raisons suivantes :
+            Je soussigné(e), {name?.toUpperCase()}, déclare avoir procédé au retrait temporaire de
+            mon Bac de l'ISTA AIT MELLOUL pour les raisons suivantes :
           </p>
 
           <p className="text-lg text-gray-700">Date de retrait : {date}</p>
@@ -45,7 +45,7 @@ const BacWithdrawalNotice = ({ name, filiere, date, cin, birthdate, group, reaso
 
               <div className="flex items-center space-x-4 p-3 rounded-lg">
                 <span className="font-semibold w-48">CIN :</span>
-                <span className="flex-1">{cin ? cin.toUpperCase(): 'Non specifiée'}</span>
+                <span className="flex-1">{cin ? cin.toUpperCase() : 'Non specifiée'}</span>
               </div>
 
               <div className="flex items-center space-x-4 p-3 rounded-lg">
@@ -54,11 +54,9 @@ const BacWithdrawalNotice = ({ name, filiere, date, cin, birthdate, group, reaso
               </div>
 
               <div className="flex items-center space-x-4 p-3 rounded-lg">
-
                 <span className="font-semibold w-48">Niveau :</span>
 
                 <span className="flex-1">{level}</span>
-
               </div>
 
               <div className="flex items-center space-x-4 p-3 rounded-lg">
