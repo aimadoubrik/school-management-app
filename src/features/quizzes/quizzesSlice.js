@@ -5,16 +5,17 @@ import { apiService } from '../../api/config';
 const initialState = {
   quizzes: [],
   questions: {},
-  courses: [],
+  modules: [],
+  competences: [],
   status: 'idle',
   error: null,
 };
 
-export const selectCoursesData = (state) => state.courses?.coursess || [];
-export const selectMemoizedCourses = createSelector([selectCoursesData], (coursesData) =>
-  coursesData.map((course) => ({
-    courseId: course.courseId,
-    courseName: course.courseName,
+export const selectModulesData = (state) => state.modules?.modules || [];
+export const selectMemoizedModules = createSelector([selectModulesData], (modulesData) =>
+  modulesData.map((module) => ({
+    moduleId: module.courseId,
+    moduleName: module.courseName,
   }))
 );
 export const fetchQuizzes = createAsyncThunk(
@@ -136,10 +137,10 @@ export const deleteQuestion = createAsyncThunk(
 // Add this with your other createAsyncThunk actions
 
 // src/features/quizzes/quizzesSlice.js
-export const fetchCourses = createAsyncThunk('quizzes/fetchCourses', async () => {
-  const response = await fetch('/api/courses'); // adjust the API endpoint as needed
+export const fetchModules = createAsyncThunk('quizzes/fetchModules', async () => {
+  const response = await fetch('/api/modules'); // adjust the API endpoint as needed
   const data = await response.json();
-  return data.coursess; // matches your API response structure
+  return data.modules; // matches your API response structure
 });
 
 const quizzesSlice = createSlice({
@@ -147,8 +148,8 @@ const quizzesSlice = createSlice({
   initialState: {
     quizzes: [],
     questions: [],
-    courses: {
-      coursess: [],
+    modules: {
+      modules: [],
     },
     status: 'idle',
     error: null,
@@ -160,9 +161,9 @@ const quizzesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCourses.fulfilled, (state, action) => {
-        state.courses = {
-          coursess: action.payload,
+      .addCase(fetchModules.fulfilled, (state, action) => {
+        state.modules = {
+          modules: action.payload,
         };
         state.status = 'succeeded';
       })
