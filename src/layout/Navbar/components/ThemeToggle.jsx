@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { themeChange } from 'theme-change';
-import "@theme-toggles/react/css/Around.css";
-import { Around } from "@theme-toggles/react";
+import { Moon, Sun } from 'lucide-react';
 
 const ThemeToggle = () => {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'cupcake');
@@ -12,18 +11,25 @@ const ThemeToggle = () => {
   }, [theme]);
 
   const handleThemeToggle = () => {
-    const newTheme = theme === 'dark' ? 'cupcake' : 'dark';
+    const newTheme = theme === 'cupcake' ? 'dark' : 'cupcake';
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
   };
 
   return (
-    <div onClick={handleThemeToggle} >
-      <button  className='btn btn-ghost'>
-      <Around className='text-2xl mt-1' toggled={theme === 'cupcake'} onToggle={handleThemeToggle} duration={750} />
-      </button>
-    </div>
+    <button
+      className="flex items-center tooltip tooltip-bottom btn btn-ghost"
+      data-tip={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+      onClick={handleThemeToggle}
+      aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+    >
+      {theme === 'dark' ? (
+        <Sun className="w-5 h-5" aria-hidden="true" />
+      ) : (
+        <Moon className="w-5 h-5" aria-hidden="true" />
+      )}
+    </button>
   );
 };
 

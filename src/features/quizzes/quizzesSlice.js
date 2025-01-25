@@ -148,6 +148,8 @@ const quizzesSlice = createSlice({
   initialState: {
     quizzes: [],
     questions: [],
+    questionAnswers: [],
+    competences: [],
     modules: {
       modules: [],
     },
@@ -157,6 +159,12 @@ const quizzesSlice = createSlice({
   reducers: {
     clearError: (state) => {
       state.error = null;
+    },
+    updateQuestionAnswers: (state, action) => {
+      state.questionAnswers = action.payload;
+    },
+    clearQuestionAnswers: (state) => {
+      state.questionAnswers = [];
     },
   },
   extraReducers: (builder) => {
@@ -231,5 +239,5 @@ const quizzesSlice = createSlice({
   },
 });
 
-export const { clearError } = quizzesSlice.actions;
+export const { clearError ,updateQuestionAnswers, clearQuestionAnswers } = quizzesSlice.actions;
 export default quizzesSlice.reducer;
