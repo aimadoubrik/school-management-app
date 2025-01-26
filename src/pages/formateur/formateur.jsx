@@ -185,9 +185,7 @@ const Formateur = () => {
 
       <dialog className={`modal ${showModal && 'modal-open'}`}>
         <div className="modal-box max-w-4xl">
-          <h3 className="font-bold text-lg mb-4">
-            Modules de {selectedFormateur?.nom}
-          </h3>
+          <h3 className="font-bold text-lg mb-4">Modules de {selectedFormateur?.nom}</h3>
           <div className="overflow-x-auto">
             <table className="table table-zebra">
               <thead>

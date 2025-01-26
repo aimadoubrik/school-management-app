@@ -238,5 +238,5 @@ const quizzesSlice = createSlice({
   },
 });
 
-export const { clearError ,updateQuestionAnswers, clearQuestionAnswers } = quizzesSlice.actions;
+export const { clearError, updateQuestionAnswers, clearQuestionAnswers } = quizzesSlice.actions;
 export default quizzesSlice.reducer;

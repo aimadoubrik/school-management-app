@@ -86,9 +86,7 @@ const EditableQuestion = ({
                   />
                 </li>
               ))
-            : editedQuestion.answers.map((answer) => (
-                <li key={`answer-${answer}`}>{answer}</li>
-              ))}
+            : editedQuestion.answers.map((answer) => <li key={`answer-${answer}`}>{answer}</li>)}
         </ul>
       </td>
       <td>
@@ -140,4 +138,3 @@ const EditableQuestion = ({
 };
 
 export default EditableQuestion;
-

@@ -10,7 +10,10 @@ const QuizzesPage = () => {
   const quizData = useSelector((state) =>
     state.quizzes.quizzes
       ? state.quizzes.quizzes.filter(
-          (quiz) => quiz.status === 'active' && quiz.questions?.length > 0 && quiz.questionsSelected?.length > 0
+          (quiz) =>
+            quiz.status === 'active' &&
+            quiz.questions?.length > 0 &&
+            quiz.questionsSelected?.length > 0
         )
       : []
   );
@@ -43,9 +46,7 @@ const QuizzesPage = () => {
   const filteredQuizzes = useMemo(
     () =>
       quizData.filter((quiz) => {
-        const searchFields = [quiz?.competence, quiz?.techerName].filter(
-          Boolean
-        );
+        const searchFields = [quiz?.competence, quiz?.techerName].filter(Boolean);
 
         const matchesSearch =
           !searchTerm ||

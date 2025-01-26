@@ -19,7 +19,8 @@ const QuizForm = ({ initialQuiz, modules, onSubmit, onCancel }) => {
   useEffect(() => {
     const fetchCompetences = async () => {
       try {
-        if (quiz.code) { // Only fetch if a module is selected
+        if (quiz.code) {
+          // Only fetch if a module is selected
           const response = await apiService.get('/competences');
           const filteredData = response.filter(
             (competence) => competence.code_module === quiz.code
@@ -36,7 +37,8 @@ const QuizForm = ({ initialQuiz, modules, onSubmit, onCancel }) => {
           }, []);
 
           setCompetences(flattenedCompetences);
-        } else { }
+        } else {
+        }
       } catch (error) {
         console.error('Error fetching competences:', error);
       }
@@ -63,7 +65,8 @@ const QuizForm = ({ initialQuiz, modules, onSubmit, onCancel }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      onSubmit({ ...quiz, competence: quiz.competence });     }
+      onSubmit({ ...quiz, competence: quiz.competence });
+    }
   };
 
   return (
@@ -114,8 +117,7 @@ const QuizForm = ({ initialQuiz, modules, onSubmit, onCancel }) => {
             onChange={(e) => {
               setQuiz({ ...quiz, competence: e.target.value });
             }}
-            className={`select select-bordered w-full ${errors.competence ? 'select-error' : ''
-              }`}
+            className={`select select-bordered w-full ${errors.competence ? 'select-error' : ''}`}
           >
             <option value="">Select Competence</option>
             {competences.map((competence, index) => (

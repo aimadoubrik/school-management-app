@@ -94,8 +94,8 @@ const QuizCardTeacher = ({ quiz, onDelete, onEdit, onViewDetails, onAddQuestions
     return isNaN(date.getTime())
       ? 'Invalid date'
       : new Intl.DateTimeFormat(undefined, { dateStyle: 'medium', timeStyle: 'short' }).format(
-        date
-      );
+          date
+        );
   }, [Deadline]);
 
   // Optimized Callbacks
