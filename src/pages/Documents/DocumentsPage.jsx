@@ -245,225 +245,241 @@ const DocumentsPage = () => {
               </h2>
               <div className="divider"></div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Selected Document Display */}
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Document Selectionné</span>
-                  </label>
-                  {selectedDocument ? (
-                    <div className="flex items-center justify-between p-4 bg-base-200">
-                      <div>
-                        <h3 className="font-bold">{selectedDocument.name}</h3>
-                        <p className="text-sm">{selectedDocument.description}</p>
-                      </div>
-                      <button
-                        type="button"
-                        className="btn btn-ghost btn-circle"
-                        onClick={() => setSelectedDocument(null)}
-                      >
-                        <X className="w-5 h-5" />
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="alert alert-warning">
-                      <FileQuestion className="w-5 h-5" />
-                      <span>Vous devez choisir un document avant de soumettre la demande</span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Nom Input */}
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Nom</span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Khalil"
-                    value={nom}
-                    onChange={(e) => setNom(e.target.value)}
-                    className="w-full input input-bordered"
-                    required
-                  />
-                </div>
-
-                {/* Prenom Input */}
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Prénom</span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Ali"
-                    value={prenom}
-                    onChange={(e) => setPrenom(e.target.value)}
-                    className="w-full input input-bordered"
-                    required
-                  />
-                </div>
-
-                {/* CodeDiplome Select */}
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Groupe</span>
-                  </label>
-                  <select
-                    className="w-full select select-bordered"
-                    value={codeDiplome}
-                    onChange={(e) => setCodeDiplome(e.target.value)}
-                    required
+              {selectedDocument?.documentLink ? (
+                <div className="text-center">
+                  <a
+                    href={selectedDocument.documentLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary"
                   >
-                    <option value="" disabled>
-                      Choisir un groupe...
-                    </option>
-                    {uniqueCodeDiplomes.map((code, index) => (
-                      <option key={index} value={code}>
-                        {code}
-                      </option>
-                    ))}
-                  </select>
+                    <Download className="w-5 h-5" />
+                    Télécharger le Document
+                  </a>
                 </div>
-
-                {/* MatriculeEtudiant Input */}
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">CEF</span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Matricule Étudiant"
-                    value={matriculeEtudiant}
-                    onChange={(e) => setMatriculeEtudiant(e.target.value)}
-                    className="w-full input input-bordered"
-                    required
-                  />
-                </div>
-
-                {/* Required Documents */}
-                {selectedDocument && (
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Selected Document Display */}
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text">Fichiers requis</span>
+                      <span className="label-text">Document Selectionné</span>
                     </label>
-                    <div className="p-4 rounded-md bg-base-200">
-                      <ul className="list-disc list-inside">
-                        {selectedDocument.documentAttachment.map((doc, index) => (
-                          <li key={index} className="flex items-center gap-2">
-                            <FileText className="w-4 h-4" />
-                            {doc}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                )}
-
-                {/* File Upload */}
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Uploader les Fichiers</span>
-                  </label>
-                  <div
-                    className={`border-2 border-dashed rounded-box p-8 text-center transition-colors ${
-                      dragActive ? 'border-primary bg-primary/10' : 'border-base-300'
-                    }`}
-                    onDragEnter={(e) => {
-                      e.preventDefault();
-                      setDragActive(true);
-                    }}
-                    onDragLeave={() => setDragActive(false)}
-                    onDragOver={(e) => e.preventDefault()}
-                    onDrop={(e) => {
-                      e.preventDefault();
-                      setDragActive(false);
-                      validateAndSetFiles(e.dataTransfer.files);
-                    }}
-                  >
-                    <input
-                      type="file"
-                      multiple
-                      id="file-upload"
-                      className="hidden"
-                      onChange={(e) => validateAndSetFiles(e.target.files)}
-                      accept=".pdf,.jpg,.png"
-                    />
-                    <label htmlFor="file-upload" className="cursor-pointer">
-                      <Upload className="w-12 h-12 mx-auto mb-4 text-primary" />
-                      <p className="mb-2 text-lg">
-                        Drag and drop files here or <span className="text-primary">browse</span>
-                      </p>
-                      <p className="text-sm opacity-70">PDF, JPG, and PNG files (max 5MB each)</p>
-                    </label>
-                  </div>
-
-                  {/* File List */}
-                  {files.length > 0 && (
-                    <div className="mt-4 space-y-2">
-                      {files.map((file, index) => (
-                        <div
-                          key={index}
-                          className="flex items-center justify-between p-4 bg-base-200"
-                        >
-                          <div className="flex items-center gap-2">
-                            <FileText className="w-5 h-5" />
-                            <div>
-                              <p className="font-medium">{file.name}</p>
-                              <p className="text-sm opacity-70">
-                                {(file.size / 1024 / 1024).toFixed(2)} MB
-                              </p>
-                            </div>
-                          </div>
-                          <button
-                            type="button"
-                            className="btn btn-ghost btn-circle"
-                            onClick={() => setFiles(files.filter((_, i) => i !== index))}
-                          >
-                            <Trash className="w-5 h-5" />
-                          </button>
+                    {selectedDocument ? (
+                      <div className="flex items-center justify-between p-4 bg-base-200">
+                        <div>
+                          <h3 className="font-bold">{selectedDocument.name}</h3>
+                          <p className="text-sm">{selectedDocument.description}</p>
                         </div>
+                        <button
+                          type="button"
+                          className="btn btn-ghost btn-circle"
+                          onClick={() => setSelectedDocument(null)}
+                        >
+                          <X className="w-5 h-5" />
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="alert alert-warning">
+                        <FileQuestion className="w-5 h-5" />
+                        <span>Vous devez choisir un document avant de soumettre la demande</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Nom Input */}
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Nom</span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Khalil"
+                      value={nom}
+                      onChange={(e) => setNom(e.target.value)}
+                      className="w-full input input-bordered"
+                      required
+                    />
+                  </div>
+
+                  {/* Prenom Input */}
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Prénom</span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Ali"
+                      value={prenom}
+                      onChange={(e) => setPrenom(e.target.value)}
+                      className="w-full input input-bordered"
+                      required
+                    />
+                  </div>
+
+                  {/* CodeDiplome Select */}
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Groupe</span>
+                    </label>
+                    <select
+                      className="w-full select select-bordered"
+                      value={codeDiplome}
+                      onChange={(e) => setCodeDiplome(e.target.value)}
+                      required
+                    >
+                      <option value="" disabled>
+                        Choisir un groupe...
+                      </option>
+                      {uniqueCodeDiplomes.map((code, index) => (
+                        <option key={index} value={code}>
+                          {code}
+                        </option>
                       ))}
+                    </select>
+                  </div>
+
+                  {/* MatriculeEtudiant Input */}
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">CEF</span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Matricule Étudiant"
+                      value={matriculeEtudiant}
+                      onChange={(e) => setMatriculeEtudiant(e.target.value)}
+                      className="w-full input input-bordered"
+                      required
+                    />
+                  </div>
+
+                  {/* Required Documents */}
+                  {selectedDocument?.documentAttachment?.length > 0 && (
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">Fichiers requis</span>
+                      </label>
+                      <div className="p-4 rounded-md bg-base-200">
+                        <ul className="list-disc list-inside">
+                          {selectedDocument.documentAttachment.map((doc, index) => (
+                            <li key={index} className="flex items-center gap-2">
+                              <FileText className="w-4 h-4" />
+                              {doc}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   )}
-                </div>
 
-                {/* Request Date */}
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Date de Demande</span>
-                  </label>
-                  <input
-                    type="date"
-                    className="input input-bordered"
-                    value={requestDate}
-                    onChange={(e) => setRequestDate(e.target.value)}
-                    required
-                  />
-                </div>
+                  {/* File Upload */}
+                  {selectedDocument?.documentAttachment?.length > 0 && (
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">Uploader les Fichiers</span>
+                      </label>
+                      <div
+                        className={`border-2 border-dashed rounded-box p-8 text-center transition-colors ${
+                          dragActive ? 'border-primary bg-primary/10' : 'border-base-300'
+                        }`}
+                        onDragEnter={(e) => {
+                          e.preventDefault();
+                          setDragActive(true);
+                        }}
+                        onDragLeave={() => setDragActive(false)}
+                        onDragOver={(e) => e.preventDefault()}
+                        onDrop={(e) => {
+                          e.preventDefault();
+                          setDragActive(false);
+                          validateAndSetFiles(e.dataTransfer.files);
+                        }}
+                      >
+                        <input
+                          type="file"
+                          multiple
+                          id="file-upload"
+                          className="hidden"
+                          onChange={(e) => validateAndSetFiles(e.target.files)}
+                          accept=".pdf,.jpg,.png"
+                        />
+                        <label htmlFor="file-upload" className="cursor-pointer">
+                          <Upload className="w-12 h-12 mx-auto mb-4 text-primary" />
+                          <p className="mb-2 text-lg">
+                            Drag and drop files here or <span className="text-primary">browse</span>
+                          </p>
+                          <p className="text-sm opacity-70">PDF, JPG, and PNG files (max 5MB each)</p>
+                        </label>
+                      </div>
 
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  className={`btn btn-primary w-full ${loading ? 'loading' : ''}`}
-                  disabled={
-                    !selectedDocument ||
-                    !nom ||
-                    !prenom ||
-                    !codeDiplome ||
-                    !matriculeEtudiant ||
-                    files.length === 0 ||
-                    !requestDate ||
-                    loading
-                  }
-                >
-                  {loading ? (
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                  ) : (
-                    <ArrowUpCircle className="w-5 h-5" />
+                      {/* File List */}
+                      {files.length > 0 && (
+                        <div className="mt-4 space-y-2">
+                          {files.map((file, index) => (
+                            <div
+                              key={index}
+                              className="flex items-center justify-between p-4 bg-base-200"
+                            >
+                              <div className="flex items-center gap-2">
+                                <FileText className="w-5 h-5" />
+                                <div>
+                                  <p className="font-medium">{file.name}</p>
+                                  <p className="text-sm opacity-70">
+                                    {(file.size / 1024 / 1024).toFixed(2)} MB
+                                  </p>
+                                </div>
+                              </div>
+                              <button
+                                type="button"
+                                className="btn btn-ghost btn-circle"
+                                onClick={() => setFiles(files.filter((_, i) => i !== index))}
+                              >
+                                <Trash className="w-5 h-5" />
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   )}
-                  Envoyer la Demande
-                </button>
-              </form>
+
+                  {/* Request Date */}
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Date de Demande</span>
+                    </label>
+                    <input
+                      type="date"
+                      className="input input-bordered"
+                      value={requestDate}
+                      onChange={(e) => setRequestDate(e.target.value)}
+                      required
+                    />
+                  </div>
+
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    className={`btn btn-primary w-full ${loading ? 'loading' : ''}`}
+                    disabled={
+                      !selectedDocument ||
+                      !nom ||
+                      !prenom ||
+                      !codeDiplome ||
+                      !matriculeEtudiant ||
+                      (selectedDocument.documentAttachment?.length > 0 && files.length === 0) ||
+                      !requestDate ||
+                      loading
+                    }
+                  >
+                    {loading ? (
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                    ) : (
+                      <ArrowUpCircle className="w-5 h-5" />
+                    )}
+                    Envoyer la Demande
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>
@@ -501,7 +517,7 @@ const DocumentsPage = () => {
                     </thead>
                     <tbody>
                       {demandes
-                        .filter((d) => d.user === user.name) // Use the `user` constant here
+                        .filter((d) => d.user === user.name)
                         .map((demande) => (
                           <tr key={demande.id}>
                             <td>
@@ -537,7 +553,7 @@ const DocumentsPage = () => {
                 {/* Cards for medium and small screens */}
                 <div className="lg:hidden">
                   {demandes
-                    .filter((d) => d.user === user.name) // Use the `user` constant here
+                    .filter((d) => d.user === user.name)
                     .map((demande) => (
                       <div key={demande.id} className="mb-4 shadow-md card bg-base-200">
                         <div className="card-body">

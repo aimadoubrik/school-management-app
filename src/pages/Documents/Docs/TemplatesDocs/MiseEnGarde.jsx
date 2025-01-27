@@ -1,6 +1,6 @@
 const MiseEnGardeFormRow = ({ name, group, filiere, date, index, details }) => {
   return (
-    <div className="border border-black mb-4 p-8 h-1/2">
+    <div className="text-black border border-black mb-4 p-8 h-1/2">
       {/* Header Section */}
       <div className="border-b border-black pb-2 mb-2">
         <h2 className="text-center font-bold uppercase text-sm">

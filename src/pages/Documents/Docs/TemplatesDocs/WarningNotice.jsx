@@ -1,6 +1,6 @@
 const WarningNotice = ({ name, group, date, reason, filiere }) => {
   return (
-    <div className="bg-white p-8 w-[210mm] h-[297mm] mx-auto">
+    <div className="bg-white text-black p-8 w-[210mm] h-[297mm] mx-auto">
       <div className="max-w-3xl mx-auto space-y-8">
         <div className="text-center">
           <img

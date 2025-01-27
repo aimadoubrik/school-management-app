@@ -2,7 +2,7 @@ import { Building2, Calendar, Clock, User, Users2 } from 'lucide-react';
 
 const ReprimandNotice = ({ name, group, date, reason = [], resen1, resen2, resen3 }) => {
   return (
-    <div className="bg-white p-8 w-[210mm] h-[297mm] mx-auto">
+    <div className="bg-white text-black p-8 w-[210mm] h-[297mm] mx-auto">
       <div className="max-w-3xl mx-auto space-y-8">
         <div className="text-center">
           <img

@@ -2788,118 +2788,40 @@
   "documents": [
     {
       "id": "1",
-      "name": "Attestation de présence",
+      "name": "Attestation de scolarité",
       "status": "En cours",
-      "description": "Document confirmant votre présence aux cours",
+      "description": "Justifie que le stagiaire est inscrit dans une filière de formation",
       "documentAttachment": [
-        "Carte d'identité",
-        "Lettre de demande de document"
+        "Attestation de paiement"
       ],
       "processingTime": "2-3 jours"
     },
     {
       "id": "2",
-      "name": "Attestation de scolarité",
+      "name": "Retrait bac Provisoire",
       "status": "Disponible",
-      "description": "Justifie que le stagiaire est inscrit dans une filière de formation",
-      "documentAttachment": [
-        "Carte d'identité",
-        "Lettre de demande de document"
-      ],
+      "description": "Demande de retrait de son bac Temporairement",
+      "documentAttachment": [],
       "processingTime": "1-2 jours"
     },
     {
       "id": "3",
-      "name": "Relevé de notes",
+      "name": "Retrait BAC Définitif",
       "status": "En cours",
-      "description": "Résumé des notes obtenues durant les examens",
-      "documentAttachment": [
-        "Carte d'identité",
-        "Lettre de demande de document"
-      ],
-      "processingTime": "3-5 jours"
+      "description": "Demande de retrait de son bac définitif",
+      "documentAttachment": [],
+      "processingTime": "1-2 jours"
     },
     {
       "id": "4",
-      "name": "Attestation de stage",
+      "name": "Avertissement",
       "status": "En attente",
-      "description": "Document confirmant la réalisation d'un stage pratique obligatoire",
-      "documentAttachment": [
-        "Carte d'identité",
-        "Convention de stage signée"
-      ],
-      "processingTime": "4-6 jours"
+      "description": "Document d'avertissement de l'OFPPT",
+      "documentAttachment": [],
+      "processingTime": "1-2 jours"
     },
     {
       "id": "5",
-      "name": "Certificat d'inscription",
-      "status": "Disponible",
-      "description": "Utilisé pour prouver l'inscription à l'année en cours",
-      "documentAttachment": [
-        "Carte d'identité",
-        "Lettre de demande de document"
-      ],
-      "processingTime": "1-2 jours"
-    },
-    {
-      "id": "6",
-      "name": "Demande de transfert",
-      "status": "En cours",
-      "description": "Permet de demander un transfert vers un autre établissement de l'OFPPT",
-      "documentAttachment": [
-        "Carte d'identité",
-        "Lettre explicative",
-        "Justificatif (le cas échéant)"
-      ],
-      "processingTime": "5-7 jours"
-    },
-    {
-      "id": "7",
-      "name": "Déclaration de perte de carte d'étudiant",
-      "status": "En attente",
-      "description": "Permet de demander une nouvelle carte d'étudiant après une perte",
-      "documentAttachment": [
-        "Carte d'identité",
-        "Déclaration de perte (émise par les autorités)"
-      ],
-      "processingTime": "3-4 jours"
-    },
-    {
-      "id": "8",
-      "name": "Diplôme ou certificat de qualification",
-      "status": "En cours",
-      "description": "Document remis après la réussite de la formation",
-      "documentAttachment": [
-        "Carte d'identité",
-        "Lettre de demande de document",
-        "Relevé de notes final"
-      ],
-      "processingTime": "10-15 jours"
-    },
-    {
-      "id": "9",
-      "name": "Autorisation pour la participation à des concours ou activités externes",
-      "status": "Disponible",
-      "description": "Autorisation pour participer à des concours ou projets externes",
-      "documentAttachment": [
-        "Carte d'identité",
-        "Lettre explicative"
-      ],
-      "processingTime": "2-3 jours"
-    },
-    {
-      "id": "10",
-      "name": "Certificat médical",
-      "status": "En attente",
-      "description": "Certificat médical justifiant une absence prolongée",
-      "documentAttachment": [
-        "Carte d'identité",
-        "Rapport médical"
-      ],
-      "processingTime": "1-2 jours"
-    },
-    {
-      "id": "11",
       "name": "Regelement intérieur",
       "status": "En cours",
       "description": "Document de réglement interne de l'OFPPT",
@@ -2927,7 +2849,7 @@
         }
       ],
       "user": "Admin Admin",
-      "status": "en cours",
+      "status": "effectuer",
       "submissionDate": "11/21/2024",
       "processingTime": "1-2 jours"
     },
@@ -2974,6 +2896,152 @@
       "status": "en cours",
       "submissionDate": "03/12/2024",
       "processingTime": "3-5 jours"
+    },
+    {
+      "id": "9369",
+      "document": "Avertissement",
+      "description": "Document d'avertissement de l'OFPPT",
+      "matriculeEtudiant": "983939992",
+      "codeDiplome": "M101",
+      "requestDate": "2025-01-20",
+      "files": [],
+      "user": "Amina Smaïli",
+      "status": "en cours",
+      "submissionDate": "1/27/2025",
+      "processingTime": "1-2 jours"
+    },
+    {
+      "id": "e78b",
+      "document": "Retrait BAC Définitif",
+      "description": "Demande de retrait de son bac définitif",
+      "matriculeEtudiant": "79300232",
+      "codeDiplome": "RVA103",
+      "requestDate": "2025-01-28",
+      "files": [],
+      "user": "Amina Smaïli",
+      "status": "en cours",
+      "submissionDate": "1/27/2025",
+      "processingTime": "1-2 jours"
+    },
+    {
+      "id": "a317",
+      "document": "Retrait BAC Définitif",
+      "description": "Demande de retrait de son bac définitif",
+      "matriculeEtudiant": "92920302121",
+      "codeDiplome": "OQE103",
+      "requestDate": "2025-01-23",
+      "files": [],
+      "user": "Amina Smaïli",
+      "status": "en cours",
+      "submissionDate": "1/27/2025",
+      "processingTime": "1-2 jours"
+    },
+    {
+      "id": "d5f2",
+      "document": "Retrait bac Provisoire",
+      "description": "Demande de retrait de son bac Temporairement",
+      "matriculeEtudiant": "8299220203",
+      "codeDiplome": "OQE104",
+      "requestDate": "2025-01-10",
+      "files": [],
+      "user": "Amina Smaïli",
+      "status": "en cours",
+      "submissionDate": "1/27/2025",
+      "processingTime": "1-2 jours"
+    },
+    {
+      "id": "d78d",
+      "document": "Retrait bac Provisoire",
+      "description": "Demande de retrait de son bac Temporairement",
+      "matriculeEtudiant": "73389202202",
+      "codeDiplome": "MA103",
+      "requestDate": "2025-01-23",
+      "files": [],
+      "user": "Amina Smaïli",
+      "status": "en cours",
+      "submissionDate": "1/27/2025",
+      "processingTime": "1-2 jours"
+    },
+    {
+      "id": "9274",
+      "document": "Retrait bac Provisoire",
+      "description": "Demande de retrait de son bac Temporairement",
+      "matriculeEtudiant": "89292910101",
+      "codeDiplome": "OQE103",
+      "requestDate": "2025-01-23",
+      "files": [],
+      "user": "HJZJZKEZKD JSDJSDE",
+      "status": "en cours",
+      "submissionDate": "1/27/2025",
+      "processingTime": "1-2 jours"
+    },
+    {
+      "id": "f948",
+      "document": "Attestation de scolarité",
+      "description": "Justifie que le stagiaire est inscrit dans une filière de formation",
+      "matriculeEtudiant": "8292901121°23",
+      "codeDiplome": "MA103",
+      "requestDate": "2025-01-22",
+      "files": [
+        {
+          "name": "Pipeline CI CD.pdf",
+          "size": 236105,
+          "type": "application/pdf"
+        }
+      ],
+      "user": "Amina Smaïli",
+      "status": "en cours",
+      "submissionDate": "1/27/2025",
+      "processingTime": "2-3 jours"
+    },
+    {
+      "id": "46ff",
+      "document": "Retrait bac Provisoire",
+      "description": "Demande de retrait de son bac Temporairement",
+      "matriculeEtudiant": "89198899076566",
+      "codeDiplome": "OQE103",
+      "requestDate": "2025-01-29",
+      "files": [],
+      "user": "Amina Smaïli",
+      "status": "en cours",
+      "submissionDate": "1/27/2025",
+      "processingTime": "1-2 jours"
+    },
+    {
+      "id": "cbbd",
+      "document": "Retrait bac Provisoire",
+      "description": "Demande de retrait de son bac Temporairement",
+      "matriculeEtudiant": "882910012",
+      "codeDiplome": "RVA103",
+      "requestDate": "2025-01-17",
+      "files": [
+        {
+          "name": "CV.pdf",
+          "size": 110513,
+          "type": "application/pdf"
+        }
+      ],
+      "user": "JJJSD JHJSHJH",
+      "status": "en cours",
+      "submissionDate": "1/27/2025",
+      "processingTime": "1-2 jours"
+    },
+    {
+      "id": "3a20",
+      "document": "Attestation de scolarité",
+      "description": "Justifie que le stagiaire est inscrit dans une filière de formation",
+      "nom": "Amina",
+      "prenom": "Smaïli",
+      "codeDiplome": "JJJKS",
+      "matriculeEtudiant": "7289110100202",
+      "requestDate": "2025-01-16",
+      "files": [
+        {}
+      ],
+      "status": "en cours",
+      "submissionDate": "1/27/2025",
+      "processingTime": "2-3 jours",
+      "user": "Amina Smaïli"
     }
   ],
   "trainees": [
