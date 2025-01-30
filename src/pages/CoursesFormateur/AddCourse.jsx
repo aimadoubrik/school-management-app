@@ -9,6 +9,7 @@ const AddCourse = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   console.log(getUserFromStorage('user'));
+
   const [newCourse, setNewCourse] = useState({
     coursequizID: '',
     courseName: '',
@@ -79,7 +80,8 @@ const AddCourse = () => {
     const updatedCourse = {
       ...newCourse,
       id,
-      pdfUrl: pdfFile ? pdfFile.name : newCourse.pdfUrl,teacherName: getUserFromStorage('user').name
+      pdfUrl: pdfFile ? pdfFile.name : newCourse.pdfUrl,
+      teacherName: getUserFromStorage('user').name,
     };
 
     dispatch(addCourse(updatedCourse));
@@ -147,7 +149,7 @@ const AddCourse = () => {
           <textarea
             name="courseDescription"
             onChange={handleInputChange}
-            className="input input-bordered w-full"
+            className="textarea textarea-bordered w-full"
             placeholder="Enter Course Description"
             required
           />
@@ -174,7 +176,7 @@ const AddCourse = () => {
             accept="image/*"
             name="imageUrl"
             onChange={handleInputChange}
-            className="input input-bordered w-full"
+            className="file-input file-input-bordered w-full"
             required
           />
           {/* Display the image preview */}
@@ -193,7 +195,7 @@ const AddCourse = () => {
             accept="application/pdf"
             name="pdfUrl"
             onChange={handleInputChange}
-            className="input input-bordered w-full"
+            className="file-input file-input-bordered w-full"
             required
           />
         </div>
@@ -240,7 +242,7 @@ const AddCourse = () => {
                   name="contentDescription"
                   value={newChapter.contentDescription}
                   onChange={handleChapterInputChange}
-                  className="input input-bordered w-full"
+                  className="textarea textarea-bordered w-full"
                   placeholder="Enter Content Description"
                   required
                 />

@@ -1,4 +1,4 @@
-import  { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCourses, deleteCourse } from '../../features/coursesFormateur/coursesFormateurSlice'; // Adjust path if needed
@@ -6,7 +6,6 @@ import { fetchCourses, deleteCourse } from '../../features/coursesFormateur/cour
 const CoursesFormateur = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
 
   useEffect(() => {
     // Fetch courses from the API
@@ -50,8 +49,8 @@ const CoursesFormateur = () => {
               <th>Module</th>
               <th>Title</th>
               <th>Nom du formateur</th>
-              <th>imageUrl</th>
-              <th>videoUrl</th>
+              <th>Image</th>
+              <th>Video</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -71,11 +70,10 @@ const CoursesFormateur = () => {
                     />
                   </td>
                   <td>
-                    <a href={course.videoLink} target="_blank" rel="noopener noreferrer">
-                      videoUrl
+                    <a href={course.videoLink} target="_blank" rel="noopener noreferrer" className="link link-primary">
+                      Watch Video
                     </a>
                   </td>
-                
                   <td className="flex gap-2">
                     <button
                       onClick={() => handleUpdateCourse(course.id)}
@@ -94,7 +92,7 @@ const CoursesFormateur = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="6" className="text-center">
+                <td colSpan="7" className="text-center">
                   No courses available.
                 </td>
               </tr>

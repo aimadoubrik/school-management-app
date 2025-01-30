@@ -140,7 +140,7 @@ const UpdateCourse = () => {
             name="Module"
             value={courseData.Module}
             onChange={handleChange}
-            className="w-full p-2 rounded border border-gray-300"
+            className="input input-bordered w-full"
             required
           />
         </div>
@@ -153,7 +153,7 @@ const UpdateCourse = () => {
             name="courseName"
             value={courseData.courseName}
             onChange={handleChange}
-            className="w-full p-2 rounded border border-gray-300"
+            className="input input-bordered w-full"
             required
           />
         </div>
@@ -165,7 +165,7 @@ const UpdateCourse = () => {
             name="courseDescription"
             value={courseData.courseDescription}
             onChange={handleChange}
-            className="w-full p-2 rounded border border-gray-300"
+            className="textarea textarea-bordered w-full"
             required
           />
         </div>
@@ -178,7 +178,7 @@ const UpdateCourse = () => {
             name="videoLink"
             value={courseData.videoLink}
             onChange={handleChange}
-            className="w-full p-2 rounded border border-gray-300"
+            className="input input-bordered w-full"
             required
           />
         </div>
@@ -191,7 +191,7 @@ const UpdateCourse = () => {
             name="imageUrl"
             accept="image/*"
             onChange={handleChange}
-            className="w-full p-2 rounded border border-gray-300"
+            className="file-input file-input-bordered w-full"
           />
           {/* Image preview */}
           {imagePreview && (
@@ -209,7 +209,7 @@ const UpdateCourse = () => {
             name="pdfUrl"
             accept="application/pdf"
             onChange={handleChange}
-            className="w-full p-2 rounded border border-gray-300"
+            className="file-input file-input-bordered w-full"
           />
         </div>
 
@@ -228,7 +228,7 @@ const UpdateCourse = () => {
               <button
                 type="button"
                 onClick={() => openEditContentModal(content)}
-                className="text-blue-600"
+                className="btn btn-link"
               >
                 Edit
               </button>
@@ -239,7 +239,7 @@ const UpdateCourse = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="bg-green-500 hover:bg-blue-600 text-white py-2 px-4 rounded mt-4"
+          className="btn btn-primary mt-4"
         >
           Save Changes
         </button>
@@ -258,7 +258,7 @@ const UpdateCourse = () => {
                   name="contentName"
                   value={currentContent.contentName}
                   onChange={handleContentChange}
-                  className="w-full p-2 rounded border border-gray-300"
+                  className="input input-bordered w-full"
                   required
                 />
               </div>
@@ -269,7 +269,7 @@ const UpdateCourse = () => {
                   name="contentDescription"
                   value={currentContent.contentDescription}
                   onChange={handleContentChange}
-                  className="w-full p-2 rounded border border-gray-300"
+                  className="textarea textarea-bordered w-full"
                   required
                 />
               </div>
