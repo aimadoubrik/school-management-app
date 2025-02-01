@@ -218,8 +218,8 @@ function ModulesPage() {
           </thead>
           <tbody>
             {currentItems.map((module, index) => (
-              <tr key={index} className='mt-0.5 text-sm text-base-content'>
-                <td className='font-medium'>{module.code}</td>
+              <tr key={index} className="mt-0.5 text-sm text-base-content">
+                <td className="font-medium">{module.code}</td>
                 <td>{module.intitule}</td>
                 <td>{module.masseHoraire}</td>
                 <td>{module.filiere}</td>

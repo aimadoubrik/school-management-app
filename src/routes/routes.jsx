@@ -94,7 +94,8 @@ const routes = [
     path: '/courses/:id',
     element: Course,
     allowedRoles: [ROLES.SUPER_USER, ROLES.TRAINER, ROLES.TRAINEE],
-  },{
+  },
+  {
     path: '/CoursesFormateur/addCourse',
     element: AddCourse,
     allowedRoles: [ROLES.SUPER_USER, ROLES.TRAINER],

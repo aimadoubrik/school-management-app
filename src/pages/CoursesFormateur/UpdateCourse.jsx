@@ -121,7 +121,11 @@ const UpdateCourse = () => {
     e.preventDefault();
     const updatedContentList = courseData.contentOfCourse.map((content) =>
       content.contentId === currentContent.contentId
-        ? { ...content, contentName: currentContent.contentName, contentDescription: currentContent.contentDescription }
+        ? {
+            ...content,
+            contentName: currentContent.contentName,
+            contentDescription: currentContent.contentDescription,
+          }
         : content
     );
     setCourseData({ ...courseData, contentOfCourse: updatedContentList });
@@ -237,10 +241,7 @@ const UpdateCourse = () => {
         </div>
 
         {/* Submit Button */}
-        <button
-          type="submit"
-          className="btn btn-primary mt-4"
-        >
+        <button type="submit" className="btn btn-primary mt-4">
           Save Changes
         </button>
       </form>

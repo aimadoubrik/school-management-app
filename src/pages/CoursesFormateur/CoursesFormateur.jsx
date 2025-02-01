@@ -70,7 +70,12 @@ const CoursesFormateur = () => {
                     />
                   </td>
                   <td>
-                    <a href={course.videoLink} target="_blank" rel="noopener noreferrer" className="link link-primary">
+                    <a
+                      href={course.videoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link link-primary"
+                    >
                       Watch Video
                     </a>
                   </td>
