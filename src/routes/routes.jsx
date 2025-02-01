@@ -3,6 +3,7 @@ import SignupPage from '../features/auth/components/SignupForm';
 import DemandesPage from '../pages/Documents/DemandesPage';
 import Docs from '../pages/Documents/Docs/Docs';
 import AddCourse from '../pages/CoursesFormateur/AddCourse';
+import UpdateCourse from '../pages/CoursesFormateur/UpdateCourse';
 import QuizAnalyze from '../pages/Quizzes/QuizAnalyze';
 import {
   HomePage,
@@ -93,10 +94,14 @@ const routes = [
     path: '/courses/:id',
     element: Course,
     allowedRoles: [ROLES.SUPER_USER, ROLES.TRAINER, ROLES.TRAINEE],
-  },
-  {
+  },{
     path: '/CoursesFormateur/addCourse',
     element: AddCourse,
+    allowedRoles: [ROLES.SUPER_USER, ROLES.TRAINER],
+  },
+  {
+    path: '/CoursesFormateur/updateCourse/:courseId',
+    element: UpdateCourse,
     allowedRoles: [ROLES.SUPER_USER, ROLES.TRAINER],
   },
 
